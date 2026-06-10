@@ -1,0 +1,12 @@
+# BuildKit per-Dockerfile ignore (context = parent directory of both repos).
+# Keep only the two repositories, minus their heavy local state.
+*
+!forex-env-v3/**
+!forex-trainer/**
+**/.git
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+forex-trainer/runs
+forex-trainer/data/*.parquet

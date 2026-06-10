@@ -1,0 +1,13 @@
+# GPU training service. Run from the forex-trainer directory:
+#   docker compose build
+#   docker compose run train uv run forex-train --config configs/ppo_mlp_daily.yaml
+services:
+  train:
+    build:
+      context: ..               # parent dir: contains forex-env-v3 and forex-trainer
+      dockerfile: forex-trainer/Dockerfile
+    gpus: all
+    volumes:
+      - ./runs:/work/forex-trainer/runs
+      - ./configs:/work/forex-trainer/configs
+      - ./data:/work/forex-trainer/data
