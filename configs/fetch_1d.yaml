@@ -1,0 +1,30 @@
+# forex-env config used only by forex-env-fetch to materialize the daily
+# JPY/USD + JPY/EUR cache: data/jpy_usd_eur_1d.parquet.
+environment:
+  seed: 42
+  initial_balance_jpy: 1000000.0
+  episode_max_steps: 128
+  window_size: 32
+  max_leverage: 5.0
+  margin_call_threshold: 0.2
+  allow_action_leverage: false
+  random_start: false
+  currency_pairs: ["JPY/USD", "JPY/EUR"]
+
+data:
+  provider: yfinance
+  start_date: "2023-01-01"
+  end_date: "2026-01-01"
+  timeframe: "1d"
+
+features:
+  volatility_window: 32
+  normalize: true
+  selected: []
+
+transaction_costs:
+  commission_rate: 0.0002
+  overnight_rate: 0.0001
+  spreads:
+    JPY/USD: 0.0002
+    JPY/EUR: 0.0002

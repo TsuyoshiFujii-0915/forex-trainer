@@ -1,0 +1,39 @@
+# Minimal offline smoke experiment (synthetic data, tiny budget).
+experiment: smoke_ppo_mlp
+env:
+  environment:
+    seed: 7
+    initial_balance_jpy: 1000000.0
+    episode_max_steps: 64
+    window_size: 8
+    max_leverage: 5.0
+    margin_call_threshold: 0.2
+    allow_action_leverage: false
+    random_start: true
+    currency_pairs: ["JPY/USD"]
+  data:
+    provider: synthetic
+    timeframe: "1h"
+  features:
+    volatility_window: 8
+    normalize: true
+    selected: [log_return, volatility, rsi14]
+  transaction_costs:
+    commission_rate: 0.0001
+    overnight_rate: 0.0001
+    spreads:
+      JPY/USD: 0.0002
+train_range: { start: "2020-01-01", end: "2020-03-01" }
+eval_range: { start: "2020-03-01", end: "2020-04-15" }
+algorithm:
+  name: ppo
+  hyperparams: { n_steps: 64, batch_size: 64 }
+network:
+  name: mlp
+  kwargs: { features_dim: 64, hidden_dim: 64 }
+run:
+  total_timesteps: 512
+  seed: 7
+  device: auto
+  n_envs: 2
+  vec_env: dummy
