@@ -1,0 +1,40 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Build and packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+.python-version
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+
+# Type checking and lint caches
+.mypy_cache/
+.ruff_cache/
+
+# Editor and IDE settings
+.idea/
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Experiment outputs and data caches (results live locally, designs in git)
+runs/
+data/*.parquet
+
+# Logs and temporary files
+*.log
+tmp/
+*~
+*.swp

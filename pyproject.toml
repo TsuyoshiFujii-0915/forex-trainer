@@ -1,0 +1,43 @@
+[project]
+name = "forex-trainer"
+version = "0.1.0"
+description = "RL agent training and experiment harness for forex-env-v3"
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "Proprietary" }
+authors = [{ name = "Forex-Trainer Authors" }]
+
+dependencies = [
+  "forex-env-v3",
+  "stable-baselines3>=2.6",
+  "sb3-contrib>=2.6",
+  "torch>=2.6",
+  "tensorboard>=2.18",
+  "numpy>=2.3",
+  "pandas>=2.3",
+  "PyYAML>=6.0",
+]
+
+[project.scripts]
+forex-train = "forex_trainer.train:main"
+forex-eval = "forex_trainer.evaluate:main"
+forex-compare = "forex_trainer.compare:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+]
+
+[tool.uv.sources]
+# The two repositories are expected to sit side by side (see ADR-0001).
+forex-env-v3 = { path = "../forex-env-v3", editable = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/forex_trainer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
