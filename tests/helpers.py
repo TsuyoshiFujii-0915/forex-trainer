@@ -43,7 +43,8 @@ def make_experiment_raw() -> dict[str, Any]:
             },
         },
         "train_range": {"start": "2020-01-01", "end": "2020-02-01"},
-        "eval_range": {"start": "2020-02-01", "end": "2020-03-01"},
+        "val_range": {"start": "2020-02-01", "end": "2020-02-15"},
+        "eval_range": {"start": "2020-02-15", "end": "2020-03-01"},
         "algorithm": {"name": "ppo", "hyperparams": {"n_steps": 16, "batch_size": 16}},
         "network": {"name": "mlp", "kwargs": {"features_dim": 32, "hidden_dim": 32}},
         "run": {
@@ -52,6 +53,7 @@ def make_experiment_raw() -> dict[str, Any]:
             "device": "cpu",
             "n_envs": 2,
             "vec_env": "dummy",
+            "decision_interval": 1,
         },
     }
 

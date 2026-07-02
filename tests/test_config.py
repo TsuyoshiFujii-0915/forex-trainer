@@ -32,10 +32,42 @@ def test_missing_file_raises() -> None:
 
 
 def test_overlapping_ranges_rejected() -> None:
-    """eval_range starting before train_range.end is a leak and must fail."""
+    """eval_range starting before val_range.end is a leak and must fail."""
     raw = make_experiment_raw()
     raw["eval_range"] = {"start": "2020-01-15", "end": "2020-03-01"}
     with pytest.raises(TrainerConfigError, match="leak"):
+        parse_experiment_config(raw)
+
+
+def test_val_range_overlapping_train_rejected() -> None:
+    """val_range starting before train_range.end is a leak and must fail."""
+    raw = make_experiment_raw()
+    raw["val_range"] = {"start": "2020-01-15", "end": "2020-02-15"}
+    with pytest.raises(TrainerConfigError, match="leak"):
+        parse_experiment_config(raw)
+
+
+def test_missing_val_range_rejected() -> None:
+    """val_range is required for model selection (ADR-0005)."""
+    raw = make_experiment_raw()
+    del raw["val_range"]
+    with pytest.raises(TrainerConfigError, match="val_range"):
+        parse_experiment_config(raw)
+
+
+def test_missing_decision_interval_rejected() -> None:
+    """run.decision_interval is required (ADR-0004)."""
+    raw = make_experiment_raw()
+    del raw["run"]["decision_interval"]
+    with pytest.raises(TrainerConfigError, match="decision_interval"):
+        parse_experiment_config(raw)
+
+
+def test_non_positive_decision_interval_rejected() -> None:
+    """run.decision_interval must be a positive integer."""
+    raw = make_experiment_raw()
+    raw["run"]["decision_interval"] = 0
+    with pytest.raises(TrainerConfigError, match="decision_interval"):
         parse_experiment_config(raw)
 
 
@@ -104,7 +136,7 @@ def test_resolve_env_raw_injects_dates_and_eval_overrides() -> None:
     assert train_env["environment"]["random_start"] is True
 
     eval_env = resolve_env_raw(config.env, config.eval_range, for_eval=True)
-    assert eval_env["data"]["start_date"] == "2020-02-01"
+    assert eval_env["data"]["start_date"] == "2020-02-15"
     assert eval_env["environment"]["random_start"] is False
     assert eval_env["environment"]["episode_max_steps"] == 1_000_000
     # The original block must stay untouched (deep copy).

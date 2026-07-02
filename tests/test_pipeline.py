@@ -54,8 +54,11 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     run_dir = run_training(config_path, tmp_path / "runs", seed_override=None)
 
     assert (run_dir / "model_final.zip").is_file()
+    assert (run_dir / "model_last.zip").is_file()
+    assert (run_dir / "evaluations.npz").is_file()
     assert (run_dir / "config_snapshot.yaml").is_file()
     assert (run_dir / "env_train.yaml").is_file()
+    assert (run_dir / "env_val.yaml").is_file()
     assert (run_dir / "env_eval.yaml").is_file()
     meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     assert set(meta["git"]) == {"forex_trainer", "forex_env"}
@@ -64,6 +67,12 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     metrics = run_evaluation(run_dir)
     assert metrics["steps"] > 10
     assert math.isfinite(metrics["cumulative_log_return"])
+    assert math.isfinite(metrics["gross_cumulative_log_return"])
+    # Costs are non-negative, so pre-cost returns bound net returns from above.
+    assert (
+        metrics["gross_cumulative_log_return"]
+        >= metrics["cumulative_log_return"] - 1e-12
+    )
     assert 0.0 <= metrics["max_drawdown"] < 1.0
     assert (run_dir / "metrics.json").is_file()
     assert (run_dir / "equity_curve.csv").is_file()

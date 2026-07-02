@@ -71,6 +71,7 @@ class RunConfig:
     device: str
     n_envs: int
     vec_env: str
+    decision_interval: int
 
 
 @dataclass(frozen=True)
@@ -80,6 +81,7 @@ class ExperimentConfig:
     experiment: str
     env: Mapping[str, Any]
     train_range: RangeConfig
+    val_range: RangeConfig
     eval_range: RangeConfig
     algorithm: AlgorithmConfig
     network: NetworkConfig
@@ -248,6 +250,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
             "experiment",
             "env",
             "train_range",
+            "val_range",
             "eval_range",
             "algorithm",
             "network",
@@ -266,13 +269,23 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     train_range = _parse_range(
         _require_mapping(root["train_range"], "train_range"), "train_range"
     )
+    val_range = _parse_range(
+        _require_mapping(root["val_range"], "val_range"), "val_range"
+    )
     eval_range = _parse_range(
         _require_mapping(root["eval_range"], "eval_range"), "eval_range"
     )
-    if date.fromisoformat(eval_range.start) < date.fromisoformat(train_range.end):
+    if date.fromisoformat(val_range.start) < date.fromisoformat(train_range.end):
         raise TrainerConfigError(
-            f"eval_range.start ({eval_range.start}) must not precede train_range.end "
-            f"({train_range.end}); overlapping ranges leak training data into evaluation."
+            f"val_range.start ({val_range.start}) must not precede train_range.end "
+            f"({train_range.end}); overlapping ranges leak training data into "
+            f"model selection."
+        )
+    if date.fromisoformat(eval_range.start) < date.fromisoformat(val_range.end):
+        raise TrainerConfigError(
+            f"eval_range.start ({eval_range.start}) must not precede val_range.end "
+            f"({val_range.end}); overlapping ranges leak selection data into "
+            f"evaluation."
         )
 
     algo_section = _require_mapping(root["algorithm"], "algorithm")
@@ -305,7 +318,9 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
 
     run_section = _require_mapping(root["run"], "run")
     _check_exact_keys(
-        run_section, ("total_timesteps", "seed", "device", "n_envs", "vec_env"), "run"
+        run_section,
+        ("total_timesteps", "seed", "device", "n_envs", "vec_env", "decision_interval"),
+        "run",
     )
     total_timesteps = _as_int(run_section, "run", "total_timesteps")
     if total_timesteps < 1:
@@ -315,6 +330,11 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     n_envs = _as_int(run_section, "run", "n_envs")
     if n_envs < 1:
         raise TrainerConfigError(f"run.n_envs must be >= 1, got {n_envs}.")
+    decision_interval = _as_int(run_section, "run", "decision_interval")
+    if decision_interval < 1:
+        raise TrainerConfigError(
+            f"run.decision_interval must be >= 1, got {decision_interval}."
+        )
     device = _as_str(run_section, "run", "device")
     if device not in DEVICES:
         raise TrainerConfigError(
@@ -331,6 +351,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         device=device,
         n_envs=n_envs,
         vec_env=vec_env,
+        decision_interval=decision_interval,
     )
 
     env_block = _require_mapping(root["env"], "env")
@@ -365,6 +386,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         experiment=experiment,
         env=dict(env_block),
         train_range=train_range,
+        val_range=val_range,
         eval_range=eval_range,
         algorithm=algorithm,
         network=network,
@@ -372,9 +394,10 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         custom_feature_names=custom_feature_names,
     )
 
-    # Delegate full env validation (both ranges) to forex-env so that any
+    # Delegate full env validation (all ranges) to forex-env so that any
     # invalid env setting fails here, before a run directory is created.
     parse_env_config(resolve_env_raw(config.env, train_range, for_eval=False))
+    parse_env_config(resolve_env_raw(config.env, val_range, for_eval=True))
     parse_env_config(resolve_env_raw(config.env, eval_range, for_eval=True))
     return config
 

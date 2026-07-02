@@ -30,7 +30,7 @@ def compute_metrics(
     rewards: list[float],
     equities: list[float],
     timestamps: list[str],
-    total_costs_jpy: float,
+    step_costs_jpy: list[float],
     gross_leverages: list[float],
     terminated: bool,
 ) -> dict[str, Any]:
@@ -40,7 +40,7 @@ def compute_metrics(
         rewards: Per-step log returns of equity.
         equities: Equity curve including the initial value (len = steps + 1).
         timestamps: ISO timestamps aligned with equities.
-        total_costs_jpy: Sum of all transaction costs over the walk.
+        step_costs_jpy: Per-step total transaction costs, aligned with rewards.
         gross_leverages: Per-step gross leverage readings.
         terminated: Whether the walk ended in a margin call.
 
@@ -49,6 +49,10 @@ def compute_metrics(
     """
     reward_array = np.asarray(rewards, dtype=float)
     equity_array = np.asarray(equities, dtype=float)
+    cost_array = np.asarray(step_costs_jpy, dtype=float)
+    # Pre-cost (gross) log return per step: add the step's costs back onto
+    # the end-of-step equity before taking the log.
+    gross_log_returns = np.log((equity_array[1:] + cost_array) / equity_array[:-1])
     parsed_times = [datetime.fromisoformat(value) for value in timestamps]
     gaps = np.array(
         [
@@ -70,10 +74,11 @@ def compute_metrics(
     return {
         "steps": int(len(reward_array)),
         "cumulative_log_return": float(reward_array.sum()),
+        "gross_cumulative_log_return": float(gross_log_returns.sum()),
         "final_equity_ratio": float(equity_array[-1] / equity_array[0]),
         "sharpe_annualized": sharpe,
         "max_drawdown": max_drawdown,
-        "total_cost_ratio": float(total_costs_jpy / equity_array[0]),
+        "total_cost_ratio": float(cost_array.sum() / equity_array[0]),
         "mean_gross_leverage": float(np.mean(gross_leverages))
         if gross_leverages
         else 0.0,
@@ -110,7 +115,12 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     )
     resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
 
-    env = build_single_env(resolved_eval, config.custom_feature_names, seed=0)
+    env = build_single_env(
+        resolved_eval,
+        config.custom_feature_names,
+        seed=0,
+        decision_interval=config.run.decision_interval,
+    )
     spec = ALGO_REGISTRY[config.algorithm.name]
     model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
 
@@ -119,7 +129,7 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     equities = [info["equity_jpy"]]
     rewards: list[float] = []
     gross_leverages: list[float] = []
-    total_costs = 0.0
+    step_costs: list[float] = []
     state = None
     episode_start = np.ones((1,), dtype=bool)
     terminated = False
@@ -132,14 +142,14 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
         equities.append(float(info["equity_jpy"]))
         timestamps.append(str(info["timestamp"]))
         gross_leverages.append(float(info["gross_leverage"]))
-        total_costs += float(info["costs_jpy"]["total"])
+        step_costs.append(float(info["costs_jpy"]["total"]))
         episode_start = np.array([terminated or truncated], dtype=bool)
         if terminated or truncated:
             break
     env.close()
 
     metrics = compute_metrics(
-        rewards, equities, timestamps, total_costs, gross_leverages, terminated
+        rewards, equities, timestamps, step_costs, gross_leverages, terminated
     )
     (run_dir / "metrics.json").write_text(
         json.dumps(metrics, indent=2), encoding="utf-8"

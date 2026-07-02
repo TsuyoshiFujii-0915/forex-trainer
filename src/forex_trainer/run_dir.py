@@ -60,6 +60,7 @@ def write_run_metadata(
     config: ExperimentConfig,
     raw_config: Mapping[str, Any],
     resolved_train_env: Mapping[str, Any],
+    resolved_val_env: Mapping[str, Any],
     resolved_eval_env: Mapping[str, Any],
     device: str,
 ) -> None:
@@ -70,6 +71,7 @@ def write_run_metadata(
         config: Typed experiment configuration.
         raw_config: Raw experiment YAML contents.
         resolved_train_env: Env config with train dates injected.
+        resolved_val_env: Env config with validation dates injected (ADR-0005).
         resolved_eval_env: Env config with eval dates injected.
         device: Resolved torch device string.
     """
@@ -79,6 +81,9 @@ def write_run_metadata(
     )
     (run_dir / "env_train.yaml").write_text(
         yaml.safe_dump(dict(resolved_train_env), sort_keys=False), encoding="utf-8"
+    )
+    (run_dir / "env_val.yaml").write_text(
+        yaml.safe_dump(dict(resolved_val_env), sort_keys=False), encoding="utf-8"
     )
     (run_dir / "env_eval.yaml").write_text(
         yaml.safe_dump(dict(resolved_eval_env), sort_keys=False), encoding="utf-8"
@@ -90,6 +95,7 @@ def write_run_metadata(
         "device": device,
         "algorithm": config.algorithm.name,
         "network": config.network.name,
+        "decision_interval": config.run.decision_interval,
         "git": {
             "forex_trainer": _git_commit(_TRAINER_REPO_ROOT),
             "forex_env": _git_commit(_ENV_REPO_ROOT),
