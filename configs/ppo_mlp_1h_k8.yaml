@@ -1,7 +1,6 @@
-# Hourly real-data experiment: PPO + MLP, realistic retail-like costs.
-# Spreads: ~0.2 pip USDJPY (0.0015bp of notional), ~0.4 pip EURJPY.
-# Train: 2024-07..2025-12 (~9.2k bars) / Eval: 2026-01..2026-05 (~2.5k bars).
-experiment: ppo_lstm_1h
+# Hourly PPO + MLP with an 8-bar decision interval (ADR-0004): one decision
+# per ~8 hours cuts turnover costs ~8x. total_timesteps counts decisions.
+experiment: ppo_mlp_1h_k8
 env:
   environment:
     seed: 42
@@ -39,12 +38,12 @@ algorithm:
     gamma: 0.999
     ent_coef: 0.001
 network:
-  name: lstm
-  kwargs: { features_dim: 128, hidden_size: 64 }
+  name: mlp
+  kwargs: { features_dim: 128 }
 run:
-  total_timesteps: 500000
+  total_timesteps: 200000
   seed: 42
   device: cpu
   n_envs: 8
   vec_env: dummy
-  decision_interval: 1
+  decision_interval: 8

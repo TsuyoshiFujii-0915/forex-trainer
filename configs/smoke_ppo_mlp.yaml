@@ -23,7 +23,8 @@ env:
     overnight_rate: 0.0001
     spreads:
       JPY/USD: 0.0002
-train_range: { start: "2020-01-01", end: "2020-03-01" }
+train_range: { start: "2020-01-01", end: "2020-02-15" }
+val_range: { start: "2020-02-15", end: "2020-03-01" }
 eval_range: { start: "2020-03-01", end: "2020-04-15" }
 algorithm:
   name: ppo
@@ -37,3 +38,4 @@ run:
   device: auto
   n_envs: 2
   vec_env: dummy
+  decision_interval: 1

@@ -4,7 +4,9 @@ RL agent training and experiment harness for [forex-env-v3](../forex-env-v3). On
 
 - Algorithms (Stable-Baselines3 + sb3-contrib): `ppo`, `recurrent_ppo`, `sac`, `td3`, `tqc`
 - Networks (feature extractors over the market window): `mlp`, `cnn1d`, `lstm`, `attention`
-- Features: base (`log_return`, `volatility`) + trainer registry (`sma20_ratio`, `rsi14`, `atr14_ratio`, `macd_ratio`) — every registered feature is automatically lookahead-tested
+- Features: base (`log_return`, `volatility`) + trainer registry (`sma20_ratio`, `rsi14`, `atr14_ratio`, `macd_ratio`, `mom24`, `mom72`, `mom168`) — every registered feature is automatically lookahead-tested
+- Decision interval (ADR-0004): `run.decision_interval` holds each target allocation for k bars, structurally capping turnover
+- Model selection (ADR-0005): training periodically walks `val_range`; the best validation model becomes `model_final.zip` (`model_last.zip` keeps the end-of-training model)
 - Tracking: local only — TensorBoard + per-run `metrics.json` / `equity_curve.csv`
 
 ## Layout requirement
@@ -45,7 +47,7 @@ uv run forex-eval --run runs/ppo_cnn1d_daily/<timestamp>
 uv run forex-compare runs
 ```
 
-Each run directory contains the config snapshot, resolved env configs for train/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
+Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
 
 ## Experiment YAML
 
@@ -61,14 +63,16 @@ env:                       # forex-env-v3 sections, except data dates
               selected: [log_return, volatility, rsi14, sma20_ratio] }
   transaction_costs: { commission_rate: 0.0002, overnight_rate: 0.0001,
                        spreads: { JPY/USD: 0.0002, JPY/EUR: 0.0002 } }
-train_range: { start: "2023-01-01", end: "2025-06-30" }
-eval_range:  { start: "2025-07-01", end: "2025-12-31" }   # must start after train ends
+train_range: { start: "2023-01-01", end: "2025-03-31" }
+val_range:   { start: "2025-03-31", end: "2025-06-30" }   # model selection only
+eval_range:  { start: "2025-07-01", end: "2025-12-31" }   # final holdout
 algorithm: { name: ppo, hyperparams: { n_steps: 256, batch_size: 256, learning_rate: 3.0e-4 } }
 network:   { name: mlp, kwargs: { features_dim: 128 } }
-run: { total_timesteps: 20000, seed: 42, device: auto, n_envs: 4, vec_env: dummy }
+run: { total_timesteps: 20000, seed: 42, device: auto, n_envs: 4, vec_env: dummy,
+       decision_interval: 1 }
 ```
 
-Rules enforced at load time (fail fast): every key required, unknown keys rejected, `eval_range` must start at or after `train_range.end`, algorithm/network/feature names must exist in their registries, and `env.data` must not contain dates (the ranges inject them).
+Rules enforced at load time (fail fast): every key required, unknown keys rejected, ranges must satisfy `train_range.end <= val_range.start < val_range.end <= eval_range.start`, `run.decision_interval >= 1`, algorithm/network/feature names must exist in their registries, and `env.data` must not contain dates (the ranges inject them). `run.total_timesteps` counts agent decisions; with `decision_interval: k` one decision spans k bars.
 
 ## Adding to the axes
 
@@ -90,7 +94,7 @@ docker compose run train uv run forex-train --config configs/ppo_mlp_daily.yaml
 
 ## Evaluation metrics
 
-`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative log return, final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, and mean gross leverage.
+`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative log return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, and mean gross leverage.
 
 ## License
 

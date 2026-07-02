@@ -25,7 +25,8 @@ env:
     spreads:
       JPY/USD: 0.0002
       JPY/EUR: 0.0002
-train_range: { start: "2023-01-01", end: "2025-06-30" }
+train_range: { start: "2023-01-01", end: "2025-03-31" }
+val_range: { start: "2025-03-31", end: "2025-06-30" }
 eval_range: { start: "2025-07-01", end: "2025-12-31" }
 algorithm:
   name: ppo
@@ -39,3 +40,4 @@ run:
   device: auto
   n_envs: 4
   vec_env: dummy
+  decision_interval: 1

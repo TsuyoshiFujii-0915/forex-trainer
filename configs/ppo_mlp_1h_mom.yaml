@@ -1,7 +1,6 @@
-# Hourly real-data experiment: PPO + MLP, realistic retail-like costs.
-# Spreads: ~0.2 pip USDJPY (0.0015bp of notional), ~0.4 pip EURJPY.
-# Train: 2024-07..2025-12 (~9.2k bars) / Eval: 2026-01..2026-05 (~2.5k bars).
-experiment: ppo_lstm_1h
+# Hourly PPO + MLP with multi-horizon momentum features (24/72/168 bars)
+# added to the baseline feature set.
+experiment: ppo_mlp_1h_mom
 env:
   environment:
     seed: 42
@@ -20,7 +19,7 @@ env:
   features:
     volatility_window: 32
     normalize: true
-    selected: [log_return, volatility, rsi14, sma20_ratio, macd_ratio, atr14_ratio]
+    selected: [log_return, volatility, rsi14, sma20_ratio, macd_ratio, atr14_ratio, mom24, mom72, mom168]
   transaction_costs:
     commission_rate: 0.0
     overnight_rate: 0.00005
@@ -39,8 +38,8 @@ algorithm:
     gamma: 0.999
     ent_coef: 0.001
 network:
-  name: lstm
-  kwargs: { features_dim: 128, hidden_size: 64 }
+  name: mlp
+  kwargs: { features_dim: 128 }
 run:
   total_timesteps: 500000
   seed: 42
