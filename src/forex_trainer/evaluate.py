@@ -88,6 +88,43 @@ def compute_metrics(
     }
 
 
+def walk_eval_range(
+    env: Any,
+    predict: Any,
+) -> tuple[list[float], list[float], list[str], list[float], list[float], bool]:
+    """Walk one full eval range with a deterministic policy function.
+
+    Args:
+        env: Monitor-wrapped evaluation environment (deterministic full walk).
+        predict: Callable mapping (observation, episode_start array) to the
+            action to take; owns any recurrent state internally.
+
+    Returns:
+        Tuple of (rewards, equities, timestamps, step_costs_jpy,
+        gross_leverages, terminated) in the argument order of compute_metrics.
+    """
+    observation, info = env.reset(seed=0)
+    timestamps = [info["timestamp"]]
+    equities = [info["equity_jpy"]]
+    rewards: list[float] = []
+    gross_leverages: list[float] = []
+    step_costs: list[float] = []
+    episode_start = np.ones((1,), dtype=bool)
+    terminated = False
+    while True:
+        action = predict(observation, episode_start)
+        observation, reward, terminated, truncated, info = env.step(action)
+        rewards.append(float(reward))
+        equities.append(float(info["equity_jpy"]))
+        timestamps.append(str(info["timestamp"]))
+        gross_leverages.append(float(info["gross_leverage"]))
+        step_costs.append(float(info["costs_jpy"]["total"]))
+        episode_start = np.array([terminated or truncated], dtype=bool)
+        if terminated or truncated:
+            break
+    return rewards, equities, timestamps, step_costs, gross_leverages, terminated
+
+
 def run_evaluation(run_dir: Path) -> dict[str, Any]:
     """Evaluate a trained run on its held-out eval range.
 
@@ -124,33 +161,20 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     spec = ALGO_REGISTRY[config.algorithm.name]
     model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
 
-    observation, info = env.reset(seed=0)
-    timestamps = [info["timestamp"]]
-    equities = [info["equity_jpy"]]
-    rewards: list[float] = []
-    gross_leverages: list[float] = []
-    step_costs: list[float] = []
     state = None
-    episode_start = np.ones((1,), dtype=bool)
-    terminated = False
-    while True:
+
+    def predict(observation: dict[str, Any], episode_start: np.ndarray) -> np.ndarray:
+        nonlocal state
         action, state = model.predict(
             observation, state=state, episode_start=episode_start, deterministic=True
         )
-        observation, reward, terminated, truncated, info = env.step(action)
-        rewards.append(float(reward))
-        equities.append(float(info["equity_jpy"]))
-        timestamps.append(str(info["timestamp"]))
-        gross_leverages.append(float(info["gross_leverage"]))
-        step_costs.append(float(info["costs_jpy"]["total"]))
-        episode_start = np.array([terminated or truncated], dtype=bool)
-        if terminated or truncated:
-            break
+        return action
+
+    walk = walk_eval_range(env, predict)
     env.close()
 
-    metrics = compute_metrics(
-        rewards, equities, timestamps, step_costs, gross_leverages, terminated
-    )
+    metrics = compute_metrics(*walk)
+    timestamps, equities = walk[2], walk[1]
     (run_dir / "metrics.json").write_text(
         json.dumps(metrics, indent=2), encoding="utf-8"
     )
