@@ -9,6 +9,7 @@ entry automatically.
 
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 
 from forex_env.features import FeatureFn
@@ -87,9 +88,65 @@ def macd_ratio(frame: pd.DataFrame) -> pd.Series:
     return (ema_fast - ema_slow) / close
 
 
+def _momentum(frame: pd.DataFrame, bars: int) -> pd.Series:
+    """Log return of Close over the last `bars` bars.
+
+    Args:
+        frame: Per-pair OHLCV DataFrame.
+        bars: Lookback horizon in bars.
+
+    Returns:
+        Momentum series, defined from the first row: before `bars` rows of
+        history exist, the lookback is anchored to the first Close
+        (partial-horizon momentum), which keeps the series causal and finite.
+    """
+    close = frame["Close"]
+    baseline = close.shift(bars).fillna(close.iloc[0])
+    return np.log(close / baseline)
+
+
+def mom24(frame: pd.DataFrame) -> pd.Series:
+    """24-bar momentum (log return over the last 24 bars).
+
+    Args:
+        frame: Per-pair OHLCV DataFrame.
+
+    Returns:
+        Momentum series (see `_momentum` for early-row semantics).
+    """
+    return _momentum(frame, 24)
+
+
+def mom72(frame: pd.DataFrame) -> pd.Series:
+    """72-bar momentum (log return over the last 72 bars).
+
+    Args:
+        frame: Per-pair OHLCV DataFrame.
+
+    Returns:
+        Momentum series (see `_momentum` for early-row semantics).
+    """
+    return _momentum(frame, 72)
+
+
+def mom168(frame: pd.DataFrame) -> pd.Series:
+    """168-bar momentum (log return over the last 168 bars).
+
+    Args:
+        frame: Per-pair OHLCV DataFrame.
+
+    Returns:
+        Momentum series (see `_momentum` for early-row semantics).
+    """
+    return _momentum(frame, 168)
+
+
 FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "sma20_ratio": sma20_ratio,
     "rsi14": rsi14,
     "atr14_ratio": atr14_ratio,
     "macd_ratio": macd_ratio,
+    "mom24": mom24,
+    "mom72": mom72,
+    "mom168": mom168,
 }
