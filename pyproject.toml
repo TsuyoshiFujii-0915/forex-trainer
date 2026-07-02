@@ -22,6 +22,7 @@ dependencies = [
 forex-train = "forex_trainer.train:main"
 forex-eval = "forex_trainer.evaluate:main"
 forex-compare = "forex_trainer.compare:main"
+forex-fetch-dukascopy = "forex_trainer.dukascopy:main"
 
 [dependency-groups]
 dev = [
