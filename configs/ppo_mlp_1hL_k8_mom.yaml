@@ -1,0 +1,49 @@
+# Long-history (Dukascopy 2015+) hourly PPO + MLP: 8-bar decision interval
+# with momentum features. Train ~59k bars / val 1y / eval 1y holdout.
+experiment: ppo_mlp_1hL_k8_mom
+env:
+  environment:
+    seed: 42
+    initial_balance_jpy: 1000000.0
+    episode_max_steps: 512 # ~1 month of hourly bars per episode
+    window_size: 32
+    max_leverage: 5.0
+    margin_call_threshold: 0.2
+    allow_action_leverage: false
+    random_start: true
+    currency_pairs: ["JPY/USD", "JPY/EUR"]
+  data:
+    provider: file
+    timeframe: "1h"
+    path: data/jpy_usd_eur_1h_long.parquet
+  features:
+    volatility_window: 32
+    normalize: true
+    selected: [log_return, volatility, rsi14, sma20_ratio, macd_ratio, atr14_ratio, mom24, mom72, mom168]
+  transaction_costs:
+    commission_rate: 0.0
+    overnight_rate: 0.00005
+    spreads:
+      JPY/USD: 0.000015
+      JPY/EUR: 0.000025
+train_range: { start: "2015-01-01", end: "2024-07-01" }
+val_range: { start: "2024-07-01", end: "2025-07-01" }
+eval_range: { start: "2025-07-01", end: "2026-06-30" }
+algorithm:
+  name: ppo
+  hyperparams:
+    n_steps: 256
+    batch_size: 512
+    learning_rate: 3.0e-4
+    gamma: 0.999
+    ent_coef: 0.001
+network:
+  name: mlp
+  kwargs: { features_dim: 128 }
+run:
+  total_timesteps: 200000
+  seed: 42
+  device: cpu
+  n_envs: 8
+  vec_env: dummy
+  decision_interval: 8
