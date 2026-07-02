@@ -30,6 +30,9 @@ uv sync          # Mac: MPS-enabled torch from PyPI; Linux x86_64: CUDA-enabled 
 ```bash
 # 0. (real data) materialize the parquet cache once
 uv run forex-env-fetch --config configs/fetch_1d.yaml --output data/jpy_usd_eur_1d.parquet
+# or long-history hourly data (2015+) from the Dukascopy public datafeed (ADR-0006)
+uv run forex-fetch-dukascopy --pairs "JPY/USD,JPY/EUR" --start 2015-01-01 --end 2026-06-30 \
+  --output data/jpy_usd_eur_1h_long.parquet
 
 # 1. define an experiment (copy + edit a YAML; commit it)
 cp configs/ppo_mlp_daily.yaml configs/ppo_cnn1d_daily.yaml
