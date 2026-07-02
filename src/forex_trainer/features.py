@@ -141,6 +141,18 @@ def mom168(frame: pd.DataFrame) -> pd.Series:
     return _momentum(frame, 168)
 
 
+def mom720(frame: pd.DataFrame) -> pd.Series:
+    """720-bar momentum (~1 month of hourly bars).
+
+    Args:
+        frame: Per-pair OHLCV DataFrame.
+
+    Returns:
+        Momentum series (see `_momentum` for early-row semantics).
+    """
+    return _momentum(frame, 720)
+
+
 FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "sma20_ratio": sma20_ratio,
     "rsi14": rsi14,
@@ -149,4 +161,5 @@ FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "mom24": mom24,
     "mom72": mom72,
     "mom168": mom168,
+    "mom720": mom720,
 }
