@@ -22,7 +22,7 @@ from forex_env import parse_config as parse_env_config
 from forex_env.features import BASE_FEATURE_NAMES
 
 from .algorithms import ALGO_REGISTRY
-from .features import FEATURE_REGISTRY
+from .features import CROSS_FEATURE_REGISTRY, FEATURE_REGISTRY
 from .networks import NETWORK_REGISTRY
 
 _EXPERIMENT_NAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]*$")
@@ -87,6 +87,7 @@ class ExperimentConfig:
     network: NetworkConfig
     run: RunConfig
     custom_feature_names: tuple[str, ...]
+    custom_cross_feature_names: tuple[str, ...]
 
 
 def _require_mapping(value: Any, name: str) -> Mapping[str, Any]:
@@ -373,7 +374,11 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         raise TrainerConfigError(
             f"env.features.selected must be a list, got {selected!r}."
         )
-    available = tuple(BASE_FEATURE_NAMES) + tuple(FEATURE_REGISTRY)
+    available = (
+        tuple(BASE_FEATURE_NAMES)
+        + tuple(FEATURE_REGISTRY)
+        + tuple(CROSS_FEATURE_REGISTRY)
+    )
     unknown_features = [name for name in selected if name not in available]
     if unknown_features:
         raise TrainerConfigError(
@@ -381,6 +386,9 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
             f"available: {list(available)}."
         )
     custom_feature_names = tuple(name for name in selected if name in FEATURE_REGISTRY)
+    custom_cross_feature_names = tuple(
+        name for name in selected if name in CROSS_FEATURE_REGISTRY
+    )
 
     config = ExperimentConfig(
         experiment=experiment,
@@ -392,6 +400,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         network=network,
         run=run,
         custom_feature_names=custom_feature_names,
+        custom_cross_feature_names=custom_cross_feature_names,
     )
 
     # Delegate full env validation (all ranges) to forex-env so that any

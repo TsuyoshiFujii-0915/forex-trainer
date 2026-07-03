@@ -155,6 +155,7 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     env = build_single_env(
         resolved_eval,
         config.custom_feature_names,
+        config.custom_cross_feature_names,
         seed=0,
         decision_interval=config.run.decision_interval,
     )

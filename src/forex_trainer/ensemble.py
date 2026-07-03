@@ -93,6 +93,7 @@ def run_ensemble_evaluation(
     env = build_single_env(
         reference_eval,
         reference_config.custom_feature_names,
+        reference_config.custom_cross_feature_names,
         seed=0,
         decision_interval=reference_config.run.decision_interval,
     )

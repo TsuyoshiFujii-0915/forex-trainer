@@ -15,7 +15,7 @@ from forex_env.data.synthetic import SyntheticDataProvider
 from forex_env.features import BASE_FEATURE_NAMES
 
 from forex_trainer.config import parse_experiment_config, resolve_env_raw
-from forex_trainer.features import FEATURE_REGISTRY
+from forex_trainer.features import CROSS_FEATURE_REGISTRY, FEATURE_REGISTRY
 from helpers import make_experiment_raw
 
 _PREFIX_ROWS = 300
@@ -69,3 +69,57 @@ def test_feature_is_finite_inside_env(name: str) -> None:
 def test_registry_does_not_shadow_base_features() -> None:
     """Registry names must not collide with the env's base features."""
     assert not set(FEATURE_REGISTRY) & set(BASE_FEATURE_NAMES)
+
+
+def _two_pair_frame(end_date: str) -> pd.DataFrame:
+    """Build a two-pair OHLCV frame from synthetic data.
+
+    Args:
+        end_date: End date of the generated range.
+
+    Returns:
+        MultiIndex-column OHLCV DataFrame for two pairs.
+    """
+    return SyntheticDataProvider(seed=5).get_data(
+        ("JPY/USD", "JPY/EUR"), "2020-01-01", end_date, "1h"
+    )
+
+
+@pytest.mark.parametrize("name", sorted(CROSS_FEATURE_REGISTRY))
+def test_cross_feature_has_no_lookahead(name: str) -> None:
+    """Past cross-feature values must not change when future data is appended."""
+    long_frame = _two_pair_frame("2020-03-01")
+    short_frame = long_frame.iloc[:_PREFIX_ROWS]
+    function = CROSS_FEATURE_REGISTRY[name]
+    symbols = ("JPY/USD", "JPY/EUR")
+    on_long = function(long_frame, symbols).iloc[:_PREFIX_ROWS]
+    on_short = function(short_frame, symbols)
+    pd.testing.assert_frame_equal(on_long, on_short, check_names=False)
+
+
+@pytest.mark.parametrize("name", sorted(CROSS_FEATURE_REGISTRY))
+def test_cross_feature_is_finite_inside_env(name: str) -> None:
+    """Each registered cross feature must survive the env warmup check."""
+    raw = make_experiment_raw()
+    raw["env"]["environment"]["currency_pairs"] = ["JPY/USD", "JPY/EUR"]
+    raw["env"]["transaction_costs"]["spreads"] = {
+        "JPY/USD": 0.0001,
+        "JPY/EUR": 0.0001,
+    }
+    raw["env"]["features"]["selected"] = ["log_return", "volatility", name]
+    config = parse_experiment_config(raw)
+    assert config.custom_cross_feature_names == (name,)
+    env_raw = resolve_env_raw(config.env, config.train_range, for_eval=False)
+    env = ForexEnv(
+        parse_config(env_raw),
+        custom_cross_features={name: CROSS_FEATURE_REGISTRY[name]},
+    )
+    obs, _ = env.reset(seed=0)
+    assert obs["market"].shape[2] == 3
+    assert np.isfinite(obs["market"]).all()
+
+
+def test_registries_are_disjoint() -> None:
+    """Per-pair and cross registries must not share names with anything."""
+    assert not set(CROSS_FEATURE_REGISTRY) & set(FEATURE_REGISTRY)
+    assert not set(CROSS_FEATURE_REGISTRY) & set(BASE_FEATURE_NAMES)

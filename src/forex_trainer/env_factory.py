@@ -13,7 +13,7 @@ from gymnasium import spaces
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecEnv
 
-from .features import FEATURE_REGISTRY
+from .features import CROSS_FEATURE_REGISTRY, FEATURE_REGISTRY
 
 
 class PinnedLeverageAction(gymnasium.ActionWrapper):
@@ -102,6 +102,7 @@ class DecisionInterval(gymnasium.Wrapper):
 def build_single_env(
     env_raw: Mapping[str, Any],
     feature_names: tuple[str, ...],
+    cross_feature_names: tuple[str, ...],
     seed: int,
     decision_interval: int,
 ) -> Monitor:
@@ -110,6 +111,8 @@ def build_single_env(
     Args:
         env_raw: Complete raw forex-env configuration (dates already injected).
         feature_names: Custom feature names to inject from FEATURE_REGISTRY.
+        cross_feature_names: Cross-sectional feature names to inject from
+            CROSS_FEATURE_REGISTRY (env ADR-0008).
         seed: Seed applied via an initial reset so episode randomness
             (random_start) is reproducible per worker.
         decision_interval: Env bars per agent decision (ADR-0004).
@@ -119,8 +122,13 @@ def build_single_env(
         the env pins leverage to a constant, and DecisionInterval outside it).
     """
     custom_features = {name: FEATURE_REGISTRY[name] for name in feature_names}
+    custom_cross_features = {
+        name: CROSS_FEATURE_REGISTRY[name] for name in cross_feature_names
+    }
     env: gymnasium.Env = ForexEnv(
-        parse_env_config(env_raw), custom_features=custom_features
+        parse_env_config(env_raw),
+        custom_features=custom_features,
+        custom_cross_features=custom_cross_features,
     )
     box = env.action_space
     if bool(np.all(box.low[:, 1] == box.high[:, 1])):
@@ -134,6 +142,7 @@ def build_single_env(
 def build_vec_env(
     env_raw: Mapping[str, Any],
     feature_names: tuple[str, ...],
+    cross_feature_names: tuple[str, ...],
     n_envs: int,
     vec_env_kind: str,
     base_seed: int,
@@ -144,6 +153,7 @@ def build_vec_env(
     Args:
         env_raw: Complete raw forex-env configuration.
         feature_names: Custom feature names to inject.
+        cross_feature_names: Cross-sectional feature names to inject.
         n_envs: Number of parallel environments.
         vec_env_kind: "dummy" (in-process) or "subproc" (one process each).
         base_seed: Worker i is seeded with base_seed + i.
@@ -161,6 +171,7 @@ def build_vec_env(
             build_single_env,
             dict(env_raw),
             feature_names,
+            cross_feature_names,
             base_seed + rank,
             decision_interval,
         )

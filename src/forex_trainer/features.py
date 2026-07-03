@@ -12,7 +12,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from forex_env.features import FeatureFn
+from forex_env.features import CrossFeatureFn, FeatureFn
 
 _EPSILON = 1e-12
 
@@ -162,4 +162,62 @@ FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "mom72": mom72,
     "mom168": mom168,
     "mom720": mom720,
+}
+
+
+def _cross_momentum(
+    data: pd.DataFrame, symbols: tuple[str, ...], bars: int
+) -> pd.DataFrame:
+    """Per-symbol momentum matrix over the last `bars` bars.
+
+    Args:
+        data: Full MultiIndex OHLCV frame.
+        symbols: Symbol order for the output columns.
+        bars: Lookback horizon in bars.
+
+    Returns:
+        DataFrame indexed like data with one momentum column per symbol,
+        anchored to the first close before a full horizon exists (causal).
+    """
+    closes = pd.DataFrame(
+        {symbol: data[(symbol, "Close")].astype(float) for symbol in symbols}
+    )
+    baseline = closes.shift(bars).fillna(closes.iloc[0])
+    return np.log(closes / baseline)
+
+
+def xz_mom24(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional z-score of 24-bar momentum (ADR-0008 contract).
+
+    Args:
+        data: Full MultiIndex OHLCV frame.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol z-score of momentum across symbols at each bar.
+    """
+    momentum = _cross_momentum(data, symbols, 24)
+    centered = momentum.sub(momentum.mean(axis=1), axis=0)
+    return centered.div(momentum.std(axis=1) + _EPSILON, axis=0)
+
+
+def xr_mom24(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional rank of 24-bar momentum, scaled to [-1, 1].
+
+    Args:
+        data: Full MultiIndex OHLCV frame.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol momentum rank across symbols at each bar; -1 is the
+        weakest symbol, +1 the strongest.
+    """
+    momentum = _cross_momentum(data, symbols, 24)
+    count = len(symbols)
+    return (momentum.rank(axis=1) - (count + 1) / 2.0) / ((count - 1) / 2.0)
+
+
+CROSS_FEATURE_REGISTRY: dict[str, CrossFeatureFn] = {
+    "xz_mom24": xz_mom24,
+    "xr_mom24": xr_mom24,
 }

@@ -55,6 +55,7 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
     vec_env = build_vec_env(
         resolved_train,
         config.custom_feature_names,
+        config.custom_cross_feature_names,
         config.run.n_envs,
         config.run.vec_env,
         config.run.seed,
@@ -63,6 +64,7 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
     val_env = build_single_env(
         resolved_val,
         config.custom_feature_names,
+        config.custom_cross_feature_names,
         seed=0,
         decision_interval=config.run.decision_interval,
     )
