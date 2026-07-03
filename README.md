@@ -9,6 +9,10 @@ RL agent training and experiment harness for [forex-env-v3](../forex-env-v3). On
 - Model selection (ADR-0005): training periodically walks `val_range`; the best validation model becomes `model_final.zip` (`model_last.zip` keeps the end-of-training model)
 - Tracking: local only — TensorBoard + per-run `metrics.json` / `equity_curve.csv`
 
+## Research log
+
+実験の経緯・確立した方法論・現在の結論は [docs/research/](docs/research/README.md) を参照。
+
 ## Layout requirement
 
 The two repositories must sit side by side (ADR-0001):
