@@ -39,6 +39,7 @@ def make_experiment_raw() -> dict[str, Any]:
             "transaction_costs": {
                 "commission_rate": 0.0001,
                 "overnight_rate": 0.0,
+                "carry_mode": "none",
                 "spreads": {"JPY/USD": 0.0001},
             },
         },

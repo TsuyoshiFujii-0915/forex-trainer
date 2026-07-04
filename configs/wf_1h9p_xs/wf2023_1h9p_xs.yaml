@@ -35,6 +35,7 @@ env:
   transaction_costs:
     commission_rate: 0.0
     overnight_rate: 5.0e-05
+    carry_mode: none
     spreads:
       JPY/USD: 1.5e-05
       JPY/EUR: 2.5e-05

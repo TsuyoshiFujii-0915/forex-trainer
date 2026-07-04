@@ -153,6 +153,19 @@ def mom720(frame: pd.DataFrame) -> pd.Series:
     return _momentum(frame, 720)
 
 
+def carry_annual(frame: pd.DataFrame) -> pd.Series:
+    """Annualized carry differential straight from the data (env ADR-0009).
+
+    Args:
+        frame: Per-pair frame including the CarryAnnual field (present in
+            carry-augmented caches and in synthetic data).
+
+    Returns:
+        The CarryAnnual series (counter rate minus JPY rate, decimal).
+    """
+    return frame["CarryAnnual"].astype(float)
+
+
 FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "sma20_ratio": sma20_ratio,
     "rsi14": rsi14,
@@ -162,6 +175,7 @@ FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "mom72": mom72,
     "mom168": mom168,
     "mom720": mom720,
+    "carry_annual": carry_annual,
 }
 
 
@@ -248,9 +262,27 @@ def xr_mom720(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
     return (momentum.rank(axis=1) - (count + 1) / 2.0) / ((count - 1) / 2.0)
 
 
+def xz_carry(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional z-score of the carry differential (env ADR-0009).
+
+    Args:
+        data: Full MultiIndex frame including CarryAnnual per symbol.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol z-score of CarryAnnual across symbols at each bar.
+    """
+    carry = pd.DataFrame(
+        {symbol: data[(symbol, "CarryAnnual")].astype(float) for symbol in symbols}
+    )
+    centered = carry.sub(carry.mean(axis=1), axis=0)
+    return centered.div(carry.std(axis=1) + _EPSILON, axis=0)
+
+
 CROSS_FEATURE_REGISTRY: dict[str, CrossFeatureFn] = {
     "xz_mom24": xz_mom24,
     "xr_mom24": xr_mom24,
     "xz_mom720": xz_mom720,
     "xr_mom720": xr_mom720,
+    "xz_carry": xz_carry,
 }

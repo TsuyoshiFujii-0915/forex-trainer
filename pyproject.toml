@@ -24,6 +24,7 @@ forex-eval = "forex_trainer.evaluate:main"
 forex-compare = "forex_trainer.compare:main"
 forex-fetch-dukascopy = "forex_trainer.dukascopy:main"
 forex-ensemble-eval = "forex_trainer.ensemble:main"
+forex-add-carry = "forex_trainer.carry:main"
 
 [dependency-groups]
 dev = [

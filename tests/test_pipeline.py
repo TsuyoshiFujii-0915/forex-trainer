@@ -134,6 +134,7 @@ def test_file_provider_pipeline(tmp_path: Path) -> None:
         "transaction_costs": {
             "commission_rate": 0.0,
             "overnight_rate": 0.0,
+            "carry_mode": "none",
             "spreads": {"JPY/USD": 0.0},
         },
     }
