@@ -217,7 +217,40 @@ def xr_mom24(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
     return (momentum.rank(axis=1) - (count + 1) / 2.0) / ((count - 1) / 2.0)
 
 
+def xz_mom720(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional z-score of 720-bar momentum (~1 month of hourly bars).
+
+    Args:
+        data: Full MultiIndex OHLCV frame.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol z-score of momentum across symbols at each bar.
+    """
+    momentum = _cross_momentum(data, symbols, 720)
+    centered = momentum.sub(momentum.mean(axis=1), axis=0)
+    return centered.div(momentum.std(axis=1) + _EPSILON, axis=0)
+
+
+def xr_mom720(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional rank of 720-bar momentum, scaled to [-1, 1].
+
+    Args:
+        data: Full MultiIndex OHLCV frame.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol momentum rank across symbols at each bar; -1 is the
+        weakest symbol, +1 the strongest.
+    """
+    momentum = _cross_momentum(data, symbols, 720)
+    count = len(symbols)
+    return (momentum.rank(axis=1) - (count + 1) / 2.0) / ((count - 1) / 2.0)
+
+
 CROSS_FEATURE_REGISTRY: dict[str, CrossFeatureFn] = {
     "xz_mom24": xz_mom24,
     "xr_mom24": xr_mom24,
+    "xz_mom720": xz_mom720,
+    "xr_mom720": xr_mom720,
 }

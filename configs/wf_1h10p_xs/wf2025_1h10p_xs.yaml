@@ -1,0 +1,77 @@
+experiment: wf2025_1h10p_xs
+env:
+  environment:
+    seed: 42
+    initial_balance_jpy: 1000000.0
+    episode_max_steps: 512
+    window_size: 32
+    max_leverage: 5.0
+    margin_call_threshold: 0.2
+    allow_action_leverage: false
+    random_start: true
+    currency_pairs:
+    - JPY/USD
+    - JPY/EUR
+    - JPY/GBP
+    - JPY/AUD
+    - JPY/CHF
+    - JPY/CAD
+    - JPY/NZD
+    - JPY/SGD
+    - JPY/ZAR
+    - JPY/MXN
+  data:
+    provider: file
+    timeframe: 1h
+    path: data/jpy_10pairs_1h.parquet
+  features:
+    volatility_window: 32
+    normalize: false
+    selected:
+    - log_return
+    - volatility
+    - mom720
+    - xz_mom720
+    - xr_mom720
+  transaction_costs:
+    commission_rate: 0.0
+    overnight_rate: 5.0e-05
+    spreads:
+      JPY/USD: 1.5e-05
+      JPY/EUR: 2.5e-05
+      JPY/GBP: 3.0e-05
+      JPY/AUD: 3.0e-05
+      JPY/CHF: 3.5e-05
+      JPY/CAD: 3.5e-05
+      JPY/NZD: 4.0e-05
+      JPY/SGD: 5.0e-05
+      JPY/ZAR: 0.00012
+      JPY/MXN: 0.00012
+train_range:
+  start: '2015-01-01'
+  end: '2024-07-01'
+val_range:
+  start: '2024-07-01'
+  end: '2025-01-01'
+eval_range:
+  start: '2025-01-01'
+  end: '2026-01-01'
+algorithm:
+  name: ppo
+  hyperparams:
+    n_steps: 256
+    batch_size: 512
+    learning_rate: 0.0003
+    gamma: 0.999
+    ent_coef: 0.001
+network:
+  name: mlp
+  kwargs:
+    features_dim: 128
+run:
+  total_timesteps: 100000
+  seed: 42
+  device: cpu
+  n_envs: 8
+  vec_env: dummy
+  decision_interval: 24
