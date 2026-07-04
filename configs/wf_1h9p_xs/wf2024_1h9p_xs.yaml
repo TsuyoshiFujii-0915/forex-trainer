@@ -1,4 +1,4 @@
-experiment: wf2025_1h10p_xs
+experiment: wf2024_1h9p_xs
 env:
   environment:
     seed: 42
@@ -19,11 +19,10 @@ env:
     - JPY/NZD
     - JPY/SGD
     - JPY/ZAR
-    - JPY/MXN
   data:
     provider: file
     timeframe: 1h
-    path: data/jpy_10pairs_1h.parquet
+    path: data/jpy_9pairs_1h.parquet
   features:
     volatility_window: 32
     normalize: false
@@ -46,16 +45,15 @@ env:
       JPY/NZD: 4.0e-05
       JPY/SGD: 5.0e-05
       JPY/ZAR: 0.00012
-      JPY/MXN: 0.00012
 train_range:
   start: '2015-01-01'
-  end: '2024-07-01'
+  end: '2023-07-01'
 val_range:
-  start: '2024-07-01'
-  end: '2025-01-01'
+  start: '2023-07-01'
+  end: '2024-01-01'
 eval_range:
-  start: '2025-01-01'
-  end: '2026-01-01'
+  start: '2024-01-01'
+  end: '2025-01-01'
 algorithm:
   name: ppo
   hyperparams:
