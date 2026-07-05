@@ -60,6 +60,7 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         config.run.vec_env,
         config.run.seed,
         config.run.decision_interval,
+        config.run.residual,
     )
     val_env = build_single_env(
         resolved_val,
@@ -67,6 +68,7 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         config.custom_cross_feature_names,
         seed=0,
         decision_interval=config.run.decision_interval,
+        residual=config.run.residual,
     )
     # ~20 validation walks over the run; eval_freq counts per-env steps, and
     # the max(1, ...) floor guarantees at least one walk even on tiny budgets,

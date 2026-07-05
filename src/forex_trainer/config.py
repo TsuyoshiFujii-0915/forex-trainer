@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import copy
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date
 from pathlib import Path
 from typing import Any, Mapping
@@ -63,6 +63,16 @@ class NetworkConfig:
 
 
 @dataclass(frozen=True)
+class ResidualConfig:
+    """Residual action scheme settings (ADR-0009)."""
+
+    feature: str
+    top_k: int
+    base_size: float
+    scale: float
+
+
+@dataclass(frozen=True)
 class RunConfig:
     """Run execution settings."""
 
@@ -72,6 +82,7 @@ class RunConfig:
     n_envs: int
     vec_env: str
     decision_interval: int
+    residual: ResidualConfig | None
 
 
 @dataclass(frozen=True)
@@ -320,7 +331,15 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     run_section = _require_mapping(root["run"], "run")
     _check_exact_keys(
         run_section,
-        ("total_timesteps", "seed", "device", "n_envs", "vec_env", "decision_interval"),
+        (
+            "total_timesteps",
+            "seed",
+            "device",
+            "n_envs",
+            "vec_env",
+            "decision_interval",
+            "residual",
+        ),
         "run",
     )
     total_timesteps = _as_int(run_section, "run", "total_timesteps")
@@ -346,6 +365,12 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         raise TrainerConfigError(
             f"run.vec_env must be one of {list(VEC_ENV_KINDS)}, got '{vec_env}'."
         )
+    raw_residual = run_section["residual"]
+    if raw_residual != "none" and not isinstance(raw_residual, Mapping):
+        raise TrainerConfigError(
+            f"run.residual must be 'none' or a mapping, got {raw_residual!r}."
+        )
+
     run = RunConfig(
         total_timesteps=total_timesteps,
         seed=_as_int(run_section, "run", "seed"),
@@ -353,6 +378,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         n_envs=n_envs,
         vec_env=vec_env,
         decision_interval=decision_interval,
+        residual=None,  # replaced below once selected features are known
     )
 
     env_block = _require_mapping(root["env"], "env")
@@ -389,6 +415,42 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     custom_cross_feature_names = tuple(
         name for name in selected if name in CROSS_FEATURE_REGISTRY
     )
+
+    if raw_residual != "none":
+        residual_section = _require_mapping(raw_residual, "run.residual")
+        _check_exact_keys(
+            residual_section, ("feature", "top_k", "base_size", "scale"), "run.residual"
+        )
+        residual_feature = _as_str(residual_section, "run.residual", "feature")
+        if residual_feature not in selected:
+            raise TrainerConfigError(
+                f"run.residual.feature '{residual_feature}' must be one of "
+                f"env.features.selected {list(selected)}."
+            )
+        if features_block["normalize"]:
+            raise TrainerConfigError(
+                "run.residual requires env.features.normalize: false; per-window "
+                "z-scoring destroys the levels the base rule ranks on."
+            )
+        top_k = _as_int(residual_section, "run.residual", "top_k")
+        if top_k < 1:
+            raise TrainerConfigError(f"run.residual.top_k must be >= 1, got {top_k}.")
+        base_size = float(residual_section["base_size"])
+        scale = float(residual_section["scale"])
+        if not (0.0 < base_size <= 1.0) or not (0.0 <= scale <= 1.0):
+            raise TrainerConfigError(
+                f"run.residual sizes must satisfy 0 < base_size <= 1 and "
+                f"0 <= scale <= 1, got base_size={base_size}, scale={scale}."
+            )
+        run = replace(
+            run,
+            residual=ResidualConfig(
+                feature=residual_feature,
+                top_k=top_k,
+                base_size=base_size,
+                scale=scale,
+            ),
+        )
 
     config = ExperimentConfig(
         experiment=experiment,

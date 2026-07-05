@@ -96,6 +96,7 @@ def run_ensemble_evaluation(
         reference_config.custom_cross_feature_names,
         seed=0,
         decision_interval=reference_config.run.decision_interval,
+        residual=reference_config.run.residual,
     )
     states: list[Any] = [None] * len(members)
 

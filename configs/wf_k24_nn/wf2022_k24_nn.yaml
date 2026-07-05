@@ -63,3 +63,4 @@ run:
   n_envs: 8
   vec_env: dummy
   decision_interval: 24
+  residual: none

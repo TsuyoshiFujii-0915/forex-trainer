@@ -141,3 +141,40 @@ def test_resolve_env_raw_injects_dates_and_eval_overrides() -> None:
     assert eval_env["environment"]["episode_max_steps"] == 1_000_000
     # The original block must stay untouched (deep copy).
     assert "start_date" not in config.env["data"]
+
+
+def test_missing_residual_rejected() -> None:
+    """run.residual is required (ADR-0009)."""
+    raw = make_experiment_raw()
+    del raw["run"]["residual"]
+    with pytest.raises(TrainerConfigError, match="residual"):
+        parse_experiment_config(raw)
+
+
+def test_residual_unknown_feature_rejected() -> None:
+    """residual.feature must be one of the selected features."""
+    raw = make_experiment_raw()
+    raw["run"]["residual"] = {
+        "feature": "mom24",
+        "top_k": 2,
+        "base_size": 0.8,
+        "scale": 0.3,
+    }
+    with pytest.raises(TrainerConfigError, match="mom24"):
+        parse_experiment_config(raw)
+
+
+def test_residual_mapping_accepted() -> None:
+    """A valid residual mapping parses into the typed config."""
+    raw = make_experiment_raw()
+    raw["env"]["features"]["normalize"] = False
+    raw["env"]["features"]["selected"] = ["log_return", "volatility", "mom24"]
+    raw["run"]["residual"] = {
+        "feature": "mom24",
+        "top_k": 2,
+        "base_size": 0.8,
+        "scale": 0.3,
+    }
+    config = parse_experiment_config(raw)
+    assert config.run.residual is not None
+    assert config.run.residual.feature == "mom24"

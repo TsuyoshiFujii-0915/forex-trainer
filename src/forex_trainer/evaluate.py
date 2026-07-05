@@ -158,6 +158,7 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
         config.custom_cross_feature_names,
         seed=0,
         decision_interval=config.run.decision_interval,
+        residual=config.run.residual,
     )
     spec = ALGO_REGISTRY[config.algorithm.name]
     model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
