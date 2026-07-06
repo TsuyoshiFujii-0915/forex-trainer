@@ -262,9 +262,77 @@ class AttentionExtractor(BaseFeaturesExtractor):
         return self._head(flat)
 
 
+class CrossPairAttentionExtractor(BaseFeaturesExtractor):
+    """Self-attention ACROSS PAIRS (tokens = pairs), not across time.
+
+    Each pair's window is encoded by a shared MLP into one token; a
+    Transformer encoder then exchanges information between pairs, which is
+    the natural inductive bias for cross-sectional (relative-value) tasks:
+    the encoder is shared across pairs and the attention is permutation
+    equivariant over them. Per-pair asset state is concatenated into each
+    token before attention.
+    """
+
+    def __init__(
+        self,
+        observation_space: gymnasium.spaces.Dict,
+        features_dim: int = 128,
+        d_model: int = 64,
+        num_heads: int = 4,
+        num_layers: int = 2,
+        feedforward_dim: int = 128,
+    ) -> None:
+        """Initialize the extractor.
+
+        Args:
+            observation_space: Dict observation space of ForexEnv.
+            features_dim: Output feature vector size.
+            d_model: Per-pair token size.
+            num_heads: Attention heads (must divide d_model).
+            num_layers: Encoder layers.
+            feedforward_dim: Feedforward width inside the encoder.
+        """
+        super().__init__(observation_space, features_dim)
+        num_pairs, window, num_features = _market_shape(observation_space)
+        assets_per_pair = int(observation_space["assets"].shape[1])
+        self._token_encoder = nn.Sequential(
+            nn.Linear(window * num_features + assets_per_pair, d_model),
+            nn.ReLU(),
+            nn.Linear(d_model, d_model),
+        )
+        encoder_layer = nn.TransformerEncoderLayer(
+            d_model=d_model,
+            nhead=num_heads,
+            dim_feedforward=feedforward_dim,
+            batch_first=True,
+        )
+        self._encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+        self._head = nn.Sequential(
+            nn.Linear(num_pairs * d_model, features_dim),
+            nn.ReLU(),
+        )
+
+    def forward(self, observations: dict[str, torch.Tensor]) -> torch.Tensor:
+        """Encode observations into the feature vector.
+
+        Args:
+            observations: Dict of market/assets tensors.
+
+        Returns:
+            Tensor of shape (batch, features_dim).
+        """
+        market = observations["market"]  # (B, N, W, F)
+        assets = observations["assets"]  # (B, N, A)
+        per_pair = torch.cat([market.flatten(2), assets], dim=2)  # (B, N, W*F+A)
+        tokens = self._token_encoder(per_pair)  # (B, N, d_model)
+        encoded = self._encoder(tokens)  # attention across the pair axis
+        return self._head(encoded.flatten(1))
+
+
 NETWORK_REGISTRY: dict[str, type[BaseFeaturesExtractor]] = {
     "mlp": MlpExtractor,
     "cnn1d": Cnn1dExtractor,
     "lstm": LstmExtractor,
     "attention": AttentionExtractor,
+    "xattention": CrossPairAttentionExtractor,
 }
