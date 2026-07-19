@@ -10,7 +10,8 @@
 | [01-diagnosis-and-protocol.md](01-diagnosis-and-protocol.md) | 初期実験の敗因診断と実験プロトコルの確立 | 0〜2 |
 | [02-long-data-and-walk-forward.md](02-long-data-and-walk-forward.md) | 長期データ導入とレジーム非定常性の発見、walk-forward への移行 | 3〜6 |
 | [03-alpha-ceiling-and-reversal.md](03-alpha-ceiling-and-reversal.md) | ルールベース ceiling 診断と、クロスセクション・リバーサルの発見 | ceiling 診断 |
-| [04-rl-vs-rule-benchmark.md](04-rl-vs-rule-benchmark.md) | RL 対 ルールベンチマークの現状と今後の見通し | 7〜 |
+| [04-rl-vs-rule-benchmark.md](04-rl-vs-rule-benchmark.md) | RL 対 ルールベンチマーク、+7%主張の撤回まで | 7〜14 |
+| [05-rl-architecture-campaign.md](05-rl-architecture-campaign.md) | 二時代プロトコル下の RL 本体改善キャンペーン | 15〜17 |
 
 ## 確立した方法論(今後の全実験に適用)
 
