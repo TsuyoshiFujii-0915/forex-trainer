@@ -1,0 +1,84 @@
+experiment: wf2020_r19_usd_res
+env:
+  environment:
+    seed: 42
+    initial_balance_jpy: 1000000.0
+    episode_max_steps: 128
+    window_size: 32
+    max_leverage: 5.0
+    margin_call_threshold: 0.2
+    allow_action_leverage: false
+    random_start: true
+    currency_pairs:
+    - USD/JPY
+    - USD/EUR
+    - USD/GBP
+    - USD/AUD
+    - USD/CAD
+    - USD/CHF
+    - USD/NZD
+    - USD/NOK
+    - USD/SEK
+  data:
+    provider: file
+    timeframe: 1d
+    path: data/usd_9pairs_1d_factors.parquet
+  features:
+    volatility_window: 32
+    normalize: false
+    selected:
+    - log_return
+    - volatility
+    - sma20_ratio
+    - mom24
+    - xz_mom24
+    - xr_mom24
+    - carry_annual
+    - xz_carry
+  transaction_costs:
+    commission_rate: 0.0
+    overnight_rate: 2.0e-05
+    carry_mode: signed
+    spreads:
+      USD/JPY: 1.5e-05
+      USD/EUR: 1.5e-05
+      USD/GBP: 2.0e-05
+      USD/AUD: 2.0e-05
+      USD/CAD: 2.0e-05
+      USD/CHF: 2.0e-05
+      USD/NZD: 3.0e-05
+      USD/NOK: 4.0e-05
+      USD/SEK: 4.0e-05
+train_range:
+  start: '2006-06-01'
+  end: '2019-07-01'
+val_range:
+  start: '2019-07-01'
+  end: '2020-01-01'
+eval_range:
+  start: '2020-01-01'
+  end: '2021-01-01'
+algorithm:
+  name: ppo
+  hyperparams:
+    n_steps: 1024
+    batch_size: 1024
+    learning_rate: 0.0003
+    gamma: 0.999
+    ent_coef: 0.001
+network:
+  name: mlp
+  kwargs:
+    features_dim: 128
+run:
+  total_timesteps: 300000
+  seed: 42
+  device: cpu
+  n_envs: 8
+  vec_env: dummy
+  decision_interval: 1
+  residual:
+    feature: mom24
+    top_k: 2
+    base_size: 0.8
+    scale: 0.3
