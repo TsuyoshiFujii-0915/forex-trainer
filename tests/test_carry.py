@@ -105,15 +105,37 @@ def test_augmented_cache_runs_signed_env(tmp_path: Path) -> None:
     assert info["financing_jpy"] < 0.0
 
 
-def test_unmapped_symbol_rejected(tmp_path: Path) -> None:
-    """Caches containing pairs without a FRED mapping must fail fast."""
+def test_unmapped_currency_rejected(tmp_path: Path) -> None:
+    """Caches containing currencies without a FRED mapping must fail fast."""
     data = SyntheticDataProvider(seed=8).get_data(
         ("JPY/SGD",), "2020-01-01", "2020-02-01", "1h"
     )
     data = data[[column for column in data.columns if column[1] != "CarryAnnual"]]
     path = tmp_path / "sgd.parquet"
     save_ohlcv_parquet(data, "1h", "2020-01-01", "2020-02-01", path)
-    with pytest.raises(CarryError, match="JPY/SGD"):
+    with pytest.raises(CarryError, match="SGD"):
         augment_cache_with_carry(
             path, tmp_path / "out.parquet", lag_days=30, fetch_series=_fake_series
         )
+
+
+def test_augment_generalizes_to_non_jpy_base(tmp_path: Path) -> None:
+    """A USD-denominated pair (env ADR-0010) resolves via the currency-code
+    mapping, not a JPY-only assumption."""
+    symbols = ("USD/JPY", "USD/EUR")
+    data = SyntheticDataProvider(seed=13).get_data(
+        symbols, "2020-01-01", "2020-03-01", "1h"
+    )
+    data = data[[column for column in data.columns if column[1] != "CarryAnnual"]]
+    path = tmp_path / "usd_base.parquet"
+    save_ohlcv_parquet(data, "1h", "2020-01-01", "2020-03-01", path)
+    output = tmp_path / "usd_carry.parquet"
+    augment_cache_with_carry(path, output, lag_days=30, fetch_series=_fake_series)
+    loaded = FileDataProvider(str(output)).get_data(
+        symbols, "2020-01-01", "2020-03-01", "1h"
+    )
+    jpy_leg = loaded[("USD/JPY", "CarryAnnual")]
+    eur_leg = loaded[("USD/EUR", "CarryAnnual")]
+    # USD/JPY: counter(JPY)=0.1 - base(USD)=2.0; USD/EUR: counter(EUR)=-0.5 - base(USD)=2.0.
+    assert jpy_leg.iloc[-1] == pytest.approx((0.1 - 2.0) / 100.0)
+    assert eur_leg.iloc[-1] == pytest.approx((-0.5 - 2.0) / 100.0)

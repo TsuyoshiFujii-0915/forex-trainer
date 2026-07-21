@@ -1,9 +1,13 @@
 """FRED carry augmentation CLI: forex-add-carry (ADR-0008 / env ADR-0009).
 
-Adds a per-symbol CarryAnnual field (annualized rate differential
-counter currency minus JPY, decimal) to an existing parquet cache. Monthly
-FRED rates are forward-filled daily and lagged for causality before being
-aligned to the cache timestamps.
+Adds a per-symbol CarryAnnual field (annualized short-rate differential
+counter currency minus the denomination/base currency, decimal) to an
+existing parquet cache. Monthly FRED rates are forward-filled daily and
+lagged for causality before being aligned to the cache timestamps.
+
+Rates are keyed by 3-letter CURRENCY CODE, not by pair, so the same mapping
+serves any denomination currency (env ADR-0010): for symbol "BASE/COUNTER",
+the differential is rate[COUNTER] - rate[BASE].
 """
 
 from __future__ import annotations
@@ -18,21 +22,22 @@ from typing import Callable
 
 import pandas as pd
 import pyarrow.parquet as pq
+from forex_env.data.base import split_pair
 from forex_env.data.file_provider import save_ohlcv_parquet
 
-FRED_SERIES: dict[str, str] = {
-    "JPY/USD": "FEDFUNDS",
-    "JPY/EUR": "ECBDFR",
-    "JPY/GBP": "IR3TIB01GBM156N",
-    "JPY/AUD": "IR3TIB01AUM156N",
-    "JPY/CHF": "IR3TIB01CHM156N",
-    "JPY/CAD": "IR3TIB01CAM156N",
-    "JPY/NZD": "IR3TIB01NZM156N",
-    "JPY/NOK": "IR3TIB01NOM156N",
-    "JPY/SEK": "IR3TIB01SEM156N",
-    "JPY/ZAR": "IR3TIB01ZAM156N",
+CURRENCY_SHORT_RATE_SERIES: dict[str, str] = {
+    "USD": "FEDFUNDS",
+    "JPY": "IR3TIB01JPM156N",
+    "EUR": "ECBDFR",
+    "GBP": "IR3TIB01GBM156N",
+    "AUD": "IR3TIB01AUM156N",
+    "CHF": "IR3TIB01CHM156N",
+    "CAD": "IR3TIB01CAM156N",
+    "NZD": "IR3TIB01NZM156N",
+    "NOK": "IR3TIB01NOM156N",
+    "SEK": "IR3TIB01SEM156N",
+    "ZAR": "IR3TIB01ZAM156N",
 }
-JPY_SERIES = "IR3TIB01JPM156N"
 _FRED_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
 _PERCENT_TO_DECIMAL = 0.01
 
@@ -107,11 +112,12 @@ def augment_cache_with_carry(
         [tuple(column.rsplit("|", 1)) for column in frame.columns]
     )
     symbols = sorted({symbol for symbol, _ in frame.columns})
-    unmapped = [symbol for symbol in symbols if symbol not in FRED_SERIES]
+    currencies = {code for symbol in symbols for code in split_pair(symbol)}
+    unmapped = sorted(currencies - set(CURRENCY_SHORT_RATE_SERIES))
     if unmapped:
         raise CarryError(
-            f"No FRED series mapping for symbol(s) {unmapped}; "
-            f"supported: {sorted(FRED_SERIES)}."
+            f"No FRED series mapping for currency(ies) {unmapped}; "
+            f"supported: {sorted(CURRENCY_SHORT_RATE_SERIES)}."
         )
 
     calendar = pd.date_range(
@@ -119,17 +125,16 @@ def augment_cache_with_carry(
         pd.Timestamp(end),
         freq="D",
     )
-    jpy_rate = (
-        fetch_series(JPY_SERIES).reindex(calendar, method="ffill").shift(lag_days)
-    )
     cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
+    rates: dict[str, pd.Series] = {
+        code: fetch_series(CURRENCY_SHORT_RATE_SERIES[code])
+        .reindex(calendar, method="ffill")
+        .shift(lag_days)
+        for code in currencies
+    }
     for symbol in symbols:
-        counter_rate = (
-            fetch_series(FRED_SERIES[symbol])
-            .reindex(calendar, method="ffill")
-            .shift(lag_days)
-        )
-        differential = (counter_rate - jpy_rate) * _PERCENT_TO_DECIMAL
+        base, counter = split_pair(symbol)
+        differential = (rates[counter] - rates[base]) * _PERCENT_TO_DECIMAL
         aligned = differential.reindex(cache_days).to_numpy()
         if not pd.notna(aligned).all():
             raise CarryError(
