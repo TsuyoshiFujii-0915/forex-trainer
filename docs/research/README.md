@@ -12,6 +12,7 @@
 | [03-alpha-ceiling-and-reversal.md](03-alpha-ceiling-and-reversal.md) | ルールベース ceiling 診断と、クロスセクション・リバーサルの発見 | ceiling 診断 |
 | [04-rl-vs-rule-benchmark.md](04-rl-vs-rule-benchmark.md) | RL 対 ルールベンチマーク、+7%主張の撤回まで | 7〜14 |
 | [05-rl-architecture-campaign.md](05-rl-architecture-campaign.md) | 二時代プロトコル下の RL 本体改善キャンペーン | 15〜17 |
+| [06-external-data-and-universe-generalization.md](06-external-data-and-universe-generalization.md) | 外部データ・独立ユニバース(env ADR-0010)による汎化性検証 | 18〜19 |
 
 ## 確立した方法論(今後の全実験に適用)
 
