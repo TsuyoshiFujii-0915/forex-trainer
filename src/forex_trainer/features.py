@@ -166,6 +166,58 @@ def carry_annual(frame: pd.DataFrame) -> pd.Series:
     return frame["CarryAnnual"].astype(float)
 
 
+def term_carry_annual(frame: pd.DataFrame) -> pd.Series:
+    """10-year government bond yield differential (trainer factors.py).
+
+    Args:
+        frame: Per-pair frame including the TermCarryAnnual field (present
+            in caches augmented by `forex-add-factors --which term`).
+
+    Returns:
+        The TermCarryAnnual series (counter 10y rate minus JPY 10y, decimal).
+    """
+    return frame["TermCarryAnnual"].astype(float)
+
+
+def ppp_gap(frame: pd.DataFrame) -> pd.Series:
+    """Relative-PPP misalignment straight from the data (trainer factors.py).
+
+    Args:
+        frame: Per-pair frame including the PppGap field (present in caches
+            augmented by `forex-add-factors --which ppp`).
+
+    Returns:
+        The PppGap series (see factors.add_ppp_misalignment for definition).
+    """
+    return frame["PppGap"].astype(float)
+
+
+def vix_level(frame: pd.DataFrame) -> pd.Series:
+    """VIX level, broadcast equally to every pair (trainer factors.py).
+
+    Args:
+        frame: Per-pair frame including the VixLevel field (present in
+            caches augmented by `forex-add-factors --which global`).
+
+    Returns:
+        The VixLevel series.
+    """
+    return frame["VixLevel"].astype(float)
+
+
+def oil_level(frame: pd.DataFrame) -> pd.Series:
+    """WTI crude level, broadcast equally to every pair (trainer factors.py).
+
+    Args:
+        frame: Per-pair frame including the OilLevel field (present in
+            caches augmented by `forex-add-factors --which global`).
+
+    Returns:
+        The OilLevel series.
+    """
+    return frame["OilLevel"].astype(float)
+
+
 FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "sma20_ratio": sma20_ratio,
     "rsi14": rsi14,
@@ -176,6 +228,10 @@ FEATURE_REGISTRY: dict[str, FeatureFn] = {
     "mom168": mom168,
     "mom720": mom720,
     "carry_annual": carry_annual,
+    "term_carry_annual": term_carry_annual,
+    "ppp_gap": ppp_gap,
+    "vix_level": vix_level,
+    "oil_level": oil_level,
 }
 
 
@@ -279,10 +335,58 @@ def xz_carry(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
     return centered.div(carry.std(axis=1) + _EPSILON, axis=0)
 
 
+def _cross_zscore(
+    data: pd.DataFrame, symbols: tuple[str, ...], field: str
+) -> pd.DataFrame:
+    """Cross-sectional z-score of an arbitrary per-symbol field.
+
+    Args:
+        data: Full MultiIndex frame including `field` per symbol.
+        symbols: Symbol order.
+        field: Column name to read from each symbol's block.
+
+    Returns:
+        Per-symbol z-score of the field across symbols at each bar.
+    """
+    values = pd.DataFrame(
+        {symbol: data[(symbol, field)].astype(float) for symbol in symbols}
+    )
+    centered = values.sub(values.mean(axis=1), axis=0)
+    return centered.div(values.std(axis=1) + _EPSILON, axis=0)
+
+
+def xz_term_carry(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional z-score of the 10-year rate differential.
+
+    Args:
+        data: Full MultiIndex frame including TermCarryAnnual per symbol.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol z-score of TermCarryAnnual across symbols at each bar.
+    """
+    return _cross_zscore(data, symbols, "TermCarryAnnual")
+
+
+def xz_ppp_gap(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
+    """Cross-sectional z-score of the PPP misalignment.
+
+    Args:
+        data: Full MultiIndex frame including PppGap per symbol.
+        symbols: Symbol order.
+
+    Returns:
+        Per-symbol z-score of PppGap across symbols at each bar.
+    """
+    return _cross_zscore(data, symbols, "PppGap")
+
+
 CROSS_FEATURE_REGISTRY: dict[str, CrossFeatureFn] = {
     "xz_mom24": xz_mom24,
     "xr_mom24": xr_mom24,
     "xz_mom720": xz_mom720,
     "xr_mom720": xr_mom720,
     "xz_carry": xz_carry,
+    "xz_term_carry": xz_term_carry,
+    "xz_ppp_gap": xz_ppp_gap,
 }

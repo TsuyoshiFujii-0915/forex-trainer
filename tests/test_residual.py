@@ -66,6 +66,10 @@ def test_residual_shifts_weights_within_scale() -> None:
     _, _, _, _, info_full = env_full.step(np.ones((len(_PAIRS), 1), dtype=np.float32))
     for pair in _PAIRS:
         shift = info_full["exposures_jpy"][pair] - info_zero["exposures_jpy"][pair]
-        assert shift == pytest.approx(0.1 * 1_000_000.0, rel=1e-3)
+        # exposures_jpy reflects the target AFTER this bar's mark-to-market,
+        # so the shift is scaled by that bar's price relative (~1 +-
+        # _LOG_RETURN_SCALE); rel=1e-2 comfortably covers that noise while
+        # still catching a wrong-magnitude or wrong-sign shift.
+        assert shift == pytest.approx(0.1 * 1_000_000.0, rel=1e-2)
     env_zero.close()
     env_full.close()
