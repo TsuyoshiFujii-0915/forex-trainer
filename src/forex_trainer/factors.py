@@ -5,8 +5,8 @@ parquet cache, reusing the FRED ingestion pattern from carry.py
 (monthly/irregular series forward-filled daily and lagged for causality):
 
 - TermCarryAnnual: 10-year government bond yield differential (counter minus
-  JPY, decimal) — a slower, more structural analog of the short-rate
-  CarryAnnual in carry.py.
+  base/denomination currency, decimal) — a slower, more structural analog
+  of the short-rate CarryAnnual in carry.py.
 - PppGap: relative-PPP misalignment. Anchored at the first row of the
   INPUT cache (an arbitrary but fixed and fully causal reference point —
   relative PPP has no natural absolute anchor), it is the log price change
@@ -17,6 +17,10 @@ parquet cache, reusing the FRED ingestion pattern from carry.py
 - Global series (e.g. VixLevel, OilLevel): broadcast the same value to every
   symbol's column, reusing the env file provider's per-symbol auxiliary
   field passthrough — no env changes are needed for genuinely global data.
+
+Rate/CPI series are keyed by 3-letter CURRENCY CODE, not by pair, so the
+same mappings serve any denomination currency (env ADR-0010): for symbol
+"BASE/COUNTER", the differential is series[COUNTER] - series[BASE].
 """
 
 from __future__ import annotations
@@ -29,35 +33,36 @@ from typing import Callable, Mapping
 import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
+from forex_env.data.base import split_pair
 from forex_env.data.file_provider import save_ohlcv_parquet
 
 from .carry import fetch_fred_series
 
-RATE10Y_SERIES: dict[str, str] = {
-    "JPY/USD": "IRLTLT01USM156N",
-    "JPY/EUR": "IRLTLT01DEM156N",  # German bund: standard euro-area long-rate proxy
-    "JPY/GBP": "IRLTLT01GBM156N",
-    "JPY/AUD": "IRLTLT01AUM156N",
-    "JPY/CHF": "IRLTLT01CHM156N",
-    "JPY/CAD": "IRLTLT01CAM156N",
-    "JPY/NZD": "IRLTLT01NZM156N",
-    "JPY/NOK": "IRLTLT01NOM156N",
-    "JPY/SEK": "IRLTLT01SEM156N",
+CURRENCY_RATE10Y_SERIES: dict[str, str] = {
+    "USD": "IRLTLT01USM156N",
+    "JPY": "IRLTLT01JPM156N",
+    "EUR": "IRLTLT01DEM156N",  # German bund: standard euro-area long-rate proxy
+    "GBP": "IRLTLT01GBM156N",
+    "AUD": "IRLTLT01AUM156N",
+    "CHF": "IRLTLT01CHM156N",
+    "CAD": "IRLTLT01CAM156N",
+    "NZD": "IRLTLT01NZM156N",
+    "NOK": "IRLTLT01NOM156N",
+    "SEK": "IRLTLT01SEM156N",
 }
-JPY_RATE10Y_SERIES = "IRLTLT01JPM156N"
 
-CPI_SERIES: dict[str, str] = {
-    "JPY/USD": "USACPIALLMINMEI",
-    "JPY/EUR": "CP0000EZ19M086NEST",  # Euro area HICP level
-    "JPY/GBP": "GBRCPIALLMINMEI",
-    "JPY/AUD": "AUSCPIALLQINMEI",  # quarterly; ffill handles the frequency
-    "JPY/CHF": "CHECPIALLMINMEI",
-    "JPY/CAD": "CANCPIALLMINMEI",
-    "JPY/NZD": "NZLCPIALLQINMEI",  # quarterly
-    "JPY/NOK": "NORCPIALLMINMEI",
-    "JPY/SEK": "SWECPIALLMINMEI",
+CURRENCY_CPI_SERIES: dict[str, str] = {
+    "USD": "USACPIALLMINMEI",
+    "JPY": "JPNCPIALLMINMEI",
+    "EUR": "CP0000EZ19M086NEST",  # Euro area HICP level
+    "GBP": "GBRCPIALLMINMEI",
+    "AUD": "AUSCPIALLQINMEI",  # quarterly; ffill handles the frequency
+    "CHF": "CHECPIALLMINMEI",
+    "CAD": "CANCPIALLMINMEI",
+    "NZD": "NZLCPIALLQINMEI",  # quarterly
+    "NOK": "NORCPIALLMINMEI",
+    "SEK": "SWECPIALLMINMEI",
 }
-JPY_CPI_SERIES = "JPNCPIALLMINMEI"
 
 _PERCENT_TO_DECIMAL = 0.01
 
@@ -131,26 +136,24 @@ def add_term_carry(
     """
     frame, timeframe, start, end = _load_cache(input_path)
     symbols = sorted({symbol for symbol, _ in frame.columns})
-    unmapped = [symbol for symbol in symbols if symbol not in RATE10Y_SERIES]
+    currencies = {code for symbol in symbols for code in split_pair(symbol)}
+    unmapped = sorted(currencies - set(CURRENCY_RATE10Y_SERIES))
     if unmapped:
         raise FactorError(
-            f"No 10-year rate series mapping for symbol(s) {unmapped}; "
-            f"supported: {sorted(RATE10Y_SERIES)}."
+            f"No 10-year rate series mapping for currency(ies) {unmapped}; "
+            f"supported: {sorted(CURRENCY_RATE10Y_SERIES)}."
         )
     calendar = _daily_calendar(start, end, lag_days)
-    jpy_rate = (
-        fetch_series(JPY_RATE10Y_SERIES)
+    cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
+    rates: dict[str, pd.Series] = {
+        code: fetch_series(CURRENCY_RATE10Y_SERIES[code])
         .reindex(calendar, method="ffill")
         .shift(lag_days)
-    )
-    cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
+        for code in currencies
+    }
     for symbol in symbols:
-        counter_rate = (
-            fetch_series(RATE10Y_SERIES[symbol])
-            .reindex(calendar, method="ffill")
-            .shift(lag_days)
-        )
-        differential = (counter_rate - jpy_rate) * _PERCENT_TO_DECIMAL
+        base, counter = split_pair(symbol)
+        differential = (rates[counter] - rates[base]) * _PERCENT_TO_DECIMAL
         aligned = differential.reindex(cache_days).to_numpy()
         if not pd.notna(aligned).all():
             raise FactorError(
@@ -192,28 +195,28 @@ def add_ppp_misalignment(
     """
     frame, timeframe, start, end = _load_cache(input_path)
     symbols = sorted({symbol for symbol, _ in frame.columns})
-    unmapped = [symbol for symbol in symbols if symbol not in CPI_SERIES]
+    currencies = {code for symbol in symbols for code in split_pair(symbol)}
+    unmapped = sorted(currencies - set(CURRENCY_CPI_SERIES))
     if unmapped:
         raise FactorError(
-            f"No CPI series mapping for symbol(s) {unmapped}; "
-            f"supported: {sorted(CPI_SERIES)}."
+            f"No CPI series mapping for currency(ies) {unmapped}; "
+            f"supported: {sorted(CURRENCY_CPI_SERIES)}."
         )
     calendar = _daily_calendar(start, end, lag_days)
-    jpy_cpi = (
-        fetch_series(JPY_CPI_SERIES).reindex(calendar, method="ffill").shift(lag_days)
-    )
     cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
+    cpi: dict[str, pd.Series] = {
+        code: fetch_series(CURRENCY_CPI_SERIES[code])
+        .reindex(calendar, method="ffill")
+        .shift(lag_days)
+        for code in currencies
+    }
     for symbol in symbols:
-        counter_cpi = (
-            fetch_series(CPI_SERIES[symbol])
-            .reindex(calendar, method="ffill")
-            .shift(lag_days)
-        )
+        base, counter = split_pair(symbol)
         # Raw log CPI differential over the padded calendar, THEN reindexed
         # to the cache's own days and anchored at the cache's first row
         # (not the padding calendar's first row, which is all-NaN after the
         # lag shift).
-        raw_log_cpi_diff = np.log(counter_cpi) - np.log(jpy_cpi)
+        raw_log_cpi_diff = np.log(cpi[counter]) - np.log(cpi[base])
         cpi_diff_aligned = raw_log_cpi_diff.reindex(cache_days)
         cpi_diff_aligned = cpi_diff_aligned - cpi_diff_aligned.iloc[0]
         close = frame[(symbol, "Close")].astype(float)
