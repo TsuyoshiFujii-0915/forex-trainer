@@ -31,10 +31,10 @@ RL エージェントの構築。目標値はユーザー設定で **walk-forwar
 隣接2リポジトリ(trainer→env の一方向依存、trainer ADR-0001):
 
 - **forex-env-v3**: 検証済みの Gymnasium 環境(マルチペア、目標配分リバランス会計、
-  log資産リターン報酬)。**基軸通貨は任意**(ADR-0010、旧JPY限定を解除)。ADR 0001〜0011。
-  テスト 82件
+  log資産リターン報酬)。**基軸通貨は任意**(ADR-0010、旧JPY限定を解除)。ADR 0001〜0018。
+  テストスイートで継続検証
 - **forex-trainer**(本リポジトリ): 実験ハーネス。1 YAML = 1実験
-  (アルゴリズム×ネットワーク×特徴量 + 決定間隔・残差スキーム)。ADR 0001〜0009。
+  (アルゴリズム×ネットワーク×特徴量 + 決定間隔・残差スキーム)。ADR 0001〜0010。
   テスト 100件超
 
 **CLI**: `forex-train` / `forex-eval` / `forex-compare` / `forex-ensemble-eval`(シード
@@ -50,14 +50,14 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 | 検証区間ベストモデル選択 | `val_range` + EvalCallback | trainer 0005 |
 | Dukascopy 時間足キャッシュ | `forex-fetch-dukascopy` | trainer 0006 |
 | シードアンサンブル評価 | `forex-ensemble-eval` | trainer 0007 |
-| FRED キャリー付与(短期金利) | `forex-add-carry` | trainer 0008 |
+| FRED キャリー付与(短期金利) | `forex-add-carry` | trainer 0010 |
 | 残差行動スキーム | `run.residual` | trainer 0009 |
 | クロスセクショナル特徴量 | env `custom_cross_features` | env 0008 |
-| 符号付き資金調達(スワップ) | `transaction_costs.carry_mode` | env 0009 |
+| 符号付き資金調達(スワップ) | `transaction_costs.carry_mode` | env 0012 |
 | ペア間attention ネットワーク | `network: xattention` | — |
 | **任意の基軸通貨**(JPY限定解除) | `currency_pairs` 汎用パターン | **env 0010** |
-| 合成データの補助ファクター | `SyntheticDataProvider` | env 0011 |
-| **外部ファクター付与**(10年金利・PPP・VIX・原油) | `forex-add-factors` | trainer 0008(拡張) |
+| 合成データの補助ファクター | `SyntheticDataProvider` | env 0018 |
+| **外部ファクター付与**(10年金利・PPP・VIX・原油) | `forex-add-factors` | trainer 0010 |
 
 ## 3. データ資産(data/、gitignore対象 — 消すと再取得が必要)
 
@@ -102,7 +102,7 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 | R0〜2 | 診断(回転コスト+過学習)、決定間隔・モデル選択・モメンタム導入 | プロトコル確立 |
 | R3〜6 | 長期データ、レジーム非定常性の発見、walk-forward 移行 | 単一分割は信用不可 |
 | ceiling | 2ペアに alpha 無し → 7〜10ペアで**クロスセクション・リバーサル**発見 | ルール上限 +1.3〜2.8%/年 |
-| R7〜13 | xs特徴量で RL がグロス正転、signed資金調達(env 0009)導入 | RL +3.1%/年まで |
+| R7〜13 | xs特徴量で RL がグロス正転、signed資金調達(env 0012)導入 | RL +3.1%/年まで |
 | R14 | 残差RL でルール床 +7.13%/年「達成」 | **撤回**(ルールが期間適合) |
 | 検証 | 2016〜18 全敗・21年マップ(+データ修復)で汎化不成立を確定 | 二時代基準を制定 |
 | R15〜17 | 純RL本体の探索(アーキ・アルゴ・HP、JPYのみ) | longf +4.7%/年(JPY両時代正) |

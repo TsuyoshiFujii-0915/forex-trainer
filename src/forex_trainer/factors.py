@@ -174,7 +174,7 @@ def add_ppp_misalignment(
     """Add a PppGap (relative-PPP misalignment) field per symbol.
 
     PppGap(t) = log(Close(t)/Close(t0)) - [log(CPI_counter(t)/CPI_counter(t0))
-    - log(CPI_JPY(t)/CPI_JPY(t0))], anchored at the cache's first row (t0).
+    - log(CPI_base(t)/CPI_base(t0))], anchored at the cache's first row (t0).
     The anchor is arbitrary (relative PPP has no natural absolute reference)
     but fixed and fully causal: only data up to each t is used.
 

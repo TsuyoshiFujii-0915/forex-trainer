@@ -69,6 +69,7 @@ env:                       # forex-env-v3 sections, except data dates
   features: { volatility_window: 32, normalize: true,
               selected: [log_return, volatility, rsi14, sma20_ratio] }
   transaction_costs: { commission_rate: 0.0002, overnight_rate: 0.0001,
+                       carry_mode: none,
                        spreads: { JPY/USD: 0.0002, JPY/EUR: 0.0002 } }
 train_range: { start: "2023-01-01", end: "2025-03-31" }
 val_range:   { start: "2025-03-31", end: "2025-06-30" }   # model selection only
@@ -76,7 +77,7 @@ eval_range:  { start: "2025-07-01", end: "2025-12-31" }   # final holdout
 algorithm: { name: ppo, hyperparams: { n_steps: 256, batch_size: 256, learning_rate: 3.0e-4 } }
 network:   { name: mlp, kwargs: { features_dim: 128 } }
 run: { total_timesteps: 20000, seed: 42, device: auto, n_envs: 4, vec_env: dummy,
-       decision_interval: 1 }
+       decision_interval: 1, residual: none }
 ```
 
 Rules enforced at load time (fail fast): every key required, unknown keys rejected, ranges must satisfy `train_range.end <= val_range.start < val_range.end <= eval_range.start`, `run.decision_interval >= 1`, algorithm/network/feature names must exist in their registries, and `env.data` must not contain dates (the ranges inject them). `run.total_timesteps` counts agent decisions; with `decision_interval: k` one decision spans k bars.

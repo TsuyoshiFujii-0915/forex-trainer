@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-
 from forex_env.features import CrossFeatureFn, FeatureFn
 
 _EPSILON = 1e-12
@@ -154,14 +153,14 @@ def mom720(frame: pd.DataFrame) -> pd.Series:
 
 
 def carry_annual(frame: pd.DataFrame) -> pd.Series:
-    """Annualized carry differential straight from the data (env ADR-0009).
+    """Annualized carry differential straight from the data (env ADR-0012).
 
     Args:
         frame: Per-pair frame including the CarryAnnual field (present in
             carry-augmented caches and in synthetic data).
 
     Returns:
-        The CarryAnnual series (counter rate minus JPY rate, decimal).
+        The CarryAnnual series (counter rate minus base rate, decimal).
     """
     return frame["CarryAnnual"].astype(float)
 
@@ -174,7 +173,7 @@ def term_carry_annual(frame: pd.DataFrame) -> pd.Series:
             in caches augmented by `forex-add-factors --which term`).
 
     Returns:
-        The TermCarryAnnual series (counter 10y rate minus JPY 10y, decimal).
+        The TermCarryAnnual series (counter 10y rate minus base 10y, decimal).
     """
     return frame["TermCarryAnnual"].astype(float)
 
@@ -257,7 +256,7 @@ def _cross_momentum(
 
 
 def xz_mom24(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
-    """Cross-sectional z-score of 24-bar momentum (ADR-0008 contract).
+    """Cross-sectional z-score of 24-bar momentum (env ADR-0008 contract).
 
     Args:
         data: Full MultiIndex OHLCV frame.
@@ -319,7 +318,7 @@ def xr_mom720(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
 
 
 def xz_carry(data: pd.DataFrame, symbols: tuple[str, ...]) -> pd.DataFrame:
-    """Cross-sectional z-score of the carry differential (env ADR-0009).
+    """Cross-sectional z-score of the carry differential (env ADR-0012).
 
     Args:
         data: Full MultiIndex frame including CarryAnnual per symbol.

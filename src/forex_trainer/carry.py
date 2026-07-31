@@ -1,4 +1,4 @@
-"""FRED carry augmentation CLI: forex-add-carry (ADR-0008 / env ADR-0009).
+"""FRED carry augmentation CLI: forex-add-carry (ADR-0010 / env ADR-0012).
 
 Adds a per-symbol CarryAnnual field (annualized short-rate differential
 counter currency minus the denomination/base currency, decimal) to an

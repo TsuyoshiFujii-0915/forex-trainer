@@ -122,7 +122,7 @@ FRED の公開金利系列(9通貨+JPY、月次、60日ラグ)を外部結合し
 
 ## フェーズ2: 符号付き資金調達(キャリー会計)の導入(2026-07-04、ラウンド13)
 
-env ADR-0009(carry_mode: signed、CarryAnnual による資金調達損益)+ trainer ADR-0008
+env ADR-0012(carry_mode: signed、CarryAnnual による資金調達損益)+ trainer ADR-0010
 (forex-add-carry、FRED 金利、60日ラグ)を実装。9ペア日足(SGD除外)+ キャリー特徴量
 (carry_annual / xz_carry)で再評価:
 

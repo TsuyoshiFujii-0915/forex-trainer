@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
+import yaml
 from forex_env.errors import ConfigError
+from helpers import make_experiment_raw, write_experiment_yaml
 
 from forex_trainer.config import (
     TrainerConfigError,
@@ -11,7 +15,6 @@ from forex_trainer.config import (
     parse_experiment_config,
     resolve_env_raw,
 )
-from helpers import make_experiment_raw, write_experiment_yaml
 
 
 def test_valid_config_parses(tmp_path) -> None:
@@ -23,6 +26,22 @@ def test_valid_config_parses(tmp_path) -> None:
     assert config.network.name == "mlp"
     assert config.custom_feature_names == ("rsi14",)
     assert raw["experiment"] == "test_exp"
+
+
+def test_readme_experiment_yaml_parses() -> None:
+    """The canonical public experiment example is a complete valid config."""
+    readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(
+        encoding="utf-8"
+    )
+    experiment_section = readme.split("## Experiment YAML", maxsplit=1)[1]
+    yaml_source = experiment_section.split("```yaml", maxsplit=1)[1].split(
+        "```", maxsplit=1
+    )[0]
+    raw = yaml.safe_load(yaml_source)
+
+    config = parse_experiment_config(raw)
+
+    assert config.experiment == "ppo_mlp_daily"
 
 
 def test_missing_file_raises() -> None:

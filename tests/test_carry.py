@@ -1,4 +1,4 @@
-"""Tests for the FRED carry augmentation (ADR-0008 / env ADR-0009)."""
+"""Tests for the FRED carry augmentation (ADR-0010 / env ADR-0012)."""
 
 from __future__ import annotations
 
