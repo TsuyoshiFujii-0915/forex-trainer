@@ -59,9 +59,9 @@ class DecisionInterval(gymnasium.Wrapper):
     One agent decision spans `interval` bars: the same target allocation is
     forwarded to the env at every bar (holding the allocation constant),
     rewards (log equity returns) are summed into one decision reward, and the
-    per-bar `info["costs_jpy"]` breakdowns are accumulated so the returned
-    info reports the costs of the whole interval. Episode termination or
-    truncation cuts the interval short.
+    per-bar `info["costs_jpy"]` breakdowns and `info["financing_jpy"]` values
+    are accumulated so the returned info reports the whole interval. Episode
+    termination or truncation cuts the interval short.
     """
 
     def __init__(self, env: gymnasium.Env, interval: int) -> None:
@@ -83,20 +83,24 @@ class DecisionInterval(gymnasium.Wrapper):
 
         Returns:
             Tuple of (observation, summed reward, terminated, truncated, info)
-            where observation/info reflect the last bar and info["costs_jpy"]
-            holds interval-total costs.
+            where observation/info reflect the last bar, info["costs_jpy"]
+            holds interval-total costs, and info["financing_jpy"] holds the
+            interval-total financing PnL.
         """
         total_reward = 0.0
         total_costs: dict[str, float] = {}
+        total_financing = 0.0
         for _ in range(self._interval):
             observation, reward, terminated, truncated, info = self.env.step(action)
             total_reward += float(reward)
             for key, value in info["costs_jpy"].items():
                 total_costs[key] = total_costs.get(key, 0.0) + float(value)
+            total_financing += float(info["financing_jpy"])
             if terminated or truncated:
                 break
         info = dict(info)
         info["costs_jpy"] = total_costs
+        info["financing_jpy"] = total_financing
         return observation, total_reward, terminated, truncated, info
 
 

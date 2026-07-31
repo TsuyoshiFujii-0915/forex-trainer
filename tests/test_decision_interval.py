@@ -51,6 +51,7 @@ def test_reward_is_log_equity_change_over_interval() -> None:
 def test_wrapped_walk_matches_manual_action_repeat() -> None:
     """A k-interval env reproduces a 1-interval env driven with repeated actions."""
     resolved, feature_names = _eval_env_raw()
+    resolved["transaction_costs"]["carry_mode"] = "signed"
     wrapped = build_single_env(
         resolved, feature_names, (), seed=0, decision_interval=_INTERVAL, residual=None
     )
@@ -65,10 +66,12 @@ def test_wrapped_walk_matches_manual_action_repeat() -> None:
 
         manual_reward = 0.0
         manual_costs = 0.0
+        manual_financing = 0.0
         for _ in range(_INTERVAL):
             _, reward, m_term, m_trunc, manual_info = manual.step(_ACTION)
             manual_reward += float(reward)
             manual_costs += float(manual_info["costs_jpy"]["total"])
+            manual_financing += float(manual_info["financing_jpy"])
             if m_term or m_trunc:
                 break
 
@@ -78,6 +81,9 @@ def test_wrapped_walk_matches_manual_action_repeat() -> None:
         )
         assert wrapped_info["costs_jpy"]["total"] == pytest.approx(
             manual_costs, abs=1e-9
+        )
+        assert wrapped_info["financing_jpy"] == pytest.approx(
+            manual_financing, abs=1e-9
         )
         assert (w_term or w_trunc) == (m_term or m_trunc)
         if w_term or w_trunc:
