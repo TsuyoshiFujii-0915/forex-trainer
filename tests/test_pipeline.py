@@ -62,6 +62,13 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     assert (run_dir / "env_eval.yaml").is_file()
     meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     assert set(meta["git"]) == {"forex_trainer", "forex_env"}
+    assert meta["run_provenance_contract_version"] == 1
+    assert set(meta["data_provenance"]) == {"train", "validation", "evaluation"}
+    assert all("sha256" in item for item in meta["data_provenance"].values())
+    assert all(
+        set(item) == {"commit", "dirty", "worktree_sha256"}
+        for item in meta["git"].values()
+    )
     assert any((run_dir / "tensorboard").iterdir())
 
     metrics = run_evaluation(run_dir)

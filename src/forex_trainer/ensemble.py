@@ -23,7 +23,7 @@ from .algorithms import ALGO_REGISTRY, resolve_device
 from .config import TrainerConfigError, parse_experiment_config
 from .env_factory import build_single_env
 from .evaluate import compute_metrics, walk_eval_range
-from .run_dir import create_run_dir
+from .run_dir import create_run_dir, verify_run_provenance
 
 
 def _load_member(run_dir: Path) -> tuple[Any, Any, dict[str, Any]]:
@@ -41,15 +41,29 @@ def _load_member(run_dir: Path) -> tuple[Any, Any, dict[str, Any]]:
     snapshot_path = run_dir / "config_snapshot.yaml"
     model_path = run_dir / "model_final.zip"
     eval_env_path = run_dir / "env_eval.yaml"
-    for required in (snapshot_path, model_path, eval_env_path):
+    meta_path = run_dir / "meta.json"
+    for required in (snapshot_path, model_path, eval_env_path, meta_path):
         if not required.is_file():
             raise TrainerConfigError(
                 f"Run directory is missing {required.name}: {run_dir}"
             )
+    resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
+    try:
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        raise TrainerConfigError(f"Failed to read run metadata {meta_path}: {exc}") from exc
+    if not isinstance(meta, dict):
+        raise TrainerConfigError(
+            f"Run metadata root must be a mapping: {meta_path}"
+        )
+    if not isinstance(resolved_eval, dict):
+        raise TrainerConfigError(
+            f"Resolved evaluation environment must be a mapping: {eval_env_path}"
+        )
+    verify_run_provenance(meta, resolved_eval)
     config = parse_experiment_config(
         yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
     )
-    resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
     spec = ALGO_REGISTRY[config.algorithm.name]
     model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
     return config, model, resolved_eval

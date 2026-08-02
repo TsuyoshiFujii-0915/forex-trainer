@@ -18,7 +18,12 @@ from .config import (
     resolve_env_raw,
 )
 from .env_factory import build_single_env, build_vec_env
-from .run_dir import create_run_dir, write_run_metadata
+from .run_dir import (
+    capture_run_data_provenance,
+    create_run_dir,
+    resolve_file_data_path,
+    write_run_metadata,
+)
 
 # Target number of validation walks per training run (ADR-0005).
 _VALIDATION_WALKS = 20
@@ -45,11 +50,25 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
     resolved_train = resolve_env_raw(config.env, config.train_range, for_eval=False)
     resolved_val = resolve_env_raw(config.env, config.val_range, for_eval=True)
     resolved_eval = resolve_env_raw(config.env, config.eval_range, for_eval=True)
+    working_directory = Path.cwd()
+    resolved_train = resolve_file_data_path(resolved_train, working_directory)
+    resolved_val = resolve_file_data_path(resolved_val, working_directory)
+    resolved_eval = resolve_file_data_path(resolved_eval, working_directory)
+    data_provenance = capture_run_data_provenance(
+        resolved_train, resolved_val, resolved_eval
+    )
     device = resolve_device(config.run.device)
 
     run_dir = create_run_dir(runs_root, config.experiment)
     write_run_metadata(
-        run_dir, config, raw, resolved_train, resolved_val, resolved_eval, device
+        run_dir,
+        config,
+        raw,
+        resolved_train,
+        resolved_val,
+        resolved_eval,
+        device,
+        data_provenance,
     )
 
     vec_env = build_vec_env(

@@ -54,7 +54,9 @@ uv run forex-eval --run runs/ppo_cnn1d_daily/<timestamp>
 uv run forex-compare runs
 ```
 
-Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
+Each run directory contains the config snapshot, resolved env configs for train/val/eval, and `meta.json` with the ADR-0011 provenance contract: data SHA-256, requested and actual coverage, cache schema/carry contract, available FRED/factor lineage, exact source-tree state of both repositories, package versions, seed, and device. File paths are resolved to absolute paths in the env snapshots. TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv` are stored alongside them. `configs/` is committed; `runs/` is gitignored.
+
+`forex-eval` and `forex-ensemble-eval` verify the recorded data, code, and package provenance before loading a model. A replaced cache or a different source tree is rejected explicitly. Runs created before ADR-0011 have no defensible immutable provenance and are not silently accepted or backfilled; create a new run under the current contract. Mutable remote providers must first be materialized as a current-contract Parquet cache and used through `provider: file`.
 
 ## Experiment YAML
 
