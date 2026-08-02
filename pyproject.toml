@@ -26,6 +26,8 @@ forex-fetch-dukascopy = "forex_trainer.dukascopy:main"
 forex-ensemble-eval = "forex_trainer.ensemble:main"
 forex-add-carry = "forex_trainer.carry:main"
 forex-add-factors = "forex_trainer.factors:main"
+forex-rule-eval = "forex_trainer.rule_benchmark:main"
+forex-legacy-attest = "forex_trainer.legacy_revalidation:main"
 
 [dependency-groups]
 dev = [
