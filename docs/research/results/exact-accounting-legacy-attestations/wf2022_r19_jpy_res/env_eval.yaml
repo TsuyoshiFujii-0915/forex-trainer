@@ -1,0 +1,51 @@
+environment:
+  seed: 42
+  initial_balance_jpy: 1000000.0
+  episode_max_steps: 1000000
+  window_size: 32
+  max_leverage: 5.0
+  margin_call_threshold: 0.2
+  allow_action_leverage: false
+  random_start: false
+  currency_pairs:
+  - JPY/USD
+  - JPY/EUR
+  - JPY/GBP
+  - JPY/AUD
+  - JPY/CHF
+  - JPY/CAD
+  - JPY/NZD
+  - JPY/NOK
+  - JPY/SEK
+data:
+  provider: file
+  timeframe: 1d
+  path: /Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/jpy_9pairs_1d_factors.parquet
+  start_date: '2022-01-01'
+  end_date: '2023-01-01'
+features:
+  volatility_window: 32
+  normalize: false
+  selected:
+  - log_return
+  - volatility
+  - sma20_ratio
+  - mom24
+  - xz_mom24
+  - xr_mom24
+  - carry_annual
+  - xz_carry
+transaction_costs:
+  commission_rate: 0.0
+  overnight_rate: 2.0e-05
+  carry_mode: signed
+  spreads:
+    JPY/USD: 1.5e-05
+    JPY/EUR: 2.5e-05
+    JPY/GBP: 3.0e-05
+    JPY/AUD: 3.0e-05
+    JPY/CHF: 3.5e-05
+    JPY/CAD: 3.5e-05
+    JPY/NZD: 4.0e-05
+    JPY/NOK: 6.0e-05
+    JPY/SEK: 6.0e-05

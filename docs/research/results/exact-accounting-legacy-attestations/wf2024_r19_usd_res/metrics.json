@@ -1,0 +1,13 @@
+{
+  "steps": 198,
+  "cumulative_log_return": 0.12783062783583732,
+  "gross_cumulative_log_return": 0.15433269986471018,
+  "final_equity_ratio": 1.1363605185564967,
+  "sharpe_annualized": 1.7825802708928793,
+  "max_drawdown": 0.11268170355727691,
+  "total_cost_ratio": 0.026801109329502797,
+  "mean_gross_leverage": 3.414296738541474,
+  "terminated_by_margin_call": false,
+  "eval_start": "2024-03-28T00:00:00+00:00",
+  "eval_end": "2024-12-31T00:00:00+00:00"
+}

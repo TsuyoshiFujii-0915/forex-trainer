@@ -1,7 +1,7 @@
-# 引き継ぎレポート: FX 強化学習エージェント開発(2026-07-01〜07-20)
+# 引き継ぎレポート: FX 強化学習エージェント開発(2026-07-01〜08-02)
 
 次の担当者向けの引き継ぎ文書。詳細な実験経緯は [docs/research/](research/README.md)
-(ラウンド別ログ 01〜06)にあり、本書は全体像・現在地・再現手順・教訓・推奨次手をまとめる。
+(ラウンド別ログ 01〜07)にあり、本書は全体像・現在地・再現手順・教訓・推奨次手をまとめる。
 
 ---
 
@@ -11,17 +11,18 @@
 RL エージェントの構築。目標値はユーザー設定で **walk-forward ネット +7%/年**、かつ
 「2019〜2025 への期間適合ではなく、包括的に勝てるルール」であること。
 
-**現在地(2026-07-20)**:
+**現在地(2026-08-02、厳密会計で再評価済み)**:
 
 - **最も頑健な発見はルールレベル**: 価格クロスセクション・リバーサル(ノーフィッティング)
   が、**構造的に独立した2つのユニバース(JPY建て・USD建て)× 2つの時代
-  (2009〜18・2019〜25)すべてで正**。JPY +3.1%/年(4/10, 5/7)、USD +4.2%/年(5/10, 5/7)。
+  (2009〜18・2019〜25)すべてで正**。JPY +3.34%/年(4/10, 5/7)、USD +4.33%/年
+  (5/10, 5/7)。
   方向を反転させたモメンタムは両ユニバース・両時代で明確に負
 - **純RLはユニバース間で汎化しない**: JPYでは +4.7%/年(両時代正)を出すが、
-  同じレシピをUSDに適用すると **−2.9%/年に失敗**(era1 −6.6%)。ルール単体は
+  同じレシピをUSDに適用すると **−2.63%/年に失敗**(era1 −6.31%)。ルール単体は
   USDでも正なので、これは「学習の失敗」であって「タスクが解けない」わけではない
 - **残差RL(ルール床+RL)の効果はユニバース依存**: JPYではルール単体を上回る
-  (+4.4% vs +3.1%)が、USDではルール単体を**下回る**(+3.1% vs +4.2%)。
+  (+4.77% vs +3.34%)が、USDではルール単体を**下回る**(+3.24% vs +4.33%)。
   「RLが一貫してルールを改善する」とは言えない
 - 目標 **+7%/年は未達**。一時「達成」と報告した構成(ラウンド14, +7.13%/年)は、
   ベースルールが2019〜2025への期間適合だったため撤回済み(→ §6)
@@ -34,13 +35,15 @@ RL エージェントの構築。目標値はユーザー設定で **walk-forwar
   log資産リターン報酬)。**基軸通貨は任意**(ADR-0010、旧JPY限定を解除)。ADR 0001〜0018。
   テストスイートで継続検証
 - **forex-trainer**(本リポジトリ): 実験ハーネス。1 YAML = 1実験
-  (アルゴリズム×ネットワーク×特徴量 + 決定間隔・残差スキーム)。ADR 0001〜0010。
+  (アルゴリズム×ネットワーク×特徴量 + 決定間隔・残差スキーム)。ADR 0001〜0013。
   テスト 100件超
 
 **CLI**: `forex-train` / `forex-eval` / `forex-compare` / `forex-ensemble-eval`(シード
 アンサンブル評価)/ `forex-fetch-dukascopy`(長期時間足取得)/ `forex-add-carry`
 (FRED短期金利→CarryAnnual付与、任意基軸通貨対応)/ `forex-add-factors`(FRED長期金利・
-PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/synthetic)
+PPP・グローバル系列付与)/ `forex-rule-eval`(基準ルール再評価)/ `forex-legacy-attest`
+(旧checkpointの現行環境attestation)/ `forex-env-fetch` / `forex-env-migrate-cache-v2`
+(env側、取得・明示的cache移行)
 
 **主要な拡張(本開発で追加)**:
 
@@ -58,6 +61,9 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 | **任意の基軸通貨**(JPY限定解除) | `currency_pairs` 汎用パターン | **env 0010** |
 | 合成データの補助ファクター | `SyntheticDataProvider` | env 0018 |
 | **外部ファクター付与**(10年金利・PPP・VIX・原油) | `forex-add-factors` | trainer 0010 |
+| 不変run provenance | `meta.json` + 評価前照合 | trainer 0011 |
+| 再現可能な基準ルール | `forex-rule-eval` | trainer 0012 |
+| 旧checkpointの分離評価 | `forex-legacy-attest` | trainer 0013 |
 
 ## 3. データ資産(data/、gitignore対象 — 消すと再取得が必要)
 
@@ -67,6 +73,13 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 | `usd_9pairs_1d_factors.parquet` | **USDユニバース(新規・独立)**。同上フル装備 | 実始点 2006-05-16。不良プリント7件修復済み |
 | `jpy_9pairs_1d_2003_clean.parquet` / `usd_9pairs_1d_clean.parquet` | ファクター無しの素の修復済みキャッシュ | |
 | `jpy_9pairs_1h_long.parquet` 等 | Dukascopy 時間足 2015+(7〜9ペア) | 取得時のスロットリングに注意(§7) |
+
+現行cacheはschema v2へ明示移行済みで、carry contractを持つcacheは
+`counter-minus-base-v1`である。現行factor cacheは、FRED変換順序、発表ラグ、series ID、
+元系列SHA-256をParquet metadataに保存する。旧cacheの退避先は
+`data/legacy-cache-v1-20260802/`（gitignore対象）。`jpy_9pairs_1d_2003_*`の実始点は
+名前・宣言範囲と異なり2005-07-19であり、2003年開始を要求する一部の旧設定には学習期間不足が
+ある。R18/R19の評価区間には影響しないが、旧sealed/R15〜17の完全再現を主張してはならない。
 
 **金利/CPI**: FRED 公開CSV(認証不要)。マッピングは `src/forex_trainer/carry.py` の
 `CURRENCY_SHORT_RATE_SERIES`、`src/forex_trainer/factors.py` の
@@ -85,8 +98,8 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
    前向き検証に充てる
 4. **RL の前に ceiling 診断**: 新しい特徴量/ユニバースでは、まずスクリプト化した
    ルールを env のコストモデルに通してグロスが正であることを両時代で確認する
-   (グロス≈0や片時代のみ正の空間にはRLを投入しない)。パターンは research/03・06 と
-   scratchpad の `*_ceiling*.py`
+   (グロス≈0や片時代のみ正の空間にはRLを投入しない)。価格リバーサル基準は
+   `forex-rule-eval`で再現する
 5. **多シード+アンサンブル**: 判定は3シード以上。行動平均アンサンブルは **N=3 が最適**
    (5以上は合意部分しか残らず痩せる)
 6. **グロス/ネット分解**: metrics.json の `gross_cumulative_log_return` で
@@ -95,7 +108,7 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
    検証はチェックポイント選択のみに使い、構成選択やゲーティングには使わない
 8. **新しい価格データは必ずスパイク監査**してから使う(§6参照)
 
-## 5. 開発経緯(概要 — 詳細は research/01〜06)
+## 5. 開発経緯(概要 — 詳細は research/01〜07)
 
 | フェーズ | 内容 | 帰結 |
 |---|---|---|
@@ -110,6 +123,7 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 | **env ADR-0010** | 基軸通貨をJPY限定から解除 → USD建て独立ユニバース構築 | 汎化テストの土台 |
 | R18 | JPY用longfレシピをUSDにそのまま適用(純RL) | **失敗**(−2.9%/年、ルールは+4.2%で正) |
 | R19 | 残差RLをJPY・USD両方で17フォールド再検証 | **ユニバース依存**(JPYで有効、USDで無効) |
+| 厳密会計再評価 | ルール2系列と旧R18/R19全51フォールドを来歴付きで再評価 | 主要結論は不変。旧学習来歴は検証不能 |
 
 ## 6. 確定した知見と教訓
 
@@ -136,7 +150,8 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
   プリント(NOKJPY ±460%、USD/EUR・USD/NOK等)。リバーサル系は不良ティックを偽の
   利益として刈り取る。本物の歴史的イベント(2015年SNBのCHF固定撤廃)は修復
   アルゴリズムが正しく「非可逆」と判定し保持することを確認済み。修復ロジックは
-  scratchpad 参照(検出条件: |return[i]|>8% かつ符号反転かつ |return[i+1]|>0.6×|return[i]|)
+  検出条件は `|return[i]|>8%` かつ符号反転かつ
+  `|return[i+1]|>0.6×|return[i]|`。修復済みcacheの内容hashはrun provenanceで固定する
 - **RLの「学習成功」は割り引いて評価する**: 1ユニバースでの正の結果だけでは
   「汎化した技能を学習した」証拠にならない。必ず独立ユニバースで再検証すること
 
@@ -158,6 +173,9 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 - 環境の基軸通貨は `currency_pairs` の全要素で統一する必要がある(env ADR-0010、
   混在は ConfigError)。1つの env インスタンスで複数基軸通貨は扱えない
   (別ユニバース=別環境インスタンスとして学習する)
+- 通常の `forex-eval` / ensemble評価は、不変provenanceのない旧runや、学習時と異なる
+  data/code/packageをモデルload前に拒否する。旧checkpointの参考評価には
+  `forex-legacy-attest`を使い、現行runと同一視しない
 
 ## 8. 推奨する次の一手(優先順)
 
@@ -180,8 +198,14 @@ PPP・グローバル系列付与)/ `forex-env-fetch`(env側、yfinance/syntheti
 # (どちらも forex-add-carry → forex-add-factors の連鎖で再構築可能。§3参照)
 
 # ルールの ceiling 診断(学習不要、数分):
-# scratchpad の ceiling_factors.py パターンを参照
-# (walk_eval_range + build_single_env にスクリプト化ルールを差すだけ)
+uv run forex-rule-eval \
+  --configs configs/wf_r19_jpy_res/*.yaml \
+  --feature xr_mom24 --top-k 2 --base-size 0.8 \
+  --output docs/research/results/exact-accounting-rule-jpy.json
+uv run forex-rule-eval \
+  --configs configs/wf_r19_usd_res/*.yaml \
+  --feature xr_mom24 --top-k 2 --base-size 0.8 \
+  --output docs/research/results/exact-accounting-rule-usd.json
 
 # RL(残差スキーム、現状最良のRL構成)の1フォールド再現:
 for s in 1 2 3; do
@@ -197,6 +221,7 @@ uv run forex-ensemble-eval --runs runs/wf2024_r19_jpy_res/* --runs-root runs
 
 - 実験定義: `configs/`(全てコミット済み。`wf_r19_{jpy,usd}_res/` が現行最新の比較セット)
 - 実行結果: `runs/`(ローカルのみ、ADR-0003。メトリクス・equity curve・モデル同梱)
-- 研究ログ: `docs/research/01〜06`(結果表・撤回記録含む)
+- 研究ログ: `docs/research/01〜07`(結果表・撤回記録・厳密会計再評価を含む)
+- 厳密会計の機械可読成果物: `docs/research/results/`(ルール2系列、旧checkpoint 51 attestations)
 - 設計判断: `docs/decisions/`(trainer)+ `forex-env-v3/docs/decisions/`(env、ADR-0010が
   基軸通貨汎化の核)

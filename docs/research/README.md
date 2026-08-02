@@ -13,6 +13,10 @@
 | [04-rl-vs-rule-benchmark.md](04-rl-vs-rule-benchmark.md) | RL 対 ルールベンチマーク、+7%主張の撤回まで | 7〜14 |
 | [05-rl-architecture-campaign.md](05-rl-architecture-campaign.md) | 二時代プロトコル下の RL 本体改善キャンペーン | 15〜17 |
 | [06-external-data-and-universe-generalization.md](06-external-data-and-universe-generalization.md) | 外部データ・独立ユニバース(env ADR-0010)による汎化性検証 | 18〜19 |
+| [07-exact-accounting-revalidation.md](07-exact-accounting-revalidation.md) | 厳密会計・データ来歴契約後のルールとR18/R19再評価 | 18〜19再評価 |
+
+> 01〜06の数値は各実施時点の研究記録である。現行の厳密会計による比較値と、その解釈上の
+> 制限は07を正とする。
 
 ## 確立した方法論(今後の全実験に適用)
 

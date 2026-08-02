@@ -1,0 +1,802 @@
+{
+  "contract": "cross-sectional-reversal-v1",
+  "parameters": {
+    "feature": "xr_mom24",
+    "top_k": 2,
+    "base_size": 0.8
+  },
+  "folds": [
+    {
+      "experiment": "wf2009_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2009_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2009-01-01",
+        "end": "2010-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2009-01-01",
+          "end": "2010-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 198,
+        "cumulative_log_return": 0.11952350393091317,
+        "gross_cumulative_log_return": 0.14388070809903378,
+        "final_equity_ratio": 1.1269597317395998,
+        "sharpe_annualized": 0.9185840530955452,
+        "max_drawdown": 0.09920533697560441,
+        "total_cost_ratio": 0.026941784764347478,
+        "mean_gross_leverage": 3.201588337907342,
+        "terminated_by_margin_call": false,
+        "eval_start": "2009-03-31T00:00:00+01:00",
+        "eval_end": "2010-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2010_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2010_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2010-01-01",
+        "end": "2011-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2010-01-01",
+          "end": "2011-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 197,
+        "cumulative_log_return": 0.09275378928974776,
+        "gross_cumulative_log_return": 0.11631769735068426,
+        "final_equity_ratio": 1.097191561695943,
+        "sharpe_annualized": 0.7652155203066776,
+        "max_drawdown": 0.08409278748429205,
+        "total_cost_ratio": 0.02493755002944708,
+        "mean_gross_leverage": 3.20008103140203,
+        "terminated_by_margin_call": false,
+        "eval_start": "2010-03-31T00:00:00+01:00",
+        "eval_end": "2010-12-31T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2011_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2011_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2011-01-01",
+        "end": "2012-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2011-01-01",
+          "end": "2012-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 195,
+        "cumulative_log_return": 0.22677838823129057,
+        "gross_cumulative_log_return": 0.2509414154606577,
+        "final_equity_ratio": 1.254551813685002,
+        "sharpe_annualized": 1.861321704846408,
+        "max_drawdown": 0.11397937133583103,
+        "total_cost_ratio": 0.026510646908296746,
+        "mean_gross_leverage": 3.1964691624461383,
+        "terminated_by_margin_call": false,
+        "eval_start": "2011-03-31T00:00:00+01:00",
+        "eval_end": "2011-12-30T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2012_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2012_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2012-01-01",
+        "end": "2013-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2012-01-01",
+          "end": "2013-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 195,
+        "cumulative_log_return": -0.14685015296504272,
+        "gross_cumulative_log_return": -0.12391277354377535,
+        "final_equity_ratio": 0.8634233491518742,
+        "sharpe_annualized": -1.9069232114430996,
+        "max_drawdown": 0.16590144705370857,
+        "total_cost_ratio": 0.021456883196242754,
+        "mean_gross_leverage": 3.2025072193023005,
+        "terminated_by_margin_call": false,
+        "eval_start": "2012-04-02T00:00:00+01:00",
+        "eval_end": "2013-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2013_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2013_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2013-01-01",
+        "end": "2014-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2013-01-01",
+          "end": "2014-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 197,
+        "cumulative_log_return": 0.06125401884179056,
+        "gross_cumulative_log_return": 0.08577490521757886,
+        "final_equity_ratio": 1.0631689448333004,
+        "sharpe_annualized": 0.678822341307507,
+        "max_drawdown": 0.12121046259492374,
+        "total_cost_ratio": 0.025244597118420996,
+        "mean_gross_leverage": 3.198394102926663,
+        "terminated_by_margin_call": false,
+        "eval_start": "2013-03-29T00:00:00+00:00",
+        "eval_end": "2014-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2014_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2014_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2014-01-01",
+        "end": "2015-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2014-01-01",
+          "end": "2015-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 198,
+        "cumulative_log_return": -0.004326789834835764,
+        "gross_cumulative_log_return": 0.019913818849563385,
+        "final_equity_ratio": 0.9956825572345067,
+        "sharpe_annualized": -0.06534919164291147,
+        "max_drawdown": 0.08525577774040694,
+        "total_cost_ratio": 0.024439536690669294,
+        "mean_gross_leverage": 3.1979009993706082,
+        "terminated_by_margin_call": false,
+        "eval_start": "2014-03-31T00:00:00+01:00",
+        "eval_end": "2015-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2015_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2015_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2015-01-01",
+        "end": "2016-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2015-01-01",
+          "end": "2016-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 198,
+        "cumulative_log_return": -0.06011130749832854,
+        "gross_cumulative_log_return": -0.03632649662857969,
+        "final_equity_ratio": 0.9416597139637131,
+        "sharpe_annualized": -0.5769898236110275,
+        "max_drawdown": 0.14387999336994162,
+        "total_cost_ratio": 0.02335019501025306,
+        "mean_gross_leverage": 3.2003469467984376,
+        "terminated_by_margin_call": false,
+        "eval_start": "2015-03-31T00:00:00+01:00",
+        "eval_end": "2016-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2016_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2016_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2016-01-01",
+        "end": "2017-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2016-01-01",
+          "end": "2017-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 197,
+        "cumulative_log_return": -0.04022381399956447,
+        "gross_cumulative_log_return": -0.01660320150817915,
+        "final_equity_ratio": 0.9605744250876832,
+        "sharpe_annualized": -0.3684925488540581,
+        "max_drawdown": 0.20003868965251548,
+        "total_cost_ratio": 0.023477499886428756,
+        "mean_gross_leverage": 3.199675823436801,
+        "terminated_by_margin_call": false,
+        "eval_start": "2016-03-30T00:00:00+01:00",
+        "eval_end": "2016-12-30T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2017_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2017_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2017-01-01",
+        "end": "2018-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2017-01-01",
+          "end": "2018-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 195,
+        "cumulative_log_return": 0.030682836087152617,
+        "gross_cumulative_log_return": 0.054042836078603114,
+        "final_equity_ratio": 1.0311584057826626,
+        "sharpe_annualized": 0.4624992289462138,
+        "max_drawdown": 0.07242702890574537,
+        "total_cost_ratio": 0.02288484671412092,
+        "mean_gross_leverage": 3.2000597018161403,
+        "terminated_by_margin_call": false,
+        "eval_start": "2017-03-30T00:00:00+01:00",
+        "eval_end": "2018-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2018_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2018_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2018-01-01",
+        "end": "2019-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2018-01-01",
+          "end": "2019-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 198,
+        "cumulative_log_return": -0.05726654318852652,
+        "gross_cumulative_log_return": -0.03394585392917161,
+        "final_equity_ratio": 0.944342327802901,
+        "sharpe_annualized": -0.9367786105093364,
+        "max_drawdown": 0.0973210509460537,
+        "total_cost_ratio": 0.023181419602326336,
+        "mean_gross_leverage": 3.199933499341906,
+        "terminated_by_margin_call": false,
+        "eval_start": "2018-03-29T00:00:00+01:00",
+        "eval_end": "2019-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2019_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2019_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2019-01-01",
+        "end": "2020-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2019-01-01",
+          "end": "2020-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 197,
+        "cumulative_log_return": -0.11617308808642367,
+        "gross_cumulative_log_return": -0.09225145970478667,
+        "final_equity_ratio": 0.890321105983384,
+        "sharpe_annualized": -1.660095479592809,
+        "max_drawdown": 0.1257748513697594,
+        "total_cost_ratio": 0.02269496846769117,
+        "mean_gross_leverage": 3.202814702623189,
+        "terminated_by_margin_call": false,
+        "eval_start": "2019-03-29T00:00:00+00:00",
+        "eval_end": "2020-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2020_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2020_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2020-01-01",
+        "end": "2021-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2020-01-01",
+          "end": "2021-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 199,
+        "cumulative_log_return": 0.143880257245652,
+        "gross_cumulative_log_return": 0.16826680642048297,
+        "final_equity_ratio": 1.1547458278000293,
+        "sharpe_annualized": 1.4803753136921525,
+        "max_drawdown": 0.10245279347294256,
+        "total_cost_ratio": 0.026407499270962424,
+        "mean_gross_leverage": 3.2000340446952276,
+        "terminated_by_margin_call": false,
+        "eval_start": "2020-03-30T00:00:00+01:00",
+        "eval_end": "2021-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2021_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2021_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2021-01-01",
+        "end": "2022-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2021-01-01",
+          "end": "2022-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 197,
+        "cumulative_log_return": 0.03664216676677354,
+        "gross_cumulative_log_return": 0.06068849476119334,
+        "final_equity_ratio": 1.0373217662169962,
+        "sharpe_annualized": 0.5365483551803396,
+        "max_drawdown": 0.10155270653239956,
+        "total_cost_ratio": 0.02513602324150784,
+        "mean_gross_leverage": 3.1992794855215,
+        "terminated_by_margin_call": false,
+        "eval_start": "2021-03-31T00:00:00+01:00",
+        "eval_end": "2021-12-31T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2022_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2022_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2022-01-01",
+        "end": "2023-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2022-01-01",
+          "end": "2023-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 196,
+        "cumulative_log_return": 0.14690285321840305,
+        "gross_cumulative_log_return": 0.17023374055856555,
+        "final_equity_ratio": 1.1582414381361994,
+        "sharpe_annualized": 1.6434758957136442,
+        "max_drawdown": 0.05606020619127017,
+        "total_cost_ratio": 0.025208018239761418,
+        "mean_gross_leverage": 3.1964003024921688,
+        "terminated_by_margin_call": false,
+        "eval_start": "2022-03-31T00:00:00+01:00",
+        "eval_end": "2022-12-30T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2023_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2023_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2023-01-01",
+        "end": "2024-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2023-01-01",
+          "end": "2024-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 197,
+        "cumulative_log_return": -0.055057827140456525,
+        "gross_cumulative_log_return": -0.031726617692798276,
+        "final_equity_ratio": 0.9464304170063753,
+        "sharpe_annualized": -0.8652554269555438,
+        "max_drawdown": 0.10135268878071446,
+        "total_cost_ratio": 0.0224723597492437,
+        "mean_gross_leverage": 3.201150537440226,
+        "terminated_by_margin_call": false,
+        "eval_start": "2023-03-30T00:00:00+01:00",
+        "eval_end": "2024-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2024_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2024_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2024-01-01",
+        "end": "2025-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2024-01-01",
+          "end": "2025-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 198,
+        "cumulative_log_return": 0.12667148407453055,
+        "gross_cumulative_log_return": 0.15147770995318546,
+        "final_equity_ratio": 1.1350440764710283,
+        "sharpe_annualized": 1.7316673817446584,
+        "max_drawdown": 0.12078599121507405,
+        "total_cost_ratio": 0.02499811996657578,
+        "mean_gross_leverage": 3.1974418877861774,
+        "terminated_by_margin_call": false,
+        "eval_start": "2024-03-28T00:00:00+00:00",
+        "eval_end": "2024-12-31T00:00:00+00:00"
+      }
+    },
+    {
+      "experiment": "wf2025_r19_usd_res",
+      "config": "configs/wf_r19_usd_res/wf2025_r19_usd_res.yaml",
+      "eval_range": {
+        "start": "2025-01-01",
+        "end": "2026-01-01"
+      },
+      "data_provenance": {
+        "provider": "file",
+        "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+        "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+        "requested_coverage": {
+          "start": "2025-01-01",
+          "end": "2026-01-01"
+        },
+        "actual_coverage": {
+          "start": "2006-05-16T00:00:00+01:00",
+          "end": "2026-06-29T00:00:00+01:00",
+          "rows": 5210
+        },
+        "cache_contract": {
+          "timeframe": "1d",
+          "declared_start": "2003-01-01",
+          "declared_end": "2026-06-30",
+          "schema_version": "2",
+          "carry_contract": "counter-minus-base-v1"
+        },
+        "augmentation_metadata": {
+          "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+        }
+      },
+      "metrics": {
+        "steps": 193,
+        "cumulative_log_return": 0.21625638566129274,
+        "gross_cumulative_log_return": 0.2410224882191631,
+        "final_equity_ratio": 1.241420620649396,
+        "sharpe_annualized": 2.9650160648699204,
+        "max_drawdown": 0.029936123719477514,
+        "total_cost_ratio": 0.029151375771848072,
+        "mean_gross_leverage": 3.1972837288782454,
+        "terminated_by_margin_call": false,
+        "eval_start": "2025-04-01T00:00:00+01:00",
+        "eval_end": "2025-12-31T00:00:00+00:00"
+      }
+    }
+  ],
+  "aggregate": {
+    "folds": 17,
+    "mean_cumulative_log_return": 0.042431538860845205,
+    "annualized_return": 0.043344625366998346,
+    "positive_folds": 10
+  },
+  "current_evaluation": {
+    "repositories": {
+      "forex_trainer": {
+        "commit": "33943db20969e240ded47fa89c6d5659c6a2e7a5",
+        "dirty": false,
+        "worktree_sha256": "33c2da2f369cc6a117055a71d327f41de48fe448131a6a62c936189bf2d3e4c3"
+      },
+      "forex_env": {
+        "commit": "f4b3320f79fbf8979c1cf3aee6317ecd719065de",
+        "dirty": false,
+        "worktree_sha256": "33c2da2f369cc6a117055a71d327f41de48fe448131a6a62c936189bf2d3e4c3"
+      }
+    },
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3"
+    }
+  }
+}

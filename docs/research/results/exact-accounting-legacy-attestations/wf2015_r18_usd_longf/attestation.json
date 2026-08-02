@@ -1,0 +1,97 @@
+{
+  "contract": "legacy-checkpoint-current-environment-v1",
+  "training_provenance": "unverifiable",
+  "members": [
+    {
+      "run": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/runs/wf2015_r18_usd_longf/20260721-014809-141236",
+      "model_sha256": "23be3a00615b0e8f68430ac0ddc490943ea452eeea238cbd6dcea8aeee3c6f7c",
+      "config_sha256": "d08ab740f45fcab4c335f36b746273588aaab852ceb2b00b7f53f30231746bae",
+      "environment_sha256": "8b827ebeb88d02de9fd3fa06ed1c0310daa5b78d5d2777e129fac5bd18d8f015",
+      "legacy_meta_sha256": "4702f4fec0c5e73370dec32e87d578d836023417577ce3bc277bb8106b466502",
+      "legacy_git": {
+        "forex_trainer": "d26fac57378ed0de5114af65c418d096b6b6892a",
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
+      }
+    },
+    {
+      "run": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/runs/wf2015_r18_usd_longf/20260721-014936-911420",
+      "model_sha256": "60d0f613fa3cc6459aff833454388aace6a4d10790693da683de150689c5686c",
+      "config_sha256": "6cebc6bf25848402ff0ab4d165311c819c93547acbbf7a4d81b7bfacf316dcd9",
+      "environment_sha256": "8b827ebeb88d02de9fd3fa06ed1c0310daa5b78d5d2777e129fac5bd18d8f015",
+      "legacy_meta_sha256": "424be9a9312fe1a8f5d60581fd0375e154655d4418308cfb3e0a91368d8a6c7a",
+      "legacy_git": {
+        "forex_trainer": "d26fac57378ed0de5114af65c418d096b6b6892a",
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
+      }
+    },
+    {
+      "run": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/runs/wf2015_r18_usd_longf/20260721-015059-372683",
+      "model_sha256": "54e4fd188b8be253d3064922410a2fe002ba08e3f237e42d12fb061c2564aed5",
+      "config_sha256": "9895703957116242fca7787fdf085c92b722bb4c61d989f5caa9fe70391b3442",
+      "environment_sha256": "8b827ebeb88d02de9fd3fa06ed1c0310daa5b78d5d2777e129fac5bd18d8f015",
+      "legacy_meta_sha256": "9639a9728d3f7d926f8ce8658922cfde0ced4164c5a310cd95bbbfa0deeac606",
+      "legacy_git": {
+        "forex_trainer": "d26fac57378ed0de5114af65c418d096b6b6892a",
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
+      }
+    }
+  ],
+  "current_evaluation": {
+    "data": {
+      "provider": "file",
+      "path": "/Users/tsuyoshi/workspace/01_Projects/forex-trainer/data/usd_9pairs_1d_factors.parquet",
+      "sha256": "3bfede080c64d5b7f3ff28af69c4d07921670d7b7ad9fde97a8c17a341b4abea",
+      "requested_coverage": {
+        "start": "2015-01-01",
+        "end": "2016-01-01"
+      },
+      "actual_coverage": {
+        "start": "2006-05-16T00:00:00+01:00",
+        "end": "2026-06-29T00:00:00+01:00",
+        "rows": 5210
+      },
+      "cache_contract": {
+        "timeframe": "1d",
+        "declared_start": "2003-01-01",
+        "declared_end": "2026-06-30",
+        "schema_version": "2",
+        "carry_contract": "counter-minus-base-v1"
+      },
+      "augmentation_metadata": {
+        "forex_trainer_data_lineage": "{\"transforms\":[{\"lag_days\":30,\"operation\":\"carry\",\"series\":{\"AUD\":\"IR3TIB01AUM156N\",\"CAD\":\"IR3TIB01CAM156N\",\"CHF\":\"IR3TIB01CHM156N\",\"EUR\":\"ECBDFR\",\"GBP\":\"IR3TIB01GBM156N\",\"JPY\":\"IR3TIB01JPM156N\",\"NOK\":\"IR3TIB01NOM156N\",\"NZD\":\"IR3TIB01NZM156N\",\"SEK\":\"IR3TIB01SEM156N\",\"USD\":\"FEDFUNDS\"},\"source_sha256\":{\"AUD\":\"34204d561b6425a0a68de0bf905508e84fe036a779a4975e1349d5c505ddfbab\",\"CAD\":\"5607517f07fbe42324a95585d0db2c5f0486b59c4239375d5de7b883fbba2b7c\",\"CHF\":\"6e1581c16c0c605b78b891141d736094f0246ecefd1e82c5313b7655a310f39c\",\"EUR\":\"5af8d4bf643859b9f5c235ba2aa7ae80c4b156bf4cd192096f0d1daff1c96566\",\"GBP\":\"28213332380a6af91c1e5db33837a6efc4fb1d88e6d1618bc88bcb2d5f264857\",\"JPY\":\"4dcadbfab0e669722098c56c429e0274da70a41cc806dbfdf333e30353425175\",\"NOK\":\"843090274e229970661b39aedfff862aa52a38ce2ffb6789977f5a69ef4d1d64\",\"NZD\":\"470bcb99bc850820b60b30441766475be26476f81c62da7a3a37f2daebe72bfb\",\"SEK\":\"cd2b306f5ebde8aac09f699c03bac387a42a4ea5e89ead4eab9c0952afdc924b\",\"USD\":\"2cc61e69f2779c3366bb5023bba2c41c4c1efcc1a9ced046a0121d5cfea0d059\"}},{\"lag_days\":30,\"operation\":\"term_carry\",\"series\":{\"AUD\":\"IRLTLT01AUM156N\",\"CAD\":\"IRLTLT01CAM156N\",\"CHF\":\"IRLTLT01CHM156N\",\"EUR\":\"IRLTLT01DEM156N\",\"GBP\":\"IRLTLT01GBM156N\",\"JPY\":\"IRLTLT01JPM156N\",\"NOK\":\"IRLTLT01NOM156N\",\"NZD\":\"IRLTLT01NZM156N\",\"SEK\":\"IRLTLT01SEM156N\",\"USD\":\"IRLTLT01USM156N\"},\"source_sha256\":{\"AUD\":\"5bb5a34d5ddee9d07462f02dcfd4e3f80feea2a42c799c781f2ea502822e5afd\",\"CAD\":\"b9eed7b38019490a429e2f3e2f5d30675508be28b457f8fd96228b69d7e13e6e\",\"CHF\":\"a9b65fa91ac093deffb30d322e92bc3a8a14bb478d6d57b3a911865113ad16a3\",\"EUR\":\"96e13eabbd191249ba1e21e9e74a2b97ed8d0de8f60f9299a145ec98bd953162\",\"GBP\":\"6e4747c6b527058deb66751cb9d8cc6d095f639aa6daf785101c9c993a74658d\",\"JPY\":\"ca2a405c28503bdb5a8f06d272bfa3e78002f3605503daaed840a0d49f1564d1\",\"NOK\":\"40bde10a4e75e0f09c3b48185d5aa242f406a40ab8500f7b730ea38a23cd0b08\",\"NZD\":\"b706dc8c4cd27a75e0826e3a5d8642f64fe0e05ecacfc5739b1a4f9a70e6c55b\",\"SEK\":\"81550d49d3dfee97c6e7d1c9d481ef29e9a60f096f6661e4bceee2c63d456724\",\"USD\":\"6fe89b27871d6970003218b4f40d0d3a0eac51f49c70d6c49d64d622ed3b12f4\"}},{\"lag_days\":30,\"operation\":\"ppp\",\"series\":{\"AUD\":\"AUSCPIALLQINMEI\",\"CAD\":\"CANCPIALLMINMEI\",\"CHF\":\"CHECPIALLMINMEI\",\"EUR\":\"CP0000EZ19M086NEST\",\"GBP\":\"GBRCPIALLMINMEI\",\"JPY\":\"JPNCPIALLMINMEI\",\"NOK\":\"NORCPIALLMINMEI\",\"NZD\":\"NZLCPIALLQINMEI\",\"SEK\":\"SWECPIALLMINMEI\",\"USD\":\"USACPIALLMINMEI\"},\"source_sha256\":{\"AUD\":\"f8ebea8f7c1179140b3c605c24aff5159e126de608acf7633478ce8fc40cdb06\",\"CAD\":\"c866d5a391148f7f4da35a58fced73cb65fbeaa9b1ad834a49818f7e67d7cc53\",\"CHF\":\"6beae66afe27d677742ec9c1108ec3387d59a6d9fd964938f18c6badfb35a776\",\"EUR\":\"0a2a06aeb4ce4e7a343aece63b799bda5e4bd9d73e4c5d94b23a0430cc737e34\",\"GBP\":\"603e84272110d715b3d5918b565ed7e066136a1a40ffadc694ff7c40f987b000\",\"JPY\":\"445342b0f3cf9e3372ae5caf36b1a6609b888f18588fac40a753a336baa4ba62\",\"NOK\":\"414a8741376438c7abf5d6ce6a6ecec79e1a318ef8f7b6de0adb34439d59cbb3\",\"NZD\":\"3652c0d9ff987d3e13e2ced2c030cd98433515288d666c89a31745a6ebcd4d57\",\"SEK\":\"216057d53a403e635ed6390eb7950ec4da397aff62090fc718cdfb49a0367e46\",\"USD\":\"6ed1dbe2c5589ae6388123933f3f2e071bc20b65e898ea1b2cfdc0062a9ea071\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"VixLevel\":\"VIXCLS\"},\"source_sha256\":{\"VixLevel\":\"3aea7d8a07d8abb0aea014e5ab6a04f0bf46b6d84f6ee28211079e5470e6c938\"}},{\"lag_days\":1,\"operation\":\"global\",\"series\":{\"OilLevel\":\"DCOILWTICO\"},\"source_sha256\":{\"OilLevel\":\"1fbeb87ebd80e25294f4561e1ddc1d6d84cd06635b341b6b0e0f537351fa7dd7\"}}],\"version\":1}"
+      }
+    },
+    "repositories": {
+      "forex_trainer": {
+        "commit": "33943db20969e240ded47fa89c6d5659c6a2e7a5",
+        "dirty": false,
+        "worktree_sha256": "33c2da2f369cc6a117055a71d327f41de48fe448131a6a62c936189bf2d3e4c3"
+      },
+      "forex_env": {
+        "commit": "f4b3320f79fbf8979c1cf3aee6317ecd719065de",
+        "dirty": false,
+        "worktree_sha256": "33c2da2f369cc6a117055a71d327f41de48fe448131a6a62c936189bf2d3e4c3"
+      }
+    },
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3"
+    }
+  },
+  "metrics": {
+    "steps": 198,
+    "cumulative_log_return": -0.09769116238775595,
+    "gross_cumulative_log_return": -0.08743620217375955,
+    "final_equity_ratio": 0.9069289542793414,
+    "sharpe_annualized": -1.4779819219380688,
+    "max_drawdown": 0.13901122165146373,
+    "total_cost_ratio": 0.009534906039606003,
+    "mean_gross_leverage": 1.4159730124568377,
+    "terminated_by_margin_call": false,
+    "eval_start": "2015-03-31T00:00:00+01:00",
+    "eval_end": "2016-01-01T00:00:00+00:00"
+  }
+}
