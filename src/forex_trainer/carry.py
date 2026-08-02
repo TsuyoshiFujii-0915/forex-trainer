@@ -21,9 +21,11 @@ from pathlib import Path
 from typing import Callable
 
 import pandas as pd
-import pyarrow.parquet as pq
 from forex_env.data.base import split_pair
-from forex_env.data.file_provider import save_ohlcv_parquet
+from forex_env.data.file_provider import load_ohlcv_parquet
+from forex_env.errors import DataError
+
+from .data_lineage import DataLineageError, read_data_lineage, save_augmented_cache
 
 CURRENCY_SHORT_RATE_SERIES: dict[str, str] = {
     "USD": "FEDFUNDS",
@@ -40,12 +42,50 @@ CURRENCY_SHORT_RATE_SERIES: dict[str, str] = {
 }
 _FRED_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
 _PERCENT_TO_DECIMAL = 0.01
-
 FetchSeriesFn = Callable[[str], pd.Series]
 
 
 class CarryError(Exception):
     """Raised when carry augmentation fails."""
+
+
+def load_current_cache(input_path: Path) -> tuple[pd.DataFrame, str, str, str]:
+    """Load a cache only after validating the current forex-env contract.
+
+    Both the ``absent`` and ``counter-minus-base-v1`` carry contracts are
+    supported. Their declared contract must agree with the stored columns.
+    This allows carry regeneration to replace an explicitly understood
+    current contract without interpreting unversioned legacy data.
+
+    Args:
+        input_path: Cache parquet written by the current forex-env writer.
+
+    Returns:
+        Tuple of frame, timeframe, declared start date, and declared end date.
+
+    Raises:
+        CarryError: If the parquet cannot be read or its schema/carry contract
+            is missing, unsupported, or inconsistent with its columns.
+    """
+    try:
+        cache = load_ohlcv_parquet(input_path)
+        read_data_lineage(input_path)
+    except (DataError, DataLineageError) as exc:
+        raise CarryError(str(exc)) from exc
+    return cache.data, cache.timeframe, cache.start_date, cache.end_date
+
+
+def _validate_lag_days(lag_days: int) -> None:
+    """Reject lags that would move future observations into the past.
+
+    Args:
+        lag_days: Calendar-day publication lag.
+
+    Raises:
+        CarryError: If lag_days is negative.
+    """
+    if lag_days < 0:
+        raise CarryError(f"lag_days must be non-negative, got {lag_days}.")
 
 
 def fetch_fred_series(series_id: str) -> pd.Series:
@@ -98,19 +138,12 @@ def augment_cache_with_carry(
         The augmented DataFrame that was written.
 
     Raises:
-        CarryError: If the cache contains symbols without a FRED mapping or
-            the resulting carry is not finite over the cache range.
+        CarryError: If lag_days is negative, the cache contract is invalid,
+            a symbol lacks a FRED mapping, or the resulting carry is not
+            finite over the cache range.
     """
-    table = pq.read_table(input_path)
-    metadata = table.schema.metadata or {}
-    timeframe = metadata[b"forex_env_timeframe"].decode("utf-8")
-    start = metadata[b"forex_env_start_date"].decode("utf-8")
-    end = metadata[b"forex_env_end_date"].decode("utf-8")
-
-    frame = table.to_pandas()
-    frame.columns = pd.MultiIndex.from_tuples(
-        [tuple(column.rsplit("|", 1)) for column in frame.columns]
-    )
+    _validate_lag_days(lag_days)
+    frame, timeframe, start, end = load_current_cache(input_path)
     symbols = sorted({symbol for symbol, _ in frame.columns})
     currencies = {code for symbol in symbols for code in split_pair(symbol)}
     unmapped = sorted(currencies - set(CURRENCY_SHORT_RATE_SERIES))
@@ -126,11 +159,13 @@ def augment_cache_with_carry(
         freq="D",
     )
     cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
-    rates: dict[str, pd.Series] = {
+    source_rates = {
         code: fetch_series(CURRENCY_SHORT_RATE_SERIES[code])
-        .reindex(calendar, method="ffill")
-        .shift(lag_days)
-        for code in currencies
+        for code in sorted(currencies)
+    }
+    rates: dict[str, pd.Series] = {
+        code: source_rates[code].reindex(calendar, method="ffill").shift(lag_days)
+        for code in sorted(currencies)
     }
     for symbol in symbols:
         base, counter = split_pair(symbol)
@@ -143,7 +178,21 @@ def augment_cache_with_carry(
             )
         frame[(symbol, "CarryAnnual")] = aligned
 
-    save_ohlcv_parquet(frame, timeframe, start, end, output_path)
+    try:
+        save_augmented_cache(
+            frame,
+            timeframe,
+            start,
+            end,
+            input_path,
+            output_path,
+            "carry",
+            lag_days,
+            {code: CURRENCY_SHORT_RATE_SERIES[code] for code in sorted(currencies)},
+            source_rates,
+        )
+    except DataLineageError as exc:
+        raise CarryError(str(exc)) from exc
     return frame
 
 

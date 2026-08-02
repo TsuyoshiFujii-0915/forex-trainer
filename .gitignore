@@ -32,6 +32,7 @@ Thumbs.db
 # Experiment outputs and data caches (results live locally, designs in git)
 runs/
 data/*.parquet
+data/**/*.parquet
 
 # Logs and temporary files
 *.log

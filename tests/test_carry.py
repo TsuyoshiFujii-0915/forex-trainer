@@ -6,12 +6,13 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pyarrow.parquet as pq
 import pytest
 from forex_env import ForexEnv, parse_config
 from forex_env.data.file_provider import FileDataProvider, save_ohlcv_parquet
 from forex_env.data.synthetic import SyntheticDataProvider
 
-from forex_trainer.carry import CarryError, augment_cache_with_carry
+from forex_trainer.carry import CarryError, augment_cache_with_carry, main
 
 _SYMBOLS = ("JPY/USD", "JPY/EUR")
 
@@ -41,6 +42,23 @@ def _fake_series(series_id: str) -> pd.Series:
     return pd.Series(base, index=index)
 
 
+def _replace_cache_metadata(path: Path, updates: dict[bytes, bytes | None]) -> None:
+    """Replace selected parquet schema metadata values.
+
+    Args:
+        path: Cache parquet to modify.
+        updates: Metadata values to set, or None to remove a key.
+    """
+    table = pq.read_table(path)
+    metadata = dict(table.schema.metadata or {})
+    for key, value in updates.items():
+        if value is None:
+            metadata.pop(key, None)
+        else:
+            metadata[key] = value
+    pq.write_table(table.replace_schema_metadata(metadata), path)
+
+
 def test_augment_adds_lagged_carry(tmp_path: Path) -> None:
     """CarryAnnual equals the decimal rate differential for every symbol."""
     base = _base_cache(tmp_path)
@@ -54,6 +72,79 @@ def test_augment_adds_lagged_carry(tmp_path: Path) -> None:
     assert usd.iloc[-1] == pytest.approx((2.0 - 0.1) / 100.0)
     assert eur.iloc[-1] == pytest.approx((-0.5 - 0.1) / 100.0)
     assert np.isfinite(usd).all() and np.isfinite(eur).all()
+
+
+def test_carry_augmentation_rejects_legacy_cache_without_schema(
+    tmp_path: Path,
+) -> None:
+    """Carry regeneration must start from an explicitly current cache."""
+    base = _base_cache(tmp_path)
+    _replace_cache_metadata(
+        base,
+        {
+            b"forex_env_cache_schema_version": None,
+            b"forex_env_carry_contract": None,
+        },
+    )
+
+    with pytest.raises(CarryError, match="lacks forex-env schema metadata"):
+        augment_cache_with_carry(
+            base,
+            tmp_path / "carry.parquet",
+            lag_days=30,
+            fetch_series=_fake_series,
+        )
+
+
+def test_carry_augmentation_rejects_unsupported_carry_contract(
+    tmp_path: Path,
+) -> None:
+    """Carry regeneration must not accept unknown input semantics."""
+    base = _base_cache(tmp_path)
+    _replace_cache_metadata(
+        base,
+        {b"forex_env_carry_contract": b"counter-minus-jpy-v1"},
+    )
+
+    with pytest.raises(CarryError, match="unsupported carry contract"):
+        augment_cache_with_carry(
+            base,
+            tmp_path / "carry.parquet",
+            lag_days=30,
+            fetch_series=_fake_series,
+        )
+
+
+def test_carry_augmentation_rejects_negative_lag_days(tmp_path: Path) -> None:
+    """A negative lag would expose future short-rate observations."""
+    base = _base_cache(tmp_path)
+    with pytest.raises(CarryError, match="lag_days must be non-negative"):
+        augment_cache_with_carry(
+            base,
+            tmp_path / "carry.parquet",
+            lag_days=-1,
+            fetch_series=_fake_series,
+        )
+
+
+def test_carry_cli_rejects_negative_lag_days(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The CLI must reject lookahead lags before accessing FRED."""
+    base = _base_cache(tmp_path)
+    result = main(
+        [
+            "--input",
+            str(base),
+            "--output",
+            str(tmp_path / "carry.parquet"),
+            "--lag-days",
+            "-1",
+        ]
+    )
+
+    assert result == 1
+    assert "lag_days must be non-negative" in capsys.readouterr().err
 
 
 def test_augmented_cache_runs_signed_env(tmp_path: Path) -> None:

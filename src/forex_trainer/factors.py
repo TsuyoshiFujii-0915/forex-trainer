@@ -32,11 +32,10 @@ from typing import Callable, Mapping
 
 import numpy as np
 import pandas as pd
-import pyarrow.parquet as pq
 from forex_env.data.base import split_pair
-from forex_env.data.file_provider import save_ohlcv_parquet
 
-from .carry import fetch_fred_series
+from .carry import CarryError, fetch_fred_series, load_current_cache
+from .data_lineage import DataLineageError, save_augmented_cache
 
 CURRENCY_RATE10Y_SERIES: dict[str, str] = {
     "USD": "IRLTLT01USM156N",
@@ -81,17 +80,28 @@ def _load_cache(input_path: Path) -> tuple[pd.DataFrame, str, str, str]:
 
     Returns:
         Tuple of (frame, timeframe, start_date, end_date).
+
+    Raises:
+        FactorError: If the parquet cache or its schema/carry contract is
+            unreadable, missing, unsupported, or internally inconsistent.
     """
-    table = pq.read_table(input_path)
-    metadata = table.schema.metadata or {}
-    timeframe = metadata[b"forex_env_timeframe"].decode("utf-8")
-    start = metadata[b"forex_env_start_date"].decode("utf-8")
-    end = metadata[b"forex_env_end_date"].decode("utf-8")
-    frame = table.to_pandas()
-    frame.columns = pd.MultiIndex.from_tuples(
-        [tuple(column.rsplit("|", 1)) for column in frame.columns]
-    )
-    return frame, timeframe, start, end
+    try:
+        return load_current_cache(input_path)
+    except CarryError as exc:
+        raise FactorError(str(exc)) from exc
+
+
+def _validate_lag_days(lag_days: int) -> None:
+    """Reject lags that would move future observations into the past.
+
+    Args:
+        lag_days: Calendar-day publication lag.
+
+    Raises:
+        FactorError: If lag_days is negative.
+    """
+    if lag_days < 0:
+        raise FactorError(f"lag_days must be non-negative, got {lag_days}.")
 
 
 def _daily_calendar(start: str, end: str, lag_days: int) -> pd.DatetimeIndex:
@@ -131,9 +141,11 @@ def add_term_carry(
         The augmented DataFrame that was written.
 
     Raises:
-        FactorError: If the cache contains symbols without a mapping or the
-            resulting field is not finite over the cache range.
+        FactorError: If lag_days is negative, the cache contract is invalid,
+            a symbol lacks a mapping, or the resulting field is not finite
+            over the cache range.
     """
+    _validate_lag_days(lag_days)
     frame, timeframe, start, end = _load_cache(input_path)
     symbols = sorted({symbol for symbol, _ in frame.columns})
     currencies = {code for symbol in symbols for code in split_pair(symbol)}
@@ -145,11 +157,13 @@ def add_term_carry(
         )
     calendar = _daily_calendar(start, end, lag_days)
     cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
-    rates: dict[str, pd.Series] = {
+    source_rates = {
         code: fetch_series(CURRENCY_RATE10Y_SERIES[code])
-        .reindex(calendar, method="ffill")
-        .shift(lag_days)
-        for code in currencies
+        for code in sorted(currencies)
+    }
+    rates: dict[str, pd.Series] = {
+        code: source_rates[code].reindex(calendar, method="ffill").shift(lag_days)
+        for code in sorted(currencies)
     }
     for symbol in symbols:
         base, counter = split_pair(symbol)
@@ -161,7 +175,21 @@ def add_term_carry(
                 f"range; check series coverage and lag ({lag_days} days)."
             )
         frame[(symbol, "TermCarryAnnual")] = aligned
-    save_ohlcv_parquet(frame, timeframe, start, end, output_path)
+    try:
+        save_augmented_cache(
+            frame,
+            timeframe,
+            start,
+            end,
+            input_path,
+            output_path,
+            "term_carry",
+            lag_days,
+            {code: CURRENCY_RATE10Y_SERIES[code] for code in sorted(currencies)},
+            source_rates,
+        )
+    except DataLineageError as exc:
+        raise FactorError(str(exc)) from exc
     return frame
 
 
@@ -190,9 +218,11 @@ def add_ppp_misalignment(
         The augmented DataFrame that was written.
 
     Raises:
-        FactorError: If the cache contains symbols without a mapping or the
-            resulting field is not finite over the cache range.
+        FactorError: If lag_days is negative, the cache contract is invalid,
+            a symbol lacks a mapping, or the resulting field is not finite
+            over the cache range.
     """
+    _validate_lag_days(lag_days)
     frame, timeframe, start, end = _load_cache(input_path)
     symbols = sorted({symbol for symbol, _ in frame.columns})
     currencies = {code for symbol in symbols for code in split_pair(symbol)}
@@ -204,11 +234,12 @@ def add_ppp_misalignment(
         )
     calendar = _daily_calendar(start, end, lag_days)
     cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
+    source_cpi = {
+        code: fetch_series(CURRENCY_CPI_SERIES[code]) for code in sorted(currencies)
+    }
     cpi: dict[str, pd.Series] = {
-        code: fetch_series(CURRENCY_CPI_SERIES[code])
-        .reindex(calendar, method="ffill")
-        .shift(lag_days)
-        for code in currencies
+        code: source_cpi[code].reindex(calendar, method="ffill").shift(lag_days)
+        for code in sorted(currencies)
     }
     for symbol in symbols:
         base, counter = split_pair(symbol)
@@ -228,7 +259,21 @@ def add_ppp_misalignment(
                 f"check series coverage and lag ({lag_days} days)."
             )
         frame[(symbol, "PppGap")] = gap
-    save_ohlcv_parquet(frame, timeframe, start, end, output_path)
+    try:
+        save_augmented_cache(
+            frame,
+            timeframe,
+            start,
+            end,
+            input_path,
+            output_path,
+            "ppp",
+            lag_days,
+            {code: CURRENCY_CPI_SERIES[code] for code in sorted(currencies)},
+            source_cpi,
+        )
+    except DataLineageError as exc:
+        raise FactorError(str(exc)) from exc
     return frame
 
 
@@ -254,15 +299,21 @@ def add_global_series(
         The augmented DataFrame that was written.
 
     Raises:
-        FactorError: If a resulting field is not finite over the cache range.
+        FactorError: If lag_days is negative, the cache contract is invalid,
+            or a resulting field is not finite over the cache range.
     """
+    _validate_lag_days(lag_days)
     frame, timeframe, start, end = _load_cache(input_path)
     symbols = sorted({symbol for symbol, _ in frame.columns})
     calendar = _daily_calendar(start, end, lag_days)
     cache_days = pd.DatetimeIndex(frame.index).tz_localize(None).normalize()
+    source_global = {
+        field_name: fetch_series(series_map[field_name])
+        for field_name in sorted(series_map)
+    }
     for field_name, series_id in series_map.items():
-        series = (
-            fetch_series(series_id).reindex(calendar, method="ffill").shift(lag_days)
+        series = source_global[field_name].reindex(calendar, method="ffill").shift(
+            lag_days
         )
         aligned = series.reindex(cache_days).to_numpy()
         if not pd.notna(aligned).all():
@@ -272,7 +323,21 @@ def add_global_series(
             )
         for symbol in symbols:
             frame[(symbol, field_name)] = aligned
-    save_ohlcv_parquet(frame, timeframe, start, end, output_path)
+    try:
+        save_augmented_cache(
+            frame,
+            timeframe,
+            start,
+            end,
+            input_path,
+            output_path,
+            "global",
+            lag_days,
+            series_map,
+            source_global,
+        )
+    except DataLineageError as exc:
+        raise FactorError(str(exc)) from exc
     return frame
 
 
