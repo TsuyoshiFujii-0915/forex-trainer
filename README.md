@@ -7,6 +7,7 @@ RL agent training and experiment harness for [forex-env-v3](../forex-env-v3). On
 - Features: base (`log_return`, `volatility`) + trainer registry (`sma20_ratio`, `rsi14`, `atr14_ratio`, `macd_ratio`, `mom24`, `mom72`, `mom168`) — every registered feature is automatically lookahead-tested
 - Decision interval (ADR-0004): `run.decision_interval` holds each target allocation for k bars, structurally capping turnover
 - Model selection (ADR-0005): training periodically walks `val_range`; the best validation model becomes `model_final.zip` (`model_last.zip` keeps the end-of-training model)
+- Selection audit: every run also saves five late checkpoints (80/85/90/95/100% of the nominal budget, aligned to validation events for the longf protocol) so validation-best, last, and checkpoint averaging can be compared without retraining three times
 - Tracking: local only — TensorBoard + per-run `metrics.json` / `equity_curve.csv`
 
 ## Research log
@@ -52,9 +53,23 @@ uv run forex-eval --run runs/ppo_cnn1d_daily/<timestamp>
 
 # 5. compare all evaluated runs
 uv run forex-compare runs
+
+# Reproduce issue #1 across the 17 longf folds and seeds 42/43/44.
+# This requires the canonical longf parquet cache named by the fold configs.
+uv run forex-selection-study \
+  --study configs/studies/issue1_longf_checkpoint_selection.yaml \
+  --runs-root runs
 ```
 
-Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
+Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
+
+`forex-selection-study` trains each fold/seed exactly once. For each fold it
+compares three action-mean policies from the same source matrix: three
+validation-best models, three last models, and all 15 late checkpoints (five
+per seed). Its timestamped study directory records the source runs, exact model
+paths and SHA-256 digests, data identity, fold metrics, era summaries, winning
+folds, and paired differences against validation-best as JSON, CSV, and
+Markdown.
 
 ## Experiment YAML
 
@@ -101,7 +116,7 @@ docker compose run train uv run forex-train --config configs/ppo_mlp_daily.yaml
 
 ## Evaluation metrics
 
-`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative log return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, and mean gross leverage.
+`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative and annualized return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, and mean gross leverage.
 
 ## License
 
