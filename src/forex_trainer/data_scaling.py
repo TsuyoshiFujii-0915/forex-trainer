@@ -1403,7 +1403,7 @@ def _bootstrap_summary(
 def _paired_differences(
     result_rows: Sequence[Mapping[str, Any]], study: ScalingStudy
 ) -> list[dict[str, Any]]:
-    """Compute adjacent-condition paired net-log-return differences.
+    """Compute fold-resampled adjacent-condition net-log-return differences.
 
     Args:
         result_rows: Flat result rows.
@@ -1434,35 +1434,77 @@ def _paired_differences(
         larger_keys = {
             (fold, seed) for fold, seed, condition in lookup if condition == larger
         }
-        paired_keys = sorted(baseline_keys & larger_keys)
-        if not paired_keys:
+        expected_keys = {
+            (str(fold), seed) for fold in study.fold_configs for seed in study.seeds
+        }
+        if baseline_keys != expected_keys or larger_keys != expected_keys:
             raise TrainerConfigError(
-                f"No paired results exist for adjacent conditions {baseline} and "
-                f"{larger}."
+                f"Adjacent conditions {baseline} and {larger} do not contain the "
+                "complete declared fold/seed matrix."
             )
-        differences = np.asarray(
+        paired_keys = sorted(expected_keys)
+        seed_fold_differences = np.asarray(
             [
                 lookup[(fold, seed, larger)] - lookup[(fold, seed, baseline)]
                 for fold, seed in paired_keys
             ],
             dtype=np.float64,
         )
-        draw_indices = rng.choice(
-            len(differences),
-            size=(study.bootstrap_samples, len(differences)),
-            replace=True,
+        folds = sorted({fold for fold, _ in paired_keys})
+        fold_differences = np.asarray(
+            [
+                np.mean(
+                    [
+                        lookup[(fold, seed, larger)]
+                        - lookup[(fold, seed, baseline)]
+                        for seed in study.seeds
+                    ]
+                )
+                for fold in folds
+            ],
+            dtype=np.float64,
         )
-        draw_means = differences[draw_indices].mean(axis=1)
+        fold_indices = rng.integers(
+            0,
+            len(fold_differences),
+            size=(study.bootstrap_samples, len(fold_differences)),
+        )
+        fold_draw_means = fold_differences[fold_indices].mean(axis=1)
+        block_length = min(2, len(fold_differences))
+        block_indices = np.empty(
+            (study.bootstrap_samples, len(fold_differences)), dtype=int
+        )
+        for sample_index in range(study.bootstrap_samples):
+            selected: list[int] = []
+            while len(selected) < len(fold_differences):
+                start = int(rng.integers(0, len(fold_differences)))
+                selected.extend(
+                    (start + offset) % len(fold_differences)
+                    for offset in range(block_length)
+                )
+            block_indices[sample_index] = selected[: len(fold_differences)]
+        block_draw_means = fold_differences[block_indices].mean(axis=1)
         output.append(
             {
                 "baseline": baseline,
                 "larger": larger,
-                "pairs": len(differences),
+                "folds": len(fold_differences),
+                "seed_fold_pairs": len(seed_fold_differences),
                 "mean_cumulative_net_log_return_difference": float(
-                    differences.mean()
+                    fold_differences.mean()
                 ),
-                "bootstrap_95_low": float(np.quantile(draw_means, 0.025)),
-                "bootstrap_95_high": float(np.quantile(draw_means, 0.975)),
+                "fold_bootstrap_95_low": float(
+                    np.quantile(fold_draw_means, 0.025)
+                ),
+                "fold_bootstrap_95_high": float(
+                    np.quantile(fold_draw_means, 0.975)
+                ),
+                "moving_block_95_low": float(
+                    np.quantile(block_draw_means, 0.025)
+                ),
+                "moving_block_95_high": float(
+                    np.quantile(block_draw_means, 0.975)
+                ),
             }
         )
     return output
@@ -1505,9 +1547,11 @@ def _report_markdown(report: Mapping[str, Any]) -> str:
         lines.append(
             f"- {paired['baseline']} → {paired['larger']}: "
             f"mean Δ log return {paired['mean_cumulative_net_log_return_difference']:.6f} "
-            f"(n={paired['pairs']}, 95% CI "
-            f"[{paired['bootstrap_95_low']:.6f}, "
-            f"{paired['bootstrap_95_high']:.6f}])"
+            f"({paired['folds']} folds / {paired['seed_fold_pairs']} seed-fold pairs, "
+            f"fold 95% CI [{paired['fold_bootstrap_95_low']:.6f}, "
+            f"{paired['fold_bootstrap_95_high']:.6f}], 2-fold block 95% CI "
+            f"[{paired['moving_block_95_low']:.6f}, "
+            f"{paired['moving_block_95_high']:.6f}])"
         )
     lines.extend(
         [
