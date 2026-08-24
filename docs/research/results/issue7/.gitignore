@@ -1,0 +1,4 @@
+# Local resume state and deterministic materialized inputs are not research outputs.
+manifest.json
+source_runs.json
+materialized_configs/

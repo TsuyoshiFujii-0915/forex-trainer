@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720">
+<rect width="900" height="720" fill="white"/>
+<style>text{font-family:system-ui,sans-serif;fill:#1f2937} .axis{stroke:#64748b;stroke-width:1} .grid{stroke:#e2e8f0;stroke-width:1} .series{fill:none;stroke:#2563eb;stroke-width:2.5} .seed{fill:none;stroke:#d97706;stroke-width:2.5}</style>
+<text x="450" y="28" text-anchor="middle" font-size="18" font-weight="600">longf data-scaling generalization</text>
+<rect x="92.0" y="70.0" width="758.0" height="280.0" fill="none" class="axis"/>
+<rect x="92.0" y="425.0" width="758.0" height="225.0" fill="none" class="axis"/>
+<text x="20" y="210" text-anchor="middle" font-size="13" transform="rotate(-90 20 210)">Annualized OOS net return</text>
+<text x="20" y="538" text-anchor="middle" font-size="13" transform="rotate(-90 20 538)">Median fold seed SD (log return)</text>
+<text x="471" y="704" text-anchor="middle" font-size="13">Unique training history (years)</text>
+<line x1="92.0" y1="350.00" x2="850.0" y2="350.00" class="grid"/>
+<text x="84.0" y="354.00" text-anchor="end" font-size="11">-19.5%</text>
+<line x1="92.0" y1="280.00" x2="850.0" y2="280.00" class="grid"/>
+<text x="84.0" y="284.00" text-anchor="end" font-size="11">-10.1%</text>
+<line x1="92.0" y1="210.00" x2="850.0" y2="210.00" class="grid"/>
+<text x="84.0" y="214.00" text-anchor="end" font-size="11">-0.6%</text>
+<line x1="92.0" y1="140.00" x2="850.0" y2="140.00" class="grid"/>
+<text x="84.0" y="144.00" text-anchor="end" font-size="11">8.8%</text>
+<line x1="92.0" y1="70.00" x2="850.0" y2="70.00" class="grid"/>
+<text x="84.0" y="74.00" text-anchor="end" font-size="11">18.3%</text>
+<line x1="92.0" y1="650.00" x2="850.0" y2="650.00" class="grid"/>
+<text x="84.0" y="654.00" text-anchor="end" font-size="11">0.000</text>
+<line x1="92.0" y1="575.00" x2="850.0" y2="575.00" class="grid"/>
+<text x="84.0" y="579.00" text-anchor="end" font-size="11">0.066</text>
+<line x1="92.0" y1="500.00" x2="850.0" y2="500.00" class="grid"/>
+<text x="84.0" y="504.00" text-anchor="end" font-size="11">0.132</text>
+<line x1="92.0" y1="425.00" x2="850.0" y2="425.00" class="grid"/>
+<text x="84.0" y="429.00" text-anchor="end" font-size="11">0.198</text>
+<line x1="92.0" y1="205.48" x2="850.0" y2="205.48" stroke="#475569" stroke-dasharray="5 4"/>
+<path d="M126.45,241.64 L225.17,226.76 L422.86,160.78 L815.55,197.50" class="series"/>
+<path d="M126.45,591.20 L225.17,494.24 L422.86,449.11 L815.55,514.50" class="seed"/>
+<line x1="126.45" y1="127.30" x2="126.45" y2="330.69" stroke="#2563eb" stroke-width="1.5"/>
+<line x1="121.45" y1="127.30" x2="131.45" y2="127.30" stroke="#2563eb"/>
+<line x1="121.45" y1="330.69" x2="131.45" y2="330.69" stroke="#2563eb"/>
+<circle cx="126.45" cy="241.64" r="4.5" fill="#2563eb"/>
+<circle cx="126.45" cy="591.20" r="4.5" fill="#d97706"/>
+<text x="126.45" y="668.00" text-anchor="middle" font-size="11">2.0y</text>
+<text x="126.45" y="684.00" text-anchor="middle" font-size="10">2y · 522 bars</text>
+<line x1="225.17" y1="124.93" x2="225.17" y2="314.24" stroke="#2563eb" stroke-width="1.5"/>
+<line x1="220.17" y1="124.93" x2="230.17" y2="124.93" stroke="#2563eb"/>
+<line x1="220.17" y1="314.24" x2="230.17" y2="314.24" stroke="#2563eb"/>
+<circle cx="225.17" cy="226.76" r="4.5" fill="#2563eb"/>
+<circle cx="225.17" cy="494.24" r="4.5" fill="#d97706"/>
+<text x="225.17" y="668.00" text-anchor="middle" font-size="11">4.0y</text>
+<text x="225.17" y="684.00" text-anchor="middle" font-size="10">4y · 1042 bars</text>
+<line x1="422.86" y1="89.31" x2="422.86" y2="214.69" stroke="#2563eb" stroke-width="1.5"/>
+<line x1="417.86" y1="89.31" x2="427.86" y2="89.31" stroke="#2563eb"/>
+<line x1="417.86" y1="214.69" x2="427.86" y2="214.69" stroke="#2563eb"/>
+<circle cx="422.86" cy="160.78" r="4.5" fill="#2563eb"/>
+<circle cx="422.86" cy="449.11" r="4.5" fill="#d97706"/>
+<text x="422.86" y="668.00" text-anchor="middle" font-size="11">8.0y</text>
+<text x="422.86" y="684.00" text-anchor="middle" font-size="10">8y · 2084 bars</text>
+<line x1="815.55" y1="111.86" x2="815.55" y2="273.71" stroke="#2563eb" stroke-width="1.5"/>
+<line x1="810.55" y1="111.86" x2="820.55" y2="111.86" stroke="#2563eb"/>
+<line x1="810.55" y1="273.71" x2="820.55" y2="273.71" stroke="#2563eb"/>
+<circle cx="815.55" cy="197.50" r="4.5" fill="#2563eb"/>
+<circle cx="815.55" cy="514.50" r="4.5" fill="#d97706"/>
+<text x="815.55" y="668.00" text-anchor="middle" font-size="11">16.0y</text>
+<text x="815.55" y="684.00" text-anchor="middle" font-size="10">expanding · 4122 bars</text>
+</svg>
