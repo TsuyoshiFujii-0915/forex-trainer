@@ -1,0 +1,46 @@
+# Materialize the nine-pair daily cache used by the longf walk-forward studies.
+environment:
+  seed: 42
+  initial_balance_jpy: 1000000.0
+  episode_max_steps: 128
+  window_size: 32
+  max_leverage: 5.0
+  margin_call_threshold: 0.2
+  allow_action_leverage: false
+  random_start: false
+  currency_pairs:
+    - JPY/USD
+    - JPY/EUR
+    - JPY/GBP
+    - JPY/AUD
+    - JPY/CHF
+    - JPY/CAD
+    - JPY/NZD
+    - JPY/NOK
+    - JPY/SEK
+
+data:
+  provider: yfinance
+  start_date: "2003-01-01"
+  end_date: "2026-01-01"
+  timeframe: 1d
+
+features:
+  volatility_window: 32
+  normalize: false
+  selected: []
+
+transaction_costs:
+  commission_rate: 0.0
+  overnight_rate: 0.00002
+  carry_mode: none
+  spreads:
+    JPY/USD: 0.000015
+    JPY/EUR: 0.000025
+    JPY/GBP: 0.00003
+    JPY/AUD: 0.00003
+    JPY/CHF: 0.000035
+    JPY/CAD: 0.000035
+    JPY/NZD: 0.00004
+    JPY/NOK: 0.00006
+    JPY/SEK: 0.00006

@@ -13,6 +13,7 @@
 | [04-rl-vs-rule-benchmark.md](04-rl-vs-rule-benchmark.md) | RL 対 ルールベンチマーク、+7%主張の撤回まで | 7〜14 |
 | [05-rl-architecture-campaign.md](05-rl-architecture-campaign.md) | 二時代プロトコル下の RL 本体改善キャンペーン | 15〜17 |
 | [06-checkpoint-selection-study.md](06-checkpoint-selection-study.md) | validation-best / last / late-checkpoint選択方式の比較 | Issue #1 |
+| [07-data-sufficiency-and-scaling.md](07-data-sufficiency-and-scaling.md) | `longf` の固有市場履歴量に対する汎化スケーリングと実効標本数 | Issue #7 |
 
 ## 確立した方法論(今後の全実験に適用)
 

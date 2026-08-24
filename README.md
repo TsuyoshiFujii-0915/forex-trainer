@@ -39,6 +39,16 @@ uv run forex-env-fetch --config configs/fetch_1d.yaml --output data/jpy_usd_eur_
 uv run forex-fetch-dukascopy --pairs "JPY/USD,JPY/EUR" --start 2015-01-01 --end 2026-06-30 \
   --output data/jpy_usd_eur_1h_long.parquet
 
+# Rebuild the clean nine-pair daily longf cache used by Issue #7.
+# The expected repair count is a data-lineage assertion: stop if yfinance changes.
+uv run forex-env-fetch --config configs/fetch_1d9p_2003.yaml \
+  --output data/jpy_9pairs_1d_2003.parquet
+uv run forex-clean-spikes --input data/jpy_9pairs_1d_2003.parquet \
+  --output data/jpy_9pairs_1d_2003_clean.parquet \
+  --residual-threshold 0.08 --reversal-tolerance 0.04 --expected-repairs 14
+uv run forex-add-carry --input data/jpy_9pairs_1d_2003_clean.parquet \
+  --output data/jpy_9pairs_1d_2003_carry.parquet --lag-days 60
+
 # 1. define an experiment (copy + edit a YAML; commit it)
 cp configs/ppo_mlp_daily.yaml configs/ppo_cnn1d_daily.yaml
 

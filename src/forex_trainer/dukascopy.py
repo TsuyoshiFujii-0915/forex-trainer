@@ -21,9 +21,10 @@ from pathlib import Path
 from typing import Callable
 
 import pandas as pd
-from forex_env.data.base import require_jpy_pair, validate_ohlcv
+from forex_env.data.base import split_pair, validate_ohlcv
 from forex_env.data.file_provider import save_ohlcv_parquet
 from forex_env.data.yfinance_provider import invert_quote
+from forex_env.errors import DataError
 
 _DATAFEED_URL = (
     "https://datafeed.dukascopy.com/datafeed/{instrument}/{year}/{month0:02d}/"
@@ -32,7 +33,7 @@ _DATAFEED_URL = (
 _RECORD_FORMAT = ">5if"
 _RECORD_SIZE = struct.calcsize(_RECORD_FORMAT)
 # Dukascopy quotes JPY-counter pairs with a 0.001 point value; env symbols are
-# always JPY-based (require_jpy_pair), so every instrument is XXXJPY.
+# JPY-denominated for this fetcher, so every instrument is XXXJPY.
 _JPY_PRICE_SCALE = 1e-3
 _TIMEFRAME = "1h"
 # Politeness settings for the public datafeed: it throttles aggressively
@@ -53,13 +54,24 @@ class DukascopyError(Exception):
 def to_dukascopy_instrument(symbol: str) -> str:
     """Map a JPY-based env symbol to its Dukascopy instrument name.
 
+    This fetcher is JPY-specific: the 0.001 price scale matches JPY's
+    typical quote magnitude and is invalid for other denomination currencies.
+
     Args:
         symbol: JPY-based symbol like "JPY/USD".
 
     Returns:
         Dukascopy instrument, e.g. "USDJPY".
+
+    Raises:
+        DataError: If the symbol's denomination currency is not JPY.
     """
-    counter = require_jpy_pair(symbol)
+    base, counter = split_pair(symbol)
+    if base != "JPY":
+        raise DataError(
+            "forex-fetch-dukascopy only supports JPY-denominated pairs "
+            f"(its price scale is JPY-specific), got '{symbol}'."
+        )
     return f"{counter}JPY"
 
 

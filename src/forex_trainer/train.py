@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import argparse
 import copy
+import json
 import sys
 from pathlib import Path
 
+import numpy as np
 from forex_env.errors import ConfigError, DataError, FeatureError
-from stable_baselines3.common.callbacks import EvalCallback
+from stable_baselines3.common.callbacks import BaseCallback, CallbackList, EvalCallback
 
 from .algorithms import build_model, resolve_device
 from .config import (
@@ -23,6 +25,55 @@ from .run_dir import create_run_dir, write_run_metadata
 
 # Target number of validation walks per training run (ADR-0005).
 _VALIDATION_WALKS = 20
+
+
+class _EpisodeAccountingCallback(BaseCallback):
+    """Count actual vector-environment episode completions without altering them."""
+
+    def __init__(self) -> None:
+        """Initialize an empty completion counter."""
+        super().__init__(verbose=0)
+        self.completed_episodes = 0
+
+    def _on_step(self) -> bool:
+        """Count done flags emitted by the vector environment.
+
+        Returns:
+            True so training always continues.
+        """
+        dones = np.asarray(self.locals["dones"], dtype=bool)
+        self.completed_episodes += int(dones.sum())
+        return True
+
+
+def _validation_selection_stats(run_dir: Path) -> tuple[int, int]:
+    """Read validation walk count and selected checkpoint from EvalCallback.
+
+    Args:
+        run_dir: Completed run artifact directory.
+
+    Returns:
+        Validation walk count and first best checkpoint timestep.
+
+    Raises:
+        RuntimeError: If EvalCallback's persisted history is malformed.
+    """
+    history_path = run_dir / "evaluations.npz"
+    if not history_path.is_file():
+        raise RuntimeError(f"EvalCallback history is missing: {history_path}")
+    with np.load(history_path) as history:
+        timesteps = np.asarray(history["timesteps"], dtype=int)
+        results = np.asarray(history["results"], dtype=float)
+    if timesteps.ndim != 1 or results.ndim != 2 or len(timesteps) != len(results):
+        raise RuntimeError(
+            f"Malformed EvalCallback history at {history_path}: "
+            f"timesteps={timesteps.shape}, results={results.shape}."
+        )
+    if len(timesteps) == 0:
+        raise RuntimeError(f"EvalCallback history contains no walks: {history_path}")
+    mean_rewards = results.mean(axis=1)
+    selected_index = int(np.argmax(mean_rewards))
+    return len(timesteps), int(timesteps[selected_index])
 
 
 def run_training(config_path: Path, runs_root: Path, seed_override: int | None) -> Path:
@@ -90,9 +141,13 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         verbose=0,
         callback_after_eval=late_checkpoint_callback,
     )
+    accounting_callback = _EpisodeAccountingCallback()
     try:
         model = build_model(config, vec_env, device, run_dir / "tensorboard")
-        model.learn(total_timesteps=config.run.total_timesteps, callback=callback)
+        model.learn(
+            total_timesteps=config.run.total_timesteps,
+            callback=CallbackList([callback, accounting_callback]),
+        )
         late_checkpoint_callback.finalize()
         model.save(run_dir / "model_last")
     finally:
@@ -115,6 +170,17 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         )
     # The run's deliverable is the validation-selected model (ADR-0005).
     best_model.replace(run_dir / "model_final.zip")
+    validation_walks, selected_checkpoint_step = _validation_selection_stats(run_dir)
+    training_stats = {
+        "requested_environment_steps": config.run.total_timesteps,
+        "actual_environment_steps": int(model.num_timesteps),
+        "completed_episodes": accounting_callback.completed_episodes,
+        "validation_walks": validation_walks,
+        "selected_checkpoint_step": selected_checkpoint_step,
+    }
+    (run_dir / "training_stats.json").write_text(
+        json.dumps(training_stats, indent=2), encoding="utf-8"
+    )
     return run_dir
 
 
