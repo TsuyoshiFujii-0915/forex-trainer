@@ -59,13 +59,7 @@ def compute_metrics(
     ).total_seconds() / _SECONDS_PER_YEAR
     if elapsed_years <= 0.0:
         raise ValueError("Evaluation timestamps must span a positive duration.")
-    gaps = np.array(
-        [
-            (later - earlier).total_seconds()
-            for earlier, later in zip(parsed_times[:-1], parsed_times[1:])
-        ]
-    )
-    steps_per_year = _SECONDS_PER_YEAR / float(np.median(gaps))
+    steps_per_year = len(reward_array) / elapsed_years
     std = float(reward_array.std(ddof=1)) if len(reward_array) > 1 else 0.0
     # A zero std means the policy never took exposure; Sharpe is reported as
     # 0.0 in that case (documented, not a silent division fallback).
