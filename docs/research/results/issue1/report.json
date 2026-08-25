@@ -1,0 +1,683 @@
+{
+  "folds": [
+    "2009",
+    "2010",
+    "2011",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "schemes": {
+    "validation_best": {
+      "overall": {
+        "folds": 17,
+        "winning_folds": 8,
+        "mean_annualized_net_return": 0.10309790844356927,
+        "mean_annualized_gross_return": 0.13064794654829387,
+        "mean_sharpe_annualized": 0.22151092957880933,
+        "mean_max_drawdown": 0.16518710676241696,
+        "worst_max_drawdown": 0.3695491764122204
+      },
+      "eras": {
+        "2009-2018": {
+          "folds": 10,
+          "winning_folds": 6,
+          "mean_annualized_net_return": 0.17238431838578644,
+          "mean_annualized_gross_return": 0.20427616632512802,
+          "mean_sharpe_annualized": 0.49312559054837085,
+          "mean_max_drawdown": 0.1875954341751056,
+          "worst_max_drawdown": 0.3695491764122204
+        },
+        "2019-2025": {
+          "folds": 7,
+          "winning_folds": 2,
+          "mean_annualized_net_return": 0.004117322811830443,
+          "mean_annualized_gross_return": 0.0254647754385308,
+          "mean_sharpe_annualized": -0.1665100146634215,
+          "mean_max_drawdown": 0.13317521045857608,
+          "worst_max_drawdown": 0.2204834731755646
+        }
+      },
+      "folds": {
+        "2009": {
+          "annualized_net_return": -0.23199223685295273,
+          "annualized_gross_return": -0.20968935079039716,
+          "sharpe_annualized": -0.4997366472556021,
+          "max_drawdown": 0.3325743923328528
+        },
+        "2010": {
+          "annualized_net_return": 0.13769744158011207,
+          "annualized_gross_return": 0.16299453714879142,
+          "sharpe_annualized": 0.4127922637041729,
+          "max_drawdown": 0.2158002782631231
+        },
+        "2011": {
+          "annualized_net_return": 0.42200668948742576,
+          "annualized_gross_return": 0.4510083504385349,
+          "sharpe_annualized": 1.7851837389084693,
+          "max_drawdown": 0.0927342947593528
+        },
+        "2012": {
+          "annualized_net_return": 0.4422795185901192,
+          "annualized_gross_return": 0.4869790809226216,
+          "sharpe_annualized": 1.2528188307181762,
+          "max_drawdown": 0.1556201963131758
+        },
+        "2013": {
+          "annualized_net_return": 0.8860130048605047,
+          "annualized_gross_return": 0.9470929500000353,
+          "sharpe_annualized": 1.9262270464683644,
+          "max_drawdown": 0.16753637313331216
+        },
+        "2014": {
+          "annualized_net_return": -0.04375483571666398,
+          "annualized_gross_return": -0.013075353377718951,
+          "sharpe_annualized": -0.24576148161859135,
+          "max_drawdown": 0.17017008474293982
+        },
+        "2015": {
+          "annualized_net_return": -0.36572754195237245,
+          "annualized_gross_return": -0.3453276877600568,
+          "sharpe_annualized": -1.4400683383030133,
+          "max_drawdown": 0.3695491764122204
+        },
+        "2016": {
+          "annualized_net_return": 0.0019153267994546236,
+          "annualized_gross_return": 0.020116335106939703,
+          "sharpe_annualized": 0.010625738533305526,
+          "max_drawdown": 0.14248232742314304
+        },
+        "2017": {
+          "annualized_net_return": -0.040841544544530026,
+          "annualized_gross_return": -0.019715797318917674,
+          "sharpe_annualized": -0.4121186045764965,
+          "max_drawdown": 0.1397672195245614
+        },
+        "2018": {
+          "annualized_net_return": 0.5162473616067673,
+          "annualized_gross_return": 0.5623785988814476,
+          "sharpe_annualized": 2.1412933589049237,
+          "max_drawdown": 0.08971999884637483
+        },
+        "2019": {
+          "annualized_net_return": -0.17945595567588216,
+          "annualized_gross_return": -0.16468502417452419,
+          "sharpe_annualized": -2.1024481583185963,
+          "max_drawdown": 0.16726750535696677
+        },
+        "2020": {
+          "annualized_net_return": -0.16825961677126447,
+          "annualized_gross_return": -0.14927853963403398,
+          "sharpe_annualized": -1.3378703085803472,
+          "max_drawdown": 0.17100839075319696
+        },
+        "2021": {
+          "annualized_net_return": -0.05670464475755263,
+          "annualized_gross_return": -0.035424403121215114,
+          "sharpe_annualized": -0.5078998098054701,
+          "max_drawdown": 0.16110412702968002
+        },
+        "2022": {
+          "annualized_net_return": -0.022537451631452324,
+          "annualized_gross_return": 0.0020076930297762865,
+          "sharpe_annualized": -0.09067998653798227,
+          "max_drawdown": 0.2204834731755646
+        },
+        "2023": {
+          "annualized_net_return": -0.028122744445984362,
+          "annualized_gross_return": -0.012159572029868499,
+          "sharpe_annualized": -0.3267390973746691,
+          "max_drawdown": 0.09281489115238173
+        },
+        "2024": {
+          "annualized_net_return": 0.27133846832591246,
+          "annualized_gross_return": 0.3005534793884247,
+          "sharpe_annualized": 1.578237220746552,
+          "max_drawdown": 0.07647594117039114
+        },
+        "2025": {
+          "annualized_net_return": 0.21256320463903658,
+          "annualized_gross_return": 0.2372397946111564,
+          "sharpe_annualized": 1.6218300372265626,
+          "max_drawdown": 0.04307214457185127
+        }
+      }
+    },
+    "last": {
+      "overall": {
+        "folds": 17,
+        "winning_folds": 7,
+        "mean_annualized_net_return": 0.20538335558154774,
+        "mean_annualized_gross_return": 0.24460579322475287,
+        "mean_sharpe_annualized": 0.30125065527355266,
+        "mean_max_drawdown": 0.199333285430707,
+        "worst_max_drawdown": 0.3731601340784003
+      },
+      "eras": {
+        "2009-2018": {
+          "folds": 10,
+          "winning_folds": 5,
+          "mean_annualized_net_return": 0.36034515348604834,
+          "mean_annualized_gross_return": 0.407855405205125,
+          "mean_sharpe_annualized": 0.654215318122064,
+          "mean_max_drawdown": 0.22181047349356273,
+          "worst_max_drawdown": 0.3731601340784003
+        },
+        "2019-2025": {
+          "folds": 7,
+          "winning_folds": 2,
+          "mean_annualized_net_return": -0.015990641424881658,
+          "mean_annualized_gross_return": 0.011392061824221264,
+          "mean_sharpe_annualized": -0.20298457736717784,
+          "mean_max_drawdown": 0.16722301676948453,
+          "worst_max_drawdown": 0.23289587195345718
+        }
+      },
+      "folds": {
+        "2009": {
+          "annualized_net_return": -0.21641345233337578,
+          "annualized_gross_return": -0.1853374074925725,
+          "sharpe_annualized": -0.36683838723373213,
+          "max_drawdown": 0.3731601340784003
+        },
+        "2010": {
+          "annualized_net_return": 0.0966593364078017,
+          "annualized_gross_return": 0.1319150627646552,
+          "sharpe_annualized": 0.1895291791266923,
+          "max_drawdown": 0.33388559844272026
+        },
+        "2011": {
+          "annualized_net_return": 1.430211947900581,
+          "annualized_gross_return": 1.5218475029703258,
+          "sharpe_annualized": 2.506775371909326,
+          "max_drawdown": 0.14205096491150315
+        },
+        "2012": {
+          "annualized_net_return": 1.0882608714154012,
+          "annualized_gross_return": 1.1687768339054225,
+          "sharpe_annualized": 2.108224182672058,
+          "max_drawdown": 0.15107347656443482
+        },
+        "2013": {
+          "annualized_net_return": 1.1260560784356857,
+          "annualized_gross_return": 1.2027645463673848,
+          "sharpe_annualized": 2.117344284918635,
+          "max_drawdown": 0.169005534401661
+        },
+        "2014": {
+          "annualized_net_return": -0.08620978542898138,
+          "annualized_gross_return": -0.05432535410020207,
+          "sharpe_annualized": -0.46406833536097275,
+          "max_drawdown": 0.20672337437129173
+        },
+        "2015": {
+          "annualized_net_return": -0.34800471122744714,
+          "annualized_gross_return": -0.32573628662636556,
+          "sharpe_annualized": -1.346914814677644,
+          "max_drawdown": 0.3527494135984037
+        },
+        "2016": {
+          "annualized_net_return": -0.020660108129446002,
+          "annualized_gross_return": 0.010280185050589754,
+          "sharpe_annualized": -0.08572887212334734,
+          "max_drawdown": 0.25487094722804626
+        },
+        "2017": {
+          "annualized_net_return": -0.04099670355623464,
+          "annualized_gross_return": -0.015959363926171873,
+          "sharpe_annualized": -0.34277680552285306,
+          "max_drawdown": 0.13979172057943734
+        },
+        "2018": {
+          "annualized_net_return": 0.5745480613764984,
+          "annualized_gross_return": 0.6243283331381839,
+          "sharpe_annualized": 2.2266073775124777,
+          "max_drawdown": 0.0947935707597285
+        },
+        "2019": {
+          "annualized_net_return": -0.21964383652476932,
+          "annualized_gross_return": -0.19805464981450524,
+          "sharpe_annualized": -1.5931573242213288,
+          "max_drawdown": 0.22922992678901
+        },
+        "2020": {
+          "annualized_net_return": -0.19683907177647764,
+          "annualized_gross_return": -0.17384767932917736,
+          "sharpe_annualized": -1.1256104700309721,
+          "max_drawdown": 0.20790379992625507
+        },
+        "2021": {
+          "annualized_net_return": -0.1143403099462034,
+          "annualized_gross_return": -0.08703429663501107,
+          "sharpe_annualized": -0.701998525985451,
+          "max_drawdown": 0.23289587195345718
+        },
+        "2022": {
+          "annualized_net_return": -0.07416814871317987,
+          "annualized_gross_return": -0.04832512736032359,
+          "sharpe_annualized": -0.2773868779346178,
+          "max_drawdown": 0.21305267343664136
+        },
+        "2023": {
+          "annualized_net_return": -0.007340942796766165,
+          "annualized_gross_return": 0.01929100271402138,
+          "sharpe_annualized": -0.04042713912322516,
+          "max_drawdown": 0.1026985758025295
+        },
+        "2024": {
+          "annualized_net_return": 0.3209240760831774,
+          "annualized_gross_return": 0.35752596744426246,
+          "sharpe_annualized": 1.3189036878481006,
+          "max_drawdown": 0.10460070115185327
+        },
+        "2025": {
+          "annualized_net_return": 0.17947374370004737,
+          "annualized_gross_return": 0.21018921575028227,
+          "sharpe_annualized": 0.9987846078772495,
+          "max_drawdown": 0.0801795683266453
+        }
+      }
+    },
+    "late_checkpoint_ensemble": {
+      "overall": {
+        "folds": 17,
+        "winning_folds": 7,
+        "mean_annualized_net_return": 0.14156909992518352,
+        "mean_annualized_gross_return": 0.17524681783591656,
+        "mean_sharpe_annualized": 0.24080319956141594,
+        "mean_max_drawdown": 0.20157671746509434,
+        "worst_max_drawdown": 0.4543732172937124
+      },
+      "eras": {
+        "2009-2018": {
+          "folds": 10,
+          "winning_folds": 5,
+          "mean_annualized_net_return": 0.25000673581068666,
+          "mean_annualized_gross_return": 0.2900025485415515,
+          "mean_sharpe_annualized": 0.5608433996228571,
+          "mean_max_drawdown": 0.22850346758608145,
+          "worst_max_drawdown": 0.4543732172937124
+        },
+        "2019-2025": {
+          "folds": 7,
+          "winning_folds": 2,
+          "mean_annualized_net_return": -0.013341808482678132,
+          "mean_annualized_gross_return": 0.011310059685009519,
+          "mean_sharpe_annualized": -0.216397086240643,
+          "mean_max_drawdown": 0.16310993157796982,
+          "worst_max_drawdown": 0.22583561945604347
+        }
+      },
+      "folds": {
+        "2009": {
+          "annualized_net_return": -0.34315184490228234,
+          "annualized_gross_return": -0.3184690082052006,
+          "sharpe_annualized": -0.6324952055964378,
+          "max_drawdown": 0.4543732172937124
+        },
+        "2010": {
+          "annualized_net_return": 0.03448226435205021,
+          "annualized_gross_return": 0.06516499296447316,
+          "sharpe_annualized": 0.07205691230049692,
+          "max_drawdown": 0.3309691735639573
+        },
+        "2011": {
+          "annualized_net_return": 1.1209775933455315,
+          "annualized_gross_return": 1.1921594724227222,
+          "sharpe_annualized": 2.444435071477574,
+          "max_drawdown": 0.135410939993847
+        },
+        "2012": {
+          "annualized_net_return": 0.6851288690778594,
+          "annualized_gross_return": 0.744252195266424,
+          "sharpe_annualized": 1.6366900024813191,
+          "max_drawdown": 0.15755147531312408
+        },
+        "2013": {
+          "annualized_net_return": 1.0544528177335803,
+          "annualized_gross_return": 1.1258737176723088,
+          "sharpe_annualized": 2.088394099811365,
+          "max_drawdown": 0.16948567442570417
+        },
+        "2014": {
+          "annualized_net_return": -0.028774135608409787,
+          "annualized_gross_return": 0.003312050270343024,
+          "sharpe_annualized": -0.15504794288487947,
+          "max_drawdown": 0.18085832664107493
+        },
+        "2015": {
+          "annualized_net_return": -0.3582766738285917,
+          "annualized_gross_return": -0.3372913790268267,
+          "sharpe_annualized": -1.386629253454136,
+          "max_drawdown": 0.3673905381149086
+        },
+        "2016": {
+          "annualized_net_return": -0.09604884259701979,
+          "annualized_gross_return": -0.06932224573403278,
+          "sharpe_annualized": -0.3919801535185213,
+          "max_drawdown": 0.27250871208389293
+        },
+        "2017": {
+          "annualized_net_return": -0.013771423715916296,
+          "annualized_gross_return": 0.009129512022096303,
+          "sharpe_annualized": -0.127665990095112,
+          "max_drawdown": 0.1294565716364181
+        },
+        "2018": {
+          "annualized_net_return": 0.44504873425006536,
+          "annualized_gross_return": 0.48521617776320747,
+          "sharpe_annualized": 2.0606764557069033,
+          "max_drawdown": 0.08703004679417503
+        },
+        "2019": {
+          "annualized_net_return": -0.1857290536323726,
+          "annualized_gross_return": -0.16606739969687245,
+          "sharpe_annualized": -1.4336805183173837,
+          "max_drawdown": 0.20573413711363642
+        },
+        "2020": {
+          "annualized_net_return": -0.19001431606743518,
+          "annualized_gross_return": -0.16877557635665627,
+          "sharpe_annualized": -1.2744495791271366,
+          "max_drawdown": 0.19062151255649507
+        },
+        "2021": {
+          "annualized_net_return": -0.10964021878041195,
+          "annualized_gross_return": -0.08522067977136547,
+          "sharpe_annualized": -0.7292759573112546,
+          "max_drawdown": 0.22583561945604347
+        },
+        "2022": {
+          "annualized_net_return": -0.030916962254713198,
+          "annualized_gross_return": -0.006671202593703398,
+          "sharpe_annualized": -0.1288535472583577,
+          "max_drawdown": 0.20736283042213655
+        },
+        "2023": {
+          "annualized_net_return": -0.044332936409744436,
+          "annualized_gross_return": -0.021698938568110494,
+          "sharpe_annualized": -0.27781646164603935,
+          "max_drawdown": 0.11755416350997039
+        },
+        "2024": {
+          "annualized_net_return": 0.22805765006740028,
+          "annualized_gross_return": 0.25855837444464586,
+          "sharpe_annualized": 1.0546349182891313,
+          "max_drawdown": 0.10959257488804897
+        },
+        "2025": {
+          "annualized_net_return": 0.23918317769853017,
+          "annualized_gross_return": 0.26904584033712886,
+          "sharpe_annualized": 1.27466154168654,
+          "max_drawdown": 0.08506868309945803
+        }
+      }
+    }
+  },
+  "paired_differences_vs_validation_best": {
+    "last": {
+      "folds": {
+        "2009": {
+          "annualized_net_return": 0.01557878451957695,
+          "annualized_gross_return": 0.02435194329782467,
+          "sharpe_annualized": 0.13289826002186994,
+          "max_drawdown": 0.04058574174554752
+        },
+        "2010": {
+          "annualized_net_return": -0.04103810517231038,
+          "annualized_gross_return": -0.03107947438413622,
+          "sharpe_annualized": -0.2232630845774806,
+          "max_drawdown": 0.11808532017959716
+        },
+        "2011": {
+          "annualized_net_return": 1.0082052584131553,
+          "annualized_gross_return": 1.0708391525317908,
+          "sharpe_annualized": 0.7215916330008569,
+          "max_drawdown": 0.049316670152150355
+        },
+        "2012": {
+          "annualized_net_return": 0.645981352825282,
+          "annualized_gross_return": 0.681797752982801,
+          "sharpe_annualized": 0.8554053519538816,
+          "max_drawdown": -0.0045467197487409905
+        },
+        "2013": {
+          "annualized_net_return": 0.24004307357518095,
+          "annualized_gross_return": 0.2556715963673495,
+          "sharpe_annualized": 0.19111723845027062,
+          "max_drawdown": 0.0014691612683488398
+        },
+        "2014": {
+          "annualized_net_return": -0.0424549497123174,
+          "annualized_gross_return": -0.04125000072248312,
+          "sharpe_annualized": -0.2183068537423814,
+          "max_drawdown": 0.036553289628351915
+        },
+        "2015": {
+          "annualized_net_return": 0.01772283072492531,
+          "annualized_gross_return": 0.019591401133691233,
+          "sharpe_annualized": 0.09315352362536933,
+          "max_drawdown": -0.016799762813816677
+        },
+        "2016": {
+          "annualized_net_return": -0.022575434928900625,
+          "annualized_gross_return": -0.009836150056349949,
+          "sharpe_annualized": -0.09635461065665286,
+          "max_drawdown": 0.11238861980490322
+        },
+        "2017": {
+          "annualized_net_return": -0.00015515901170461144,
+          "annualized_gross_return": 0.003756433392745801,
+          "sharpe_annualized": 0.06934179905364346,
+          "max_drawdown": 2.4501054875947226e-05
+        },
+        "2018": {
+          "annualized_net_return": 0.05830069976973107,
+          "annualized_gross_return": 0.06194973425673633,
+          "sharpe_annualized": 0.08531401860755405,
+          "max_drawdown": 0.005073571913353669
+        },
+        "2019": {
+          "annualized_net_return": -0.040187880848887164,
+          "annualized_gross_return": -0.033369625639981054,
+          "sharpe_annualized": 0.5092908340972675,
+          "max_drawdown": 0.061962421432043224
+        },
+        "2020": {
+          "annualized_net_return": -0.028579455005213167,
+          "annualized_gross_return": -0.024569139695143377,
+          "sharpe_annualized": 0.21225983854937502,
+          "max_drawdown": 0.036895409173058114
+        },
+        "2021": {
+          "annualized_net_return": -0.057635665188650764,
+          "annualized_gross_return": -0.051609893513795954,
+          "sharpe_annualized": -0.19409871617998087,
+          "max_drawdown": 0.07179174492377716
+        },
+        "2022": {
+          "annualized_net_return": -0.051630697081727545,
+          "annualized_gross_return": -0.050332820390099876,
+          "sharpe_annualized": -0.18670689139663554,
+          "max_drawdown": -0.007430799738923244
+        },
+        "2023": {
+          "annualized_net_return": 0.020781801649218196,
+          "annualized_gross_return": 0.031450574743889875,
+          "sharpe_annualized": 0.28631195825144395,
+          "max_drawdown": 0.009883684650147773
+        },
+        "2024": {
+          "annualized_net_return": 0.04958560775726495,
+          "annualized_gross_return": 0.05697248805583777,
+          "sharpe_annualized": -0.2593335328984514,
+          "max_drawdown": 0.028124759981462133
+        },
+        "2025": {
+          "annualized_net_return": -0.03308946093898921,
+          "annualized_gross_return": -0.02705057886087414,
+          "sharpe_annualized": -0.6230454293493131,
+          "max_drawdown": 0.03710742375479403
+        }
+      },
+      "mean": {
+        "annualized_net_return": 0.10228544713797848,
+        "annualized_gross_return": 0.11395784667645902,
+        "sharpe_annualized": 0.07973972569474333,
+        "max_drawdown": 0.034146178668290006
+      },
+      "median": {
+        "annualized_net_return": -0.00015515901170461144,
+        "annualized_gross_return": 0.003756433392745801,
+        "sharpe_annualized": 0.08531401860755405,
+        "max_drawdown": 0.036553289628351915
+      },
+      "improved_folds": {
+        "annualized_net_return": 8,
+        "annualized_gross_return": 9,
+        "sharpe_annualized": 10,
+        "max_drawdown": 3
+      }
+    },
+    "late_checkpoint_ensemble": {
+      "folds": {
+        "2009": {
+          "annualized_net_return": -0.11115960804932962,
+          "annualized_gross_return": -0.10877965741480342,
+          "sharpe_annualized": -0.13275855834083572,
+          "max_drawdown": 0.12179882496085959
+        },
+        "2010": {
+          "annualized_net_return": -0.10321517722806187,
+          "annualized_gross_return": -0.09782954418431826,
+          "sharpe_annualized": -0.34073535140367595,
+          "max_drawdown": 0.11516889530083418
+        },
+        "2011": {
+          "annualized_net_return": 0.6989709038581058,
+          "annualized_gross_return": 0.7411511219841873,
+          "sharpe_annualized": 0.6592513325691047,
+          "max_drawdown": 0.042676645234494215
+        },
+        "2012": {
+          "annualized_net_return": 0.2428493504877402,
+          "annualized_gross_return": 0.25727311434380246,
+          "sharpe_annualized": 0.3838711717631429,
+          "max_drawdown": 0.0019312789999482716
+        },
+        "2013": {
+          "annualized_net_return": 0.16843981287307563,
+          "annualized_gross_return": 0.17878076767227347,
+          "sharpe_annualized": 0.16216705334300063,
+          "max_drawdown": 0.0019493012923920139
+        },
+        "2014": {
+          "annualized_net_return": 0.01498070010825419,
+          "annualized_gross_return": 0.016387403648061974,
+          "sharpe_annualized": 0.09071353873371188,
+          "max_drawdown": 0.010688241898135109
+        },
+        "2015": {
+          "annualized_net_return": 0.007450868123780763,
+          "annualized_gross_return": 0.00803630873323008,
+          "sharpe_annualized": 0.05343908484887727,
+          "max_drawdown": -0.002158638297311777
+        },
+        "2016": {
+          "annualized_net_return": -0.09796416939647441,
+          "annualized_gross_return": -0.08943858084097249,
+          "sharpe_annualized": -0.4026058920518268,
+          "max_drawdown": 0.1300263846607499
+        },
+        "2017": {
+          "annualized_net_return": 0.02707012082861373,
+          "annualized_gross_return": 0.028845309341013977,
+          "sharpe_annualized": 0.2844526144813845,
+          "max_drawdown": -0.010310647888143287
+        },
+        "2018": {
+          "annualized_net_return": -0.07119862735670196,
+          "annualized_gross_return": -0.07716242111824012,
+          "sharpe_annualized": -0.0806169031980204,
+          "max_drawdown": -0.0026899520521997955
+        },
+        "2019": {
+          "annualized_net_return": -0.006273097956490448,
+          "annualized_gross_return": -0.001382375522348267,
+          "sharpe_annualized": 0.6687676400012126,
+          "max_drawdown": 0.038466631756669645
+        },
+        "2020": {
+          "annualized_net_return": -0.021754699296170715,
+          "annualized_gross_return": -0.01949703672262229,
+          "sharpe_annualized": 0.06342072945321053,
+          "max_drawdown": 0.019613121803298106
+        },
+        "2021": {
+          "annualized_net_return": -0.052935574022859325,
+          "annualized_gross_return": -0.04979627665015035,
+          "sharpe_annualized": -0.2213761475057845,
+          "max_drawdown": 0.06473149242636345
+        },
+        "2022": {
+          "annualized_net_return": -0.008379510623260873,
+          "annualized_gross_return": -0.008678895623479685,
+          "sharpe_annualized": -0.038173560720375435,
+          "max_drawdown": -0.013120642753428058
+        },
+        "2023": {
+          "annualized_net_return": -0.016210191963760074,
+          "annualized_gross_return": -0.009539366538241995,
+          "sharpe_annualized": 0.04892263572862976,
+          "max_drawdown": 0.02473927235758866
+        },
+        "2024": {
+          "annualized_net_return": -0.04328081825851218,
+          "annualized_gross_return": -0.04199510494377884,
+          "sharpe_annualized": -0.5236023024574208,
+          "max_drawdown": 0.03311663371765783
+        },
+        "2025": {
+          "annualized_net_return": 0.026619973059493596,
+          "annualized_gross_return": 0.031806045725972454,
+          "sharpe_annualized": -0.3471684955400227,
+          "max_drawdown": 0.041996538527606764
+        }
+      },
+      "mean": {
+        "annualized_net_return": 0.03847119148161426,
+        "annualized_gross_return": 0.0445988712876227,
+        "sharpe_annualized": 0.019292269982606615,
+        "max_drawdown": 0.03638961070267734
+      },
+      "median": {
+        "annualized_net_return": -0.008379510623260873,
+        "annualized_gross_return": -0.008678895623479685,
+        "sharpe_annualized": 0.04892263572862976,
+        "max_drawdown": 0.02473927235758866
+      },
+      "improved_folds": {
+        "annualized_net_return": 7,
+        "annualized_gross_return": 7,
+        "sharpe_annualized": 9,
+        "max_drawdown": 4
+      }
+    }
+  }
+}
