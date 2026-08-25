@@ -54,6 +54,11 @@ def compute_metrics(
     # the end-of-step equity before taking the log.
     gross_log_returns = np.log((equity_array[1:] + cost_array) / equity_array[:-1])
     parsed_times = [datetime.fromisoformat(value) for value in timestamps]
+    elapsed_years = (
+        parsed_times[-1] - parsed_times[0]
+    ).total_seconds() / _SECONDS_PER_YEAR
+    if elapsed_years <= 0.0:
+        raise ValueError("Evaluation timestamps must span a positive duration.")
     gaps = np.array(
         [
             (later - earlier).total_seconds()
@@ -75,6 +80,12 @@ def compute_metrics(
         "steps": int(len(reward_array)),
         "cumulative_log_return": float(reward_array.sum()),
         "gross_cumulative_log_return": float(gross_log_returns.sum()),
+        "annualized_net_return": float(
+            math.expm1(float(reward_array.sum()) / elapsed_years)
+        ),
+        "annualized_gross_return": float(
+            math.expm1(float(gross_log_returns.sum()) / elapsed_years)
+        ),
         "final_equity_ratio": float(equity_array[-1] / equity_array[0]),
         "sharpe_annualized": sharpe,
         "max_drawdown": max_drawdown,

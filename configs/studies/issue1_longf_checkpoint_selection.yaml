@@ -1,0 +1,23 @@
+name: issue1_longf_checkpoint_selection
+fold_configs:
+  - ../wf_r16_long_full/wf2009_r16_longf.yaml
+  - ../wf_r16_long_full/wf2010_r16_longf.yaml
+  - ../wf_r16_long_full/wf2011_r16_longf.yaml
+  - ../wf_r16_long_full/wf2012_r16_longf.yaml
+  - ../wf_r16_long_full/wf2013_r16_longf.yaml
+  - ../wf_r16_long_full/wf2014_r16_longf.yaml
+  - ../wf_r16_long_full/wf2015_r16_longf.yaml
+  - ../wf_r16_long_full/wf2016_r16_longf.yaml
+  - ../wf_r16_long_full/wf2017_r16_longf.yaml
+  - ../wf_r16_long_full/wf2018_r16_longf.yaml
+  - ../wf_r16_long_full/wf2019_r16_longf.yaml
+  - ../wf_r16_long_full/wf2020_r16_longf.yaml
+  - ../wf_r16_long_full/wf2021_r16_longf.yaml
+  - ../wf_r16_long_full/wf2022_r16_longf.yaml
+  - ../wf_r16_long_full/wf2023_r16_longf.yaml
+  - ../wf_r16_long_full/wf2024_r16_longf.yaml
+  - ../wf_r16_long_full/wf2025_r16_longf.yaml
+seeds:
+  - 42
+  - 43
+  - 44

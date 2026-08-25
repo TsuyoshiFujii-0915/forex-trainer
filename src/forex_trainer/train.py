@@ -18,6 +18,7 @@ from .config import (
     resolve_env_raw,
 )
 from .env_factory import build_single_env, build_vec_env
+from .model_selection import LateCheckpointCallback
 from .run_dir import create_run_dir, write_run_metadata
 
 # Target number of validation walks per training run (ADR-0005).
@@ -76,6 +77,9 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
     eval_freq = max(
         1, config.run.total_timesteps // (_VALIDATION_WALKS * config.run.n_envs)
     )
+    late_checkpoint_callback = LateCheckpointCallback(
+        run_dir, config.run.total_timesteps, config.run.n_envs
+    )
     callback = EvalCallback(
         val_env,
         best_model_save_path=str(run_dir),
@@ -84,10 +88,12 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         n_eval_episodes=1,
         deterministic=True,
         verbose=0,
+        callback_after_eval=late_checkpoint_callback,
     )
     try:
         model = build_model(config, vec_env, device, run_dir / "tensorboard")
         model.learn(total_timesteps=config.run.total_timesteps, callback=callback)
+        late_checkpoint_callback.finalize()
         model.save(run_dir / "model_last")
     finally:
         vec_env.close()
@@ -99,6 +105,13 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
             f"EvalCallback produced no best model in {run_dir}; validation never "
             f"ran (total_timesteps={config.run.total_timesteps}, "
             f"eval_freq={eval_freq})."
+        )
+    late_manifest = run_dir / "late_checkpoints.json"
+    late_checkpoints = list((run_dir / "late_checkpoints").glob("*.zip"))
+    if not late_manifest.is_file() or len(late_checkpoints) != 5:
+        raise RuntimeError(
+            f"Training produced {len(late_checkpoints)} late checkpoints in "
+            f"{run_dir}; expected exactly 5."
         )
     # The run's deliverable is the validation-selected model (ADR-0005).
     best_model.replace(run_dir / "model_final.zip")
