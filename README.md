@@ -6,7 +6,7 @@ RL agent training and experiment harness for [forex-env-v3](../forex-env-v3). On
 - Networks (feature extractors over the market window): `mlp`, `cnn1d`, `lstm`, `attention`
 - Features: base (`log_return`, `volatility`) + trainer registry (`sma20_ratio`, `rsi14`, `atr14_ratio`, `macd_ratio`, `mom24`, `mom72`, `mom168`) — every registered feature is automatically lookahead-tested
 - Decision interval (ADR-0004): `run.decision_interval` holds each target allocation for k bars, structurally capping turnover
-- Rank allocation (ADR-0010): optional learned pair scores are converted into a fixed-gross sparse top-k/bottom-k portfolio without embedding a trading signal
+- Rank allocation (ADR-0010/0011): optional learned pair scores are converted into a fixed-gross sparse top-k/bottom-k portfolio without embedding a trading signal or clipping finite score order
 - Model selection (ADR-0005): training periodically walks `val_range`; the best validation model becomes `model_final.zip` (`model_last.zip` keeps the end-of-training model)
 - Selection audit: every run also saves five late checkpoints (80/85/90/95/100% of the nominal budget, aligned to validation events for the longf protocol) so validation-best, last, and checkpoint averaging can be compared without retraining three times
 - Tracking: local only — TensorBoard + per-run `metrics.json` / `equity_curve.csv`
@@ -116,7 +116,8 @@ rank_allocation: { top_k: 2, gross_exposure: 2.0 }
 
 The highest scores are long, the lowest are short, and all other pairs are
 flat. The gross exposure is split equally between both sides. Rank allocation
-requires pinned leverage and cannot be combined with residual actions.
+accepts the full finite float32 score domain so ranking is preserved, requires
+pinned leverage, and cannot be combined with residual actions.
 
 ## Adding to the axes
 
