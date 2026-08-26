@@ -74,6 +74,8 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
         >= metrics["cumulative_log_return"] - 1e-12
     )
     assert 0.0 <= metrics["max_drawdown"] < 1.0
+    assert metrics["mean_weight_turnover"] >= 0.0
+    assert metrics["total_weight_turnover"] >= metrics["mean_weight_turnover"]
     assert (run_dir / "metrics.json").is_file()
     assert (run_dir / "equity_curve.csv").is_file()
     return run_dir, metrics
@@ -108,6 +110,20 @@ def test_same_seed_reproduces_identical_results(tmp_path: Path) -> None:
         metrics_b["cumulative_log_return"], abs=1e-12
     )
     assert metrics_a["steps"] == metrics_b["steps"]
+
+
+def test_rank_allocation_trains_and_evaluates(tmp_path: Path) -> None:
+    """Structured scores work through training, selection, and evaluation."""
+    raw = make_experiment_raw()
+    raw["experiment"] = "rank_allocation_smoke"
+    raw["env"]["environment"]["currency_pairs"] = ["JPY/USD", "JPY/EUR"]
+    raw["env"]["transaction_costs"]["spreads"] = {
+        "JPY/USD": 0.0001,
+        "JPY/EUR": 0.0001,
+    }
+    raw["run"]["rank_allocation"] = {"top_k": 1, "gross_exposure": 1.0}
+    _, metrics = _run_smoke(tmp_path, raw)
+    assert metrics["mean_gross_leverage"] == pytest.approx(1.0, rel=0.05)
 
 
 def test_file_provider_pipeline(tmp_path: Path) -> None:

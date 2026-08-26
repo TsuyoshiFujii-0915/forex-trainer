@@ -32,7 +32,13 @@ def test_reward_is_log_equity_change_over_interval() -> None:
     """Each wrapped step's reward equals the log equity change over k bars."""
     resolved, feature_names = _eval_env_raw()
     env = build_single_env(
-        resolved, feature_names, (), seed=0, decision_interval=_INTERVAL, residual=None
+        resolved,
+        feature_names,
+        (),
+        seed=0,
+        decision_interval=_INTERVAL,
+        residual=None,
+        rank_allocation=None,
     )
     _, info = env.reset(seed=0)
     equity_before = info["equity_jpy"]
@@ -52,10 +58,22 @@ def test_wrapped_walk_matches_manual_action_repeat() -> None:
     """A k-interval env reproduces a 1-interval env driven with repeated actions."""
     resolved, feature_names = _eval_env_raw()
     wrapped = build_single_env(
-        resolved, feature_names, (), seed=0, decision_interval=_INTERVAL, residual=None
+        resolved,
+        feature_names,
+        (),
+        seed=0,
+        decision_interval=_INTERVAL,
+        residual=None,
+        rank_allocation=None,
     )
     manual = build_single_env(
-        resolved, feature_names, (), seed=0, decision_interval=1, residual=None
+        resolved,
+        feature_names,
+        (),
+        seed=0,
+        decision_interval=1,
+        residual=None,
+        rank_allocation=None,
     )
     wrapped.reset(seed=0)
     manual.reset(seed=0)

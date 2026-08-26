@@ -32,6 +32,7 @@ def compute_metrics(
     timestamps: list[str],
     step_costs_jpy: list[float],
     gross_leverages: list[float],
+    weight_turnovers: list[float],
     terminated: bool,
 ) -> dict[str, Any]:
     """Compute evaluation metrics from one full eval-range walk.
@@ -42,6 +43,7 @@ def compute_metrics(
         timestamps: ISO timestamps aligned with equities.
         step_costs_jpy: Per-step total transaction costs, aligned with rewards.
         gross_leverages: Per-step gross leverage readings.
+        weight_turnovers: Per-decision sums of absolute target-weight changes.
         terminated: Whether the walk ended in a margin call.
 
     Returns:
@@ -87,6 +89,8 @@ def compute_metrics(
         "mean_gross_leverage": float(np.mean(gross_leverages))
         if gross_leverages
         else 0.0,
+        "mean_weight_turnover": float(np.mean(weight_turnovers)),
+        "total_weight_turnover": float(np.sum(weight_turnovers)),
         "terminated_by_margin_call": bool(terminated),
         "eval_start": timestamps[0],
         "eval_end": timestamps[-1],
@@ -96,7 +100,15 @@ def compute_metrics(
 def walk_eval_range(
     env: Any,
     predict: Any,
-) -> tuple[list[float], list[float], list[str], list[float], list[float], bool]:
+) -> tuple[
+    list[float],
+    list[float],
+    list[str],
+    list[float],
+    list[float],
+    list[float],
+    bool,
+]:
     """Walk one full eval range with a deterministic policy function.
 
     Args:
@@ -106,7 +118,8 @@ def walk_eval_range(
 
     Returns:
         Tuple of (rewards, equities, timestamps, step_costs_jpy,
-        gross_leverages, terminated) in the argument order of compute_metrics.
+        gross_leverages, weight_turnovers, terminated) in the argument order
+        of compute_metrics.
     """
     observation, info = env.reset(seed=0)
     timestamps = [info["timestamp"]]
@@ -114,6 +127,8 @@ def walk_eval_range(
     rewards: list[float] = []
     gross_leverages: list[float] = []
     step_costs: list[float] = []
+    weight_turnovers: list[float] = []
+    previous_target_weights: np.ndarray | None = None
     episode_start = np.ones((1,), dtype=bool)
     terminated = False
     while True:
@@ -124,10 +139,30 @@ def walk_eval_range(
         timestamps.append(str(info["timestamp"]))
         gross_leverages.append(float(info["gross_leverage"]))
         step_costs.append(float(info["costs_jpy"]["total"]))
+        if "target_weights" not in info:
+            raise ValueError(
+                "Evaluation info is missing target_weights; allocation turnover "
+                "cannot be measured."
+            )
+        target_weights = np.asarray(info["target_weights"], dtype=np.float64)
+        if previous_target_weights is None:
+            previous_target_weights = np.zeros_like(target_weights)
+        weight_turnovers.append(
+            float(np.abs(target_weights - previous_target_weights).sum())
+        )
+        previous_target_weights = target_weights
         episode_start = np.array([terminated or truncated], dtype=bool)
         if terminated or truncated:
             break
-    return rewards, equities, timestamps, step_costs, gross_leverages, terminated
+    return (
+        rewards,
+        equities,
+        timestamps,
+        step_costs,
+        gross_leverages,
+        weight_turnovers,
+        terminated,
+    )
 
 
 def run_evaluation(run_dir: Path) -> dict[str, Any]:
@@ -164,6 +199,7 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
         seed=0,
         decision_interval=config.run.decision_interval,
         residual=config.run.residual,
+        rank_allocation=config.run.rank_allocation,
     )
     spec = ALGO_REGISTRY[config.algorithm.name]
     model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))

@@ -6,6 +6,7 @@ RL agent training and experiment harness for [forex-env-v3](../forex-env-v3). On
 - Networks (feature extractors over the market window): `mlp`, `cnn1d`, `lstm`, `attention`
 - Features: base (`log_return`, `volatility`) + trainer registry (`sma20_ratio`, `rsi14`, `atr14_ratio`, `macd_ratio`, `mom24`, `mom72`, `mom168`) — every registered feature is automatically lookahead-tested
 - Decision interval (ADR-0004): `run.decision_interval` holds each target allocation for k bars, structurally capping turnover
+- Rank allocation (ADR-0010): optional learned pair scores are converted into a fixed-gross sparse top-k/bottom-k portfolio without embedding a trading signal
 - Model selection (ADR-0005): training periodically walks `val_range`; the best validation model becomes `model_final.zip` (`model_last.zip` keeps the end-of-training model)
 - Selection audit: every run also saves five late checkpoints (80/85/90/95/100% of the nominal budget, aligned to validation events for the longf protocol) so validation-best, last, and checkpoint averaging can be compared without retraining three times
 - Tracking: local only — TensorBoard + per-run `metrics.json` / `equity_curve.csv`
@@ -101,10 +102,21 @@ eval_range:  { start: "2025-07-01", end: "2025-12-31" }   # final holdout
 algorithm: { name: ppo, hyperparams: { n_steps: 256, batch_size: 256, learning_rate: 3.0e-4 } }
 network:   { name: mlp, kwargs: { features_dim: 128 } }
 run: { total_timesteps: 20000, seed: 42, device: auto, n_envs: 4, vec_env: dummy,
-       decision_interval: 1 }
+       decision_interval: 1, residual: none, rank_allocation: none }
 ```
 
 Rules enforced at load time (fail fast): every key required, unknown keys rejected, ranges must satisfy `train_range.end <= val_range.start < val_range.end <= eval_range.start`, `run.decision_interval >= 1`, algorithm/network/feature names must exist in their registries, and `env.data` must not contain dates (the ranges inject them). `run.total_timesteps` counts agent decisions; with `decision_interval: k` one decision spans k bars.
+
+To expose sparse portfolio geometry while leaving the score signal entirely to
+the policy, replace `rank_allocation: none` with:
+
+```yaml
+rank_allocation: { top_k: 2, gross_exposure: 2.0 }
+```
+
+The highest scores are long, the lowest are short, and all other pairs are
+flat. The gross exposure is split equally between both sides. Rank allocation
+requires pinned leverage and cannot be combined with residual actions.
 
 ## Adding to the axes
 
@@ -126,7 +138,7 @@ docker compose run train uv run forex-train --config configs/ppo_mlp_daily.yaml
 
 ## Evaluation metrics
 
-`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative and annualized return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, and mean gross leverage.
+`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative and annualized return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, mean gross leverage, and mean/total target-weight turnover.
 
 ## License
 

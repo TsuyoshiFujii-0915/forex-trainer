@@ -11,11 +11,13 @@ is created.
 from __future__ import annotations
 
 import copy
+import math
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass, replace
 from datetime import date
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import yaml
 from forex_env import parse_config as parse_env_config
@@ -73,6 +75,14 @@ class ResidualConfig:
 
 
 @dataclass(frozen=True)
+class RankAllocationConfig:
+    """Sparse score-ranked allocation settings (ADR-0010)."""
+
+    top_k: int
+    gross_exposure: float
+
+
+@dataclass(frozen=True)
 class RunConfig:
     """Run execution settings."""
 
@@ -83,6 +93,7 @@ class RunConfig:
     vec_env: str
     decision_interval: int
     residual: ResidualConfig | None
+    rank_allocation: RankAllocationConfig | None
 
 
 @dataclass(frozen=True)
@@ -339,6 +350,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
             "vec_env",
             "decision_interval",
             "residual",
+            "rank_allocation",
         ),
         "run",
     )
@@ -370,6 +382,18 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         raise TrainerConfigError(
             f"run.residual must be 'none' or a mapping, got {raw_residual!r}."
         )
+    raw_rank_allocation = run_section["rank_allocation"]
+    if raw_rank_allocation != "none" and not isinstance(
+        raw_rank_allocation, Mapping
+    ):
+        raise TrainerConfigError(
+            "run.rank_allocation must be 'none' or a mapping, "
+            f"got {raw_rank_allocation!r}."
+        )
+    if raw_residual != "none" and raw_rank_allocation != "none":
+        raise TrainerConfigError(
+            "run.residual and run.rank_allocation cannot both be enabled."
+        )
 
     run = RunConfig(
         total_timesteps=total_timesteps,
@@ -379,6 +403,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         vec_env=vec_env,
         decision_interval=decision_interval,
         residual=None,  # replaced below once selected features are known
+        rank_allocation=None,  # replaced below after env constraints are known
     )
 
     env_block = _require_mapping(root["env"], "env")
@@ -415,6 +440,87 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     custom_cross_feature_names = tuple(
         name for name in selected if name in CROSS_FEATURE_REGISTRY
     )
+
+    if raw_rank_allocation != "none":
+        rank_section = _require_mapping(
+            raw_rank_allocation, "run.rank_allocation"
+        )
+        _check_exact_keys(
+            rank_section, ("top_k", "gross_exposure"), "run.rank_allocation"
+        )
+        top_k = _as_int(rank_section, "run.rank_allocation", "top_k")
+        if top_k < 1:
+            raise TrainerConfigError(
+                f"run.rank_allocation.top_k must be >= 1, got {top_k}."
+            )
+        environment_block = _require_mapping(
+            env_block["environment"], "env.environment"
+        )
+        currency_pairs = environment_block.get("currency_pairs")
+        if not isinstance(currency_pairs, (list, tuple)):
+            raise TrainerConfigError(
+                "env.environment.currency_pairs must be a list before "
+                "run.rank_allocation can be validated."
+            )
+        if 2 * top_k > len(currency_pairs):
+            raise TrainerConfigError(
+                "run.rank_allocation requires at least 2 * top_k distinct "
+                f"env.environment.currency_pairs, got top_k={top_k} and "
+                f"{len(currency_pairs)} currency_pairs."
+            )
+        raw_gross_exposure = rank_section["gross_exposure"]
+        if isinstance(raw_gross_exposure, bool) or not isinstance(
+            raw_gross_exposure, (int, float)
+        ):
+            raise TrainerConfigError(
+                "run.rank_allocation.gross_exposure must be a finite number, "
+                f"got {raw_gross_exposure!r}."
+            )
+        gross_exposure = float(raw_gross_exposure)
+        if not math.isfinite(gross_exposure):
+            raise TrainerConfigError(
+                "run.rank_allocation.gross_exposure must be finite, "
+                f"got {gross_exposure}."
+            )
+        if gross_exposure <= 0.0:
+            raise TrainerConfigError(
+                "run.rank_allocation.gross_exposure must be positive, "
+                f"got {gross_exposure}."
+            )
+        weight_magnitude = gross_exposure / (2 * top_k)
+        if weight_magnitude > 1.0:
+            raise TrainerConfigError(
+                "run.rank_allocation would require an absolute per-pair weight "
+                f"above 1: gross_exposure / (2 * top_k) = {weight_magnitude}."
+            )
+        allow_action_leverage = environment_block.get("allow_action_leverage")
+        if allow_action_leverage is not False:
+            raise TrainerConfigError(
+                "run.rank_allocation requires "
+                "env.environment.allow_action_leverage: false."
+            )
+        raw_max_leverage = environment_block.get("max_leverage")
+        if isinstance(raw_max_leverage, bool) or not isinstance(
+            raw_max_leverage, (int, float)
+        ):
+            raise TrainerConfigError(
+                "env.environment.max_leverage must be numeric before "
+                "run.rank_allocation can be validated."
+            )
+        max_leverage = float(raw_max_leverage)
+        if gross_exposure > max_leverage:
+            raise TrainerConfigError(
+                "run.rank_allocation.gross_exposure must not exceed "
+                f"env.environment.max_leverage ({max_leverage}), got "
+                f"{gross_exposure}."
+            )
+        run = replace(
+            run,
+            rank_allocation=RankAllocationConfig(
+                top_k=top_k,
+                gross_exposure=gross_exposure,
+            ),
+        )
 
     if raw_residual != "none":
         residual_section = _require_mapping(raw_residual, "run.residual")

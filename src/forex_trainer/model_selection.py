@@ -438,6 +438,7 @@ def evaluate_model_artifacts(
         seed=0,
         decision_interval=reference_config.run.decision_interval,
         residual=reference_config.run.residual,
+        rank_allocation=reference_config.run.rank_allocation,
     )
     states: list[Any] = [None] * len(loaded)
 

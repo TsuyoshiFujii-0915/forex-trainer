@@ -64,3 +64,4 @@ run:
   vec_env: dummy
   decision_interval: 24
   residual: none
+  rank_allocation: none

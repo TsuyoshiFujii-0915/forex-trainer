@@ -178,3 +178,106 @@ def test_residual_mapping_accepted() -> None:
     config = parse_experiment_config(raw)
     assert config.run.residual is not None
     assert config.run.residual.feature == "mom24"
+
+
+def test_missing_rank_allocation_rejected() -> None:
+    """run.rank_allocation is required for reproducible action semantics."""
+    raw = make_experiment_raw()
+    del raw["run"]["rank_allocation"]
+    with pytest.raises(TrainerConfigError, match="rank_allocation"):
+        parse_experiment_config(raw)
+
+
+def test_rank_allocation_mapping_accepted() -> None:
+    """A valid sparse rank allocation parses into the typed config."""
+    raw = make_experiment_raw()
+    raw["env"]["environment"]["currency_pairs"] = [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+    ]
+    raw["env"]["transaction_costs"]["spreads"] = {
+        pair: 0.0 for pair in raw["env"]["environment"]["currency_pairs"]
+    }
+    raw["run"]["rank_allocation"] = {"top_k": 2, "gross_exposure": 2.0}
+    config = parse_experiment_config(raw)
+    assert config.run.rank_allocation is not None
+    assert config.run.rank_allocation.top_k == 2
+    assert config.run.rank_allocation.gross_exposure == 2.0
+
+
+@pytest.mark.parametrize(
+    ("top_k", "gross_exposure", "max_leverage", "message"),
+    [
+        (0, 1.0, 4.0, "top_k"),
+        (1, 0.0, 4.0, "gross_exposure"),
+        (1, float("nan"), 4.0, "finite"),
+        (1, 2.1, 4.0, "weight"),
+        (2, 2.0, 1.0, "max_leverage"),
+    ],
+)
+def test_invalid_rank_allocation_rejected(
+    top_k: int, gross_exposure: float, max_leverage: float, message: str
+) -> None:
+    """Rank settings that cannot preserve fixed gross exposure fail early."""
+    raw = make_experiment_raw()
+    raw["env"]["environment"]["currency_pairs"] = [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+    ]
+    raw["env"]["transaction_costs"]["spreads"] = {
+        pair: 0.0 for pair in raw["env"]["environment"]["currency_pairs"]
+    }
+    raw["env"]["environment"]["max_leverage"] = max_leverage
+    raw["run"]["rank_allocation"] = {
+        "top_k": top_k,
+        "gross_exposure": gross_exposure,
+    }
+    with pytest.raises(TrainerConfigError, match=message):
+        parse_experiment_config(raw)
+
+
+def test_rank_allocation_rejects_overlapping_tails() -> None:
+    """Long and short tails must fit without selecting a pair twice."""
+    raw = make_experiment_raw()
+    raw["run"]["rank_allocation"] = {"top_k": 1, "gross_exposure": 1.0}
+    with pytest.raises(TrainerConfigError, match="currency_pairs"):
+        parse_experiment_config(raw)
+
+
+def test_rank_allocation_rejects_agent_controlled_leverage() -> None:
+    """Fixed gross allocation requires leverage to remain pinned."""
+    raw = make_experiment_raw()
+    raw["env"]["environment"]["currency_pairs"] = ["JPY/USD", "JPY/EUR"]
+    raw["env"]["transaction_costs"]["spreads"] = {
+        "JPY/USD": 0.0,
+        "JPY/EUR": 0.0,
+    }
+    raw["env"]["environment"]["allow_action_leverage"] = True
+    raw["run"]["rank_allocation"] = {"top_k": 1, "gross_exposure": 1.0}
+    with pytest.raises(TrainerConfigError, match="allow_action_leverage"):
+        parse_experiment_config(raw)
+
+
+def test_rank_allocation_and_residual_are_mutually_exclusive() -> None:
+    """Two incompatible action transformations cannot be enabled together."""
+    raw = make_experiment_raw()
+    raw["env"]["environment"]["currency_pairs"] = ["JPY/USD", "JPY/EUR"]
+    raw["env"]["transaction_costs"]["spreads"] = {
+        "JPY/USD": 0.0,
+        "JPY/EUR": 0.0,
+    }
+    raw["env"]["features"]["normalize"] = False
+    raw["env"]["features"]["selected"] = ["log_return", "volatility", "mom24"]
+    raw["run"]["residual"] = {
+        "feature": "mom24",
+        "top_k": 1,
+        "base_size": 0.8,
+        "scale": 0.3,
+    }
+    raw["run"]["rank_allocation"] = {"top_k": 1, "gross_exposure": 1.0}
+    with pytest.raises(TrainerConfigError, match="cannot both"):
+        parse_experiment_config(raw)

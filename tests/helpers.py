@@ -56,6 +56,7 @@ def make_experiment_raw() -> dict[str, Any]:
             "vec_env": "dummy",
             "decision_interval": 1,
             "residual": "none",
+            "rank_allocation": "none",
         },
     }
 
