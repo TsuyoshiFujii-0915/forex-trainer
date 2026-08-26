@@ -1,0 +1,5 @@
+{
+  "provider": "file",
+  "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+  "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+}
