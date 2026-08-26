@@ -36,6 +36,7 @@ def test_sharpe_uses_observed_bars_per_elapsed_year() -> None:
         ],
         step_costs_jpy=[0.0, 0.0, 0.0, 0.0],
         gross_leverages=[1.0, 1.0, 1.0, 1.0],
+        weight_turnovers=[0.0, 0.0, 0.0, 0.0],
         terminated=False,
     )
 
