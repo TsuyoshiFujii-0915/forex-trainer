@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from functools import partial
-from typing import Any, Mapping
+from typing import Any
 
 import gymnasium
 import numpy as np
@@ -13,8 +14,10 @@ from gymnasium import spaces
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecEnv
 
-from .config import ResidualConfig
+from .config import RankAllocationConfig, ResidualConfig
 from .features import CROSS_FEATURE_REGISTRY, FEATURE_REGISTRY
+
+_MAX_FINITE_FLOAT32_SCORE = np.finfo(np.float32).max
 
 
 class PinnedLeverageAction(gymnasium.ActionWrapper):
@@ -51,6 +54,102 @@ class PinnedLeverageAction(gymnasium.ActionWrapper):
         """
         weights = np.asarray(action, dtype=np.float32).reshape(-1, 1)
         return np.concatenate([weights, self._pinned_leverage.reshape(-1, 1)], axis=1)
+
+
+class TargetWeightInfo(gymnasium.Wrapper):
+    """Report the effective target exposure weights applied by ForexEnv."""
+
+    def __init__(self, env: gymnasium.Env, max_leverage: float) -> None:
+        """Wrap the full two-column ForexEnv action interface.
+
+        Args:
+            env: ForexEnv receiving weight and leverage columns.
+            max_leverage: Global gross cap from the resolved environment config.
+        """
+        super().__init__(env)
+        self._max_leverage = max_leverage
+
+    def step(self, action: np.ndarray) -> tuple[Any, float, bool, bool, dict[str, Any]]:
+        """Apply a full action and expose its capped target exposure weights.
+
+        Args:
+            action: Full ForexEnv action of shape (N, 2).
+
+        Returns:
+            Standard Gymnasium step tuple with ``target_weights`` in info.
+        """
+        array = np.asarray(action, dtype=np.float64)
+        observation, reward, terminated, truncated, info = self.env.step(array)
+        weights = np.clip(array[:, 0], -1.0, 1.0)
+        leverage = np.clip(
+            array[:, 1], self.action_space.low[:, 1], self.action_space.high[:, 1]
+        )
+        gross_request = float(np.sum(np.abs(weights) * leverage))
+        if gross_request > self._max_leverage:
+            weights = weights * (self._max_leverage / gross_request)
+        enriched_info = dict(info)
+        enriched_info["target_weights"] = (weights * leverage).astype(float).tolist()
+        return observation, reward, terminated, truncated, enriched_info
+
+
+class RankAllocationAction(gymnasium.ActionWrapper):
+    """Convert learned pair scores into a sparse market-neutral portfolio.
+
+    The highest ``top_k`` scores are long and the lowest ``top_k`` are short.
+    Stable sorting makes configured pair order the deterministic tie-breaker.
+    No observation or trading feature is inspected by this wrapper.
+    """
+
+    def __init__(
+        self,
+        env: gymnasium.Env,
+        top_k: int,
+        gross_exposure: float,
+    ) -> None:
+        """Wrap an environment accepting one direct weight per pair.
+
+        Args:
+            env: Environment after PinnedLeverageAction.
+            top_k: Number of score-ranked pairs selected on each side.
+            gross_exposure: Fixed total absolute portfolio weight.
+        """
+        super().__init__(env)
+        num_pairs = env.action_space.shape[0]
+        self._top_k = top_k
+        self._weight_magnitude = gross_exposure / (2 * top_k)
+        self.action_space = spaces.Box(
+            low=-_MAX_FINITE_FLOAT32_SCORE,
+            high=_MAX_FINITE_FLOAT32_SCORE,
+            shape=(num_pairs, 1),
+            dtype=np.float32,
+        )
+
+    def action(self, action: np.ndarray) -> np.ndarray:
+        """Rank scores and return sparse weights in configured pair order.
+
+        Args:
+            action: Pair scores with exactly the advertised action-space shape.
+
+        Returns:
+            Sparse direct weights with fixed total gross exposure.
+
+        Raises:
+            ValueError: If scores have the wrong shape or contain non-finite
+                values.
+        """
+        scores = np.asarray(action, dtype=np.float64)
+        if scores.shape != self.action_space.shape:
+            raise ValueError(
+                "rank allocation scores must have shape "
+                f"{self.action_space.shape}, got {scores.shape}."
+            )
+        if not np.isfinite(scores).all():
+            raise ValueError("rank allocation scores must contain only finite values.")
+        order = np.argsort(scores[:, 0], kind="stable")
+        weights = np.zeros(len(order), dtype=np.float32)
+        weights[order[: self._top_k]] = -self._weight_magnitude
+        weights[order[-self._top_k :]] = self._weight_magnitude
+        return weights.reshape(-1, 1)
 
 
 class DecisionInterval(gymnasium.Wrapper):
@@ -173,7 +272,8 @@ def build_single_env(
     cross_feature_names: tuple[str, ...],
     seed: int,
     decision_interval: int,
-    residual: "ResidualConfig | None",
+    residual: ResidualConfig | None,
+    rank_allocation: RankAllocationConfig | None,
 ) -> Monitor:
     """Build one Monitor-wrapped ForexEnv.
 
@@ -187,6 +287,8 @@ def build_single_env(
         decision_interval: Env bars per agent decision (ADR-0004).
         residual: Residual action scheme (ADR-0009), or None for direct
             weight actions.
+        rank_allocation: Sparse score-ranked allocation (ADR-0010), or None
+            for direct weight actions.
 
     Returns:
         Monitor-wrapped environment (with PinnedLeverageAction applied when
@@ -197,10 +299,13 @@ def build_single_env(
     custom_cross_features = {
         name: CROSS_FEATURE_REGISTRY[name] for name in cross_feature_names
     }
-    env: gymnasium.Env = ForexEnv(
-        parse_env_config(env_raw),
-        custom_features=custom_features,
-        custom_cross_features=custom_cross_features,
+    env: gymnasium.Env = TargetWeightInfo(
+        ForexEnv(
+            parse_env_config(env_raw),
+            custom_features=custom_features,
+            custom_cross_features=custom_cross_features,
+        ),
+        max_leverage=float(env_raw["environment"]["max_leverage"]),
     )
     box = env.action_space
     if bool(np.all(box.low[:, 1] == box.high[:, 1])):
@@ -213,6 +318,12 @@ def build_single_env(
             top_k=residual.top_k,
             base_size=residual.base_size,
             scale=residual.scale,
+        )
+    if rank_allocation is not None:
+        env = RankAllocationAction(
+            env,
+            top_k=rank_allocation.top_k,
+            gross_exposure=rank_allocation.gross_exposure,
         )
     env = DecisionInterval(env, decision_interval)
     monitored = Monitor(env)
@@ -229,6 +340,7 @@ def build_vec_env(
     base_seed: int,
     decision_interval: int,
     residual: ResidualConfig | None,
+    rank_allocation: RankAllocationConfig | None,
 ) -> VecEnv:
     """Build the vectorized training environment.
 
@@ -240,6 +352,8 @@ def build_vec_env(
         vec_env_kind: "dummy" (in-process) or "subproc" (one process each).
         base_seed: Worker i is seeded with base_seed + i.
         decision_interval: Env bars per agent decision (ADR-0004).
+        residual: Residual action scheme (ADR-0009), or None.
+        rank_allocation: Sparse score-ranked allocation (ADR-0010), or None.
 
     Returns:
         SB3 VecEnv instance.
@@ -257,6 +371,7 @@ def build_vec_env(
             base_seed + rank,
             decision_interval,
             residual,
+            rank_allocation,
         )
         for rank in range(n_envs)
     ]

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import numpy as np
-import pytest
 
 from forex_trainer.config import parse_experiment_config, resolve_env_raw
 from forex_trainer.env_factory import build_single_env
@@ -33,6 +32,7 @@ def _residual_env(scale: float):
         seed=0,
         decision_interval=1,
         residual=config.run.residual,
+        rank_allocation=config.run.rank_allocation,
     )
 
 
@@ -64,8 +64,9 @@ def test_residual_shifts_weights_within_scale() -> None:
     env_full.reset(seed=0)
     _, _, _, _, info_zero = env_zero.step(np.zeros((len(_PAIRS), 1), dtype=np.float32))
     _, _, _, _, info_full = env_full.step(np.ones((len(_PAIRS), 1), dtype=np.float32))
-    for pair in _PAIRS:
-        shift = info_full["exposures_jpy"][pair] - info_zero["exposures_jpy"][pair]
-        assert shift == pytest.approx(0.1 * 1_000_000.0, rel=1e-3)
+    shifts = np.asarray(info_full["target_weights"]) - np.asarray(
+        info_zero["target_weights"]
+    )
+    np.testing.assert_allclose(shifts, 0.1, atol=1e-7)
     env_zero.close()
     env_full.close()

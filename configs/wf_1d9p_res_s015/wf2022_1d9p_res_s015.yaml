@@ -82,3 +82,4 @@ run:
     top_k: 2
     base_size: 0.8
     scale: 0.15
+  rank_allocation: none

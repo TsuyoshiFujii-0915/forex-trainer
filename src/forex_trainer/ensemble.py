@@ -89,6 +89,14 @@ def run_ensemble_evaluation(
                 f"{config.run.decision_interval}, expected "
                 f"{reference_config.run.decision_interval}."
             )
+        if config.run.residual != reference_config.run.residual:
+            raise TrainerConfigError(
+                f"Member {run_dir} has a different residual action scheme."
+            )
+        if config.run.rank_allocation != reference_config.run.rank_allocation:
+            raise TrainerConfigError(
+                f"Member {run_dir} has a different rank allocation scheme."
+            )
 
     env = build_single_env(
         reference_eval,
@@ -97,6 +105,7 @@ def run_ensemble_evaluation(
         seed=0,
         decision_interval=reference_config.run.decision_interval,
         residual=reference_config.run.residual,
+        rank_allocation=reference_config.run.rank_allocation,
     )
     states: list[Any] = [None] * len(members)
 
