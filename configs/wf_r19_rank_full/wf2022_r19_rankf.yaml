@@ -1,0 +1,83 @@
+experiment: wf2022_r19_rankf
+env:
+  environment:
+    seed: 42
+    initial_balance_jpy: 1000000.0
+    episode_max_steps: 128
+    window_size: 32
+    max_leverage: 5.0
+    margin_call_threshold: 0.2
+    allow_action_leverage: false
+    random_start: true
+    currency_pairs:
+    - JPY/USD
+    - JPY/EUR
+    - JPY/GBP
+    - JPY/AUD
+    - JPY/CHF
+    - JPY/CAD
+    - JPY/NZD
+    - JPY/NOK
+    - JPY/SEK
+  data:
+    provider: file
+    timeframe: 1d
+    path: data/jpy_9pairs_1d_2003_carry.parquet
+  features:
+    volatility_window: 32
+    normalize: false
+    selected:
+    - log_return
+    - volatility
+    - sma20_ratio
+    - mom24
+    - xz_mom24
+    - xr_mom24
+    - carry_annual
+    - xz_carry
+  transaction_costs:
+    commission_rate: 0.0
+    overnight_rate: 2.0e-05
+    carry_mode: signed
+    spreads:
+      JPY/USD: 1.5e-05
+      JPY/EUR: 2.5e-05
+      JPY/GBP: 3.0e-05
+      JPY/AUD: 3.0e-05
+      JPY/CHF: 3.5e-05
+      JPY/CAD: 3.5e-05
+      JPY/NZD: 4.0e-05
+      JPY/NOK: 6.0e-05
+      JPY/SEK: 6.0e-05
+train_range:
+  start: '2003-06-01'
+  end: '2021-07-01'
+val_range:
+  start: '2021-07-01'
+  end: '2022-01-01'
+eval_range:
+  start: '2022-01-01'
+  end: '2023-01-01'
+algorithm:
+  name: ppo
+  hyperparams:
+    n_steps: 1024
+    batch_size: 1024
+    learning_rate: 0.0003
+    gamma: 0.999
+    ent_coef: 0.001
+network:
+  name: mlp
+  kwargs:
+    features_dim: 128
+run:
+  total_timesteps: 300000
+  seed: 42
+  device: cuda
+  n_envs: 8
+  vec_env: dummy
+  decision_interval: 1
+  residual: none
+  rank_allocation:
+    top_k: 2
+    gross_exposure: 2.0
