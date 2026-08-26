@@ -126,6 +126,15 @@ def test_rank_allocation_trains_and_evaluates(tmp_path: Path) -> None:
     assert metrics["mean_gross_leverage"] == pytest.approx(1.0, rel=0.05)
 
 
+def test_learned_leverage_mode_still_evaluates(tmp_path: Path) -> None:
+    """Turnover reporting preserves the existing full direct-action mode."""
+    raw = make_experiment_raw()
+    raw["experiment"] = "learned_leverage_smoke"
+    raw["env"]["environment"]["allow_action_leverage"] = True
+    _, metrics = _run_smoke(tmp_path, raw)
+    assert metrics["mean_weight_turnover"] >= 0.0
+
+
 def test_file_provider_pipeline(tmp_path: Path) -> None:
     """fetch -> parquet cache -> train/eval through the file provider."""
     fetch_config = {

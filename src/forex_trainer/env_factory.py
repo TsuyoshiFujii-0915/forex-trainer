@@ -53,19 +53,40 @@ class PinnedLeverageAction(gymnasium.ActionWrapper):
         weights = np.asarray(action, dtype=np.float32).reshape(-1, 1)
         return np.concatenate([weights, self._pinned_leverage.reshape(-1, 1)], axis=1)
 
-    def step(self, action: np.ndarray) -> tuple[Any, float, bool, bool, dict[str, Any]]:
-        """Forward weights and expose them for allocation-turnover reporting.
+
+class TargetWeightInfo(gymnasium.Wrapper):
+    """Report the effective target exposure weights applied by ForexEnv."""
+
+    def __init__(self, env: gymnasium.Env, max_leverage: float) -> None:
+        """Wrap the full two-column ForexEnv action interface.
 
         Args:
-            action: Agent-facing target weights of shape (N, 1).
+            env: ForexEnv receiving weight and leverage columns.
+            max_leverage: Global gross cap from the resolved environment config.
+        """
+        super().__init__(env)
+        self._max_leverage = max_leverage
+
+    def step(self, action: np.ndarray) -> tuple[Any, float, bool, bool, dict[str, Any]]:
+        """Apply a full action and expose its capped target exposure weights.
+
+        Args:
+            action: Full ForexEnv action of shape (N, 2).
 
         Returns:
             Standard Gymnasium step tuple with ``target_weights`` in info.
         """
-        full_action = self.action(action)
-        observation, reward, terminated, truncated, info = self.env.step(full_action)
+        array = np.asarray(action, dtype=np.float64)
+        observation, reward, terminated, truncated, info = self.env.step(array)
+        weights = np.clip(array[:, 0], -1.0, 1.0)
+        leverage = np.clip(
+            array[:, 1], self.action_space.low[:, 1], self.action_space.high[:, 1]
+        )
+        gross_request = float(np.sum(np.abs(weights) * leverage))
+        if gross_request > self._max_leverage:
+            weights = weights * (self._max_leverage / gross_request)
         enriched_info = dict(info)
-        enriched_info["target_weights"] = full_action[:, 0].astype(float).tolist()
+        enriched_info["target_weights"] = (weights * leverage).astype(float).tolist()
         return observation, reward, terminated, truncated, enriched_info
 
 
@@ -274,10 +295,13 @@ def build_single_env(
     custom_cross_features = {
         name: CROSS_FEATURE_REGISTRY[name] for name in cross_feature_names
     }
-    env: gymnasium.Env = ForexEnv(
-        parse_env_config(env_raw),
-        custom_features=custom_features,
-        custom_cross_features=custom_cross_features,
+    env: gymnasium.Env = TargetWeightInfo(
+        ForexEnv(
+            parse_env_config(env_raw),
+            custom_features=custom_features,
+            custom_cross_features=custom_cross_features,
+        ),
+        max_leverage=float(env_raw["environment"]["max_leverage"]),
     )
     box = env.action_space
     if bool(np.all(box.low[:, 1] == box.high[:, 1])):
