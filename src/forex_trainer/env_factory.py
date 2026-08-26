@@ -17,6 +17,8 @@ from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecEnv
 from .config import RankAllocationConfig, ResidualConfig
 from .features import CROSS_FEATURE_REGISTRY, FEATURE_REGISTRY
 
+_MAX_FINITE_FLOAT32_SCORE = np.finfo(np.float32).max
+
 
 class PinnedLeverageAction(gymnasium.ActionWrapper):
     """Removes the pinned leverage column from the agent-facing action space.
@@ -116,7 +118,10 @@ class RankAllocationAction(gymnasium.ActionWrapper):
         self._top_k = top_k
         self._weight_magnitude = gross_exposure / (2 * top_k)
         self.action_space = spaces.Box(
-            low=-1.0, high=1.0, shape=(num_pairs, 1), dtype=np.float32
+            low=-_MAX_FINITE_FLOAT32_SCORE,
+            high=_MAX_FINITE_FLOAT32_SCORE,
+            shape=(num_pairs, 1),
+            dtype=np.float32,
         )
 
     def action(self, action: np.ndarray) -> np.ndarray:
@@ -140,8 +145,7 @@ class RankAllocationAction(gymnasium.ActionWrapper):
             )
         if not np.isfinite(scores).all():
             raise ValueError("rank allocation scores must contain only finite values.")
-        clipped_scores = np.clip(scores[:, 0], -1.0, 1.0)
-        order = np.argsort(clipped_scores, kind="stable")
+        order = np.argsort(scores[:, 0], kind="stable")
         weights = np.zeros(len(order), dtype=np.float32)
         weights[order[: self._top_k]] = -self._weight_magnitude
         weights[order[-self._top_k :]] = self._weight_magnitude

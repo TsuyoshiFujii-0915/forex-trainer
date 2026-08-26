@@ -57,11 +57,12 @@ def _weights(info: dict[str, Any]) -> np.ndarray:
 
 
 def test_action_space_shape_matches_pair_scores() -> None:
-    """The policy emits one bounded score per configured currency pair."""
+    """The policy may emit every finite float32 score for each pair."""
     env = _rank_env()
     assert env.action_space.shape == (len(_PAIRS), 1)
-    np.testing.assert_array_equal(env.action_space.low, -1.0)
-    np.testing.assert_array_equal(env.action_space.high, 1.0)
+    max_score = np.finfo(np.float32).max
+    np.testing.assert_array_equal(env.action_space.low, -max_score)
+    np.testing.assert_array_equal(env.action_space.high, max_score)
     env.close()
 
 
@@ -84,19 +85,14 @@ def test_ties_use_configured_pair_order_deterministically() -> None:
     env.close()
 
 
-def test_scores_are_clipped_before_ranking() -> None:
-    """Out-of-domain finite scores rank exactly like their clipped values."""
-    env_outside = _rank_env()
-    env_clipped = _rank_env()
-    env_outside.reset(seed=0)
-    env_clipped.reset(seed=0)
-    outside = np.array([[5.0], [-5.0], [2.0], [2.0]], dtype=np.float32)
-    clipped = np.clip(outside, -1.0, 1.0)
-    _, _, _, _, outside_info = env_outside.step(outside)
-    _, _, _, _, clipped_info = env_clipped.step(clipped)
-    np.testing.assert_allclose(_weights(outside_info), _weights(clipped_info), atol=1e-6)
-    env_outside.close()
-    env_clipped.close()
+def test_unbounded_scores_preserve_strict_rank_order() -> None:
+    """Scores above one remain distinct instead of collapsing into a tie."""
+    env = _rank_env()
+    env.reset(seed=0)
+    scores = np.array([[5.0], [2.0], [1.0], [-1.0]], dtype=np.float32)
+    _, _, _, _, info = env.step(scores)
+    np.testing.assert_allclose(_weights(info), [1.0, 0.0, 0.0, -1.0], atol=1e-6)
+    env.close()
 
 
 def test_fixed_gross_is_split_equally_across_both_tails() -> None:
