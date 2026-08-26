@@ -79,5 +79,5 @@ run:
   decision_interval: 1
   residual: none
   rank_allocation:
-    top_k: 2
+    top_k: 1
     gross_exposure: 2.0
