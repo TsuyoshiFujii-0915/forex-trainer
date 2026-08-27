@@ -20,7 +20,7 @@ import yaml
 from forex_env.errors import ConfigError, DataError, FeatureError
 
 from .algorithms import ALGO_REGISTRY, resolve_device
-from .artifact_provenance import sha256_file
+from .artifact_provenance import evaluation_runtime_provenance, sha256_file
 from .config import TrainerConfigError, parse_experiment_config
 from .env_factory import build_single_env
 
@@ -74,7 +74,7 @@ def compute_metrics(
     running_peak = np.maximum.accumulate(equity_array)
     max_drawdown = float(np.max(1.0 - equity_array / running_peak))
     return {
-        "steps": int(len(reward_array)),
+        "steps": len(reward_array),
         "cumulative_log_return": float(reward_array.sum()),
         "gross_cumulative_log_return": float(gross_log_returns.sum()),
         "annualized_net_return": float(
@@ -188,9 +188,8 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
                 f"Run directory is missing {required.name}: {run_dir}"
             )
 
-    config = parse_experiment_config(
-        yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
-    )
+    raw_config = yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
+    config = parse_experiment_config(raw_config)
     resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
 
     env = build_single_env(
@@ -203,7 +202,8 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
         rank_allocation=config.run.rank_allocation,
     )
     spec = ALGO_REGISTRY[config.algorithm.name]
-    model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
+    evaluation_device = resolve_device(config.run.device)
+    model = spec.algo_class.load(model_path, device=evaluation_device)
 
     state = None
 
@@ -226,11 +226,14 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
         run_dir / "equity_curve.csv", index=False
     )
     evaluation = {
-        "manifest_version": 1,
+        "manifest_version": 2,
         "model_selection": "validation_best",
         "model_path": model_path.name,
         "model_sha256": sha256_file(model_path),
         "metrics_sha256": sha256_file(run_dir / "metrics.json"),
+        "config_snapshot_sha256": sha256_file(snapshot_path),
+        "env_eval_sha256": sha256_file(eval_env_path),
+        **evaluation_runtime_provenance(evaluation_device, raw_config, snapshot_path),
     }
     (run_dir / "evaluation.json").write_text(
         json.dumps(evaluation, indent=2), encoding="utf-8"

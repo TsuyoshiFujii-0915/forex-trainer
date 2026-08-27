@@ -3,20 +3,19 @@
 from __future__ import annotations
 
 import json
-import subprocess
-from datetime import datetime, timezone
-from importlib import metadata as importlib_metadata
+from collections.abc import Mapping
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
-import forex_env
 import yaml
 
-from .artifact_provenance import data_identity_from_config
+from .artifact_provenance import (
+    data_identity_from_config,
+    dependency_versions,
+    git_commits,
+)
 from .config import ExperimentConfig
-
-_TRAINER_REPO_ROOT = Path(__file__).resolve().parents[2]
-_ENV_REPO_ROOT = Path(forex_env.__file__).resolve().parents[2]
 
 
 def create_run_dir(runs_root: Path, experiment: str) -> Path:
@@ -29,31 +28,10 @@ def create_run_dir(runs_root: Path, experiment: str) -> Path:
     Returns:
         Path to the created directory.
     """
-    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S-%f")
+    timestamp = datetime.now(UTC).strftime("%Y%m%d-%H%M%S-%f")
     run_dir = runs_root / experiment / timestamp
     run_dir.mkdir(parents=True, exist_ok=False)
     return run_dir
-
-
-def _git_commit(repo_root: Path) -> str:
-    """Return the HEAD commit of a repository, or an explicit marker.
-
-    Args:
-        repo_root: Repository root directory.
-
-    Returns:
-        Commit SHA, or "unavailable" when the directory is not a usable git
-        repository (recorded explicitly rather than failing the run, since
-        metadata capture must not block training).
-    """
-    result = subprocess.run(
-        ["git", "-C", str(repo_root), "rev-parse", "HEAD"],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        return "unavailable"
-    return result.stdout.strip()
 
 
 def write_run_metadata(
@@ -91,27 +69,15 @@ def write_run_metadata(
     )
     meta: dict[str, Any] = {
         "experiment": config.experiment,
-        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "created_utc": datetime.now(UTC).isoformat(),
         "seed": config.run.seed,
         "requested_device": config.run.device,
         "device": device,
         "algorithm": config.algorithm.name,
         "network": config.network.name,
         "decision_interval": config.run.decision_interval,
-        "git": {
-            "forex_trainer": _git_commit(_TRAINER_REPO_ROOT),
-            "forex_env": _git_commit(_ENV_REPO_ROOT),
-        },
-        "versions": {
-            name: importlib_metadata.version(name)
-            for name in (
-                "forex-env-v3",
-                "stable-baselines3",
-                "sb3-contrib",
-                "torch",
-                "gymnasium",
-            )
-        },
+        "git": git_commits(),
+        "versions": dependency_versions(),
         "data_identity": data_identity_from_config(
             raw_config, run_dir / "config_snapshot.yaml"
         ),

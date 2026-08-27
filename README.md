@@ -77,7 +77,7 @@ uv run forex-selection-study \
   --runs-root runs
 ```
 
-Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, requested/resolved device, and training-time data identity), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv` + `evaluation.json` (model-selection, model SHA-256, and metrics SHA-256). `configs/` is committed; `runs/` is gitignored.
+Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, requested/resolved device, and training-time data identity), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv` + `evaluation.json`. Evaluation manifests are versioned and seal the selected model, metrics, config snapshot, resolved eval env, actual evaluation device, evaluation-time Git SHAs and dependency versions, and data identity with SHA-256 digests. `configs/` is committed; `runs/` is gitignored.
 
 `forex-selection-study` trains each fold/seed exactly once. For each fold it
 compares three action-mean policies from the same source matrix: three
@@ -98,14 +98,18 @@ name: candidate_vs_baseline
 configurations:
   baseline:
     model_selection: validation_best
+    result_kind: ensemble
+    range_policy: { kind: rolling, train_years: 2 }
     runs:
-      - ../../runs/wf2019_baseline/<timestamp>
-      - ../../runs/wf2020_baseline/<timestamp>
+      - ../../runs/wf2019_baseline_ens3/<timestamp>
+      - ../../runs/wf2020_baseline_ens3/<timestamp>
   candidate:
     model_selection: validation_best
+    result_kind: ensemble
+    range_policy: { kind: expanding, train_start: "2003-06-01" }
     runs:
-      - ../../runs/wf2019_candidate/<timestamp>
-      - ../../runs/wf2020_candidate/<timestamp>
+      - ../../runs/wf2019_candidate_ens3/<timestamp>
+      - ../../runs/wf2020_candidate_ens3/<timestamp>
 comparisons:
   - { baseline: baseline, candidate: candidate }
 eras:
@@ -117,26 +121,39 @@ moving_block_length: 2
 trial_count: 12
 ```
 
-List every fold/seed run for each configuration. `model_selection` is an
-expected value that must match each run's signed `evaluation.json`; it is not a
-replacement for artifact provenance. The command rejects incomplete or
-duplicate matrices, misaligned effective evaluation periods, changed training
-data or evaluated model/metrics, and mixed data/resolved-device/model-selection
-conditions. Git, dependency, requested-device, and protocol differences between
-baseline and candidate are retained as visible treatment provenance rather than
-silently rejected. The command writes canonical observations, fold/seed/era
-aggregates, paired candidate-minus-baseline differences, fold and moving-block
-bootstrap intervals, provenance, and the selection-bias limitation as JSON,
-CSV, and Markdown.
+Use `result_kind: seed` and list every fold/seed run when the policy is one
+validation-selected model. Use `result_kind: ensemble` and list one
+`forex-ensemble-eval` directory per fold when the policy is the action mean of
+multiple seeds. Ensemble metrics are consumed directly as one observation per
+fold; seed metrics are never averaged as a proxy for ensemble behavior.
+`model_selection` is an expected value that must match the sealed artifact and
+is not a replacement for provenance.
 
-The generic campaign workflow currently accepts standard validation-best
-training runs (`model_final.zip`). Checkpoint-selection composites keep using
-`forex-selection-study`, whose existing report contract remains unchanged.
+Every configuration declares its training-range treatment. Rolling windows
+accept exactly 2, 4, or 8 calendar years; expanding windows require an explicit
+fixed `train_start`. The report checks that training ends at the six-month
+validation window and that evaluation spans the following calendar year. It
+keeps the normalized range policy in protocol identity while also recording
+every fold's absolute train/validation/evaluation dates.
 
-Runs created before the immutable `data_identity` / `evaluation.json` contract
+The command rejects incomplete or duplicate matrices, misaligned effective
+evaluation periods, changed training data or sealed artifacts, and mixed data,
+training/evaluation-device, or model-selection conditions. Training and evaluation Git,
+dependency, requested/resolved-device, range-policy, and protocol differences
+between baseline and candidate remain visible treatment provenance. The command
+writes canonical observations, fold/seed or fold/ensemble aggregates, paired
+candidate-minus-baseline differences, fold and moving-block bootstrap intervals,
+provenance, and the selection-bias limitation as JSON, CSV, and Markdown.
+
+Checkpoint-selection composites keep using `forex-selection-study`, whose
+existing report contract remains unchanged.
+
+Runs and ensembles created before the version-2 evaluation provenance contracts
 remain reproducible through their existing study-specific commands and
 committed outputs, but are rejected by `forex-report` instead of receiving
-unverifiable fallback provenance.
+unverifiable fallback provenance. In particular, the existing `longf ens3`
+baseline must be regenerated with the current `forex-eval` and
+`forex-ensemble-eval` before it can be admitted to a generic campaign report.
 
 ## Experiment YAML
 

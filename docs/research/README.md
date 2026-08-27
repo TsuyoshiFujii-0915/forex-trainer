@@ -55,3 +55,7 @@
   yfinance 日足 7ペアキャッシュ
 - CLI: `forex-train` / `forex-eval` / `forex-compare` / `forex-ensemble-eval` /
   `forex-fetch-dukascopy` / `forex-report`
+
+`forex-report`へ登録する評価成果物はversion 2 provenanceを必須とする。既存の`longf ens3`は
+旧manifestを推測で補完せず、現行の`forex-eval`と`forex-ensemble-eval`で再生成してから
+generic campaignの基準方策として使用する。

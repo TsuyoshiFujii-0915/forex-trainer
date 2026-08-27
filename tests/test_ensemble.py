@@ -7,12 +7,12 @@ import math
 from pathlib import Path
 
 import pytest
+from helpers import make_experiment_raw, write_experiment_yaml
 
 from forex_trainer.config import TrainerConfigError
 from forex_trainer.ensemble import run_ensemble_evaluation
 from forex_trainer.evaluate import run_evaluation
 from forex_trainer.train import run_training
-from helpers import make_experiment_raw, write_experiment_yaml
 
 
 def _train(tmp_path: Path, seed: int, name: str = "ens_target") -> Path:
@@ -44,7 +44,19 @@ def test_single_member_ensemble_matches_plain_evaluation(tmp_path: Path) -> None
     assert (ensemble_dir / "metrics.json").is_file()
     assert (ensemble_dir / "equity_curve.csv").is_file()
     manifest = json.loads((ensemble_dir / "ensemble.json").read_text(encoding="utf-8"))
+    assert manifest["manifest_version"] == 2
+    assert manifest["policy"] == "action_mean"
+    assert manifest["model_selection"] == "validation_best"
     assert len(manifest["members"]) == 1
+    assert manifest["members"][0]["seed"] == 1
+    assert len(manifest["members"][0]["model_sha256"]) == 64
+    assert len(manifest["members"][0]["config_snapshot_sha256"]) == 64
+    assert len(manifest["members"][0]["meta_sha256"]) == 64
+    assert manifest["evaluation"]["resolved_device"] == "cpu"
+    assert set(manifest["evaluation"]["git"]) == {"forex_trainer", "forex_env"}
+    assert "torch" in manifest["evaluation"]["versions"]
+    assert len(manifest["evaluation"]["metrics_sha256"]) == 64
+    assert len(manifest["evaluation"]["env_eval_sha256"]) == 64
 
 
 def test_two_member_ensemble_walks_shared_env(tmp_path: Path) -> None:

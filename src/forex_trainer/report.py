@@ -12,7 +12,7 @@ import statistics
 import sys
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -32,7 +32,12 @@ _CAMPAIGN_KEYS: tuple[str, ...] = (
     "moving_block_length",
     "trial_count",
 )
-_CONFIGURATION_KEYS: tuple[str, ...] = ("model_selection", "runs")
+_CONFIGURATION_KEYS: tuple[str, ...] = (
+    "model_selection",
+    "result_kind",
+    "range_policy",
+    "runs",
+)
 _COMPARISON_KEYS: tuple[str, ...] = ("baseline", "candidate")
 _ERA_KEYS: tuple[str, ...] = ("start", "end")
 _METRICS: tuple[str, ...] = (
@@ -45,11 +50,32 @@ _SECONDS_PER_YEAR = 365.25 * 86_400.0
 
 
 @dataclass(frozen=True)
+class RollingRangePolicy:
+    """Fixed-calendar-year training window declaration."""
+
+    kind: str
+    train_years: int
+
+
+@dataclass(frozen=True)
+class ExpandingRangePolicy:
+    """Fixed-start expanding training window declaration."""
+
+    kind: str
+    train_start: str
+
+
+RangePolicy = RollingRangePolicy | ExpandingRangePolicy
+
+
+@dataclass(frozen=True)
 class ConfigurationSpec:
     """One named configuration and its explicit run artifacts."""
 
     name: str
     model_selection: str
+    result_kind: str
+    range_policy: RangePolicy
     run_dirs: tuple[Path, ...]
 
 
@@ -87,22 +113,29 @@ class Campaign:
 
 @dataclass(frozen=True)
 class Observation:
-    """Validated metrics and provenance for one fold/seed run."""
+    """Validated metrics and provenance for one campaign observation."""
 
     configuration: str
+    result_kind: str
     fold: str
-    seed: int
+    unit_key: str
+    member_seeds: tuple[int, ...]
     run_dir: Path
     experiment: str
     eval_start: str
     eval_end: str
     metrics: Mapping[str, float]
     requested_device: str
-    device: str
+    training_device: str
+    evaluation_device: str
     protocol_sha256: str
+    ranges: Mapping[str, Mapping[str, str]]
+    range_identity: Mapping[str, Any]
     data_identity: Mapping[str, str]
-    git: Mapping[str, str]
-    versions: Mapping[str, str]
+    training_git: Mapping[str, str]
+    training_versions: Mapping[str, str]
+    evaluation_git: Mapping[str, str]
+    evaluation_versions: Mapping[str, str]
     model_selection: str
 
 
@@ -168,6 +201,46 @@ def _require_integer(value: Any, origin: str, minimum: int) -> int:
     return value
 
 
+def _load_range_policy(value: Any, origin: str) -> RangePolicy:
+    """Load one strict rolling or expanding range policy.
+
+    Args:
+        value: Raw campaign range-policy mapping.
+        origin: Human-readable source for diagnostics.
+
+    Returns:
+        Validated discriminated policy.
+
+    Raises:
+        TrainerConfigError: If the policy is unknown or malformed.
+    """
+    if not isinstance(value, Mapping):
+        raise TrainerConfigError(f"{origin} must be a mapping.")
+    kind = _require_string(value.get("kind"), f"{origin} kind")
+    if kind == "rolling":
+        _require_exact_keys(value, ("kind", "train_years"), origin)
+        train_years = _require_integer(value["train_years"], f"{origin} train_years", 1)
+        if train_years not in {2, 4, 8}:
+            raise TrainerConfigError(
+                f"{origin} rolling train_years must be one of [2, 4, 8], "
+                f"got {train_years}."
+            )
+        return RollingRangePolicy(kind=kind, train_years=train_years)
+    if kind == "expanding":
+        _require_exact_keys(value, ("kind", "train_start"), origin)
+        train_start = _require_string(value["train_start"], f"{origin} train_start")
+        try:
+            date.fromisoformat(train_start)
+        except ValueError as exc:
+            raise TrainerConfigError(
+                f"{origin} train_start must be an ISO date, got {train_start!r}."
+            ) from exc
+        return ExpandingRangePolicy(kind=kind, train_start=train_start)
+    raise TrainerConfigError(
+        f"{origin} kind must be 'rolling' or 'expanding', got {kind!r}."
+    )
+
+
 def load_campaign(campaign_path: Path) -> Campaign:
     """Load a strict campaign YAML without re-parsing legacy experiment schemas.
 
@@ -213,6 +286,19 @@ def load_campaign(campaign_path: Path) -> Campaign:
             raw_spec["model_selection"],
             f"Configuration {validated_name} model_selection",
         )
+        result_kind = _require_string(
+            raw_spec["result_kind"],
+            f"Configuration {validated_name} result_kind",
+        )
+        if result_kind not in {"seed", "ensemble"}:
+            raise TrainerConfigError(
+                f"Configuration {validated_name} result_kind must be seed or "
+                f"ensemble, got {result_kind!r}."
+            )
+        range_policy = _load_range_policy(
+            raw_spec["range_policy"],
+            f"Configuration {validated_name} range_policy",
+        )
         raw_runs = raw_spec["runs"]
         if not isinstance(raw_runs, list) or not raw_runs:
             raise TrainerConfigError(
@@ -238,7 +324,13 @@ def load_campaign(campaign_path: Path) -> Campaign:
                 f"Configuration {validated_name} contains duplicate run directories."
             )
         configurations.append(
-            ConfigurationSpec(validated_name, model_selection, tuple(run_dirs))
+            ConfigurationSpec(
+                validated_name,
+                model_selection,
+                result_kind,
+                range_policy,
+                tuple(run_dirs),
+            )
         )
 
     configuration_names = {item.name for item in configurations}
@@ -460,12 +552,179 @@ def _annualize_log_return(log_return: float, years: float, path: Path) -> float:
     return float(annualized)
 
 
-def _protocol_identity(config: Mapping[str, Any], config_path: Path) -> str:
+def _canonical_metrics(
+    metrics: Mapping[str, Any],
+    metrics_path: Path,
+    configured_start: str,
+    configured_end: str,
+) -> tuple[str, str, Mapping[str, float]]:
+    """Validate and canonicalize one evaluation metrics artifact.
+
+    Args:
+        metrics: Raw metrics mapping.
+        metrics_path: Metrics artifact path for diagnostics.
+        configured_start: Configured evaluation start date.
+        configured_end: Configured evaluation end date.
+
+    Returns:
+        Effective start, effective end, and canonical metrics.
+
+    Raises:
+        TrainerConfigError: If timestamps or metrics are invalid.
+    """
+    if "eval_start" not in metrics or "eval_end" not in metrics:
+        raise TrainerConfigError(
+            f"Metrics artifact {metrics_path} requires eval_start and eval_end."
+        )
+    eval_start = _require_string(metrics["eval_start"], f"{metrics_path} eval_start")
+    eval_end = _require_string(metrics["eval_end"], f"{metrics_path} eval_end")
+    try:
+        start = datetime.fromisoformat(eval_start)
+        end = datetime.fromisoformat(eval_end)
+        range_start = date.fromisoformat(configured_start)
+        range_end = date.fromisoformat(configured_end)
+    except ValueError as exc:
+        raise TrainerConfigError(
+            f"Invalid evaluation timestamp in {metrics_path}: "
+            f"start={eval_start!r}, end={eval_end!r}."
+        ) from exc
+    if (start.tzinfo is None) != (end.tzinfo is None):
+        raise TrainerConfigError(
+            f"Evaluation timestamps in {metrics_path} must use the same timezone "
+            f"awareness: start={eval_start!r}, end={eval_end!r}."
+        )
+    if start.date() < range_start or end.date() > range_end:
+        raise TrainerConfigError(
+            f"Metrics evaluation interval in {metrics_path} falls outside the "
+            f"configured eval_range: metrics=({eval_start}, {eval_end}), "
+            f"config=({configured_start}, {configured_end})."
+        )
+    duration_years = (end - start).total_seconds() / _SECONDS_PER_YEAR
+    if not math.isfinite(duration_years) or duration_years <= 0.0:
+        raise TrainerConfigError(
+            f"Evaluation duration in {metrics_path} must be positive, got "
+            f"{duration_years}."
+        )
+    net_log = _require_finite_metric(metrics, "cumulative_log_return", metrics_path)
+    gross_log = _require_finite_metric(
+        metrics, "gross_cumulative_log_return", metrics_path
+    )
+    canonical = {
+        "annualized_net_return": _annualize_log_return(
+            net_log, duration_years, metrics_path
+        ),
+        "annualized_gross_return": _annualize_log_return(
+            gross_log, duration_years, metrics_path
+        ),
+        "sharpe_annualized": _require_finite_metric(
+            metrics, "sharpe_annualized", metrics_path
+        ),
+        "max_drawdown": _require_finite_metric(metrics, "max_drawdown", metrics_path),
+    }
+    return eval_start, eval_end, canonical
+
+
+def _validated_ranges(
+    config: Mapping[str, Any],
+    policy: RangePolicy,
+    config_path: Path,
+) -> tuple[str, Mapping[str, Mapping[str, str]], Mapping[str, Any]]:
+    """Validate current research range geometry and normalize its treatment.
+
+    Args:
+        config: Raw experiment snapshot.
+        policy: Campaign-owned rolling or expanding declaration.
+        config_path: Snapshot path for diagnostics.
+
+    Returns:
+        Fold year, absolute ranges, and normalized range treatment identity.
+
+    Raises:
+        TrainerConfigError: If dates or campaign-owned geometry differ.
+    """
+    parsed: dict[str, tuple[date, date]] = {}
+    serialized: dict[str, Mapping[str, str]] = {}
+    for name in ("train_range", "val_range", "eval_range"):
+        raw_range = _require_mapping_member(config, name, str(config_path))
+        if set(raw_range) != {"start", "end"}:
+            raise TrainerConfigError(
+                f"Config snapshot {config_path} {name} must contain exactly "
+                "start and end."
+            )
+        start_text = _require_string(raw_range["start"], f"{config_path} {name}.start")
+        end_text = _require_string(raw_range["end"], f"{config_path} {name}.end")
+        try:
+            start = date.fromisoformat(start_text)
+            end = date.fromisoformat(end_text)
+        except ValueError as exc:
+            raise TrainerConfigError(
+                f"Config snapshot {config_path} has invalid {name}: "
+                f"start={start_text!r}, end={end_text!r}."
+            ) from exc
+        if start >= end:
+            raise TrainerConfigError(
+                f"Config snapshot {config_path} requires {name}.start < {name}.end."
+            )
+        parsed[name] = (start, end)
+        serialized[name] = {"start": start_text, "end": end_text}
+
+    train_start, train_end = parsed["train_range"]
+    val_start, val_end = parsed["val_range"]
+    eval_start, eval_end = parsed["eval_range"]
+    expected_eval_end = date(eval_start.year + 1, 1, 1)
+    expected_val_start = date(eval_start.year - 1, 7, 1)
+    if eval_start != date(eval_start.year, 1, 1) or eval_end != expected_eval_end:
+        raise TrainerConfigError(
+            f"Config snapshot {config_path} eval range must be one calendar year "
+            f"from January 1, got {serialized['eval_range']}."
+        )
+    if val_start != expected_val_start or val_end != eval_start:
+        raise TrainerConfigError(
+            f"Config snapshot {config_path} validation range must be the six "
+            f"months immediately before eval, got {serialized['val_range']}."
+        )
+    if train_end != val_start:
+        raise TrainerConfigError(
+            f"Config snapshot {config_path} train range must end when validation "
+            f"starts: train_end={train_end}, val_start={val_start}."
+        )
+    if isinstance(policy, RollingRangePolicy):
+        expected_train_start = date(
+            train_end.year - policy.train_years,
+            train_end.month,
+            train_end.day,
+        )
+        if train_start != expected_train_start:
+            raise TrainerConfigError(
+                f"Config snapshot {config_path} range does not match rolling "
+                f"{policy.train_years}y policy: expected train_start "
+                f"{expected_train_start}, got {train_start}."
+            )
+        identity: Mapping[str, Any] = {
+            "kind": policy.kind,
+            "train_years": policy.train_years,
+        }
+    else:
+        if train_start.isoformat() != policy.train_start:
+            raise TrainerConfigError(
+                f"Config snapshot {config_path} range does not match expanding "
+                f"train_start {policy.train_start}: got {train_start}."
+            )
+        identity = {"kind": policy.kind, "train_start": policy.train_start}
+    return str(eval_start.year), serialized, identity
+
+
+def _protocol_identity(
+    config: Mapping[str, Any],
+    config_path: Path,
+    range_identity: Mapping[str, Any],
+) -> str:
     """Hash the invariant learning protocol of a raw config snapshot.
 
     Args:
         config: Raw config snapshot.
         config_path: Snapshot path for diagnostics.
+        range_identity: Normalized campaign-owned range treatment.
 
     Returns:
         SHA-256 of the config after fold, date-range, and seed identity removal.
@@ -499,6 +758,7 @@ def _protocol_identity(config: Mapping[str, Any], config_path: Path) -> str:
     projected_run = dict(run)
     del projected_run["seed"]
     projection["run"] = projected_run
+    projection["range_policy"] = dict(range_identity)
     encoded = json.dumps(projection, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(encoded).hexdigest()
 
@@ -544,7 +804,7 @@ def _require_sha256(value: Any, origin: str) -> str:
     return digest
 
 
-def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
+def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
     """Load and validate one evaluated training-run artifact.
 
     Args:
@@ -557,10 +817,16 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
     Raises:
         TrainerConfigError: If artifact contents are incomplete or inconsistent.
     """
+    if spec.result_kind != "seed":
+        raise TrainerConfigError(
+            f"Configuration {spec.name} must declare result_kind=seed for "
+            "standard run artifacts."
+        )
     config_path = run_dir / "config_snapshot.yaml"
     meta_path = run_dir / "meta.json"
     metrics_path = run_dir / "metrics.json"
     evaluation_path = run_dir / "evaluation.json"
+    eval_env_path = run_dir / "env_eval.yaml"
     config = _load_yaml_mapping(config_path, "config_snapshot.yaml")
     meta = _load_json_mapping(meta_path, "meta.json")
     metrics = _load_json_mapping(metrics_path, "metrics.json")
@@ -573,10 +839,16 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
             "model_path",
             "model_sha256",
             "metrics_sha256",
+            "config_snapshot_sha256",
+            "env_eval_sha256",
+            "resolved_device",
+            "git",
+            "versions",
+            "data_identity",
         ),
         f"Evaluation manifest {evaluation_path}",
     )
-    if evaluation["manifest_version"] != 1:
+    if evaluation["manifest_version"] != 2:
         raise TrainerConfigError(
             f"Evaluation manifest {evaluation_path} has unsupported "
             f"manifest_version={evaluation['manifest_version']!r}."
@@ -627,22 +899,29 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
         raise TrainerConfigError(
             f"Metrics changed after {evaluation_path} was written: {metrics_path}"
         )
-
-    eval_range = _require_mapping_member(config, "eval_range", str(config_path))
-    if "start" not in eval_range or "end" not in eval_range:
-        raise TrainerConfigError(
-            f"Config snapshot {config_path} requires eval_range.start and eval_range.end."
-        )
-    config_eval_start = _require_string(
-        eval_range["start"], f"{config_path} eval_range.start"
+    expected_config_sha = _require_sha256(
+        evaluation["config_snapshot_sha256"],
+        f"{evaluation_path} config_snapshot_sha256",
     )
-    _require_string(eval_range["end"], f"{config_path} eval_range.end")
-    try:
-        fold = str(datetime.fromisoformat(config_eval_start).year)
-    except ValueError as exc:
+    if sha256_file(config_path) != expected_config_sha:
         raise TrainerConfigError(
-            f"Invalid eval_range.start in {config_path}: {config_eval_start}"
-        ) from exc
+            f"Config snapshot changed after {evaluation_path} was written: "
+            f"{config_path}"
+        )
+    expected_env_sha = _require_sha256(
+        evaluation["env_eval_sha256"], f"{evaluation_path} env_eval_sha256"
+    )
+    if not eval_env_path.is_file() or sha256_file(eval_env_path) != expected_env_sha:
+        raise TrainerConfigError(
+            f"Resolved eval env changed after {evaluation_path} was written: "
+            f"{eval_env_path}"
+        )
+
+    fold, ranges, range_identity = _validated_ranges(
+        config, spec.range_policy, config_path
+    )
+    config_eval_start = ranges["eval_range"]["start"]
+    config_eval_end = ranges["eval_range"]["end"]
 
     for field in (
         "experiment",
@@ -676,7 +955,7 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
     requested_device = _require_string(
         meta["requested_device"], f"{meta_path} requested_device"
     )
-    device = _require_string(meta["device"], f"{meta_path} device")
+    training_device = _require_string(meta["device"], f"{meta_path} device")
     run = _require_mapping_member(config, "run", str(config_path))
     if "seed" not in run or run["seed"] != seed:
         raise TrainerConfigError(
@@ -688,10 +967,10 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
             f"meta={requested_device!r}, "
             f"config={run.get('device')!r}."
         )
-    if device not in {"cpu", "cuda", "mps"}:
+    if training_device not in {"cpu", "cuda", "mps"}:
         raise TrainerConfigError(
             f"Resolved run device in {meta_path} must be cpu, cuda, or mps, "
-            f"got {device!r}."
+            f"got {training_device!r}."
         )
     for field in ("algorithm", "network"):
         section = _require_mapping_member(config, field, str(config_path))
@@ -710,80 +989,368 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
             f"recorded_at_training={recorded_data_identity!r}, "
             f"current={current_data_identity!r}."
         )
+    evaluation_device = _require_string(
+        evaluation["resolved_device"], f"{evaluation_path} resolved_device"
+    )
+    if evaluation_device not in {"cpu", "cuda", "mps"}:
+        raise TrainerConfigError(
+            f"Evaluation resolved_device in {evaluation_path} must be cpu, cuda, "
+            f"or mps, got {evaluation_device!r}."
+        )
+    evaluation_git = _string_mapping(evaluation["git"], f"{evaluation_path} git")
+    evaluation_versions = _string_mapping(
+        evaluation["versions"], f"{evaluation_path} versions"
+    )
+    evaluation_data_identity = _string_mapping(
+        evaluation["data_identity"], f"{evaluation_path} data_identity"
+    )
+    if evaluation_data_identity != recorded_data_identity:
+        raise TrainerConfigError(
+            f"Evaluation data_identity in {evaluation_path} differs from the "
+            f"training artifact: evaluation={evaluation_data_identity!r}, "
+            f"training={recorded_data_identity!r}."
+        )
 
-    if "eval_start" not in metrics or "eval_end" not in metrics:
-        raise TrainerConfigError(
-            f"Metrics artifact {metrics_path} requires eval_start and eval_end."
-        )
-    eval_start = _require_string(metrics["eval_start"], f"{metrics_path} eval_start")
-    eval_end = _require_string(metrics["eval_end"], f"{metrics_path} eval_end")
-    try:
-        start = datetime.fromisoformat(eval_start)
-        end = datetime.fromisoformat(eval_end)
-    except ValueError as exc:
-        raise TrainerConfigError(
-            f"Invalid evaluation timestamp in {metrics_path}: "
-            f"start={eval_start!r}, end={eval_end!r}."
-        ) from exc
-    if (start.tzinfo is None) != (end.tzinfo is None):
-        raise TrainerConfigError(
-            f"Evaluation timestamps in {metrics_path} must use the same timezone "
-            f"awareness: start={eval_start!r}, end={eval_end!r}."
-        )
-    config_eval_end = _require_string(
-        eval_range["end"], f"{config_path} eval_range.end"
+    eval_start, eval_end, canonical_metrics = _canonical_metrics(
+        metrics,
+        metrics_path,
+        config_eval_start,
+        config_eval_end,
     )
-    try:
-        configured_start = datetime.fromisoformat(config_eval_start).date()
-        configured_end = datetime.fromisoformat(config_eval_end).date()
-    except ValueError as exc:
-        raise TrainerConfigError(
-            f"Invalid configured evaluation range in {config_path}: "
-            f"start={config_eval_start!r}, end={config_eval_end!r}."
-        ) from exc
-    if start.date() < configured_start or end.date() > configured_end:
-        raise TrainerConfigError(
-            f"Metrics evaluation interval in {metrics_path} falls outside the "
-            f"configured eval_range: metrics=({eval_start}, {eval_end}), "
-            f"config=({config_eval_start}, {config_eval_end})."
-        )
-    duration_years = (end - start).total_seconds() / _SECONDS_PER_YEAR
-    if not math.isfinite(duration_years) or duration_years <= 0.0:
-        raise TrainerConfigError(
-            f"Evaluation duration in {metrics_path} must be positive, got "
-            f"{duration_years}."
-        )
-    net_log = _require_finite_metric(metrics, "cumulative_log_return", metrics_path)
-    gross_log = _require_finite_metric(
-        metrics, "gross_cumulative_log_return", metrics_path
-    )
-    canonical_metrics = {
-        "annualized_net_return": _annualize_log_return(
-            net_log, duration_years, metrics_path
-        ),
-        "annualized_gross_return": _annualize_log_return(
-            gross_log, duration_years, metrics_path
-        ),
-        "sharpe_annualized": _require_finite_metric(
-            metrics, "sharpe_annualized", metrics_path
-        ),
-        "max_drawdown": _require_finite_metric(metrics, "max_drawdown", metrics_path),
-    }
     return Observation(
         configuration=spec.name,
+        result_kind=spec.result_kind,
         fold=fold,
-        seed=seed,
+        unit_key=str(seed),
+        member_seeds=(seed,),
         run_dir=run_dir,
         experiment=experiment,
         eval_start=eval_start,
         eval_end=eval_end,
         metrics=canonical_metrics,
         requested_device=requested_device,
-        device=device,
-        protocol_sha256=_protocol_identity(config, config_path),
+        training_device=training_device,
+        evaluation_device=evaluation_device,
+        protocol_sha256=_protocol_identity(config, config_path, range_identity),
+        ranges=ranges,
+        range_identity=range_identity,
         data_identity=recorded_data_identity,
-        git=_string_mapping(meta["git"], f"{meta_path} git"),
-        versions=_string_mapping(meta["versions"], f"{meta_path} versions"),
+        training_git=_string_mapping(meta["git"], f"{meta_path} git"),
+        training_versions=_string_mapping(meta["versions"], f"{meta_path} versions"),
+        evaluation_git=evaluation_git,
+        evaluation_versions=evaluation_versions,
+        model_selection=model_selection,
+    )
+
+
+def _load_ensemble_observation(
+    spec: ConfigurationSpec, ensemble_dir: Path
+) -> Observation:
+    """Load one sealed action-mean ensemble as a fold-level observation.
+
+    Args:
+        spec: Declared named configuration.
+        ensemble_dir: Ensemble artifact directory.
+
+    Returns:
+        Canonical fold-level ensemble observation.
+
+    Raises:
+        TrainerConfigError: If the manifest or any member artifact is invalid.
+    """
+    if spec.result_kind != "ensemble":
+        raise TrainerConfigError(
+            f"Configuration {spec.name} must declare result_kind=ensemble for "
+            "ensemble artifacts."
+        )
+    manifest_path = ensemble_dir / "ensemble.json"
+    metrics_path = ensemble_dir / "metrics.json"
+    eval_env_path = ensemble_dir / "env_eval.yaml"
+    manifest = _load_json_mapping(manifest_path, "ensemble.json")
+    metrics = _load_json_mapping(metrics_path, "metrics.json")
+    _require_exact_keys(
+        manifest,
+        (
+            "manifest_version",
+            "experiment",
+            "policy",
+            "model_selection",
+            "decision_interval",
+            "members",
+            "evaluation",
+        ),
+        f"Ensemble manifest {manifest_path}",
+    )
+    if manifest["manifest_version"] != 2:
+        raise TrainerConfigError(
+            f"Ensemble manifest {manifest_path} has unsupported "
+            f"manifest_version={manifest['manifest_version']!r}."
+        )
+    policy = _require_string(manifest["policy"], f"{manifest_path} policy")
+    if policy != "action_mean":
+        raise TrainerConfigError(
+            f"Ensemble manifest {manifest_path} must use policy='action_mean', "
+            f"got {policy!r}."
+        )
+    model_selection = _require_string(
+        manifest["model_selection"], f"{manifest_path} model_selection"
+    )
+    if model_selection != "validation_best" or model_selection != spec.model_selection:
+        raise TrainerConfigError(
+            f"Ensemble model_selection mismatch in {manifest_path}: "
+            f"campaign={spec.model_selection!r}, artifact={model_selection!r}."
+        )
+    decision_interval = _require_integer(
+        manifest["decision_interval"], f"{manifest_path} decision_interval", 1
+    )
+    experiment = _require_string(manifest["experiment"], f"{manifest_path} experiment")
+    evaluation = manifest["evaluation"]
+    if not isinstance(evaluation, Mapping):
+        raise TrainerConfigError(f"{manifest_path} evaluation must be a mapping.")
+    _require_exact_keys(
+        evaluation,
+        (
+            "resolved_device",
+            "git",
+            "versions",
+            "data_identity",
+            "metrics_sha256",
+            "env_eval_sha256",
+        ),
+        f"Ensemble evaluation {manifest_path}",
+    )
+    if sha256_file(metrics_path) != _require_sha256(
+        evaluation["metrics_sha256"], f"{manifest_path} metrics_sha256"
+    ):
+        raise TrainerConfigError(
+            f"Ensemble metrics changed after {manifest_path} was written: "
+            f"{metrics_path}"
+        )
+    if not eval_env_path.is_file() or sha256_file(eval_env_path) != _require_sha256(
+        evaluation["env_eval_sha256"], f"{manifest_path} env_eval_sha256"
+    ):
+        raise TrainerConfigError(
+            f"Ensemble eval env changed after {manifest_path} was written: "
+            f"{eval_env_path}"
+        )
+    evaluation_device = _require_string(
+        evaluation["resolved_device"], f"{manifest_path} resolved_device"
+    )
+    if evaluation_device not in {"cpu", "cuda", "mps"}:
+        raise TrainerConfigError(
+            f"Ensemble evaluation device in {manifest_path} must be cpu, cuda, "
+            f"or mps, got {evaluation_device!r}."
+        )
+    evaluation_git = _string_mapping(
+        evaluation["git"], f"{manifest_path} evaluation git"
+    )
+    evaluation_versions = _string_mapping(
+        evaluation["versions"], f"{manifest_path} evaluation versions"
+    )
+    evaluation_data = _string_mapping(
+        evaluation["data_identity"], f"{manifest_path} evaluation data_identity"
+    )
+
+    raw_members = manifest["members"]
+    if not isinstance(raw_members, list) or not raw_members:
+        raise TrainerConfigError(
+            f"Ensemble manifest {manifest_path} requires at least one member."
+        )
+    member_values: list[dict[str, Any]] = []
+    for index, raw_member in enumerate(raw_members):
+        origin = f"{manifest_path} members[{index}]"
+        if not isinstance(raw_member, Mapping):
+            raise TrainerConfigError(f"{origin} must be a mapping.")
+        _require_exact_keys(
+            raw_member,
+            (
+                "run_dir",
+                "experiment",
+                "seed",
+                "model_path",
+                "model_sha256",
+                "config_snapshot_sha256",
+                "meta_sha256",
+            ),
+            origin,
+        )
+        member_dir = Path(_require_string(raw_member["run_dir"], f"{origin} run_dir"))
+        member_dir = member_dir.resolve()
+        if not member_dir.is_dir():
+            raise TrainerConfigError(
+                f"Ensemble member directory is missing: {member_dir}"
+            )
+        config_path = member_dir / "config_snapshot.yaml"
+        meta_path = member_dir / "meta.json"
+        model_name = _require_string(raw_member["model_path"], f"{origin} model_path")
+        if model_name != "model_final.zip":
+            raise TrainerConfigError(
+                f"Ensemble member {origin} must use model_final.zip, got "
+                f"{model_name!r}."
+            )
+        model_path = member_dir / model_name
+        required_files = (
+            config_path,
+            meta_path,
+            model_path,
+            member_dir / "env_eval.yaml",
+        )
+        if any(not path.is_file() for path in required_files):
+            missing = [str(path) for path in required_files if not path.is_file()]
+            raise TrainerConfigError(
+                f"Ensemble member {origin} is incomplete: missing={missing}."
+            )
+        for artifact_path, field in (
+            (model_path, "model_sha256"),
+            (config_path, "config_snapshot_sha256"),
+            (meta_path, "meta_sha256"),
+        ):
+            expected_sha = _require_sha256(raw_member[field], f"{origin} {field}")
+            if sha256_file(artifact_path) != expected_sha:
+                raise TrainerConfigError(
+                    f"Ensemble member {artifact_path.name} changed after "
+                    f"{manifest_path} was written: {artifact_path}"
+                )
+        if sha256_file(member_dir / "env_eval.yaml") != sha256_file(eval_env_path):
+            raise TrainerConfigError(
+                f"Ensemble member {member_dir} has a different resolved eval env "
+                f"from {ensemble_dir}."
+            )
+        config = _load_yaml_mapping(config_path, "config_snapshot.yaml")
+        meta = _load_json_mapping(meta_path, "meta.json")
+        for field in (
+            "experiment",
+            "seed",
+            "requested_device",
+            "device",
+            "git",
+            "versions",
+            "data_identity",
+        ):
+            if field not in meta:
+                raise TrainerConfigError(
+                    f"Ensemble member meta {meta_path} lacks required field {field}."
+                )
+        member_experiment = _require_string(
+            raw_member["experiment"], f"{origin} experiment"
+        )
+        seed = _require_integer(raw_member["seed"], f"{origin} seed", 0)
+        run = _require_mapping_member(config, "run", str(config_path))
+        if (
+            meta["experiment"] != member_experiment
+            or config.get("experiment") != member_experiment
+            or meta["seed"] != seed
+            or run.get("seed") != seed
+        ):
+            raise TrainerConfigError(
+                f"Ensemble member identity differs across manifest, config, and "
+                f"meta: {member_dir}."
+            )
+        if run.get("decision_interval") != decision_interval:
+            raise TrainerConfigError(
+                f"Ensemble member {member_dir} decision_interval differs from "
+                f"{manifest_path}."
+            )
+        requested_device = _require_string(
+            meta["requested_device"], f"{meta_path} requested_device"
+        )
+        if run.get("device") != requested_device:
+            raise TrainerConfigError(
+                f"Ensemble member {member_dir} requested device differs between "
+                "config and meta."
+            )
+        training_device = _require_string(meta["device"], f"{meta_path} device")
+        if training_device not in {"cpu", "cuda", "mps"}:
+            raise TrainerConfigError(
+                f"Ensemble member training device in {meta_path} is invalid: "
+                f"{training_device!r}."
+            )
+        recorded_data = _string_mapping(
+            meta["data_identity"], f"{meta_path} data_identity"
+        )
+        current_data = data_identity_from_config(config, config_path)
+        if recorded_data != current_data:
+            raise TrainerConfigError(
+                f"Ensemble member data identity changed since training: {member_dir}."
+            )
+        fold, ranges, range_identity = _validated_ranges(
+            config, spec.range_policy, config_path
+        )
+        member_values.append(
+            {
+                "seed": seed,
+                "fold": fold,
+                "ranges": ranges,
+                "range_identity": range_identity,
+                "protocol_sha256": _protocol_identity(
+                    config, config_path, range_identity
+                ),
+                "requested_device": requested_device,
+                "training_device": training_device,
+                "data_identity": recorded_data,
+                "training_git": _string_mapping(meta["git"], f"{meta_path} git"),
+                "training_versions": _string_mapping(
+                    meta["versions"], f"{meta_path} versions"
+                ),
+            }
+        )
+
+    seeds = [int(item["seed"]) for item in member_values]
+    if len(set(seeds)) != len(seeds):
+        raise TrainerConfigError(
+            f"Ensemble manifest {manifest_path} contains duplicate member seeds."
+        )
+    common_fields = (
+        "fold",
+        "ranges",
+        "range_identity",
+        "protocol_sha256",
+        "requested_device",
+        "training_device",
+        "data_identity",
+        "training_git",
+        "training_versions",
+    )
+    first = member_values[0]
+    for field in common_fields:
+        if any(item[field] != first[field] for item in member_values[1:]):
+            raise TrainerConfigError(
+                f"Ensemble members in {manifest_path} have mismatched {field}."
+            )
+    if evaluation_data != first["data_identity"]:
+        raise TrainerConfigError(
+            f"Ensemble evaluation data identity in {manifest_path} differs from "
+            "its members."
+        )
+    ranges = first["ranges"]
+    eval_start, eval_end, canonical_metrics = _canonical_metrics(
+        metrics,
+        metrics_path,
+        ranges["eval_range"]["start"],
+        ranges["eval_range"]["end"],
+    )
+    return Observation(
+        configuration=spec.name,
+        result_kind=spec.result_kind,
+        fold=str(first["fold"]),
+        unit_key="ensemble",
+        member_seeds=tuple(sorted(seeds)),
+        run_dir=ensemble_dir,
+        experiment=experiment,
+        eval_start=eval_start,
+        eval_end=eval_end,
+        metrics=canonical_metrics,
+        requested_device=str(first["requested_device"]),
+        training_device=str(first["training_device"]),
+        evaluation_device=evaluation_device,
+        protocol_sha256=str(first["protocol_sha256"]),
+        ranges=ranges,
+        range_identity=first["range_identity"],
+        data_identity=first["data_identity"],
+        training_git=first["training_git"],
+        training_versions=first["training_versions"],
+        evaluation_git=evaluation_git,
+        evaluation_versions=evaluation_versions,
         model_selection=model_selection,
     )
 
@@ -791,7 +1358,7 @@ def _load_observation(spec: ConfigurationSpec, run_dir: Path) -> Observation:
 def _validate_configuration(
     spec: ConfigurationSpec, observations: Sequence[Observation]
 ) -> Mapping[str, Any]:
-    """Require one complete and provenance-consistent fold/seed matrix.
+    """Require complete observations and consistent provenance.
 
     Args:
         spec: Named configuration declaration.
@@ -801,29 +1368,32 @@ def _validate_configuration(
         Common provenance record.
 
     Raises:
-        TrainerConfigError: If matrix or provenance differs inside the group.
+        TrainerConfigError: If observations or provenance differ inside the group.
     """
-    cells: dict[tuple[str, int], Observation] = {}
+    cells: dict[tuple[str, str], Observation] = {}
     for observation in observations:
-        key = (observation.fold, observation.seed)
+        key = (observation.fold, observation.unit_key)
         if key in cells:
             raise TrainerConfigError(
-                f"Configuration {spec.name} has duplicate fold/seed cell {key}: "
+                f"Configuration {spec.name} has duplicate observation {key}: "
                 f"{cells[key].run_dir} and {observation.run_dir}."
             )
         cells[key] = observation
     folds = sorted({observation.fold for observation in observations})
-    seeds = sorted({observation.seed for observation in observations})
-    expected = {(fold, seed) for fold in folds for seed in seeds}
+    unit_keys = sorted({observation.unit_key for observation in observations})
+    expected = {(fold, unit_key) for fold in folds for unit_key in unit_keys}
     if set(cells) != expected:
+        matrix_name = (
+            "fold/seed matrix" if spec.result_kind == "seed" else "fold matrix"
+        )
         raise TrainerConfigError(
-            f"Configuration {spec.name} has an incomplete fold/seed matrix: "
+            f"Configuration {spec.name} has an incomplete {matrix_name}: "
             f"missing={sorted(expected - set(cells))}."
         )
     for fold in folds:
         intervals = {
-            (cells[(fold, seed)].eval_start, cells[(fold, seed)].eval_end)
-            for seed in seeds
+            (cells[(fold, unit_key)].eval_start, cells[(fold, unit_key)].eval_end)
+            for unit_key in unit_keys
         }
         if len(intervals) != 1:
             raise TrainerConfigError(
@@ -831,18 +1401,34 @@ def _validate_configuration(
                 f"evaluation intervals: {sorted(intervals)}."
             )
     provenance_fields = {
+        "result_kind": {item.result_kind for item in observations},
         "protocol": {item.protocol_sha256 for item in observations},
+        "range": {
+            json.dumps(item.range_identity, sort_keys=True) for item in observations
+        },
         "requested_device": {item.requested_device for item in observations},
-        "device": {item.device for item in observations},
+        "training_device": {item.training_device for item in observations},
+        "evaluation_device": {item.evaluation_device for item in observations},
         "data": {
             json.dumps(item.data_identity, sort_keys=True) for item in observations
         },
-        "git": {json.dumps(item.git, sort_keys=True) for item in observations},
-        "versions": {
-            json.dumps(item.versions, sort_keys=True) for item in observations
+        "training_git": {
+            json.dumps(item.training_git, sort_keys=True) for item in observations
+        },
+        "training_versions": {
+            json.dumps(item.training_versions, sort_keys=True) for item in observations
+        },
+        "evaluation_git": {
+            json.dumps(item.evaluation_git, sort_keys=True) for item in observations
+        },
+        "evaluation_versions": {
+            json.dumps(item.evaluation_versions, sort_keys=True)
+            for item in observations
         },
         "model_selection": {item.model_selection for item in observations},
     }
+    if spec.result_kind == "ensemble":
+        provenance_fields["member_seeds"] = {item.member_seeds for item in observations}
     for field, values in provenance_fields.items():
         if len(values) != 1:
             raise TrainerConfigError(
@@ -850,28 +1436,39 @@ def _validate_configuration(
                 f"{sorted(values)}."
             )
     first = observations[0]
-    return {
+    result: dict[str, Any] = {
+        "result_kind": first.result_kind,
         "protocol_sha256": first.protocol_sha256,
+        "range_identity": dict(first.range_identity),
         "requested_device": first.requested_device,
-        "device": first.device,
+        "training_device": first.training_device,
+        "evaluation_device": first.evaluation_device,
         "data_identity": dict(first.data_identity),
-        "git": dict(first.git),
-        "versions": dict(first.versions),
+        "training_git": dict(first.training_git),
+        "training_versions": dict(first.training_versions),
+        "evaluation_git": dict(first.evaluation_git),
+        "evaluation_versions": dict(first.evaluation_versions),
         "model_selection": first.model_selection,
         "folds": folds,
-        "seeds": seeds,
         "runs": [
             {
                 "fold": item.fold,
-                "seed": item.seed,
+                "unit_key": item.unit_key,
+                "member_seeds": list(item.member_seeds),
                 "experiment": item.experiment,
                 "run_dir": str(item.run_dir),
                 "eval_start": item.eval_start,
                 "eval_end": item.eval_end,
+                "ranges": item.ranges,
             }
-            for item in sorted(observations, key=lambda row: (row.fold, row.seed))
+            for item in sorted(observations, key=lambda row: (row.fold, row.unit_key))
         ],
     }
+    if spec.result_kind == "seed":
+        result["seeds"] = sorted(item.member_seeds[0] for item in observations)
+    else:
+        result["member_seeds"] = list(first.member_seeds)
+    return result
 
 
 def _metric_means(observations: Sequence[Observation]) -> dict[str, float]:
@@ -922,7 +1519,7 @@ def _configuration_report(
         TrainerConfigError: If moving-block controls exceed available folds.
     """
     folds = sorted({item.fold for item in observations})
-    seeds = sorted({item.seed for item in observations})
+    result_kind = observations[0].result_kind
     if campaign.moving_block_length > len(folds):
         raise TrainerConfigError(
             f"Campaign moving_block_length {campaign.moving_block_length} exceeds "
@@ -932,10 +1529,6 @@ def _configuration_report(
     fold_report = {
         fold: _metric_means([item for item in observations if item.fold == fold])
         for fold in folds
-    }
-    seed_report = {
-        str(seed): _metric_means([item for item in observations if item.seed == seed])
-        for seed in seeds
     }
     overall = {
         name: float(statistics.fmean(fold_report[fold][name] for fold in folds))
@@ -976,16 +1569,29 @@ def _configuration_report(
         )
         for name in _METRICS
     }
-    return {
+    result: dict[str, Any] = {
+        "result_kind": result_kind,
         "observation_count": len(observations),
         "fold_count": len(folds),
-        "seed_count": len(seeds),
         "overall": overall,
         "folds": fold_report,
-        "seeds": seed_report,
         "eras": era_report,
         "uncertainty": uncertainty,
     }
+    if result_kind == "seed":
+        seeds = sorted({item.member_seeds[0] for item in observations})
+        result["seed_count"] = len(seeds)
+        result["seeds"] = {
+            str(seed): _metric_means(
+                [item for item in observations if item.member_seeds == (seed,)]
+            )
+            for seed in seeds
+        }
+    else:
+        member_seeds = observations[0].member_seeds
+        result["ensemble_member_count"] = len(member_seeds)
+        result["member_seeds"] = list(member_seeds)
+    return result
 
 
 def _require_comparable_provenance(
@@ -1003,7 +1609,13 @@ def _require_comparable_provenance(
     """
     baseline = provenance[comparison.baseline]
     candidate = provenance[comparison.candidate]
-    for field in ("device", "data_identity", "model_selection"):
+    for field in (
+        "result_kind",
+        "training_device",
+        "evaluation_device",
+        "data_identity",
+        "model_selection",
+    ):
         if baseline[field] != candidate[field]:
             raise TrainerConfigError(
                 f"Comparison {comparison.baseline} -> {comparison.candidate} has "
@@ -1028,7 +1640,15 @@ def _provenance_differences(
     baseline = provenance[comparison.baseline]
     candidate = provenance[comparison.candidate]
     differences: dict[str, Mapping[str, Any]] = {}
-    for field in ("protocol_sha256", "requested_device", "git", "versions"):
+    for field in (
+        "range_identity",
+        "protocol_sha256",
+        "requested_device",
+        "training_git",
+        "training_versions",
+        "evaluation_git",
+        "evaluation_versions",
+    ):
         if baseline[field] != candidate[field]:
             differences[field] = {
                 "baseline": baseline[field],
@@ -1059,15 +1679,17 @@ def _comparison_report(
     """
     _require_comparable_provenance(comparison, provenance)
     baseline_lookup = {
-        (item.fold, item.seed): item for item in observations[comparison.baseline]
+        (item.fold, item.unit_key): item for item in observations[comparison.baseline]
     }
     candidate_lookup = {
-        (item.fold, item.seed): item for item in observations[comparison.candidate]
+        (item.fold, item.unit_key): item for item in observations[comparison.candidate]
     }
+    result_kind = provenance[comparison.baseline]["result_kind"]
+    pairing_unit = "fold_seed" if result_kind == "seed" else "fold"
     if set(baseline_lookup) != set(candidate_lookup):
         raise TrainerConfigError(
             f"Comparison {comparison.baseline} -> {comparison.candidate} has "
-            "mismatched fold/seed matrix: "
+            f"mismatched {pairing_unit} matrix: "
             f"baseline_only={sorted(set(baseline_lookup) - set(candidate_lookup))}, "
             f"candidate_only={sorted(set(candidate_lookup) - set(baseline_lookup))}."
         )
@@ -1080,7 +1702,7 @@ def _comparison_report(
         ):
             raise TrainerConfigError(
                 f"Comparison {comparison.baseline} -> {comparison.candidate} "
-                f"fold/seed {key} has mismatched effective evaluation intervals: "
+                f"{pairing_unit} {key} has mismatched effective evaluation intervals: "
                 f"baseline=({baseline.eval_start}, {baseline.eval_end}), "
                 f"candidate=({candidate.eval_start}, {candidate.eval_end})."
             )
@@ -1113,11 +1735,12 @@ def _comparison_report(
         )
         for name in _METRICS
     }
-    return {
+    result: dict[str, Any] = {
         "baseline": comparison.baseline,
         "candidate": comparison.candidate,
+        "pairing_unit": pairing_unit,
         "fold_count": len(folds),
-        "seed_fold_pair_count": len(baseline_lookup),
+        "paired_observation_count": len(baseline_lookup),
         "folds": fold_differences,
         "mean_differences": mean_differences,
         "improved_folds": {
@@ -1132,6 +1755,9 @@ def _comparison_report(
         "uncertainty": uncertainty,
         "provenance_differences": _provenance_differences(comparison, provenance),
     }
+    if result_kind == "seed":
+        result["seed_fold_pair_count"] = len(baseline_lookup)
+    return result
 
 
 def _atomic_write_text(path: Path, content: str) -> None:
@@ -1169,8 +1795,10 @@ def _write_observations_csv(path: Path, observations: Sequence[Observation]) -> 
             handle,
             fieldnames=(
                 "configuration",
+                "result_kind",
                 "fold",
-                "seed",
+                "unit_key",
+                "member_seeds",
                 "experiment",
                 "run_dir",
                 "eval_start",
@@ -1182,13 +1810,15 @@ def _write_observations_csv(path: Path, observations: Sequence[Observation]) -> 
         writer.writeheader()
         for item in sorted(
             observations,
-            key=lambda row: (row.configuration, row.fold, row.seed),
+            key=lambda row: (row.configuration, row.fold, row.unit_key),
         ):
             writer.writerow(
                 {
                     "configuration": item.configuration,
+                    "result_kind": item.result_kind,
                     "fold": item.fold,
-                    "seed": item.seed,
+                    "unit_key": item.unit_key,
+                    "member_seeds": json.dumps(item.member_seeds),
                     "experiment": item.experiment,
                     "run_dir": str(item.run_dir),
                     "eval_start": item.eval_start,
@@ -1245,7 +1875,10 @@ def _report_markdown(report: Mapping[str, Any]) -> str:
             "",
             "## Statistical assumptions and provenance",
             "",
-            f"- Sampling unit: {assumptions['sampling_unit']} after averaging seeds within each fold.",
+            (
+                f"- Sampling unit: {assumptions['sampling_unit']}. "
+                f"{assumptions['within_fold_handling']}"
+            ),
             f"- Bootstrap draws: {assumptions['samples']}; deterministic seed: {assumptions['seed']}.",
             f"- Moving-block length: {assumptions['moving_block_length']} adjacent folds with circular wrapping.",
             f"- Campaign trials: {report['trial_count']}; reported configurations: {report['configuration_count']}.",
@@ -1276,7 +1909,12 @@ def run_research_report(
     observations_by_configuration: dict[str, list[Observation]] = {}
     provenance: dict[str, Mapping[str, Any]] = {}
     for spec in campaign.configurations:
-        observations = [_load_observation(spec, run_dir) for run_dir in spec.run_dirs]
+        loader = (
+            _load_standard_observation
+            if spec.result_kind == "seed"
+            else _load_ensemble_observation
+        )
+        observations = [loader(spec, run_dir) for run_dir in spec.run_dirs]
         observations_by_configuration[spec.name] = observations
         provenance[spec.name] = _validate_configuration(spec, observations)
     configuration_reports = {
@@ -1297,7 +1935,10 @@ def run_research_report(
         "comparisons": comparison_reports,
         "uncertainty_assumptions": {
             "sampling_unit": "evaluation_fold",
-            "seed_handling": "seeds_are_averaged_within_fold_before_resampling",
+            "within_fold_handling": (
+                "Seed-policy observations are averaged within each fold; "
+                "action-mean ensemble metrics are observed directly once per fold."
+            ),
             "fold_bootstrap": "folds_are_sampled_with_replacement",
             "moving_block": "ordered_adjacent_folds_use_circular_moving_blocks",
             "samples": campaign.bootstrap_samples,
@@ -1345,7 +1986,7 @@ def main(argv: list[str] | None = None) -> int:
     """
     parser = argparse.ArgumentParser(
         prog="forex-report",
-        description="Aggregate explicit fold/seed run artifacts into research evidence.",
+        description="Aggregate explicit fold-aware artifacts into research evidence.",
     )
     parser.add_argument(
         "--campaign", type=str, required=True, help="Campaign YAML path."
