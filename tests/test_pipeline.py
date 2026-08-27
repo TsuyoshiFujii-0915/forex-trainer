@@ -65,6 +65,7 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     assert any((run_dir / "tensorboard").iterdir())
 
     metrics = run_evaluation(run_dir)
+    evaluation = json.loads((run_dir / "evaluation.json").read_text(encoding="utf-8"))
     assert metrics["steps"] > 10
     assert math.isfinite(metrics["cumulative_log_return"])
     assert math.isfinite(metrics["gross_cumulative_log_return"])
@@ -78,6 +79,10 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     assert metrics["total_weight_turnover"] >= metrics["mean_weight_turnover"]
     assert (run_dir / "metrics.json").is_file()
     assert (run_dir / "equity_curve.csv").is_file()
+    assert evaluation["model_selection"] == "validation_best"
+    assert evaluation["model_path"] == "model_final.zip"
+    assert len(evaluation["model_sha256"]) == 64
+    assert len(evaluation["metrics_sha256"]) == 64
     return run_dir, metrics
 
 

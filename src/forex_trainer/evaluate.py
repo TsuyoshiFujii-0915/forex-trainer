@@ -20,6 +20,7 @@ import yaml
 from forex_env.errors import ConfigError, DataError, FeatureError
 
 from .algorithms import ALGO_REGISTRY, resolve_device
+from .artifact_provenance import sha256_file
 from .config import TrainerConfigError, parse_experiment_config
 from .env_factory import build_single_env
 
@@ -223,6 +224,16 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     )
     pd.DataFrame({"timestamp": timestamps, "equity_jpy": equities}).to_csv(
         run_dir / "equity_curve.csv", index=False
+    )
+    evaluation = {
+        "manifest_version": 1,
+        "model_selection": "validation_best",
+        "model_path": model_path.name,
+        "model_sha256": sha256_file(model_path),
+        "metrics_sha256": sha256_file(run_dir / "metrics.json"),
+    }
+    (run_dir / "evaluation.json").write_text(
+        json.dumps(evaluation, indent=2), encoding="utf-8"
     )
     return metrics
 

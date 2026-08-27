@@ -65,6 +65,11 @@ uv run forex-eval --run runs/ppo_cnn1d_daily/<timestamp>
 # 5. compare all evaluated runs
 uv run forex-compare runs
 
+# 6. generate the fold/seed aggregate evidence used for research decisions
+uv run forex-report \
+  --campaign configs/studies/<campaign>.yaml \
+  --output-dir runs/reports/<campaign>
+
 # Reproduce issue #1 across the 17 longf folds and seeds 42/43/44.
 # This requires the canonical longf parquet cache named by the fold configs.
 uv run forex-selection-study \
@@ -72,7 +77,7 @@ uv run forex-selection-study \
   --runs-root runs
 ```
 
-Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
+Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, requested/resolved device, and training-time data identity), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv` + `evaluation.json` (model-selection, model SHA-256, and metrics SHA-256). `configs/` is committed; `runs/` is gitignored.
 
 `forex-selection-study` trains each fold/seed exactly once. For each fold it
 compares three action-mean policies from the same source matrix: three
@@ -81,6 +86,57 @@ per seed). Its timestamped study directory records the source runs, exact model
 paths and SHA-256 digests, data identity, fold metrics, era summaries, winning
 folds, and paired differences against validation-best as JSON, CSV, and
 Markdown.
+
+`forex-report` consumes an explicit campaign manifest and never chooses a
+"latest" run implicitly. Paths in each configuration's `runs` list are
+resolved relative to the campaign YAML. File-backed `env.data.path` values in
+run snapshots follow the repository convention and are resolved from the
+working directory. A minimal campaign has this shape:
+
+```yaml
+name: candidate_vs_baseline
+configurations:
+  baseline:
+    model_selection: validation_best
+    runs:
+      - ../../runs/wf2019_baseline/<timestamp>
+      - ../../runs/wf2020_baseline/<timestamp>
+  candidate:
+    model_selection: validation_best
+    runs:
+      - ../../runs/wf2019_candidate/<timestamp>
+      - ../../runs/wf2020_candidate/<timestamp>
+comparisons:
+  - { baseline: baseline, candidate: candidate }
+eras:
+  pre_2019: { start: 2009, end: 2018 }
+  recent: { start: 2019, end: 2025 }
+bootstrap_samples: 10000
+bootstrap_seed: 7
+moving_block_length: 2
+trial_count: 12
+```
+
+List every fold/seed run for each configuration. `model_selection` is an
+expected value that must match each run's signed `evaluation.json`; it is not a
+replacement for artifact provenance. The command rejects incomplete or
+duplicate matrices, misaligned effective evaluation periods, changed training
+data or evaluated model/metrics, and mixed data/resolved-device/model-selection
+conditions. Git, dependency, requested-device, and protocol differences between
+baseline and candidate are retained as visible treatment provenance rather than
+silently rejected. The command writes canonical observations, fold/seed/era
+aggregates, paired candidate-minus-baseline differences, fold and moving-block
+bootstrap intervals, provenance, and the selection-bias limitation as JSON,
+CSV, and Markdown.
+
+The generic campaign workflow currently accepts standard validation-best
+training runs (`model_final.zip`). Checkpoint-selection composites keep using
+`forex-selection-study`, whose existing report contract remains unchanged.
+
+Runs created before the immutable `data_identity` / `evaluation.json` contract
+remain reproducible through their existing study-specific commands and
+committed outputs, but are rejected by `forex-report` instead of receiving
+unverifiable fallback provenance.
 
 ## Experiment YAML
 

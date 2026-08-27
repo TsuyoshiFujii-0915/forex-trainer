@@ -12,6 +12,7 @@ from typing import Any, Mapping
 import forex_env
 import yaml
 
+from .artifact_provenance import data_identity_from_config
 from .config import ExperimentConfig
 
 _TRAINER_REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -92,6 +93,7 @@ def write_run_metadata(
         "experiment": config.experiment,
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "seed": config.run.seed,
+        "requested_device": config.run.device,
         "device": device,
         "algorithm": config.algorithm.name,
         "network": config.network.name,
@@ -110,5 +112,8 @@ def write_run_metadata(
                 "gymnasium",
             )
         },
+        "data_identity": data_identity_from_config(
+            raw_config, run_dir / "config_snapshot.yaml"
+        ),
     }
     (run_dir / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")

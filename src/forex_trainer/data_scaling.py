@@ -39,6 +39,7 @@ from .config import (
 from .ensemble import run_ensemble_evaluation
 from .evaluate import run_evaluation
 from .features import mom24, xr_mom24
+from .research_statistics import bootstrap_annualized_fold_returns
 from .train import run_training
 
 _STUDY_KEYS: tuple[str, ...] = (
@@ -83,16 +84,6 @@ class RolloutAccounting:
     episode_equivalents: float
     optimizer_minibatch_steps: int
     sample_presentations: int
-
-
-@dataclass(frozen=True)
-class BootstrapIntervals:
-    """Fold-level and moving-block annualized-return intervals."""
-
-    fold_low: float
-    fold_high: float
-    moving_block_low: float
-    moving_block_high: float
 
 
 @dataclass(frozen=True)
@@ -370,78 +361,6 @@ def effective_sample_size(values: Sequence[float] | np.ndarray, max_lag: int) ->
     integrated_autocorrelation = 1.0 + 2.0 * paired_sum
     estimate = len(series) / integrated_autocorrelation
     return float(min(len(series), max(1.0, estimate)))
-
-
-def bootstrap_annualized_fold_returns(
-    fold_log_returns: np.ndarray,
-    fold_years: np.ndarray,
-    samples: int,
-    seed: int,
-    block_length: int,
-) -> BootstrapIntervals:
-    """Bootstrap annualized returns using folds as the sampling unit.
-
-    Args:
-        fold_log_returns: One seed-averaged cumulative log return per fold.
-        fold_years: Evaluation duration in years for each fold.
-        samples: Number of bootstrap draws.
-        seed: Deterministic NumPy generator seed.
-        block_length: Circular moving-block length in adjacent folds.
-
-    Returns:
-        Percentile intervals from IID-fold and moving-block resampling.
-
-    Raises:
-        ValueError: If arrays or bootstrap controls are invalid.
-    """
-    returns = np.asarray(fold_log_returns, dtype=np.float64)
-    years = np.asarray(fold_years, dtype=np.float64)
-    if returns.ndim != 1 or years.ndim != 1 or returns.shape != years.shape:
-        raise ValueError(
-            "fold_log_returns and fold_years must be equal-length 1D arrays."
-        )
-    if len(returns) < 1 or not np.isfinite(returns).all():
-        raise ValueError("fold_log_returns must contain at least one finite fold.")
-    if not np.isfinite(years).all() or bool(np.any(years <= 0.0)):
-        raise ValueError("fold_years must contain finite positive durations.")
-    if isinstance(samples, bool) or not isinstance(samples, int) or samples < 1:
-        raise ValueError(f"samples must be a positive integer, got {samples!r}.")
-    if isinstance(seed, bool) or not isinstance(seed, int) or seed < 0:
-        raise ValueError(f"seed must be a non-negative integer, got {seed!r}.")
-    if (
-        isinstance(block_length, bool)
-        or not isinstance(block_length, int)
-        or not 1 <= block_length <= len(returns)
-    ):
-        raise ValueError(
-            f"block_length must be in [1, {len(returns)}], got {block_length!r}."
-        )
-
-    generator = np.random.default_rng(seed)
-    fold_indices = generator.integers(
-        0, len(returns), size=(samples, len(returns))
-    )
-    fold_draws = np.expm1(
-        returns[fold_indices].sum(axis=1) / years[fold_indices].sum(axis=1)
-    )
-    block_indices = np.empty((samples, len(returns)), dtype=int)
-    for sample_index in range(samples):
-        selected: list[int] = []
-        while len(selected) < len(returns):
-            start = int(generator.integers(0, len(returns)))
-            selected.extend(
-                (start + offset) % len(returns) for offset in range(block_length)
-            )
-        block_indices[sample_index] = selected[: len(returns)]
-    block_draws = np.expm1(
-        returns[block_indices].sum(axis=1) / years[block_indices].sum(axis=1)
-    )
-    return BootstrapIntervals(
-        fold_low=float(np.quantile(fold_draws, 0.025)),
-        fold_high=float(np.quantile(fold_draws, 0.975)),
-        moving_block_low=float(np.quantile(block_draws, 0.025)),
-        moving_block_high=float(np.quantile(block_draws, 0.975)),
-    )
 
 
 def _subtract_years(value: str, years: int) -> str:
