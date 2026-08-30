@@ -23,6 +23,17 @@ _VERSION_PACKAGES: tuple[str, ...] = (
     "torch",
     "gymnasium",
 )
+_TRAINING_PROVENANCE_FIELDS: tuple[str, ...] = (
+    "experiment",
+    "seed",
+    "requested_device",
+    "device",
+    "algorithm",
+    "network",
+    "git",
+    "versions",
+    "data_identity",
+)
 
 
 def sha256_file(path: Path) -> str:
@@ -135,6 +146,78 @@ def evaluation_runtime_provenance(
         "versions": dependency_versions(),
         "data_identity": data_identity_from_config(raw_config, origin),
     }
+
+
+def require_current_training_provenance(
+    meta: Any,
+    raw_config: Mapping[str, Any],
+    origin: Path,
+) -> dict[str, Any]:
+    """Require training metadata sufficient for a verifiable v2 evaluation.
+
+    Args:
+        meta: Parsed training metadata artifact.
+        raw_config: Raw experiment config snapshot.
+        origin: Metadata path for diagnostics.
+
+    Returns:
+        Validated training metadata.
+
+    Raises:
+        TrainerConfigError: If required provenance is missing or contradicts
+            the config snapshot or current data identity.
+    """
+    if not isinstance(meta, Mapping):
+        raise TrainerConfigError(f"Training provenance must be a mapping: {origin}")
+    missing = set(_TRAINING_PROVENANCE_FIELDS) - set(meta)
+    if missing:
+        raise TrainerConfigError(
+            f"Training provenance {origin} lacks required fields {sorted(missing)}; "
+            "the source run must be retrained under the current contract."
+        )
+    run = raw_config.get("run")
+    algorithm = raw_config.get("algorithm")
+    network = raw_config.get("network")
+    if not all(isinstance(section, Mapping) for section in (run, algorithm, network)):
+        raise TrainerConfigError(
+            f"Config snapshot associated with training provenance {origin} is "
+            "missing run, algorithm, or network mappings."
+        )
+    expected_values = {
+        "experiment": raw_config.get("experiment"),
+        "seed": run.get("seed"),
+        "requested_device": run.get("device"),
+        "algorithm": algorithm.get("name"),
+        "network": network.get("name"),
+    }
+    for field, expected in expected_values.items():
+        if meta[field] != expected:
+            raise TrainerConfigError(
+                f"Training provenance {origin} has mismatched {field}: "
+                f"meta={meta[field]!r}, config={expected!r}."
+            )
+    device = meta["device"]
+    if device not in {"cpu", "cuda", "mps"}:
+        raise TrainerConfigError(
+            f"Training provenance {origin} has invalid resolved device {device!r}."
+        )
+    for field in ("git", "versions", "data_identity"):
+        value = meta[field]
+        if not isinstance(value, Mapping) or not all(
+            isinstance(key, str) and isinstance(item, str)
+            for key, item in value.items()
+        ):
+            raise TrainerConfigError(
+                f"Training provenance {origin} field {field} must be a "
+                "string-to-string mapping."
+            )
+    current_data_identity = data_identity_from_config(raw_config, origin)
+    if dict(meta["data_identity"]) != current_data_identity:
+        raise TrainerConfigError(
+            f"Training provenance {origin} data identity differs from the "
+            "current dataset."
+        )
+    return dict(meta)
 
 
 def _git_commit(repo_root: Path) -> str:

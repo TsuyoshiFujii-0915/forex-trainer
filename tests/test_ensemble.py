@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 
 import pytest
+import yaml
 from helpers import make_experiment_raw, write_experiment_yaml
 
 from forex_trainer.config import TrainerConfigError
@@ -81,3 +82,32 @@ def test_mismatched_eval_envs_rejected(tmp_path: Path) -> None:
     run_b = run_training(config_path, tmp_path / "runs", seed_override=1)
     with pytest.raises(TrainerConfigError, match="eval env"):
         run_ensemble_evaluation([run_a, run_b], tmp_path / "runs")
+
+
+def test_evaluators_reject_eval_env_drift_from_config_snapshot(tmp_path: Path) -> None:
+    """A sealed eval env cannot differ semantically from its config snapshot."""
+    run_dir = _train(tmp_path, seed=1)
+    eval_env_path = run_dir / "env_eval.yaml"
+    eval_env = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
+    eval_env["transaction_costs"]["commission_rate"] = 0.25
+    eval_env_path.write_text(yaml.safe_dump(eval_env), encoding="utf-8")
+
+    with pytest.raises(TrainerConfigError, match="config snapshot"):
+        run_evaluation(run_dir)
+    with pytest.raises(TrainerConfigError, match="config snapshot"):
+        run_ensemble_evaluation([run_dir], tmp_path / "runs")
+
+
+def test_evaluators_reject_legacy_training_provenance(tmp_path: Path) -> None:
+    """Evaluation cannot turn an incomplete legacy run into a v2 artifact."""
+    run_dir = _train(tmp_path, seed=1)
+    meta_path = run_dir / "meta.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    del meta["requested_device"]
+    del meta["data_identity"]
+    meta_path.write_text(json.dumps(meta), encoding="utf-8")
+
+    with pytest.raises(TrainerConfigError, match="Training provenance"):
+        run_evaluation(run_dir)
+    with pytest.raises(TrainerConfigError, match="Training provenance"):
+        run_ensemble_evaluation([run_dir], tmp_path / "runs")

@@ -85,6 +85,7 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     assert len(evaluation["metrics_sha256"]) == 64
     assert len(evaluation["config_snapshot_sha256"]) == 64
     assert len(evaluation["env_eval_sha256"]) == 64
+    assert len(evaluation["meta_sha256"]) == 64
     assert evaluation["resolved_device"] == "cpu"
     assert set(evaluation["git"]) == {"forex_trainer", "forex_env"}
     assert "torch" in evaluation["versions"]

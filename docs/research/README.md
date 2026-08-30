@@ -56,6 +56,7 @@
 - CLI: `forex-train` / `forex-eval` / `forex-compare` / `forex-ensemble-eval` /
   `forex-fetch-dukascopy` / `forex-report`
 
-`forex-report`へ登録する評価成果物はversion 2 provenanceを必須とする。既存の`longf ens3`は
-旧manifestを推測で補完せず、現行の`forex-eval`と`forex-ensemble-eval`で再生成してから
-generic campaignの基準方策として使用する。
+`forex-report`へ登録する評価成果物はversion 2 provenanceを必須とする。既存の`longf ens3`
+source runは現行のtraining provenanceを持たず、再評価だけでは移行できない。旧metaを現在値で
+補完せず、現行契約で再学習してから`forex-eval`と`forex-ensemble-eval`を実行し、generic
+campaignの基準方策として使用する。

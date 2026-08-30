@@ -22,9 +22,14 @@ from forex_env.errors import ConfigError, DataError, FeatureError
 from .algorithms import ALGO_REGISTRY, resolve_device
 from .artifact_provenance import (
     evaluation_runtime_provenance,
+    require_current_training_provenance,
     sha256_file,
 )
-from .config import TrainerConfigError, parse_experiment_config
+from .config import (
+    TrainerConfigError,
+    parse_experiment_config,
+    require_matching_resolved_eval_env,
+)
 from .env_factory import build_single_env
 from .evaluate import compute_metrics, walk_eval_range
 from .run_dir import create_run_dir
@@ -55,10 +60,16 @@ def _load_member(
             )
     raw_config = yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
     config = parse_experiment_config(raw_config)
-    resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
-    meta = json.loads(meta_path.read_text(encoding="utf-8"))
-    if not isinstance(meta, dict):
-        raise TrainerConfigError(f"Member meta root must be a mapping: {meta_path}")
+    resolved_eval = require_matching_resolved_eval_env(
+        raw_config,
+        yaml.safe_load(eval_env_path.read_text(encoding="utf-8")),
+        eval_env_path,
+    )
+    meta = require_current_training_provenance(
+        json.loads(meta_path.read_text(encoding="utf-8")),
+        raw_config,
+        meta_path,
+    )
     spec = ALGO_REGISTRY[config.algorithm.name]
     evaluation_device = resolve_device(config.run.device)
     model = spec.algo_class.load(model_path, device=evaluation_device)
@@ -163,15 +174,6 @@ def run_ensemble_evaluation(
     )
     member_records = []
     for run_dir, (config, _, _, _, meta, _) in zip(run_dirs, members):
-        for field in ("experiment", "seed"):
-            if field not in meta:
-                raise TrainerConfigError(
-                    f"Member meta {run_dir / 'meta.json'} lacks {field}."
-                )
-        if meta["experiment"] != config.experiment or meta["seed"] != config.run.seed:
-            raise TrainerConfigError(
-                f"Member identity mismatch between config and meta: {run_dir}"
-            )
         member_records.append(
             {
                 "run_dir": str(run_dir.resolve()),

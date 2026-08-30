@@ -19,7 +19,7 @@ from typing import Any
 import yaml
 
 from .artifact_provenance import data_identity_from_config, sha256_file
-from .config import TrainerConfigError
+from .config import TrainerConfigError, require_matching_resolved_eval_env
 from .research_statistics import BootstrapIntervals, bootstrap_mean_intervals
 
 _CAMPAIGN_KEYS: tuple[str, ...] = (
@@ -841,6 +841,7 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
             "metrics_sha256",
             "config_snapshot_sha256",
             "env_eval_sha256",
+            "meta_sha256",
             "resolved_device",
             "git",
             "versions",
@@ -915,6 +916,18 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
         raise TrainerConfigError(
             f"Resolved eval env changed after {evaluation_path} was written: "
             f"{eval_env_path}"
+        )
+    require_matching_resolved_eval_env(
+        config,
+        _load_yaml_mapping(eval_env_path, "env_eval.yaml"),
+        eval_env_path,
+    )
+    expected_meta_sha = _require_sha256(
+        evaluation["meta_sha256"], f"{evaluation_path} meta_sha256"
+    )
+    if sha256_file(meta_path) != expected_meta_sha:
+        raise TrainerConfigError(
+            f"Training meta changed after {evaluation_path} was written: {meta_path}"
         )
 
     fold, ranges, range_identity = _validated_ranges(
@@ -1218,6 +1231,11 @@ def _load_ensemble_observation(
             )
         config = _load_yaml_mapping(config_path, "config_snapshot.yaml")
         meta = _load_json_mapping(meta_path, "meta.json")
+        require_matching_resolved_eval_env(
+            config,
+            _load_yaml_mapping(member_dir / "env_eval.yaml", "env_eval.yaml"),
+            member_dir / "env_eval.yaml",
+        )
         for field in (
             "experiment",
             "seed",
@@ -1465,7 +1483,7 @@ def _validate_configuration(
         ],
     }
     if spec.result_kind == "seed":
-        result["seeds"] = sorted(item.member_seeds[0] for item in observations)
+        result["seeds"] = sorted({item.member_seeds[0] for item in observations})
     else:
         result["member_seeds"] = list(first.member_seeds)
     return result
@@ -1615,6 +1633,8 @@ def _require_comparable_provenance(
         "evaluation_device",
         "data_identity",
         "model_selection",
+        "evaluation_git",
+        "evaluation_versions",
     ):
         if baseline[field] != candidate[field]:
             raise TrainerConfigError(
@@ -1646,8 +1666,6 @@ def _provenance_differences(
         "requested_device",
         "training_git",
         "training_versions",
-        "evaluation_git",
-        "evaluation_versions",
     ):
         if baseline[field] != candidate[field]:
             differences[field] = {

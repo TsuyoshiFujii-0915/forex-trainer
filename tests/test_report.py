@@ -74,6 +74,11 @@ def _write_run(
         yaml.safe_dump(
             {
                 **config["env"],
+                "environment": {
+                    **config["env"]["environment"],
+                    "random_start": False,
+                    "episode_max_steps": 1_000_000,
+                },
                 "data": {
                     **config["env"]["data"],
                     "start_date": config["eval_range"]["start"],
@@ -133,6 +138,9 @@ def _write_run(
                 ).hexdigest(),
                 "env_eval_sha256": hashlib.sha256(
                     env_eval_path.read_bytes()
+                ).hexdigest(),
+                "meta_sha256": hashlib.sha256(
+                    (run_dir / "meta.json").read_bytes()
                 ).hexdigest(),
                 "resolved_device": device,
                 "git": {"forex_trainer": "trainer-sha", "forex_env": "env-sha"},
@@ -200,6 +208,20 @@ def _reseal_config_snapshot(run_dir: Path) -> None:
     evaluation = json.loads(evaluation_path.read_text(encoding="utf-8"))
     evaluation["config_snapshot_sha256"] = hashlib.sha256(
         (run_dir / "config_snapshot.yaml").read_bytes()
+    ).hexdigest()
+    evaluation_path.write_text(json.dumps(evaluation), encoding="utf-8")
+
+
+def _reseal_meta(run_dir: Path) -> None:
+    """Update a fixture evaluation manifest after creating distinct training meta.
+
+    Args:
+        run_dir: Evaluated training-run fixture directory.
+    """
+    evaluation_path = run_dir / "evaluation.json"
+    evaluation = json.loads(evaluation_path.read_text(encoding="utf-8"))
+    evaluation["meta_sha256"] = hashlib.sha256(
+        (run_dir / "meta.json").read_bytes()
     ).hexdigest()
     evaluation_path.write_text(json.dumps(evaluation), encoding="utf-8")
 
@@ -389,6 +411,10 @@ def test_report_aggregates_fold_seed_era_and_paired_uncertainty(tmp_path: Path) 
     assert paired["uncertainty"]["annualized_net_return"]["fold_bootstrap_95_low"] > 0.0
     assert report["selection_bias"]["status"] == "not_estimated"
     assert report["uncertainty_assumptions"]["sampling_unit"] == "evaluation_fold"
+    provenance = json.loads(
+        (output_dir / "provenance.json").read_text(encoding="utf-8")
+    )
+    assert provenance["baseline"]["seeds"] == [1, 2]
     for filename in (
         "campaign_snapshot.yaml",
         "observations.csv",
@@ -444,10 +470,10 @@ def test_report_rejects_mismatched_comparison_provenance(tmp_path: Path) -> None
         run_research_report(campaign_path, tmp_path / "selection-report")
 
 
-def test_report_records_but_does_not_reject_evaluator_git_differences(
+def test_report_rejects_evaluator_git_differences(
     tmp_path: Path,
 ) -> None:
-    """Implementation SHA is visible treatment provenance, not an implicit blocker."""
+    """Paired metric comparisons require one evaluator implementation contract."""
     campaign_path = _complete_campaign(tmp_path)
     for candidate_run in (tmp_path / "runs" / "candidate").iterdir():
         evaluation_path = candidate_run / "evaluation.json"
@@ -455,13 +481,64 @@ def test_report_records_but_does_not_reject_evaluator_git_differences(
         evaluation["git"]["forex_trainer"] = "candidate-sha"
         evaluation_path.write_text(json.dumps(evaluation), encoding="utf-8")
 
+    with pytest.raises(TrainerConfigError, match="evaluation_git"):
+        run_research_report(campaign_path, tmp_path / "report")
+
+
+def test_report_records_training_git_as_treatment_provenance(tmp_path: Path) -> None:
+    """Training implementation differences remain valid visible treatments."""
+    campaign_path = _complete_campaign(tmp_path)
+    for candidate_run in (tmp_path / "runs" / "candidate").iterdir():
+        meta_path = candidate_run / "meta.json"
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        meta["git"]["forex_trainer"] = "candidate-training-sha"
+        meta_path.write_text(json.dumps(meta), encoding="utf-8")
+        _reseal_meta(candidate_run)
+
     _, report = run_research_report(campaign_path, tmp_path / "report")
 
     differences = report["comparisons"][0]["provenance_differences"]
-    assert differences["evaluation_git"]["baseline"]["forex_trainer"] == "trainer-sha"
+    assert differences["training_git"]["baseline"]["forex_trainer"] == "trainer-sha"
     assert (
-        differences["evaluation_git"]["candidate"]["forex_trainer"] == "candidate-sha"
+        differences["training_git"]["candidate"]["forex_trainer"]
+        == "candidate-training-sha"
     )
+
+
+def test_report_rejects_standard_training_meta_changed_after_evaluation(
+    tmp_path: Path,
+) -> None:
+    """The standard manifest detects training metadata edited after evaluation."""
+    campaign_path = _complete_campaign(tmp_path)
+    candidate_run = next((tmp_path / "runs" / "candidate").iterdir())
+    meta_path = candidate_run / "meta.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    meta["git"]["forex_trainer"] = "post-evaluation-edit"
+    meta_path.write_text(json.dumps(meta), encoding="utf-8")
+
+    with pytest.raises(TrainerConfigError, match="Training meta changed"):
+        run_research_report(campaign_path, tmp_path / "report")
+
+
+def test_report_rejects_eval_env_semantic_drift_even_when_resealed(
+    tmp_path: Path,
+) -> None:
+    """Artifact hashes cannot legitimize an eval env that contradicts config."""
+    campaign_path = _complete_campaign(tmp_path)
+    candidate_run = next((tmp_path / "runs" / "candidate").iterdir())
+    eval_env_path = candidate_run / "env_eval.yaml"
+    eval_env = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
+    eval_env["transaction_costs"]["commission_rate"] = 0.25
+    eval_env_path.write_text(yaml.safe_dump(eval_env), encoding="utf-8")
+    evaluation_path = candidate_run / "evaluation.json"
+    evaluation = json.loads(evaluation_path.read_text(encoding="utf-8"))
+    evaluation["env_eval_sha256"] = hashlib.sha256(
+        eval_env_path.read_bytes()
+    ).hexdigest()
+    evaluation_path.write_text(json.dumps(evaluation), encoding="utf-8")
+
+    with pytest.raises(TrainerConfigError, match="config snapshot"):
+        run_research_report(campaign_path, tmp_path / "report")
 
 
 def test_report_rejects_protocol_drift_inside_one_configuration(tmp_path: Path) -> None:
