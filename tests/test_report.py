@@ -657,6 +657,47 @@ def test_report_rejects_changed_ensemble_member_model(tmp_path: Path) -> None:
         run_research_report(campaign_path, tmp_path / "ensemble-report")
 
 
+def test_report_rejects_ensemble_comparison_with_different_member_seeds(
+    tmp_path: Path,
+) -> None:
+    """Ensemble treatment comparisons require identical member seed draws."""
+    campaign_path = _ensemble_campaign(tmp_path)
+    data_path = tmp_path / "market.parquet"
+    candidate_runs = []
+    for fold, net_log_return in ((2018, 0.28), (2019, -0.02)):
+        members = [
+            _write_run(
+                tmp_path / "alternate-runs",
+                "candidate",
+                fold,
+                seed,
+                net_log_return,
+                "cpu",
+                data_path,
+            )
+            for seed in (3, 4)
+        ]
+        candidate_runs.append(
+            _write_ensemble_artifact(
+                tmp_path / "alternate-ensembles",
+                "candidate",
+                fold,
+                members,
+                net_log_return,
+            )
+        )
+    campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
+    campaign["configurations"]["candidate"]["runs"] = [
+        str(run.relative_to(campaign_path.parent)) for run in candidate_runs
+    ]
+    campaign_path.write_text(
+        yaml.safe_dump(campaign, sort_keys=False), encoding="utf-8"
+    )
+
+    with pytest.raises(TrainerConfigError, match="member_seeds"):
+        run_research_report(campaign_path, tmp_path / "ensemble-report")
+
+
 def test_forex_report_cli_writes_artifacts_and_reports_errors(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:

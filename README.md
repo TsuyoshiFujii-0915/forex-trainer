@@ -125,7 +125,9 @@ Use `result_kind: seed` and list every fold/seed run when the policy is one
 validation-selected model. Use `result_kind: ensemble` and list one
 `forex-ensemble-eval` directory per fold when the policy is the action mean of
 multiple seeds. Ensemble metrics are consumed directly as one observation per
-fold; seed metrics are never averaged as a proxy for ensemble behavior.
+fold; seed metrics are never averaged as a proxy for ensemble behavior. A
+paired ensemble comparison requires the exact same sorted member-seed set in
+the baseline and candidate so method effects are not confounded with seed draws.
 `model_selection` is an expected value that must match the sealed artifact and
 is not a replacement for provenance.
 

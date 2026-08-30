@@ -1627,7 +1627,7 @@ def _require_comparable_provenance(
     """
     baseline = provenance[comparison.baseline]
     candidate = provenance[comparison.candidate]
-    for field in (
+    required_fields = [
         "result_kind",
         "training_device",
         "evaluation_device",
@@ -1635,7 +1635,10 @@ def _require_comparable_provenance(
         "model_selection",
         "evaluation_git",
         "evaluation_versions",
-    ):
+    ]
+    if baseline["result_kind"] == "ensemble":
+        required_fields.append("member_seeds")
+    for field in required_fields:
         if baseline[field] != candidate[field]:
             raise TrainerConfigError(
                 f"Comparison {comparison.baseline} -> {comparison.candidate} has "
