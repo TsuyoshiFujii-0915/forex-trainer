@@ -20,20 +20,31 @@ import yaml
 from forex_env.errors import ConfigError, DataError, FeatureError
 
 from .algorithms import ALGO_REGISTRY, resolve_device
-from .config import TrainerConfigError, parse_experiment_config
+from .artifact_provenance import (
+    evaluation_runtime_provenance,
+    require_current_training_provenance,
+    sha256_file,
+)
+from .config import (
+    TrainerConfigError,
+    parse_experiment_config,
+    require_matching_resolved_eval_env,
+)
 from .env_factory import build_single_env
 from .evaluate import compute_metrics, walk_eval_range
 from .run_dir import create_run_dir
 
 
-def _load_member(run_dir: Path) -> tuple[Any, Any, dict[str, Any]]:
+def _load_member(
+    run_dir: Path,
+) -> tuple[Any, Any, dict[str, Any], dict[str, Any], dict[str, Any], str]:
     """Load one member's config, model, and resolved eval env.
 
     Args:
         run_dir: Run directory produced by forex-train.
 
     Returns:
-        Tuple of (typed config, loaded model, resolved eval env dict).
+        Typed config, model, eval env, raw config, meta, and actual model device.
 
     Raises:
         TrainerConfigError: If required artifacts are missing.
@@ -41,18 +52,28 @@ def _load_member(run_dir: Path) -> tuple[Any, Any, dict[str, Any]]:
     snapshot_path = run_dir / "config_snapshot.yaml"
     model_path = run_dir / "model_final.zip"
     eval_env_path = run_dir / "env_eval.yaml"
-    for required in (snapshot_path, model_path, eval_env_path):
+    meta_path = run_dir / "meta.json"
+    for required in (snapshot_path, model_path, eval_env_path, meta_path):
         if not required.is_file():
             raise TrainerConfigError(
                 f"Run directory is missing {required.name}: {run_dir}"
             )
-    config = parse_experiment_config(
-        yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
+    raw_config = yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
+    config = parse_experiment_config(raw_config)
+    resolved_eval = require_matching_resolved_eval_env(
+        raw_config,
+        yaml.safe_load(eval_env_path.read_text(encoding="utf-8")),
+        eval_env_path,
     )
-    resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
+    meta = require_current_training_provenance(
+        json.loads(meta_path.read_text(encoding="utf-8")),
+        raw_config,
+        meta_path,
+    )
     spec = ALGO_REGISTRY[config.algorithm.name]
-    model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
-    return config, model, resolved_eval
+    evaluation_device = resolve_device(config.run.device)
+    model = spec.algo_class.load(model_path, device=evaluation_device)
+    return config, model, resolved_eval, raw_config, meta, evaluation_device
 
 
 def run_ensemble_evaluation(
@@ -76,8 +97,17 @@ def run_ensemble_evaluation(
     if not run_dirs:
         raise TrainerConfigError("At least one member run directory is required.")
     members = [_load_member(run_dir) for run_dir in run_dirs]
-    reference_config, _, reference_eval = members[0]
-    for run_dir, (config, _, resolved_eval) in zip(run_dirs[1:], members[1:]):
+    reference_config, _, reference_eval, reference_raw, _, evaluation_device = members[
+        0
+    ]
+    for run_dir, (
+        config,
+        _,
+        resolved_eval,
+        _,
+        _,
+        member_device,
+    ) in zip(run_dirs[1:], members[1:]):
         if resolved_eval != reference_eval:
             raise TrainerConfigError(
                 f"Member {run_dir} has a different resolved eval env than "
@@ -97,6 +127,11 @@ def run_ensemble_evaluation(
             raise TrainerConfigError(
                 f"Member {run_dir} has a different rank allocation scheme."
             )
+        if member_device != evaluation_device:
+            raise TrainerConfigError(
+                f"Member {run_dir} resolves evaluation device {member_device}, "
+                f"expected {evaluation_device}."
+            )
 
     env = build_single_env(
         reference_eval,
@@ -111,7 +146,7 @@ def run_ensemble_evaluation(
 
     def predict(observation: dict[str, Any], episode_start: np.ndarray) -> np.ndarray:
         actions = []
-        for index, (_, model, _) in enumerate(members):
+        for index, (_, model, _, _, _, _) in enumerate(members):
             action, states[index] = model.predict(
                 observation,
                 state=states[index],
@@ -137,10 +172,35 @@ def run_ensemble_evaluation(
     (ensemble_dir / "env_eval.yaml").write_text(
         yaml.safe_dump(dict(reference_eval), sort_keys=False), encoding="utf-8"
     )
+    member_records = []
+    for run_dir, (config, _, _, _, meta, _) in zip(run_dirs, members):
+        member_records.append(
+            {
+                "run_dir": str(run_dir.resolve()),
+                "experiment": config.experiment,
+                "seed": config.run.seed,
+                "model_path": "model_final.zip",
+                "model_sha256": sha256_file(run_dir / "model_final.zip"),
+                "config_snapshot_sha256": sha256_file(run_dir / "config_snapshot.yaml"),
+                "meta_sha256": sha256_file(run_dir / "meta.json"),
+            }
+        )
     manifest = {
+        "manifest_version": 2,
         "experiment": experiment,
+        "policy": "action_mean",
+        "model_selection": "validation_best",
         "decision_interval": reference_config.run.decision_interval,
-        "members": [str(run_dir) for run_dir in run_dirs],
+        "members": member_records,
+        "evaluation": {
+            **evaluation_runtime_provenance(
+                evaluation_device,
+                reference_raw,
+                run_dirs[0] / "config_snapshot.yaml",
+            ),
+            "metrics_sha256": sha256_file(ensemble_dir / "metrics.json"),
+            "env_eval_sha256": sha256_file(ensemble_dir / "env_eval.yaml"),
+        },
     }
     (ensemble_dir / "ensemble.json").write_text(
         json.dumps(manifest, indent=2), encoding="utf-8"

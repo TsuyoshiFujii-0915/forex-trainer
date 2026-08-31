@@ -20,7 +20,9 @@
 
 1. **walk-forward 集計でのみ構成を比較する** — 単一の train/val/eval 分割の結果はレジームの
    引きに支配される(検証成績と評価成績の相関が **−0.37** だった実測がある)。標準は評価年
-   2019〜2025 の7フォールド × 3シード以上の平均。
+   2019〜2025 の7フォールド × 3シード以上とし、採否の標準証拠には`forex-report`の
+   fold/seed/era集計、対応差、fold bootstrap、moving-block bootstrapを使う。個別run順位や
+   手作業の表計算だけでは変更を採用しない。
 2. **新しい特徴量空間・ペア集合では、RL の前にルールベースの ceiling 診断を行う** —
    スクリプト化したポリシーを env の実コストモデルに通し、グロスが正であることを確認して
    から学習を投入する(グロス ≈ 0 の空間では何も学べない)。
@@ -52,4 +54,9 @@
 - データ系: Dukascopy 長期時間足キャッシュ(ADR-0006、`forex-fetch-dukascopy`)、
   yfinance 日足 7ペアキャッシュ
 - CLI: `forex-train` / `forex-eval` / `forex-compare` / `forex-ensemble-eval` /
-  `forex-fetch-dukascopy`
+  `forex-fetch-dukascopy` / `forex-report`
+
+`forex-report`へ登録する評価成果物はversion 2 provenanceを必須とする。既存の`longf ens3`
+source runは現行のtraining provenanceを持たず、再評価だけでは移行できない。旧metaを現在値で
+補完せず、現行契約で再学習してから`forex-eval`と`forex-ensemble-eval`を実行し、generic
+campaignの基準方策として使用する。

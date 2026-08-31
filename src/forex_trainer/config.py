@@ -253,6 +253,47 @@ def resolve_env_raw(
     return resolved
 
 
+def require_matching_resolved_eval_env(
+    raw_config: Mapping[str, Any],
+    resolved_eval: Any,
+    origin: Path,
+) -> dict[str, Any]:
+    """Require a persisted eval env to equal the config-derived environment.
+
+    Args:
+        raw_config: Raw experiment config snapshot.
+        resolved_eval: Parsed contents of the persisted eval env artifact.
+        origin: Eval env artifact path for diagnostics.
+
+    Returns:
+        Validated resolved eval environment.
+
+    Raises:
+        TrainerConfigError: If required config fields are malformed or the
+            persisted environment differs from the config snapshot.
+    """
+    env_block = raw_config.get("env")
+    if not isinstance(env_block, Mapping):
+        raise TrainerConfigError(
+            f"Config snapshot for {origin} requires mapping field env."
+        )
+    raw_range = raw_config.get("eval_range")
+    if not isinstance(raw_range, Mapping):
+        raise TrainerConfigError(
+            f"Config snapshot for {origin} requires mapping field eval_range."
+        )
+    eval_range = _parse_range(raw_range, "eval_range")
+    if not isinstance(resolved_eval, Mapping):
+        raise TrainerConfigError(f"Resolved eval env must be a mapping: {origin}")
+    expected = resolve_env_raw(env_block, eval_range, for_eval=True)
+    actual = dict(resolved_eval)
+    if actual != expected:
+        raise TrainerConfigError(
+            f"Resolved eval env {origin} does not match its config snapshot."
+        )
+    return actual
+
+
 def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     """Parse and validate a raw experiment configuration.
 
@@ -383,9 +424,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
             f"run.residual must be 'none' or a mapping, got {raw_residual!r}."
         )
     raw_rank_allocation = run_section["rank_allocation"]
-    if raw_rank_allocation != "none" and not isinstance(
-        raw_rank_allocation, Mapping
-    ):
+    if raw_rank_allocation != "none" and not isinstance(raw_rank_allocation, Mapping):
         raise TrainerConfigError(
             "run.rank_allocation must be 'none' or a mapping, "
             f"got {raw_rank_allocation!r}."
@@ -442,9 +481,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     )
 
     if raw_rank_allocation != "none":
-        rank_section = _require_mapping(
-            raw_rank_allocation, "run.rank_allocation"
-        )
+        rank_section = _require_mapping(raw_rank_allocation, "run.rank_allocation")
         _check_exact_keys(
             rank_section, ("top_k", "gross_exposure"), "run.rank_allocation"
         )

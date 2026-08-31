@@ -24,8 +24,10 @@ def test_training_writes_accounting_and_late_checkpoint_artifacts(
     late_manifest = json.loads(
         (run_dir / "late_checkpoints.json").read_text(encoding="utf-8")
     )
+    meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     assert training_stats["actual_environment_steps"] == 64
     assert training_stats["completed_episodes"] == 2
     assert late_manifest["nominal_timesteps"] == [52, 56, 58, 62, 64]
     assert len(late_manifest["checkpoints"]) == 5
     assert len(list((run_dir / "late_checkpoints").glob("*.zip"))) == 5
+    assert meta["data_identity"]["provider"] == "synthetic"

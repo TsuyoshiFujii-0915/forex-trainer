@@ -14,6 +14,7 @@ from typing import Any
 import pytest
 import yaml
 from forex_env.fetch import main as fetch_main
+from helpers import make_experiment_raw, write_experiment_yaml
 
 from forex_trainer.algorithms import ALGO_REGISTRY
 from forex_trainer.compare import main as compare_main
@@ -21,7 +22,6 @@ from forex_trainer.evaluate import run_evaluation
 from forex_trainer.networks import NETWORK_REGISTRY
 from forex_trainer.train import main as train_main
 from forex_trainer.train import run_training
-from helpers import make_experiment_raw, write_experiment_yaml
 
 _ONPOLICY_HYPERPARAMS = {"n_steps": 16, "batch_size": 16}
 _OFFPOLICY_HYPERPARAMS = {
@@ -65,6 +65,7 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     assert any((run_dir / "tensorboard").iterdir())
 
     metrics = run_evaluation(run_dir)
+    evaluation = json.loads((run_dir / "evaluation.json").read_text(encoding="utf-8"))
     assert metrics["steps"] > 10
     assert math.isfinite(metrics["cumulative_log_return"])
     assert math.isfinite(metrics["gross_cumulative_log_return"])
@@ -78,6 +79,17 @@ def _run_smoke(tmp_path: Path, raw: dict[str, Any]) -> tuple[Path, dict[str, Any
     assert metrics["total_weight_turnover"] >= metrics["mean_weight_turnover"]
     assert (run_dir / "metrics.json").is_file()
     assert (run_dir / "equity_curve.csv").is_file()
+    assert evaluation["model_selection"] == "validation_best"
+    assert evaluation["model_path"] == "model_final.zip"
+    assert len(evaluation["model_sha256"]) == 64
+    assert len(evaluation["metrics_sha256"]) == 64
+    assert len(evaluation["config_snapshot_sha256"]) == 64
+    assert len(evaluation["env_eval_sha256"]) == 64
+    assert len(evaluation["meta_sha256"]) == 64
+    assert evaluation["resolved_device"] == "cpu"
+    assert set(evaluation["git"]) == {"forex_trainer", "forex_env"}
+    assert "torch" in evaluation["versions"]
+    assert evaluation["data_identity"] == meta["data_identity"]
     return run_dir, metrics
 
 

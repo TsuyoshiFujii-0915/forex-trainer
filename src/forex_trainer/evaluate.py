@@ -20,7 +20,16 @@ import yaml
 from forex_env.errors import ConfigError, DataError, FeatureError
 
 from .algorithms import ALGO_REGISTRY, resolve_device
-from .config import TrainerConfigError, parse_experiment_config
+from .artifact_provenance import (
+    evaluation_runtime_provenance,
+    require_current_training_provenance,
+    sha256_file,
+)
+from .config import (
+    TrainerConfigError,
+    parse_experiment_config,
+    require_matching_resolved_eval_env,
+)
 from .env_factory import build_single_env
 
 _SECONDS_PER_YEAR = 365.25 * 86400.0
@@ -73,7 +82,7 @@ def compute_metrics(
     running_peak = np.maximum.accumulate(equity_array)
     max_drawdown = float(np.max(1.0 - equity_array / running_peak))
     return {
-        "steps": int(len(reward_array)),
+        "steps": len(reward_array),
         "cumulative_log_return": float(reward_array.sum()),
         "gross_cumulative_log_return": float(gross_log_returns.sum()),
         "annualized_net_return": float(
@@ -181,16 +190,25 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     snapshot_path = run_dir / "config_snapshot.yaml"
     model_path = run_dir / "model_final.zip"
     eval_env_path = run_dir / "env_eval.yaml"
-    for required in (snapshot_path, model_path, eval_env_path):
+    meta_path = run_dir / "meta.json"
+    for required in (snapshot_path, model_path, eval_env_path, meta_path):
         if not required.is_file():
             raise TrainerConfigError(
                 f"Run directory is missing {required.name}: {run_dir}"
             )
 
-    config = parse_experiment_config(
-        yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
+    raw_config = yaml.safe_load(snapshot_path.read_text(encoding="utf-8"))
+    config = parse_experiment_config(raw_config)
+    require_current_training_provenance(
+        json.loads(meta_path.read_text(encoding="utf-8")),
+        raw_config,
+        meta_path,
     )
-    resolved_eval = yaml.safe_load(eval_env_path.read_text(encoding="utf-8"))
+    resolved_eval = require_matching_resolved_eval_env(
+        raw_config,
+        yaml.safe_load(eval_env_path.read_text(encoding="utf-8")),
+        eval_env_path,
+    )
 
     env = build_single_env(
         resolved_eval,
@@ -202,7 +220,8 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
         rank_allocation=config.run.rank_allocation,
     )
     spec = ALGO_REGISTRY[config.algorithm.name]
-    model = spec.algo_class.load(model_path, device=resolve_device(config.run.device))
+    evaluation_device = resolve_device(config.run.device)
+    model = spec.algo_class.load(model_path, device=evaluation_device)
 
     state = None
 
@@ -223,6 +242,20 @@ def run_evaluation(run_dir: Path) -> dict[str, Any]:
     )
     pd.DataFrame({"timestamp": timestamps, "equity_jpy": equities}).to_csv(
         run_dir / "equity_curve.csv", index=False
+    )
+    evaluation = {
+        "manifest_version": 2,
+        "model_selection": "validation_best",
+        "model_path": model_path.name,
+        "model_sha256": sha256_file(model_path),
+        "metrics_sha256": sha256_file(run_dir / "metrics.json"),
+        "config_snapshot_sha256": sha256_file(snapshot_path),
+        "env_eval_sha256": sha256_file(eval_env_path),
+        "meta_sha256": sha256_file(meta_path),
+        **evaluation_runtime_provenance(evaluation_device, raw_config, snapshot_path),
+    }
+    (run_dir / "evaluation.json").write_text(
+        json.dumps(evaluation, indent=2), encoding="utf-8"
     )
     return metrics
 

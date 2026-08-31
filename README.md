@@ -65,6 +65,11 @@ uv run forex-eval --run runs/ppo_cnn1d_daily/<timestamp>
 # 5. compare all evaluated runs
 uv run forex-compare runs
 
+# 6. generate the fold/seed aggregate evidence used for research decisions
+uv run forex-report \
+  --campaign configs/studies/<campaign>.yaml \
+  --output-dir runs/reports/<campaign>
+
 # Reproduce issue #1 across the 17 longf folds and seeds 42/43/44.
 # This requires the canonical longf parquet cache named by the fold configs.
 uv run forex-selection-study \
@@ -72,7 +77,7 @@ uv run forex-selection-study \
   --runs-root runs
 ```
 
-Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, device), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv`. `configs/` is committed; `runs/` is gitignored.
+Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, requested/resolved device, and training-time data identity), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv` + `evaluation.json`. Evaluation manifests are versioned and seal the selected model, metrics, config snapshot, resolved eval env, training metadata, actual evaluation device, evaluation-time Git SHAs and dependency versions, and data identity with SHA-256 digests. Before evaluation, the persisted eval env must exactly match the deterministic full-range environment reconstructed from the config snapshot. `configs/` is committed; `runs/` is gitignored.
 
 `forex-selection-study` trains each fold/seed exactly once. For each fold it
 compares three action-mean policies from the same source matrix: three
@@ -81,6 +86,79 @@ per seed). Its timestamped study directory records the source runs, exact model
 paths and SHA-256 digests, data identity, fold metrics, era summaries, winning
 folds, and paired differences against validation-best as JSON, CSV, and
 Markdown.
+
+`forex-report` consumes an explicit campaign manifest and never chooses a
+"latest" run implicitly. Paths in each configuration's `runs` list are
+resolved relative to the campaign YAML. File-backed `env.data.path` values in
+run snapshots follow the repository convention and are resolved from the
+working directory. A minimal campaign has this shape:
+
+```yaml
+name: candidate_vs_baseline
+configurations:
+  baseline:
+    model_selection: validation_best
+    result_kind: ensemble
+    range_policy: { kind: rolling, train_years: 2 }
+    runs:
+      - ../../runs/wf2019_baseline_ens3/<timestamp>
+      - ../../runs/wf2020_baseline_ens3/<timestamp>
+  candidate:
+    model_selection: validation_best
+    result_kind: ensemble
+    range_policy: { kind: expanding, train_start: "2003-06-01" }
+    runs:
+      - ../../runs/wf2019_candidate_ens3/<timestamp>
+      - ../../runs/wf2020_candidate_ens3/<timestamp>
+comparisons:
+  - { baseline: baseline, candidate: candidate }
+eras:
+  pre_2019: { start: 2009, end: 2018 }
+  recent: { start: 2019, end: 2025 }
+bootstrap_samples: 10000
+bootstrap_seed: 7
+moving_block_length: 2
+trial_count: 12
+```
+
+Use `result_kind: seed` and list every fold/seed run when the policy is one
+validation-selected model. Use `result_kind: ensemble` and list one
+`forex-ensemble-eval` directory per fold when the policy is the action mean of
+multiple seeds. Ensemble metrics are consumed directly as one observation per
+fold; seed metrics are never averaged as a proxy for ensemble behavior. A
+paired ensemble comparison requires the exact same sorted member-seed set in
+the baseline and candidate so method effects are not confounded with seed draws.
+`model_selection` is an expected value that must match the sealed artifact and
+is not a replacement for provenance.
+
+Every configuration declares its training-range treatment. Rolling windows
+accept exactly 2, 4, or 8 calendar years; expanding windows require an explicit
+fixed `train_start`. The report checks that training ends at the six-month
+validation window and that evaluation spans the following calendar year. It
+keeps the normalized range policy in protocol identity while also recording
+every fold's absolute train/validation/evaluation dates.
+
+The command rejects incomplete or duplicate matrices, misaligned effective
+evaluation periods, changed training data or sealed artifacts, eval envs that
+contradict their config snapshots, and mixed data, training/evaluation-device,
+model-selection, evaluator-Git, or evaluator-dependency conditions. Training
+Git/dependency, requested-device, range-policy, and protocol differences between
+baseline and candidate remain visible treatment provenance. The command writes
+canonical observations, fold/seed or fold/ensemble aggregates, paired
+candidate-minus-baseline differences, fold and moving-block bootstrap intervals,
+provenance, and the selection-bias limitation as JSON, CSV, and Markdown.
+
+Checkpoint-selection composites keep using `forex-selection-study`, whose
+existing report contract remains unchanged.
+
+Runs and ensembles created before the version-2 evaluation provenance contracts
+remain reproducible through their existing study-specific commands and
+committed outputs, but are rejected by `forex-report` instead of receiving
+unverifiable fallback provenance. In particular, the existing `longf ens3`
+source runs lack current training provenance and must be retrained under the
+current contract before running `forex-eval` and `forex-ensemble-eval` for a
+generic campaign. Re-evaluation alone cannot recover historical training-time
+device, Git, dependency, or data identity and is rejected explicitly.
 
 ## Experiment YAML
 
