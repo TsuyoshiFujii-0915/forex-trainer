@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="516" viewBox="0 0 960 516">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="30" font-family="sans-serif" font-size="18">Agent fold-mean high-minus-low next net return</text>
+<line x1="520" y1="50" x2="520" y2="496" stroke="#333"/>
+<text x="10" y="86" font-family="sans-serif" font-size="12">realized_market_volatility</text>
+<rect x="520.000" y="70" width="47.543" height="20" fill="#2563eb"/>
+<text x="572.543" y="86" font-family="monospace" font-size="11">0.000121773</text>
+<text x="10" y="138" font-family="sans-serif" font-size="12">mean_cross_pair_correlation</text>
+<rect x="520.000" y="122" width="75.832" height="20" fill="#2563eb"/>
+<text x="600.832" y="138" font-family="monospace" font-size="11">0.000194231</text>
+<text x="10" y="190" font-family="sans-serif" font-size="12">cross_sectional_return_dispersion</text>
+<rect x="287.220" y="174" width="232.780" height="20" fill="#dc2626"/>
+<text x="202.220" y="190" font-family="monospace" font-size="11">-0.000596227</text>
+<text x="10" y="242" font-family="sans-serif" font-size="12">momentum_dispersion</text>
+<rect x="520.000" y="226" width="360.000" height="20" fill="#2563eb"/>
+<text x="885.000" y="242" font-family="monospace" font-size="11">0.000922082</text>
+<text x="10" y="294" font-family="sans-serif" font-size="12">carry_dispersion</text>
+<rect x="446.074" y="278" width="73.926" height="20" fill="#dc2626"/>
+<text x="361.074" y="294" font-family="monospace" font-size="11">-0.00018935</text>
+<text x="10" y="346" font-family="sans-serif" font-size="12">trend_reversal_proxy</text>
+<rect x="436.276" y="330" width="83.724" height="20" fill="#dc2626"/>
+<text x="351.276" y="346" font-family="monospace" font-size="11">-0.000214444</text>
+<text x="10" y="398" font-family="sans-serif" font-size="12">decision_gross_exposure</text>
+<rect x="520.000" y="382" width="210.985" height="20" fill="#2563eb"/>
+<text x="735.985" y="398" font-family="monospace" font-size="11">0.000540405</text>
+<text x="10" y="450" font-family="sans-serif" font-size="12">decision_turnover</text>
+<rect x="169.988" y="434" width="350.012" height="20" fill="#dc2626"/>
+<text x="84.988" y="450" font-family="monospace" font-size="11">-0.000896498</text>
+</svg>

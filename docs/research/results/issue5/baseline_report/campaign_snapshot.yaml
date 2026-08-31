@@ -1,0 +1,38 @@
+name: issue5_current_longf_baseline
+configurations:
+  direct_longf_ens3:
+    model_selection: validation_best
+    result_kind: ensemble
+    range_policy:
+      kind: expanding
+      train_start: "2003-06-01"
+    runs:
+      - ../../runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031
+      - ../../runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220
+      - ../../runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724
+      - ../../runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379
+      - ../../runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032
+      - ../../runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502
+      - ../../runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084
+      - ../../runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659
+      - ../../runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661
+      - ../../runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230
+      - ../../runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867
+      - ../../runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642
+      - ../../runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586
+      - ../../runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827
+      - ../../runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185
+      - ../../runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766
+      - ../../runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143
+comparisons: []
+eras:
+  2009-2018:
+    start: 2009
+    end: 2018
+  2019-2025:
+    start: 2019
+    end: 2025
+bootstrap_samples: 10000
+bootstrap_seed: 5
+moving_block_length: 3
+trial_count: 9

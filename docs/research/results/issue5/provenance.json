@@ -1,0 +1,830 @@
+{
+  "campaign_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue5_longf_baseline.yaml",
+  "campaign_sha256": "9d328030592d3c1f91cb2c77d4df690d36f186c0af6bac4ac3c9f4835357357e",
+  "diagnostic_git": {
+    "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "forex_trainer": "0f974ff1b9e63560e2092769d0eb1e3548bfff41"
+  },
+  "diagnostic_versions": {
+    "forex-env-v3": "0.1.0",
+    "gymnasium": "1.2.3",
+    "sb3-contrib": "2.8.0",
+    "stable-baselines3": "2.8.0",
+    "torch": "2.12.0"
+  },
+  "generated_artifact_sha256": {
+    "bucket_metrics.csv": "2fa531fb1baaf93ef3869464bf71ae75141f1f17c0ba5fce32d7e7984ff09dfe",
+    "fold_effects.csv": "93b3ee47026b5836c377aa1c2f6bc1e8f39c2dab248b52db11aa9ccc8c9a29e1",
+    "regime_effects.svg": "09b79f38d4a9647be9478de959a2301c0d8eeef92e0b381b0b22de61b8a6523a",
+    "report.json": "7185af4dde29b4111710c44ebc16035e6314842ff0e1c74da993ac6db7c03a13",
+    "report.md": "207250f8f4e79e9a55cf571e1f663a2a4446b799a2f610e20027e9fae2702c19",
+    "sanity_comparison.csv": "d8f5388a910cabb6e6bc213fad6e557fb9dced6bddacee255ea50e7e20112c7e",
+    "step_trace.csv": "d77606ffbcea0a09535c004d3094dca41a5184335062a6893cd1a00340979e2f",
+    "study_snapshot.yaml": "7a3ded630676f6b82413d3361c0e1a5f2140a741a40952ac3ba5b14438288d5c"
+  },
+  "legacy_report_path": "/home/tsuyoshi/workspace/projects/forex-trainer/docs/research/results/issue1/report.json",
+  "legacy_report_sha256": "b73cac926a154b7b2ad552e9675fe4fde4f1514a0f02a0a58f9ee0248603e847",
+  "source_ensembles": [
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031",
+      "ensemble_manifest_sha256": "9d2a93453b49c5466384403cffc3ec732f60c6d778cb61be74687aa0d6828225",
+      "eval_env_sha256": "9b60b855c501ddd4eac5d7ea10fb1b901a1e4bac3a4522e6480dd039e768f24e",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2009",
+      "members": [
+        {
+          "config_snapshot_sha256": "cc6b05a860395afac64d69cc63ecd237d4d6eeaf7e78cea7b430864f5670994d",
+          "meta_sha256": "f3e4b809600c9ca3f312f913778f0938f06fea469e017a41b9ba4977064a4df1",
+          "model_sha256": "00d9bac888edb1b304e1e8abd4ab9ab698ac0b3482fcc5ec0af9931ad2f7f70c",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2009_r16_longf/20260831-104204-088279",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "8ff968d8dcb6512f1643382eb0071dfa54bfece9d4406f11fa849375011d8a52",
+          "meta_sha256": "5418c12808bc612e7cf2a57eafb88ba7851d95646cb1ab31b48f2c43c0fe107e",
+          "model_sha256": "04c39ba9d079cc4a2c67202304d040fb9c8f986653099d520a9d6d82f9a8db52",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2009_r16_longf/20260831-104255-752142",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "585f1c14dd0b7d8b8bd2a144714e10550b275903a77f0c28876c081827fb6e2c",
+          "meta_sha256": "22377ea066a6adacc9f3d2c963b7c511ec42b11de13b925fa6f2693ef4e79c69",
+          "model_sha256": "ae294c7e734fb04b36747298dd6529b4ad693d605bd7c3cd5e86e421f65f4e42",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2009_r16_longf/20260831-104347-033890",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "2c312e84ffd9bcae2a0fb21b5515f719f13245ca71635213f8df29e6d9a999e9"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220",
+      "ensemble_manifest_sha256": "1ca017313e9be2b7c23d751c199236b6599dca7a4b9b7e2ad8f7663fdcaa2b77",
+      "eval_env_sha256": "3f934e518d3a44416cd08c0b09aae39bd4d160b1d46238c5bf727f38a4492b8a",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2010",
+      "members": [
+        {
+          "config_snapshot_sha256": "fb0b0df6f096ea58014b386eb9bced0ba563a640235a731fa9ac93e9e49b38be",
+          "meta_sha256": "561c7fa6f90c67b52dc14d523b43c33c2cd916fb4627c43a111b5c36655ee972",
+          "model_sha256": "febfb63ee00635aeda469c26092233a47e55621d4e99b10804cf74ed5c6f0774",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2010_r16_longf/20260831-104438-310463",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "fb0b22cc5e81e4b00cedcc3250c94a54d4d040296b62b0d4b67cf91b31a29d49",
+          "meta_sha256": "7ec42d64a9314e397d6ac35c599e4d404aafa756d1b6276c5cc1736e9f714ff5",
+          "model_sha256": "32723f935bfcd3d6d67536800284c42c57081927414735cb9aa7e1bb54ddb9db",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2010_r16_longf/20260831-104529-388473",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "3d05fbfbefdb737f47de30a7c4fea13f3654805df3106a28e91b73753a31ac3f",
+          "meta_sha256": "a938ce6c7737a2f965729174b3cb54827b50e3503cbf1da5eca4ec957d28f4e7",
+          "model_sha256": "c20f70d70799c96a7d8f0fa9ad7dbddf4646c39b7cc62ccf1f54590621707149",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2010_r16_longf/20260831-104621-602187",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "16e5215e0dc643a5799e3da1c0fbc0b1d1e33914a62b8ffdf43ba9caed19c0e7"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724",
+      "ensemble_manifest_sha256": "59653131ff5da766d5237f4912651eb56e84d13e4c752cdfb7b7c2f6d85a2c99",
+      "eval_env_sha256": "d5f6b342606467311ef54a051d2dd572188c0960c839e6537e5843610e38a6bd",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2011",
+      "members": [
+        {
+          "config_snapshot_sha256": "0115c0189926b58fbcf7df68131482d269eee571f926e743cbf2d19d4440c8c9",
+          "meta_sha256": "3e93d47ad3df40c3c26d37936fd75fa605420339bd7fd86d3e15289e6e8101d3",
+          "model_sha256": "f01d14bb99082601a27265f769d6d99e2f08c8dc1cade87ddd2406fee22da21e",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2011_r16_longf/20260831-104712-872284",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "719ae95413f37d433c2611488fecc25b8f19d1ddd579b12a428e1ef508e98f1d",
+          "meta_sha256": "b5592aa6bb431484ca6a10b3f7f984615e3b336eb6ff482d6c778b7b784e5b78",
+          "model_sha256": "c2f92eea8053c5ac4bcfe9044a842d028211cc06ec5cd1e96f58267828e5ffc2",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2011_r16_longf/20260831-104804-735536",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "5023371638b6b946cc28ba2b0dea2d9d7aadf0cf44e188900f37848e9a0d3c92",
+          "meta_sha256": "614e6140a59d000d1bfbc6987aa89712e9ba1e6d1609f7b3e2cc641f8af05319",
+          "model_sha256": "ccdaac0d5cbac124f5ebf98733ef970030d0c233d0e14ae036040cec237dfd4d",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2011_r16_longf/20260831-104856-335308",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "d17f007efe1a0b653dbf4a204b47bf2d714479efacb0d0400014570bc47e70a8"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379",
+      "ensemble_manifest_sha256": "41362381903eda6906e259f3880393db533886ce7991b6c6cc34a8d0bbd9e6ca",
+      "eval_env_sha256": "6fbf42f4ed3ebc95dce5f68b2b437cc85a670e83393e7b61217a84197d21f7f5",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2012",
+      "members": [
+        {
+          "config_snapshot_sha256": "f262067c6b30963983c775bed31da59ef9d829c24bf8f6c8ade25266bdfa0f50",
+          "meta_sha256": "f23bc137af076d7267152c47b24a442512253260b054bbf77b250eb44e1462b5",
+          "model_sha256": "b095ca5bd18a5b0c4036f764d6ba968c03d6f65a947c1019f935a9ff8c8dba4e",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2012_r16_longf/20260831-104947-783809",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "affa27fddb238d1613d8760b5f92dbb4bf7949db82300aab3d6c5d098f45f190",
+          "meta_sha256": "c5b5bd107efcc2d6d8b9abdcd3d2543d72106845e9bc7db0a6be72f0260b1ee5",
+          "model_sha256": "0772634eb1f97a589947e7f4489d1617eaaeb922a731ef881089af18fbdb1f24",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2012_r16_longf/20260831-105038-962892",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "9dfe75fe48c597a7c49be2a2b211595c79f6a7c919e9665c7a7c1862bc886af8",
+          "meta_sha256": "f4f4805bb7c5883b35dbcfe2955ebf1d3f73dd8b4a1623ff6aa5aec6fa985328",
+          "model_sha256": "636e2e81fcaa17dc8400cb35fc39e47792a5dce1e7f611f073af6fb8d57d525c",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2012_r16_longf/20260831-105130-672369",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "58840b14bb60b902893bdec835a72485d2ce0d5ee5db3a2ed094f55191679353"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032",
+      "ensemble_manifest_sha256": "9511ecabe293c03bdf96c49794688c77df2f8792a30742f27c91e9ccc8acac33",
+      "eval_env_sha256": "6e5476f1e8534e5a9c5a4ced3785a72b2ac665f819faaa931de5d9c54490ce2a",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2013",
+      "members": [
+        {
+          "config_snapshot_sha256": "b272744fe0998194c716a64fb99e3a88daaec21f1f615133bbe0f88ff46f4d8c",
+          "meta_sha256": "9016d6ba08f2908fca15d485b3f2a3fd8af30f4068f0190f0aba5d7e5cca1567",
+          "model_sha256": "8e2a823de54883c4a044b04f7de6cb2b009de4ce2012f19a09ed330a63253d31",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2013_r16_longf/20260831-105222-577749",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "7c972142d3ef022955d475cc6ddc208e0280087f68353de554b435d847134d8d",
+          "meta_sha256": "06229c634c5cef008de3ad70ddf74e3361cf8134d0140bff48cf64f8eeeec188",
+          "model_sha256": "bde8db47d4cc0020035a75442c1aa18313367efa93ca194743b37a2c9c998c30",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2013_r16_longf/20260831-105313-980242",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "4c59dce5c2bdc9bb28dca2ed05bb9c9207055d79a9f845fcfdc137cd8385b822",
+          "meta_sha256": "fd96fad19cb5ebdbb2221de474d0bc1f50f086bedfa75957feec83c5c99baf23",
+          "model_sha256": "5d222664cdfe570dc1a2c8f97af0049d25fd5933746a59bf9882b01b3ab58d1e",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2013_r16_longf/20260831-105405-912079",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "20fdf4cb338194b901cdb2c1c45be3af3e6b57e71e782f4deb35cc9306b52e7a"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502",
+      "ensemble_manifest_sha256": "ba13ccfbbea00a4a6577aa07493f2ee82d5c6e98afbe9782280af917ba2be618",
+      "eval_env_sha256": "bc04db5314a3725c777dccba4275fa666fd00960f8bf2b67bb4f14a14df29dd7",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2014",
+      "members": [
+        {
+          "config_snapshot_sha256": "d2fd76b414c022f14fb598b16b09830ee7cace3e5bc39c4183686fdbaa8f7422",
+          "meta_sha256": "95616d8b889c5de1b9678c2c61ab21c3e80863f7e432dd54c91eed71dac48ffb",
+          "model_sha256": "f0883e9d3b4cc86cb2655f882e9923fea901d978b321714892a1fb4a901f8774",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2014_r16_longf/20260831-105457-559278",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "af06236fa95feb0281385487a1fddd390b04976202f87573c63dc920e402052b",
+          "meta_sha256": "35b2ab516facf4de4ff1ec8fdd8a9352a3a68b7aa9a7f6c74701a344373ab5f3",
+          "model_sha256": "44299e1b3cdeb528ec51520d763f57d8859b455c2dc5c4f4a8b158b98ca6c0d1",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2014_r16_longf/20260831-105548-999954",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "b5d812c72231e12d1a4c475a6ef9f1ee709836f4bfecfdaa6095a548e4b8911d",
+          "meta_sha256": "82990c6e8288c88904f3a8b50bca457eba44cf97495b6b55509822cb66a7f163",
+          "model_sha256": "e89854ee23d388e2981bc185224d81f2546356135d6c2a5d08e709fd88da7eaa",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2014_r16_longf/20260831-105640-758525",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "940d14f4c2e6ff1da16a5d45e29f0076a81e48627992f075d91cfa89e311f5c1"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084",
+      "ensemble_manifest_sha256": "e355472cf882274b5d59472bea68216c6bd2cd11d9927b7e10a3e53f9be3b13f",
+      "eval_env_sha256": "a69c765ccdfb92b7dfba8063418c1d7119c39471fb5da1b1d8a384a65820d4b2",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2015",
+      "members": [
+        {
+          "config_snapshot_sha256": "d72335fea4982894b1004b49dcfd26c02073e95237f4efa52d8d87c80e89de4a",
+          "meta_sha256": "15787d94642a7aaa6b4a970a891ef80c1bd2ae6c767f90066ae4a74e57c26000",
+          "model_sha256": "87a61642c3b67775d83f46ffa2b721e8f8daf12552409a2b25dbb08acdf43165",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2015_r16_longf/20260831-105732-405441",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "1e3e83e12edde1cc59ecd0ae9514d0a102301dccd047af89459d713816e5ade2",
+          "meta_sha256": "f96f9c0430aca2a41070cf6c324200b3e6f71961bb20eab5ab62a883349f5906",
+          "model_sha256": "6096d4f5702146a28da2a1d3ae3f716b1b79e4660993a8b45c971852224e8f2b",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2015_r16_longf/20260831-105824-373546",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "f0b70bb2d6ef96b4bcfde263041f5f1d0b2ffdfbd9d8876ada31e96c53557588",
+          "meta_sha256": "ccd6eafb582365b31d5d1164a618035f7431a67829ba47b6282f84e06ec0ddae",
+          "model_sha256": "6d3f7a318893cedda38d0180a04380387cdc9f1c2174fb19e0e0c59b00b99db8",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2015_r16_longf/20260831-105917-041814",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "5bfd2ccffd1c4f7485d16712abe0641692bf5e307281ddc37357643c09882360"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659",
+      "ensemble_manifest_sha256": "f41bc20419168ee5d7747a1b4a22278765084a9e23c994e60237950cc8e9307f",
+      "eval_env_sha256": "409eff09fee861435ebe31428eb383cc7b24f08c768eb2de063d278a278845b0",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2016",
+      "members": [
+        {
+          "config_snapshot_sha256": "6d395b096accd69740fc3ff40efbcba3512afba77ca82bfc51686141031c8652",
+          "meta_sha256": "d47a5bd711f2383d23746d3260f1d41bfc353a8d6a2a31e18e375e7d6e62f96b",
+          "model_sha256": "cbd6ee7a7950c0aaf7838585685bc35a2242821260ffb7dad274cca90ce9184d",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2016_r16_longf/20260831-110008-899495",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "ac15aba0406857b1864efc3dbec0977ec6250ef01bb81c5579f5acf0b6bd315c",
+          "meta_sha256": "b4befe79b789ee39307255c3fbddfe1dd139ab83f666bb36286107f9f54977c8",
+          "model_sha256": "cebc3de5b2ed6604dc3c9bd27645213c97abbbb138422f03e309dfb1a7a196d3",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2016_r16_longf/20260831-110100-016151",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "b77b3534e0d38f114c1d8abc0b1f6fa338fd95c114ff22d1dcdbe02265e857b6",
+          "meta_sha256": "009f89765c95e5775d97ad022a7be4ec2bcecb918822f39efe4d1510c750f08d",
+          "model_sha256": "4193ee580670b35988be63c3bbb2b3802b724cf87964b88ce081064f17d52624",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2016_r16_longf/20260831-110152-032408",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "4c83e4a45b5d58b676cc09e45405e23238cb33bfc9c102ceb3a7e5783d098f6c"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661",
+      "ensemble_manifest_sha256": "e1259238c1007d2804e0bca7dabb35eac81929f40fdc5d84edc9a667badcf6f3",
+      "eval_env_sha256": "7a9ee91332e28b8606e56358215f4fdf27ff4a0d376862f6c8f01ddd947a923e",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2017",
+      "members": [
+        {
+          "config_snapshot_sha256": "24d2de7b1f4e283b1d928ac0795cf7627913f8e016204cebb497751f539bb563",
+          "meta_sha256": "e82978f9ee5afda2214d095cc7e67a00a9f3f98eff4e2256b196da067992f1c9",
+          "model_sha256": "9958ab75be707f705e85675cdc5e32711356d8143f89bf81efbeb382ce5b3d61",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2017_r16_longf/20260831-110242-899218",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "564872002a5c741988b6b09d50c4869faf1999ccd951e72a90de1036640ae835",
+          "meta_sha256": "eb4f67c7677b127ed92e7e34d8dddae41a81230eba898c0f9276998620fcc377",
+          "model_sha256": "cebbe23eed7869e15bebf2349678d3282f18569ba0de0332c2a6fca03b82ac29",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2017_r16_longf/20260831-110334-631349",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "c4ad4bbdd704b60e22c64f57d2fd304ba8e07ca0ad952c1ff699b4af1dd98c42",
+          "meta_sha256": "78a76d3aab190aacd7e7f548e9bf8cf050e02b7501acc4faef59f625557c369b",
+          "model_sha256": "23d3db0f45e5ce3545fdb718e3ae13b85473c853af5720170d9fce15ca41ba16",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2017_r16_longf/20260831-110426-265821",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "8e7085a3d6595ba910546a0557b7d1df4034c3f85294c7ad96bc2408b1031afe"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230",
+      "ensemble_manifest_sha256": "e60acef86f8df9d77edcb7a8cba8faac84b8642d190b8910828c03440771138f",
+      "eval_env_sha256": "895c2f7c883a149ef17a269034a6d55ea2c09c73906dd36d75a0380b270d4379",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2018",
+      "members": [
+        {
+          "config_snapshot_sha256": "feea868018243c8832d41fdb167d3d3ddbcf4bb9b8ffbd8b386bdb4bcd5dcbe4",
+          "meta_sha256": "79752556f46fedb846235f3652c7083c6b38047e016ef3ae9bc85fefd625e5bf",
+          "model_sha256": "4e713deae04dd04bd2fca7333e3617be6b59f5458ecb613bcef528f34316d18e",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2018_r16_longf/20260831-110517-903252",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "09a3171d56242122b106bead014dcee7e748f93aea21da83d0e0cfd25e28897b",
+          "meta_sha256": "6103b8fb345879fd807d768550d6e0190e8b87a210e5bd851948b85f5e3b7544",
+          "model_sha256": "005a6c5db91622a98ff7a57435f07e216ea411e5058438e044bf9c179e9c7a05",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2018_r16_longf/20260831-110608-822544",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "81787cca8e0e38d67ea91b130c9cc905759240205250dbcc1782e2ad7861487d",
+          "meta_sha256": "c05b8bc180779448e46b1ed3aa5a4075b5bf844796ae21ede6b056bc27c7ca5c",
+          "model_sha256": "3067c676bf9e8eec8442d56bc5fb373d141a027703cb8ae9c1a9ea3ed83d2e2d",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2018_r16_longf/20260831-110700-623612",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "c8fbb39b7505b8c2b4165bc2dbdda11a711f0e055dff977bd35be99351a7e907"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867",
+      "ensemble_manifest_sha256": "2495ddd2bd5da49a973e1baf71eefc09578af3d1398a5ed8ace3bae1735d190c",
+      "eval_env_sha256": "077b026f7cedd3f60817a19e58cfa1db3f7afc47f3bfa4fbe98c9694be3c8907",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2019",
+      "members": [
+        {
+          "config_snapshot_sha256": "cf1930bc9c826da4692573dc6da4590c2e4182220483b9bc2577b9121ca4674a",
+          "meta_sha256": "7146c25118c46c11ace62eeaa4699747b40c23339cb8ef3bebaf633e8568bcc3",
+          "model_sha256": "b5fcc3d3b3544c3b14d90d01102bf7b7257ccb3e5f47fe9546b673c5f91cbd2f",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2019_r16_longf/20260831-110752-779358",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "10db1eaa3671727c0f10f9d644dc11a1b4783dfff01fe84bb075adae29d15a57",
+          "meta_sha256": "4046f44f81aa2ea1a52bc1f4c155209c2c7a16a7241b2eb8a1f87b6f5fc5ff5f",
+          "model_sha256": "858d1b0a2fa69ef8e0914d9658608450b66c84f1a0ec53b9438e4a3cf8657bbb",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2019_r16_longf/20260831-110844-142952",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "afe883b9b551ba726d72dd2bbdcb626905784108ce3a1355878f503a50b87adf",
+          "meta_sha256": "4cf8f8c46ae7dbedeb557fe2dc627555e6374dec7a02dc0cf594c340dcb071a2",
+          "model_sha256": "cdbf7df763cdb08e8df70c643791c06b4c801df680272a8bed8c38e53a8d47ca",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2019_r16_longf/20260831-110935-809482",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "ee42399463fb021ed5774f2eaf262e4c01c341b0cbf64a423e8a7dcf35478df3"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642",
+      "ensemble_manifest_sha256": "32777b6d18c3bbc1789795a5d8ef40b6631fe071742ef85248bb94fc284e4201",
+      "eval_env_sha256": "37ff97cf255448797a132038b0d54bd58c4c4e32cdef4d9c17da2b00797bb0ac",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2020",
+      "members": [
+        {
+          "config_snapshot_sha256": "4438dd10131e606353375dcbdcd287489b3384cc3b0822da2064e98c2739f8a2",
+          "meta_sha256": "ece9c2e097a3f158d5c1c4bcd8dbc60a783a995e0fe74895d7d6b6ad0b2a1a93",
+          "model_sha256": "af30b504a93ec67ed670640d37a3f5eea8b263513341a3d1793774284a168ac3",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2020_r16_longf/20260831-111027-803342",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "ff8d646d825e8e97aa7edbeb5170b7a357f6d081e89af07952bfd2708a09249b",
+          "meta_sha256": "a2d2d20a660aea211880fec47230d6f7556d8de3779057d8c91d0b85ca454594",
+          "model_sha256": "1964e560badfd5c95a3058a9e87b2447078c54554a196bcc573663844c6dbb81",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2020_r16_longf/20260831-111118-883031",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "a2208130b25547e18c1b1cffa3ba7a141049760e94d169460103e32a777bd5f4",
+          "meta_sha256": "1992af5591f030b0867dbefcede6bf20aec3867951159ee9dafe75b40f54091a",
+          "model_sha256": "9f52549389dc240e94b386a7c87f5e53d7b5c5c84e642d5fe64f60360a21c43d",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2020_r16_longf/20260831-111210-177129",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "7ad229d38149c8346c345164e6e85700cdaf4a397eaf657f55d79d3f25bafe9d"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586",
+      "ensemble_manifest_sha256": "b59a74b2d32ebf94ae201a466c33019dff3d808ac6692a8cc39171509732368a",
+      "eval_env_sha256": "5aa0c81393c2dbca247684f97d22ddc9957309858f04a3238d119a634cd7e7f5",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2021",
+      "members": [
+        {
+          "config_snapshot_sha256": "a4cc4d2e1297752a598c30f4857a371fd621a98add7e76b35faafe1a9172a555",
+          "meta_sha256": "21f3beec71c56ce42f9e82011d3b7f262d4791a06308b1e3ecda47c400b9fc94",
+          "model_sha256": "1a4ca6c23932c6fb61ff0981c3debd1ea56d29d6ddf691a217372038d74b9ec0",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2021_r16_longf/20260831-111302-123873",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "5600b9e854aa1226f48d1da0147c918c52a99f3c15e6efd769f147bd52cde991",
+          "meta_sha256": "3750da6ad272d9755e809d0dcddaa3525ce4acd22bf6a734144b0cb987c3fd03",
+          "model_sha256": "4761cf3e9ccb08973f2a9121d8da0c227083536bc969ab504309992acdef80c1",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2021_r16_longf/20260831-111354-094913",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "5a94919335274695f8cd1fd0d5df2b0d21c35a5824a494fff70ea1d1746e70a0",
+          "meta_sha256": "7adec1a5d3bd2a2b09f3d4c510f84e6a5738a2d20c5b3d04d2109d647e127dbc",
+          "model_sha256": "3911498d0dfb6c1e55090d4faebd22cfc4d9b68f91459d82e08a9141c04adcf3",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2021_r16_longf/20260831-111444-979947",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "949f17df66d11e56d04ed5dcb08fd0623696c83cd417c214b74ead155fa6f4c5"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827",
+      "ensemble_manifest_sha256": "5cc1064b606cb712f01c28316b1a3e1a95184c6492945d9583b75b83eaea5b26",
+      "eval_env_sha256": "771b315edd89340c6c6370125fafdfdc672398b82b9f1344e109ecccfcd8aa01",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2022",
+      "members": [
+        {
+          "config_snapshot_sha256": "0693aac8a8717dab11321ce2e3b5aa20999e4ad6d0c930d13c25091e4078f259",
+          "meta_sha256": "b14d545b464a89df6a57c3cfc2893221c390de943865214f0ecdd480e1716273",
+          "model_sha256": "18e0fbad0372e9991112b97b7869befd0fad5a7699b3c360b79baeed07782f21",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2022_r16_longf/20260831-111537-789249",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "31b90acb616e18d96af8360661dddd4025b38610f83bb57e9a6295d7ba25ed86",
+          "meta_sha256": "c71c8171bb80885b1102c5be8a9012f3a849ad854d0eb4745ab7890c8887e050",
+          "model_sha256": "ebf711a898b41e30990c3e2f1a6dbc3807612eda372f0f0cdde98a7dcb180720",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2022_r16_longf/20260831-111628-602383",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "d05efd2776b14fd197943c068979404f57a66b40392ed210efe0c17d5c7c7cfc",
+          "meta_sha256": "8551aaf7d57fd814d3fc9e814cd9dcad2ee841e1b179162d6cd6855cbbe9f930",
+          "model_sha256": "0d8dc8cfba962feddc1a9d81b552c556911a18827fd22be981e6da0fc8bd84ca",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2022_r16_longf/20260831-111720-416103",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "ae42dc700db7cc784ecccc16ee7deaae0c5e2ef906d68920127098aac76c0424"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185",
+      "ensemble_manifest_sha256": "f927f4d8f1e7659a996e4b5c244523ae1e8ab67a3136eb050c869c354be4d3b7",
+      "eval_env_sha256": "bcd2dbb47fef55511c3d51fba24e6be331ba53f24cb9226a67da4d9b06bd724f",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2023",
+      "members": [
+        {
+          "config_snapshot_sha256": "8013b2e6d8659fef96e4af7db6f0171c7a5cf4dfb229ad734b793379cb39d33f",
+          "meta_sha256": "5602d0b61eed2e6d6910cecc92497dac9fb2079eea85afe5e66a5144b129fc03",
+          "model_sha256": "a956f3c961a099af97c3c59846e0c8629b1f56fe3a7a5ceee1be398339079ba5",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2023_r16_longf/20260831-111811-916047",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "1f6e9604835d6cf9ea9447df0e03d5b34ec07b726535c726be1008ea1cc09eb9",
+          "meta_sha256": "db2e5e381d4be42d72aab45f9f1207ae491fdad12b377172a0fc502bd1d03b85",
+          "model_sha256": "bf2c4d254b7a927653bf8cd644f08110189751857c58a69d577c5453c9b435c4",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2023_r16_longf/20260831-111903-821041",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "bb7c860532cd86440b24a73712a1e3bd548805ad7e9a2b74a7da8b7823164405",
+          "meta_sha256": "99b08c85de663d300643e9a39f2dc6fcb1ee0a73135cfbc0ba06cae1bf4b61fc",
+          "model_sha256": "4e0d6348dd75e507d8e8c3c628567b5a22ff58388c237a499c67de2da827dd9a",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2023_r16_longf/20260831-111955-517540",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "f2dfc04544cd3ee1e03ed59fbc42934ba50a6a0fa81c488d7d1c84e353b05534"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766",
+      "ensemble_manifest_sha256": "9fcfac670dfa851f16a78441eb56e3197b72b6b20d3a41aa7ca29bff1bff5a63",
+      "eval_env_sha256": "64cbfcbeb3d51372d9399bc50fe674ade9c5bac09127f7c416537bb198c1fd2d",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2024",
+      "members": [
+        {
+          "config_snapshot_sha256": "e21ce95df45b90aceee51ef11e3922e50a2796b35f7cbae8c1b03a65c972d818",
+          "meta_sha256": "2d8bf8c29fc5f575fd09da732a0785e16fc5ee749b4cfdcb26fbffd17a3a4562",
+          "model_sha256": "6faafe4f8e457aa0bffa4fb4d8b4f2188d58dfe58cd1cad07861d08c637f5aa7",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2024_r16_longf/20260831-112047-346296",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "01454cbdffd45f6667d9b0aa79dba434f51d6f49f04f372798e32c12eb149d80",
+          "meta_sha256": "5e6c0a87b82a4cc30e70e57141a9f321ea2e899dd157b1878ca37cef1d06f655",
+          "model_sha256": "d3d378a240a2fb5400a497233d5f883bb2eeffa5d9ccad62c1edf63725487772",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2024_r16_longf/20260831-112139-251998",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "a08428eb7c8d67b10de68e3b0fd364be9126972ff7c84b6abc3c6ccb2143efd2",
+          "meta_sha256": "bdace06f08026c6f8aa53f7480e1cbcd6cea042ea034347cc5fa00961d30e2f0",
+          "model_sha256": "26166dc1a659e3ab26e038e61eb8a804b9223c0fe9c3eed4a38f9545cd6a1564",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2024_r16_longf/20260831-112230-960063",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "93d76899fe383a092cd3edd0222ac63b1e0e6d3c1f3a26a51de20ed194ec4180"
+    },
+    {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143",
+      "ensemble_manifest_sha256": "db2617aec6f68ab294c8d2aa30fecfcba87025bcb3ca514f0f999e7ffca66051",
+      "eval_env_sha256": "1c69a0007f043ee54c4745e2a8067eb1ec36badb2932adc6563982bd2e93f46a",
+      "evaluation_device": "cpu",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "fold": "2025",
+      "members": [
+        {
+          "config_snapshot_sha256": "dfa1f907f8c96b577b48511d516b45bc390249ba802925940d8493963e58bde4",
+          "meta_sha256": "dbf9d1c3f5445939ed124132ca5caf9e7d2dfb3ebcc8c921cbac33b6ab9f7bad",
+          "model_sha256": "3d595ae8aaae38437622f925783c9163694aa4505ece11aaa9d08e0481436c60",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2025_r16_longf/20260831-112323-718522",
+          "seed": 42
+        },
+        {
+          "config_snapshot_sha256": "037218dd235568bc6b527708196e63834eabc278289ad7e1cdb2d276384450d0",
+          "meta_sha256": "a9c4c950c5bd99c01731c39ff02c13df807ad08fbe1cbadfca2909baf6f7a464",
+          "model_sha256": "adc5aea572bcdb70e3ea3ec440b7765ac0627fc8a855a562821512d185057401",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2025_r16_longf/20260831-122951-119665",
+          "seed": 43
+        },
+        {
+          "config_snapshot_sha256": "7bbe61882b4bd5366bd3ad80a33f459ac4e0e0c1a94994b04322517507791eea",
+          "meta_sha256": "3aa716fc138b913eaa1c3d28f87894548289f8f6c2f6793146584b5fbd9faf9f",
+          "model_sha256": "28540450b68419af6801fb58e00fcebb587b3b178c92d43ce33c10117560d636",
+          "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current/wf2025_r16_longf/20260831-123042-847746",
+          "seed": 44
+        }
+      ],
+      "sealed_metrics_sha256": "03f69a1005560ec176664e9fbd617a20bb3bef1d148c13e36a1c9be8567dee95"
+    }
+  ],
+  "study_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue5_regime_study.yaml",
+  "study_sha256": "7a3ded630676f6b82413d3361c0e1a5f2140a741a40952ac3ba5b14438288d5c"
+}
