@@ -28,7 +28,7 @@ MetricName = Literal[
     "next_cost_ratio",
     "next_drawdown_change",
 ]
-Direction = Literal["negative", "positive"]
+Direction = Literal["negative", "neutral", "positive"]
 
 MARKET_CANDIDATE_NAMES: tuple[CandidateName, ...] = (
     "realized_market_volatility",
@@ -543,8 +543,16 @@ def compute_fold_effects(
                 f"fold {fold!r} has constant candidate {candidate_name!r}."
             )
         responses = _response_arrays(fold_records, fold)
-        ordered_indices = np.argsort(candidate, kind="stable")
-        bucket_indices = np.array_split(ordered_indices, bucket_count)
+        unique_values = np.unique(candidate)
+        if len(unique_values) < bucket_count:
+            raise ValueError(
+                f"fold {fold!r} has {len(unique_values)} distinct values for "
+                f"{bucket_count} buckets for candidate {candidate_name!r}."
+            )
+        value_buckets = np.array_split(unique_values, bucket_count)
+        bucket_indices = [
+            np.flatnonzero(np.isin(candidate, values)) for values in value_buckets
+        ]
         fold_buckets: list[BucketAggregate] = []
         for bucket_index, indices in enumerate(bucket_indices):
             aggregate = BucketAggregate(
@@ -646,15 +654,15 @@ def _direction(value: float, origin: str) -> Direction:
         origin: Calculation origin included in an error.
 
     Returns:
-        Positive or negative direction.
+        Positive, negative, or neutral direction.
 
     Raises:
-        ValueError: If the effect is zero or non-finite.
+        ValueError: If the effect is non-finite.
     """
     if not np.isfinite(value):
         raise ValueError(f"{origin} must be finite, got {value!r}.")
     if value == 0.0:
-        raise ValueError(f"{origin} must be non-zero to define a direction.")
+        return "neutral"
     return "positive" if value > 0.0 else "negative"
 
 
@@ -738,11 +746,14 @@ def aggregate_fold_effects(
     _require_finite_array(rank_associations, f"{metric_name} rank associations")
     mean_effect = float(high_minus_low.mean())
     overall_direction = _direction(mean_effect, f"mean {metric_name} high-minus-low")
-    expected_sign = 1.0 if overall_direction == "positive" else -1.0
-    directional_matches = (high_minus_low * expected_sign > 0.0) & (
-        rank_associations * expected_sign > 0.0
-    )
-    direction_rate = float(directional_matches.mean())
+    if overall_direction == "neutral":
+        direction_rate = 0.0
+    else:
+        expected_sign = 1.0 if overall_direction == "positive" else -1.0
+        directional_matches = (high_minus_low * expected_sign > 0.0) & (
+            rank_associations * expected_sign > 0.0
+        )
+        direction_rate = float(directional_matches.mean())
     intervals = bootstrap_mean_intervals(
         high_minus_low,
         bootstrap_samples,
@@ -752,6 +763,8 @@ def aggregate_fold_effects(
 
     era_directions: list[EraDirection] = []
     instability_reasons: list[str] = []
+    if overall_direction == "neutral":
+        instability_reasons.append("overall mean direction is neutral")
     if direction_rate < minimum_fold_direction_rate:
         instability_reasons.append(
             f"fold direction rate {direction_rate:.6f} is below required "
@@ -787,7 +800,7 @@ def aggregate_fold_effects(
                 f"era {era!r} has {len(era_values)} fold; at least "
                 f"{minimum_folds_per_era} are required"
             )
-        if era_direction != overall_direction:
+        if overall_direction != "neutral" and era_direction != overall_direction:
             instability_reasons.append(
                 f"era {era!r} direction is {era_direction}, expected "
                 f"{overall_direction}"
