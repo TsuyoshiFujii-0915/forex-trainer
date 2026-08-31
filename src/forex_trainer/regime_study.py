@@ -806,19 +806,25 @@ def _scope_metric(scope: Mapping[str, Any], metric: str, legacy: bool) -> float:
     Raises:
         TrainerConfigError: If no explicit supported field exists.
     """
-    aliases: Mapping[str, tuple[str, ...]] = {
+    aliases: Mapping[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
         "annualized_net_return": (
-            "mean_annualized_net_return",
-            "annualized_net_return",
+            ("mean_annualized_net_return", "annualized_net_return"),
+            ("annualized_net_return",),
         ),
         "annualized_gross_return": (
-            "mean_annualized_gross_return",
-            "annualized_gross_return",
+            ("mean_annualized_gross_return", "annualized_gross_return"),
+            ("annualized_gross_return",),
         ),
-        "mean_max_drawdown": ("mean_max_drawdown", "max_drawdown"),
-        "worst_max_drawdown": ("worst_max_drawdown", "max_drawdown"),
+        "mean_max_drawdown": (
+            ("mean_max_drawdown", "max_drawdown"),
+            ("mean_max_drawdown", "max_drawdown"),
+        ),
+        "worst_max_drawdown": (
+            ("worst_max_drawdown",),
+            ("worst_max_drawdown",),
+        ),
     }
-    ordered = aliases[metric] if legacy else tuple(reversed(aliases[metric]))
+    ordered = aliases[metric][0 if legacy else 1]
     for key in ordered:
         if key in scope and scope[key] is not None:
             return _require_finite_number(scope[key], f"sanity metric {key}")
