@@ -195,6 +195,39 @@
   "evidence": {
     "agent": {
       "carry_dispersion": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.012480323754970147
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.007107309067802418
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.47058823529411764,
+          "instability_reasons": [
+            "fold direction rate 0.470588 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is negative, expected positive"
+          ],
+          "intervals": {
+            "fold_high": 0.01686604970545322,
+            "fold_low": -0.007783624200881927,
+            "moving_block_high": 0.015546016060320543,
+            "moving_block_low": -0.006192129927624372
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.004414827886769679,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -226,39 +259,6 @@
           "is_stable": false,
           "mean_high_minus_low": -3.2823394928168693e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.012480323754970147
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.007107309067802418
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.47058823529411764,
-          "instability_reasons": [
-            "fold direction rate 0.470588 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is negative, expected positive"
-          ],
-          "intervals": {
-            "fold_high": 0.01686604970545322,
-            "fold_low": -0.007783624200881927,
-            "moving_block_high": 0.015546016060320543,
-            "moving_block_low": -0.006192129927624372
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.004414827886769679,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -328,6 +328,39 @@
         }
       },
       "cross_sectional_return_dispersion": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.008531134011952659
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.006204871449747074
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.5294117647058824,
+          "instability_reasons": [
+            "fold direction rate 0.529412 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is negative, expected positive"
+          ],
+          "intervals": {
+            "fold_high": 0.01683708933625348,
+            "fold_low": -0.011283852695096592,
+            "moving_block_high": 0.015411410597492348,
+            "moving_block_low": -0.01086743028237898
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.002463367057135121,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -360,39 +393,6 @@
           "is_stable": false,
           "mean_high_minus_low": 6.016917845663143e-07,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.008531134011952659
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.006204871449747074
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.5294117647058824,
-          "instability_reasons": [
-            "fold direction rate 0.529412 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is negative, expected positive"
-          ],
-          "intervals": {
-            "fold_high": 0.01683708933625348,
-            "fold_low": -0.011283852695096592,
-            "moving_block_high": 0.015411410597492348,
-            "moving_block_low": -0.01086743028237898
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.002463367057135121,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -462,35 +462,7 @@
         }
       },
       "decision_gross_exposure": {
-        "next_cost_ratio": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 3.7665016323918995e-05
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 2.3687246277381913e-05
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 1.0,
-          "instability_reasons": [],
-          "intervals": {
-            "fold_high": 4.034957514521306e-05,
-            "fold_low": 2.442349354876409e-05,
-            "moving_block_high": 4.023512052315028e-05,
-            "moving_block_low": 2.5186685103092634e-05
-          },
-          "is_stable": true,
-          "mean_high_minus_low": 3.190946395181549e-05,
-          "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
+        "forward_max_drawdown": {
           "era_directions": [
             {
               "direction": "positive",
@@ -520,7 +492,35 @@
           },
           "is_stable": false,
           "mean_high_minus_low": 0.005987569974414224,
-          "metric_name": "next_drawdown_change"
+          "metric_name": "forward_max_drawdown"
+        },
+        "next_cost_ratio": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 3.7665016323918995e-05
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 2.3687246277381913e-05
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 1.0,
+          "instability_reasons": [],
+          "intervals": {
+            "fold_high": 4.034957514521306e-05,
+            "fold_low": 2.442349354876409e-05,
+            "moving_block_high": 4.023512052315028e-05,
+            "moving_block_low": 2.5186685103092634e-05
+          },
+          "is_stable": true,
+          "mean_high_minus_low": 3.190946395181549e-05,
+          "metric_name": "next_cost_ratio"
         },
         "next_gross_return": {
           "era_directions": [
@@ -590,35 +590,7 @@
         }
       },
       "decision_turnover": {
-        "next_cost_ratio": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 3.296615305756234e-05
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 2.276605156027069e-05
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 1.0,
-          "instability_reasons": [],
-          "intervals": {
-            "fold_high": 3.60583539564082e-05,
-            "fold_low": 2.1455684573933884e-05,
-            "moving_block_high": 3.811948477545172e-05,
-            "moving_block_low": 1.9810575296643326e-05
-          },
-          "is_stable": true,
-          "mean_high_minus_low": 2.8766111264559898e-05,
-          "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
+        "forward_max_drawdown": {
           "era_directions": [
             {
               "direction": "negative",
@@ -648,7 +620,35 @@
           },
           "is_stable": false,
           "mean_high_minus_low": -0.0022302563115170156,
-          "metric_name": "next_drawdown_change"
+          "metric_name": "forward_max_drawdown"
+        },
+        "next_cost_ratio": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 3.296615305756234e-05
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 2.276605156027069e-05
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 1.0,
+          "instability_reasons": [],
+          "intervals": {
+            "fold_high": 3.60583539564082e-05,
+            "fold_low": 2.1455684573933884e-05,
+            "moving_block_high": 3.811948477545172e-05,
+            "moving_block_low": 1.9810575296643326e-05
+          },
+          "is_stable": true,
+          "mean_high_minus_low": 2.8766111264559898e-05,
+          "metric_name": "next_cost_ratio"
         },
         "next_gross_return": {
           "era_directions": [
@@ -716,6 +716,39 @@
         }
       },
       "mean_cross_pair_correlation": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.005625969793674418
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.0006068022769972909
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.47058823529411764,
+          "instability_reasons": [
+            "fold direction rate 0.470588 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is negative, expected positive"
+          ],
+          "intervals": {
+            "fold_high": 0.01295202926072466,
+            "fold_low": -0.005850927109773629,
+            "moving_block_high": 0.011848901990733516,
+            "moving_block_low": -0.006289898580561022
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.0030595342351625384,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -747,39 +780,6 @@
           "is_stable": false,
           "mean_high_minus_low": 5.366646287071342e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.005625969793674418
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.0006068022769972909
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.47058823529411764,
-          "instability_reasons": [
-            "fold direction rate 0.470588 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is negative, expected positive"
-          ],
-          "intervals": {
-            "fold_high": 0.01295202926072466,
-            "fold_low": -0.005850927109773629,
-            "moving_block_high": 0.011848901990733516,
-            "moving_block_low": -0.006289898580561022
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.0030595342351625384,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -849,6 +849,39 @@
         }
       },
       "momentum_dispersion": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "negative",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": -0.00397073194519785
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 0.004505878675330533
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.35294117647058826,
+          "instability_reasons": [
+            "fold direction rate 0.352941 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is positive, expected negative"
+          ],
+          "intervals": {
+            "fold_high": 0.008015016259744021,
+            "fold_low": -0.008512960448303814,
+            "moving_block_high": 0.00849332351976727,
+            "moving_block_low": -0.008823896376720878
+          },
+          "is_stable": false,
+          "mean_high_minus_low": -0.0004803628661567505,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -881,39 +914,6 @@
           "is_stable": false,
           "mean_high_minus_low": -3.186987046057213e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "negative",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": -0.00397073194519785
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 0.004505878675330533
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.35294117647058826,
-          "instability_reasons": [
-            "fold direction rate 0.352941 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is positive, expected negative"
-          ],
-          "intervals": {
-            "fold_high": 0.008015016259744021,
-            "fold_low": -0.008512960448303814,
-            "moving_block_high": 0.00849332351976727,
-            "moving_block_low": -0.008823896376720878
-          },
-          "is_stable": false,
-          "mean_high_minus_low": -0.0004803628661567505,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -979,6 +979,39 @@
         }
       },
       "realized_market_volatility": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.011248945022896603
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.0025040925622754834
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.47058823529411764,
+          "instability_reasons": [
+            "fold direction rate 0.470588 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is negative, expected positive"
+          ],
+          "intervals": {
+            "fold_high": 0.01662566967283603,
+            "fold_low": -0.005063607271202963,
+            "moving_block_high": 0.01609876821296225,
+            "moving_block_low": -0.006573123832754967
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.005585929546649272,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -1010,39 +1043,6 @@
           "is_stable": false,
           "mean_high_minus_low": 3.8979195397974335e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.011248945022896603
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.0025040925622754834
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.47058823529411764,
-          "instability_reasons": [
-            "fold direction rate 0.470588 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is negative, expected positive"
-          ],
-          "intervals": {
-            "fold_high": 0.01662566967283603,
-            "fold_low": -0.005063607271202963,
-            "moving_block_high": 0.01609876821296225,
-            "moving_block_low": -0.006573123832754967
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.005585929546649272,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1110,6 +1110,38 @@
         }
       },
       "trend_reversal_proxy": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.0071730528271628305
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 0.0009988222339819544
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.6470588235294118,
+          "instability_reasons": [
+            "fold direction rate 0.647059 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero"
+          ],
+          "intervals": {
+            "fold_high": 0.013960872950852916,
+            "fold_low": -0.005255346579287677,
+            "moving_block_high": 0.01030926702057277,
+            "moving_block_low": -0.0015526765721495723
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.004630722582911882,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -1141,38 +1173,6 @@
           "is_stable": false,
           "mean_high_minus_low": 3.008889278707004e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.0071730528271628305
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 0.0009988222339819544
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.6470588235294118,
-          "instability_reasons": [
-            "fold direction rate 0.647059 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero"
-          ],
-          "intervals": {
-            "fold_high": 0.013960872950852916,
-            "fold_low": -0.005255346579287677,
-            "moving_block_high": 0.01030926702057277,
-            "moving_block_low": -0.0015526765721495723
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.004630722582911882,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1244,6 +1244,36 @@
     },
     "rule": {
       "carry_dispersion": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.0035747786319956067
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 0.00696630538053124
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.47058823529411764,
+          "instability_reasons": [
+            "fold direction rate 0.470588 is below required 0.700000"
+          ],
+          "intervals": {
+            "fold_high": 0.009621045359429313,
+            "fold_low": 0.0008535418142377618,
+            "moving_block_high": 0.010465282556018323,
+            "moving_block_low": 9.83644900191066e-05
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.004971289646098515,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -1276,36 +1306,6 @@
           "is_stable": false,
           "mean_high_minus_low": -5.406836244961384e-07,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.0035747786319956067
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 0.00696630538053124
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.47058823529411764,
-          "instability_reasons": [
-            "fold direction rate 0.470588 is below required 0.700000"
-          ],
-          "intervals": {
-            "fold_high": 0.009621045359429313,
-            "fold_low": 0.0008535418142377618,
-            "moving_block_high": 0.010465282556018323,
-            "moving_block_low": 9.83644900191066e-05
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.004971289646098515,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1369,6 +1369,39 @@
         }
       },
       "cross_sectional_return_dispersion": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "negative",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": -0.003857303995395962
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 0.003510835907013032
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.5294117647058824,
+          "instability_reasons": [
+            "fold direction rate 0.529412 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is positive, expected negative"
+          ],
+          "intervals": {
+            "fold_high": 0.004740345495428269,
+            "fold_low": -0.005942583229923388,
+            "moving_block_high": 0.004605570566216754,
+            "moving_block_low": -0.005953568546990426
+          },
+          "is_stable": false,
+          "mean_high_minus_low": -0.0008233640355804943,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -1400,39 +1433,6 @@
           "is_stable": false,
           "mean_high_minus_low": 2.9971035889743055e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "negative",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": -0.003857303995395962
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 0.003510835907013032
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.5294117647058824,
-          "instability_reasons": [
-            "fold direction rate 0.529412 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is positive, expected negative"
-          ],
-          "intervals": {
-            "fold_high": 0.004740345495428269,
-            "fold_low": -0.005942583229923388,
-            "moving_block_high": 0.004605570566216754,
-            "moving_block_low": -0.005953568546990426
-          },
-          "is_stable": false,
-          "mean_high_minus_low": -0.0008233640355804943,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1500,35 +1500,7 @@
         }
       },
       "decision_gross_exposure": {
-        "next_cost_ratio": {
-          "era_directions": [
-            {
-              "direction": "negative",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": -1.2376171320610472e-05
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -2.1860411893686002e-05
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.8823529411764706,
-          "instability_reasons": [],
-          "intervals": {
-            "fold_high": -9.39585624141067e-06,
-            "fold_low": -2.2994028759262753e-05,
-            "moving_block_high": -1.0225132725805421e-05,
-            "moving_block_low": -2.1985324844591483e-05
-          },
-          "is_stable": true,
-          "mean_high_minus_low": -1.6281446850700395e-05,
-          "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
+        "forward_max_drawdown": {
           "era_directions": [
             {
               "direction": "negative",
@@ -1556,7 +1528,35 @@
           },
           "is_stable": false,
           "mean_high_minus_low": -0.0014575391963351227,
-          "metric_name": "next_drawdown_change"
+          "metric_name": "forward_max_drawdown"
+        },
+        "next_cost_ratio": {
+          "era_directions": [
+            {
+              "direction": "negative",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": -1.2376171320610472e-05
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -2.1860411893686002e-05
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.8823529411764706,
+          "instability_reasons": [],
+          "intervals": {
+            "fold_high": -9.39585624141067e-06,
+            "fold_low": -2.2994028759262753e-05,
+            "moving_block_high": -1.0225132725805421e-05,
+            "moving_block_low": -2.1985324844591483e-05
+          },
+          "is_stable": true,
+          "mean_high_minus_low": -1.6281446850700395e-05,
+          "metric_name": "next_cost_ratio"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1616,35 +1616,7 @@
         }
       },
       "decision_turnover": {
-        "next_cost_ratio": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.00015979643262392702
-            },
-            {
-              "direction": "positive",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": 0.00015756304637785695
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 1.0,
-          "instability_reasons": [],
-          "intervals": {
-            "fold_high": 0.00018264234619536331,
-            "fold_low": 0.0001371860306622636,
-            "moving_block_high": 0.00017901541722336554,
-            "moving_block_low": 0.00013775728877203367
-          },
-          "is_stable": true,
-          "mean_high_minus_low": 0.0001588768029931923,
-          "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
+        "forward_max_drawdown": {
           "era_directions": [
             {
               "direction": "positive",
@@ -1674,7 +1646,35 @@
           },
           "is_stable": false,
           "mean_high_minus_low": 0.002484307060113161,
-          "metric_name": "next_drawdown_change"
+          "metric_name": "forward_max_drawdown"
+        },
+        "next_cost_ratio": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.00015979643262392702
+            },
+            {
+              "direction": "positive",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": 0.00015756304637785695
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 1.0,
+          "instability_reasons": [],
+          "intervals": {
+            "fold_high": 0.00018264234619536331,
+            "fold_low": 0.0001371860306622636,
+            "moving_block_high": 0.00017901541722336554,
+            "moving_block_low": 0.00013775728877203367
+          },
+          "is_stable": true,
+          "mean_high_minus_low": 0.0001588768029931923,
+          "metric_name": "next_cost_ratio"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1742,6 +1742,39 @@
         }
       },
       "mean_cross_pair_correlation": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.004017238468080285
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.0016100413327049916
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.5882352941176471,
+          "instability_reasons": [
+            "fold direction rate 0.588235 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is negative, expected positive"
+          ],
+          "intervals": {
+            "fold_high": 0.006718376852441672,
+            "fold_low": -0.0035231705096127565,
+            "moving_block_high": 0.0063670958570443215,
+            "moving_block_low": -0.0028203417907117765
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 0.0017001232559922302,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -1773,39 +1806,6 @@
           "is_stable": false,
           "mean_high_minus_low": -5.677921469874241e-06,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.004017238468080285
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.0016100413327049916
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.5882352941176471,
-          "instability_reasons": [
-            "fold direction rate 0.588235 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is negative, expected positive"
-          ],
-          "intervals": {
-            "fold_high": 0.006718376852441672,
-            "fold_low": -0.0035231705096127565,
-            "moving_block_high": 0.0063670958570443215,
-            "moving_block_low": -0.0028203417907117765
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 0.0017001232559922302,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1875,6 +1875,34 @@
         }
       },
       "momentum_dispersion": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "negative",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": -0.008382904399906327
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.005740568106828911
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.8823529411764706,
+          "instability_reasons": [],
+          "intervals": {
+            "fold_high": -0.004642143039976416,
+            "fold_low": -0.00976831688554262,
+            "moving_block_high": -0.005037546331238026,
+            "moving_block_low": -0.00951856868013886
+          },
+          "is_stable": true,
+          "mean_high_minus_low": -0.007294883573345039,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -1902,34 +1930,6 @@
           "is_stable": true,
           "mean_high_minus_low": -1.621453873467553e-05,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "negative",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": -0.008382904399906327
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.005740568106828911
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.8823529411764706,
-          "instability_reasons": [],
-          "intervals": {
-            "fold_high": -0.004642143039976416,
-            "fold_low": -0.00976831688554262,
-            "moving_block_high": -0.005037546331238026,
-            "moving_block_low": -0.00951856868013886
-          },
-          "is_stable": true,
-          "mean_high_minus_low": -0.007294883573345039,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -1989,6 +1989,39 @@
         }
       },
       "realized_market_volatility": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.0006727938204611008
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.002258758702110956
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.47058823529411764,
+          "instability_reasons": [
+            "fold direction rate 0.470588 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2009-2018' direction is positive, expected negative"
+          ],
+          "intervals": {
+            "fold_high": 0.006034776898398131,
+            "fold_low": -0.007067514361506007,
+            "moving_block_high": 0.005227180653875161,
+            "moving_block_low": -0.005889852438426084
+          },
+          "is_stable": false,
+          "mean_high_minus_low": -0.0005343160417744523,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -2021,39 +2054,6 @@
           "is_stable": false,
           "mean_high_minus_low": -6.497567446011085e-07,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.0006727938204611008
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.002258758702110956
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.47058823529411764,
-          "instability_reasons": [
-            "fold direction rate 0.470588 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2009-2018' direction is positive, expected negative"
-          ],
-          "intervals": {
-            "fold_high": 0.006034776898398131,
-            "fold_low": -0.007067514361506007,
-            "moving_block_high": 0.005227180653875161,
-            "moving_block_low": -0.005889852438426084
-          },
-          "is_stable": false,
-          "mean_high_minus_low": -0.0005343160417744523,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -2121,6 +2121,39 @@
         }
       },
       "trend_reversal_proxy": {
+        "forward_max_drawdown": {
+          "era_directions": [
+            {
+              "direction": "positive",
+              "era": "2009-2018",
+              "fold_count": 10,
+              "mean_high_minus_low": 0.000927896631093621
+            },
+            {
+              "direction": "negative",
+              "era": "2019-2025",
+              "fold_count": 7,
+              "mean_high_minus_low": -0.0011349841395713342
+            }
+          ],
+          "fold_count": 17,
+          "fold_direction_rate": 0.4117647058823529,
+          "instability_reasons": [
+            "fold direction rate 0.411765 is below required 0.700000",
+            "fold bootstrap interval includes zero",
+            "moving-block bootstrap interval includes zero",
+            "era '2019-2025' direction is negative, expected positive"
+          ],
+          "intervals": {
+            "fold_high": 0.005361071812531932,
+            "fold_low": -0.004504654939012873,
+            "moving_block_high": 0.005096546845310242,
+            "moving_block_low": -0.004450174278776173
+          },
+          "is_stable": false,
+          "mean_high_minus_low": 7.847513729040426e-05,
+          "metric_name": "forward_max_drawdown"
+        },
         "next_cost_ratio": {
           "era_directions": [
             {
@@ -2153,39 +2186,6 @@
           "is_stable": false,
           "mean_high_minus_low": -5.387415359789766e-07,
           "metric_name": "next_cost_ratio"
-        },
-        "next_drawdown_change": {
-          "era_directions": [
-            {
-              "direction": "positive",
-              "era": "2009-2018",
-              "fold_count": 10,
-              "mean_high_minus_low": 0.000927896631093621
-            },
-            {
-              "direction": "negative",
-              "era": "2019-2025",
-              "fold_count": 7,
-              "mean_high_minus_low": -0.0011349841395713342
-            }
-          ],
-          "fold_count": 17,
-          "fold_direction_rate": 0.4117647058823529,
-          "instability_reasons": [
-            "fold direction rate 0.411765 is below required 0.700000",
-            "fold bootstrap interval includes zero",
-            "moving-block bootstrap interval includes zero",
-            "era '2019-2025' direction is negative, expected positive"
-          ],
-          "intervals": {
-            "fold_high": 0.005361071812531932,
-            "fold_low": -0.004504654939012873,
-            "moving_block_high": 0.005096546845310242,
-            "moving_block_low": -0.004450174278776173
-          },
-          "is_stable": false,
-          "mean_high_minus_low": 7.847513729040426e-05,
-          "metric_name": "next_drawdown_change"
         },
         "next_gross_return": {
           "era_directions": [
@@ -3400,7 +3400,7 @@
     },
     {
       "candidate": "momentum_dispersion",
-      "metric": "next_drawdown_change",
+      "metric": "forward_max_drawdown",
       "policy": "rule"
     },
     {

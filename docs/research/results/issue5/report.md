@@ -13,7 +13,7 @@
 - rule / momentum_dispersion / next_net_return
 - rule / momentum_dispersion / next_gross_return
 - rule / momentum_dispersion / next_cost_ratio
-- rule / momentum_dispersion / next_drawdown_change
+- rule / momentum_dispersion / forward_max_drawdown
 - rule / decision_gross_exposure / next_net_return
 - rule / decision_gross_exposure / next_gross_return
 - rule / decision_gross_exposure / next_cost_ratio

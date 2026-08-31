@@ -1,4 +1,4 @@
-policy,candidate,fold,era,first_timestamp,bucket_index,observation_count,minimum_candidate_value,maximum_candidate_value,mean_next_net_return,mean_next_gross_return,mean_next_cost_ratio,mean_next_drawdown_change
+policy,candidate,fold,era,first_timestamp,bucket_index,observation_count,minimum_candidate_value,maximum_candidate_value,mean_next_net_return,mean_next_gross_return,mean_next_cost_ratio,mean_forward_max_drawdown
 agent,realized_market_volatility,2009,2009-2018,2009-04-03T00:00:00+01:00,0,59,0.006496760828182863,0.010179404572722405,0.0005377559268740269,0.0006335840083584341,9.587790730372113e-05,0.06650357004258686
 agent,realized_market_volatility,2009,2009-2018,2009-04-03T00:00:00+01:00,1,59,0.01018160408297832,0.01191076014803649,-0.0021280249253294464,-0.002016005250899546,0.00011179359253830159,0.09945714159423999
 agent,realized_market_volatility,2009,2009-2018,2009-04-03T00:00:00+01:00,2,58,0.011920751687907504,0.014250924511547258,-0.0007085676127591918,-0.0005844625875675152,0.00012393324032658942,0.1161116007912695

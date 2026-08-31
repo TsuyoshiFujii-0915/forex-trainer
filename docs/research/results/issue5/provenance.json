@@ -3,7 +3,7 @@
   "campaign_sha256": "9d328030592d3c1f91cb2c77d4df690d36f186c0af6bac4ac3c9f4835357357e",
   "diagnostic_git": {
     "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
-    "forex_trainer": "0f974ff1b9e63560e2092769d0eb1e3548bfff41"
+    "forex_trainer": "e43f11a3c95f00ed37282fd9d2b092a829c681cf"
   },
   "diagnostic_versions": {
     "forex-env-v3": "0.1.0",
@@ -13,13 +13,13 @@
     "torch": "2.12.0"
   },
   "generated_artifact_sha256": {
-    "bucket_metrics.csv": "2fa531fb1baaf93ef3869464bf71ae75141f1f17c0ba5fce32d7e7984ff09dfe",
-    "fold_effects.csv": "93b3ee47026b5836c377aa1c2f6bc1e8f39c2dab248b52db11aa9ccc8c9a29e1",
+    "bucket_metrics.csv": "0f3efcf4698f86af558285feb8dbfb9e936127977cf4dc4fbb339b6e4eafbe7b",
+    "fold_effects.csv": "d94ff340fbad644c1f63a81c5322d3c243a678734fd840f678a8b80e67a924ef",
     "regime_effects.svg": "09b79f38d4a9647be9478de959a2301c0d8eeef92e0b381b0b22de61b8a6523a",
-    "report.json": "7185af4dde29b4111710c44ebc16035e6314842ff0e1c74da993ac6db7c03a13",
-    "report.md": "207250f8f4e79e9a55cf571e1f663a2a4446b799a2f610e20027e9fae2702c19",
+    "report.json": "120158df241c106ad8f121465af3d6ac33e032ad22f0974518906480d215881b",
+    "report.md": "c464aea676beaba97b8702be8781d17ee57bb1a1925d11ee0dbd4170380c2272",
     "sanity_comparison.csv": "d8f5388a910cabb6e6bc213fad6e557fb9dced6bddacee255ea50e7e20112c7e",
-    "step_trace.csv": "d77606ffbcea0a09535c004d3094dca41a5184335062a6893cd1a00340979e2f",
+    "step_trace.csv": "f0a69b5f2f00f9cc6fba3a411ce2a39f6e061722122fd510acfbc1f651f00d26",
     "study_snapshot.yaml": "7a3ded630676f6b82413d3361c0e1a5f2140a741a40952ac3ba5b14438288d5c"
   },
   "legacy_report_path": "/home/tsuyoshi/workspace/projects/forex-trainer/docs/research/results/issue1/report.json",
@@ -34,7 +34,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031",
       "ensemble_manifest_sha256": "9d2a93453b49c5466384403cffc3ec732f60c6d778cb61be74687aa0d6828225",
       "eval_env_sha256": "9b60b855c501ddd4eac5d7ea10fb1b901a1e4bac3a4522e6480dd039e768f24e",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -70,6 +69,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "2c312e84ffd9bcae2a0fb21b5515f719f13245ca71635213f8df29e6d9a999e9"
     },
     {
@@ -81,7 +82,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220",
       "ensemble_manifest_sha256": "1ca017313e9be2b7c23d751c199236b6599dca7a4b9b7e2ad8f7663fdcaa2b77",
       "eval_env_sha256": "3f934e518d3a44416cd08c0b09aae39bd4d160b1d46238c5bf727f38a4492b8a",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -117,6 +117,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "16e5215e0dc643a5799e3da1c0fbc0b1d1e33914a62b8ffdf43ba9caed19c0e7"
     },
     {
@@ -128,7 +130,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724",
       "ensemble_manifest_sha256": "59653131ff5da766d5237f4912651eb56e84d13e4c752cdfb7b7c2f6d85a2c99",
       "eval_env_sha256": "d5f6b342606467311ef54a051d2dd572188c0960c839e6537e5843610e38a6bd",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -164,6 +165,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "d17f007efe1a0b653dbf4a204b47bf2d714479efacb0d0400014570bc47e70a8"
     },
     {
@@ -175,7 +178,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379",
       "ensemble_manifest_sha256": "41362381903eda6906e259f3880393db533886ce7991b6c6cc34a8d0bbd9e6ca",
       "eval_env_sha256": "6fbf42f4ed3ebc95dce5f68b2b437cc85a670e83393e7b61217a84197d21f7f5",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -211,6 +213,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "58840b14bb60b902893bdec835a72485d2ce0d5ee5db3a2ed094f55191679353"
     },
     {
@@ -222,7 +226,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032",
       "ensemble_manifest_sha256": "9511ecabe293c03bdf96c49794688c77df2f8792a30742f27c91e9ccc8acac33",
       "eval_env_sha256": "6e5476f1e8534e5a9c5a4ced3785a72b2ac665f819faaa931de5d9c54490ce2a",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -258,6 +261,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "20fdf4cb338194b901cdb2c1c45be3af3e6b57e71e782f4deb35cc9306b52e7a"
     },
     {
@@ -269,7 +274,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502",
       "ensemble_manifest_sha256": "ba13ccfbbea00a4a6577aa07493f2ee82d5c6e98afbe9782280af917ba2be618",
       "eval_env_sha256": "bc04db5314a3725c777dccba4275fa666fd00960f8bf2b67bb4f14a14df29dd7",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -305,6 +309,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "940d14f4c2e6ff1da16a5d45e29f0076a81e48627992f075d91cfa89e311f5c1"
     },
     {
@@ -316,7 +322,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084",
       "ensemble_manifest_sha256": "e355472cf882274b5d59472bea68216c6bd2cd11d9927b7e10a3e53f9be3b13f",
       "eval_env_sha256": "a69c765ccdfb92b7dfba8063418c1d7119c39471fb5da1b1d8a384a65820d4b2",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -352,6 +357,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "5bfd2ccffd1c4f7485d16712abe0641692bf5e307281ddc37357643c09882360"
     },
     {
@@ -363,7 +370,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659",
       "ensemble_manifest_sha256": "f41bc20419168ee5d7747a1b4a22278765084a9e23c994e60237950cc8e9307f",
       "eval_env_sha256": "409eff09fee861435ebe31428eb383cc7b24f08c768eb2de063d278a278845b0",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -399,6 +405,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "4c83e4a45b5d58b676cc09e45405e23238cb33bfc9c102ceb3a7e5783d098f6c"
     },
     {
@@ -410,7 +418,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661",
       "ensemble_manifest_sha256": "e1259238c1007d2804e0bca7dabb35eac81929f40fdc5d84edc9a667badcf6f3",
       "eval_env_sha256": "7a9ee91332e28b8606e56358215f4fdf27ff4a0d376862f6c8f01ddd947a923e",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -446,6 +453,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "8e7085a3d6595ba910546a0557b7d1df4034c3f85294c7ad96bc2408b1031afe"
     },
     {
@@ -457,7 +466,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230",
       "ensemble_manifest_sha256": "e60acef86f8df9d77edcb7a8cba8faac84b8642d190b8910828c03440771138f",
       "eval_env_sha256": "895c2f7c883a149ef17a269034a6d55ea2c09c73906dd36d75a0380b270d4379",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -493,6 +501,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "c8fbb39b7505b8c2b4165bc2dbdda11a711f0e055dff977bd35be99351a7e907"
     },
     {
@@ -504,7 +514,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867",
       "ensemble_manifest_sha256": "2495ddd2bd5da49a973e1baf71eefc09578af3d1398a5ed8ace3bae1735d190c",
       "eval_env_sha256": "077b026f7cedd3f60817a19e58cfa1db3f7afc47f3bfa4fbe98c9694be3c8907",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -540,6 +549,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "ee42399463fb021ed5774f2eaf262e4c01c341b0cbf64a423e8a7dcf35478df3"
     },
     {
@@ -551,7 +562,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642",
       "ensemble_manifest_sha256": "32777b6d18c3bbc1789795a5d8ef40b6631fe071742ef85248bb94fc284e4201",
       "eval_env_sha256": "37ff97cf255448797a132038b0d54bd58c4c4e32cdef4d9c17da2b00797bb0ac",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -587,6 +597,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "7ad229d38149c8346c345164e6e85700cdaf4a397eaf657f55d79d3f25bafe9d"
     },
     {
@@ -598,7 +610,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586",
       "ensemble_manifest_sha256": "b59a74b2d32ebf94ae201a466c33019dff3d808ac6692a8cc39171509732368a",
       "eval_env_sha256": "5aa0c81393c2dbca247684f97d22ddc9957309858f04a3238d119a634cd7e7f5",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -634,6 +645,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "949f17df66d11e56d04ed5dcb08fd0623696c83cd417c214b74ead155fa6f4c5"
     },
     {
@@ -645,7 +658,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827",
       "ensemble_manifest_sha256": "5cc1064b606cb712f01c28316b1a3e1a95184c6492945d9583b75b83eaea5b26",
       "eval_env_sha256": "771b315edd89340c6c6370125fafdfdc672398b82b9f1344e109ecccfcd8aa01",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -681,6 +693,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "ae42dc700db7cc784ecccc16ee7deaae0c5e2ef906d68920127098aac76c0424"
     },
     {
@@ -692,7 +706,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185",
       "ensemble_manifest_sha256": "f927f4d8f1e7659a996e4b5c244523ae1e8ab67a3136eb050c869c354be4d3b7",
       "eval_env_sha256": "bcd2dbb47fef55511c3d51fba24e6be331ba53f24cb9226a67da4d9b06bd724f",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -728,6 +741,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "f2dfc04544cd3ee1e03ed59fbc42934ba50a6a0fa81c488d7d1c84e353b05534"
     },
     {
@@ -739,7 +754,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766",
       "ensemble_manifest_sha256": "9fcfac670dfa851f16a78441eb56e3197b72b6b20d3a41aa7ca29bff1bff5a63",
       "eval_env_sha256": "64cbfcbeb3d51372d9399bc50fe674ade9c5bac09127f7c416537bb198c1fd2d",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -775,6 +789,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "93d76899fe383a092cd3edd0222ac63b1e0e6d3c1f3a26a51de20ed194ec4180"
     },
     {
@@ -786,7 +802,6 @@
       "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143",
       "ensemble_manifest_sha256": "db2617aec6f68ab294c8d2aa30fecfcba87025bcb3ca514f0f999e7ffca66051",
       "eval_env_sha256": "1c69a0007f043ee54c4745e2a8067eb1ec36badb2932adc6563982bd2e93f46a",
-      "evaluation_device": "cpu",
       "evaluation_git": {
         "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
         "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
@@ -822,6 +837,8 @@
           "seed": 44
         }
       ],
+      "replay_device": "cpu",
+      "sealed_evaluation_device": "cpu",
       "sealed_metrics_sha256": "03f69a1005560ec176664e9fbd617a20bb3bef1d148c13e36a1c9be8567dee95"
     }
   ],

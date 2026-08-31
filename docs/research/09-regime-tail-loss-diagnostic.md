@@ -25,7 +25,7 @@ ADR-0018に従い、legacy source metadataへ現在値をbackfillせず、
 - member seeds: 42 / 43 / 44
 - requested / resolved training device: CPU / CPU
 - training・evaluation trainer SHA: `49c04492aa4a0902ea97f81edc5d9217b0f2bf75`
-- diagnostic trainer SHA: `0f974ff1b9e63560e2092769d0eb1e3548bfff41`
+- diagnostic trainer SHA: `e43f11a3c95f00ed37282fd9d2b092a829c681cf`
 - forex-env SHA: `6024b91c0f3592611849bc231922ab60e6090aed`
 - model selection: validation-best
 - campaign range policy: expanding、declared start `2003-06-01`
