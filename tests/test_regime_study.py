@@ -12,6 +12,7 @@ import yaml
 from forex_trainer.config import TrainerConfigError
 from forex_trainer.regime_study import (
     RuleSpec,
+    _sealed_evaluation_device,
     build_momentum_reversal_action,
     compare_legacy_current,
     load_regime_study,
@@ -200,3 +201,23 @@ def test_cli_validation_failure_leaves_no_partial_output(
     assert main(["--study", str(study_path), "--output-dir", str(output_dir)]) == 1
     assert "duplicate" in capsys.readouterr().err
     assert not output_dir.exists()
+
+
+def test_replay_device_comes_from_the_sealed_ensemble_manifest(
+    tmp_path: Path,
+) -> None:
+    """Replay rejects unresolved or absent devices instead of resolving run.device again."""
+    manifest_path = tmp_path / "ensemble.json"
+
+    assert (
+        _sealed_evaluation_device(
+            {"evaluation": {"resolved_device": "cpu"}}, manifest_path
+        )
+        == "cpu"
+    )
+    with pytest.raises(TrainerConfigError, match="sealed resolved_device"):
+        _sealed_evaluation_device(
+            {"evaluation": {"resolved_device": "auto"}}, manifest_path
+        )
+    with pytest.raises(TrainerConfigError, match="sealed resolved_device"):
+        _sealed_evaluation_device({"evaluation": {}}, manifest_path)

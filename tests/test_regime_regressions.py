@@ -37,7 +37,7 @@ def _record(index: int, candidate: float, response: float) -> StepRecord:
         next_net_return=response,
         next_gross_return=response + index / 1_000.0,
         next_cost_ratio=0.01 + index / 10_000.0,
-        next_drawdown_change=-response,
+        forward_max_drawdown=abs(response),
     )
 
 
@@ -77,11 +77,11 @@ def _effect(fold: str, year: int, value: float) -> FoldEffect:
         high_minus_low_next_net_return=value,
         high_minus_low_next_gross_return=value,
         high_minus_low_next_cost_ratio=value,
-        high_minus_low_next_drawdown_change=value,
+        high_minus_low_forward_max_drawdown=value,
         rank_association_next_net_return=value,
         rank_association_next_gross_return=value,
         rank_association_next_cost_ratio=value,
-        rank_association_next_drawdown_change=value,
+        rank_association_forward_max_drawdown=value,
     )
 
 

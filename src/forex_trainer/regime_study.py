@@ -22,7 +22,7 @@ from forex_env.errors import ConfigError, DataError, FeatureError
 
 from .artifact_provenance import dependency_versions, git_commits, sha256_file
 from .config import TrainerConfigError
-from .ensemble import _load_member
+from .ensemble import load_member_for_device
 from .env_factory import build_single_env
 from .evaluate import compute_metrics
 from .regime import (
@@ -509,7 +509,7 @@ def _walk_policy(
                 next_net_return=rewards[index],
                 next_gross_return=gross_responses[index],
                 next_cost_ratio=cost_responses[index],
-                next_drawdown_change=forward_drawdown,
+                forward_max_drawdown=forward_drawdown,
             )
         )
     metrics = compute_metrics(
@@ -579,16 +579,46 @@ def _require_baseline_campaign(
     return configuration
 
 
-def _load_replay_member(run_dir: Path) -> tuple[Any, Any, Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], str]:
-    """Load one SB3 replay member at the external model boundary.
+def _sealed_evaluation_device(
+    manifest: Mapping[str, Any], manifest_path: Path
+) -> str:
+    """Read the concrete replay device sealed by an ensemble evaluation.
+
+    Args:
+        manifest: Parsed version 2 ensemble manifest.
+        manifest_path: Manifest path for diagnostics.
+
+    Returns:
+        Concrete CPU, CUDA, or MPS device.
+
+    Raises:
+        TrainerConfigError: If the evaluation device is absent or unresolved.
+    """
+    evaluation = manifest.get("evaluation")
+    device = (
+        evaluation.get("resolved_device") if isinstance(evaluation, Mapping) else None
+    )
+    if device not in {"cpu", "cuda", "mps"}:
+        raise TrainerConfigError(
+            "Ensemble manifest lacks a concrete sealed resolved_device: "
+            f"{manifest_path}; got {device!r}."
+        )
+    return device
+
+
+def _load_replay_member(
+    run_dir: Path, sealed_device: str
+) -> tuple[Any, Any, Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], str]:
+    """Load one SB3 replay member on the source evaluation's sealed device.
 
     Args:
         run_dir: Current-contract member run directory.
+        sealed_device: Concrete device recorded by the ensemble manifest.
 
     Returns:
         Parsed config, model, eval env, raw config, meta, and resolved device.
     """
-    return _load_member(run_dir)
+    return load_member_for_device(run_dir, sealed_device)
 
 
 def _metrics_match(actual: Mapping[str, Any], expected: Mapping[str, Any], origin: Path) -> None:
@@ -661,7 +691,10 @@ def _replay_ensemble_fold(
             f"{tuple(sorted(study.member_seeds))!r}: {manifest_path}"
         )
     member_dirs = [Path(str(member["run_dir"])).resolve() for member in raw_members]
-    members = [_load_replay_member(run_dir) for run_dir in member_dirs]
+    sealed_device = _sealed_evaluation_device(manifest, manifest_path)
+    members = [
+        _load_replay_member(run_dir, sealed_device) for run_dir in member_dirs
+    ]
     reference_config, _, eval_raw, raw_config, _, device = members[0]
     if reference_config.run.residual is not None or reference_config.run.rank_allocation is not None:
         raise TrainerConfigError(
@@ -956,7 +989,7 @@ def _record_row(policy: str, record: StepRecord) -> Mapping[str, Any]:
         "next_net_return": record.next_net_return,
         "next_gross_return": record.next_gross_return,
         "next_cost_ratio": record.next_cost_ratio,
-        "next_drawdown_change": record.next_drawdown_change,
+        "forward_max_drawdown": record.forward_max_drawdown,
     }
 
 

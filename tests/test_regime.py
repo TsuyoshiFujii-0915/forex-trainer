@@ -47,7 +47,7 @@ def _record(
         next_net_return=response,
         next_gross_return=response + 0.01,
         next_cost_ratio=0.01 + response / 100.0,
-        next_drawdown_change=-response,
+        forward_max_drawdown=abs(response),
     )
 
 
@@ -132,6 +132,10 @@ def test_alignment_requires_exact_fold_timestamp_and_market_regime() -> None:
         align_agent_rule_records([agent[0], agent[0]], rule)
     with pytest.raises(ValueError, match="regime mismatch"):
         align_agent_rule_records(agent, [replace(rule[0], regime=_regime(0.2))])
+    with pytest.raises(ValueError, match="forward_max_drawdown must be non-negative"):
+        align_agent_rule_records(
+            [replace(agent[0], forward_max_drawdown=-0.01)], rule
+        )
 
 
 def test_fold_buckets_precede_high_minus_low_and_rank_effects() -> None:
@@ -154,11 +158,11 @@ def test_fold_buckets_precede_high_minus_low_and_rank_effects() -> None:
     assert buckets[1].mean_next_net_return == pytest.approx(3.5)
     assert buckets[1].mean_next_gross_return == pytest.approx(3.51)
     assert buckets[1].mean_next_cost_ratio == pytest.approx(0.045)
-    assert buckets[1].mean_next_drawdown_change == pytest.approx(-3.5)
+    assert buckets[1].mean_forward_max_drawdown == pytest.approx(3.5)
     assert effects[0].high_minus_low_next_net_return == pytest.approx(2.0)
     assert effects[0].rank_association_next_net_return == pytest.approx(1.0)
-    assert effects[0].high_minus_low_next_drawdown_change == pytest.approx(-2.0)
-    assert effects[0].rank_association_next_drawdown_change == pytest.approx(-1.0)
+    assert effects[0].high_minus_low_forward_max_drawdown == pytest.approx(2.0)
+    assert effects[0].rank_association_forward_max_drawdown == pytest.approx(1.0)
 
 
 @pytest.mark.parametrize(
@@ -201,11 +205,11 @@ def _effect(
         high_minus_low_next_net_return=value,
         high_minus_low_next_gross_return=value,
         high_minus_low_next_cost_ratio=value,
-        high_minus_low_next_drawdown_change=value,
+        high_minus_low_forward_max_drawdown=value,
         rank_association_next_net_return=value,
         rank_association_next_gross_return=value,
         rank_association_next_cost_ratio=value,
-        rank_association_next_drawdown_change=value,
+        rank_association_forward_max_drawdown=value,
     )
 
 

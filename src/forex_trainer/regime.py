@@ -26,7 +26,7 @@ MetricName = Literal[
     "next_net_return",
     "next_gross_return",
     "next_cost_ratio",
-    "next_drawdown_change",
+    "forward_max_drawdown",
 ]
 Direction = Literal["negative", "neutral", "positive"]
 
@@ -46,7 +46,7 @@ METRIC_NAMES: tuple[MetricName, ...] = (
     "next_net_return",
     "next_gross_return",
     "next_cost_ratio",
-    "next_drawdown_change",
+    "forward_max_drawdown",
 )
 
 
@@ -75,7 +75,7 @@ class StepRecord:
     next_net_return: float
     next_gross_return: float
     next_cost_ratio: float
-    next_drawdown_change: float
+    forward_max_drawdown: float
 
 
 @dataclass(frozen=True)
@@ -100,7 +100,7 @@ class BucketAggregate:
     mean_next_net_return: float
     mean_next_gross_return: float
     mean_next_cost_ratio: float
-    mean_next_drawdown_change: float
+    mean_forward_max_drawdown: float
 
 
 @dataclass(frozen=True)
@@ -113,11 +113,11 @@ class FoldEffect:
     high_minus_low_next_net_return: float
     high_minus_low_next_gross_return: float
     high_minus_low_next_cost_ratio: float
-    high_minus_low_next_drawdown_change: float
+    high_minus_low_forward_max_drawdown: float
     rank_association_next_net_return: float
     rank_association_next_gross_return: float
     rank_association_next_cost_ratio: float
-    rank_association_next_drawdown_change: float
+    rank_association_forward_max_drawdown: float
 
 
 @dataclass(frozen=True)
@@ -302,7 +302,7 @@ def _validate_record(record: StepRecord, origin: str) -> None:
             record.next_net_return,
             record.next_gross_return,
             record.next_cost_ratio,
-            record.next_drawdown_change,
+            record.forward_max_drawdown,
         ),
         dtype=np.float64,
     )
@@ -314,6 +314,8 @@ def _validate_record(record: StepRecord, origin: str) -> None:
         raise ValueError(f"{origin} decision_turnover must be non-negative.")
     if record.next_cost_ratio < 0.0:
         raise ValueError(f"{origin} next_cost_ratio must be non-negative.")
+    if record.forward_max_drawdown < 0.0:
+        raise ValueError(f"{origin} forward_max_drawdown must be non-negative.")
 
 
 def align_agent_rule_records(
@@ -470,8 +472,8 @@ def _response_arrays(records: Sequence[StepRecord], fold: str) -> dict[MetricNam
         "next_cost_ratio": np.asarray(
             [record.next_cost_ratio for record in records], dtype=np.float64
         ),
-        "next_drawdown_change": np.asarray(
-            [record.next_drawdown_change for record in records], dtype=np.float64
+        "forward_max_drawdown": np.asarray(
+            [record.forward_max_drawdown for record in records], dtype=np.float64
         ),
     }
     for metric_name, values in responses.items():
@@ -490,7 +492,8 @@ def compute_fold_effects(
     Args:
         records: Complete steps for one policy across one or more folds.
         candidate_name: Candidate conditioned on within each fold.
-        bucket_count: Number of equal-count rank buckets per fold.
+        bucket_count: Number of ordered distinct-value buckets per fold. Equal
+            candidate values remain in one bucket, so observation counts can differ.
 
     Returns:
         Bucket aggregates and one high-minus-low/rank effect per fold.
@@ -568,8 +571,8 @@ def compute_fold_effects(
                     responses["next_gross_return"][indices].mean()
                 ),
                 mean_next_cost_ratio=float(responses["next_cost_ratio"][indices].mean()),
-                mean_next_drawdown_change=float(
-                    responses["next_drawdown_change"][indices].mean()
+                mean_forward_max_drawdown=float(
+                    responses["forward_max_drawdown"][indices].mean()
                 ),
             )
             fold_buckets.append(aggregate)
@@ -590,8 +593,8 @@ def compute_fold_effects(
                 high_minus_low_next_cost_ratio=(
                     high.mean_next_cost_ratio - low.mean_next_cost_ratio
                 ),
-                high_minus_low_next_drawdown_change=(
-                    high.mean_next_drawdown_change - low.mean_next_drawdown_change
+                high_minus_low_forward_max_drawdown=(
+                    high.mean_forward_max_drawdown - low.mean_forward_max_drawdown
                 ),
                 rank_association_next_net_return=_rank_association(
                     candidate, responses["next_net_return"]
@@ -602,8 +605,8 @@ def compute_fold_effects(
                 rank_association_next_cost_ratio=_rank_association(
                     candidate, responses["next_cost_ratio"]
                 ),
-                rank_association_next_drawdown_change=_rank_association(
-                    candidate, responses["next_drawdown_change"]
+                rank_association_forward_max_drawdown=_rank_association(
+                    candidate, responses["forward_max_drawdown"]
                 ),
             )
         )
@@ -638,10 +641,10 @@ def _effect_values(
             effect.high_minus_low_next_cost_ratio,
             effect.rank_association_next_cost_ratio,
         )
-    if metric_name == "next_drawdown_change":
+    if metric_name == "forward_max_drawdown":
         return (
-            effect.high_minus_low_next_drawdown_change,
-            effect.rank_association_next_drawdown_change,
+            effect.high_minus_low_forward_max_drawdown,
+            effect.rank_association_forward_max_drawdown,
         )
     raise ValueError(f"unknown metric_name: {metric_name!r}.")
 

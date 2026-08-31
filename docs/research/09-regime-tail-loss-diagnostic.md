@@ -66,9 +66,10 @@ current ens3を封印済みmember model・同じresolved eval env・CPUで決定
 decision timestampの完全一致を要求した。
 
 各decision直前の32-bar observationだけから候補値を計算し、その後のnet/gross return、cost、
-20-decision forward drawdownへ対応させた。各fold内で候補をtercile化し、high-minus-lowを1 fold
-1観測へ縮約した。同値候補はbucket境界で分割していない。不確実性は日次barでなくfoldを標本とする
-10,000回のIID fold bootstrapと3-fold circular moving-block bootstrapで評価した。
+20-decision forward maximum drawdownへ対応させた。各fold内で候補のdistinct valueを順序付き3
+bucketsへ分け、high-minus-lowを1 fold 1観測へ縮約した。同値候補はbucket境界で分割しないため、
+tiesが多いpolicy-state候補ではbucketの観測数は均等にならない。不確実性は日次barでなくfoldを
+標本とする10,000回のIID fold bootstrapと3-fold circular moving-block bootstrapで評価した。
 
 ## agentのmarket-regime結果
 
@@ -97,6 +98,10 @@ ruleのmomentum dispersion効果はH−L **+0.135%/decision**、fold 95% CI
 [+0.071%, +0.212%]、moving-block 95% CI [+0.074%, +0.203%]、方向一致76%、両era正でstableだった。
 他のmarket候補はruleでも事前基準を満たさなかった。よってmomentum dispersionはreversal ruleの
 機会集合を記述するが、agent固有のfailure driverではない。
+
+本studyは6 market candidatesと2 policy-state candidatesを4 responses・2 policiesへ広くscreenして
+おり、多重screening補正や独立holdoutを持たない。したがってruleのmomentum-dispersionを含むpositive
+findingは探索的証拠であり、独立期間で再確認するまで確立した効果や新featureの採用根拠としない。
 
 agentのgross exposureとturnoverは次期costとは安定して正に関係した。これは会計上期待される
 診断である。一方、次期net returnとの関係はgross exposure・turnoverともbootstrap区間がゼロを
