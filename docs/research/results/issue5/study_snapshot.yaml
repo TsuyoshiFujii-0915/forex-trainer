@@ -1,0 +1,17 @@
+name: issue5_longf_tail_loss_regime_diagnostic
+baseline_campaign: issue5_longf_baseline.yaml
+baseline_configuration: direct_longf_ens3
+legacy_report: ../../docs/research/results/issue1/report.json
+legacy_scheme: validation_best
+member_seeds:
+  - 42
+  - 43
+  - 44
+rule:
+  feature: mom24
+  top_k: 2
+  base_size: 0.8
+bucket_count: 3
+forward_drawdown_steps: 20
+minimum_fold_direction_rate: 0.7
+minimum_folds_per_era: 3

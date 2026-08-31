@@ -1,0 +1,192 @@
+{
+  "campaign": "issue5_current_longf_baseline",
+  "comparisons": [],
+  "configuration_count": 1,
+  "configurations": {
+    "direct_longf_ens3": {
+      "ensemble_member_count": 3,
+      "eras": {
+        "2009-2018": {
+          "annualized_gross_return": 0.20427616632512802,
+          "annualized_net_return": 0.17238431838578644,
+          "fold_count": 10,
+          "max_drawdown": 0.1875954341751056,
+          "sharpe_annualized": 0.49312559054837085,
+          "winning_folds": 6
+        },
+        "2019-2025": {
+          "annualized_gross_return": 0.0254647754385308,
+          "annualized_net_return": 0.004117322811830443,
+          "fold_count": 7,
+          "max_drawdown": 0.13317521045857608,
+          "sharpe_annualized": -0.1665100146634215,
+          "winning_folds": 2
+        }
+      },
+      "fold_count": 17,
+      "folds": {
+        "2009": {
+          "annualized_gross_return": -0.20968935079039716,
+          "annualized_net_return": -0.23199223685295273,
+          "max_drawdown": 0.3325743923328528,
+          "sharpe_annualized": -0.4997366472556021
+        },
+        "2010": {
+          "annualized_gross_return": 0.16299453714879142,
+          "annualized_net_return": 0.13769744158011207,
+          "max_drawdown": 0.2158002782631231,
+          "sharpe_annualized": 0.4127922637041729
+        },
+        "2011": {
+          "annualized_gross_return": 0.4510083504385349,
+          "annualized_net_return": 0.42200668948742576,
+          "max_drawdown": 0.0927342947593528,
+          "sharpe_annualized": 1.7851837389084693
+        },
+        "2012": {
+          "annualized_gross_return": 0.4869790809226216,
+          "annualized_net_return": 0.4422795185901192,
+          "max_drawdown": 0.1556201963131758,
+          "sharpe_annualized": 1.2528188307181762
+        },
+        "2013": {
+          "annualized_gross_return": 0.9470929500000353,
+          "annualized_net_return": 0.8860130048605047,
+          "max_drawdown": 0.16753637313331216,
+          "sharpe_annualized": 1.9262270464683644
+        },
+        "2014": {
+          "annualized_gross_return": -0.013075353377718951,
+          "annualized_net_return": -0.04375483571666398,
+          "max_drawdown": 0.17017008474293982,
+          "sharpe_annualized": -0.24576148161859135
+        },
+        "2015": {
+          "annualized_gross_return": -0.3453276877600568,
+          "annualized_net_return": -0.36572754195237245,
+          "max_drawdown": 0.3695491764122204,
+          "sharpe_annualized": -1.4400683383030133
+        },
+        "2016": {
+          "annualized_gross_return": 0.020116335106939703,
+          "annualized_net_return": 0.0019153267994546236,
+          "max_drawdown": 0.14248232742314304,
+          "sharpe_annualized": 0.010625738533305526
+        },
+        "2017": {
+          "annualized_gross_return": -0.019715797318917674,
+          "annualized_net_return": -0.040841544544530026,
+          "max_drawdown": 0.1397672195245614,
+          "sharpe_annualized": -0.4121186045764965
+        },
+        "2018": {
+          "annualized_gross_return": 0.5623785988814476,
+          "annualized_net_return": 0.5162473616067673,
+          "max_drawdown": 0.08971999884637483,
+          "sharpe_annualized": 2.1412933589049237
+        },
+        "2019": {
+          "annualized_gross_return": -0.16468502417452419,
+          "annualized_net_return": -0.17945595567588216,
+          "max_drawdown": 0.16726750535696677,
+          "sharpe_annualized": -2.1024481583185963
+        },
+        "2020": {
+          "annualized_gross_return": -0.14927853963403398,
+          "annualized_net_return": -0.16825961677126447,
+          "max_drawdown": 0.17100839075319696,
+          "sharpe_annualized": -1.3378703085803472
+        },
+        "2021": {
+          "annualized_gross_return": -0.035424403121215114,
+          "annualized_net_return": -0.05670464475755263,
+          "max_drawdown": 0.16110412702968002,
+          "sharpe_annualized": -0.5078998098054701
+        },
+        "2022": {
+          "annualized_gross_return": 0.0020076930297762865,
+          "annualized_net_return": -0.022537451631452324,
+          "max_drawdown": 0.2204834731755646,
+          "sharpe_annualized": -0.09067998653798227
+        },
+        "2023": {
+          "annualized_gross_return": -0.012159572029868499,
+          "annualized_net_return": -0.028122744445984362,
+          "max_drawdown": 0.09281489115238173,
+          "sharpe_annualized": -0.3267390973746691
+        },
+        "2024": {
+          "annualized_gross_return": 0.3005534793884247,
+          "annualized_net_return": 0.27133846832591246,
+          "max_drawdown": 0.07647594117039114,
+          "sharpe_annualized": 1.578237220746552
+        },
+        "2025": {
+          "annualized_gross_return": 0.2372397946111564,
+          "annualized_net_return": 0.21256320463903658,
+          "max_drawdown": 0.04307214457185127,
+          "sharpe_annualized": 1.6218300372265626
+        }
+      },
+      "member_seeds": [
+        42,
+        43,
+        44
+      ],
+      "observation_count": 17,
+      "overall": {
+        "annualized_gross_return": 0.13064794654829387,
+        "annualized_net_return": 0.10309790844356927,
+        "fold_count": 17,
+        "max_drawdown": 0.16518710676241696,
+        "mean_max_drawdown": 0.16518710676241696,
+        "sharpe_annualized": 0.22151092957880933,
+        "winning_folds": 8,
+        "worst_max_drawdown": 0.3695491764122204
+      },
+      "result_kind": "ensemble",
+      "uncertainty": {
+        "annualized_gross_return": {
+          "fold_bootstrap_95_high": 0.2880665799998998,
+          "fold_bootstrap_95_low": -0.013113777061567862,
+          "moving_block_95_high": 0.30719397788542013,
+          "moving_block_95_low": -0.0196432622632614
+        },
+        "annualized_net_return": {
+          "fold_bootstrap_95_high": 0.25632646572509027,
+          "fold_bootstrap_95_low": -0.03621941111275583,
+          "moving_block_95_high": 0.2728333630863208,
+          "moving_block_95_low": -0.04228011907631158
+        },
+        "max_drawdown": {
+          "fold_bootstrap_95_high": 0.20763112239773282,
+          "fold_bootstrap_95_low": 0.12798551250301404,
+          "moving_block_95_high": 0.20084645367906734,
+          "moving_block_95_low": 0.12950115162400208
+        },
+        "sharpe_annualized": {
+          "fold_bootstrap_95_high": 0.8147097343459428,
+          "fold_bootstrap_95_low": -0.3830474020369148,
+          "moving_block_95_high": 0.8462688010478842,
+          "moving_block_95_low": -0.4198048440264719
+        }
+      }
+    }
+  },
+  "selection_bias": {
+    "declared_trial_count": 9,
+    "reason": "Probabilistic/deflated Sharpe is not reported because fold-level aggregate artifacts do not justify the return-distribution, autocorrelation, and effective-independent-trial assumptions.",
+    "status": "not_estimated"
+  },
+  "trial_count": 9,
+  "uncertainty_assumptions": {
+    "fold_bootstrap": "folds_are_sampled_with_replacement",
+    "interval": "percentile_95",
+    "moving_block": "ordered_adjacent_folds_use_circular_moving_blocks",
+    "moving_block_length": 3,
+    "samples": 10000,
+    "sampling_unit": "evaluation_fold",
+    "seed": 5,
+    "within_fold_handling": "Seed-policy observations are averaged within each fold; action-mean ensemble metrics are observed directly once per fold."
+  }
+}

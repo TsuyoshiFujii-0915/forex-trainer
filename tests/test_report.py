@@ -716,3 +716,28 @@ def test_forex_report_cli_writes_artifacts_and_reports_errors(
         main(["--campaign", str(malformed), "--output-dir", str(tmp_path / "bad")]) == 1
     )
     assert "error:" in capsys.readouterr().err
+
+
+def test_report_generates_descriptive_evidence_for_one_configuration(
+    tmp_path: Path,
+) -> None:
+    """A baseline-only campaign still produces fold and era evidence."""
+    campaign_path = _complete_campaign(tmp_path)
+    campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
+    campaign["configurations"] = {
+        "baseline": campaign["configurations"]["baseline"]
+    }
+    campaign["comparisons"] = []
+    campaign_path.write_text(
+        yaml.safe_dump(campaign, sort_keys=False), encoding="utf-8"
+    )
+
+    _, report = run_research_report(campaign_path, tmp_path / "descriptive-report")
+
+    assert report["configuration_count"] == 1
+    assert report["comparisons"] == []
+    assert report["configurations"]["baseline"]["fold_count"] == 2
+    assert set(report["configurations"]["baseline"]["eras"]) == {
+        "early",
+        "recent",
+    }

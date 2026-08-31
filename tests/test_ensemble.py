@@ -10,8 +10,10 @@ import pytest
 import yaml
 from helpers import make_experiment_raw, write_experiment_yaml
 
+import forex_trainer.ensemble as ensemble_module
+from forex_trainer.algorithms import ALGO_REGISTRY
 from forex_trainer.config import TrainerConfigError
-from forex_trainer.ensemble import run_ensemble_evaluation
+from forex_trainer.ensemble import load_member_for_device, run_ensemble_evaluation
 from forex_trainer.evaluate import run_evaluation
 from forex_trainer.train import run_training
 
@@ -111,3 +113,31 @@ def test_evaluators_reject_legacy_training_provenance(tmp_path: Path) -> None:
         run_evaluation(run_dir)
     with pytest.raises(TrainerConfigError, match="Training provenance"):
         run_ensemble_evaluation([run_dir], tmp_path / "runs")
+
+
+def test_sealed_replay_device_overrides_current_auto_resolution(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A CPU-sealed member remains on CPU when the current host resolves auto to CUDA."""
+    raw = make_experiment_raw()
+    raw["run"]["device"] = "auto"
+    config_path = write_experiment_yaml(tmp_path, raw, name="auto.yaml")
+    run_dir = run_training(config_path, tmp_path / "runs", seed_override=1)
+    loaded: dict[str, object] = {}
+
+    def fake_load(model_path: Path, device: str) -> object:
+        loaded["model_path"] = model_path
+        loaded["device"] = device
+        return object()
+
+    monkeypatch.setattr(ensemble_module, "resolve_device", lambda device: "cuda")
+    monkeypatch.setattr(
+        ALGO_REGISTRY["ppo"].algo_class,
+        "load",
+        staticmethod(fake_load),
+    )
+
+    *_, evaluation_device = load_member_for_device(run_dir, "cpu")
+
+    assert evaluation_device == "cpu"
+    assert loaded["device"] == "cpu"

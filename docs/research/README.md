@@ -15,6 +15,7 @@
 | [06-checkpoint-selection-study.md](06-checkpoint-selection-study.md) | validation-best / last / late-checkpoint選択方式の比較 | Issue #1 |
 | [07-data-sufficiency-and-scaling.md](07-data-sufficiency-and-scaling.md) | `longf` の固有市場履歴量に対する汎化スケーリングと実効標本数 | Issue #7 |
 | [08-sparse-rank-allocation.md](08-sparse-rank-allocation.md) | scoreから固定grossの疎なlong/short配分を作る構造化行動空間 | Issue #2、Round 18〜19 |
+| [09-regime-tail-loss-diagnostic.md](09-regime-tail-loss-diagnostic.md) | current-provenance `longf ens3`のtail lossをfold単位でregime診断 | Issue #5 |
 
 ## 確立した方法論(今後の全実験に適用)
 

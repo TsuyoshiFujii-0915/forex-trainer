@@ -35,16 +35,16 @@ from .evaluate import compute_metrics, walk_eval_range
 from .run_dir import create_run_dir
 
 
-def _load_member(
+def _load_member_artifacts(
     run_dir: Path,
-) -> tuple[Any, Any, dict[str, Any], dict[str, Any], dict[str, Any], str]:
-    """Load one member's config, model, and resolved eval env.
+) -> tuple[Any, dict[str, Any], dict[str, Any], dict[str, Any], Path]:
+    """Validate one member's immutable artifacts without choosing a device.
 
     Args:
         run_dir: Run directory produced by forex-train.
 
     Returns:
-        Typed config, model, eval env, raw config, meta, and actual model device.
+        Typed config, eval env, raw config, meta, and model path.
 
     Raises:
         TrainerConfigError: If required artifacts are missing.
@@ -70,8 +70,54 @@ def _load_member(
         raw_config,
         meta_path,
     )
+    return config, resolved_eval, raw_config, meta, model_path
+
+
+def load_member_for_device(
+    run_dir: Path,
+    evaluation_device: str,
+) -> tuple[Any, Any, dict[str, Any], dict[str, Any], dict[str, Any], str]:
+    """Load one validated member on an explicitly sealed evaluation device.
+
+    Args:
+        run_dir: Run directory produced by forex-train.
+        evaluation_device: Concrete device recorded by the source evaluation.
+
+    Returns:
+        Typed config, model, eval env, raw config, meta, and sealed device.
+
+    Raises:
+        TrainerConfigError: If the sealed device is not a concrete supported device.
+    """
+    if evaluation_device not in {"cpu", "cuda", "mps"}:
+        raise TrainerConfigError(
+            "Sealed evaluation device must be cpu, cuda, or mps, got "
+            f"{evaluation_device!r}."
+        )
+    config, resolved_eval, raw_config, meta, model_path = _load_member_artifacts(
+        run_dir
+    )
     spec = ALGO_REGISTRY[config.algorithm.name]
+    model = spec.algo_class.load(model_path, device=evaluation_device)
+    return config, model, resolved_eval, raw_config, meta, evaluation_device
+
+
+def _load_member(
+    run_dir: Path,
+) -> tuple[Any, Any, dict[str, Any], dict[str, Any], dict[str, Any], str]:
+    """Load one member using the current evaluation-device resolution policy.
+
+    Args:
+        run_dir: Run directory produced by forex-train.
+
+    Returns:
+        Typed config, model, eval env, raw config, meta, and actual model device.
+    """
+    config, resolved_eval, raw_config, meta, model_path = _load_member_artifacts(
+        run_dir
+    )
     evaluation_device = resolve_device(config.run.device)
+    spec = ALGO_REGISTRY[config.algorithm.name]
     model = spec.algo_class.load(model_path, device=evaluation_device)
     return config, model, resolved_eval, raw_config, meta, evaluation_device
 

@@ -1,0 +1,526 @@
+{
+  "direct_longf_ens3": {
+    "data_identity": {
+      "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+      "provider": "file",
+      "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+    },
+    "evaluation_device": "cpu",
+    "evaluation_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+    },
+    "evaluation_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    },
+    "folds": [
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "member_seeds": [
+      42,
+      43,
+      44
+    ],
+    "model_selection": "validation_best",
+    "protocol_sha256": "4a6fb5876eea4b4378a59e25338057849518f0a6f6578e02cd5bd548f2b8cebf",
+    "range_identity": {
+      "kind": "expanding",
+      "train_start": "2003-06-01"
+    },
+    "requested_device": "cpu",
+    "result_kind": "ensemble",
+    "runs": [
+      {
+        "eval_end": "2010-01-01T00:00:00+00:00",
+        "eval_start": "2009-04-03T00:00:00+01:00",
+        "experiment": "wf2009_r16_longf_ens3",
+        "fold": "2009",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2010-01-01",
+            "start": "2009-01-01"
+          },
+          "train_range": {
+            "end": "2008-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2009-01-01",
+            "start": "2008-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2010-12-31T00:00:00+00:00",
+        "eval_start": "2010-03-31T00:00:00+01:00",
+        "experiment": "wf2010_r16_longf_ens3",
+        "fold": "2010",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2011-01-01",
+            "start": "2010-01-01"
+          },
+          "train_range": {
+            "end": "2009-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2010-01-01",
+            "start": "2009-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2011-12-30T00:00:00+00:00",
+        "eval_start": "2011-03-31T00:00:00+01:00",
+        "experiment": "wf2011_r16_longf_ens3",
+        "fold": "2011",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2012-01-01",
+            "start": "2011-01-01"
+          },
+          "train_range": {
+            "end": "2010-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2011-01-01",
+            "start": "2010-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2013-01-01T00:00:00+00:00",
+        "eval_start": "2012-03-29T00:00:00+01:00",
+        "experiment": "wf2012_r16_longf_ens3",
+        "fold": "2012",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2013-01-01",
+            "start": "2012-01-01"
+          },
+          "train_range": {
+            "end": "2011-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2012-01-01",
+            "start": "2011-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2014-01-01T00:00:00+00:00",
+        "eval_start": "2013-04-01T00:00:00+01:00",
+        "experiment": "wf2013_r16_longf_ens3",
+        "fold": "2013",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2014-01-01",
+            "start": "2013-01-01"
+          },
+          "train_range": {
+            "end": "2012-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2013-01-01",
+            "start": "2012-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2015-01-01T00:00:00+00:00",
+        "eval_start": "2014-03-31T00:00:00+01:00",
+        "experiment": "wf2014_r16_longf_ens3",
+        "fold": "2014",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2015-01-01",
+            "start": "2014-01-01"
+          },
+          "train_range": {
+            "end": "2013-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2014-01-01",
+            "start": "2013-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-01-01T00:00:00+00:00",
+        "eval_start": "2015-03-31T00:00:00+01:00",
+        "experiment": "wf2015_r16_longf_ens3",
+        "fold": "2015",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2016-01-01",
+            "start": "2015-01-01"
+          },
+          "train_range": {
+            "end": "2014-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2015-01-01",
+            "start": "2014-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-12-30T00:00:00+00:00",
+        "eval_start": "2016-03-30T00:00:00+01:00",
+        "experiment": "wf2016_r16_longf_ens3",
+        "fold": "2016",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2017-01-01",
+            "start": "2016-01-01"
+          },
+          "train_range": {
+            "end": "2015-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2016-01-01",
+            "start": "2015-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2018-01-01T00:00:00+00:00",
+        "eval_start": "2017-03-30T00:00:00+01:00",
+        "experiment": "wf2017_r16_longf_ens3",
+        "fold": "2017",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2018-01-01",
+            "start": "2017-01-01"
+          },
+          "train_range": {
+            "end": "2016-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2017-01-01",
+            "start": "2016-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2019-01-01T00:00:00+00:00",
+        "eval_start": "2018-03-29T00:00:00+01:00",
+        "experiment": "wf2018_r16_longf_ens3",
+        "fold": "2018",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2019-01-01",
+            "start": "2018-01-01"
+          },
+          "train_range": {
+            "end": "2017-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2018-01-01",
+            "start": "2017-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2020-01-01T00:00:00+00:00",
+        "eval_start": "2019-03-29T00:00:00+00:00",
+        "experiment": "wf2019_r16_longf_ens3",
+        "fold": "2019",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2020-01-01",
+            "start": "2019-01-01"
+          },
+          "train_range": {
+            "end": "2018-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2019-01-01",
+            "start": "2018-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-01-01T00:00:00+00:00",
+        "eval_start": "2020-03-30T00:00:00+01:00",
+        "experiment": "wf2020_r16_longf_ens3",
+        "fold": "2020",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2021-01-01",
+            "start": "2020-01-01"
+          },
+          "train_range": {
+            "end": "2019-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2020-01-01",
+            "start": "2019-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-12-31T00:00:00+00:00",
+        "eval_start": "2021-03-31T00:00:00+01:00",
+        "experiment": "wf2021_r16_longf_ens3",
+        "fold": "2021",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2022-01-01",
+            "start": "2021-01-01"
+          },
+          "train_range": {
+            "end": "2020-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2021-01-01",
+            "start": "2020-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2022-12-30T00:00:00+00:00",
+        "eval_start": "2022-03-31T00:00:00+01:00",
+        "experiment": "wf2022_r16_longf_ens3",
+        "fold": "2022",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2023-01-01",
+            "start": "2022-01-01"
+          },
+          "train_range": {
+            "end": "2021-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2022-01-01",
+            "start": "2021-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-01-01T00:00:00+00:00",
+        "eval_start": "2023-03-30T00:00:00+01:00",
+        "experiment": "wf2023_r16_longf_ens3",
+        "fold": "2023",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2024-01-01",
+            "start": "2023-01-01"
+          },
+          "train_range": {
+            "end": "2022-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2023-01-01",
+            "start": "2022-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-12-31T00:00:00+00:00",
+        "eval_start": "2024-03-28T00:00:00+00:00",
+        "experiment": "wf2024_r16_longf_ens3",
+        "fold": "2024",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2025-01-01",
+            "start": "2024-01-01"
+          },
+          "train_range": {
+            "end": "2023-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2024-01-01",
+            "start": "2023-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2025-12-31T00:00:00+00:00",
+        "eval_start": "2025-04-01T00:00:00+01:00",
+        "experiment": "wf2025_r16_longf_ens3",
+        "fold": "2025",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2026-01-01",
+            "start": "2025-01-01"
+          },
+          "train_range": {
+            "end": "2024-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2025-01-01",
+            "start": "2024-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143",
+        "unit_key": "ensemble"
+      }
+    ],
+    "training_device": "cpu",
+    "training_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+    },
+    "training_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    }
+  }
+}
