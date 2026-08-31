@@ -266,9 +266,9 @@ def load_campaign(campaign_path: Path) -> Campaign:
     name = _require_string(raw["name"], "Campaign name")
 
     raw_configurations = raw["configurations"]
-    if not isinstance(raw_configurations, Mapping) or len(raw_configurations) < 2:
+    if not isinstance(raw_configurations, Mapping) or not raw_configurations:
         raise TrainerConfigError(
-            "Campaign configurations must be a mapping with at least two entries."
+            "Campaign configurations must be a non-empty mapping."
         )
     configurations: list[ConfigurationSpec] = []
     for configuration_name, raw_spec in raw_configurations.items():
@@ -335,8 +335,8 @@ def load_campaign(campaign_path: Path) -> Campaign:
 
     configuration_names = {item.name for item in configurations}
     raw_comparisons = raw["comparisons"]
-    if not isinstance(raw_comparisons, list) or not raw_comparisons:
-        raise TrainerConfigError("Campaign comparisons must be a non-empty list.")
+    if not isinstance(raw_comparisons, list):
+        raise TrainerConfigError("Campaign comparisons must be a list.")
     comparisons: list[ComparisonSpec] = []
     comparison_keys: set[tuple[str, str]] = set()
     for index, raw_comparison in enumerate(raw_comparisons):
