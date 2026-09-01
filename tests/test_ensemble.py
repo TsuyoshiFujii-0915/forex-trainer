@@ -13,7 +13,11 @@ from helpers import make_experiment_raw, write_experiment_yaml
 import forex_trainer.ensemble as ensemble_module
 from forex_trainer.algorithms import ALGO_REGISTRY
 from forex_trainer.config import TrainerConfigError
-from forex_trainer.ensemble import load_member_for_device, run_ensemble_evaluation
+from forex_trainer.ensemble import (
+    load_member_for_device,
+    run_ensemble_evaluation,
+    run_forced_apply_ensemble_evaluation,
+)
 from forex_trainer.evaluate import run_evaluation
 from forex_trainer.train import run_training
 
@@ -32,6 +36,23 @@ def _train(tmp_path: Path, seed: int, name: str = "ens_target") -> Path:
     raw = make_experiment_raw()
     raw["experiment"] = name
     config_path = write_experiment_yaml(tmp_path, raw, name=f"{name}_{seed}.yaml")
+    return run_training(config_path, tmp_path / "runs", seed_override=seed)
+
+
+def _train_gate(tmp_path: Path, seed: int) -> Path:
+    """Train one tiny gated run for ensemble attribution tests.
+
+    Args:
+        tmp_path: Test-scoped directory.
+        seed: Seed override for the run.
+
+    Returns:
+        Gated run directory path.
+    """
+    raw = make_experiment_raw()
+    raw["experiment"] = "ens_gate"
+    raw["run"]["apply_hold_gate"] = "zero_threshold"
+    config_path = write_experiment_yaml(tmp_path, raw, name=f"gate_{seed}.yaml")
     return run_training(config_path, tmp_path / "runs", seed_override=seed)
 
 
@@ -72,6 +93,37 @@ def test_two_member_ensemble_walks_shared_env(tmp_path: Path) -> None:
     assert math.isfinite(metrics["cumulative_log_return"])
     assert math.isfinite(metrics["gross_cumulative_log_return"])
     assert "ens2" in str(ensemble_dir)
+
+
+def test_gated_ensemble_seals_separate_learned_and_forced_apply_runs(
+    tmp_path: Path,
+) -> None:
+    """Attribution mode changes only evaluation, never ensemble members."""
+    run_a = _train_gate(tmp_path, seed=1)
+    run_b = _train_gate(tmp_path, seed=2)
+    learned_dir, learned = run_ensemble_evaluation([run_a, run_b], tmp_path / "runs")
+    forced_dir, forced = run_forced_apply_ensemble_evaluation(
+        [run_a, run_b], tmp_path / "runs"
+    )
+    learned_manifest = json.loads(
+        (learned_dir / "ensemble.json").read_text(encoding="utf-8")
+    )
+    forced_manifest = json.loads(
+        (forced_dir / "ensemble.json").read_text(encoding="utf-8")
+    )
+
+    assert learned_dir != forced_dir
+    assert learned_manifest["manifest_version"] == 3
+    assert forced_manifest["manifest_version"] == 3
+    assert learned_manifest["gate_evaluation_mode"] == "learned"
+    assert forced_manifest["gate_evaluation_mode"] == "forced_apply"
+    assert learned_manifest["members"] == forced_manifest["members"]
+    assert len(learned_manifest["evaluation"]["gate_trace_sha256"]) == 64
+    assert len(forced_manifest["evaluation"]["gate_trace_sha256"]) == 64
+    assert (learned_dir / "gate_trace.csv").is_file()
+    assert (forced_dir / "gate_trace.csv").is_file()
+    assert 0.0 <= learned["gate_apply_fraction"] <= 1.0
+    assert forced["effective_gate_apply_fraction"] == 1.0
 
 
 def test_mismatched_eval_envs_rejected(tmp_path: Path) -> None:

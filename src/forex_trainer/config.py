@@ -16,6 +16,7 @@ import re
 from collections.abc import Mapping
 from dataclasses import dataclass, replace
 from datetime import date
+from enum import Enum
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,18 @@ VEC_ENV_KINDS: tuple[str, ...] = ("dummy", "subproc")
 # Episode cap applied to evaluation envs so a single episode walks the whole
 # eval range; truncation then comes from the end of the data.
 EVAL_EPISODE_MAX_STEPS = 1_000_000
+
+_LEGACY_RUN_KEYS: tuple[str, ...] = (
+    "total_timesteps",
+    "seed",
+    "device",
+    "n_envs",
+    "vec_env",
+    "decision_interval",
+    "residual",
+    "rank_allocation",
+)
+_GATED_RUN_KEYS: tuple[str, ...] = (*_LEGACY_RUN_KEYS, "apply_hold_gate")
 
 
 class TrainerConfigError(Exception):
@@ -82,6 +95,12 @@ class RankAllocationConfig:
     gross_exposure: float
 
 
+class ApplyHoldGateConfig(str, Enum):
+    """Supported learned gate treatment (ADR-0025)."""
+
+    ZERO_THRESHOLD = "zero_threshold"
+
+
 @dataclass(frozen=True)
 class RunConfig:
     """Run execution settings."""
@@ -94,6 +113,7 @@ class RunConfig:
     decision_interval: int
     residual: ResidualConfig | None
     rank_allocation: RankAllocationConfig | None
+    apply_hold_gate: ApplyHoldGateConfig | None
 
 
 @dataclass(frozen=True)
@@ -381,20 +401,14 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     )
 
     run_section = _require_mapping(root["run"], "run")
-    _check_exact_keys(
-        run_section,
-        (
-            "total_timesteps",
-            "seed",
-            "device",
-            "n_envs",
-            "vec_env",
-            "decision_interval",
-            "residual",
-            "rank_allocation",
-        ),
-        "run",
-    )
+    if "apply_hold_gate" in run_section:
+        _check_exact_keys(run_section, _GATED_RUN_KEYS, "run")
+        raw_apply_hold_gate = run_section["apply_hold_gate"]
+    else:
+        # The exact legacy schema remains supported so sealed Issue #5 control
+        # artifacts can be re-evaluated under the new measurement contract.
+        _check_exact_keys(run_section, _LEGACY_RUN_KEYS, "run")
+        raw_apply_hold_gate = "none"
     total_timesteps = _as_int(run_section, "run", "total_timesteps")
     if total_timesteps < 1:
         raise TrainerConfigError(
@@ -433,6 +447,19 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         raise TrainerConfigError(
             "run.residual and run.rank_allocation cannot both be enabled."
         )
+    if raw_apply_hold_gate not in ("none", ApplyHoldGateConfig.ZERO_THRESHOLD.value):
+        raise TrainerConfigError(
+            "run.apply_hold_gate must be 'none' or 'zero_threshold', "
+            f"got {raw_apply_hold_gate!r}."
+        )
+    if raw_apply_hold_gate != "none" and raw_residual != "none":
+        raise TrainerConfigError(
+            "run.apply_hold_gate cannot be combined with run.residual."
+        )
+    if raw_apply_hold_gate != "none" and raw_rank_allocation != "none":
+        raise TrainerConfigError(
+            "run.apply_hold_gate cannot be combined with run.rank_allocation."
+        )
 
     run = RunConfig(
         total_timesteps=total_timesteps,
@@ -443,6 +470,7 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
         decision_interval=decision_interval,
         residual=None,  # replaced below once selected features are known
         rank_allocation=None,  # replaced below after env constraints are known
+        apply_hold_gate=None,  # replaced below after env constraints are known
     )
 
     env_block = _require_mapping(root["env"], "env")
@@ -479,6 +507,30 @@ def parse_experiment_config(raw: Mapping[str, Any]) -> ExperimentConfig:
     custom_cross_feature_names = tuple(
         name for name in selected if name in CROSS_FEATURE_REGISTRY
     )
+
+    if raw_apply_hold_gate != "none":
+        environment_block = _require_mapping(
+            env_block["environment"], "env.environment"
+        )
+        if algorithm.name != "ppo":
+            raise TrainerConfigError(
+                "run.apply_hold_gate requires the PPO algorithm for the primary "
+                "isolated treatment."
+            )
+        if network.name != "mlp":
+            raise TrainerConfigError(
+                "run.apply_hold_gate requires the MLP network for the primary "
+                "isolated treatment."
+            )
+        if environment_block.get("allow_action_leverage") is not False:
+            raise TrainerConfigError(
+                "run.apply_hold_gate requires "
+                "env.environment.allow_action_leverage: false."
+            )
+        run = replace(
+            run,
+            apply_hold_gate=ApplyHoldGateConfig.ZERO_THRESHOLD,
+        )
 
     if raw_rank_allocation != "none":
         rank_section = _require_mapping(raw_rank_allocation, "run.rank_allocation")

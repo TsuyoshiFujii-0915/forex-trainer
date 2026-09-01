@@ -57,6 +57,7 @@ def make_experiment_raw() -> dict[str, Any]:
             "decision_interval": 1,
             "residual": "none",
             "rank_allocation": "none",
+            "apply_hold_gate": "none",
         },
     }
 

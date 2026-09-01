@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import pytest
 from forex_env.errors import ConfigError
+from helpers import make_experiment_raw, write_experiment_yaml
 
 from forex_trainer.config import (
     TrainerConfigError,
@@ -11,7 +12,6 @@ from forex_trainer.config import (
     parse_experiment_config,
     resolve_env_raw,
 )
-from helpers import make_experiment_raw, write_experiment_yaml
 
 
 def test_valid_config_parses(tmp_path) -> None:
@@ -280,4 +280,77 @@ def test_rank_allocation_and_residual_are_mutually_exclusive() -> None:
     }
     raw["run"]["rank_allocation"] = {"top_k": 1, "gross_exposure": 1.0}
     with pytest.raises(TrainerConfigError, match="cannot both"):
+        parse_experiment_config(raw)
+
+
+def test_legacy_run_schema_without_apply_hold_gate_remains_direct_policy() -> None:
+    """Current-provenance control artifacts retain their sealed direct schema."""
+    raw = make_experiment_raw()
+    del raw["run"]["apply_hold_gate"]
+    config = parse_experiment_config(raw)
+    assert config.run.apply_hold_gate is None
+
+
+def test_zero_threshold_apply_hold_gate_accepted() -> None:
+    """The preregistered zero-threshold gate parses for direct PPO+MLP."""
+    raw = make_experiment_raw()
+    raw["run"]["apply_hold_gate"] = "zero_threshold"
+    config = parse_experiment_config(raw)
+    assert config.run.apply_hold_gate is not None
+
+
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ("residual", "residual"),
+        ("rank_allocation", "rank_allocation"),
+        ("learned_leverage", "allow_action_leverage"),
+        ("algorithm", "PPO"),
+        ("network", "MLP"),
+    ],
+)
+def test_apply_hold_gate_rejects_mixed_structural_treatments(
+    mutation: str, message: str
+) -> None:
+    """Gating remains isolated from incompatible action and model changes."""
+    raw = make_experiment_raw()
+    raw["run"]["apply_hold_gate"] = "zero_threshold"
+    if mutation == "residual":
+        raw["env"]["features"]["normalize"] = False
+        raw["env"]["features"]["selected"] = [
+            "log_return",
+            "volatility",
+            "mom24",
+        ]
+        raw["run"]["residual"] = {
+            "feature": "mom24",
+            "top_k": 1,
+            "base_size": 0.8,
+            "scale": 0.3,
+        }
+    elif mutation == "rank_allocation":
+        raw["env"]["environment"]["currency_pairs"] = ["JPY/USD", "JPY/EUR"]
+        raw["env"]["transaction_costs"]["spreads"] = {
+            "JPY/USD": 0.0,
+            "JPY/EUR": 0.0,
+        }
+        raw["run"]["rank_allocation"] = {
+            "top_k": 1,
+            "gross_exposure": 1.0,
+        }
+    elif mutation == "learned_leverage":
+        raw["env"]["environment"]["allow_action_leverage"] = True
+    elif mutation == "algorithm":
+        raw["algorithm"] = {"name": "sac", "hyperparams": {}}
+    elif mutation == "network":
+        raw["network"] = {"name": "cnn1d", "kwargs": {"features_dim": 32}}
+    with pytest.raises(TrainerConfigError, match=message):
+        parse_experiment_config(raw)
+
+
+def test_apply_hold_gate_rejects_unregistered_mode() -> None:
+    """Threshold search cannot enter the primary gate config implicitly."""
+    raw = make_experiment_raw()
+    raw["run"]["apply_hold_gate"] = "threshold_0_25"
+    with pytest.raises(TrainerConfigError, match="zero_threshold"):
         parse_experiment_config(raw)

@@ -180,10 +180,11 @@ eval_range:  { start: "2025-07-01", end: "2025-12-31" }   # final holdout
 algorithm: { name: ppo, hyperparams: { n_steps: 256, batch_size: 256, learning_rate: 3.0e-4 } }
 network:   { name: mlp, kwargs: { features_dim: 128 } }
 run: { total_timesteps: 20000, seed: 42, device: auto, n_envs: 4, vec_env: dummy,
-       decision_interval: 1, residual: none, rank_allocation: none }
+       decision_interval: 1, residual: none, rank_allocation: none,
+       apply_hold_gate: none }
 ```
 
-Rules enforced at load time (fail fast): every key required, unknown keys rejected, ranges must satisfy `train_range.end <= val_range.start < val_range.end <= eval_range.start`, `run.decision_interval >= 1`, algorithm/network/feature names must exist in their registries, and `env.data` must not contain dates (the ranges inject them). `run.total_timesteps` counts agent decisions; with `decision_interval: k` one decision spans k bars.
+Rules enforced at load time (fail fast): every current-schema key is required, unknown keys are rejected, ranges must satisfy `train_range.end <= val_range.start < val_range.end <= eval_range.start`, `run.decision_interval >= 1`, algorithm/network/feature names must exist in their registries, and `env.data` must not contain dates (the ranges inject them). The exact pre-gate run schema remains accepted only to re-evaluate sealed Issue #5 control artifacts. `run.total_timesteps` counts agent decisions; with `decision_interval: k` one decision spans k bars.
 
 To expose sparse portfolio geometry while leaving the score signal entirely to
 the policy, replace `rank_allocation: none` with:
@@ -196,6 +197,31 @@ The highest scores are long, the lowest are short, and all other pairs are
 flat. The gross exposure is split equally between both sides. Rank allocation
 accepts the full finite float32 score domain so ranking is preserved, requires
 pinned leverage, and cannot be combined with residual actions.
+
+To train the preregistered direct-policy execution gate from Issue #4, set:
+
+```yaml
+apply_hold_gate: zero_threshold
+```
+
+This appends one bounded gate scalar after the direct pair-weight proposal.
+Negative values hold the prior effective target allocation; zero and positive
+values apply the proposal. Gating is limited to direct-weight PPO+MLP with
+pinned leverage and cannot be combined with residual or rank allocation. The
+17 treatment configs are under `configs/wf_r20_gate_full/`.
+
+Evaluate each gated model normally and with the same-model attribution control:
+
+```bash
+uv run forex-eval --run runs/<gated-run>
+uv run forex-eval --run runs/<gated-run> --gate-mode forced_apply
+```
+
+The forced-apply evaluation is written under `<gated-run>/forced_apply` and
+does not overwrite learned-gate metrics. `forex-ensemble-eval` accepts the same
+`--gate-mode forced_apply`; member proposals and gate signals are averaged
+before the gate is applied once. Version-3 gated artifacts seal a per-decision
+`gate_trace.csv` together with its evaluation mode and source model hashes.
 
 ## Adding to the axes
 
@@ -217,7 +243,7 @@ docker compose run train uv run forex-train --config configs/ppo_mlp_daily.yaml
 
 ## Evaluation metrics
 
-`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative and annualized return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, mean gross leverage, and mean/total target-weight turnover.
+`forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative and annualized return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, mean gross leverage, and mean/total target-weight turnover. Gated evaluations additionally report apply/hold frequency, hold-run lengths, proposal distance, avoided turnover and immediate cost, and proposed/applied gross exposure. `forex-report` aggregates return, drawdown, cost, leverage, and turnover metrics with fold/era and paired uncertainty; gated version-3 inputs also retain fold/era gate behavior.
 
 ## License
 

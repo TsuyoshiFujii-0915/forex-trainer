@@ -23,7 +23,7 @@ from forex_env.errors import ConfigError, DataError, FeatureError
 from .artifact_provenance import dependency_versions, git_commits, sha256_file
 from .config import TrainerConfigError
 from .ensemble import load_member_for_device
-from .env_factory import build_single_env
+from .env_factory import GateEvaluationMode, build_single_env
 from .evaluate import compute_metrics
 from .regime import (
     MARKET_CANDIDATE_NAMES,
@@ -759,6 +759,8 @@ def _replay_ensemble_fold(
         decision_interval=reference_config.run.decision_interval,
         residual=None,
         rank_allocation=None,
+        apply_hold_gate=None,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     try:
         agent = _walk_policy(
@@ -788,6 +790,8 @@ def _replay_ensemble_fold(
         decision_interval=reference_config.run.decision_interval,
         residual=None,
         rank_allocation=None,
+        apply_hold_gate=None,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     try:
         rule = _walk_policy(
