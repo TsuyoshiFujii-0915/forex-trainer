@@ -117,6 +117,10 @@ def _write_run(
                 "gross_cumulative_log_return": net_log_return + 0.02,
                 "sharpe_annualized": net_log_return * 10.0,
                 "max_drawdown": 0.20 - net_log_return / 10.0,
+                "total_cost_ratio": 0.03 - net_log_return / 20.0,
+                "mean_gross_leverage": 1.5 + net_log_return,
+                "mean_weight_turnover": 0.4 - net_log_return / 10.0,
+                "total_weight_turnover": 12.0 - net_log_return,
                 "eval_start": f"{fold}-01-01T00:00:00+00:00",
                 "eval_end": f"{fold + 1}-01-01T00:00:00+00:00",
             }
@@ -291,6 +295,10 @@ def _write_ensemble_artifact(
                 "gross_cumulative_log_return": net_log_return + 0.02,
                 "sharpe_annualized": net_log_return * 10.0,
                 "max_drawdown": 0.20 - net_log_return / 10.0,
+                "total_cost_ratio": 0.03 - net_log_return / 20.0,
+                "mean_gross_leverage": 1.5 + net_log_return,
+                "mean_weight_turnover": 0.4 - net_log_return / 10.0,
+                "total_weight_turnover": 12.0 - net_log_return,
                 "eval_start": f"{fold}-01-01T00:00:00+00:00",
                 "eval_end": f"{fold + 1}-01-01T00:00:00+00:00",
             }
@@ -384,6 +392,107 @@ def _ensemble_campaign(tmp_path: Path) -> Path:
     return campaign_path
 
 
+def _upgrade_ensemble_to_gated_v3(ensemble_dir: Path, mode: str) -> None:
+    """Upgrade one fixture to the sealed gate evaluation manifest contract.
+
+    Args:
+        ensemble_dir: Existing version-2 ensemble fixture.
+        mode: Learned or forced-apply gate evaluation mode.
+    """
+    manifest_path = ensemble_dir / "ensemble.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    for member in manifest["members"]:
+        config_path = Path(member["run_dir"]) / "config_snapshot.yaml"
+        config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+        config["run"]["apply_hold_gate"] = "zero_threshold"
+        config_path.write_text(
+            yaml.safe_dump(config, sort_keys=False), encoding="utf-8"
+        )
+        member["config_snapshot_sha256"] = hashlib.sha256(
+            config_path.read_bytes()
+        ).hexdigest()
+    metrics_path = ensemble_dir / "metrics.json"
+    metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
+    metrics.update(
+        {
+            "gate_decision_count": 10,
+            "gate_apply_fraction": 0.4,
+            "gate_hold_fraction": 0.6,
+            "effective_gate_apply_fraction": 1.0 if mode == "forced_apply" else 0.4,
+            "mean_hold_run_length": 2.0,
+            "max_hold_run_length": 3,
+            "mean_proposal_distance_from_current": 0.7,
+            "total_turnover_avoided_by_hold": 4.2,
+            "total_immediate_transaction_cost_paid_jpy": 120.0,
+            "total_immediate_transaction_cost_avoided_by_hold_jpy": 80.0,
+            "mean_proposed_gross_exposure": 1.8,
+            "mean_applied_gross_exposure": 1.5,
+            "mean_gross_exposure_drift": 0.3,
+        }
+    )
+    metrics_path.write_text(json.dumps(metrics), encoding="utf-8")
+    trace_path = ensemble_dir / "gate_trace.csv"
+    trace_path.write_text("decision_timestamp,gate_signal\n2020-01-01,0.1\n")
+    manifest["manifest_version"] = 3
+    manifest["gate_evaluation_mode"] = mode
+    manifest["evaluation"]["metrics_sha256"] = hashlib.sha256(
+        metrics_path.read_bytes()
+    ).hexdigest()
+    manifest["evaluation"]["gate_trace_sha256"] = hashlib.sha256(
+        trace_path.read_bytes()
+    ).hexdigest()
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+
+def _upgrade_standard_to_gated_v3(run_dir: Path, mode: str) -> None:
+    """Upgrade one standard fixture to the version-3 gate contract.
+
+    Args:
+        run_dir: Existing evaluated source run.
+        mode: Learned or forced-apply gate evaluation mode.
+    """
+    config_path = run_dir / "config_snapshot.yaml"
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    config["run"]["apply_hold_gate"] = "zero_threshold"
+    config_path.write_text(yaml.safe_dump(config, sort_keys=False), encoding="utf-8")
+    metrics_path = run_dir / "metrics.json"
+    metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
+    metrics.update(
+        {
+            "gate_apply_fraction": 0.4,
+            "gate_hold_fraction": 0.6,
+            "effective_gate_apply_fraction": 0.4,
+            "mean_hold_run_length": 2.0,
+            "max_hold_run_length": 3,
+            "mean_proposal_distance_from_current": 0.7,
+            "total_turnover_avoided_by_hold": 4.2,
+            "total_immediate_transaction_cost_paid_jpy": 120.0,
+            "total_immediate_transaction_cost_avoided_by_hold_jpy": 80.0,
+            "mean_proposed_gross_exposure": 1.8,
+            "mean_applied_gross_exposure": 1.5,
+            "mean_gross_exposure_drift": 0.3,
+        }
+    )
+    metrics_path.write_text(json.dumps(metrics), encoding="utf-8")
+    trace_path = run_dir / "gate_trace.csv"
+    trace_path.write_text("decision_timestamp,gate_signal\n2020-01-01,0.1\n")
+    evaluation_path = run_dir / "evaluation.json"
+    evaluation = json.loads(evaluation_path.read_text(encoding="utf-8"))
+    evaluation.update(
+        {
+            "manifest_version": 3,
+            "source_run_dir": str(run_dir.resolve()),
+            "gate_evaluation_mode": mode,
+            "gate_trace_sha256": hashlib.sha256(trace_path.read_bytes()).hexdigest(),
+            "metrics_sha256": hashlib.sha256(metrics_path.read_bytes()).hexdigest(),
+            "config_snapshot_sha256": hashlib.sha256(
+                config_path.read_bytes()
+            ).hexdigest(),
+        }
+    )
+    evaluation_path.write_text(json.dumps(evaluation), encoding="utf-8")
+
+
 def test_report_aggregates_fold_seed_era_and_paired_uncertainty(tmp_path: Path) -> None:
     """One command emits the complete fold-aligned evidence contract."""
     campaign_path = _complete_campaign(tmp_path)
@@ -408,6 +517,18 @@ def test_report_aggregates_fold_seed_era_and_paired_uncertainty(tmp_path: Path) 
     assert paired["seed_fold_pair_count"] == 4
     assert paired["folds"]["2018"]["annualized_net_return"] > 0.0
     assert paired["mean_differences"]["sharpe_annualized"] == pytest.approx(1.0)
+    assert "total_cost_ratio" in paired["mean_differences"]
+    assert "mean_gross_leverage" in paired["mean_differences"]
+    assert "mean_weight_turnover" in paired["mean_differences"]
+    assert "total_weight_turnover" in paired["mean_differences"]
+    diagnostics = paired["net_improvement_diagnostics"]
+    assert diagnostics["positive_fold_count"] == 2
+    assert diagnostics["fold_count"] == 2
+    assert diagnostics["largest_absolute_fold"] in {"2018", "2019"}
+    decomposition = paired["return_cost_decomposition"]
+    assert decomposition["annualized_net_return_difference"] > 0.0
+    assert decomposition["annualized_gross_return_difference"] > 0.0
+    assert decomposition["total_cost_ratio_difference"] < 0.0
     assert paired["uncertainty"]["annualized_net_return"]["fold_bootstrap_95_low"] > 0.0
     assert report["selection_bias"]["status"] == "not_estimated"
     assert report["uncertainty_assumptions"]["sampling_unit"] == "evaluation_fold"
@@ -647,6 +768,96 @@ def test_report_aggregates_action_mean_ensemble_fold_observations(
     assert paired["mean_differences"]["sharpe_annualized"] == pytest.approx(1.0)
 
 
+def test_report_accepts_gated_v3_and_aggregates_gate_behavior(tmp_path: Path) -> None:
+    """Learned and forced gate artifacts retain mode and mechanism evidence."""
+    campaign_path = _ensemble_campaign(tmp_path)
+    campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
+    for baseline_value, candidate_value in zip(
+        campaign["configurations"]["baseline"]["runs"],
+        campaign["configurations"]["candidate"]["runs"],
+        strict=True,
+    ):
+        baseline_manifest_path = campaign_path.parent / baseline_value / "ensemble.json"
+        candidate_manifest_path = (
+            campaign_path.parent / candidate_value / "ensemble.json"
+        )
+        baseline_manifest = json.loads(
+            baseline_manifest_path.read_text(encoding="utf-8")
+        )
+        candidate_manifest = json.loads(
+            candidate_manifest_path.read_text(encoding="utf-8")
+        )
+        candidate_manifest["members"] = baseline_manifest["members"]
+        candidate_manifest_path.write_text(
+            json.dumps(candidate_manifest), encoding="utf-8"
+        )
+    for name, mode in (("baseline", "learned"), ("candidate", "forced_apply")):
+        for value in campaign["configurations"][name]["runs"]:
+            _upgrade_ensemble_to_gated_v3(
+                (campaign_path.parent / value).resolve(), mode
+            )
+
+    _, report = run_research_report(campaign_path, tmp_path / "gate-report")
+
+    assert report["provenance"]["baseline"]["gate_evaluation_mode"] == "learned"
+    assert report["provenance"]["candidate"]["gate_evaluation_mode"] == "forced_apply"
+    gate = report["configurations"]["baseline"]["gate_behavior"]["overall"]
+    assert gate["gate_apply_fraction"] == pytest.approx(0.4)
+    assert gate["total_turnover_avoided_by_hold"] == pytest.approx(4.2)
+    assert "gate_evaluation_mode" in report["comparisons"][0]["provenance_differences"]
+
+
+def test_report_rejects_learned_forced_comparison_from_different_models(
+    tmp_path: Path,
+) -> None:
+    """Forced-apply attribution requires the exact learned-gate model per fold."""
+    campaign_path = _ensemble_campaign(tmp_path)
+    campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
+    for name, mode in (("baseline", "learned"), ("candidate", "forced_apply")):
+        for value in campaign["configurations"][name]["runs"]:
+            _upgrade_ensemble_to_gated_v3(
+                (campaign_path.parent / value).resolve(), mode
+            )
+
+    with pytest.raises(TrainerConfigError, match="same trained model identity"):
+        run_research_report(campaign_path, tmp_path / "gate-report")
+
+
+def test_report_accepts_standard_gated_v3_artifacts(tmp_path: Path) -> None:
+    """Seed-level gated evaluations use their sealed source run artifacts."""
+    campaign_path = _complete_campaign(tmp_path)
+    campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
+    campaign["configurations"] = {"baseline": campaign["configurations"]["baseline"]}
+    campaign["comparisons"] = []
+    campaign_path.write_text(
+        yaml.safe_dump(campaign, sort_keys=False), encoding="utf-8"
+    )
+    for value in campaign["configurations"]["baseline"]["runs"]:
+        _upgrade_standard_to_gated_v3(
+            (campaign_path.parent / value).resolve(), "learned"
+        )
+
+    _, report = run_research_report(campaign_path, tmp_path / "gate-seed-report")
+
+    gate = report["configurations"]["baseline"]["gate_behavior"]
+    assert gate["evaluation_mode"] == "learned"
+    assert gate["overall"]["gate_hold_fraction"] == pytest.approx(0.6)
+
+
+def test_report_rejects_changed_gate_trace(tmp_path: Path) -> None:
+    """A sealed gated ensemble is invalid after its decision trace changes."""
+    campaign_path = _ensemble_campaign(tmp_path)
+    campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
+    ensemble_dir = (
+        campaign_path.parent / campaign["configurations"]["baseline"]["runs"][0]
+    ).resolve()
+    _upgrade_ensemble_to_gated_v3(ensemble_dir, "learned")
+    (ensemble_dir / "gate_trace.csv").write_text("tampered\n", encoding="utf-8")
+
+    with pytest.raises(TrainerConfigError, match="gate trace"):
+        run_research_report(campaign_path, tmp_path / "gate-report")
+
+
 def test_report_rejects_changed_ensemble_member_model(tmp_path: Path) -> None:
     """An ensemble observation is invalid after any member model changes."""
     campaign_path = _ensemble_campaign(tmp_path)
@@ -724,9 +935,7 @@ def test_report_generates_descriptive_evidence_for_one_configuration(
     """A baseline-only campaign still produces fold and era evidence."""
     campaign_path = _complete_campaign(tmp_path)
     campaign = yaml.safe_load(campaign_path.read_text(encoding="utf-8"))
-    campaign["configurations"] = {
-        "baseline": campaign["configurations"]["baseline"]
-    }
+    campaign["configurations"] = {"baseline": campaign["configurations"]["baseline"]}
     campaign["comparisons"] = []
     campaign_path.write_text(
         yaml.safe_dump(campaign, sort_keys=False), encoding="utf-8"
