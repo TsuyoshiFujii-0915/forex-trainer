@@ -1,0 +1,2597 @@
+{
+  "direct_longf_ens3": {
+    "data_identity": {
+      "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+      "provider": "file",
+      "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+    },
+    "evaluation_device": "cpu",
+    "evaluation_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "0771b0d06d145cf68dbd9def5c37dac3d07743c8"
+    },
+    "evaluation_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    },
+    "folds": [
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "gate_evaluation_mode": null,
+    "member_seeds": [
+      42,
+      43,
+      44
+    ],
+    "model_selection": "validation_best",
+    "protocol_sha256": "4a6fb5876eea4b4378a59e25338057849518f0a6f6578e02cd5bd548f2b8cebf",
+    "range_identity": {
+      "kind": "expanding",
+      "train_start": "2003-06-01"
+    },
+    "requested_device": "cpu",
+    "result_kind": "ensemble",
+    "runs": [
+      {
+        "eval_end": "2010-01-01T00:00:00+00:00",
+        "eval_start": "2009-04-03T00:00:00+01:00",
+        "experiment": "wf2009_r16_longf_ens3",
+        "fold": "2009",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "cc6b05a860395afac64d69cc63ecd237d4d6eeaf7e78cea7b430864f5670994d",
+            "meta_sha256": "f3e4b809600c9ca3f312f913778f0938f06fea469e017a41b9ba4977064a4df1",
+            "model_sha256": "00d9bac888edb1b304e1e8abd4ab9ab698ac0b3482fcc5ec0af9931ad2f7f70c",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "8ff968d8dcb6512f1643382eb0071dfa54bfece9d4406f11fa849375011d8a52",
+            "meta_sha256": "5418c12808bc612e7cf2a57eafb88ba7851d95646cb1ab31b48f2c43c0fe107e",
+            "model_sha256": "04c39ba9d079cc4a2c67202304d040fb9c8f986653099d520a9d6d82f9a8db52",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "585f1c14dd0b7d8b8bd2a144714e10550b275903a77f0c28876c081827fb6e2c",
+            "meta_sha256": "22377ea066a6adacc9f3d2c963b7c511ec42b11de13b925fa6f2693ef4e79c69",
+            "model_sha256": "ae294c7e734fb04b36747298dd6529b4ad693d605bd7c3cd5e86e421f65f4e42",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2010-01-01",
+            "start": "2009-01-01"
+          },
+          "train_range": {
+            "end": "2008-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2009-01-01",
+            "start": "2008-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2009_r16_longf_ens3/20260901-130838-165323",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2010-12-31T00:00:00+00:00",
+        "eval_start": "2010-03-31T00:00:00+01:00",
+        "experiment": "wf2010_r16_longf_ens3",
+        "fold": "2010",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "fb0b0df6f096ea58014b386eb9bced0ba563a640235a731fa9ac93e9e49b38be",
+            "meta_sha256": "561c7fa6f90c67b52dc14d523b43c33c2cd916fb4627c43a111b5c36655ee972",
+            "model_sha256": "febfb63ee00635aeda469c26092233a47e55621d4e99b10804cf74ed5c6f0774",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "fb0b22cc5e81e4b00cedcc3250c94a54d4d040296b62b0d4b67cf91b31a29d49",
+            "meta_sha256": "7ec42d64a9314e397d6ac35c599e4d404aafa756d1b6276c5cc1736e9f714ff5",
+            "model_sha256": "32723f935bfcd3d6d67536800284c42c57081927414735cb9aa7e1bb54ddb9db",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "3d05fbfbefdb737f47de30a7c4fea13f3654805df3106a28e91b73753a31ac3f",
+            "meta_sha256": "a938ce6c7737a2f965729174b3cb54827b50e3503cbf1da5eca4ec957d28f4e7",
+            "model_sha256": "c20f70d70799c96a7d8f0fa9ad7dbddf4646c39b7cc62ccf1f54590621707149",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2011-01-01",
+            "start": "2010-01-01"
+          },
+          "train_range": {
+            "end": "2009-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2010-01-01",
+            "start": "2009-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2010_r16_longf_ens3/20260901-130838-384409",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2011-12-30T00:00:00+00:00",
+        "eval_start": "2011-03-31T00:00:00+01:00",
+        "experiment": "wf2011_r16_longf_ens3",
+        "fold": "2011",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "0115c0189926b58fbcf7df68131482d269eee571f926e743cbf2d19d4440c8c9",
+            "meta_sha256": "3e93d47ad3df40c3c26d37936fd75fa605420339bd7fd86d3e15289e6e8101d3",
+            "model_sha256": "f01d14bb99082601a27265f769d6d99e2f08c8dc1cade87ddd2406fee22da21e",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "719ae95413f37d433c2611488fecc25b8f19d1ddd579b12a428e1ef508e98f1d",
+            "meta_sha256": "b5592aa6bb431484ca6a10b3f7f984615e3b336eb6ff482d6c778b7b784e5b78",
+            "model_sha256": "c2f92eea8053c5ac4bcfe9044a842d028211cc06ec5cd1e96f58267828e5ffc2",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "5023371638b6b946cc28ba2b0dea2d9d7aadf0cf44e188900f37848e9a0d3c92",
+            "meta_sha256": "614e6140a59d000d1bfbc6987aa89712e9ba1e6d1609f7b3e2cc641f8af05319",
+            "model_sha256": "ccdaac0d5cbac124f5ebf98733ef970030d0c233d0e14ae036040cec237dfd4d",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2012-01-01",
+            "start": "2011-01-01"
+          },
+          "train_range": {
+            "end": "2010-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2011-01-01",
+            "start": "2010-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2011_r16_longf_ens3/20260901-130838-593101",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2013-01-01T00:00:00+00:00",
+        "eval_start": "2012-03-29T00:00:00+01:00",
+        "experiment": "wf2012_r16_longf_ens3",
+        "fold": "2012",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "f262067c6b30963983c775bed31da59ef9d829c24bf8f6c8ade25266bdfa0f50",
+            "meta_sha256": "f23bc137af076d7267152c47b24a442512253260b054bbf77b250eb44e1462b5",
+            "model_sha256": "b095ca5bd18a5b0c4036f764d6ba968c03d6f65a947c1019f935a9ff8c8dba4e",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "affa27fddb238d1613d8760b5f92dbb4bf7949db82300aab3d6c5d098f45f190",
+            "meta_sha256": "c5b5bd107efcc2d6d8b9abdcd3d2543d72106845e9bc7db0a6be72f0260b1ee5",
+            "model_sha256": "0772634eb1f97a589947e7f4489d1617eaaeb922a731ef881089af18fbdb1f24",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9dfe75fe48c597a7c49be2a2b211595c79f6a7c919e9665c7a7c1862bc886af8",
+            "meta_sha256": "f4f4805bb7c5883b35dbcfe2955ebf1d3f73dd8b4a1623ff6aa5aec6fa985328",
+            "model_sha256": "636e2e81fcaa17dc8400cb35fc39e47792a5dce1e7f611f073af6fb8d57d525c",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2013-01-01",
+            "start": "2012-01-01"
+          },
+          "train_range": {
+            "end": "2011-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2012-01-01",
+            "start": "2011-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2012_r16_longf_ens3/20260901-130838-806033",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2014-01-01T00:00:00+00:00",
+        "eval_start": "2013-04-01T00:00:00+01:00",
+        "experiment": "wf2013_r16_longf_ens3",
+        "fold": "2013",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "b272744fe0998194c716a64fb99e3a88daaec21f1f615133bbe0f88ff46f4d8c",
+            "meta_sha256": "9016d6ba08f2908fca15d485b3f2a3fd8af30f4068f0190f0aba5d7e5cca1567",
+            "model_sha256": "8e2a823de54883c4a044b04f7de6cb2b009de4ce2012f19a09ed330a63253d31",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "7c972142d3ef022955d475cc6ddc208e0280087f68353de554b435d847134d8d",
+            "meta_sha256": "06229c634c5cef008de3ad70ddf74e3361cf8134d0140bff48cf64f8eeeec188",
+            "model_sha256": "bde8db47d4cc0020035a75442c1aa18313367efa93ca194743b37a2c9c998c30",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "4c59dce5c2bdc9bb28dca2ed05bb9c9207055d79a9f845fcfdc137cd8385b822",
+            "meta_sha256": "fd96fad19cb5ebdbb2221de474d0bc1f50f086bedfa75957feec83c5c99baf23",
+            "model_sha256": "5d222664cdfe570dc1a2c8f97af0049d25fd5933746a59bf9882b01b3ab58d1e",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2014-01-01",
+            "start": "2013-01-01"
+          },
+          "train_range": {
+            "end": "2012-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2013-01-01",
+            "start": "2012-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2013_r16_longf_ens3/20260901-130839-014085",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2015-01-01T00:00:00+00:00",
+        "eval_start": "2014-03-31T00:00:00+01:00",
+        "experiment": "wf2014_r16_longf_ens3",
+        "fold": "2014",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "d2fd76b414c022f14fb598b16b09830ee7cace3e5bc39c4183686fdbaa8f7422",
+            "meta_sha256": "95616d8b889c5de1b9678c2c61ab21c3e80863f7e432dd54c91eed71dac48ffb",
+            "model_sha256": "f0883e9d3b4cc86cb2655f882e9923fea901d978b321714892a1fb4a901f8774",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "af06236fa95feb0281385487a1fddd390b04976202f87573c63dc920e402052b",
+            "meta_sha256": "35b2ab516facf4de4ff1ec8fdd8a9352a3a68b7aa9a7f6c74701a344373ab5f3",
+            "model_sha256": "44299e1b3cdeb528ec51520d763f57d8859b455c2dc5c4f4a8b158b98ca6c0d1",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "b5d812c72231e12d1a4c475a6ef9f1ee709836f4bfecfdaa6095a548e4b8911d",
+            "meta_sha256": "82990c6e8288c88904f3a8b50bca457eba44cf97495b6b55509822cb66a7f163",
+            "model_sha256": "e89854ee23d388e2981bc185224d81f2546356135d6c2a5d08e709fd88da7eaa",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2015-01-01",
+            "start": "2014-01-01"
+          },
+          "train_range": {
+            "end": "2013-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2014-01-01",
+            "start": "2013-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2014_r16_longf_ens3/20260901-130839-221640",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-01-01T00:00:00+00:00",
+        "eval_start": "2015-03-31T00:00:00+01:00",
+        "experiment": "wf2015_r16_longf_ens3",
+        "fold": "2015",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "d72335fea4982894b1004b49dcfd26c02073e95237f4efa52d8d87c80e89de4a",
+            "meta_sha256": "15787d94642a7aaa6b4a970a891ef80c1bd2ae6c767f90066ae4a74e57c26000",
+            "model_sha256": "87a61642c3b67775d83f46ffa2b721e8f8daf12552409a2b25dbb08acdf43165",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "1e3e83e12edde1cc59ecd0ae9514d0a102301dccd047af89459d713816e5ade2",
+            "meta_sha256": "f96f9c0430aca2a41070cf6c324200b3e6f71961bb20eab5ab62a883349f5906",
+            "model_sha256": "6096d4f5702146a28da2a1d3ae3f716b1b79e4660993a8b45c971852224e8f2b",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "f0b70bb2d6ef96b4bcfde263041f5f1d0b2ffdfbd9d8876ada31e96c53557588",
+            "meta_sha256": "ccd6eafb582365b31d5d1164a618035f7431a67829ba47b6282f84e06ec0ddae",
+            "model_sha256": "6d3f7a318893cedda38d0180a04380387cdc9f1c2174fb19e0e0c59b00b99db8",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2016-01-01",
+            "start": "2015-01-01"
+          },
+          "train_range": {
+            "end": "2014-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2015-01-01",
+            "start": "2014-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2015_r16_longf_ens3/20260901-130839-430577",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-12-30T00:00:00+00:00",
+        "eval_start": "2016-03-30T00:00:00+01:00",
+        "experiment": "wf2016_r16_longf_ens3",
+        "fold": "2016",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "6d395b096accd69740fc3ff40efbcba3512afba77ca82bfc51686141031c8652",
+            "meta_sha256": "d47a5bd711f2383d23746d3260f1d41bfc353a8d6a2a31e18e375e7d6e62f96b",
+            "model_sha256": "cbd6ee7a7950c0aaf7838585685bc35a2242821260ffb7dad274cca90ce9184d",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "ac15aba0406857b1864efc3dbec0977ec6250ef01bb81c5579f5acf0b6bd315c",
+            "meta_sha256": "b4befe79b789ee39307255c3fbddfe1dd139ab83f666bb36286107f9f54977c8",
+            "model_sha256": "cebc3de5b2ed6604dc3c9bd27645213c97abbbb138422f03e309dfb1a7a196d3",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "b77b3534e0d38f114c1d8abc0b1f6fa338fd95c114ff22d1dcdbe02265e857b6",
+            "meta_sha256": "009f89765c95e5775d97ad022a7be4ec2bcecb918822f39efe4d1510c750f08d",
+            "model_sha256": "4193ee580670b35988be63c3bbb2b3802b724cf87964b88ce081064f17d52624",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2017-01-01",
+            "start": "2016-01-01"
+          },
+          "train_range": {
+            "end": "2015-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2016-01-01",
+            "start": "2015-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2016_r16_longf_ens3/20260901-130839-641365",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2018-01-01T00:00:00+00:00",
+        "eval_start": "2017-03-30T00:00:00+01:00",
+        "experiment": "wf2017_r16_longf_ens3",
+        "fold": "2017",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "24d2de7b1f4e283b1d928ac0795cf7627913f8e016204cebb497751f539bb563",
+            "meta_sha256": "e82978f9ee5afda2214d095cc7e67a00a9f3f98eff4e2256b196da067992f1c9",
+            "model_sha256": "9958ab75be707f705e85675cdc5e32711356d8143f89bf81efbeb382ce5b3d61",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "564872002a5c741988b6b09d50c4869faf1999ccd951e72a90de1036640ae835",
+            "meta_sha256": "eb4f67c7677b127ed92e7e34d8dddae41a81230eba898c0f9276998620fcc377",
+            "model_sha256": "cebbe23eed7869e15bebf2349678d3282f18569ba0de0332c2a6fca03b82ac29",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "c4ad4bbdd704b60e22c64f57d2fd304ba8e07ca0ad952c1ff699b4af1dd98c42",
+            "meta_sha256": "78a76d3aab190aacd7e7f548e9bf8cf050e02b7501acc4faef59f625557c369b",
+            "model_sha256": "23d3db0f45e5ce3545fdb718e3ae13b85473c853af5720170d9fce15ca41ba16",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2018-01-01",
+            "start": "2017-01-01"
+          },
+          "train_range": {
+            "end": "2016-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2017-01-01",
+            "start": "2016-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2017_r16_longf_ens3/20260901-130839-847011",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2019-01-01T00:00:00+00:00",
+        "eval_start": "2018-03-29T00:00:00+01:00",
+        "experiment": "wf2018_r16_longf_ens3",
+        "fold": "2018",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "feea868018243c8832d41fdb167d3d3ddbcf4bb9b8ffbd8b386bdb4bcd5dcbe4",
+            "meta_sha256": "79752556f46fedb846235f3652c7083c6b38047e016ef3ae9bc85fefd625e5bf",
+            "model_sha256": "4e713deae04dd04bd2fca7333e3617be6b59f5458ecb613bcef528f34316d18e",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "09a3171d56242122b106bead014dcee7e748f93aea21da83d0e0cfd25e28897b",
+            "meta_sha256": "6103b8fb345879fd807d768550d6e0190e8b87a210e5bd851948b85f5e3b7544",
+            "model_sha256": "005a6c5db91622a98ff7a57435f07e216ea411e5058438e044bf9c179e9c7a05",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "81787cca8e0e38d67ea91b130c9cc905759240205250dbcc1782e2ad7861487d",
+            "meta_sha256": "c05b8bc180779448e46b1ed3aa5a4075b5bf844796ae21ede6b056bc27c7ca5c",
+            "model_sha256": "3067c676bf9e8eec8442d56bc5fb373d141a027703cb8ae9c1a9ea3ed83d2e2d",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2019-01-01",
+            "start": "2018-01-01"
+          },
+          "train_range": {
+            "end": "2017-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2018-01-01",
+            "start": "2017-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2018_r16_longf_ens3/20260901-130840-056111",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2020-01-01T00:00:00+00:00",
+        "eval_start": "2019-03-29T00:00:00+00:00",
+        "experiment": "wf2019_r16_longf_ens3",
+        "fold": "2019",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "cf1930bc9c826da4692573dc6da4590c2e4182220483b9bc2577b9121ca4674a",
+            "meta_sha256": "7146c25118c46c11ace62eeaa4699747b40c23339cb8ef3bebaf633e8568bcc3",
+            "model_sha256": "b5fcc3d3b3544c3b14d90d01102bf7b7257ccb3e5f47fe9546b673c5f91cbd2f",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "10db1eaa3671727c0f10f9d644dc11a1b4783dfff01fe84bb075adae29d15a57",
+            "meta_sha256": "4046f44f81aa2ea1a52bc1f4c155209c2c7a16a7241b2eb8a1f87b6f5fc5ff5f",
+            "model_sha256": "858d1b0a2fa69ef8e0914d9658608450b66c84f1a0ec53b9438e4a3cf8657bbb",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "afe883b9b551ba726d72dd2bbdcb626905784108ce3a1355878f503a50b87adf",
+            "meta_sha256": "4cf8f8c46ae7dbedeb557fe2dc627555e6374dec7a02dc0cf594c340dcb071a2",
+            "model_sha256": "cdbf7df763cdb08e8df70c643791c06b4c801df680272a8bed8c38e53a8d47ca",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2020-01-01",
+            "start": "2019-01-01"
+          },
+          "train_range": {
+            "end": "2018-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2019-01-01",
+            "start": "2018-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2019_r16_longf_ens3/20260901-130840-266305",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-01-01T00:00:00+00:00",
+        "eval_start": "2020-03-30T00:00:00+01:00",
+        "experiment": "wf2020_r16_longf_ens3",
+        "fold": "2020",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "4438dd10131e606353375dcbdcd287489b3384cc3b0822da2064e98c2739f8a2",
+            "meta_sha256": "ece9c2e097a3f158d5c1c4bcd8dbc60a783a995e0fe74895d7d6b6ad0b2a1a93",
+            "model_sha256": "af30b504a93ec67ed670640d37a3f5eea8b263513341a3d1793774284a168ac3",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "ff8d646d825e8e97aa7edbeb5170b7a357f6d081e89af07952bfd2708a09249b",
+            "meta_sha256": "a2d2d20a660aea211880fec47230d6f7556d8de3779057d8c91d0b85ca454594",
+            "model_sha256": "1964e560badfd5c95a3058a9e87b2447078c54554a196bcc573663844c6dbb81",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "a2208130b25547e18c1b1cffa3ba7a141049760e94d169460103e32a777bd5f4",
+            "meta_sha256": "1992af5591f030b0867dbefcede6bf20aec3867951159ee9dafe75b40f54091a",
+            "model_sha256": "9f52549389dc240e94b386a7c87f5e53d7b5c5c84e642d5fe64f60360a21c43d",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2021-01-01",
+            "start": "2020-01-01"
+          },
+          "train_range": {
+            "end": "2019-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2020-01-01",
+            "start": "2019-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2020_r16_longf_ens3/20260901-130840-475277",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-12-31T00:00:00+00:00",
+        "eval_start": "2021-03-31T00:00:00+01:00",
+        "experiment": "wf2021_r16_longf_ens3",
+        "fold": "2021",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "a4cc4d2e1297752a598c30f4857a371fd621a98add7e76b35faafe1a9172a555",
+            "meta_sha256": "21f3beec71c56ce42f9e82011d3b7f262d4791a06308b1e3ecda47c400b9fc94",
+            "model_sha256": "1a4ca6c23932c6fb61ff0981c3debd1ea56d29d6ddf691a217372038d74b9ec0",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "5600b9e854aa1226f48d1da0147c918c52a99f3c15e6efd769f147bd52cde991",
+            "meta_sha256": "3750da6ad272d9755e809d0dcddaa3525ce4acd22bf6a734144b0cb987c3fd03",
+            "model_sha256": "4761cf3e9ccb08973f2a9121d8da0c227083536bc969ab504309992acdef80c1",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "5a94919335274695f8cd1fd0d5df2b0d21c35a5824a494fff70ea1d1746e70a0",
+            "meta_sha256": "7adec1a5d3bd2a2b09f3d4c510f84e6a5738a2d20c5b3d04d2109d647e127dbc",
+            "model_sha256": "3911498d0dfb6c1e55090d4faebd22cfc4d9b68f91459d82e08a9141c04adcf3",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2022-01-01",
+            "start": "2021-01-01"
+          },
+          "train_range": {
+            "end": "2020-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2021-01-01",
+            "start": "2020-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2021_r16_longf_ens3/20260901-130840-687756",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2022-12-30T00:00:00+00:00",
+        "eval_start": "2022-03-31T00:00:00+01:00",
+        "experiment": "wf2022_r16_longf_ens3",
+        "fold": "2022",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "0693aac8a8717dab11321ce2e3b5aa20999e4ad6d0c930d13c25091e4078f259",
+            "meta_sha256": "b14d545b464a89df6a57c3cfc2893221c390de943865214f0ecdd480e1716273",
+            "model_sha256": "18e0fbad0372e9991112b97b7869befd0fad5a7699b3c360b79baeed07782f21",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "31b90acb616e18d96af8360661dddd4025b38610f83bb57e9a6295d7ba25ed86",
+            "meta_sha256": "c71c8171bb80885b1102c5be8a9012f3a849ad854d0eb4745ab7890c8887e050",
+            "model_sha256": "ebf711a898b41e30990c3e2f1a6dbc3807612eda372f0f0cdde98a7dcb180720",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "d05efd2776b14fd197943c068979404f57a66b40392ed210efe0c17d5c7c7cfc",
+            "meta_sha256": "8551aaf7d57fd814d3fc9e814cd9dcad2ee841e1b179162d6cd6855cbbe9f930",
+            "model_sha256": "0d8dc8cfba962feddc1a9d81b552c556911a18827fd22be981e6da0fc8bd84ca",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2023-01-01",
+            "start": "2022-01-01"
+          },
+          "train_range": {
+            "end": "2021-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2022-01-01",
+            "start": "2021-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2022_r16_longf_ens3/20260901-130840-907651",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-01-01T00:00:00+00:00",
+        "eval_start": "2023-03-30T00:00:00+01:00",
+        "experiment": "wf2023_r16_longf_ens3",
+        "fold": "2023",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "8013b2e6d8659fef96e4af7db6f0171c7a5cf4dfb229ad734b793379cb39d33f",
+            "meta_sha256": "5602d0b61eed2e6d6910cecc92497dac9fb2079eea85afe5e66a5144b129fc03",
+            "model_sha256": "a956f3c961a099af97c3c59846e0c8629b1f56fe3a7a5ceee1be398339079ba5",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "1f6e9604835d6cf9ea9447df0e03d5b34ec07b726535c726be1008ea1cc09eb9",
+            "meta_sha256": "db2e5e381d4be42d72aab45f9f1207ae491fdad12b377172a0fc502bd1d03b85",
+            "model_sha256": "bf2c4d254b7a927653bf8cd644f08110189751857c58a69d577c5453c9b435c4",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "bb7c860532cd86440b24a73712a1e3bd548805ad7e9a2b74a7da8b7823164405",
+            "meta_sha256": "99b08c85de663d300643e9a39f2dc6fcb1ee0a73135cfbc0ba06cae1bf4b61fc",
+            "model_sha256": "4e0d6348dd75e507d8e8c3c628567b5a22ff58388c237a499c67de2da827dd9a",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2024-01-01",
+            "start": "2023-01-01"
+          },
+          "train_range": {
+            "end": "2022-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2023-01-01",
+            "start": "2022-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2023_r16_longf_ens3/20260901-130841-130404",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-12-31T00:00:00+00:00",
+        "eval_start": "2024-03-28T00:00:00+00:00",
+        "experiment": "wf2024_r16_longf_ens3",
+        "fold": "2024",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "e21ce95df45b90aceee51ef11e3922e50a2796b35f7cbae8c1b03a65c972d818",
+            "meta_sha256": "2d8bf8c29fc5f575fd09da732a0785e16fc5ee749b4cfdcb26fbffd17a3a4562",
+            "model_sha256": "6faafe4f8e457aa0bffa4fb4d8b4f2188d58dfe58cd1cad07861d08c637f5aa7",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "01454cbdffd45f6667d9b0aa79dba434f51d6f49f04f372798e32c12eb149d80",
+            "meta_sha256": "5e6c0a87b82a4cc30e70e57141a9f321ea2e899dd157b1878ca37cef1d06f655",
+            "model_sha256": "d3d378a240a2fb5400a497233d5f883bb2eeffa5d9ccad62c1edf63725487772",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "a08428eb7c8d67b10de68e3b0fd364be9126972ff7c84b6abc3c6ccb2143efd2",
+            "meta_sha256": "bdace06f08026c6f8aa53f7480e1cbcd6cea042ea034347cc5fa00961d30e2f0",
+            "model_sha256": "26166dc1a659e3ab26e038e61eb8a804b9223c0fe9c3eed4a38f9545cd6a1564",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2025-01-01",
+            "start": "2024-01-01"
+          },
+          "train_range": {
+            "end": "2023-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2024-01-01",
+            "start": "2023-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2024_r16_longf_ens3/20260901-130841-336281",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2025-12-31T00:00:00+00:00",
+        "eval_start": "2025-04-01T00:00:00+01:00",
+        "experiment": "wf2025_r16_longf_ens3",
+        "fold": "2025",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "dfa1f907f8c96b577b48511d516b45bc390249ba802925940d8493963e58bde4",
+            "meta_sha256": "dbf9d1c3f5445939ed124132ca5caf9e7d2dfb3ebcc8c921cbac33b6ab9f7bad",
+            "model_sha256": "3d595ae8aaae38437622f925783c9163694aa4505ece11aaa9d08e0481436c60",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "037218dd235568bc6b527708196e63834eabc278289ad7e1cdb2d276384450d0",
+            "meta_sha256": "a9c4c950c5bd99c01731c39ff02c13df807ad08fbe1cbadfca2909baf6f7a464",
+            "model_sha256": "adc5aea572bcdb70e3ea3ec440b7765ac0627fc8a855a562821512d185057401",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "7bbe61882b4bd5366bd3ad80a33f459ac4e0e0c1a94994b04322517507791eea",
+            "meta_sha256": "3aa716fc138b913eaa1c3d28f87894548289f8f6c2f6793146584b5fbd9faf9f",
+            "model_sha256": "28540450b68419af6801fb58e00fcebb587b3b178c92d43ce33c10117560d636",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2026-01-01",
+            "start": "2025-01-01"
+          },
+          "train_range": {
+            "end": "2024-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2025-01-01",
+            "start": "2024-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_control_ensembles/wf2025_r16_longf_ens3/20260901-130841-556612",
+        "unit_key": "ensemble"
+      }
+    ],
+    "training_device": "cpu",
+    "training_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+    },
+    "training_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    }
+  },
+  "gated_forced_apply_ens3": {
+    "data_identity": {
+      "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+      "provider": "file",
+      "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+    },
+    "evaluation_device": "cpu",
+    "evaluation_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "0771b0d06d145cf68dbd9def5c37dac3d07743c8"
+    },
+    "evaluation_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    },
+    "folds": [
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "gate_evaluation_mode": "forced_apply",
+    "member_seeds": [
+      42,
+      43,
+      44
+    ],
+    "model_selection": "validation_best",
+    "protocol_sha256": "d53045a9f96e1f4905f40838b5a63afdeca294670dd4814843922d97077b147c",
+    "range_identity": {
+      "kind": "expanding",
+      "train_start": "2003-06-01"
+    },
+    "requested_device": "cpu",
+    "result_kind": "ensemble",
+    "runs": [
+      {
+        "eval_end": "2010-01-01T00:00:00+00:00",
+        "eval_start": "2009-04-03T00:00:00+01:00",
+        "experiment": "wf2009_r20_gate_ens3_forced_apply",
+        "fold": "2009",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "44cedc000653e9f843e8e282cda3ea2ebee9f620fe11d51eb1b1ded65c0961b3",
+            "meta_sha256": "5bcb74e9ffcf30b6261cf24e6b31ce5f82723d4693c15b245ae1b99ba5bd77eb",
+            "model_sha256": "8f1d41cf8147fb57af4439b2c10d1c7f766fc6ad660659b6bcd08e05a4117fe7",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "1cb0b60b09a6cf7529cbd0dbebc28ad7a686c879e64a7273cd97c65abf4c3af8",
+            "meta_sha256": "618f22d66adac3afb270a924a5785d799b7490626b3ab27c0d4fbfa7e7d4ac19",
+            "model_sha256": "cdcdbfe900117e8db507b678f4a48c63c9ac31f17afd5e8efd7722bf01a55577",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "3356f3e58356803d5d9514af399897301f9572a6cf22f0712083a30681354f47",
+            "meta_sha256": "cfd602f249563556b856cce5291bbbb098ca7d61c64abfed856d108e8e7623aa",
+            "model_sha256": "0371d6b9f478ddb4a2beada5b27b9a8491d61d0a299fabd3c5a1823f8e6c4f40",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2010-01-01",
+            "start": "2009-01-01"
+          },
+          "train_range": {
+            "end": "2008-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2009-01-01",
+            "start": "2008-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2009_r20_gate_ens3_forced_apply/20260901-135847-261683",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2010-12-31T00:00:00+00:00",
+        "eval_start": "2010-03-31T00:00:00+01:00",
+        "experiment": "wf2010_r20_gate_ens3_forced_apply",
+        "fold": "2010",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "86cc121f91779e62553219b04bee9dda833dbd8a763269efbf6530f0ca4e6776",
+            "meta_sha256": "9bd1e38f84791a6bc3a9d7fa79c6dc4e99c4de9c6dff60125720b25cc34ac485",
+            "model_sha256": "444ae9e3fbe2e538ed3b8c4f089d3ba842ed9e2fb66f88d9d13e7c7a69ed4c90",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "af91c01c6a48eec2a5b67a512f7fec5e945cb46de0503cec528339d62e7cbf10",
+            "meta_sha256": "4aba2657bd25081814c4e4acc7d5affdcb6e7c260fd9c837b0c4d6d249294b61",
+            "model_sha256": "b5a0e86e2167ac6af19ba7ab8c54c32e7f35726304e1da7b3d1e0cdae166db76",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "3c7ba31201dcfe7709bada6781707a6cab89aa11c38e46ed0ff63a9467433454",
+            "meta_sha256": "ada4254503288cf7ef7a4794b81489d5de3e2f493fba35d3c48dbbedfd28032d",
+            "model_sha256": "cd00939ff68cb130bc15cb667ab21db0eacde740876696e31a5c6102afbe07ba",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2011-01-01",
+            "start": "2010-01-01"
+          },
+          "train_range": {
+            "end": "2009-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2010-01-01",
+            "start": "2009-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2010_r20_gate_ens3_forced_apply/20260901-135847-724409",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2011-12-30T00:00:00+00:00",
+        "eval_start": "2011-03-31T00:00:00+01:00",
+        "experiment": "wf2011_r20_gate_ens3_forced_apply",
+        "fold": "2011",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "330e98148f081589c0ef45e5cf35b7b132087d9d2014df7e3de37e251b7bf173",
+            "meta_sha256": "fa35364eba74558aa72cdb138da49b0c1799cf1806f2b4b40d135a6dbc880b09",
+            "model_sha256": "b953804cc65a7524029c02652fa2d4d4d4e8897b87ff318674a2149c27470255",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "1a0b891605b23f7dd651cf60e9f2b37e65624baf82f097b8efae879c4000fb1c",
+            "meta_sha256": "59928db7be177becc8eb4ad71d8335edab38dcfafbb3196658120ea09ecc5211",
+            "model_sha256": "01e96b6e742f81f4c2a8d54c77819d058247cf7e2a0a83a7a6e2f716f0e89c49",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "59c0e372f3e5865d41fa6ac027605ca4e016bacc220d9e0252744690332970f3",
+            "meta_sha256": "3e0e24256c490f0954db0315e79a398a118fa4fdf54b12579cde778af22fe317",
+            "model_sha256": "2f3c8dd6ace62c3f4b30731feee4ff75c4d7d609a0edfb268fa6b4534831ff4e",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2012-01-01",
+            "start": "2011-01-01"
+          },
+          "train_range": {
+            "end": "2010-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2011-01-01",
+            "start": "2010-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2011_r20_gate_ens3_forced_apply/20260901-135848-169474",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2013-01-01T00:00:00+00:00",
+        "eval_start": "2012-03-29T00:00:00+01:00",
+        "experiment": "wf2012_r20_gate_ens3_forced_apply",
+        "fold": "2012",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "8a73a8fec38ff4c241d34eeaf705dc0abbc9a8c7e0d3baf01bd6c1a53a38c7f2",
+            "meta_sha256": "a2d75bc9ff4f0c92b0d2d03ec0509131289ef08f1c40c15c8be6b4bda229559b",
+            "model_sha256": "6b6cf12d17e3396e37dbf3f0e80b11e27457e512cf494462f31c6e4a72ffdde5",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "bc12b12216997183f6086c54ea57154627d7fabfdbad1a2fc98bd9dfec575864",
+            "meta_sha256": "4f614aae671a7d24913742d255d1638df78958c16a486cbf9168587f8f82b490",
+            "model_sha256": "22e3bf9d5ddff9706af0f5cde2570bb5bb18366d24d01d8dc726789104142be7",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "c13e5566a9e5a9cf78c7713c4850f7ba00ea47f95a94287818456a659b6d33d7",
+            "meta_sha256": "d4376804ffc5b157c51e3845d3f1e7feebe83b0df8c781d4f4a5638268c0dc95",
+            "model_sha256": "66afe42c053e9a9bc4cb0de540aa67e0bbfcc21d81946d0e1292e7a8ab56b60a",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2013-01-01",
+            "start": "2012-01-01"
+          },
+          "train_range": {
+            "end": "2011-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2012-01-01",
+            "start": "2011-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2012_r20_gate_ens3_forced_apply/20260901-135848-618361",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2014-01-01T00:00:00+00:00",
+        "eval_start": "2013-04-01T00:00:00+01:00",
+        "experiment": "wf2013_r20_gate_ens3_forced_apply",
+        "fold": "2013",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "e7f0599c39873a262c2ab552a8049f1e81ad3de9e5284e2724df07df397a9cca",
+            "meta_sha256": "1041e4b87ef32a7e19efc038f2fbfeb6ed8ad44d4883c3236f126e140bdebb39",
+            "model_sha256": "85090f7f76e95c05c216aa96ffddfd0af9bc670f43ab54c4c0ca378bf65869c4",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "a72195430caad2af754562844622208227b84d03ba529d105e134b5df26691a4",
+            "meta_sha256": "943c2128f89a94674480d6a04983d410028126f6a794972d505c89d4a1ebc0e0",
+            "model_sha256": "34a9a3ed40ad956b7d47b06adbe3594f71825951ffc03833744fd0264007caaa",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "13970591e9a35b030b421a846c76827ad7876289c99d828798dd5844641e704d",
+            "meta_sha256": "4648646238f15d4bed575bfd86260b3fca724980a2863169a14f93cb59d23fdb",
+            "model_sha256": "d280e166d79579d2c2eb997ddc83a7d39f75b89b8f40d0eddc9cbc6324e235ac",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2014-01-01",
+            "start": "2013-01-01"
+          },
+          "train_range": {
+            "end": "2012-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2013-01-01",
+            "start": "2012-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2013_r20_gate_ens3_forced_apply/20260901-135849-076399",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2015-01-01T00:00:00+00:00",
+        "eval_start": "2014-03-31T00:00:00+01:00",
+        "experiment": "wf2014_r20_gate_ens3_forced_apply",
+        "fold": "2014",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "01e95f84341670719590c033662bb63d069b00b10ebd5331698e0bc2e649c0ea",
+            "meta_sha256": "5f8c8f359f89ce688dc29f20223d73f36835040eab44555493bc93868ca82f9a",
+            "model_sha256": "7053fe7d92d061d64759b0b0192ddb5c776f4fc5276cff1ac66a3dd379c9495f",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "d43ccb7f01f801736f530f029b10ee33850c3d6c07d81eb7954b53bb3db1c446",
+            "meta_sha256": "9c2e4a2c4fe085ed86e6fc4f58c045527d6254dffdc334cbe2c275db2b3fd9de",
+            "model_sha256": "bdd16f3b0168d6d4a1e4d004a5817965a41c498c8cdf48b3a25b9e2ba613be59",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "ffef0f6d502803ac7173a01552cec78a61b6cbe4d320d213b1db125494b5a9c0",
+            "meta_sha256": "b43a02a1162624349013fcf5f83dbf52b32bbf6f2e80d10729bce069ac892e82",
+            "model_sha256": "074efd313aa9e3de38b679948b295e0ed8a769082fbb93d118f2cd1b07af3ade",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2015-01-01",
+            "start": "2014-01-01"
+          },
+          "train_range": {
+            "end": "2013-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2014-01-01",
+            "start": "2013-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2014_r20_gate_ens3_forced_apply/20260901-135849-528730",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-01-01T00:00:00+00:00",
+        "eval_start": "2015-03-31T00:00:00+01:00",
+        "experiment": "wf2015_r20_gate_ens3_forced_apply",
+        "fold": "2015",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "75b2a0f81d04fc7aa2bf6bbadb9ebd0785d1c0af7dbc7b79e59b9226ff71c416",
+            "meta_sha256": "80d599d9c0751e1e233a127f368118a09079af5fd1a130198c11cfc4e9e0ad6e",
+            "model_sha256": "eb8f1ae6999e20a833ad13924c975186ae6ca3b5520e27fea4af41d31556d472",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "cffab7782079ad4e4246fe0fa0b57b4ce639e6741c7b9b4f5466ba451d3295bc",
+            "meta_sha256": "ddf05942fc1e8b799e314296c97f7caf4b2c2ea1f2333eb1f2bc15b1d1b8a9e6",
+            "model_sha256": "4f3186ada85f5fbc84b2be55240a6707c3ea93d8efd279cb9305647c34454656",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "fdf0613f8ea3ffbe88154617558e82daac3f99605b9c137148e1f9c66560acf5",
+            "meta_sha256": "66d5fe17eee4554bd952c0d2a4eeeba62ffa11b129d494f7627ff16e6e4baa7c",
+            "model_sha256": "0c706c21797fece888d46863a37b483b072a0150911510004cabbc3c204c961c",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2016-01-01",
+            "start": "2015-01-01"
+          },
+          "train_range": {
+            "end": "2014-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2015-01-01",
+            "start": "2014-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2015_r20_gate_ens3_forced_apply/20260901-135849-989249",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-12-30T00:00:00+00:00",
+        "eval_start": "2016-03-30T00:00:00+01:00",
+        "experiment": "wf2016_r20_gate_ens3_forced_apply",
+        "fold": "2016",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "ea4ac16024492b9bac84450c5c8cc81555c307c14bbcfaa5120e460e0b0ab47d",
+            "meta_sha256": "9f33ec6946f7d470d2abba2f5d231ba5c672792758da377565aec0fa9d9303a2",
+            "model_sha256": "c17c2a0540906df867d5b23c3a263391716224cecaefb4394d23e685b4e6a87e",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "732ee602a0e3492b55586b1abf450c4a7e0f3b35d673c88f8323c739ade0e19a",
+            "meta_sha256": "9754d89b533c49730746e02ab75a19d117f430d153e8f148e54a464f67a03bb2",
+            "model_sha256": "b52ab90feaf879fe08c3d00aee8d06dc0f72327ff76bc53eb33ccef3ac10b0e6",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "77eda001d8a9017c3d10f5a1e31a055ecbee9697067d78468fdd7c8f80463345",
+            "meta_sha256": "ec637eabfa66dda65685129c962b60be9fdd213ede1c162d14900944cd9f3957",
+            "model_sha256": "257fb2cac0fd53a8fe9766028c7b0f1ec602860101002ff87690303495119768",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2017-01-01",
+            "start": "2016-01-01"
+          },
+          "train_range": {
+            "end": "2015-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2016-01-01",
+            "start": "2015-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2016_r20_gate_ens3_forced_apply/20260901-135850-444416",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2018-01-01T00:00:00+00:00",
+        "eval_start": "2017-03-30T00:00:00+01:00",
+        "experiment": "wf2017_r20_gate_ens3_forced_apply",
+        "fold": "2017",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "512d151c7960136c5154f54f5674354b4753e56a3beec4816addec929871e281",
+            "meta_sha256": "ab3891ad33576b85fd07b5bd748bc8284b4a93707e740554a182e79a773f2c2b",
+            "model_sha256": "c0effb574bc353fa9cf54ec339ecb9a3c9182f5265f17965788469c663413d85",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "717a911d60cc5e4c456db311f68f763c51ed2e29cfe97c4f28aac019bfe19c48",
+            "meta_sha256": "b7fdc47d5dab5379f01851cd9e736e4c342b46b6bef43997753643d899691582",
+            "model_sha256": "41ba99f048af98ef6059081ae246d08ab2ac32b62885762e292d1d14e2757c9d",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "6040801ccbded7f3cb4c4b68da2809d8c788a3f4f17f0da40a12a3cc0156d7f3",
+            "meta_sha256": "f719d580754363fd8efd60e0e7ea89a8772d1030beedce9d351807d65a4bbbeb",
+            "model_sha256": "45a7d4273526efa42e97771e35160b55c773c6bbb338ddef637e4cdd4838802d",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2018-01-01",
+            "start": "2017-01-01"
+          },
+          "train_range": {
+            "end": "2016-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2017-01-01",
+            "start": "2016-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2017_r20_gate_ens3_forced_apply/20260901-135850-900743",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2019-01-01T00:00:00+00:00",
+        "eval_start": "2018-03-29T00:00:00+01:00",
+        "experiment": "wf2018_r20_gate_ens3_forced_apply",
+        "fold": "2018",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "de6cb342ec524e26c1eafc093e98de85e782d5891faa087cab74d24d96c81303",
+            "meta_sha256": "9e9245b8d596ef0f520482b853ac1f448a2cafabc4d93d9b63967f24aeaf3598",
+            "model_sha256": "801fdb1fcfad2fe0a30cadd21bdeb7f4c348a99bd82e0161911012c3ad2915ce",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "b3297466048c4163ff7b8a509c2d04b24e6d45bf8df4944195ae8927667201f8",
+            "meta_sha256": "2444208d5503a130d89e1404ea51f0309a4dd44d195f4f57d7536576c48feece",
+            "model_sha256": "27c39d3ce295a1c1d40c9edb5628e660539f9b3135e7950f7d347af18ece2b63",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "6e8bfd1180b5a253fae18cd0c1fb7b6d3a1d9c178d7886c35dc28d8f645f0d5d",
+            "meta_sha256": "f47aea61c3651b32e7c1d8a4690f72a3d4a437e8cf9d0ecbc1e998129d3f4b99",
+            "model_sha256": "3528ae548b5642a640dc1932be4509d9dd3caf5844d1055742e447e0839ad045",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2019-01-01",
+            "start": "2018-01-01"
+          },
+          "train_range": {
+            "end": "2017-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2018-01-01",
+            "start": "2017-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2018_r20_gate_ens3_forced_apply/20260901-135851-360489",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2020-01-01T00:00:00+00:00",
+        "eval_start": "2019-03-29T00:00:00+00:00",
+        "experiment": "wf2019_r20_gate_ens3_forced_apply",
+        "fold": "2019",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "b908802cb66b47c6647ec0ecf691c1b7dae20fea604235d4f4c729a1ce1492aa",
+            "meta_sha256": "e7fd9bb3e38f78dffcc3b4f383f1380b437f449d30cced00d1b2099b2f257451",
+            "model_sha256": "51e5039d670d8939b2b8681f9e1fe4d563e9195abdc9f4b9397321cbd8950284",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "ba834c0d40697eb844bf9778dd62cdce61fb78a8061cb374a363780669889075",
+            "meta_sha256": "087e5db8f2b8fb3c7a7b154f14d9d7eb0523e4509dc1bd64152876288fde79c8",
+            "model_sha256": "3cfd372b8b169b2d8fb73a42c7cb7967a0720208746109c548f43f81b5ae7c79",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9a766f22eb390d1a1469e21768a03d9a3d1fcd21b87ea2a7f138c4fd573242b1",
+            "meta_sha256": "276cf7afb2c421fe47bad714b7a5c9a541ff6a40e6a33e5460eb5ea7058fca8c",
+            "model_sha256": "7cdd9c4860633e1c7e8ba11731816b9c4be54e7b419c6fc1b0d6be88fe279314",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2020-01-01",
+            "start": "2019-01-01"
+          },
+          "train_range": {
+            "end": "2018-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2019-01-01",
+            "start": "2018-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2019_r20_gate_ens3_forced_apply/20260901-135851-934259",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-01-01T00:00:00+00:00",
+        "eval_start": "2020-03-30T00:00:00+01:00",
+        "experiment": "wf2020_r20_gate_ens3_forced_apply",
+        "fold": "2020",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "e26fa00517923f1d4f0a0675612b11ad0292b057ca804fc2d8bd1f53df582a3a",
+            "meta_sha256": "a49d3cf027504669b8cb34fa9a87d45d4e8167191427be88438feb7ed65d5822",
+            "model_sha256": "7b874c156893d5992d7c777f1ba311287b1fe13efed132c5d62ad3857777198a",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "592d407b23ce2607efb6f03295a10b40fbf290838840576659ec949e81136879",
+            "meta_sha256": "6ab66cd4347174148f965eb0d5f153c404d14731491141bf4da4463ee2ccabe3",
+            "model_sha256": "60d6023b3a1bc28ed5883cd91b75acd6bc6b7d650f9fd5fdb42b3f86640ed904",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "4b835ff33e4d27727f595edeaf66f075fec3537c96d7486894aa6bd768d4beaa",
+            "meta_sha256": "9841b02bb058323a9516c027710241f4ed7505ea991349c302beb991d8cb5684",
+            "model_sha256": "57ce7b72c693375377da55c19aa20ab672c22f91082e67779b7cfef4ce524851",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2021-01-01",
+            "start": "2020-01-01"
+          },
+          "train_range": {
+            "end": "2019-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2020-01-01",
+            "start": "2019-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2020_r20_gate_ens3_forced_apply/20260901-135852-386547",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-12-31T00:00:00+00:00",
+        "eval_start": "2021-03-31T00:00:00+01:00",
+        "experiment": "wf2021_r20_gate_ens3_forced_apply",
+        "fold": "2021",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "1041aeb247d9e0321b1cb42581f4f743234cdc2722b84d5603ad36f12383edbd",
+            "meta_sha256": "7d2d448f41c82d0c4e36c8b97d1f6120656a284e15ce3f237a5191ec0bdc0903",
+            "model_sha256": "0cd466a1e82c86798a50da82be6f9c0b781a72f809fe4844a52a78077fad72db",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "77d600e13ad8a635ad33f3f219532a434ffaadc8f7cd000ca83d932f99fedbf0",
+            "meta_sha256": "c229485bbbcb34ee265b362fa8a1799ca1ec497d52488162871e1878104045e1",
+            "model_sha256": "1356275d6233a8af05532567cb45f32dae9f4a979f5c790b436dfedecc4f3b86",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9a9e4aaf76f07551ea137b6201290df3845e56c04e875654d1df4dd64a0c561a",
+            "meta_sha256": "860e177f429f92457bcc842ac337a2a73ec41a5601b5c72e3aba3d30d1e110e0",
+            "model_sha256": "b4828f868c699c91cf97a7f5eff5420df6b804cc29d06e2602ba691e3f521892",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2022-01-01",
+            "start": "2021-01-01"
+          },
+          "train_range": {
+            "end": "2020-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2021-01-01",
+            "start": "2020-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2021_r20_gate_ens3_forced_apply/20260901-135852-829404",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2022-12-30T00:00:00+00:00",
+        "eval_start": "2022-03-31T00:00:00+01:00",
+        "experiment": "wf2022_r20_gate_ens3_forced_apply",
+        "fold": "2022",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "1e1445795fdc391162333cb5b578fee5b9e3e5be42c886189a93d8e8fdd431d8",
+            "meta_sha256": "1f985f915dd6b47aefb22a8f98e9b051cffadd76ca053ea0acc9657bbc992215",
+            "model_sha256": "f69a18236a87ce4258260916418e00c15cb1da096dae04c0422d4370fa279119",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "877bf7fffccb5b186fb5930881863626b977ea1dfa5bc61180442821dc835278",
+            "meta_sha256": "9b350c6942375dd3802a0160e0ceb271488854caa729f03edfe4448d4d544273",
+            "model_sha256": "cd98988521dc63d8586cdedb32d4961c4d8498c8c6bd8a4acfe64ef50bfc305c",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9da7e4ab8acdc938a041eb6c421ffea4e62d26a8310e8a5152d4d408496c20b4",
+            "meta_sha256": "6de802fff80bb339154f288b2f90bf6963a79e5559b814a27cc3d56ae6ffa5b9",
+            "model_sha256": "078fdd6c0a26360f86f947be8f1f5edc95b931ce1287b099a7454bb7a99870f3",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2023-01-01",
+            "start": "2022-01-01"
+          },
+          "train_range": {
+            "end": "2021-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2022-01-01",
+            "start": "2021-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2022_r20_gate_ens3_forced_apply/20260901-135853-288959",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-01-01T00:00:00+00:00",
+        "eval_start": "2023-03-30T00:00:00+01:00",
+        "experiment": "wf2023_r20_gate_ens3_forced_apply",
+        "fold": "2023",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "0f317857d129ecd229734dba0aff3f094f11fc4e17832ac8d8d7f5d09b672b59",
+            "meta_sha256": "7d4b33af0e632d362edb1da5f6dbcaeca2c67bca6e040a9db3dffa6be39b8aec",
+            "model_sha256": "9cb5babbafb8a5741b17308a3e8ab4018f87647b3352b0a23c9b64589b8341bd",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "fef8e8c26fcbc7200352eb735340f2af2bc53c86214b4362d34d0be59577d76c",
+            "meta_sha256": "22ad5f52f29c37fac1d3f19d1bab02426b2a44330ac45ef8160f2b8a4826a0cf",
+            "model_sha256": "0433c753e6deff4ee0fc254c3ca6cd17a4c90e164b4ea16d3116aa1b9dce94cc",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "baee604acb74ab2e65eafbfc280258cbc7c56b2a6cda441d48dda8dfe0e1887b",
+            "meta_sha256": "b88740f567234db07e9ac433b74e1178fe76734d673f8d4a39d23102618a982c",
+            "model_sha256": "9f57868e397e7377b6e0b07971560274f10f06603037daa6332d666b726e1f68",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2024-01-01",
+            "start": "2023-01-01"
+          },
+          "train_range": {
+            "end": "2022-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2023-01-01",
+            "start": "2022-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2023_r20_gate_ens3_forced_apply/20260901-135853-745519",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-12-31T00:00:00+00:00",
+        "eval_start": "2024-03-28T00:00:00+00:00",
+        "experiment": "wf2024_r20_gate_ens3_forced_apply",
+        "fold": "2024",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "c5272e203c1e7ef16e288d236fcc6b0bef4ef74dd57910a0cda85150ddb67e14",
+            "meta_sha256": "9e5a94413d13edad7462156fa4d59de70dbed64967d82f43460668348bd63c9b",
+            "model_sha256": "0a5ac2a17e150a8ff37bc16ac652d6db2aa5d8a9f9cfce8f40ef8e4b758f1aff",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "87c3fabf029b89010e111d5e3ccff9f301b57e9ba49762ebf930dd266ec1af6c",
+            "meta_sha256": "d284cd1a6eb32c60c9eb3f0dd5bc1185029a3d788f7e5f0b06e52632b61e4082",
+            "model_sha256": "fd55c4c2bc498be0f513c38c83bf7ad01b13a32097629580f2fb1322cd1913de",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "45acfd7ef33b8c23fe73f91ab0276a51980030c4295f7af353cde1a4468bc4cb",
+            "meta_sha256": "5e1cf9fc3e3164e9fb9edef86d02cc5a46976f772293838dde09910f104ff551",
+            "model_sha256": "3b32dd24d1b29a75e306fa9a48197c162a614243dbe9bffffd0760c5d73dac0c",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2025-01-01",
+            "start": "2024-01-01"
+          },
+          "train_range": {
+            "end": "2023-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2024-01-01",
+            "start": "2023-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2024_r20_gate_ens3_forced_apply/20260901-135854-200590",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2025-12-31T00:00:00+00:00",
+        "eval_start": "2025-04-01T00:00:00+01:00",
+        "experiment": "wf2025_r20_gate_ens3_forced_apply",
+        "fold": "2025",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "46802d5d52c6ec1b1433c128af8e4b82cbbaf793cef5b23d7ae5b3ab015df8bf",
+            "meta_sha256": "cc3d0a5274107b0ef7888c325a1bdb8c9631724c4eec7cf9261aff5ee7ea445d",
+            "model_sha256": "f45763524abd301a75cb70cd64c4f30d5715add1db67bf767352068692cde480",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "28f5dcae6192a610359dd82b42ddb23055d97560b303b51ae3119224bc65708f",
+            "meta_sha256": "7fb36d2ccff17d1f745b3632275dc27298caecdeffa76042a67c5e75abd63edc",
+            "model_sha256": "5ffac71970b4aee7c86b2f76f4b5c06792696fa12ab5eb8bf641c6bac57c95c8",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "160fe3713d2f71c2a4c0f7eb64b3bea989d69f01a0e3bd42c62e20d9c7e8a389",
+            "meta_sha256": "16610464cb6702a6ad7e577e63624097b4f81339035fc6490b8e143e84cf5089",
+            "model_sha256": "3ee4db06519c73535b7a90ae0ef1b6bdb07ea1a7c9735a18eacef9ed45274e65",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2026-01-01",
+            "start": "2025-01-01"
+          },
+          "train_range": {
+            "end": "2024-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2025-01-01",
+            "start": "2024-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2025_r20_gate_ens3_forced_apply/20260901-135854-644054",
+        "unit_key": "ensemble"
+      }
+    ],
+    "training_device": "cpu",
+    "training_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "0771b0d06d145cf68dbd9def5c37dac3d07743c8"
+    },
+    "training_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    }
+  },
+  "gated_longf_ens3": {
+    "data_identity": {
+      "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+      "provider": "file",
+      "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+    },
+    "evaluation_device": "cpu",
+    "evaluation_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "0771b0d06d145cf68dbd9def5c37dac3d07743c8"
+    },
+    "evaluation_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    },
+    "folds": [
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "gate_evaluation_mode": "learned",
+    "member_seeds": [
+      42,
+      43,
+      44
+    ],
+    "model_selection": "validation_best",
+    "protocol_sha256": "d53045a9f96e1f4905f40838b5a63afdeca294670dd4814843922d97077b147c",
+    "range_identity": {
+      "kind": "expanding",
+      "train_start": "2003-06-01"
+    },
+    "requested_device": "cpu",
+    "result_kind": "ensemble",
+    "runs": [
+      {
+        "eval_end": "2010-01-01T00:00:00+00:00",
+        "eval_start": "2009-04-03T00:00:00+01:00",
+        "experiment": "wf2009_r20_gate_ens3",
+        "fold": "2009",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "44cedc000653e9f843e8e282cda3ea2ebee9f620fe11d51eb1b1ded65c0961b3",
+            "meta_sha256": "5bcb74e9ffcf30b6261cf24e6b31ce5f82723d4693c15b245ae1b99ba5bd77eb",
+            "model_sha256": "8f1d41cf8147fb57af4439b2c10d1c7f766fc6ad660659b6bcd08e05a4117fe7",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "1cb0b60b09a6cf7529cbd0dbebc28ad7a686c879e64a7273cd97c65abf4c3af8",
+            "meta_sha256": "618f22d66adac3afb270a924a5785d799b7490626b3ab27c0d4fbfa7e7d4ac19",
+            "model_sha256": "cdcdbfe900117e8db507b678f4a48c63c9ac31f17afd5e8efd7722bf01a55577",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "3356f3e58356803d5d9514af399897301f9572a6cf22f0712083a30681354f47",
+            "meta_sha256": "cfd602f249563556b856cce5291bbbb098ca7d61c64abfed856d108e8e7623aa",
+            "model_sha256": "0371d6b9f478ddb4a2beada5b27b9a8491d61d0a299fabd3c5a1823f8e6c4f40",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2010-01-01",
+            "start": "2009-01-01"
+          },
+          "train_range": {
+            "end": "2008-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2009-01-01",
+            "start": "2008-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2009_r20_gate_ens3/20260901-135847-037122",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2010-12-31T00:00:00+00:00",
+        "eval_start": "2010-03-31T00:00:00+01:00",
+        "experiment": "wf2010_r20_gate_ens3",
+        "fold": "2010",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "86cc121f91779e62553219b04bee9dda833dbd8a763269efbf6530f0ca4e6776",
+            "meta_sha256": "9bd1e38f84791a6bc3a9d7fa79c6dc4e99c4de9c6dff60125720b25cc34ac485",
+            "model_sha256": "444ae9e3fbe2e538ed3b8c4f089d3ba842ed9e2fb66f88d9d13e7c7a69ed4c90",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "af91c01c6a48eec2a5b67a512f7fec5e945cb46de0503cec528339d62e7cbf10",
+            "meta_sha256": "4aba2657bd25081814c4e4acc7d5affdcb6e7c260fd9c837b0c4d6d249294b61",
+            "model_sha256": "b5a0e86e2167ac6af19ba7ab8c54c32e7f35726304e1da7b3d1e0cdae166db76",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "3c7ba31201dcfe7709bada6781707a6cab89aa11c38e46ed0ff63a9467433454",
+            "meta_sha256": "ada4254503288cf7ef7a4794b81489d5de3e2f493fba35d3c48dbbedfd28032d",
+            "model_sha256": "cd00939ff68cb130bc15cb667ab21db0eacde740876696e31a5c6102afbe07ba",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2011-01-01",
+            "start": "2010-01-01"
+          },
+          "train_range": {
+            "end": "2009-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2010-01-01",
+            "start": "2009-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2010_r20_gate_ens3/20260901-135847-485919",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2011-12-30T00:00:00+00:00",
+        "eval_start": "2011-03-31T00:00:00+01:00",
+        "experiment": "wf2011_r20_gate_ens3",
+        "fold": "2011",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "330e98148f081589c0ef45e5cf35b7b132087d9d2014df7e3de37e251b7bf173",
+            "meta_sha256": "fa35364eba74558aa72cdb138da49b0c1799cf1806f2b4b40d135a6dbc880b09",
+            "model_sha256": "b953804cc65a7524029c02652fa2d4d4d4e8897b87ff318674a2149c27470255",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "1a0b891605b23f7dd651cf60e9f2b37e65624baf82f097b8efae879c4000fb1c",
+            "meta_sha256": "59928db7be177becc8eb4ad71d8335edab38dcfafbb3196658120ea09ecc5211",
+            "model_sha256": "01e96b6e742f81f4c2a8d54c77819d058247cf7e2a0a83a7a6e2f716f0e89c49",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "59c0e372f3e5865d41fa6ac027605ca4e016bacc220d9e0252744690332970f3",
+            "meta_sha256": "3e0e24256c490f0954db0315e79a398a118fa4fdf54b12579cde778af22fe317",
+            "model_sha256": "2f3c8dd6ace62c3f4b30731feee4ff75c4d7d609a0edfb268fa6b4534831ff4e",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2012-01-01",
+            "start": "2011-01-01"
+          },
+          "train_range": {
+            "end": "2010-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2011-01-01",
+            "start": "2010-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2011_r20_gate_ens3/20260901-135847-943363",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2013-01-01T00:00:00+00:00",
+        "eval_start": "2012-03-29T00:00:00+01:00",
+        "experiment": "wf2012_r20_gate_ens3",
+        "fold": "2012",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "8a73a8fec38ff4c241d34eeaf705dc0abbc9a8c7e0d3baf01bd6c1a53a38c7f2",
+            "meta_sha256": "a2d75bc9ff4f0c92b0d2d03ec0509131289ef08f1c40c15c8be6b4bda229559b",
+            "model_sha256": "6b6cf12d17e3396e37dbf3f0e80b11e27457e512cf494462f31c6e4a72ffdde5",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "bc12b12216997183f6086c54ea57154627d7fabfdbad1a2fc98bd9dfec575864",
+            "meta_sha256": "4f614aae671a7d24913742d255d1638df78958c16a486cbf9168587f8f82b490",
+            "model_sha256": "22e3bf9d5ddff9706af0f5cde2570bb5bb18366d24d01d8dc726789104142be7",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "c13e5566a9e5a9cf78c7713c4850f7ba00ea47f95a94287818456a659b6d33d7",
+            "meta_sha256": "d4376804ffc5b157c51e3845d3f1e7feebe83b0df8c781d4f4a5638268c0dc95",
+            "model_sha256": "66afe42c053e9a9bc4cb0de540aa67e0bbfcc21d81946d0e1292e7a8ab56b60a",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2013-01-01",
+            "start": "2012-01-01"
+          },
+          "train_range": {
+            "end": "2011-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2012-01-01",
+            "start": "2011-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2012_r20_gate_ens3/20260901-135848-397220",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2014-01-01T00:00:00+00:00",
+        "eval_start": "2013-04-01T00:00:00+01:00",
+        "experiment": "wf2013_r20_gate_ens3",
+        "fold": "2013",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "e7f0599c39873a262c2ab552a8049f1e81ad3de9e5284e2724df07df397a9cca",
+            "meta_sha256": "1041e4b87ef32a7e19efc038f2fbfeb6ed8ad44d4883c3236f126e140bdebb39",
+            "model_sha256": "85090f7f76e95c05c216aa96ffddfd0af9bc670f43ab54c4c0ca378bf65869c4",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "a72195430caad2af754562844622208227b84d03ba529d105e134b5df26691a4",
+            "meta_sha256": "943c2128f89a94674480d6a04983d410028126f6a794972d505c89d4a1ebc0e0",
+            "model_sha256": "34a9a3ed40ad956b7d47b06adbe3594f71825951ffc03833744fd0264007caaa",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "13970591e9a35b030b421a846c76827ad7876289c99d828798dd5844641e704d",
+            "meta_sha256": "4648646238f15d4bed575bfd86260b3fca724980a2863169a14f93cb59d23fdb",
+            "model_sha256": "d280e166d79579d2c2eb997ddc83a7d39f75b89b8f40d0eddc9cbc6324e235ac",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2014-01-01",
+            "start": "2013-01-01"
+          },
+          "train_range": {
+            "end": "2012-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2013-01-01",
+            "start": "2012-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2013_r20_gate_ens3/20260901-135848-840017",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2015-01-01T00:00:00+00:00",
+        "eval_start": "2014-03-31T00:00:00+01:00",
+        "experiment": "wf2014_r20_gate_ens3",
+        "fold": "2014",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "01e95f84341670719590c033662bb63d069b00b10ebd5331698e0bc2e649c0ea",
+            "meta_sha256": "5f8c8f359f89ce688dc29f20223d73f36835040eab44555493bc93868ca82f9a",
+            "model_sha256": "7053fe7d92d061d64759b0b0192ddb5c776f4fc5276cff1ac66a3dd379c9495f",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "d43ccb7f01f801736f530f029b10ee33850c3d6c07d81eb7954b53bb3db1c446",
+            "meta_sha256": "9c2e4a2c4fe085ed86e6fc4f58c045527d6254dffdc334cbe2c275db2b3fd9de",
+            "model_sha256": "bdd16f3b0168d6d4a1e4d004a5817965a41c498c8cdf48b3a25b9e2ba613be59",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "ffef0f6d502803ac7173a01552cec78a61b6cbe4d320d213b1db125494b5a9c0",
+            "meta_sha256": "b43a02a1162624349013fcf5f83dbf52b32bbf6f2e80d10729bce069ac892e82",
+            "model_sha256": "074efd313aa9e3de38b679948b295e0ed8a769082fbb93d118f2cd1b07af3ade",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2015-01-01",
+            "start": "2014-01-01"
+          },
+          "train_range": {
+            "end": "2013-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2014-01-01",
+            "start": "2013-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2014_r20_gate_ens3/20260901-135849-305655",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-01-01T00:00:00+00:00",
+        "eval_start": "2015-03-31T00:00:00+01:00",
+        "experiment": "wf2015_r20_gate_ens3",
+        "fold": "2015",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "75b2a0f81d04fc7aa2bf6bbadb9ebd0785d1c0af7dbc7b79e59b9226ff71c416",
+            "meta_sha256": "80d599d9c0751e1e233a127f368118a09079af5fd1a130198c11cfc4e9e0ad6e",
+            "model_sha256": "eb8f1ae6999e20a833ad13924c975186ae6ca3b5520e27fea4af41d31556d472",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "cffab7782079ad4e4246fe0fa0b57b4ce639e6741c7b9b4f5466ba451d3295bc",
+            "meta_sha256": "ddf05942fc1e8b799e314296c97f7caf4b2c2ea1f2333eb1f2bc15b1d1b8a9e6",
+            "model_sha256": "4f3186ada85f5fbc84b2be55240a6707c3ea93d8efd279cb9305647c34454656",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "fdf0613f8ea3ffbe88154617558e82daac3f99605b9c137148e1f9c66560acf5",
+            "meta_sha256": "66d5fe17eee4554bd952c0d2a4eeeba62ffa11b129d494f7627ff16e6e4baa7c",
+            "model_sha256": "0c706c21797fece888d46863a37b483b072a0150911510004cabbc3c204c961c",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2016-01-01",
+            "start": "2015-01-01"
+          },
+          "train_range": {
+            "end": "2014-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2015-01-01",
+            "start": "2014-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2015_r20_gate_ens3/20260901-135849-758400",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2016-12-30T00:00:00+00:00",
+        "eval_start": "2016-03-30T00:00:00+01:00",
+        "experiment": "wf2016_r20_gate_ens3",
+        "fold": "2016",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "ea4ac16024492b9bac84450c5c8cc81555c307c14bbcfaa5120e460e0b0ab47d",
+            "meta_sha256": "9f33ec6946f7d470d2abba2f5d231ba5c672792758da377565aec0fa9d9303a2",
+            "model_sha256": "c17c2a0540906df867d5b23c3a263391716224cecaefb4394d23e685b4e6a87e",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "732ee602a0e3492b55586b1abf450c4a7e0f3b35d673c88f8323c739ade0e19a",
+            "meta_sha256": "9754d89b533c49730746e02ab75a19d117f430d153e8f148e54a464f67a03bb2",
+            "model_sha256": "b52ab90feaf879fe08c3d00aee8d06dc0f72327ff76bc53eb33ccef3ac10b0e6",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "77eda001d8a9017c3d10f5a1e31a055ecbee9697067d78468fdd7c8f80463345",
+            "meta_sha256": "ec637eabfa66dda65685129c962b60be9fdd213ede1c162d14900944cd9f3957",
+            "model_sha256": "257fb2cac0fd53a8fe9766028c7b0f1ec602860101002ff87690303495119768",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2017-01-01",
+            "start": "2016-01-01"
+          },
+          "train_range": {
+            "end": "2015-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2016-01-01",
+            "start": "2015-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2016_r20_gate_ens3/20260901-135850-218581",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2018-01-01T00:00:00+00:00",
+        "eval_start": "2017-03-30T00:00:00+01:00",
+        "experiment": "wf2017_r20_gate_ens3",
+        "fold": "2017",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "512d151c7960136c5154f54f5674354b4753e56a3beec4816addec929871e281",
+            "meta_sha256": "ab3891ad33576b85fd07b5bd748bc8284b4a93707e740554a182e79a773f2c2b",
+            "model_sha256": "c0effb574bc353fa9cf54ec339ecb9a3c9182f5265f17965788469c663413d85",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "717a911d60cc5e4c456db311f68f763c51ed2e29cfe97c4f28aac019bfe19c48",
+            "meta_sha256": "b7fdc47d5dab5379f01851cd9e736e4c342b46b6bef43997753643d899691582",
+            "model_sha256": "41ba99f048af98ef6059081ae246d08ab2ac32b62885762e292d1d14e2757c9d",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "6040801ccbded7f3cb4c4b68da2809d8c788a3f4f17f0da40a12a3cc0156d7f3",
+            "meta_sha256": "f719d580754363fd8efd60e0e7ea89a8772d1030beedce9d351807d65a4bbbeb",
+            "model_sha256": "45a7d4273526efa42e97771e35160b55c773c6bbb338ddef637e4cdd4838802d",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2018-01-01",
+            "start": "2017-01-01"
+          },
+          "train_range": {
+            "end": "2016-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2017-01-01",
+            "start": "2016-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2017_r20_gate_ens3/20260901-135850-674106",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2019-01-01T00:00:00+00:00",
+        "eval_start": "2018-03-29T00:00:00+01:00",
+        "experiment": "wf2018_r20_gate_ens3",
+        "fold": "2018",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "de6cb342ec524e26c1eafc093e98de85e782d5891faa087cab74d24d96c81303",
+            "meta_sha256": "9e9245b8d596ef0f520482b853ac1f448a2cafabc4d93d9b63967f24aeaf3598",
+            "model_sha256": "801fdb1fcfad2fe0a30cadd21bdeb7f4c348a99bd82e0161911012c3ad2915ce",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "b3297466048c4163ff7b8a509c2d04b24e6d45bf8df4944195ae8927667201f8",
+            "meta_sha256": "2444208d5503a130d89e1404ea51f0309a4dd44d195f4f57d7536576c48feece",
+            "model_sha256": "27c39d3ce295a1c1d40c9edb5628e660539f9b3135e7950f7d347af18ece2b63",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "6e8bfd1180b5a253fae18cd0c1fb7b6d3a1d9c178d7886c35dc28d8f645f0d5d",
+            "meta_sha256": "f47aea61c3651b32e7c1d8a4690f72a3d4a437e8cf9d0ecbc1e998129d3f4b99",
+            "model_sha256": "3528ae548b5642a640dc1932be4509d9dd3caf5844d1055742e447e0839ad045",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2019-01-01",
+            "start": "2018-01-01"
+          },
+          "train_range": {
+            "end": "2017-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2018-01-01",
+            "start": "2017-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2018_r20_gate_ens3/20260901-135851-130765",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2020-01-01T00:00:00+00:00",
+        "eval_start": "2019-03-29T00:00:00+00:00",
+        "experiment": "wf2019_r20_gate_ens3",
+        "fold": "2019",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "b908802cb66b47c6647ec0ecf691c1b7dae20fea604235d4f4c729a1ce1492aa",
+            "meta_sha256": "e7fd9bb3e38f78dffcc3b4f383f1380b437f449d30cced00d1b2099b2f257451",
+            "model_sha256": "51e5039d670d8939b2b8681f9e1fe4d563e9195abdc9f4b9397321cbd8950284",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "ba834c0d40697eb844bf9778dd62cdce61fb78a8061cb374a363780669889075",
+            "meta_sha256": "087e5db8f2b8fb3c7a7b154f14d9d7eb0523e4509dc1bd64152876288fde79c8",
+            "model_sha256": "3cfd372b8b169b2d8fb73a42c7cb7967a0720208746109c548f43f81b5ae7c79",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9a766f22eb390d1a1469e21768a03d9a3d1fcd21b87ea2a7f138c4fd573242b1",
+            "meta_sha256": "276cf7afb2c421fe47bad714b7a5c9a541ff6a40e6a33e5460eb5ea7058fca8c",
+            "model_sha256": "7cdd9c4860633e1c7e8ba11731816b9c4be54e7b419c6fc1b0d6be88fe279314",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2020-01-01",
+            "start": "2019-01-01"
+          },
+          "train_range": {
+            "end": "2018-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2019-01-01",
+            "start": "2018-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2019_r20_gate_ens3/20260901-135851-708474",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-01-01T00:00:00+00:00",
+        "eval_start": "2020-03-30T00:00:00+01:00",
+        "experiment": "wf2020_r20_gate_ens3",
+        "fold": "2020",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "e26fa00517923f1d4f0a0675612b11ad0292b057ca804fc2d8bd1f53df582a3a",
+            "meta_sha256": "a49d3cf027504669b8cb34fa9a87d45d4e8167191427be88438feb7ed65d5822",
+            "model_sha256": "7b874c156893d5992d7c777f1ba311287b1fe13efed132c5d62ad3857777198a",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "592d407b23ce2607efb6f03295a10b40fbf290838840576659ec949e81136879",
+            "meta_sha256": "6ab66cd4347174148f965eb0d5f153c404d14731491141bf4da4463ee2ccabe3",
+            "model_sha256": "60d6023b3a1bc28ed5883cd91b75acd6bc6b7d650f9fd5fdb42b3f86640ed904",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "4b835ff33e4d27727f595edeaf66f075fec3537c96d7486894aa6bd768d4beaa",
+            "meta_sha256": "9841b02bb058323a9516c027710241f4ed7505ea991349c302beb991d8cb5684",
+            "model_sha256": "57ce7b72c693375377da55c19aa20ab672c22f91082e67779b7cfef4ce524851",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2021-01-01",
+            "start": "2020-01-01"
+          },
+          "train_range": {
+            "end": "2019-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2020-01-01",
+            "start": "2019-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2020_r20_gate_ens3/20260901-135852-164888",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2021-12-31T00:00:00+00:00",
+        "eval_start": "2021-03-31T00:00:00+01:00",
+        "experiment": "wf2021_r20_gate_ens3",
+        "fold": "2021",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "1041aeb247d9e0321b1cb42581f4f743234cdc2722b84d5603ad36f12383edbd",
+            "meta_sha256": "7d2d448f41c82d0c4e36c8b97d1f6120656a284e15ce3f237a5191ec0bdc0903",
+            "model_sha256": "0cd466a1e82c86798a50da82be6f9c0b781a72f809fe4844a52a78077fad72db",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "77d600e13ad8a635ad33f3f219532a434ffaadc8f7cd000ca83d932f99fedbf0",
+            "meta_sha256": "c229485bbbcb34ee265b362fa8a1799ca1ec497d52488162871e1878104045e1",
+            "model_sha256": "1356275d6233a8af05532567cb45f32dae9f4a979f5c790b436dfedecc4f3b86",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9a9e4aaf76f07551ea137b6201290df3845e56c04e875654d1df4dd64a0c561a",
+            "meta_sha256": "860e177f429f92457bcc842ac337a2a73ec41a5601b5c72e3aba3d30d1e110e0",
+            "model_sha256": "b4828f868c699c91cf97a7f5eff5420df6b804cc29d06e2602ba691e3f521892",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2022-01-01",
+            "start": "2021-01-01"
+          },
+          "train_range": {
+            "end": "2020-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2021-01-01",
+            "start": "2020-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2021_r20_gate_ens3/20260901-135852-609578",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2022-12-30T00:00:00+00:00",
+        "eval_start": "2022-03-31T00:00:00+01:00",
+        "experiment": "wf2022_r20_gate_ens3",
+        "fold": "2022",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "1e1445795fdc391162333cb5b578fee5b9e3e5be42c886189a93d8e8fdd431d8",
+            "meta_sha256": "1f985f915dd6b47aefb22a8f98e9b051cffadd76ca053ea0acc9657bbc992215",
+            "model_sha256": "f69a18236a87ce4258260916418e00c15cb1da096dae04c0422d4370fa279119",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "877bf7fffccb5b186fb5930881863626b977ea1dfa5bc61180442821dc835278",
+            "meta_sha256": "9b350c6942375dd3802a0160e0ceb271488854caa729f03edfe4448d4d544273",
+            "model_sha256": "cd98988521dc63d8586cdedb32d4961c4d8498c8c6bd8a4acfe64ef50bfc305c",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "9da7e4ab8acdc938a041eb6c421ffea4e62d26a8310e8a5152d4d408496c20b4",
+            "meta_sha256": "6de802fff80bb339154f288b2f90bf6963a79e5559b814a27cc3d56ae6ffa5b9",
+            "model_sha256": "078fdd6c0a26360f86f947be8f1f5edc95b931ce1287b099a7454bb7a99870f3",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2023-01-01",
+            "start": "2022-01-01"
+          },
+          "train_range": {
+            "end": "2021-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2022-01-01",
+            "start": "2021-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2022_r20_gate_ens3/20260901-135853-061894",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-01-01T00:00:00+00:00",
+        "eval_start": "2023-03-30T00:00:00+01:00",
+        "experiment": "wf2023_r20_gate_ens3",
+        "fold": "2023",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "0f317857d129ecd229734dba0aff3f094f11fc4e17832ac8d8d7f5d09b672b59",
+            "meta_sha256": "7d4b33af0e632d362edb1da5f6dbcaeca2c67bca6e040a9db3dffa6be39b8aec",
+            "model_sha256": "9cb5babbafb8a5741b17308a3e8ab4018f87647b3352b0a23c9b64589b8341bd",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "fef8e8c26fcbc7200352eb735340f2af2bc53c86214b4362d34d0be59577d76c",
+            "meta_sha256": "22ad5f52f29c37fac1d3f19d1bab02426b2a44330ac45ef8160f2b8a4826a0cf",
+            "model_sha256": "0433c753e6deff4ee0fc254c3ca6cd17a4c90e164b4ea16d3116aa1b9dce94cc",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "baee604acb74ab2e65eafbfc280258cbc7c56b2a6cda441d48dda8dfe0e1887b",
+            "meta_sha256": "b88740f567234db07e9ac433b74e1178fe76734d673f8d4a39d23102618a982c",
+            "model_sha256": "9f57868e397e7377b6e0b07971560274f10f06603037daa6332d666b726e1f68",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2024-01-01",
+            "start": "2023-01-01"
+          },
+          "train_range": {
+            "end": "2022-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2023-01-01",
+            "start": "2022-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2023_r20_gate_ens3/20260901-135853-514769",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2024-12-31T00:00:00+00:00",
+        "eval_start": "2024-03-28T00:00:00+00:00",
+        "experiment": "wf2024_r20_gate_ens3",
+        "fold": "2024",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "c5272e203c1e7ef16e288d236fcc6b0bef4ef74dd57910a0cda85150ddb67e14",
+            "meta_sha256": "9e5a94413d13edad7462156fa4d59de70dbed64967d82f43460668348bd63c9b",
+            "model_sha256": "0a5ac2a17e150a8ff37bc16ac652d6db2aa5d8a9f9cfce8f40ef8e4b758f1aff",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "87c3fabf029b89010e111d5e3ccff9f301b57e9ba49762ebf930dd266ec1af6c",
+            "meta_sha256": "d284cd1a6eb32c60c9eb3f0dd5bc1185029a3d788f7e5f0b06e52632b61e4082",
+            "model_sha256": "fd55c4c2bc498be0f513c38c83bf7ad01b13a32097629580f2fb1322cd1913de",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "45acfd7ef33b8c23fe73f91ab0276a51980030c4295f7af353cde1a4468bc4cb",
+            "meta_sha256": "5e1cf9fc3e3164e9fb9edef86d02cc5a46976f772293838dde09910f104ff551",
+            "model_sha256": "3b32dd24d1b29a75e306fa9a48197c162a614243dbe9bffffd0760c5d73dac0c",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2025-01-01",
+            "start": "2024-01-01"
+          },
+          "train_range": {
+            "end": "2023-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2024-01-01",
+            "start": "2023-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2024_r20_gate_ens3/20260901-135853-974309",
+        "unit_key": "ensemble"
+      },
+      {
+        "eval_end": "2025-12-31T00:00:00+00:00",
+        "eval_start": "2025-04-01T00:00:00+01:00",
+        "experiment": "wf2025_r20_gate_ens3",
+        "fold": "2025",
+        "member_seeds": [
+          42,
+          43,
+          44
+        ],
+        "model_identity": [
+          {
+            "config_snapshot_sha256": "46802d5d52c6ec1b1433c128af8e4b82cbbaf793cef5b23d7ae5b3ab015df8bf",
+            "meta_sha256": "cc3d0a5274107b0ef7888c325a1bdb8c9631724c4eec7cf9261aff5ee7ea445d",
+            "model_sha256": "f45763524abd301a75cb70cd64c4f30d5715add1db67bf767352068692cde480",
+            "seed": 42
+          },
+          {
+            "config_snapshot_sha256": "28f5dcae6192a610359dd82b42ddb23055d97560b303b51ae3119224bc65708f",
+            "meta_sha256": "7fb36d2ccff17d1f745b3632275dc27298caecdeffa76042a67c5e75abd63edc",
+            "model_sha256": "5ffac71970b4aee7c86b2f76f4b5c06792696fa12ab5eb8bf641c6bac57c95c8",
+            "seed": 43
+          },
+          {
+            "config_snapshot_sha256": "160fe3713d2f71c2a4c0f7eb64b3bea989d69f01a0e3bd42c62e20d9c7e8a389",
+            "meta_sha256": "16610464cb6702a6ad7e577e63624097b4f81339035fc6490b8e143e84cf5089",
+            "model_sha256": "3ee4db06519c73535b7a90ae0ef1b6bdb07ea1a7c9735a18eacef9ed45274e65",
+            "seed": 44
+          }
+        ],
+        "ranges": {
+          "eval_range": {
+            "end": "2026-01-01",
+            "start": "2025-01-01"
+          },
+          "train_range": {
+            "end": "2024-07-01",
+            "start": "2003-06-01"
+          },
+          "val_range": {
+            "end": "2025-01-01",
+            "start": "2024-07-01"
+          }
+        },
+        "run_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue4_gate_ensembles/wf2025_r20_gate_ens3/20260901-135854-424286",
+        "unit_key": "ensemble"
+      }
+    ],
+    "training_device": "cpu",
+    "training_git": {
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "forex_trainer": "0771b0d06d145cf68dbd9def5c37dac3d07743c8"
+    },
+    "training_versions": {
+      "forex-env-v3": "0.1.0",
+      "gymnasium": "1.2.3",
+      "sb3-contrib": "2.8.0",
+      "stable-baselines3": "2.8.0",
+      "torch": "2.12.0"
+    }
+  }
+}
