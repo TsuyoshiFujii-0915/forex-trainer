@@ -1,0 +1,66 @@
+name: issue15_supervised_cross_sectional_ranking
+folds:
+  "2009":
+    config: ../wf_r16_long_full/wf2009_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031
+  "2010":
+    config: ../wf_r16_long_full/wf2010_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220
+  "2011":
+    config: ../wf_r16_long_full/wf2011_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724
+  "2012":
+    config: ../wf_r16_long_full/wf2012_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379
+  "2013":
+    config: ../wf_r16_long_full/wf2013_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032
+  "2014":
+    config: ../wf_r16_long_full/wf2014_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502
+  "2015":
+    config: ../wf_r16_long_full/wf2015_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084
+  "2016":
+    config: ../wf_r16_long_full/wf2016_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659
+  "2017":
+    config: ../wf_r16_long_full/wf2017_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661
+  "2018":
+    config: ../wf_r16_long_full/wf2018_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230
+  "2019":
+    config: ../wf_r16_long_full/wf2019_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867
+  "2020":
+    config: ../wf_r16_long_full/wf2020_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642
+  "2021":
+    config: ../wf_r16_long_full/wf2021_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586
+  "2022":
+    config: ../wf_r16_long_full/wf2022_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827
+  "2023":
+    config: ../wf_r16_long_full/wf2023_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185
+  "2024":
+    config: ../wf_r16_long_full/wf2024_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766
+  "2025":
+    config: ../wf_r16_long_full/wf2025_r16_longf.yaml
+    ppo_ensemble: ../../runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143
+alpha_grid: [0.0, 0.1, 1.0, 10.0]
+top_k: 2
+member_seeds: [42, 43, 44]
+eras:
+  2009-2018:
+    start: 2009
+    end: 2018
+  2019-2025:
+    start: 2019
+    end: 2025
+bootstrap_samples: 10000
+bootstrap_seed: 15
+moving_block_length: 3

@@ -75,6 +75,11 @@ uv run forex-report \
 uv run forex-selection-study \
   --study configs/studies/issue1_longf_checkpoint_selection.yaml \
   --runs-root runs
+
+# Run the fixed Issue #15 supervised ranking diagnostic.
+uv run forex-supervised-ranking \
+  --study configs/research/issue15_supervised_ranking.yaml \
+  --output-dir docs/research/results/issue15
 ```
 
 Each run directory contains the config snapshot, resolved env configs for train/val/eval, `meta.json` (git SHAs of both repos, versions, seed, requested/resolved device, and training-time data identity), TensorBoard logs, `model_final.zip` (validation-selected), `model_last.zip`, `late_checkpoints.json` plus five models under `late_checkpoints/`, the validation history `evaluations.npz`, and after evaluation `metrics.json` + `equity_curve.csv` + `evaluation.json`. Evaluation manifests are versioned and seal the selected model, metrics, config snapshot, resolved eval env, training metadata, actual evaluation device, evaluation-time Git SHAs and dependency versions, and data identity with SHA-256 digests. Before evaluation, the persisted eval env must exactly match the deterministic full-range environment reconstructed from the config snapshot. `configs/` is committed; `runs/` is gitignored.
