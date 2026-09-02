@@ -18,7 +18,7 @@ from helpers import make_experiment_raw, write_experiment_yaml
 
 from forex_trainer.algorithms import ALGO_REGISTRY
 from forex_trainer.compare import main as compare_main
-from forex_trainer.evaluate import run_evaluation
+from forex_trainer.evaluate import run_evaluation, run_forced_apply_evaluation
 from forex_trainer.networks import NETWORK_REGISTRY
 from forex_trainer.train import main as train_main
 from forex_trainer.train import run_training
@@ -136,6 +136,40 @@ def test_rank_allocation_trains_and_evaluates(tmp_path: Path) -> None:
     raw["run"]["rank_allocation"] = {"top_k": 1, "gross_exposure": 1.0}
     _, metrics = _run_smoke(tmp_path, raw)
     assert metrics["mean_gross_leverage"] == pytest.approx(1.0, rel=0.05)
+
+
+def test_gated_policy_records_learned_and_forced_apply_artifacts(
+    tmp_path: Path,
+) -> None:
+    """One trained gate produces separate, sealed attribution evaluations."""
+    raw = make_experiment_raw()
+    raw["experiment"] = "apply_hold_gate_smoke"
+    raw["run"]["apply_hold_gate"] = "zero_threshold"
+    config_path = write_experiment_yaml(tmp_path, raw)
+    run_dir = run_training(config_path, tmp_path / "runs", seed_override=None)
+
+    learned = run_evaluation(run_dir)
+    forced_dir, forced = run_forced_apply_evaluation(run_dir)
+    learned_manifest = json.loads(
+        (run_dir / "evaluation.json").read_text(encoding="utf-8")
+    )
+    forced_manifest = json.loads(
+        (forced_dir / "evaluation.json").read_text(encoding="utf-8")
+    )
+
+    assert forced_dir == run_dir / "forced_apply"
+    assert learned_manifest["manifest_version"] == 3
+    assert forced_manifest["manifest_version"] == 3
+    assert learned_manifest["gate_evaluation_mode"] == "learned"
+    assert forced_manifest["gate_evaluation_mode"] == "forced_apply"
+    assert learned_manifest["model_sha256"] == forced_manifest["model_sha256"]
+    assert (run_dir / "gate_trace.csv").is_file()
+    assert (forced_dir / "gate_trace.csv").is_file()
+    assert len(learned_manifest["gate_trace_sha256"]) == 64
+    assert len(forced_manifest["gate_trace_sha256"]) == 64
+    assert 0.0 <= learned["gate_apply_fraction"] <= 1.0
+    assert 0.0 <= forced["gate_apply_fraction"] <= 1.0
+    assert forced["effective_gate_apply_fraction"] == 1.0
 
 
 def test_learned_leverage_mode_still_evaluates(tmp_path: Path) -> None:

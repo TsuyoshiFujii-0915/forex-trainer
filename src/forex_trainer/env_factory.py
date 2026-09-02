@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+from enum import Enum
 from functools import partial
 from typing import Any
 
@@ -14,10 +15,18 @@ from gymnasium import spaces
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecEnv
 
-from .config import RankAllocationConfig, ResidualConfig
+from .config import ApplyHoldGateConfig, RankAllocationConfig, ResidualConfig
 from .features import CROSS_FEATURE_REGISTRY, FEATURE_REGISTRY
 
 _MAX_FINITE_FLOAT32_SCORE = np.finfo(np.float32).max
+_ACTION_BOUND_TOLERANCE = 1e-6
+
+
+class GateEvaluationMode(str, Enum):
+    """How an enabled learned gate is applied during an environment walk."""
+
+    LEARNED = "learned"
+    FORCED_APPLY = "forced_apply"
 
 
 class PinnedLeverageAction(gymnasium.ActionWrapper):
@@ -199,6 +208,224 @@ class DecisionInterval(gymnasium.Wrapper):
         return observation, total_reward, terminated, truncated, info
 
 
+class ApplyHoldGate(gymnasium.Wrapper):
+    """Apply proposed direct weights or preserve the current allocation.
+
+    The agent-facing action appends one gate scalar to the direct pair weights.
+    The wrapper sits outside ``DecisionInterval`` so one threshold decision is
+    made for the whole agent decision, including action-repeat configurations.
+    """
+
+    def __init__(
+        self,
+        env: gymnasium.Env,
+        max_leverage: float,
+        evaluation_mode: GateEvaluationMode,
+        currency_pairs: tuple[str, ...],
+        commission_rate: float,
+        spread_rates: tuple[float, ...],
+    ) -> None:
+        """Wrap a pinned-leverage direct-weight environment.
+
+        Args:
+            env: Environment accepting direct pair weights of shape (N, 1).
+            max_leverage: Global cap used to calculate proposed target weights.
+            evaluation_mode: Learned threshold behavior or forced apply.
+            currency_pairs: Configured pair order used by exposure diagnostics.
+            commission_rate: Proportional commission applied to JPY turnover.
+            spread_rates: Per-pair proportional spread costs in pair order.
+
+        Raises:
+            ValueError: If the wrapped action space is not direct weights.
+        """
+        super().__init__(env)
+        box = env.action_space
+        if not isinstance(box, spaces.Box) or len(box.shape) != 2 or box.shape[1] != 1:
+            raise ValueError(
+                "apply/hold gate requires a direct-weight Box action space "
+                f"with shape (N, 1), got {box!r}."
+            )
+        self._num_pairs = box.shape[0]
+        if len(currency_pairs) != self._num_pairs:
+            raise ValueError(
+                "apply/hold gate currency-pair count must match the action space, "
+                f"got {len(currency_pairs)} pairs and {self._num_pairs} actions."
+            )
+        if len(spread_rates) != self._num_pairs:
+            raise ValueError(
+                "apply/hold gate spread count must match the action space, "
+                f"got {len(spread_rates)} spreads and {self._num_pairs} actions."
+            )
+        self._max_leverage = max_leverage
+        self._evaluation_mode = evaluation_mode
+        self._currency_pairs = currency_pairs
+        self._commission_rate = commission_rate
+        self._spread_rates = np.asarray(spread_rates, dtype=np.float64)
+        self._current_target_weights = np.zeros(self._num_pairs, dtype=np.float64)
+        self._current_equity_jpy = 0.0
+        self._current_exposures_jpy = np.zeros(self._num_pairs, dtype=np.float64)
+        self.action_space = spaces.Box(
+            low=-1.0,
+            high=1.0,
+            shape=(self._num_pairs + 1, 1),
+            dtype=np.float32,
+        )
+
+    def reset(self, **kwargs: Any) -> tuple[Any, dict[str, Any]]:
+        """Reset the allocation state to the environment's flat portfolio."""
+        observation, info = self.env.reset(**kwargs)
+        self._current_target_weights = np.zeros(self._num_pairs, dtype=np.float64)
+        self._cache_account_state(info)
+        return observation, info
+
+    def _cache_account_state(self, info: Mapping[str, Any]) -> None:
+        """Cache the account state needed for exact cost counterfactuals.
+
+        Args:
+            info: Wrapped environment info at the current decision boundary.
+
+        Raises:
+            TypeError: If equity or pair exposures have invalid types.
+            ValueError: If equity or pair exposures are absent or non-finite.
+        """
+        equity = info.get("equity_jpy")
+        exposures = info.get("exposures_jpy")
+        if isinstance(equity, bool) or not isinstance(equity, (int, float)):
+            raise TypeError("apply/hold gate requires numeric equity_jpy in info.")
+        if not isinstance(exposures, Mapping):
+            raise TypeError("apply/hold gate requires exposures_jpy in info.")
+        try:
+            exposure_array = np.asarray(
+                [exposures[pair] for pair in self._currency_pairs], dtype=np.float64
+            )
+        except KeyError as exc:
+            raise ValueError(
+                f"apply/hold gate exposures_jpy is missing pair {exc.args[0]!r}."
+            ) from exc
+        if (
+            not np.isfinite(float(equity))
+            or float(equity) <= 0.0
+            or not np.isfinite(exposure_array).all()
+        ):
+            raise ValueError("apply/hold gate received a non-finite account state.")
+        self._current_equity_jpy = float(equity)
+        self._current_exposures_jpy = exposure_array
+
+    def _proposed_target_weights(self, proposal: np.ndarray) -> np.ndarray:
+        """Apply direct-policy clipping and the global gross cap.
+
+        Args:
+            proposal: Raw direct pair weights of shape (N, 1).
+
+        Returns:
+            Effective target weights before the gate decision.
+        """
+        weights = np.clip(proposal[:, 0].astype(np.float64), -1.0, 1.0)
+        gross_request = float(np.abs(weights).sum())
+        if gross_request > self._max_leverage:
+            weights = weights * (self._max_leverage / gross_request)
+        return weights
+
+    def _immediate_rebalance_cost(self, target_weights: np.ndarray) -> float:
+        """Calculate the deterministic spread and commission for one rebalance.
+
+        Args:
+            target_weights: Effective direct targets at the decision boundary.
+
+        Returns:
+            Immediate JPY spread plus commission cost.
+        """
+        target_exposures = target_weights * self._current_equity_jpy
+        turnover = np.abs(target_exposures - self._current_exposures_jpy)
+        return float(
+            turnover @ self._spread_rates + turnover.sum() * self._commission_rate
+        )
+
+    def step(self, action: np.ndarray) -> tuple[Any, float, bool, bool, dict[str, Any]]:
+        """Make one apply/hold decision and report its mechanism diagnostics.
+
+        Args:
+            action: Direct pair-weight proposal followed by one gate scalar.
+
+        Returns:
+            Standard Gymnasium step tuple with gate diagnostics in ``info``.
+
+        Raises:
+            ValueError: If the action shape is wrong or contains non-finite data.
+        """
+        array = np.asarray(action, dtype=np.float64)
+        if array.shape != self.action_space.shape:
+            raise ValueError(
+                "apply/hold gate action must have shape "
+                f"{self.action_space.shape}, got {array.shape}."
+            )
+        if not np.isfinite(array).all():
+            raise ValueError("apply/hold gate action must contain only finite values.")
+        if np.any(array < -1.0 - _ACTION_BOUND_TOLERANCE) or np.any(
+            array > 1.0 + _ACTION_BOUND_TOLERANCE
+        ):
+            raise ValueError(
+                "apply/hold gate action values must lie in [-1, 1], "
+                f"got minimum={float(array.min())} and maximum={float(array.max())}."
+            )
+        array = np.clip(array, -1.0, 1.0)
+
+        proposal = array[: self._num_pairs]
+        gate_signal = float(array[self._num_pairs, 0])
+        proposed_target_weights = self._proposed_target_weights(proposal)
+        current_before = self._current_target_weights.copy()
+        proposed_immediate_cost = self._immediate_rebalance_cost(
+            proposed_target_weights
+        )
+        held_immediate_cost = self._immediate_rebalance_cost(current_before)
+        learned_apply = gate_signal >= 0.0
+        forced_apply = self._evaluation_mode is GateEvaluationMode.FORCED_APPLY
+        applied = learned_apply or forced_apply
+        forwarded = proposed_target_weights if applied else current_before
+        observation, reward, terminated, truncated, info = self.env.step(
+            forwarded.reshape(-1, 1).astype(np.float32)
+        )
+        if "target_weights" not in info:
+            raise ValueError(
+                "apply/hold gate requires target_weights in wrapped environment info."
+            )
+        applied_target_weights = np.asarray(info["target_weights"], dtype=np.float64)
+        if applied_target_weights.shape != (self._num_pairs,):
+            raise ValueError(
+                "apply/hold gate received malformed target_weights with shape "
+                f"{applied_target_weights.shape}."
+            )
+        self._current_target_weights = applied_target_weights.copy()
+        if not (terminated or truncated):
+            self._cache_account_state(info)
+        proposal_distance = float(
+            np.abs(proposed_target_weights - current_before).sum()
+        )
+        enriched_info = dict(info)
+        enriched_info.update(
+            {
+                "gate_signal": gate_signal,
+                "gate_learned_apply": bool(learned_apply),
+                "gate_applied": bool(applied),
+                "gate_forced_apply": bool(forced_apply),
+                "proposed_target_weights": proposed_target_weights.tolist(),
+                "current_target_weights_before": current_before.tolist(),
+                "applied_target_weights": applied_target_weights.tolist(),
+                "proposal_distance_from_current": proposal_distance,
+                "turnover_avoided_by_hold": 0.0 if applied else proposal_distance,
+                "proposed_immediate_transaction_cost_jpy": proposed_immediate_cost,
+                "held_immediate_transaction_cost_jpy": held_immediate_cost,
+                "immediate_transaction_cost_paid_jpy": (
+                    proposed_immediate_cost if applied else held_immediate_cost
+                ),
+                "immediate_transaction_cost_avoided_by_hold_jpy": (
+                    0.0 if applied else proposed_immediate_cost - held_immediate_cost
+                ),
+            }
+        )
+        return observation, reward, terminated, truncated, enriched_info
+
+
 class ResidualAction(gymnasium.Wrapper):
     """Adds the agent action as a residual on a rank-based rule (ADR-0009).
 
@@ -274,6 +501,8 @@ def build_single_env(
     decision_interval: int,
     residual: ResidualConfig | None,
     rank_allocation: RankAllocationConfig | None,
+    apply_hold_gate: ApplyHoldGateConfig | None,
+    gate_evaluation_mode: GateEvaluationMode,
 ) -> Monitor:
     """Build one Monitor-wrapped ForexEnv.
 
@@ -289,6 +518,9 @@ def build_single_env(
             weight actions.
         rank_allocation: Sparse score-ranked allocation (ADR-0010), or None
             for direct weight actions.
+        apply_hold_gate: Learned zero-threshold direct-policy gate (ADR-0025),
+            or None.
+        gate_evaluation_mode: Learned gate decisions or forced-apply control.
 
     Returns:
         Monitor-wrapped environment (with PinnedLeverageAction applied when
@@ -326,6 +558,19 @@ def build_single_env(
             gross_exposure=rank_allocation.gross_exposure,
         )
     env = DecisionInterval(env, decision_interval)
+    if apply_hold_gate is not None:
+        currency_pairs = tuple(env_raw["environment"]["currency_pairs"])
+        costs = env_raw["transaction_costs"]
+        env = ApplyHoldGate(
+            env,
+            max_leverage=float(env_raw["environment"]["max_leverage"]),
+            evaluation_mode=gate_evaluation_mode,
+            currency_pairs=currency_pairs,
+            commission_rate=float(costs["commission_rate"]),
+            spread_rates=tuple(
+                float(costs["spreads"][pair]) for pair in currency_pairs
+            ),
+        )
     monitored = Monitor(env)
     monitored.reset(seed=seed)
     return monitored
@@ -341,6 +586,8 @@ def build_vec_env(
     decision_interval: int,
     residual: ResidualConfig | None,
     rank_allocation: RankAllocationConfig | None,
+    apply_hold_gate: ApplyHoldGateConfig | None,
+    gate_evaluation_mode: GateEvaluationMode,
 ) -> VecEnv:
     """Build the vectorized training environment.
 
@@ -354,6 +601,8 @@ def build_vec_env(
         decision_interval: Env bars per agent decision (ADR-0004).
         residual: Residual action scheme (ADR-0009), or None.
         rank_allocation: Sparse score-ranked allocation (ADR-0010), or None.
+        apply_hold_gate: Learned zero-threshold direct-policy gate, or None.
+        gate_evaluation_mode: Learned gate decisions or forced-apply control.
 
     Returns:
         SB3 VecEnv instance.
@@ -372,6 +621,8 @@ def build_vec_env(
             decision_interval,
             residual,
             rank_allocation,
+            apply_hold_gate,
+            gate_evaluation_mode,
         )
         for rank in range(n_envs)
     ]

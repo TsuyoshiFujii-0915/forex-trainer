@@ -15,7 +15,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 
 from .algorithms import ALGO_REGISTRY, resolve_device
 from .config import TrainerConfigError, parse_experiment_config
-from .env_factory import build_single_env
+from .env_factory import GateEvaluationMode, build_single_env
 from .evaluate import compute_metrics, walk_eval_range
 
 LATE_CHECKPOINT_RULE = "final_five_validation_walks"
@@ -439,6 +439,8 @@ def evaluate_model_artifacts(
         decision_interval=reference_config.run.decision_interval,
         residual=reference_config.run.residual,
         rank_allocation=reference_config.run.rank_allocation,
+        apply_hold_gate=reference_config.run.apply_hold_gate,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     states: list[Any] = [None] * len(loaded)
 

@@ -16,6 +16,7 @@
 | [07-data-sufficiency-and-scaling.md](07-data-sufficiency-and-scaling.md) | `longf` の固有市場履歴量に対する汎化スケーリングと実効標本数 | Issue #7 |
 | [08-sparse-rank-allocation.md](08-sparse-rank-allocation.md) | scoreから固定grossの疎なlong/short配分を作る構造化行動空間 | Issue #2、Round 18〜19 |
 | [09-regime-tail-loss-diagnostic.md](09-regime-tail-loss-diagnostic.md) | current-provenance `longf ens3`のtail lossをfold単位でregime診断 | Issue #5 |
+| [10-learned-apply-hold-gate.md](10-learned-apply-hold-gate.md) | direct proposalを適用するか既存allocationを保持するlearned execution gate | Issue #4、Round 20 |
 
 ## 確立した方法論(今後の全実験に適用)
 
@@ -32,7 +33,7 @@
 4. **学習バッチ実行中にソースコードを編集しない** — editable インストールのため、実行中の
    バッチが編集途中の不整合なコードを import して落ちる(round-7b で実証済み)。
 
-## 主要な結論(2026-07-03 時点)
+## 主要な結論(2026-09-01 時点)
 
 - 2ペア(JPY/USD, JPY/EUR)× 価格由来テクニカル特徴量の空間には**取れるエッジが存在しない**
   (ルールでも RL でもグロス ≈ 0)。
@@ -45,6 +46,8 @@
   - **RL 最良(ens3、キャリー+xs特徴量、9ペア日足): ネット +3.1%/年、Sharpe 0.35、4/7年**
 - RL はルール未達のまま: 2024年依存が強く(除くと ≈ −2.9%/年)、レジーム逆風年の
   ドローダウン制御ができていない。検証→評価相関は負のままでゲーティング不成立。
+- direct `longf`のlearned apply/hold gateは17-foldで非採用（unproven）とした。turnoverとcostは下がったが、
+  direct比net −7.39ポイント、same-model forced apply比−1.20ポイントでgross alpha損失が上回った。
 - 「エージェントで有意なプラス」には、ルール並みのリスク制御(ドローダウン抑制)を
   RL に持たせることが残る主課題。
 

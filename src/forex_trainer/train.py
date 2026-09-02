@@ -19,7 +19,7 @@ from .config import (
     parse_experiment_config,
     resolve_env_raw,
 )
-from .env_factory import build_single_env, build_vec_env
+from .env_factory import GateEvaluationMode, build_single_env, build_vec_env
 from .model_selection import LateCheckpointCallback
 from .run_dir import create_run_dir, write_run_metadata
 
@@ -114,6 +114,8 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         config.run.decision_interval,
         config.run.residual,
         config.run.rank_allocation,
+        config.run.apply_hold_gate,
+        GateEvaluationMode.LEARNED,
     )
     val_env = build_single_env(
         resolved_val,
@@ -123,6 +125,8 @@ def run_training(config_path: Path, runs_root: Path, seed_override: int | None) 
         decision_interval=config.run.decision_interval,
         residual=config.run.residual,
         rank_allocation=config.run.rank_allocation,
+        apply_hold_gate=config.run.apply_hold_gate,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     # ~20 validation walks over the run; eval_freq counts per-env steps, and
     # the max(1, ...) floor guarantees at least one walk even on tiny budgets,

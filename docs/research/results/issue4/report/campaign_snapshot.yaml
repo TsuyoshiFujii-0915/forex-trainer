@@ -1,0 +1,92 @@
+name: issue4_apply_hold_gate
+configurations:
+  direct_longf_ens3:
+    model_selection: validation_best
+    result_kind: ensemble
+    range_policy:
+      kind: expanding
+      train_start: "2003-06-01"
+    runs:
+      - ../../runs/issue4_control_ensembles/wf2009_r16_longf_ens3/20260901-130838-165323
+      - ../../runs/issue4_control_ensembles/wf2010_r16_longf_ens3/20260901-130838-384409
+      - ../../runs/issue4_control_ensembles/wf2011_r16_longf_ens3/20260901-130838-593101
+      - ../../runs/issue4_control_ensembles/wf2012_r16_longf_ens3/20260901-130838-806033
+      - ../../runs/issue4_control_ensembles/wf2013_r16_longf_ens3/20260901-130839-014085
+      - ../../runs/issue4_control_ensembles/wf2014_r16_longf_ens3/20260901-130839-221640
+      - ../../runs/issue4_control_ensembles/wf2015_r16_longf_ens3/20260901-130839-430577
+      - ../../runs/issue4_control_ensembles/wf2016_r16_longf_ens3/20260901-130839-641365
+      - ../../runs/issue4_control_ensembles/wf2017_r16_longf_ens3/20260901-130839-847011
+      - ../../runs/issue4_control_ensembles/wf2018_r16_longf_ens3/20260901-130840-056111
+      - ../../runs/issue4_control_ensembles/wf2019_r16_longf_ens3/20260901-130840-266305
+      - ../../runs/issue4_control_ensembles/wf2020_r16_longf_ens3/20260901-130840-475277
+      - ../../runs/issue4_control_ensembles/wf2021_r16_longf_ens3/20260901-130840-687756
+      - ../../runs/issue4_control_ensembles/wf2022_r16_longf_ens3/20260901-130840-907651
+      - ../../runs/issue4_control_ensembles/wf2023_r16_longf_ens3/20260901-130841-130404
+      - ../../runs/issue4_control_ensembles/wf2024_r16_longf_ens3/20260901-130841-336281
+      - ../../runs/issue4_control_ensembles/wf2025_r16_longf_ens3/20260901-130841-556612
+  gated_longf_ens3:
+    model_selection: validation_best
+    result_kind: ensemble
+    range_policy:
+      kind: expanding
+      train_start: "2003-06-01"
+    runs:
+      - ../../runs/issue4_gate_ensembles/wf2009_r20_gate_ens3/20260901-135847-037122
+      - ../../runs/issue4_gate_ensembles/wf2010_r20_gate_ens3/20260901-135847-485919
+      - ../../runs/issue4_gate_ensembles/wf2011_r20_gate_ens3/20260901-135847-943363
+      - ../../runs/issue4_gate_ensembles/wf2012_r20_gate_ens3/20260901-135848-397220
+      - ../../runs/issue4_gate_ensembles/wf2013_r20_gate_ens3/20260901-135848-840017
+      - ../../runs/issue4_gate_ensembles/wf2014_r20_gate_ens3/20260901-135849-305655
+      - ../../runs/issue4_gate_ensembles/wf2015_r20_gate_ens3/20260901-135849-758400
+      - ../../runs/issue4_gate_ensembles/wf2016_r20_gate_ens3/20260901-135850-218581
+      - ../../runs/issue4_gate_ensembles/wf2017_r20_gate_ens3/20260901-135850-674106
+      - ../../runs/issue4_gate_ensembles/wf2018_r20_gate_ens3/20260901-135851-130765
+      - ../../runs/issue4_gate_ensembles/wf2019_r20_gate_ens3/20260901-135851-708474
+      - ../../runs/issue4_gate_ensembles/wf2020_r20_gate_ens3/20260901-135852-164888
+      - ../../runs/issue4_gate_ensembles/wf2021_r20_gate_ens3/20260901-135852-609578
+      - ../../runs/issue4_gate_ensembles/wf2022_r20_gate_ens3/20260901-135853-061894
+      - ../../runs/issue4_gate_ensembles/wf2023_r20_gate_ens3/20260901-135853-514769
+      - ../../runs/issue4_gate_ensembles/wf2024_r20_gate_ens3/20260901-135853-974309
+      - ../../runs/issue4_gate_ensembles/wf2025_r20_gate_ens3/20260901-135854-424286
+  gated_forced_apply_ens3:
+    model_selection: validation_best
+    result_kind: ensemble
+    range_policy:
+      kind: expanding
+      train_start: "2003-06-01"
+    runs:
+      - ../../runs/issue4_gate_ensembles/wf2009_r20_gate_ens3_forced_apply/20260901-135847-261683
+      - ../../runs/issue4_gate_ensembles/wf2010_r20_gate_ens3_forced_apply/20260901-135847-724409
+      - ../../runs/issue4_gate_ensembles/wf2011_r20_gate_ens3_forced_apply/20260901-135848-169474
+      - ../../runs/issue4_gate_ensembles/wf2012_r20_gate_ens3_forced_apply/20260901-135848-618361
+      - ../../runs/issue4_gate_ensembles/wf2013_r20_gate_ens3_forced_apply/20260901-135849-076399
+      - ../../runs/issue4_gate_ensembles/wf2014_r20_gate_ens3_forced_apply/20260901-135849-528730
+      - ../../runs/issue4_gate_ensembles/wf2015_r20_gate_ens3_forced_apply/20260901-135849-989249
+      - ../../runs/issue4_gate_ensembles/wf2016_r20_gate_ens3_forced_apply/20260901-135850-444416
+      - ../../runs/issue4_gate_ensembles/wf2017_r20_gate_ens3_forced_apply/20260901-135850-900743
+      - ../../runs/issue4_gate_ensembles/wf2018_r20_gate_ens3_forced_apply/20260901-135851-360489
+      - ../../runs/issue4_gate_ensembles/wf2019_r20_gate_ens3_forced_apply/20260901-135851-934259
+      - ../../runs/issue4_gate_ensembles/wf2020_r20_gate_ens3_forced_apply/20260901-135852-386547
+      - ../../runs/issue4_gate_ensembles/wf2021_r20_gate_ens3_forced_apply/20260901-135852-829404
+      - ../../runs/issue4_gate_ensembles/wf2022_r20_gate_ens3_forced_apply/20260901-135853-288959
+      - ../../runs/issue4_gate_ensembles/wf2023_r20_gate_ens3_forced_apply/20260901-135853-745519
+      - ../../runs/issue4_gate_ensembles/wf2024_r20_gate_ens3_forced_apply/20260901-135854-200590
+      - ../../runs/issue4_gate_ensembles/wf2025_r20_gate_ens3_forced_apply/20260901-135854-644054
+comparisons:
+  - baseline: direct_longf_ens3
+    candidate: gated_longf_ens3
+  - baseline: gated_forced_apply_ens3
+    candidate: gated_longf_ens3
+  - baseline: direct_longf_ens3
+    candidate: gated_forced_apply_ens3
+eras:
+  2009-2018:
+    start: 2009
+    end: 2018
+  2019-2025:
+    start: 2019
+    end: 2025
+bootstrap_samples: 10000
+bootstrap_seed: 5
+moving_block_length: 3
+trial_count: 10

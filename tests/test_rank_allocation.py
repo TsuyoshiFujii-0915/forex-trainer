@@ -6,10 +6,10 @@ from typing import Any
 
 import numpy as np
 import pytest
+from helpers import make_experiment_raw
 
 from forex_trainer.config import parse_experiment_config, resolve_env_raw
-from forex_trainer.env_factory import build_single_env
-from helpers import make_experiment_raw
+from forex_trainer.env_factory import GateEvaluationMode, build_single_env
 
 _PAIRS = ["JPY/USD", "JPY/EUR", "JPY/GBP", "JPY/AUD"]
 
@@ -41,6 +41,8 @@ def _rank_env(top_k: int = 1, gross_exposure: float = 2.0) -> Any:
         decision_interval=1,
         residual=config.run.residual,
         rank_allocation=config.run.rank_allocation,
+        apply_hold_gate=config.run.apply_hold_gate,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
 
 

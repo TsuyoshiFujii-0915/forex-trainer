@@ -7,10 +7,10 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from helpers import make_experiment_raw
 
 from forex_trainer.config import parse_experiment_config, resolve_env_raw
-from forex_trainer.env_factory import build_single_env
-from helpers import make_experiment_raw
+from forex_trainer.env_factory import GateEvaluationMode, build_single_env
 
 _INTERVAL = 3
 _ACTION = np.array([[0.5]], dtype=np.float32)
@@ -39,6 +39,8 @@ def test_reward_is_log_equity_change_over_interval() -> None:
         decision_interval=_INTERVAL,
         residual=None,
         rank_allocation=None,
+        apply_hold_gate=None,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     _, info = env.reset(seed=0)
     equity_before = info["equity_jpy"]
@@ -65,6 +67,8 @@ def test_wrapped_walk_matches_manual_action_repeat() -> None:
         decision_interval=_INTERVAL,
         residual=None,
         rank_allocation=None,
+        apply_hold_gate=None,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     manual = build_single_env(
         resolved,
@@ -74,6 +78,8 @@ def test_wrapped_walk_matches_manual_action_repeat() -> None:
         decision_interval=1,
         residual=None,
         rank_allocation=None,
+        apply_hold_gate=None,
+        gate_evaluation_mode=GateEvaluationMode.LEARNED,
     )
     wrapped.reset(seed=0)
     manual.reset(seed=0)
@@ -106,9 +112,10 @@ def test_wrapped_walk_matches_manual_action_repeat() -> None:
 
 def test_eval_steps_scale_with_decision_interval(tmp_path: Path) -> None:
     """Evaluating with interval k walks the same bars in ceil(bars/k) decisions."""
+    from helpers import write_experiment_yaml
+
     from forex_trainer.evaluate import run_evaluation
     from forex_trainer.train import run_training
-    from helpers import write_experiment_yaml
 
     raw_k1 = make_experiment_raw()
     raw_k1["experiment"] = "interval_k1"

@@ -45,6 +45,24 @@ _METRICS: tuple[str, ...] = (
     "annualized_gross_return",
     "sharpe_annualized",
     "max_drawdown",
+    "total_cost_ratio",
+    "mean_gross_leverage",
+    "mean_weight_turnover",
+    "total_weight_turnover",
+)
+_GATE_METRICS: tuple[str, ...] = (
+    "gate_apply_fraction",
+    "gate_hold_fraction",
+    "effective_gate_apply_fraction",
+    "mean_hold_run_length",
+    "max_hold_run_length",
+    "mean_proposal_distance_from_current",
+    "total_turnover_avoided_by_hold",
+    "total_immediate_transaction_cost_paid_jpy",
+    "total_immediate_transaction_cost_avoided_by_hold_jpy",
+    "mean_proposed_gross_exposure",
+    "mean_applied_gross_exposure",
+    "mean_gross_exposure_drift",
 )
 _SECONDS_PER_YEAR = 365.25 * 86_400.0
 
@@ -120,6 +138,7 @@ class Observation:
     fold: str
     unit_key: str
     member_seeds: tuple[int, ...]
+    model_identity: tuple[tuple[int, str, str, str], ...]
     run_dir: Path
     experiment: str
     eval_start: str
@@ -137,6 +156,7 @@ class Observation:
     evaluation_git: Mapping[str, str]
     evaluation_versions: Mapping[str, str]
     model_selection: str
+    gate_evaluation_mode: str | None
 
 
 def _require_exact_keys(
@@ -267,9 +287,7 @@ def load_campaign(campaign_path: Path) -> Campaign:
 
     raw_configurations = raw["configurations"]
     if not isinstance(raw_configurations, Mapping) or not raw_configurations:
-        raise TrainerConfigError(
-            "Campaign configurations must be a non-empty mapping."
-        )
+        raise TrainerConfigError("Campaign configurations must be a non-empty mapping.")
     configurations: list[ConfigurationSpec] = []
     for configuration_name, raw_spec in raw_configurations.items():
         validated_name = _require_string(
@@ -620,8 +638,38 @@ def _canonical_metrics(
             metrics, "sharpe_annualized", metrics_path
         ),
         "max_drawdown": _require_finite_metric(metrics, "max_drawdown", metrics_path),
+        "total_cost_ratio": _require_finite_metric(
+            metrics, "total_cost_ratio", metrics_path
+        ),
+        "mean_gross_leverage": _require_finite_metric(
+            metrics, "mean_gross_leverage", metrics_path
+        ),
+        "mean_weight_turnover": _require_finite_metric(
+            metrics, "mean_weight_turnover", metrics_path
+        ),
+        "total_weight_turnover": _require_finite_metric(
+            metrics, "total_weight_turnover", metrics_path
+        ),
     }
     return eval_start, eval_end, canonical
+
+
+def _canonical_gate_metrics(
+    metrics: Mapping[str, Any], metrics_path: Path
+) -> Mapping[str, float]:
+    """Validate the numeric gate-behavior metrics sealed by version 3.
+
+    Args:
+        metrics: Raw evaluation metrics.
+        metrics_path: Metrics artifact path for diagnostics.
+
+    Returns:
+        Canonical numeric gate metrics.
+    """
+    return {
+        name: _require_finite_metric(metrics, name, metrics_path)
+        for name in _GATE_METRICS
+    }
 
 
 def _validated_ranges(
@@ -822,38 +870,83 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
             f"Configuration {spec.name} must declare result_kind=seed for "
             "standard run artifacts."
         )
-    config_path = run_dir / "config_snapshot.yaml"
-    meta_path = run_dir / "meta.json"
     metrics_path = run_dir / "metrics.json"
     evaluation_path = run_dir / "evaluation.json"
-    eval_env_path = run_dir / "env_eval.yaml"
-    config = _load_yaml_mapping(config_path, "config_snapshot.yaml")
-    meta = _load_json_mapping(meta_path, "meta.json")
     metrics = _load_json_mapping(metrics_path, "metrics.json")
     evaluation = _load_json_mapping(evaluation_path, "evaluation.json")
-    _require_exact_keys(
-        evaluation,
-        (
-            "manifest_version",
-            "model_selection",
-            "model_path",
-            "model_sha256",
-            "metrics_sha256",
-            "config_snapshot_sha256",
-            "env_eval_sha256",
-            "meta_sha256",
-            "resolved_device",
-            "git",
-            "versions",
-            "data_identity",
-        ),
-        f"Evaluation manifest {evaluation_path}",
+    manifest_version = evaluation.get("manifest_version")
+    common_evaluation_keys = (
+        "manifest_version",
+        "model_selection",
+        "model_path",
+        "model_sha256",
+        "metrics_sha256",
+        "config_snapshot_sha256",
+        "env_eval_sha256",
+        "meta_sha256",
+        "resolved_device",
+        "git",
+        "versions",
+        "data_identity",
     )
-    if evaluation["manifest_version"] != 2:
+    if manifest_version == 2:
+        _require_exact_keys(
+            evaluation,
+            common_evaluation_keys,
+            f"Evaluation manifest {evaluation_path}",
+        )
+        source_run_dir = run_dir
+        gate_evaluation_mode: str | None = None
+    elif manifest_version == 3:
+        _require_exact_keys(
+            evaluation,
+            (
+                *common_evaluation_keys,
+                "source_run_dir",
+                "gate_evaluation_mode",
+                "gate_trace_sha256",
+            ),
+            f"Evaluation manifest {evaluation_path}",
+        )
+        source_run_dir = Path(
+            _require_string(
+                evaluation["source_run_dir"], f"{evaluation_path} source_run_dir"
+            )
+        ).resolve()
+        if not source_run_dir.is_dir():
+            raise TrainerConfigError(
+                f"Evaluation source run directory is missing: {source_run_dir}"
+            )
+        gate_evaluation_mode = _require_string(
+            evaluation["gate_evaluation_mode"],
+            f"{evaluation_path} gate_evaluation_mode",
+        )
+        if gate_evaluation_mode not in {"learned", "forced_apply"}:
+            raise TrainerConfigError(
+                f"Evaluation gate mode in {evaluation_path} must be learned or "
+                f"forced_apply, got {gate_evaluation_mode!r}."
+            )
+        gate_trace_path = run_dir / "gate_trace.csv"
+        if not gate_trace_path.is_file() or sha256_file(
+            gate_trace_path
+        ) != _require_sha256(
+            evaluation["gate_trace_sha256"],
+            f"{evaluation_path} gate_trace_sha256",
+        ):
+            raise TrainerConfigError(
+                f"Evaluation gate trace changed after {evaluation_path} was "
+                f"written: {gate_trace_path}"
+            )
+    else:
         raise TrainerConfigError(
             f"Evaluation manifest {evaluation_path} has unsupported "
-            f"manifest_version={evaluation['manifest_version']!r}."
+            f"manifest_version={manifest_version!r}."
         )
+    config_path = source_run_dir / "config_snapshot.yaml"
+    meta_path = source_run_dir / "meta.json"
+    eval_env_path = source_run_dir / "env_eval.yaml"
+    config = _load_yaml_mapping(config_path, "config_snapshot.yaml")
+    meta = _load_json_mapping(meta_path, "meta.json")
     model_selection = _require_string(
         evaluation["model_selection"], f"{evaluation_path} model_selection"
     )
@@ -881,7 +974,7 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
             f"Evaluation manifest {evaluation_path} model_path must be a file name, "
             f"got {model_name!r}."
         )
-    model_path = run_dir / model_name
+    model_path = source_run_dir / model_name
     if not model_path.is_file():
         raise TrainerConfigError(
             f"Evaluation model recorded by {evaluation_path} is missing: {model_path}"
@@ -970,6 +1063,11 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
     )
     training_device = _require_string(meta["device"], f"{meta_path} device")
     run = _require_mapping_member(config, "run", str(config_path))
+    if manifest_version == 3 and run.get("apply_hold_gate") != "zero_threshold":
+        raise TrainerConfigError(
+            f"Gated standard evaluation source {source_run_dir} must declare "
+            "run.apply_hold_gate='zero_threshold'."
+        )
     if "seed" not in run or run["seed"] != seed:
         raise TrainerConfigError(
             f"Run seed mismatch in {run_dir}: meta={seed}, config={run.get('seed')!r}."
@@ -1030,12 +1128,20 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
         config_eval_start,
         config_eval_end,
     )
+    if manifest_version == 3:
+        canonical_metrics = {
+            **canonical_metrics,
+            **_canonical_gate_metrics(metrics, metrics_path),
+        }
     return Observation(
         configuration=spec.name,
         result_kind=spec.result_kind,
         fold=fold,
         unit_key=str(seed),
         member_seeds=(seed,),
+        model_identity=(
+            (seed, expected_model_sha, expected_config_sha, expected_meta_sha),
+        ),
         run_dir=run_dir,
         experiment=experiment,
         eval_start=eval_start,
@@ -1053,6 +1159,7 @@ def _load_standard_observation(spec: ConfigurationSpec, run_dir: Path) -> Observ
         evaluation_git=evaluation_git,
         evaluation_versions=evaluation_versions,
         model_selection=model_selection,
+        gate_evaluation_mode=gate_evaluation_mode,
     )
 
 
@@ -1081,23 +1188,40 @@ def _load_ensemble_observation(
     eval_env_path = ensemble_dir / "env_eval.yaml"
     manifest = _load_json_mapping(manifest_path, "ensemble.json")
     metrics = _load_json_mapping(metrics_path, "metrics.json")
-    _require_exact_keys(
-        manifest,
-        (
-            "manifest_version",
-            "experiment",
-            "policy",
-            "model_selection",
-            "decision_interval",
-            "members",
-            "evaluation",
-        ),
-        f"Ensemble manifest {manifest_path}",
+    manifest_version = manifest.get("manifest_version")
+    common_manifest_keys = (
+        "manifest_version",
+        "experiment",
+        "policy",
+        "model_selection",
+        "decision_interval",
+        "members",
+        "evaluation",
     )
-    if manifest["manifest_version"] != 2:
+    if manifest_version == 2:
+        _require_exact_keys(
+            manifest, common_manifest_keys, f"Ensemble manifest {manifest_path}"
+        )
+        gate_evaluation_mode: str | None = None
+    elif manifest_version == 3:
+        _require_exact_keys(
+            manifest,
+            (*common_manifest_keys, "gate_evaluation_mode"),
+            f"Ensemble manifest {manifest_path}",
+        )
+        gate_evaluation_mode = _require_string(
+            manifest["gate_evaluation_mode"],
+            f"{manifest_path} gate_evaluation_mode",
+        )
+        if gate_evaluation_mode not in {"learned", "forced_apply"}:
+            raise TrainerConfigError(
+                f"Ensemble gate mode in {manifest_path} must be learned or "
+                f"forced_apply, got {gate_evaluation_mode!r}."
+            )
+    else:
         raise TrainerConfigError(
             f"Ensemble manifest {manifest_path} has unsupported "
-            f"manifest_version={manifest['manifest_version']!r}."
+            f"manifest_version={manifest_version!r}."
         )
     policy = _require_string(manifest["policy"], f"{manifest_path} policy")
     if policy != "action_mean":
@@ -1120,17 +1244,18 @@ def _load_ensemble_observation(
     evaluation = manifest["evaluation"]
     if not isinstance(evaluation, Mapping):
         raise TrainerConfigError(f"{manifest_path} evaluation must be a mapping.")
+    evaluation_keys = (
+        "resolved_device",
+        "git",
+        "versions",
+        "data_identity",
+        "metrics_sha256",
+        "env_eval_sha256",
+    )
+    if manifest_version == 3:
+        evaluation_keys = (*evaluation_keys, "gate_trace_sha256")
     _require_exact_keys(
-        evaluation,
-        (
-            "resolved_device",
-            "git",
-            "versions",
-            "data_identity",
-            "metrics_sha256",
-            "env_eval_sha256",
-        ),
-        f"Ensemble evaluation {manifest_path}",
+        evaluation, evaluation_keys, f"Ensemble evaluation {manifest_path}"
     )
     if sha256_file(metrics_path) != _require_sha256(
         evaluation["metrics_sha256"], f"{manifest_path} metrics_sha256"
@@ -1146,6 +1271,18 @@ def _load_ensemble_observation(
             f"Ensemble eval env changed after {manifest_path} was written: "
             f"{eval_env_path}"
         )
+    if manifest_version == 3:
+        gate_trace_path = ensemble_dir / "gate_trace.csv"
+        if not gate_trace_path.is_file() or sha256_file(
+            gate_trace_path
+        ) != _require_sha256(
+            evaluation["gate_trace_sha256"],
+            f"{manifest_path} gate_trace_sha256",
+        ):
+            raise TrainerConfigError(
+                f"Ensemble gate trace changed after {manifest_path} was written: "
+                f"{gate_trace_path}"
+            )
     evaluation_device = _require_string(
         evaluation["resolved_device"], f"{manifest_path} resolved_device"
     )
@@ -1254,6 +1391,11 @@ def _load_ensemble_observation(
         )
         seed = _require_integer(raw_member["seed"], f"{origin} seed", 0)
         run = _require_mapping_member(config, "run", str(config_path))
+        if manifest_version == 3 and run.get("apply_hold_gate") != "zero_threshold":
+            raise TrainerConfigError(
+                f"Gated ensemble member {member_dir} must declare "
+                "run.apply_hold_gate='zero_threshold'."
+            )
         if (
             meta["experiment"] != member_experiment
             or config.get("experiment") != member_experiment
@@ -1297,6 +1439,12 @@ def _load_ensemble_observation(
         member_values.append(
             {
                 "seed": seed,
+                "model_identity": (
+                    seed,
+                    _require_sha256(raw_member["model_sha256"], origin),
+                    _require_sha256(raw_member["config_snapshot_sha256"], origin),
+                    _require_sha256(raw_member["meta_sha256"], origin),
+                ),
                 "fold": fold,
                 "ranges": ranges,
                 "range_identity": range_identity,
@@ -1347,12 +1495,18 @@ def _load_ensemble_observation(
         ranges["eval_range"]["start"],
         ranges["eval_range"]["end"],
     )
+    if manifest_version == 3:
+        canonical_metrics = {
+            **canonical_metrics,
+            **_canonical_gate_metrics(metrics, metrics_path),
+        }
     return Observation(
         configuration=spec.name,
         result_kind=spec.result_kind,
         fold=str(first["fold"]),
         unit_key="ensemble",
         member_seeds=tuple(sorted(seeds)),
+        model_identity=tuple(sorted(item["model_identity"] for item in member_values)),
         run_dir=ensemble_dir,
         experiment=experiment,
         eval_start=eval_start,
@@ -1370,6 +1524,7 @@ def _load_ensemble_observation(
         evaluation_git=evaluation_git,
         evaluation_versions=evaluation_versions,
         model_selection=model_selection,
+        gate_evaluation_mode=gate_evaluation_mode,
     )
 
 
@@ -1444,6 +1599,7 @@ def _validate_configuration(
             for item in observations
         },
         "model_selection": {item.model_selection for item in observations},
+        "gate_evaluation_mode": {item.gate_evaluation_mode for item in observations},
     }
     if spec.result_kind == "ensemble":
         provenance_fields["member_seeds"] = {item.member_seeds for item in observations}
@@ -1451,7 +1607,7 @@ def _validate_configuration(
         if len(values) != 1:
             raise TrainerConfigError(
                 f"Configuration {spec.name} has mismatched {field} provenance: "
-                f"{sorted(values)}."
+                f"{sorted(repr(value) for value in values)}."
             )
     first = observations[0]
     result: dict[str, Any] = {
@@ -1467,12 +1623,27 @@ def _validate_configuration(
         "evaluation_git": dict(first.evaluation_git),
         "evaluation_versions": dict(first.evaluation_versions),
         "model_selection": first.model_selection,
+        "gate_evaluation_mode": first.gate_evaluation_mode,
         "folds": folds,
         "runs": [
             {
                 "fold": item.fold,
                 "unit_key": item.unit_key,
                 "member_seeds": list(item.member_seeds),
+                "model_identity": [
+                    {
+                        "seed": seed,
+                        "model_sha256": model_sha256,
+                        "config_snapshot_sha256": config_snapshot_sha256,
+                        "meta_sha256": meta_sha256,
+                    }
+                    for (
+                        seed,
+                        model_sha256,
+                        config_snapshot_sha256,
+                        meta_sha256,
+                    ) in item.model_identity
+                ],
                 "experiment": item.experiment,
                 "run_dir": str(item.run_dir),
                 "eval_start": item.eval_start,
@@ -1609,6 +1780,47 @@ def _configuration_report(
         member_seeds = observations[0].member_seeds
         result["ensemble_member_count"] = len(member_seeds)
         result["member_seeds"] = list(member_seeds)
+    gate_mode = observations[0].gate_evaluation_mode
+    if gate_mode is not None:
+        gate_folds = {
+            fold: {
+                name: float(
+                    statistics.fmean(
+                        item.metrics[name] for item in observations if item.fold == fold
+                    )
+                )
+                for name in _GATE_METRICS
+            }
+            for fold in folds
+        }
+        gate_overall = {
+            name: float(statistics.fmean(gate_folds[fold][name] for fold in folds))
+            for name in _GATE_METRICS
+        }
+        gate_eras: dict[str, Mapping[str, float | int | None]] = {}
+        for era in campaign.eras:
+            era_folds = [fold for fold in folds if era.start <= int(fold) <= era.end]
+            gate_eras[era.name] = {
+                "fold_count": len(era_folds),
+                **{
+                    name: (
+                        float(
+                            statistics.fmean(
+                                gate_folds[fold][name] for fold in era_folds
+                            )
+                        )
+                        if era_folds
+                        else None
+                    )
+                    for name in _GATE_METRICS
+                },
+            }
+        result["gate_behavior"] = {
+            "evaluation_mode": gate_mode,
+            "overall": gate_overall,
+            "folds": gate_folds,
+            "eras": gate_eras,
+        }
     return result
 
 
@@ -1669,6 +1881,7 @@ def _provenance_differences(
         "requested_device",
         "training_git",
         "training_versions",
+        "gate_evaluation_mode",
     ):
         if baseline[field] != candidate[field]:
             differences[field] = {
@@ -1727,6 +1940,18 @@ def _comparison_report(
                 f"baseline=({baseline.eval_start}, {baseline.eval_end}), "
                 f"candidate=({candidate.eval_start}, {candidate.eval_end})."
             )
+        gate_modes = {
+            baseline.gate_evaluation_mode,
+            candidate.gate_evaluation_mode,
+        }
+        if gate_modes == {"learned", "forced_apply"} and (
+            baseline.model_identity != candidate.model_identity
+        ):
+            raise TrainerConfigError(
+                f"Comparison {comparison.baseline} -> {comparison.candidate} "
+                f"{pairing_unit} {key} must evaluate learned and forced_apply "
+                "with the same trained model identity."
+            )
     folds = sorted({fold for fold, _ in baseline_lookup})
     fold_differences: dict[str, dict[str, float]] = {}
     for fold in folds:
@@ -1756,6 +1981,19 @@ def _comparison_report(
         )
         for name in _METRICS
     }
+    absolute_net_differences = {
+        fold: abs(fold_differences[fold]["annualized_net_return"]) for fold in folds
+    }
+    largest_absolute_fold = max(folds, key=lambda fold: absolute_net_differences[fold])
+    total_absolute_net_difference = float(sum(absolute_net_differences.values()))
+    largest_absolute_share = (
+        0.0
+        if total_absolute_net_difference == 0.0
+        else float(
+            absolute_net_differences[largest_absolute_fold]
+            / total_absolute_net_difference
+        )
+    )
     result: dict[str, Any] = {
         "baseline": comparison.baseline,
         "candidate": comparison.candidate,
@@ -1774,6 +2012,26 @@ def _comparison_report(
             for name in _METRICS
         },
         "uncertainty": uncertainty,
+        "return_cost_decomposition": {
+            "annualized_net_return_difference": mean_differences[
+                "annualized_net_return"
+            ],
+            "annualized_gross_return_difference": mean_differences[
+                "annualized_gross_return"
+            ],
+            "total_cost_ratio_difference": mean_differences["total_cost_ratio"],
+        },
+        "net_improvement_diagnostics": {
+            "fold_count": len(folds),
+            "positive_fold_count": sum(
+                fold_differences[fold]["annualized_net_return"] > 0.0 for fold in folds
+            ),
+            "largest_absolute_fold": largest_absolute_fold,
+            "largest_absolute_fold_net_difference": fold_differences[
+                largest_absolute_fold
+            ]["annualized_net_return"],
+            "largest_absolute_fold_share": largest_absolute_share,
+        },
         "provenance_differences": _provenance_differences(comparison, provenance),
     }
     if result_kind == "seed":
@@ -1824,7 +2082,9 @@ def _write_observations_csv(path: Path, observations: Sequence[Observation]) -> 
                 "run_dir",
                 "eval_start",
                 "eval_end",
+                "gate_evaluation_mode",
                 *_METRICS,
+                *_GATE_METRICS,
             ),
             lineterminator="\n",
         )
@@ -1844,7 +2104,16 @@ def _write_observations_csv(path: Path, observations: Sequence[Observation]) -> 
                     "run_dir": str(item.run_dir),
                     "eval_start": item.eval_start,
                     "eval_end": item.eval_end,
-                    **item.metrics,
+                    "gate_evaluation_mode": item.gate_evaluation_mode,
+                    **{name: item.metrics[name] for name in _METRICS},
+                    **{
+                        name: (
+                            item.metrics[name]
+                            if item.gate_evaluation_mode is not None
+                            else None
+                        )
+                        for name in _GATE_METRICS
+                    },
                 }
             )
     os.replace(temporary, path)
@@ -1864,8 +2133,8 @@ def _report_markdown(report: Mapping[str, Any]) -> str:
         "",
         "## Aggregate evidence",
         "",
-        "| Configuration | Net/year | Gross/year | Sharpe | Mean / worst drawdown | Winning folds |",
-        "|---|---:|---:|---:|---:|---:|",
+        "| Configuration | Net/year | Gross/year | Sharpe | Mean / worst drawdown | Cost ratio | Gross leverage | Turnover | Winning folds |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for name, configuration in report["configurations"].items():
         overall = configuration["overall"]
@@ -1875,19 +2144,57 @@ def _report_markdown(report: Mapping[str, Any]) -> str:
             f"{overall['sharpe_annualized']:.3f} | "
             f"{overall['mean_max_drawdown']:.4%} / "
             f"{overall['worst_max_drawdown']:.4%} | "
+            f"{overall['total_cost_ratio']:.4%} | "
+            f"{overall['mean_gross_leverage']:.3f} | "
+            f"{overall['mean_weight_turnover']:.3f} | "
             f"{overall['winning_folds']}/{overall['fold_count']} |"
         )
+        if "gate_behavior" in configuration:
+            gate_behavior = configuration["gate_behavior"]
+            gate = gate_behavior["overall"]
+            gate_mode = gate_behavior["evaluation_mode"]
+            if gate_mode == "learned":
+                effective_apply = gate["effective_gate_apply_fraction"]
+                lines.append(
+                    f"  - Gate mode `learned`: effective apply "
+                    f"{effective_apply:.2%}, effective hold "
+                    f"{1.0 - effective_apply:.2%}, mean hold run "
+                    f"{gate['mean_hold_run_length']:.2f}, avoided turnover "
+                    f"{gate['total_turnover_avoided_by_hold']:.3f}."
+                )
+            elif gate_mode == "forced_apply":
+                lines.append(
+                    "  - Gate mode `forced_apply`: effective apply "
+                    f"{gate['effective_gate_apply_fraction']:.2%}; latent gate "
+                    f"would apply {gate['gate_apply_fraction']:.2%}, latent gate "
+                    f"would hold {gate['gate_hold_fraction']:.2%}, latent mean "
+                    f"hold run {gate['mean_hold_run_length']:.2f}; avoided "
+                    f"turnover {gate['total_turnover_avoided_by_hold']:.3f}."
+                )
+            else:
+                raise TrainerConfigError(
+                    f"Unsupported gate evaluation mode in report: {gate_mode!r}."
+                )
     lines.extend(["", "## Paired comparisons", ""])
     for comparison in report["comparisons"]:
         delta = comparison["mean_differences"]["annualized_net_return"]
         interval = comparison["uncertainty"]["annualized_net_return"]
+        decomposition = comparison["return_cost_decomposition"]
+        diagnostics = comparison["net_improvement_diagnostics"]
         lines.append(
             f"- {comparison['candidate']} − {comparison['baseline']}: mean net/year "
             f"difference {delta:.4%}; fold-bootstrap 95% CI "
             f"[{interval['fold_bootstrap_95_low']:.4%}, "
             f"{interval['fold_bootstrap_95_high']:.4%}]; moving-block 95% CI "
             f"[{interval['moving_block_95_low']:.4%}, "
-            f"{interval['moving_block_95_high']:.4%}]."
+            f"{interval['moving_block_95_high']:.4%}]. Gross/year difference "
+            f"{decomposition['annualized_gross_return_difference']:.4%}; cost-ratio "
+            f"difference {decomposition['total_cost_ratio_difference']:.4%}; "
+            f"positive folds {diagnostics['positive_fold_count']}/"
+            f"{diagnostics['fold_count']}; largest absolute fold "
+            f"{diagnostics['largest_absolute_fold']} "
+            f"({diagnostics['largest_absolute_fold_share']:.2%} of total absolute "
+            "fold effect)."
         )
     assumptions = report["uncertainty_assumptions"]
     selection_bias = report["selection_bias"]
@@ -1952,6 +2259,7 @@ def run_research_report(
         "campaign": campaign.name,
         "trial_count": campaign.trial_count,
         "configuration_count": len(campaign.configurations),
+        "provenance": provenance,
         "configurations": configuration_reports,
         "comparisons": comparison_reports,
         "uncertainty_assumptions": {
