@@ -30,6 +30,7 @@ forex-clean-spikes = "forex_trainer.data_quality:main"
 forex-data-scaling = "forex_trainer.data_scaling:main"
 forex-report = "forex_trainer.report:main"
 forex-regime-study = "forex_trainer.regime_study:main"
+forex-supervised-ranking = "forex_trainer.supervised_ranking_study:main"
 
 [dependency-groups]
 dev = [

@@ -1,0 +1,396 @@
+{
+  "aggregates": {
+    "ppo": {
+      "bootstrap_intervals": {
+        "mean_bottom_overlap": {
+          "fold_high": 0.2346201511810979,
+          "fold_low": 0.2134826753889298,
+          "moving_block_high": 0.23454104156246056,
+          "moving_block_low": 0.21220426958617114
+        },
+        "mean_rank_churn": {
+          "fold_high": 0.11393988655987809,
+          "fold_low": 0.1015654342868606,
+          "moving_block_high": 0.1134253183667355,
+          "moving_block_low": 0.10199778532099492
+        },
+        "mean_rank_ic": {
+          "fold_high": 0.005107201573809973,
+          "fold_low": -0.010900699077759686,
+          "moving_block_high": 0.0015909751729302167,
+          "moving_block_low": -0.009210981711476801
+        },
+        "mean_score_dispersion": {
+          "fold_high": 0.19499719660154324,
+          "fold_low": 0.16915396792858112,
+          "moving_block_high": 0.1963808395068776,
+          "moving_block_low": 0.16680775408122883
+        },
+        "mean_tail_spread": {
+          "fold_high": 6.35113670054164e-05,
+          "fold_low": -0.00013877120219985185,
+          "moving_block_high": 3.115790523709027e-05,
+          "moving_block_low": -0.0001268050599515971
+        },
+        "mean_top_overlap": {
+          "fold_high": 0.23039123805451062,
+          "fold_low": 0.21807182156009755,
+          "moving_block_high": 0.22929713392303966,
+          "moving_block_low": 0.21939364185900528
+        },
+        "positive_rank_ic_fraction": {
+          "fold_high": 0.5027196521857117,
+          "fold_low": 0.47316770900917365,
+          "moving_block_high": 0.49854740251653035,
+          "moving_block_low": 0.47807376189022954
+        },
+        "rank_ic_observation_fraction": {
+          "fold_high": 1.0,
+          "fold_low": 0.9991042102120036,
+          "moving_block_high": 1.0,
+          "moving_block_low": 0.9991042102120036
+        },
+        "tail_ordering_accuracy": {
+          "fold_high": 0.5086899872058831,
+          "fold_low": 0.4891997780193338,
+          "moving_block_high": 0.5078542534868171,
+          "moving_block_low": 0.48814419052729024
+        }
+      },
+      "eras": {
+        "2009-2018": {
+          "mean_bottom_overlap": 0.22889419419513693,
+          "mean_rank_churn": 0.11025582401599124,
+          "mean_rank_ic": -0.004778861091476722,
+          "mean_score_dispersion": 0.17308339572108045,
+          "mean_tail_spread": -7.625292319978236e-05,
+          "mean_top_overlap": 0.22323672882592388,
+          "median_rank_ic": 0.004166666666666667,
+          "positive_rank_ic_fraction": 0.4900366545870535,
+          "rank_ic_observation_fraction": 0.999492385786802,
+          "tail_ordering_accuracy": 0.49184700119798014
+        },
+        "2019-2025": {
+          "mean_bottom_overlap": 0.21836289633478284,
+          "mean_rank_churn": 0.1044314186183672,
+          "mean_rank_ic": -0.0013860299812603982,
+          "mean_score_dispersion": 0.19556481329149505,
+          "mean_tail_spread": 9.680700166423575e-06,
+          "mean_top_overlap": 0.2254355998071381,
+          "median_rank_ic": -0.016666666666666666,
+          "positive_rank_ic_fraction": 0.485322194339663,
+          "rank_ic_observation_fraction": 1.0,
+          "tail_ordering_accuracy": 0.5083992853450198
+        }
+      },
+      "fold_count": 17,
+      "overall": {
+        "mean_bottom_overlap": 0.22455777742910876,
+        "mean_rank_churn": 0.10785753944049899,
+        "mean_rank_ic": -0.0033818129872700002,
+        "mean_score_dispersion": 0.18234045001478058,
+        "mean_tail_spread": -4.086849004899167e-05,
+        "mean_top_overlap": 0.22414214628877682,
+        "median_rank_ic": 0.0,
+        "positive_rank_ic_fraction": 0.4880954062498926,
+        "rank_ic_observation_fraction": 0.9997014034040012,
+        "tail_ordering_accuracy": 0.498662647611467
+      }
+    },
+    "reversal": {
+      "bootstrap_intervals": {
+        "mean_bottom_overlap": {
+          "fold_high": 0.25548902676380875,
+          "fold_low": 0.23172782159451658,
+          "moving_block_high": 0.2546573066485226,
+          "moving_block_low": 0.23164815901765332
+        },
+        "mean_rank_churn": {
+          "fold_high": 0.0917856572679701,
+          "fold_low": 0.08470281469745115,
+          "moving_block_high": 0.09156841647216497,
+          "moving_block_low": 0.08441626537742085
+        },
+        "mean_rank_ic": {
+          "fold_high": 0.0323596584040627,
+          "fold_low": 0.0036020426264019045,
+          "moving_block_high": 0.02986375183180347,
+          "moving_block_low": 0.005540538553171193
+        },
+        "mean_score_dispersion": {
+          "fold_high": 0.01789111122923604,
+          "fold_low": 0.014604393093400307,
+          "moving_block_high": 0.01809848407649871,
+          "moving_block_low": 0.014611870483600083
+        },
+        "mean_tail_spread": {
+          "fold_high": 0.0003491788539732791,
+          "fold_low": 6.199098579289998e-05,
+          "moving_block_high": 0.00034409721399523735,
+          "moving_block_low": 5.159660994772077e-05
+        },
+        "mean_top_overlap": {
+          "fold_high": 0.2527453253733296,
+          "fold_low": 0.2310449873600121,
+          "moving_block_high": 0.25229493134024716,
+          "moving_block_low": 0.231207659331863
+        },
+        "positive_rank_ic_fraction": {
+          "fold_high": 0.5360757009510936,
+          "fold_low": 0.5016955120884394,
+          "moving_block_high": 0.5347239071719229,
+          "moving_block_low": 0.502916075736567
+        },
+        "rank_ic_observation_fraction": {
+          "fold_high": 1.0,
+          "fold_low": 0.9991042102120036,
+          "moving_block_high": 1.0,
+          "moving_block_low": 0.9991042102120036
+        },
+        "tail_ordering_accuracy": {
+          "fold_high": 0.5361312090974785,
+          "fold_low": 0.49806587196650765,
+          "moving_block_high": 0.5359673916506767,
+          "moving_block_low": 0.49752307047686306
+        }
+      },
+      "eras": {
+        "2009-2018": {
+          "mean_bottom_overlap": 0.2395974974183821,
+          "mean_rank_churn": 0.08654372290711375,
+          "mean_rank_ic": 0.012492228752381642,
+          "mean_score_dispersion": 0.01771273303119742,
+          "mean_tail_spread": 0.00012461386198318604,
+          "mean_top_overlap": 0.23554152780584978,
+          "median_rank_ic": 0.016666666666666666,
+          "positive_rank_ic_fraction": 0.5094663277259361,
+          "rank_ic_observation_fraction": 0.999492385786802,
+          "tail_ordering_accuracy": 0.5026108397283162
+        },
+        "2019-2025": {
+          "mean_bottom_overlap": 0.25019400904012284,
+          "mean_rank_churn": 0.09034742774876994,
+          "mean_rank_ic": 0.026358686711203772,
+          "mean_score_dispersion": 0.01405714025697621,
+          "mean_tail_spread": 0.00032067371840517985,
+          "mean_top_overlap": 0.250179866096957,
+          "median_rank_ic": 0.058333333333333334,
+          "positive_rank_ic_fraction": 0.532551969208519,
+          "rank_ic_observation_fraction": 1.0,
+          "tail_ordering_accuracy": 0.5361979178582881
+        }
+      },
+      "fold_count": 17,
+      "overall": {
+        "mean_bottom_overlap": 0.2439607669096871,
+        "mean_rank_churn": 0.0881099543125016,
+        "mean_rank_ic": 0.01820194673542605,
+        "mean_score_dispersion": 0.016207488947694568,
+        "mean_tail_spread": 0.0002053443910981247,
+        "mean_top_overlap": 0.2415690788668939,
+        "median_rank_ic": 0.03333333333333333,
+        "positive_rank_ic_fraction": 0.5189721801011173,
+        "rank_ic_observation_fraction": 0.9997014034040012,
+        "tail_ordering_accuracy": 0.5164408130759517
+      }
+    },
+    "supervised": {
+      "bootstrap_intervals": {
+        "mean_bottom_overlap": {
+          "fold_high": 0.2339560880964056,
+          "fold_low": 0.2118502204600204,
+          "moving_block_high": 0.23298991554473056,
+          "moving_block_low": 0.21442435638997873
+        },
+        "mean_rank_churn": {
+          "fold_high": 0.3845709901987249,
+          "fold_low": 0.3645179303304233,
+          "moving_block_high": 0.3904250065291051,
+          "moving_block_low": 0.35919835537832073
+        },
+        "mean_rank_ic": {
+          "fold_high": 0.02177883817817848,
+          "fold_low": -0.0013960585603113613,
+          "moving_block_high": 0.021180866928815514,
+          "moving_block_low": -0.00030737243788442423
+        },
+        "mean_score_dispersion": {
+          "fold_high": 0.000579470047515865,
+          "fold_low": 0.00035039694870280745,
+          "moving_block_high": 0.0006039232911115375,
+          "moving_block_low": 0.000335357088449577
+        },
+        "mean_tail_spread": {
+          "fold_high": 0.00023273683554922146,
+          "fold_low": 1.444181449209803e-05,
+          "moving_block_high": 0.00023728897419722912,
+          "moving_block_low": 5.562848448277008e-06
+        },
+        "mean_top_overlap": {
+          "fold_high": 0.24228069506847275,
+          "fold_low": 0.2257556200395994,
+          "moving_block_high": 0.2412703147059287,
+          "moving_block_low": 0.2261844885506656
+        },
+        "positive_rank_ic_fraction": {
+          "fold_high": 0.523163796537849,
+          "fold_low": 0.49142341730364325,
+          "moving_block_high": 0.5271193898033815,
+          "moving_block_low": 0.4896937568463286
+        },
+        "rank_ic_observation_fraction": {
+          "fold_high": 1.0,
+          "fold_low": 0.9991042102120036,
+          "moving_block_high": 1.0,
+          "moving_block_low": 0.9991042102120036
+        },
+        "tail_ordering_accuracy": {
+          "fold_high": 0.5240468890693629,
+          "fold_low": 0.49319535885510285,
+          "moving_block_high": 0.5231526508038378,
+          "moving_block_low": 0.4934560826906323
+        }
+      },
+      "eras": {
+        "2009-2018": {
+          "mean_bottom_overlap": 0.2288532008238317,
+          "mean_rank_churn": 0.3880990993017675,
+          "mean_rank_ic": 0.01578816552093815,
+          "mean_score_dispersion": 0.0005320109191223701,
+          "mean_tail_spread": 0.00012776438931930007,
+          "mean_top_overlap": 0.23268483349701624,
+          "median_rank_ic": 0.025,
+          "positive_rank_ic_fraction": 0.5155709357921106,
+          "rank_ic_observation_fraction": 0.999492385786802,
+          "tail_ordering_accuracy": 0.5080778893976865
+        },
+        "2019-2025": {
+          "mean_bottom_overlap": 0.2157004202082399,
+          "mean_rank_churn": 0.354831063857187,
+          "mean_rank_ic": 0.003968183162661982,
+          "mean_score_dispersion": 0.00032427051188609675,
+          "mean_tail_spread": 0.00010868358431712184,
+          "mean_top_overlap": 0.2360457376739124,
+          "median_rank_ic": 0.008333333333333333,
+          "positive_rank_ic_fraction": 0.49760419825267094,
+          "rank_ic_observation_fraction": 1.0,
+          "tail_ordering_accuracy": 0.507154956189046
+        }
+      },
+      "fold_count": 17,
+      "overall": {
+        "mean_bottom_overlap": 0.2234373499821174,
+        "mean_rank_churn": 0.3744004964716461,
+        "mean_rank_ic": 0.01092111396164796,
+        "mean_score_dispersion": 0.00044647075143684577,
+        "mean_tail_spread": 0.00011990758725957964,
+        "mean_top_overlap": 0.23406873521691465,
+        "median_rank_ic": 0.016666666666666666,
+        "positive_rank_ic_fraction": 0.5081728673935177,
+        "rank_ic_observation_fraction": 0.9997014034040012,
+        "tail_ordering_accuracy": 0.5076978580764815
+      }
+    }
+  },
+  "artifact_version": 1,
+  "classification": "established learnable",
+  "classification_inputs": {
+    "aggregate_mean_rank_ic": 0.01092111396164796,
+    "aggregate_mean_tail_spread": 0.00011990758725957964,
+    "coherent_reversal": true,
+    "era_tail_spreads": [
+      0.00012776438931930007,
+      0.00010868358431712184
+    ],
+    "iid_tail_spread_low": 1.444181449209803e-05,
+    "leave_one_fold_out_tail_spreads": [
+      0.00011628484926708905,
+      0.0001052193986298597,
+      0.00010862168276471222,
+      0.00012431196077392157,
+      0.00011271628259483308,
+      0.00010437932256889264,
+      0.00012666497461030632,
+      0.00014421377122159312,
+      0.00012741231746975654,
+      0.00012434081140750674,
+      0.0001404390367130759,
+      0.00011609430895018583,
+      0.00013103904567709986,
+      0.0001277246859099328,
+      0.00010936767286004735,
+      0.00013363772074891772,
+      8.596114124512322e-05
+    ],
+    "moving_block_tail_spread_low": 5.562848448277008e-06,
+    "non_degenerate_scores": true
+  },
+  "coefficient_diagnostics": {
+    "era_and_aggregate_artifact": "coefficient_summary.csv",
+    "fold_artifact": "coefficients.csv"
+  },
+  "mean_current_mom24_standardized_coefficient": 0.0016787498776179223,
+  "protocol": {
+    "alpha_grid": [
+      0.0,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "alpha_selection": "validation mean cross-sectional Spearman rank IC",
+    "alpha_tie_break": "stronger regularization",
+    "bootstrap_samples": 10000,
+    "bootstrap_seed": 15,
+    "input": "32-lag by 8-feature per-pair longf market window",
+    "moving_block_length": 3,
+    "pair_identity": false,
+    "target": "next-decision pair log return minus cross-sectional mean",
+    "top_k": 2
+  },
+  "selected_alpha_by_fold": {
+    "2009": 0.0,
+    "2010": 0.0,
+    "2011": 0.1,
+    "2012": 0.0,
+    "2013": 10.0,
+    "2014": 10.0,
+    "2015": 10.0,
+    "2016": 10.0,
+    "2017": 0.0,
+    "2018": 1.0,
+    "2019": 0.1,
+    "2020": 10.0,
+    "2021": 1.0,
+    "2022": 0.0,
+    "2023": 10.0,
+    "2024": 0.1,
+    "2025": 10.0
+  },
+  "study": "issue15_supervised_cross_sectional_ranking",
+  "supervised_reversal_rank_alignment": {
+    "eras": {
+      "2009-2018": 0.20171928361032782,
+      "2019-2025": 0.19214556707903668
+    },
+    "folds": {
+      "2009": 0.08512820512820514,
+      "2010": 0.15642978003384092,
+      "2011": 0.14837606837606837,
+      "2012": 0.16641285956006763,
+      "2013": 0.24957482993197275,
+      "2014": 0.20277777777777772,
+      "2015": 0.3055555555555556,
+      "2016": 0.2532148900169205,
+      "2017": 0.1983760683760684,
+      "2018": 0.2513468013468013,
+      "2019": 0.2442470389170897,
+      "2020": 0.1906197654941373,
+      "2021": 0.12538071065989845,
+      "2022": 0.1300170068027211,
+      "2023": 0.2200507614213198,
+      "2024": 0.22710437710437711,
+      "2025": 0.20759930915371327
+    },
+    "overall": 0.19777716503861972
+  }
+}

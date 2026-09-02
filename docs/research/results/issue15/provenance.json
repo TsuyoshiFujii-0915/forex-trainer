@@ -1,0 +1,661 @@
+{
+  "artifact_version": 1,
+  "diagnostic_git": {
+    "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "forex_trainer": "a8d7dac3e49f9d664041f427e9f71a49296f0326"
+  },
+  "diagnostic_versions": {
+    "PyYAML": "6.0.3",
+    "forex-env-v3": "0.1.0",
+    "gymnasium": "1.2.3",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "pyarrow": "24.0.0",
+    "sb3-contrib": "2.8.0",
+    "stable-baselines3": "2.8.0",
+    "torch": "2.12.0"
+  },
+  "fold_sources": {
+    "2009": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2009_r16_longf.yaml",
+      "config_sha256": "cc6b05a860395afac64d69cc63ecd237d4d6eeaf7e78cea7b430864f5670994d",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031",
+        "ensemble_manifest_sha256": "9d2a93453b49c5466384403cffc3ec732f60c6d778cb61be74687aa0d6828225",
+        "eval_env_sha256": "9b60b855c501ddd4eac5d7ea10fb1b901a1e4bac3a4522e6480dd039e768f24e",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "00d9bac888edb1b304e1e8abd4ab9ab698ac0b3482fcc5ec0af9931ad2f7f70c",
+          "04c39ba9d079cc4a2c67202304d040fb9c8f986653099d520a9d6d82f9a8db52",
+          "ae294c7e734fb04b36747298dd6529b4ad693d605bd7c3cd5e86e421f65f4e42"
+        ],
+        "metrics_sha256": "2c312e84ffd9bcae2a0fb21b5515f719f13245ca71635213f8df29e6d9a999e9",
+        "sealed_device": "cpu"
+      }
+    },
+    "2010": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2010_r16_longf.yaml",
+      "config_sha256": "fb0b0df6f096ea58014b386eb9bced0ba563a640235a731fa9ac93e9e49b38be",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220",
+        "ensemble_manifest_sha256": "1ca017313e9be2b7c23d751c199236b6599dca7a4b9b7e2ad8f7663fdcaa2b77",
+        "eval_env_sha256": "3f934e518d3a44416cd08c0b09aae39bd4d160b1d46238c5bf727f38a4492b8a",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "febfb63ee00635aeda469c26092233a47e55621d4e99b10804cf74ed5c6f0774",
+          "32723f935bfcd3d6d67536800284c42c57081927414735cb9aa7e1bb54ddb9db",
+          "c20f70d70799c96a7d8f0fa9ad7dbddf4646c39b7cc62ccf1f54590621707149"
+        ],
+        "metrics_sha256": "16e5215e0dc643a5799e3da1c0fbc0b1d1e33914a62b8ffdf43ba9caed19c0e7",
+        "sealed_device": "cpu"
+      }
+    },
+    "2011": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2011_r16_longf.yaml",
+      "config_sha256": "0115c0189926b58fbcf7df68131482d269eee571f926e743cbf2d19d4440c8c9",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724",
+        "ensemble_manifest_sha256": "59653131ff5da766d5237f4912651eb56e84d13e4c752cdfb7b7c2f6d85a2c99",
+        "eval_env_sha256": "d5f6b342606467311ef54a051d2dd572188c0960c839e6537e5843610e38a6bd",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "f01d14bb99082601a27265f769d6d99e2f08c8dc1cade87ddd2406fee22da21e",
+          "c2f92eea8053c5ac4bcfe9044a842d028211cc06ec5cd1e96f58267828e5ffc2",
+          "ccdaac0d5cbac124f5ebf98733ef970030d0c233d0e14ae036040cec237dfd4d"
+        ],
+        "metrics_sha256": "d17f007efe1a0b653dbf4a204b47bf2d714479efacb0d0400014570bc47e70a8",
+        "sealed_device": "cpu"
+      }
+    },
+    "2012": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2012_r16_longf.yaml",
+      "config_sha256": "f262067c6b30963983c775bed31da59ef9d829c24bf8f6c8ade25266bdfa0f50",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379",
+        "ensemble_manifest_sha256": "41362381903eda6906e259f3880393db533886ce7991b6c6cc34a8d0bbd9e6ca",
+        "eval_env_sha256": "6fbf42f4ed3ebc95dce5f68b2b437cc85a670e83393e7b61217a84197d21f7f5",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "b095ca5bd18a5b0c4036f764d6ba968c03d6f65a947c1019f935a9ff8c8dba4e",
+          "0772634eb1f97a589947e7f4489d1617eaaeb922a731ef881089af18fbdb1f24",
+          "636e2e81fcaa17dc8400cb35fc39e47792a5dce1e7f611f073af6fb8d57d525c"
+        ],
+        "metrics_sha256": "58840b14bb60b902893bdec835a72485d2ce0d5ee5db3a2ed094f55191679353",
+        "sealed_device": "cpu"
+      }
+    },
+    "2013": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2013_r16_longf.yaml",
+      "config_sha256": "b272744fe0998194c716a64fb99e3a88daaec21f1f615133bbe0f88ff46f4d8c",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032",
+        "ensemble_manifest_sha256": "9511ecabe293c03bdf96c49794688c77df2f8792a30742f27c91e9ccc8acac33",
+        "eval_env_sha256": "6e5476f1e8534e5a9c5a4ced3785a72b2ac665f819faaa931de5d9c54490ce2a",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "8e2a823de54883c4a044b04f7de6cb2b009de4ce2012f19a09ed330a63253d31",
+          "bde8db47d4cc0020035a75442c1aa18313367efa93ca194743b37a2c9c998c30",
+          "5d222664cdfe570dc1a2c8f97af0049d25fd5933746a59bf9882b01b3ab58d1e"
+        ],
+        "metrics_sha256": "20fdf4cb338194b901cdb2c1c45be3af3e6b57e71e782f4deb35cc9306b52e7a",
+        "sealed_device": "cpu"
+      }
+    },
+    "2014": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2014_r16_longf.yaml",
+      "config_sha256": "d2fd76b414c022f14fb598b16b09830ee7cace3e5bc39c4183686fdbaa8f7422",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502",
+        "ensemble_manifest_sha256": "ba13ccfbbea00a4a6577aa07493f2ee82d5c6e98afbe9782280af917ba2be618",
+        "eval_env_sha256": "bc04db5314a3725c777dccba4275fa666fd00960f8bf2b67bb4f14a14df29dd7",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "f0883e9d3b4cc86cb2655f882e9923fea901d978b321714892a1fb4a901f8774",
+          "44299e1b3cdeb528ec51520d763f57d8859b455c2dc5c4f4a8b158b98ca6c0d1",
+          "e89854ee23d388e2981bc185224d81f2546356135d6c2a5d08e709fd88da7eaa"
+        ],
+        "metrics_sha256": "940d14f4c2e6ff1da16a5d45e29f0076a81e48627992f075d91cfa89e311f5c1",
+        "sealed_device": "cpu"
+      }
+    },
+    "2015": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2015_r16_longf.yaml",
+      "config_sha256": "d72335fea4982894b1004b49dcfd26c02073e95237f4efa52d8d87c80e89de4a",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084",
+        "ensemble_manifest_sha256": "e355472cf882274b5d59472bea68216c6bd2cd11d9927b7e10a3e53f9be3b13f",
+        "eval_env_sha256": "a69c765ccdfb92b7dfba8063418c1d7119c39471fb5da1b1d8a384a65820d4b2",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "87a61642c3b67775d83f46ffa2b721e8f8daf12552409a2b25dbb08acdf43165",
+          "6096d4f5702146a28da2a1d3ae3f716b1b79e4660993a8b45c971852224e8f2b",
+          "6d3f7a318893cedda38d0180a04380387cdc9f1c2174fb19e0e0c59b00b99db8"
+        ],
+        "metrics_sha256": "5bfd2ccffd1c4f7485d16712abe0641692bf5e307281ddc37357643c09882360",
+        "sealed_device": "cpu"
+      }
+    },
+    "2016": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2016_r16_longf.yaml",
+      "config_sha256": "6d395b096accd69740fc3ff40efbcba3512afba77ca82bfc51686141031c8652",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659",
+        "ensemble_manifest_sha256": "f41bc20419168ee5d7747a1b4a22278765084a9e23c994e60237950cc8e9307f",
+        "eval_env_sha256": "409eff09fee861435ebe31428eb383cc7b24f08c768eb2de063d278a278845b0",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "cbd6ee7a7950c0aaf7838585685bc35a2242821260ffb7dad274cca90ce9184d",
+          "cebc3de5b2ed6604dc3c9bd27645213c97abbbb138422f03e309dfb1a7a196d3",
+          "4193ee580670b35988be63c3bbb2b3802b724cf87964b88ce081064f17d52624"
+        ],
+        "metrics_sha256": "4c83e4a45b5d58b676cc09e45405e23238cb33bfc9c102ceb3a7e5783d098f6c",
+        "sealed_device": "cpu"
+      }
+    },
+    "2017": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2017_r16_longf.yaml",
+      "config_sha256": "24d2de7b1f4e283b1d928ac0795cf7627913f8e016204cebb497751f539bb563",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661",
+        "ensemble_manifest_sha256": "e1259238c1007d2804e0bca7dabb35eac81929f40fdc5d84edc9a667badcf6f3",
+        "eval_env_sha256": "7a9ee91332e28b8606e56358215f4fdf27ff4a0d376862f6c8f01ddd947a923e",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "9958ab75be707f705e85675cdc5e32711356d8143f89bf81efbeb382ce5b3d61",
+          "cebbe23eed7869e15bebf2349678d3282f18569ba0de0332c2a6fca03b82ac29",
+          "23d3db0f45e5ce3545fdb718e3ae13b85473c853af5720170d9fce15ca41ba16"
+        ],
+        "metrics_sha256": "8e7085a3d6595ba910546a0557b7d1df4034c3f85294c7ad96bc2408b1031afe",
+        "sealed_device": "cpu"
+      }
+    },
+    "2018": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2018_r16_longf.yaml",
+      "config_sha256": "feea868018243c8832d41fdb167d3d3ddbcf4bb9b8ffbd8b386bdb4bcd5dcbe4",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230",
+        "ensemble_manifest_sha256": "e60acef86f8df9d77edcb7a8cba8faac84b8642d190b8910828c03440771138f",
+        "eval_env_sha256": "895c2f7c883a149ef17a269034a6d55ea2c09c73906dd36d75a0380b270d4379",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "4e713deae04dd04bd2fca7333e3617be6b59f5458ecb613bcef528f34316d18e",
+          "005a6c5db91622a98ff7a57435f07e216ea411e5058438e044bf9c179e9c7a05",
+          "3067c676bf9e8eec8442d56bc5fb373d141a027703cb8ae9c1a9ea3ed83d2e2d"
+        ],
+        "metrics_sha256": "c8fbb39b7505b8c2b4165bc2dbdda11a711f0e055dff977bd35be99351a7e907",
+        "sealed_device": "cpu"
+      }
+    },
+    "2019": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2019_r16_longf.yaml",
+      "config_sha256": "cf1930bc9c826da4692573dc6da4590c2e4182220483b9bc2577b9121ca4674a",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867",
+        "ensemble_manifest_sha256": "2495ddd2bd5da49a973e1baf71eefc09578af3d1398a5ed8ace3bae1735d190c",
+        "eval_env_sha256": "077b026f7cedd3f60817a19e58cfa1db3f7afc47f3bfa4fbe98c9694be3c8907",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "b5fcc3d3b3544c3b14d90d01102bf7b7257ccb3e5f47fe9546b673c5f91cbd2f",
+          "858d1b0a2fa69ef8e0914d9658608450b66c84f1a0ec53b9438e4a3cf8657bbb",
+          "cdbf7df763cdb08e8df70c643791c06b4c801df680272a8bed8c38e53a8d47ca"
+        ],
+        "metrics_sha256": "ee42399463fb021ed5774f2eaf262e4c01c341b0cbf64a423e8a7dcf35478df3",
+        "sealed_device": "cpu"
+      }
+    },
+    "2020": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2020_r16_longf.yaml",
+      "config_sha256": "4438dd10131e606353375dcbdcd287489b3384cc3b0822da2064e98c2739f8a2",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642",
+        "ensemble_manifest_sha256": "32777b6d18c3bbc1789795a5d8ef40b6631fe071742ef85248bb94fc284e4201",
+        "eval_env_sha256": "37ff97cf255448797a132038b0d54bd58c4c4e32cdef4d9c17da2b00797bb0ac",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "af30b504a93ec67ed670640d37a3f5eea8b263513341a3d1793774284a168ac3",
+          "1964e560badfd5c95a3058a9e87b2447078c54554a196bcc573663844c6dbb81",
+          "9f52549389dc240e94b386a7c87f5e53d7b5c5c84e642d5fe64f60360a21c43d"
+        ],
+        "metrics_sha256": "7ad229d38149c8346c345164e6e85700cdaf4a397eaf657f55d79d3f25bafe9d",
+        "sealed_device": "cpu"
+      }
+    },
+    "2021": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2021_r16_longf.yaml",
+      "config_sha256": "a4cc4d2e1297752a598c30f4857a371fd621a98add7e76b35faafe1a9172a555",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586",
+        "ensemble_manifest_sha256": "b59a74b2d32ebf94ae201a466c33019dff3d808ac6692a8cc39171509732368a",
+        "eval_env_sha256": "5aa0c81393c2dbca247684f97d22ddc9957309858f04a3238d119a634cd7e7f5",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "1a4ca6c23932c6fb61ff0981c3debd1ea56d29d6ddf691a217372038d74b9ec0",
+          "4761cf3e9ccb08973f2a9121d8da0c227083536bc969ab504309992acdef80c1",
+          "3911498d0dfb6c1e55090d4faebd22cfc4d9b68f91459d82e08a9141c04adcf3"
+        ],
+        "metrics_sha256": "949f17df66d11e56d04ed5dcb08fd0623696c83cd417c214b74ead155fa6f4c5",
+        "sealed_device": "cpu"
+      }
+    },
+    "2022": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2022_r16_longf.yaml",
+      "config_sha256": "0693aac8a8717dab11321ce2e3b5aa20999e4ad6d0c930d13c25091e4078f259",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827",
+        "ensemble_manifest_sha256": "5cc1064b606cb712f01c28316b1a3e1a95184c6492945d9583b75b83eaea5b26",
+        "eval_env_sha256": "771b315edd89340c6c6370125fafdfdc672398b82b9f1344e109ecccfcd8aa01",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "18e0fbad0372e9991112b97b7869befd0fad5a7699b3c360b79baeed07782f21",
+          "ebf711a898b41e30990c3e2f1a6dbc3807612eda372f0f0cdde98a7dcb180720",
+          "0d8dc8cfba962feddc1a9d81b552c556911a18827fd22be981e6da0fc8bd84ca"
+        ],
+        "metrics_sha256": "ae42dc700db7cc784ecccc16ee7deaae0c5e2ef906d68920127098aac76c0424",
+        "sealed_device": "cpu"
+      }
+    },
+    "2023": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2023_r16_longf.yaml",
+      "config_sha256": "8013b2e6d8659fef96e4af7db6f0171c7a5cf4dfb229ad734b793379cb39d33f",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185",
+        "ensemble_manifest_sha256": "f927f4d8f1e7659a996e4b5c244523ae1e8ab67a3136eb050c869c354be4d3b7",
+        "eval_env_sha256": "bcd2dbb47fef55511c3d51fba24e6be331ba53f24cb9226a67da4d9b06bd724f",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "a956f3c961a099af97c3c59846e0c8629b1f56fe3a7a5ceee1be398339079ba5",
+          "bf2c4d254b7a927653bf8cd644f08110189751857c58a69d577c5453c9b435c4",
+          "4e0d6348dd75e507d8e8c3c628567b5a22ff58388c237a499c67de2da827dd9a"
+        ],
+        "metrics_sha256": "f2dfc04544cd3ee1e03ed59fbc42934ba50a6a0fa81c488d7d1c84e353b05534",
+        "sealed_device": "cpu"
+      }
+    },
+    "2024": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2024_r16_longf.yaml",
+      "config_sha256": "e21ce95df45b90aceee51ef11e3922e50a2796b35f7cbae8c1b03a65c972d818",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766",
+        "ensemble_manifest_sha256": "9fcfac670dfa851f16a78441eb56e3197b72b6b20d3a41aa7ca29bff1bff5a63",
+        "eval_env_sha256": "64cbfcbeb3d51372d9399bc50fe674ade9c5bac09127f7c416537bb198c1fd2d",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "6faafe4f8e457aa0bffa4fb4d8b4f2188d58dfe58cd1cad07861d08c637f5aa7",
+          "d3d378a240a2fb5400a497233d5f883bb2eeffa5d9ccad62c1edf63725487772",
+          "26166dc1a659e3ab26e038e61eb8a804b9223c0fe9c3eed4a38f9545cd6a1564"
+        ],
+        "metrics_sha256": "93d76899fe383a092cd3edd0222ac63b1e0e6d3c1f3a26a51de20ed194ec4180",
+        "sealed_device": "cpu"
+      }
+    },
+    "2025": {
+      "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2025_r16_longf.yaml",
+      "config_sha256": "dfa1f907f8c96b577b48511d516b45bc390249ba802925940d8493963e58bde4",
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ppo": {
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143",
+        "ensemble_manifest_sha256": "db2617aec6f68ab294c8d2aa30fecfcba87025bcb3ca514f0f999e7ffca66051",
+        "eval_env_sha256": "1c69a0007f043ee54c4745e2a8067eb1ec36badb2932adc6563982bd2e93f46a",
+        "evaluation_git": {
+          "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+          "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+        },
+        "evaluation_versions": {
+          "forex-env-v3": "0.1.0",
+          "gymnasium": "1.2.3",
+          "sb3-contrib": "2.8.0",
+          "stable-baselines3": "2.8.0",
+          "torch": "2.12.0"
+        },
+        "member_model_sha256": [
+          "3d595ae8aaae38437622f925783c9163694aa4505ece11aaa9d08e0481436c60",
+          "adc5aea572bcdb70e3ea3ec440b7765ac0627fc8a855a562821512d185057401",
+          "28540450b68419af6801fb58e00fcebb587b3b178c92d43ce33c10117560d636"
+        ],
+        "metrics_sha256": "03f69a1005560ec176664e9fbd617a20bb3bef1d148c13e36a1c9be8567dee95",
+        "sealed_device": "cpu"
+      }
+    }
+  },
+  "generated_artifact_sha256": {
+    "coefficient_summary.csv": "db0e6612de92d21c5e24802475b53a3328dc3dfe952f0dc74117f1efc99aaf7a",
+    "coefficients.csv": "77e123ce574788b6e20f3d074ac31685dc25ee07515f9ebe6341a15a3663f9f4",
+    "fold_metrics.csv": "920d339169e6c25163b05d4b698e65095206b4270131458787e2bfad7be58d83",
+    "models.json": "3e01a51922796838dbacdf15ecf1422f10fd03af600ec9ec2d9d627a1ce23168",
+    "predictions.csv": "054aab660d259eaf65324adfb76a5a78d6b97d9085c0f3f8d45cfeaa9bdd30b3",
+    "report.json": "6cf7e57549f6d5e263592053bd0ab11be79111a4018e3cb111a1a8fd0b495c43",
+    "report.md": "ba850fd05bcce13836d880f725f300b4db6cb8e8aa65cbf80c4ce6f8db23ba93",
+    "study_snapshot.yaml": "5da27621e5d8e022342b1d5a4bf68804166b227605a5e8ab213ede4ae4e0c15b"
+  },
+  "study_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue15_supervised_ranking.yaml",
+  "study_sha256": "5da27621e5d8e022342b1d5a4bf68804166b227605a5e8ab213ede4ae4e0c15b"
+}
