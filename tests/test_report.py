@@ -797,7 +797,7 @@ def test_report_accepts_gated_v3_and_aggregates_gate_behavior(tmp_path: Path) ->
                 (campaign_path.parent / value).resolve(), mode
             )
 
-    _, report = run_research_report(campaign_path, tmp_path / "gate-report")
+    output_dir, report = run_research_report(campaign_path, tmp_path / "gate-report")
 
     assert report["provenance"]["baseline"]["gate_evaluation_mode"] == "learned"
     assert report["provenance"]["candidate"]["gate_evaluation_mode"] == "forced_apply"
@@ -805,6 +805,17 @@ def test_report_accepts_gated_v3_and_aggregates_gate_behavior(tmp_path: Path) ->
     assert gate["gate_apply_fraction"] == pytest.approx(0.4)
     assert gate["total_turnover_avoided_by_hold"] == pytest.approx(4.2)
     assert "gate_evaluation_mode" in report["comparisons"][0]["provenance_differences"]
+    markdown = (output_dir / "report.md").read_text(encoding="utf-8")
+    assert (
+        "Gate mode `learned`: effective apply 40.00%, effective hold 60.00%, "
+        "mean hold run 2.00" in markdown
+    )
+    assert (
+        "Gate mode `forced_apply`: effective apply 100.00%; latent gate would "
+        "apply 40.00%, latent gate would hold 60.00%, latent mean hold run 2.00"
+        in markdown
+    )
+    assert "Gate mode `forced_apply`: apply 40.00%, hold 60.00%" not in markdown
 
 
 def test_report_rejects_learned_forced_comparison_from_different_models(

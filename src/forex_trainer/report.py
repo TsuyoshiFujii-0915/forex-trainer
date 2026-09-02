@@ -2152,13 +2152,29 @@ def _report_markdown(report: Mapping[str, Any]) -> str:
         if "gate_behavior" in configuration:
             gate_behavior = configuration["gate_behavior"]
             gate = gate_behavior["overall"]
-            lines.append(
-                f"  - Gate mode `{gate_behavior['evaluation_mode']}`: apply "
-                f"{gate['gate_apply_fraction']:.2%}, hold "
-                f"{gate['gate_hold_fraction']:.2%}, mean hold run "
-                f"{gate['mean_hold_run_length']:.2f}, avoided turnover "
-                f"{gate['total_turnover_avoided_by_hold']:.3f}."
-            )
+            gate_mode = gate_behavior["evaluation_mode"]
+            if gate_mode == "learned":
+                effective_apply = gate["effective_gate_apply_fraction"]
+                lines.append(
+                    f"  - Gate mode `learned`: effective apply "
+                    f"{effective_apply:.2%}, effective hold "
+                    f"{1.0 - effective_apply:.2%}, mean hold run "
+                    f"{gate['mean_hold_run_length']:.2f}, avoided turnover "
+                    f"{gate['total_turnover_avoided_by_hold']:.3f}."
+                )
+            elif gate_mode == "forced_apply":
+                lines.append(
+                    "  - Gate mode `forced_apply`: effective apply "
+                    f"{gate['effective_gate_apply_fraction']:.2%}; latent gate "
+                    f"would apply {gate['gate_apply_fraction']:.2%}, latent gate "
+                    f"would hold {gate['gate_hold_fraction']:.2%}, latent mean "
+                    f"hold run {gate['mean_hold_run_length']:.2f}; avoided "
+                    f"turnover {gate['total_turnover_avoided_by_hold']:.3f}."
+                )
+            else:
+                raise TrainerConfigError(
+                    f"Unsupported gate evaluation mode in report: {gate_mode!r}."
+                )
     lines.extend(["", "## Paired comparisons", ""])
     for comparison in report["comparisons"]:
         delta = comparison["mean_differences"]["annualized_net_return"]

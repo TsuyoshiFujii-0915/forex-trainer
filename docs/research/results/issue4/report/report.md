@@ -6,9 +6,9 @@
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | direct_longf_ens3 | 10.3098% | 13.0648% | 0.222 | 16.5187% / 36.9549% | 1.9138% | 2.173 | 0.861 | 8/17 |
 | gated_longf_ens3 | 2.9208% | 4.6874% | 0.087 | 14.6834% / 46.9661% | 1.2872% | 1.785 | 0.396 | 9/17 |
-  - Gate mode `learned`: apply 59.64%, hold 40.36%, mean hold run 8.19, avoided turnover 122.336.
+  - Gate mode `learned`: effective apply 59.64%, effective hold 40.36%, mean hold run 8.19, avoided turnover 122.336.
 | gated_forced_apply_ens3 | 4.1186% | 6.0628% | 0.226 | 13.0513% / 46.2635% | 1.4208% | 1.757 | 0.583 | 9/17 |
-  - Gate mode `forced_apply`: apply 59.67%, hold 40.33%, mean hold run 8.39, avoided turnover 0.000.
+  - Gate mode `forced_apply`: effective apply 100.00%; latent gate would apply 59.67%, latent gate would hold 40.33%, latent mean hold run 8.39; avoided turnover 0.000.
 
 ## Paired comparisons
 
