@@ -1091,7 +1091,7 @@ def _write_csv(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
     if any(set(row) != set(fields) for row in rows):
         raise ValueError(f"CSV rows have inconsistent fields for {path}.")
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
