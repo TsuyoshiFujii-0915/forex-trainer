@@ -34,9 +34,10 @@ ADR-0028に固定した。
 ## 実行方法と成果物
 
 ```bash
+issue15_output_dir="$(mktemp -d)/issue15"
 uv run forex-supervised-ranking \
   --study configs/research/issue15_supervised_ranking.yaml \
-  --output-dir docs/research/results/issue15
+  --output-dir "$issue15_output_dir"
 ```
 
 出力は`predictions.csv`、`coefficients.csv`、`models.json`、`fold_metrics.csv`、`report.json`、
