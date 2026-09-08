@@ -17,6 +17,7 @@
 | [08-sparse-rank-allocation.md](08-sparse-rank-allocation.md) | scoreから固定grossの疎なlong/short配分を作る構造化行動空間 | Issue #2、Round 18〜19 |
 | [09-regime-tail-loss-diagnostic.md](09-regime-tail-loss-diagnostic.md) | current-provenance `longf ens3`のtail lossをfold単位でregime診断 | Issue #5 |
 | [10-learned-apply-hold-gate.md](10-learned-apply-hold-gate.md) | direct proposalを適用するか既存allocationを保持するlearned execution gate | Issue #4、Round 20 |
+| [11-supervised-ranking-learnability.md](11-supervised-ranking-learnability.md) | `longf` feature windowから次期pair orderingを教師ありridgeで学習できるかの診断 | Issue #15 |
 
 ## 確立した方法論(今後の全実験に適用)
 
