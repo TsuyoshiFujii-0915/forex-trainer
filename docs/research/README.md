@@ -18,6 +18,7 @@
 | [09-regime-tail-loss-diagnostic.md](09-regime-tail-loss-diagnostic.md) | current-provenance `longf ens3`のtail lossをfold単位でregime診断 | Issue #5 |
 | [10-learned-apply-hold-gate.md](10-learned-apply-hold-gate.md) | direct proposalを適用するか既存allocationを保持するlearned execution gate | Issue #4、Round 20 |
 | [11-supervised-ranking-learnability.md](11-supervised-ranking-learnability.md) | `longf` feature windowから次期pair orderingを教師ありridgeで学習できるかの診断 | Issue #15 |
+| [12-supervised-portfolio-translation.md](12-supervised-portfolio-translation.md) | 凍結した教師ありscoreの固定配分への変換と、grossの統計的支持・cost dragの検証 | Issue #16 |
 
 ## 確立した方法論(今後の全実験に適用)
 
@@ -34,7 +35,7 @@
 4. **学習バッチ実行中にソースコードを編集しない** — editable インストールのため、実行中の
    バッチが編集途中の不整合なコードを import して落ちる(round-7b で実証済み)。
 
-## 主要な結論(2026-09-01 時点)
+## 主要な結論(2026-09-08 時点)
 
 - 2ペア(JPY/USD, JPY/EUR)× 価格由来テクニカル特徴量の空間には**取れるエッジが存在しない**
   (ルールでも RL でもグロス ≈ 0)。
@@ -49,8 +50,12 @@
   ドローダウン制御ができていない。検証→評価相関は負のままでゲーティング不成立。
 - direct `longf`のlearned apply/hold gateは17-foldで非採用（unproven）とした。turnoverとcostは下がったが、
   direct比net −7.39ポイント、same-model forced apply比−1.20ポイントでgross alpha損失が上回った。
-- 「エージェントで有意なプラス」には、ルール並みのリスク制御(ドローダウン抑制)を
-  RL に持たせることが残る主課題。
+- Issue #15では既存`longf`情報から教師ありridgeによる次期pair rankingの学習可能性を
+  **established learnable**と判定した。
+- Issue #16では予測tail spreadと固定配分grossの点推定は概ね整合した（gross +4.59%、net −2.64%）。
+  ただしgrossのmoving-block区間が0をまたぎ、turnover/cost dragも大きいため、事前分類は
+  **not successfully translated to portfolio alpha**。canonical reversalを維持し、次はtarget/featuresを
+  変える前に`tail spread → price-only gross → signed carry → transaction cost`をfold単位で分解する。
 
 ## インフラ資産
 
