@@ -31,6 +31,7 @@ forex-data-scaling = "forex_trainer.data_scaling:main"
 forex-report = "forex_trainer.report:main"
 forex-regime-study = "forex_trainer.regime_study:main"
 forex-supervised-ranking = "forex_trainer.supervised_ranking_study:main"
+forex-supervised-portfolio = "forex_trainer.supervised_portfolio_study:main"
 
 [dependency-groups]
 dev = [
