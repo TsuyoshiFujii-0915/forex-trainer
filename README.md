@@ -251,6 +251,26 @@ docker compose run train uv run forex-train --config configs/ppo_mlp_daily.yaml
 
 `forex-eval` walks the entire eval range once with the deterministic policy (`random_start` off, episode cap lifted) and reports: cumulative and annualized return (net and gross of transaction costs), final equity ratio, annualized Sharpe (from per-step log returns and actual bar spacing), max drawdown, total cost ratio, mean gross leverage, and mean/total target-weight turnover. Gated evaluations additionally report apply/hold frequency, hold-run lengths, proposal distance, avoided turnover and immediate cost, and proposed/applied gross exposure. `forex-report` aggregates return, drawdown, cost, leverage, and turnover metrics with fold/era and paired uncertainty; gated version-3 inputs also retain fold/era gate behavior.
 
+## Frozen supervised portfolio study
+
+Issue #16 consumes the exact sealed Issue #15 scores and compares the fixed
+top-2/bottom-2, ±0.8 portfolio with canonical `mom24` reversal and the existing
+`longf ens3` PPO baseline. All three policies are replayed on aligned decisions
+with current transaction costs and signed carry; no model is retrained.
+
+```bash
+uv run forex-supervised-portfolio \
+  --campaign configs/research/issue16_supervised_portfolio.json \
+  --output-dir runs/issue16_portfolio
+```
+
+The destination must be new. The campaign pins the source provenance and study
+hashes and requires the original local data/model artifacts named by Issue #15.
+Outputs include sealed step/pair traces, fold/era metrics, paired fold-bootstrap
+evidence, rank contributions, and classification. See
+[the research note](docs/research/12-supervised-portfolio-translation.md) and
+[ADR-0029](docs/decisions/0029-translate-sealed-scores-with-a-fixed-portfolio-map.md).
+
 ## License
 
 Proprietary. See `pyproject.toml`.
