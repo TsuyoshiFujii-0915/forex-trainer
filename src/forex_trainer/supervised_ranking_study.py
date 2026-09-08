@@ -1303,6 +1303,9 @@ def run_supervised_study(
             current_momentum_coefficients.append(float(model.coefficients[momentum_index]))
             model_records[fold] = {
                 "selected_alpha": selection.selected_alpha,
+                "has_defined_validation_rank_ic": (
+                    selection.has_defined_validation_rank_ic
+                ),
                 "validation_mean_rank_ic_by_alpha": {
                     str(alpha): value
                     for alpha, value in selection.mean_rank_ic_by_alpha.items()
@@ -1390,6 +1393,10 @@ def run_supervised_study(
             non_degenerate_scores=all(
                 float(row["mean_score_dispersion"]) > 0.0 for row in supervised_rows
             ),
+            all_folds_have_defined_validation_rank_ic=all(
+                bool(model_records[fold]["has_defined_validation_rank_ic"])
+                for fold in _EXPECTED_FOLDS
+            ),
         )
         report: Mapping[str, Any] = {
             "artifact_version": 1,
@@ -1403,6 +1410,9 @@ def run_supervised_study(
                 "alpha_grid": list(study.alpha_grid),
                 "alpha_selection": "validation mean cross-sectional Spearman rank IC",
                 "alpha_tie_break": "stronger regularization",
+                "all_undefined_alpha_policy": (
+                    "strongest regularization for diagnostics; final classification not established"
+                ),
                 "top_k": study.top_k,
                 "bootstrap_samples": study.bootstrap_samples,
                 "bootstrap_seed": study.bootstrap_seed,

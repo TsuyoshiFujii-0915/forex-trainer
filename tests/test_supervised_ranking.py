@@ -176,8 +176,38 @@ def test_ridge_alpha_is_selected_only_by_validation_ic_with_strong_tie_break() -
     )
 
     assert selection.selected_alpha == 10.0
+    assert selection.has_defined_validation_rank_ic is True
     assert set(selection.mean_rank_ic_by_alpha) == {0.0, 0.1, 1.0, 10.0}
     assert all(value == pytest.approx(1.0) for value in selection.mean_rank_ic_by_alpha.values())
+
+
+def test_all_undefined_validation_rankings_select_strongest_alpha_and_are_flagged() -> None:
+    """Constant validation scores retain diagnostics but cannot support classification."""
+    train_x = np.array(
+        [
+            [[-2.0], [-1.0], [1.0], [2.0]],
+            [[-3.0], [-0.5], [0.5], [3.0]],
+        ]
+    )
+    train_y = np.zeros((2, 4))
+    validation_x = np.array(
+        [
+            [[-4.0], [-2.0], [2.0], [4.0]],
+            [[-1.5], [-0.2], [0.2], [1.5]],
+        ]
+    )
+    validation_y = validation_x[:, :, 0] * 0.02
+    standardizer = fit_standardizer(train_x)
+
+    selection = select_validation_alpha(
+        _dataset(apply_standardizer(train_x, standardizer), train_y),
+        _dataset(apply_standardizer(validation_x, standardizer), validation_y),
+        (0.0, 0.1, 1.0, 10.0),
+    )
+
+    assert selection.selected_alpha == 10.0
+    assert selection.has_defined_validation_rank_ic is False
+    assert all(value is None for value in selection.mean_rank_ic_by_alpha.values())
 
 
 def test_ridge_fit_recovers_common_relationship_without_pair_identity() -> None:
@@ -279,6 +309,7 @@ def test_canonical_reversal_score_is_negative_current_mom24() -> None:
                 leave_one_fold_out_tail_spreads=(0.001, 0.002),
                 coherent_reversal=True,
                 non_degenerate_scores=True,
+                all_folds_have_defined_validation_rank_ic=True,
             ),
             "established learnable",
         ),
@@ -292,6 +323,7 @@ def test_canonical_reversal_score_is_negative_current_mom24() -> None:
                 leave_one_fold_out_tail_spreads=(0.001, 0.002),
                 coherent_reversal=True,
                 non_degenerate_scores=True,
+                all_folds_have_defined_validation_rank_ic=True,
             ),
             "suggestive",
         ),
@@ -305,6 +337,21 @@ def test_canonical_reversal_score_is_negative_current_mom24() -> None:
                 leave_one_fold_out_tail_spreads=(-0.002, 0.001),
                 coherent_reversal=False,
                 non_degenerate_scores=True,
+                all_folds_have_defined_validation_rank_ic=True,
+            ),
+            "not established",
+        ),
+        (
+            ClassificationInputs(
+                aggregate_mean_rank_ic=0.03,
+                aggregate_mean_tail_spread=0.002,
+                iid_tail_spread_low=0.0002,
+                moving_block_tail_spread_low=0.0001,
+                era_tail_spreads=(0.001, 0.003),
+                leave_one_fold_out_tail_spreads=(0.001, 0.002),
+                coherent_reversal=True,
+                non_degenerate_scores=True,
+                all_folds_have_defined_validation_rank_ic=False,
             ),
             "not established",
         ),

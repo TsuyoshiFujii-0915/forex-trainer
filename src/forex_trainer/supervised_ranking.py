@@ -118,6 +118,7 @@ class AlphaSelection:
 
     selected_alpha: float
     mean_rank_ic_by_alpha: Mapping[float, float | None]
+    has_defined_validation_rank_ic: bool
 
 
 @dataclass(frozen=True)
@@ -148,6 +149,7 @@ class ClassificationInputs:
     leave_one_fold_out_tail_spreads: tuple[float, ...]
     coherent_reversal: bool
     non_degenerate_scores: bool
+    all_folds_have_defined_validation_rank_ic: bool
 
 
 def _expanded_feature_names(
@@ -446,7 +448,7 @@ def select_validation_alpha(
         rank_ics = [
             cross_sectional_spearman(score_row, target_row)
             for score_row, target_row in zip(predictions, validation.targets)
-            if float(target_row.std()) > 0.0
+            if float(score_row.std()) > 0.0 and float(target_row.std()) > 0.0
         ]
         scores_by_alpha[model.alpha] = (
             float(np.mean(rank_ics)) if rank_ics else None
@@ -462,6 +464,7 @@ def select_validation_alpha(
     return AlphaSelection(
         selected_alpha=selected,
         mean_rank_ic_by_alpha=MappingProxyType(dict(scores_by_alpha)),
+        has_defined_validation_rank_ic=bool(eligible),
     )
 
 
@@ -589,6 +592,8 @@ def classify_learnability(inputs: ClassificationInputs) -> str:
         or not all(math.isfinite(value) for value in numeric)
     ):
         raise ValueError("classification requires complete finite fold evidence.")
+    if not inputs.all_folds_have_defined_validation_rank_ic:
+        return "not established"
     point_positive = (
         inputs.aggregate_mean_rank_ic is not None
         and math.isfinite(inputs.aggregate_mean_rank_ic)
