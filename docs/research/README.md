@@ -19,6 +19,7 @@
 | [10-learned-apply-hold-gate.md](10-learned-apply-hold-gate.md) | direct proposalを適用するか既存allocationを保持するlearned execution gate | Issue #4、Round 20 |
 | [11-supervised-ranking-learnability.md](11-supervised-ranking-learnability.md) | `longf` feature windowから次期pair orderingを教師ありridgeで学習できるかの診断 | Issue #15 |
 | [12-supervised-portfolio-translation.md](12-supervised-portfolio-translation.md) | 凍結した教師ありscoreの固定配分への変換と、grossの統計的支持・cost dragの検証 | Issue #16 |
+| [13-frozen-spread-to-net-decomposition.md](13-frozen-spread-to-net-decomposition.md) | 凍結spreadからprice/carry/costまでの会計とfold統計の分解 | Issue #19 |
 
 ## 確立した方法論(今後の全実験に適用)
 
@@ -54,8 +55,10 @@
   **established learnable**と判定した。
 - Issue #16では予測tail spreadと固定配分grossの点推定は概ね整合した（gross +4.59%、net −2.64%）。
   ただしgrossのmoving-block区間が0をまたぎ、turnover/cost dragも大きいため、事前分類は
-  **not successfully translated to portfolio alpha**。canonical reversalを維持し、次はtarget/featuresを
-  変える前に`tail spread → price-only gross → signed carry → transaction cost`をfold単位で分解する。
+  **not successfully translated to portfolio alpha**。canonical reversalを維持する。
+- Issue #19でfold単位の会計分解を完了した。同じ年率log単位では、moving-block区間が初めて
+  0をまたぐのは加重price logからprice-only simple会計へ変換する段階。carryとcostも追加の
+  低下を作る。grossの不確実性は残り、#16の分類を維持する。独立検証の設計根拠と不足証拠を記録した。
 
 ## インフラ資産
 
