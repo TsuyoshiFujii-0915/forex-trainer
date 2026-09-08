@@ -7,7 +7,10 @@ Issue #16の判定は **not successfully translated to portfolio alpha** とす�
 grossの両era平均と全leave-one-fold-out平均は正だが、3-fold moving-block 95%区間は
 **[−0.16%, +9.62%]**で0をまたぐ。事前固定したstable positive grossの条件を満たさず、
 **learned but cost-limitedとはまだ分類しない**。canonical reversalをbenchmarkとして維持し、
-contextual bandit実装へ進む前にpredictive objectiveとportfolio economicsの差を整理する。
+まずfold単位で`#15 tail spread → price-only gross → signed carry → transaction cost`を分解する。
+予測spreadからportfolio grossへの**点推定の変換は概ね成立している**。今回満たせなかったのは
+stable-positive-grossのmoving-block条件と、非常に大きいturnover/cost dragを超えるnet収益性であり、
+分類名を「ranking objectiveがportfolio grossへ変換できなかった」という意味には解釈しない。
 
 ## 固定した実験契約
 
@@ -83,6 +86,18 @@ netは全leave-one-fold-out平均が負で、2025を除くと−4.12%になる�
 
 ## rankingからportfolioへの診断
 
+Issue #15のsupervised `mean_tail_spread`は全期間0.00011991、2009--2018が0.00012776、
+2019--2025が0.00010868だった。top/bottom各2本にweight magnitude 0.8を割り当てるので、
+選択pairのprice log returnをweight付きで合計した値は`1.6 × tail spread`に対応する。
+long/shortのweight合計が0のため、相対returnを作る際に引いたcross-sectional meanは相殺される。
+これはportfolio price-only log returnの近似であり、実際のsimple-return会計とlog変換、
+signed carryを含むgrossとの厳密な同一性を主張するものではない。
+
+この対応から得られる年率の目安は4--5%台で、Issue #16のgross平均+4.59%、
+era別+4.69% / +4.44%と概ね整合する。点推定のtranslationと、foldの時間依存を考慮した
+stable-positive-grossの統計的支持は区別する。後者のmoving-block条件を満たせなかったことが、
+事前登録した分類を維持する理由である。
+
 supervisedのmean rank churnは0.3744（pair rank変化をpair数で正規化した既存Issue #15指標）。
 long/shortを区別した4 membership slotの前decisionからの退出率は77.99%で、初回entryはこの率から除く。
 canonicalとlong/short membershipが異なるdecisionは99.22%。target-weight turnoverは初回entryを含み、
@@ -106,9 +121,14 @@ simple returnと一致を確認した後、`log1p(total)/total`で比例配賦�
 | 8 (long) | −0.00643 | +0.02039 | −0.04475 |
 | 9 (long) | −0.00459 | +0.01326 | −0.03009 |
 
-後半eraではshort側が正の寄与を作る一方、long側は負になっている。Issue #15の相対log-return
-spreadと、actual pair price return・signed carry・turnoverを含むportfolio economicsには差がある。
-scoreを反転したり、良いrankだけを選び直したりせず、この差を次の問題整理の対象とする。
+後半eraではshort側が正の寄与を作る一方、long側は負になっている。ただしlong側だけの負の寄与は
+long-short spreadの失敗を意味しない。両側を合計したgrossの点推定は正で、予測spreadとも概ね整合する。
+
+次の診断ではtarget/featuresの変更に先立ち、同じfold・decision集合で
+`#15 tail spread → price-only gross → signed carry → transaction cost`を順に分解する。
+各段階に同じfold単位のIID/moving-block bootstrapを適用し、正方向の統計的支持がどの段階で
+失われるかを確認する。これは今後の診断方針であり、今回その分解を再計算したという主張ではない。
+scoreの反転やrankの再選択は行わない。
 
 ## 成果物・再現
 
