@@ -297,6 +297,7 @@
   "classification_inputs": {
     "aggregate_mean_rank_ic": 0.01092111396164796,
     "aggregate_mean_tail_spread": 0.00011990758725957964,
+    "all_folds_have_defined_validation_rank_ic": true,
     "coherent_reversal": true,
     "era_tail_spreads": [
       0.00012776438931930007,
@@ -331,6 +332,7 @@
   },
   "mean_current_mom24_standardized_coefficient": 0.0016787498776179223,
   "protocol": {
+    "all_undefined_alpha_policy": "strongest regularization for diagnostics; final classification not established",
     "alpha_grid": [
       0.0,
       0.1,

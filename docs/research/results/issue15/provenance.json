@@ -2,7 +2,7 @@
   "artifact_version": 1,
   "diagnostic_git": {
     "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
-    "forex_trainer": "a8d7dac3e49f9d664041f427e9f71a49296f0326"
+    "forex_trainer": "8990e863c69151b46d55e91f2cf78e61afbc1b7c"
   },
   "diagnostic_versions": {
     "PyYAML": "6.0.3",
@@ -650,9 +650,9 @@
     "coefficient_summary.csv": "db0e6612de92d21c5e24802475b53a3328dc3dfe952f0dc74117f1efc99aaf7a",
     "coefficients.csv": "77e123ce574788b6e20f3d074ac31685dc25ee07515f9ebe6341a15a3663f9f4",
     "fold_metrics.csv": "920d339169e6c25163b05d4b698e65095206b4270131458787e2bfad7be58d83",
-    "models.json": "3e01a51922796838dbacdf15ecf1422f10fd03af600ec9ec2d9d627a1ce23168",
+    "models.json": "af0449183bee5c7d48528b567087b21b60e36d85f6ec200a8c620ef64a2f2b8c",
     "predictions.csv": "054aab660d259eaf65324adfb76a5a78d6b97d9085c0f3f8d45cfeaa9bdd30b3",
-    "report.json": "6cf7e57549f6d5e263592053bd0ab11be79111a4018e3cb111a1a8fd0b495c43",
+    "report.json": "255456e9d0313ba47099f21dd557853a2cb26925713f9d2ca63a070f23a7e548",
     "report.md": "ba850fd05bcce13836d880f725f300b4db6cb8e8aa65cbf80c4ce6f8db23ba93",
     "study_snapshot.yaml": "5da27621e5d8e022342b1d5a4bf68804166b227605a5e8ab213ede4ae4e0c15b"
   },
