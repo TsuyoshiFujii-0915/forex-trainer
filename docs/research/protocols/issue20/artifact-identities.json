@@ -1,0 +1,97 @@
+{
+  "manifest_version": 1,
+  "repository_snapshot": "798200c88d239ab548ba65c47a59b3c3f40797ea",
+  "path_base": "repository_root",
+  "scope": "Historical evidence and frozen prospective policy selection; not an activated forward run.",
+  "artifacts": [
+    {
+      "path": "docs/research/results/issue15/provenance.json",
+      "sha256": "a398ee18a01de364e21deb1d5f0ac5a66c1c1e445e60dc21c7c713215cebfb61"
+    },
+    {
+      "path": "docs/research/results/issue15/models.json",
+      "sha256": "af0449183bee5c7d48528b567087b21b60e36d85f6ec200a8c620ef64a2f2b8c"
+    },
+    {
+      "path": "docs/research/results/issue15/predictions.csv",
+      "sha256": "054aab660d259eaf65324adfb76a5a78d6b97d9085c0f3f8d45cfeaa9bdd30b3"
+    },
+    {
+      "path": "docs/research/results/issue16/provenance.json",
+      "sha256": "d2db580d5f11ec7ca341af04549c3a09e7ddb6777c43562b1117a24ae8a57db3"
+    },
+    {
+      "path": "docs/research/results/issue16/steps.csv",
+      "sha256": "8322f924ccb3b10a129ba4a9c64d6f9be0ba8bd5ce59f8dd9254c4731fec130b"
+    },
+    {
+      "path": "docs/research/results/issue16/campaign_snapshot.json",
+      "sha256": "a634f27834795f45cf37dde6dc59e9b883de8038fde8a994333ea6fd009b647a"
+    },
+    {
+      "path": "docs/research/results/issue19/provenance.json",
+      "sha256": "049109b2462df7c39d4a7244f191d992503bd76b01126d5192f36289dfaef4c8"
+    },
+    {
+      "path": "docs/research/results/issue19/report.json",
+      "sha256": "15175af66224e7cc1f2f31a577ef325da4a171e335f0c00d0e0b1dcf09c9dd92"
+    },
+    {
+      "path": "configs/research/issue15_supervised_ranking.yaml",
+      "sha256": "5da27621e5d8e022342b1d5a4bf68804166b227605a5e8ab213ede4ae4e0c15b"
+    },
+    {
+      "path": "src/forex_trainer/supervised_portfolio_study.py",
+      "sha256": "8be92d015ce9c4a2a1b9e8594d97a0f8062bab67bc77e3a0765c99e65c9719f2"
+    },
+    {
+      "path": "src/forex_trainer/supervised_portfolio.py",
+      "sha256": "73f011749eff147c89f04289bc659e244541edfbeae59042d8d70693db3be8aa"
+    }
+  ],
+  "historical_fold_identity_source": "docs/research/results/issue15/provenance.json#/fold_sources",
+  "forward_selection": {
+    "rule": "Last chronological development fold, not best performing fold.",
+    "fold": "2025",
+    "supervised_model": "docs/research/results/issue15/models.json#/2025",
+    "ppo": {
+      "data_identity": {
+        "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+        "provider": "file",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      },
+      "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143",
+      "ensemble_manifest_sha256": "db2617aec6f68ab294c8d2aa30fecfcba87025bcb3ca514f0f999e7ffca66051",
+      "eval_env_sha256": "1c69a0007f043ee54c4745e2a8067eb1ec36badb2932adc6563982bd2e93f46a",
+      "evaluation_git": {
+        "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+        "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+      },
+      "evaluation_versions": {
+        "forex-env-v3": "0.1.0",
+        "gymnasium": "1.2.3",
+        "sb3-contrib": "2.8.0",
+        "stable-baselines3": "2.8.0",
+        "torch": "2.12.0"
+      },
+      "member_model_sha256": [
+        "3d595ae8aaae38437622f925783c9163694aa4505ece11aaa9d08e0481436c60",
+        "adc5aea572bcdb70e3ea3ec440b7765ac0627fc8a855a562821512d185057401",
+        "28540450b68419af6801fb58e00fcebb587b3b178c92d43ce33c10117560d636"
+      ],
+      "metrics_sha256": "03f69a1005560ec176664e9fbd617a20bb3bef1d148c13e36a1c9be8567dee95",
+      "sealed_device": "cpu"
+    },
+    "member_seeds": [
+      42,
+      43,
+      44
+    ],
+    "model_selection": "validation-best",
+    "configuration": {
+      "path": "configs/wf_r16_long_full/wf2025_r16_longf.yaml",
+      "sha256": "dfa1f907f8c96b577b48511d516b45bc390249ba802925940d8493963e58bde4"
+    },
+    "new_training_budget": 0
+  }
+}

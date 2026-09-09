@@ -36,7 +36,9 @@ forex-spread-decomposition = "forex_trainer.spread_decomposition:main"
 
 [dependency-groups]
 dev = [
+  "jsonschema>=4.25.1",
   "pytest>=8.0",
+  "rfc3339-validator>=0.1.4",
 ]
 
 [tool.uv.sources]
