@@ -20,6 +20,11 @@
 | [11-supervised-ranking-learnability.md](11-supervised-ranking-learnability.md) | `longf` feature windowから次期pair orderingを教師ありridgeで学習できるかの診断 | Issue #15 |
 | [12-supervised-portfolio-translation.md](12-supervised-portfolio-translation.md) | 凍結した教師ありscoreの固定配分への変換と、grossの統計的支持・cost dragの検証 | Issue #16 |
 | [13-frozen-spread-to-net-decomposition.md](13-frozen-spread-to-net-decomposition.md) | 凍結spreadからprice/carry/costまでの会計とfold統計の分解 | Issue #19 |
+| [14-research-and-forward-protocol.md](14-research-and-forward-protocol.md) | 出典付き期間・試行台帳、採否・停止・分岐、前向き記録schemaと開始・終了・開封契約 | Issue #20 |
+
+今後の研究判断と確認期間の扱いは[次期protocol](14-research-and-forward-protocol.md)を参照する。
+2009〜2025はdevelopment folds、2007〜2008と2026H1は過去確認使用済みであり再封印しない。
+以下と過去ノートの成績は各実験の証拠範囲で読む。独立確認による統計的収益性の確立を意味しない。
 
 ## 確立した方法論(今後の全実験に適用)
 
