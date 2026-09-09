@@ -1,0 +1,10 @@
+{
+  "ranking": {
+    "directory": "../../docs/research/results/issue15",
+    "provenance_sha256": "a398ee18a01de364e21deb1d5f0ac5a66c1c1e445e60dc21c7c713215cebfb61"
+  },
+  "portfolio": {
+    "directory": "../../docs/research/results/issue16",
+    "provenance_sha256": "d2db580d5f11ec7ca341af04549c3a09e7ddb6777c43562b1117a24ae8a57db3"
+  }
+}
