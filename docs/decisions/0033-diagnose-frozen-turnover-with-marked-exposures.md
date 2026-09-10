@@ -1,10 +1,10 @@
 # Title
 
-0032. 凍結portfolioの回転原因を時価評価後exposureで診断する
+0033. 凍結portfolioの回転原因を時価評価後exposureで診断する
 
 ## Status
 
-superseded by [ADR-0033](0033-separate-overnight-fees-from-trading-costs.md)
+superseded by [ADR-0034](0034-separate-overnight-fees-from-trading-costs.md)
 
 ## Context
 

@@ -28,9 +28,9 @@ pair順・会計を再検証したうえで、元#19のsteps/fold metricsと照�
 本診断は#15のsealed scoreと#16の実効weight/pair/stepを消費する。再学習・policy推論は不要。
 #19で保持するdirect PPOを含む元経済指標もJSONへ継承するが、主turnover診断は教師ありとcanonical。
 
-[ADR-0032](../decisions/0032-diagnose-frozen-turnover-with-marked-exposures.md)で指標・状態・集約を先に固定した。
+[ADR-0033](../decisions/0033-diagnose-frozen-turnover-with-marked-exposures.md)で指標・状態・集約を先に固定した。
 実入力照合で、signed carryでもovernight_rateが0ではないことを検出したため、最終集計前に
-[ADR-0033](../decisions/0033-separate-overnight-fees-from-trading-costs.md)で訂正した。
+[ADR-0034](../decisions/0034-separate-overnight-fees-from-trading-costs.md)で訂正した。
 旧accepted ADRの本文を書き換えず、supersededとした。評価環境や既存成果物は変更していない。
 
 主診断は元の**next-decision horizonのみ**。隣接scoreのcross-sectional Pearson相関、
