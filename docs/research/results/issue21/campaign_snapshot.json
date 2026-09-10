@@ -1,0 +1,10 @@
+{
+  "accounting_campaign": {
+    "path": "issue19_spread_decomposition.json",
+    "sha256": "30b767aab18f90047f2a877ff0bcdf161fca9b2348f1710a1216f19fac9a7335"
+  },
+  "accounting_source": {
+    "directory": "../../docs/research/results/issue19",
+    "provenance_sha256": "049109b2462df7c39d4a7244f191d992503bd76b01126d5192f36289dfaef4c8"
+  }
+}

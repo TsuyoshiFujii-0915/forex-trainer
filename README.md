@@ -271,6 +271,18 @@ evidence, rank contributions, and classification. See
 [the research note](docs/research/12-supervised-portfolio-translation.md) and
 [ADR-0029](docs/decisions/0029-translate-sealed-scores-with-a-fixed-portfolio-map.md).
 
+## Frozen turnover and cost diagnostic (Issue #21)
+
+```bash
+uv run forex-turnover-diagnostic \
+  --campaign configs/research/issue21_turnover_diagnostic.json \
+  --output-dir runs/issue21_turnover_diagnostic
+```
+
+The explicitly pinned local data/model artifacts are required for the inherited Issue #19 verification.
+Use a new output directory. See [the research note](docs/research/15-frozen-turnover-and-cost-diagnostic.md)
+for score persistence, censored membership durations, actual trading notional and the separate overnight holding fees.
+
 ## License
 
 Proprietary. See `pyproject.toml`.
