@@ -4775,7 +4775,7 @@
       }
     },
     "diagnostic_git": {
-      "forex_trainer": "d250eb295876a00943220c720ee180159d56daf4",
+      "forex_trainer": "f276b5038e7042695ab055839f390abf6a058fc1",
       "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
     },
     "diagnostic_versions": {
@@ -4801,7 +4801,7 @@
     }
   },
   "diagnostic_git": {
-    "forex_trainer": "d250eb295876a00943220c720ee180159d56daf4",
+    "forex_trainer": "f276b5038e7042695ab055839f390abf6a058fc1",
     "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
   },
   "diagnostic_versions": {
@@ -4815,14 +4815,14 @@
     "PyYAML": "6.0.3",
     "pyarrow": "24.0.0"
   },
-  "implementation_sha256": "459bdcee88d008ae22f4f8153cf2b7c3f28682896594b223e79323f22964a3d7",
+  "implementation_sha256": "35db0a483d3fc1d76d65532e106d804afbfbf2b6cb5b2832c0d4156cd938b667",
   "environment_accounting_sha256": "8204e23211ec5d3412d4f734c96d3af6d5a0589fe906b6bd33167002d1d72df7",
   "generated_artifact_sha256": {
     "pair_transitions.csv": "7a531955a388485251d0a7aa210514151f445186e5ea1397c064ea97a9df3f15",
     "exploratory_states.csv": "be446ee1bdefbb5786b0254b874677d7f0f7b2b6beac6413f67abc524bbeb422",
     "report.md": "33c38dcecc718868af60b2a375255337f92ae946a43dfcebbe3ca9baddc00153",
     "campaign_snapshot.json": "4a39b50668e832b5829d74dac7a645b4b3496aed580dc2145381f68f9360478c",
-    "report.json": "56b99f6e48647a0fdff2f723b5b9985c71ce4630e0af29544d365c0533106c00",
+    "report.json": "8fd1e2e5e414f2a364b1670ae92d3e1086ea5ed236e1b1bb7b3f49bf0118a474",
     "holding_spells.csv": "5b847236b1d3229de23530cfedd6568964d9923c02a2d05cb8bc7dc02e70b32a",
     "bootstrap_indices.npz": "f7b4fd2ff3f9ac8b1eddbbdfb382ae2d77e63cdfed24be8f1d809468edea0196",
     "decisions.csv": "2514c77cfbed80932b17fec9567be23047270300b57a4e1e6c4a57e71e04278a",

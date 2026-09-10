@@ -3,7 +3,7 @@
   "decision": "unresolved",
   "reason": "Gross uncertainty remains under Issue #19; descriptive turnover associations do not justify a gate/bandit or establish profitability.",
   "protocol": {
-    "adr": "0033 (supersedes 0032)",
+    "adr": "0034 (supersedes 0033)",
     "horizon": "original next decision",
     "fold_weight": "equal",
     "folds": [
