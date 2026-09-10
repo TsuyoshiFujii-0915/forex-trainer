@@ -22,6 +22,7 @@
 | [13-frozen-spread-to-net-decomposition.md](13-frozen-spread-to-net-decomposition.md) | 凍結spreadからprice/carry/costまでの会計とfold統計の分解 | Issue #19 |
 | [14-research-and-forward-protocol.md](14-research-and-forward-protocol.md) | 出典付き期間・試行台帳、採否・停止・分岐、前向き記録schemaと開始・終了・開封契約 | Issue #20 |
 | [15-frozen-turnover-and-cost-diagnostic.md](15-frozen-turnover-and-cost-diagnostic.md) | 凍結scoreの持続性、所属交代、実notionalとspread/overnight費用の原因別診断 | Issue #21 |
+| [16-execution-and-measurement-audit.md](16-execution-and-measurement-audit.md) | 実効期間台帳、約定・費用・データの現実性監査、通年評価とpaper前の受入仕様 | Issue #22 |
 
 今後の研究判断と確認期間の扱いは[次期protocol](14-research-and-forward-protocol.md)を参照する。
 2009〜2025はdevelopment folds、2007〜2008と2026H1は過去確認使用済みであり再封印しない。

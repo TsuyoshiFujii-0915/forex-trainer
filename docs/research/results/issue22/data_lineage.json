@@ -1,0 +1,41 @@
+{
+  "audited_at": "2026-09-10",
+  "files": {
+    "data/jpy_9pairs_1d_2003.parquet": {
+      "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375",
+      "rows": 5292
+    },
+    "data/jpy_9pairs_1d_2003_clean.parquet": {
+      "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e",
+      "rows": 5292
+    },
+    "data/jpy_9pairs_1d_2003_carry.parquet": {
+      "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e",
+      "rows": 5292
+    }
+  },
+  "raw_index_timezone": "Europe/London",
+  "raw_first": "2005-07-19T00:00:00+01:00",
+  "raw_last": "2025-12-31T00:00:00+00:00",
+  "changed_symbol_timestamp_rows": 14,
+  "changed_ohlc_cells": 33,
+  "raw_clean_index_and_columns_equal": true,
+  "clean_carry_ohlcv_values_equal": true,
+  "repair_reconstruction": {
+    "function": "forex_trainer.data_quality.repair_reversing_spikes",
+    "residual_threshold": 0.08,
+    "reversal_tolerance": 0.04,
+    "expected_repairs": 14,
+    "reconstructed_clean_values_equal": true
+  },
+  "fred_lag_days": {
+    "documented_recipe": 60,
+    "embedded_in_parquet": false
+  },
+  "unavailable_evidence": [
+    "original Yahoo response bytes and retrieval timestamp",
+    "FRED response bytes, retrieval timestamp, release timestamps and vintages used to build carry",
+    "historical executable bid/ask and broker account specification"
+  ],
+  "price_repairs_sha256": "88a6b38733e1bdb998ce6b642616fcc102259599e484c6126b8907ef3f42c6d9"
+}
