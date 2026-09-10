@@ -23,9 +23,16 @@
 | [14-research-and-forward-protocol.md](14-research-and-forward-protocol.md) | 出典付き期間・試行台帳、採否・停止・分岐、前向き記録schemaと開始・終了・開封契約 | Issue #20 |
 | [15-frozen-turnover-and-cost-diagnostic.md](15-frozen-turnover-and-cost-diagnostic.md) | 凍結scoreの持続性、所属交代、実notionalとspread/overnight費用の原因別診断 | Issue #21 |
 | [16-execution-and-measurement-audit.md](16-execution-and-measurement-audit.md) | 実効期間台帳、約定・費用・データの現実性監査、通年評価とpaper前の受入仕様 | Issue #22 |
+| [17-bounded-development-protocol.md](17-bounded-development-protocol.md) | 開発と独立確認の適用範囲、短期予算・採否/停止/分岐、#28〜#32実行manifest | Issue #27 |
 
-今後の研究判断と確認期間の扱いは[次期protocol](14-research-and-forward-protocol.md)を参照する。
+現在の短期開発は[issue27-development-v1](17-bounded-development-protocol.md)と
+[実行manifest](protocols/issue27/execution-manifest.md)を参照する。
+#28 → #29 → #30最終解析を主経路とし、#30先行診断・#31約定replay・#32開発shadowを並行する。
+今回の新規学習・HPO予算は0。開発shadowは成績閲覧可だが独立確認へ事後昇格しない。
+旧[issue20-forward-v1](14-research-and-forward-protocol.md)は凍結確認計画として保持し、未開始のまま。
+新契約は開発着手と認定判断を分けるもので、旧方策の収益性・canonical置換を新たに認定していない。
 2009〜2025はdevelopment folds、2007〜2008と2026H1は過去確認使用済みであり再封印しない。
+年初warmup除外部分や2026H2も、暦上新しいことだけで未使用へ再分類しない。
 以下と過去ノートの成績は各実験の証拠範囲で読む。独立確認による統計的収益性の確立を意味しない。
 
 ## 確立した方法論(今後の全実験に適用)
