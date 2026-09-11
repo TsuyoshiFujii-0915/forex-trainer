@@ -108,9 +108,16 @@ pair traceは同directoryの`F0-*-pairs.csv.gz`。8fold×3方策を確定した�
 17foldが揃った場合に用いる10,000 IID／3-fold moving-block・seed16・全LOO・最大fold寄与は
 既存`paired_evidence`を再利用する実装とfixture検証を用意したが、この市場結果では出力をnullにしている。
 
-## 検証の残件
+## 検証
 
-回帰検証は353件通過。私が先に追加した新規テスト2件には、費用変更でassets/actionが必ず変わるという
-誤前提と、凍結ridge配列を直接変更できるというfixtureの誤前提がある。
-AGENTS.mdの実装中テスト変更禁止に従い、訂正許可の確認中は変更せず、2件を未解決として明示する。
-本番env/modelの仕様を誤ったテストに合わせて変更していない。PRはこの残件が解決するまでdraftとする。
+PR #35のレビューで指定された新規テスト2件の前提訂正を行い、`uv run pytest -q`で
+全355件が通過した（除外0）。対象の費用campaignテスト12件も通過している。
+
+PPOの実モデルによる推論を記録し、各scenarioの全decisionでその口座のassetsを使って
+再推論したこと、独立resetとequity連続性、action差0の感度結果を検証する。
+ridgeの障害fixtureはpredictに例外を注入し、パラメータを変更せずにridge 3セルだけが
+execution_error、他6セルはcompleteとなることを確認する。係数・parameter hash・read-only保護も保持する。
+
+production実装・凍結model・env・sealed成果物に変更はない。保存後の150 artifact hashと
+時刻/pair順・費用感度の照合も再検証済み。テスト残件は解消したが、実データ不足81セルと
+Issue #29の17fold基準線確定が未完了である点は変わらない。

@@ -14,7 +14,7 @@ from forex_trainer.cost_campaign import (
     scenario_environment, summarize_campaign, validate_campaign,
 )
 from forex_trainer.full_period import build_period_env, evaluate_policy, require_comparable
-from forex_trainer.full_period_sources import load_campaign_sources
+from forex_trainer.full_period_sources import FrozenEnsemble, load_campaign_sources
 from forex_trainer.full_period import read_json
 from test_full_period import constant_policy, prepare_fixture, sealed_fixture
 
@@ -57,19 +57,62 @@ def test_actual_notional_includes_marked_position_drift_and_costs_reconcile(tmp_
         account_trace(broken, plan)
 
 
-def test_frozen_models_reinfer_from_each_cost_scenarios_account(sealed_fixture: Path, tmp_path: Path) -> None:
+def test_frozen_models_reinfer_from_each_cost_scenarios_account(
+    sealed_fixture: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     sources = load_campaign_sources(read_json(sealed_fixture), sealed_fixture)
-    results = run_fold_scenarios(sources[0], tmp_path)
+    inference_inputs: list[np.ndarray] = []
+    inference_actions: list[np.ndarray] = []
+    infer = FrozenEnsemble.action
+
+    def record_inference(
+        ensemble: FrozenEnsemble,
+        observation: dict[str, np.ndarray],
+        window: np.ndarray,
+    ) -> tuple[np.ndarray, np.ndarray]:
+        """Record actual inference without replacing model predictions.
+
+        Args:
+            ensemble: The real frozen three-member ensemble.
+            observation: This account's current observation.
+            window: Current causal feature window.
+
+        Returns:
+            The unmodified scores and action from the real ensemble.
+        """
+        scores, action = infer(ensemble, observation, window)
+        inference_inputs.append(observation["assets"].copy())
+        inference_actions.append(action.copy())
+        return scores, action
+
+    with monkeypatch.context() as patch:
+        patch.setattr(FrozenEnsemble, "action", record_inference)
+        results = run_fold_scenarios(sources[0], tmp_path)
     assert len(results) == 9
     by_key = {(r["scenario"], r["policy"]): r for r in results}
+    expected_trace: list[dict[str, Any]] = []
     for scenario in SCENARIOS:
         require_comparable([by_key[scenario, p] for p in ("canonical", "ridge", "ppo_ens3")])
+        result = by_key[scenario, "ppo_ens3"]
+        assert result["trace"][0]["equity_before"] == 1_000_000
+        assert result["trace"][0]["assets_before"] == np.zeros((9, 3)).tolist()
+        assert all(current["equity_before"] == previous["equity_jpy"] for previous, current in zip(result["trace"], result["trace"][1:]))
+        expected_trace.extend(result["trace"])
+    assert len(inference_inputs) == len(inference_actions) == len(expected_trace)
+    for assets, action, row in zip(inference_inputs, inference_actions, expected_trace):
+        np.testing.assert_array_equal(assets, np.asarray(row["assets_before"], dtype=np.float32))
+        np.testing.assert_array_equal(action[:, 0], np.asarray(row["action"], dtype=np.float32))
     f0, f1 = by_key["F0", "ppo_ens3"], by_key["F1", "ppo_ens3"]
     assert f0["trace"][0]["action"] == f1["trace"][0]["action"]
     assert f0["trace"][0]["equity_jpy"] != f1["trace"][0]["equity_jpy"]
-    assert f0["trace"][1]["assets_before"] != f1["trace"][1]["assets_before"]
-    sensitivity = compare_sensitivity(f0, f1)
-    assert sensitivity["changed_action_decisions"] > 0
+    for scenario in ("F1", "F2"):
+        stress = by_key[scenario, "ppo_ens3"]
+        assert f0["trace"][-1]["equity_jpy"] != stress["trace"][-1]["equity_jpy"]
+        assert [row["action"] for row in f0["trace"]] == [row["action"] for row in stress["trace"]]
+        sensitivity = compare_sensitivity(f0, stress)
+        assert sensitivity["changed_action_decisions"] == 0
+        assert sensitivity["maximum_absolute_action_change"] == 0
+        assert sensitivity["mean_absolute_action_change"] == 0
     with pytest.raises(ValueError, match="costs"):
         require_comparable([f0, f1])
     for field in ("timestamps", "symbols", "source_policy_sha256", "runtime", "market_sha256"):
@@ -174,16 +217,37 @@ def test_complete_panel_reuses_registered_fold_statistics() -> None:
     assert report["summaries"]["F0"]["canonical"]["2019-2025"]["fold_count"] == 7
 
 
-def test_one_policy_execution_failure_preserves_other_scenarios(sealed_fixture: Path, tmp_path: Path) -> None:
+def test_one_policy_execution_failure_preserves_other_scenarios(
+    sealed_fixture: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     source = load_campaign_sources(read_json(sealed_fixture), sealed_fixture)[0]
-    source.ridge.model.coefficients[:] = np.nan
-    results = run_fold_scenarios(source, tmp_path)
+    parameters = source.ridge.model.coefficients.copy()
+    parameter_hash = source.ridge.parameter_sha256
+
+    def fail_prediction(window: np.ndarray) -> np.ndarray:
+        """Inject the review-requested inference error without changing parameters.
+
+        Args:
+            window: The real causal feature window supplied by the evaluator.
+
+        Raises:
+            RuntimeError: The deliberately injected ridge-only inference failure.
+        """
+        raise RuntimeError("injected ridge inference failure")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(source.ridge, "predict", fail_prediction)
+        results = run_fold_scenarios(source, tmp_path)
     assert len(results) == 9
     assert sum(r["status"] == "complete" for r in results) == 6
     errors = [r for r in results if r["status"] == "execution_error"]
     assert len(errors) == 3
     assert {r["policy"] for r in errors} == {"ridge"}
-    assert all("Malformed frozen policy output" in r["error"] for r in errors)
+    assert {r["scenario"] for r in errors} == set(SCENARIOS)
+    assert all(r["error"] == "RuntimeError: injected ridge inference failure" for r in errors)
+    np.testing.assert_array_equal(source.ridge.model.coefficients, parameters)
+    assert source.ridge.parameter_sha256 == parameter_hash
+    assert not source.ridge.model.coefficients.flags.writeable
 
 
 def test_year_start_contribution_is_separate_from_unpaired_period_difference(tmp_path: Path) -> None:
