@@ -1,0 +1,39 @@
+{
+  "mode": "full_period",
+  "measurement_id": "full-period-history-v1",
+  "evidence_class": "development_historical",
+  "source": {
+    "path": "docs/research/results/issue15/provenance.json",
+    "sha256": "a398ee18a01de364e21deb1d5f0ac5a66c1c1e445e60dc21c7c713215cebfb61"
+  },
+  "lineage": {
+    "path": "docs/research/protocols/issue28/source-lineage.json",
+    "sha256": "f3d96b62ee98cc8fe6dbcb132e87a3c8ba37bf4116b3806b99a3332fab5b08dd"
+  },
+  "runtime": {
+    "forex_env_sha": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "pyarrow": "24.0.0",
+      "PyYAML": "6.0.3"
+    },
+    "device": "cpu"
+  },
+  "folds": [
+    {
+      "fold": "2025",
+      "measurement_start": "2025-01-01T00:00:00Z",
+      "measurement_end": "2025-01-11T00:00:00Z",
+      "calendar": {
+        "path": "docs/research/protocols/issue28/smoke-calendar.json",
+        "sha256": "75827070ce8538c22e0ba15438171a0e8129767ff5da8717fd8dd3c5cc84f70a"
+      }
+    }
+  ]
+}

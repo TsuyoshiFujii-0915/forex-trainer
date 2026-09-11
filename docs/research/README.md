@@ -24,6 +24,7 @@
 | [15-frozen-turnover-and-cost-diagnostic.md](15-frozen-turnover-and-cost-diagnostic.md) | 凍結scoreの持続性、所属交代、実notionalとspread/overnight費用の原因別診断 | Issue #21 |
 | [16-execution-and-measurement-audit.md](16-execution-and-measurement-audit.md) | 実効期間台帳、約定・費用・データの現実性監査、通年評価とpaper前の受入仕様 | Issue #22 |
 | [17-bounded-development-protocol.md](17-bounded-development-protocol.md) | 開発と独立確認の適用範囲、短期予算・採否/停止/分岐、#28〜#32実行manifest | Issue #27 |
+| [18-full-period-evaluator.md](18-full-period-evaluator.md) | 63本の観測履歴を損益期間から分離する評価器、legacy再現、凍結3方策と#29引渡し | Issue #28 |
 
 現在の短期開発は[issue27-development-v1](17-bounded-development-protocol.md)と
 [実行manifest](protocols/issue27/execution-manifest.md)を参照する。
