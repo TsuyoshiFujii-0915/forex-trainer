@@ -1,0 +1,43 @@
+{
+  "campaign_id": "issue30-profit-attribution-v1",
+  "scenario": "F0",
+  "folds": [
+    "2009",
+    "2010",
+    "2011",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "controls": [
+    "train_constant",
+    "common_projected"
+  ],
+  "parent_manifest": {
+    "path": "docs/research/results/issue29/manifest.json",
+    "sha256": "ac0db4e3b26c59b9917b3ad5fa7c68a214bf960740d132f806fc1a044aa3b0fb"
+  },
+  "registration": {
+    "path": "docs/research/protocols/issue30/registration.md",
+    "sha256": "5ea3bc18237f05ffad68274cc0d88f04c89a37a567db271168a00e1dc3adcfb7"
+  },
+  "parent_contract": {
+    "path": "docs/research/17-bounded-development-protocol.md",
+    "sha256": "3ed67f093ab1364cbd4d70194b30687f07907ecb45e7ea6f1fbef2099bcafb2e"
+  },
+  "lock": {
+    "path": "uv.lock",
+    "sha256": "a1baf53c15f9681ccf5a9ed79a2dd834dccecce6aa82b3e78491fcc4ce49cd82"
+  }
+}
