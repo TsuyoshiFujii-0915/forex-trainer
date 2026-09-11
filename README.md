@@ -298,3 +298,16 @@ existing single-model evaluator in a new output directory. See the
 ## License
 
 Proprietary. See `pyproject.toml`.
+
+## Fixed full-period cost campaign (Issue #29)
+
+```bash
+uv run forex-cost-campaign --config configs/research/issue29_full_period_cost.json \
+  --output runs/issue29-reproduction
+```
+
+The registered panel contains 17 folds × 3 frozen policies × F0/F1/F2. Every account
+is re-inferred independently. Missing expected bars produce explicit blocked cells;
+terminal strategy losses retain their traces. Exit 2 means the experiment is incomplete,
+and incomplete panels do not publish selected-fold aggregate or paired evidence.
+See the [preregistration and input audit](docs/research/protocols/issue29/registration.md).

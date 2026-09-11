@@ -1,0 +1,212 @@
+{
+  "campaign_id": "issue29-full-period-cost-v1",
+  "parent_contract": {
+    "path": "docs/research/17-bounded-development-protocol.md",
+    "sha256": "3ed67f093ab1364cbd4d70194b30687f07907ecb45e7ea6f1fbef2099bcafb2e"
+  },
+  "parent_portfolio": {
+    "path": "docs/research/results/issue16/provenance.json",
+    "sha256": "d2db580d5f11ec7ca341af04549c3a09e7ddb6777c43562b1117a24ae8a57db3"
+  },
+  "lock": {
+    "path": "uv.lock",
+    "sha256": "a1baf53c15f9681ccf5a9ed79a2dd834dccecce6aa82b3e78491fcc4ce49cd82"
+  },
+  "scenarios": {
+    "F0": {
+      "spread_multiplier": 1,
+      "overnight_multiplier": 1
+    },
+    "F1": {
+      "spread_multiplier": 2,
+      "overnight_multiplier": 1
+    },
+    "F2": {
+      "spread_multiplier": 1,
+      "overnight_multiplier": 2
+    }
+  },
+  "evaluation": {
+    "mode": "full_period",
+    "measurement_id": "full-period-history-v1",
+    "evidence_class": "development_historical",
+    "source": {
+      "path": "docs/research/results/issue15/provenance.json",
+      "sha256": "a398ee18a01de364e21deb1d5f0ac5a66c1c1e445e60dc21c7c713215cebfb61"
+    },
+    "lineage": {
+      "path": "docs/research/protocols/issue28/source-lineage.json",
+      "sha256": "f3d96b62ee98cc8fe6dbcb132e87a3c8ba37bf4116b3806b99a3332fab5b08dd"
+    },
+    "runtime": {
+      "forex_env_sha": "6024b91c0f3592611849bc231922ab60e6090aed",
+      "versions": {
+        "forex-env-v3": "0.1.0",
+        "stable-baselines3": "2.8.0",
+        "sb3-contrib": "2.8.0",
+        "torch": "2.12.0",
+        "gymnasium": "1.2.3",
+        "numpy": "2.4.6",
+        "pandas": "3.0.3",
+        "pyarrow": "24.0.0",
+        "PyYAML": "6.0.3"
+      },
+      "device": "cpu"
+    },
+    "folds": [
+      {
+        "fold": "2009",
+        "measurement_start": "2009-01-01T00:00:00Z",
+        "measurement_end": "2010-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2009.json",
+          "sha256": "2f06beb91c0ee7c1973e78e0557780bf0bbd41d400c99b7f8e47e8517a87d73a"
+        }
+      },
+      {
+        "fold": "2010",
+        "measurement_start": "2010-01-01T00:00:00Z",
+        "measurement_end": "2011-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2010.json",
+          "sha256": "9240bf22ec485b4ef56274cd9831be59e8afa51c6ed726419b6284413760424f"
+        }
+      },
+      {
+        "fold": "2011",
+        "measurement_start": "2011-01-01T00:00:00Z",
+        "measurement_end": "2012-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2011.json",
+          "sha256": "b624fe96b603b98861da2ff56de0a71008207e0c5bde29e8f5256274a83af25e"
+        }
+      },
+      {
+        "fold": "2012",
+        "measurement_start": "2012-01-01T00:00:00Z",
+        "measurement_end": "2013-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2012.json",
+          "sha256": "67502006b1b19f403223e35252a8a4e144d8a55410cef348bf45aba24e40cb8b"
+        }
+      },
+      {
+        "fold": "2013",
+        "measurement_start": "2013-01-01T00:00:00Z",
+        "measurement_end": "2014-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2013.json",
+          "sha256": "e09d84adff7b797c7a11bfae1ab620663a056a75ee60893b06c43d20f02e3dbc"
+        }
+      },
+      {
+        "fold": "2014",
+        "measurement_start": "2014-01-01T00:00:00Z",
+        "measurement_end": "2015-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2014.json",
+          "sha256": "2784a0dbc7e96d1737f28a4762e40e2e37387037cf53d4cd87839ab7ac58bd03"
+        }
+      },
+      {
+        "fold": "2015",
+        "measurement_start": "2015-01-01T00:00:00Z",
+        "measurement_end": "2016-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2015.json",
+          "sha256": "581eb4695b124a7031d12ad3515f960d028c797299c9952a67f213351b976f48"
+        }
+      },
+      {
+        "fold": "2016",
+        "measurement_start": "2016-01-01T00:00:00Z",
+        "measurement_end": "2017-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2016.json",
+          "sha256": "569d55873f26d49167533c94afb2e13560a253840afe1e6d0adc151ba159a294"
+        }
+      },
+      {
+        "fold": "2017",
+        "measurement_start": "2017-01-01T00:00:00Z",
+        "measurement_end": "2018-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2017.json",
+          "sha256": "02ad0a2cdeb42e137c55555cace6be595d4b7e7549559f685a473ba9658fb344"
+        }
+      },
+      {
+        "fold": "2018",
+        "measurement_start": "2018-01-01T00:00:00Z",
+        "measurement_end": "2019-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2018.json",
+          "sha256": "983536cf7932e7895f1360a50d4e895d1aa5939d6cbeb8a26a2c85dace8c164e"
+        }
+      },
+      {
+        "fold": "2019",
+        "measurement_start": "2019-01-01T00:00:00Z",
+        "measurement_end": "2020-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2019.json",
+          "sha256": "b724b05385d0fd0b9337997db4429a194a4e02c56ad5e2275894930b95d6aea6"
+        }
+      },
+      {
+        "fold": "2020",
+        "measurement_start": "2020-01-01T00:00:00Z",
+        "measurement_end": "2021-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2020.json",
+          "sha256": "bdb93a96a2831f6582d33b3f0c7af24b37cb7e000a0ec33118fee5d347afb78c"
+        }
+      },
+      {
+        "fold": "2021",
+        "measurement_start": "2021-01-01T00:00:00Z",
+        "measurement_end": "2022-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2021.json",
+          "sha256": "24b0c020d75ad6b7aa3ee086645f54910721a83b949b4d06fb56657e6ebecdf7"
+        }
+      },
+      {
+        "fold": "2022",
+        "measurement_start": "2022-01-01T00:00:00Z",
+        "measurement_end": "2023-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2022.json",
+          "sha256": "e8b1b233577f3165b1ad4910a5ae9e62cb1dc12ed4574fe805bf81dbe6931132"
+        }
+      },
+      {
+        "fold": "2023",
+        "measurement_start": "2023-01-01T00:00:00Z",
+        "measurement_end": "2024-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2023.json",
+          "sha256": "eb772fdf269df4f9f4932b84f56413fc6684da7208292897d4e065c0146bc27a"
+        }
+      },
+      {
+        "fold": "2024",
+        "measurement_start": "2024-01-01T00:00:00Z",
+        "measurement_end": "2025-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2024.json",
+          "sha256": "b316afca5151411f642367e4bb686608e18c1f3799a652aa13c24dc5414fe33f"
+        }
+      },
+      {
+        "fold": "2025",
+        "measurement_start": "2025-01-01T00:00:00Z",
+        "measurement_end": "2026-01-01T00:00:00Z",
+        "calendar": {
+          "path": "docs/research/protocols/issue29/calendar-2025.json",
+          "sha256": "6f8468b5a893a8edaa384c7af27a42f748d9de116299f2a5b5cbfb4f70035033"
+        }
+      }
+    ]
+  }
+}

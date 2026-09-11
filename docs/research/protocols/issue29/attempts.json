@@ -1,0 +1,37 @@
+{
+  "trial_id": "issue29-full-period-cost-v1",
+  "parent_trial_id": "issue27-development-v1",
+  "registration_commit": "fb7220a3fa8fefb89297cfc692c48ee3f8e89325",
+  "attempts": [
+    {
+      "attempt": 1,
+      "started_at": "2026-09-11T06:48:05.831526+00:00",
+      "finished_at": "2026-09-11T06:48:34.665543+00:00",
+      "opened_at": null,
+      "status": "incomplete_input",
+      "completed_policy_folds": 72,
+      "blocked_input_policy_folds": 81,
+      "execution_errors": 0,
+      "terminal_margin_calls": 0,
+      "command": [
+        "forex-cost-campaign",
+        "--config",
+        "configs/research/issue29_full_period_cost.json",
+        "--output",
+        "docs/research/results/issue29"
+      ],
+      "artifacts_and_hashes": {
+        "path": "docs/research/results/issue29/manifest.json",
+        "sha256": "ac0db4e3b26c59b9917b3ad5fa7c68a214bf960740d132f806fc1a044aa3b0fb"
+      },
+      "decision": "All policies measurement_or_data_insufficient. No selected-fold aggregate, no new training, no change to Issue #16 classification.",
+      "unknowns": "Nine folds have missing expected history/measurement bars. Provider-specific holiday versus missing-response evidence, point-in-time availability/vintage, and executable quotes remain absent.",
+      "recorded_at": "2026-09-11T06:50:57.811521+00:00",
+      "opening_window_utc": {
+        "after": "2026-09-11T06:48:34.665543+00:00",
+        "at_or_before": "2026-09-11T06:50:57.811521+00:00",
+        "reason": "Exact first result-view timestamp was not separately instrumented; do not substitute ledger-write time."
+      }
+    }
+  ]
+}
