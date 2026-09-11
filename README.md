@@ -283,6 +283,18 @@ The explicitly pinned local data/model artifacts are required for the inherited 
 Use a new output directory. See [the research note](docs/research/15-frozen-turnover-and-cost-diagnostic.md)
 for score persistence, censored membership durations, actual trading notional and the separate overnight holding fees.
 
+## History-separated evaluation (Issue #28)
+
+```bash
+uv run forex-period-eval --config configs/research/issue28_smoke.json \
+  --output runs/full-period-history-v1/issue28-smoke
+```
+
+The explicit `full_period` mode validates 63 history bars, frozen ridge/canonical/PPO
+inputs, and a registered half-open measurement calendar. `legacy` reproduces the
+existing single-model evaluator in a new output directory. See the
+[configuration, source requirements, and Issue #29 handoff](docs/research/18-full-period-evaluator.md).
+
 ## License
 
 Proprietary. See `pyproject.toml`.
