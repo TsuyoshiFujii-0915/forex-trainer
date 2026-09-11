@@ -166,6 +166,14 @@ current contract before running `forex-eval` and `forex-ensemble-eval` for a
 generic campaign. Re-evaluation alone cannot recover historical training-time
 device, Git, dependency, or data identity and is rejected explicitly.
 
+## Frozen PPO profit attribution
+
+`forex-profit-attribution` consumes the pinned Issue #29 F0 seal and replays
+train-derived constant and common-only projected controls on independent accounts.
+The registered command, accounting definitions, partial-panel status, and results
+are documented in [Issue #30 research notes](docs/research/20-ppo-profit-attribution.md).
+All 17 folds are required before aggregate evidence is reported.
+
 ## Experiment YAML
 
 ```yaml

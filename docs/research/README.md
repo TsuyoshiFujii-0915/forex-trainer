@@ -26,6 +26,7 @@
 | [17-bounded-development-protocol.md](17-bounded-development-protocol.md) | 開発と独立確認の適用範囲、短期予算・採否/停止/分岐、#28〜#32実行manifest | Issue #27 |
 | [19-full-period-cost-baselines.md](19-full-period-cost-baselines.md) | 凍結3方策×固定費用stress、72/153完走・81入力不足、F0 step/pair traceと不足証拠 | Issue #29 |
 | [18-full-period-evaluator.md](18-full-period-evaluator.md) | 63本の観測履歴を損益期間から分離する評価器、legacy再現、凍結3方策と#29引渡し | Issue #28 |
+| [20-ppo-profit-attribution.md](20-ppo-profit-attribution.md) | PPOのcommon/relative/carry/cost帰属と2対照、40/85完走・45入力不足 | Issue #30 |
 
 現在の短期開発は[issue27-development-v1](17-bounded-development-protocol.md)と
 [実行manifest](protocols/issue27/execution-manifest.md)を参照する。

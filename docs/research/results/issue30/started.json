@@ -1,0 +1,156 @@
+{
+  "campaign_id": "issue30-profit-attribution-v1",
+  "config_sha256": "3006d304ee2f898aab2d038bf1f10e7134bcd35164069e3ba2d85bfd4d4d172a",
+  "runtime": {
+    "git": {
+      "forex_trainer": "5e2444cbf26a6938f92ce54ef2b2984d7e762fbf",
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
+    },
+    "device": "cpu",
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "pyarrow": "24.0.0",
+      "PyYAML": "6.0.3"
+    },
+    "source_sha256": {
+      "forex_trainer": {
+        "__init__.py": "a59e682e148feb17537d0c5758ba296502c748666e69566e875f57ef1cd81d5c",
+        "algorithms.py": "d4214f82f3d498f4eb8aa5c9d7e39522a2c17729dfc6895ac68ef0529395bfba",
+        "artifact_provenance.py": "7843d5839941eae172de4ed3a72a8e6b18915b6f78319582c7aa34224dd01d3e",
+        "carry.py": "169abc11b45dbef7fedf9ff6385af76f7c1ef45aa24109dd7689cf80231922c0",
+        "compare.py": "eee34a835bbc69c80e76e2af3f6efa33f86ca48cf56f507021be47b6f0ae41af",
+        "config.py": "b2b131ec1f7a4b1d7b07b9f18a8c743571f96280729c06aaa309b94552838c16",
+        "cost_campaign.py": "ca2fddf022962a96d7fc1ad20bdc5399cc75184a0d1bb6fa29745fe66b12ae2c",
+        "data_quality.py": "7e1c5980d73944add9c8cf247da936c2cc8e551b0a04803f04facb998bd5e19f",
+        "data_scaling.py": "23b37cfccf1171239edb8463c63d05caf17c143a75ea8310b645ae962a939d69",
+        "dukascopy.py": "0cac69ee4cbca912c35a7600dcfddf017104bbb0dcfd335b4d2a57a68c51e8ea",
+        "ensemble.py": "e3bea36c4a34c800ee59bc26fd5ece4c59a3b2bbca7ddef57343a0a2f12020d0",
+        "env_factory.py": "5de721c020657924af76821ff6ef06c1cbc83841c5596603095c4d1d927a46ff",
+        "evaluate.py": "bcfac61fc43d2a2e992dc590a397455bcb44070b85bcac41b117bdefc0ba69bf",
+        "execution_audit.py": "0bfa39ae59fe74498a0d83af334d92c073f65738723c827268bbf6d53d1d1476",
+        "features.py": "6b0e7b1a982d4afd45bb8049ec7bd5629e7892074c803baf277a2bbeb2a946fb",
+        "full_period.py": "f21da8aff57b16767ff0340d8ff4447a81c5283801d800045e5e34fbf40f3184",
+        "full_period_sources.py": "9f7a502702cf38b4cc7227b641832eab5f1651f2f87a56561a5445ff45324c25",
+        "model_selection.py": "28f4bac9d312b8b604b3939199928276278f617d6296809908ee5c5b6756e6bb",
+        "networks.py": "90d43d25081078c9f7aa3043185cf29ec25896c6d62e3aed87739117226b6c1a",
+        "profit_attribution.py": "0ecc79f9faf27cbaa27af039105e000c836d37afaa5fbb787c948d5e4bda8c1a",
+        "regime.py": "0740c8c4875ed6591f7e3b700f94fe5def3c63b21097f06fc2a44e147eb65d6f",
+        "regime_study.py": "60365324c9fa7342adf99242bf93e7c9a5dc1511a8a1bd1d58d11c6a1ff3b0ef",
+        "report.py": "8c29edbc498a077cdd08102a7b9ca8fe396a7e428bfac75d952b8c30bdc249e2",
+        "research_statistics.py": "b8070924cbbff76762809bff9c6397968b0434cbc45ac0f53e0c3faaacb8da45",
+        "run_dir.py": "cc51b1ae3a73d70788fff62c669d02c5bb7b1bafd4d61e6c84872db5c66e846f",
+        "selection_study.py": "5643f099a70361f993bafe005907403ee52888a4a1fcf18f5fdad4fe6fe120c7",
+        "spread_decomposition.py": "f4e71fb3ed7691df7f529a659ec104ddbcb784df12da959c9d648eb730d59b3f",
+        "supervised_portfolio.py": "73f011749eff147c89f04289bc659e244541edfbeae59042d8d70693db3be8aa",
+        "supervised_portfolio_study.py": "8be92d015ce9c4a2a1b9e8594d97a0f8062bab67bc77e3a0765c99e65c9719f2",
+        "supervised_ranking.py": "0086e9b7e3787dd0d2c404b03a318b17eaa00f2f193739fa8973acca85dcb001",
+        "supervised_ranking_study.py": "df21fa1b9cb4f78c9e93f26acd45780702cc382ff6d70cebffb324338deced69",
+        "train.py": "8c9527f622e9f60be9784053ab68b4d6a8cd724a27d1c65a317e73911c09ce75",
+        "turnover_diagnostic.py": "35db0a483d3fc1d76d65532e106d804afbfbf2b6cb5b2832c0d4156cd938b667"
+      },
+      "forex_env": {
+        "__init__.py": "9247051bb2c7010f595752c460d7de4f0ef55ccccff66cf39fb870c5784d8fa7",
+        "accounting.py": "8204e23211ec5d3412d4f734c96d3af6d5a0589fe906b6bd33167002d1d72df7",
+        "cli.py": "5708ec58536984f67a2b62c00a444a7dfde18b2db7331f6588621c0b7d532904",
+        "config.py": "fc751570cec70f96f7f3dbdf980bd21a45555839fac21d1e973ce998de1a325c",
+        "data/__init__.py": "60088ea2e555596854cee9cb92a20e573ea6d7ff094e8d35642794a5674e30eb",
+        "data/base.py": "4fdeb473d0f671593b5c30c3828943b3e763f8cc8bcd12baabd4f14c038dc7d3",
+        "data/file_provider.py": "c4818ceb580b19058c694b735af70aa037320ef692667f93de5fd51c437415ae",
+        "data/synthetic.py": "fa1c571a08f8390a0065d4fcda585648d854a1baca541e6572dacbdc5043151f",
+        "data/yfinance_provider.py": "3e6be6d6b5680e37137a4c601cfb8affb722cef13e514a4bd818984d024b4666",
+        "env.py": "36a2371c412664f3be5a1d65a9702d15ed18b06b3cab677fff6f53dbf5a881d8",
+        "errors.py": "ff8e42c19fbd82acbdae852c9110d9b0dc3896ca4af95b17fc0e3cca4fdab066",
+        "features.py": "7809d8e8ce136c45c1a49c9429a0165b7078986f75b4413d0f7af184f9f57224",
+        "fetch.py": "439776980cb43b5e334f81705e8fce75f9ea38b8ecc704182ff502b7af8735f7"
+      }
+    }
+  },
+  "parent_manifest": {
+    "path": "docs/research/results/issue29/manifest.json",
+    "sha256": "ac0db4e3b26c59b9917b3ad5fa7c68a214bf960740d132f806fc1a044aa3b0fb"
+  },
+  "parent_runtime": {
+    "git": {
+      "forex_trainer": "fb7220a3fa8fefb89297cfc692c48ee3f8e89325",
+      "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed"
+    },
+    "device": "cpu",
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "pyarrow": "24.0.0",
+      "PyYAML": "6.0.3"
+    },
+    "source_sha256": {
+      "forex_trainer": {
+        "__init__.py": "a59e682e148feb17537d0c5758ba296502c748666e69566e875f57ef1cd81d5c",
+        "algorithms.py": "d4214f82f3d498f4eb8aa5c9d7e39522a2c17729dfc6895ac68ef0529395bfba",
+        "artifact_provenance.py": "7843d5839941eae172de4ed3a72a8e6b18915b6f78319582c7aa34224dd01d3e",
+        "carry.py": "169abc11b45dbef7fedf9ff6385af76f7c1ef45aa24109dd7689cf80231922c0",
+        "compare.py": "eee34a835bbc69c80e76e2af3f6efa33f86ca48cf56f507021be47b6f0ae41af",
+        "config.py": "b2b131ec1f7a4b1d7b07b9f18a8c743571f96280729c06aaa309b94552838c16",
+        "cost_campaign.py": "ae22dc6c04fe6251e80de78e7fa45ee9d00d0d70c05afe92ceee0319657a4ff6",
+        "data_quality.py": "7e1c5980d73944add9c8cf247da936c2cc8e551b0a04803f04facb998bd5e19f",
+        "data_scaling.py": "23b37cfccf1171239edb8463c63d05caf17c143a75ea8310b645ae962a939d69",
+        "dukascopy.py": "0cac69ee4cbca912c35a7600dcfddf017104bbb0dcfd335b4d2a57a68c51e8ea",
+        "ensemble.py": "e3bea36c4a34c800ee59bc26fd5ece4c59a3b2bbca7ddef57343a0a2f12020d0",
+        "env_factory.py": "5de721c020657924af76821ff6ef06c1cbc83841c5596603095c4d1d927a46ff",
+        "evaluate.py": "bcfac61fc43d2a2e992dc590a397455bcb44070b85bcac41b117bdefc0ba69bf",
+        "execution_audit.py": "0bfa39ae59fe74498a0d83af334d92c073f65738723c827268bbf6d53d1d1476",
+        "features.py": "6b0e7b1a982d4afd45bb8049ec7bd5629e7892074c803baf277a2bbeb2a946fb",
+        "full_period.py": "f21da8aff57b16767ff0340d8ff4447a81c5283801d800045e5e34fbf40f3184",
+        "full_period_sources.py": "9f7a502702cf38b4cc7227b641832eab5f1651f2f87a56561a5445ff45324c25",
+        "model_selection.py": "28f4bac9d312b8b604b3939199928276278f617d6296809908ee5c5b6756e6bb",
+        "networks.py": "90d43d25081078c9f7aa3043185cf29ec25896c6d62e3aed87739117226b6c1a",
+        "regime.py": "0740c8c4875ed6591f7e3b700f94fe5def3c63b21097f06fc2a44e147eb65d6f",
+        "regime_study.py": "60365324c9fa7342adf99242bf93e7c9a5dc1511a8a1bd1d58d11c6a1ff3b0ef",
+        "report.py": "8c29edbc498a077cdd08102a7b9ca8fe396a7e428bfac75d952b8c30bdc249e2",
+        "research_statistics.py": "b8070924cbbff76762809bff9c6397968b0434cbc45ac0f53e0c3faaacb8da45",
+        "run_dir.py": "cc51b1ae3a73d70788fff62c669d02c5bb7b1bafd4d61e6c84872db5c66e846f",
+        "selection_study.py": "5643f099a70361f993bafe005907403ee52888a4a1fcf18f5fdad4fe6fe120c7",
+        "spread_decomposition.py": "f4e71fb3ed7691df7f529a659ec104ddbcb784df12da959c9d648eb730d59b3f",
+        "supervised_portfolio.py": "73f011749eff147c89f04289bc659e244541edfbeae59042d8d70693db3be8aa",
+        "supervised_portfolio_study.py": "8be92d015ce9c4a2a1b9e8594d97a0f8062bab67bc77e3a0765c99e65c9719f2",
+        "supervised_ranking.py": "0086e9b7e3787dd0d2c404b03a318b17eaa00f2f193739fa8973acca85dcb001",
+        "supervised_ranking_study.py": "df21fa1b9cb4f78c9e93f26acd45780702cc382ff6d70cebffb324338deced69",
+        "train.py": "8c9527f622e9f60be9784053ab68b4d6a8cd724a27d1c65a317e73911c09ce75",
+        "turnover_diagnostic.py": "35db0a483d3fc1d76d65532e106d804afbfbf2b6cb5b2832c0d4156cd938b667"
+      },
+      "forex_env": {
+        "__init__.py": "9247051bb2c7010f595752c460d7de4f0ef55ccccff66cf39fb870c5784d8fa7",
+        "accounting.py": "8204e23211ec5d3412d4f734c96d3af6d5a0589fe906b6bd33167002d1d72df7",
+        "cli.py": "5708ec58536984f67a2b62c00a444a7dfde18b2db7331f6588621c0b7d532904",
+        "config.py": "fc751570cec70f96f7f3dbdf980bd21a45555839fac21d1e973ce998de1a325c",
+        "data/__init__.py": "60088ea2e555596854cee9cb92a20e573ea6d7ff094e8d35642794a5674e30eb",
+        "data/base.py": "4fdeb473d0f671593b5c30c3828943b3e763f8cc8bcd12baabd4f14c038dc7d3",
+        "data/file_provider.py": "c4818ceb580b19058c694b735af70aa037320ef692667f93de5fd51c437415ae",
+        "data/synthetic.py": "fa1c571a08f8390a0065d4fcda585648d854a1baca541e6572dacbdc5043151f",
+        "data/yfinance_provider.py": "3e6be6d6b5680e37137a4c601cfb8affb722cef13e514a4bd818984d024b4666",
+        "env.py": "36a2371c412664f3be5a1d65a9702d15ed18b06b3cab677fff6f53dbf5a881d8",
+        "errors.py": "ff8e42c19fbd82acbdae852c9110d9b0dc3896ca4af95b17fc0e3cca4fdab066",
+        "features.py": "7809d8e8ce136c45c1a49c9429a0165b7078986f75b4413d0f7af184f9f57224",
+        "fetch.py": "439776980cb43b5e334f81705e8fce75f9ea38b8ecc704182ff502b7af8735f7"
+      }
+    }
+  },
+  "started_at": "2026-09-11T09:29:06.162315+00:00",
+  "fold_sources": {},
+  "command": [
+    "forex-profit-attribution",
+    "--config",
+    "configs/research/issue30_profit_attribution.json",
+    "--output",
+    "docs/research/results/issue30"
+  ]
+}
