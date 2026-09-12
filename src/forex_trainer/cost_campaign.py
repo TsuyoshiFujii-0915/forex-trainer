@@ -99,7 +99,9 @@ def account_trace(result: dict[str, Any], plan: PeriodPlan) -> list[dict[str, An
         _match(np.array([row["exposures_jpy"][s] for s in symbols]), marked, context + " marked exposure", 1e-7)
         equity = before + price.sum() + carry.sum() - spread.sum() - commission.sum() - overnight.sum()
         _match(row["equity_jpy"], float(equity), context + " equity", 1e-7)
-        row.update({"price_pnl_jpy": float(price.sum()), "actual_traded_notional_jpy": float(notional.sum()), "target_gross_exposure": float(np.abs(weights).sum()), "target_net_exposure": float(weights.sum())})
+        row.update({"price_pnl_jpy": float(price.sum()), "actual_traded_notional_jpy": float(notional.sum()), "target_gross_exposure": float(np.abs(weights).sum()), "target_net_exposure": float(weights.sum()),
+                    "market_transition_sha256": json_hash({"symbols": list(symbols), "decision": decision, "target": target,
+                                                           "price_relatives": relatives.tolist(), "carry_annual": rates.tolist()})})
         for j, symbol in enumerate(symbols):
             pairs.append({"decision_timestamp": decision, "target_timestamp": target, "pair": symbol,
                           "score": row["scores"][j], "action": row["action"][j], "target_weight": float(weights[j]),
