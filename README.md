@@ -319,3 +319,17 @@ is re-inferred independently. Missing expected bars produce explicit blocked cel
 terminal strategy losses retain their traces. Exit 2 means the experiment is incomplete,
 and incomplete panels do not publish selected-fold aggregate or paired evidence.
 See the [preregistration and input audit](docs/research/protocols/issue29/registration.md).
+
+## Post-publication quote replay (Issue #31)
+
+```bash
+uv sync --group dev
+uv run forex-quote-replay --scenario fixture \
+  --input tests/fixtures/issue31/scenario.json --output runs/issue31-fixture
+```
+
+This development-only command uses the declared dev schema-validation dependencies.
+It replays independent canonical/ridge/PPO accounts through timestamped bid/ask
+quotes with quantity-based JPY accounting. See the
+[contract, schema, trace format, and coverage handoff](docs/research/21-causal-quote-replay.md).
+Fixture completion verifies implementation; economic execution effects remain unverified.

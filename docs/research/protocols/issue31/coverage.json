@@ -1,0 +1,211 @@
+{
+  "inventory_at_utc": "2026-09-12T10:33:29.762883+00:00",
+  "scope": "Local data/*.parquet headers and data/runs filenames; existing research source lineage issue22/issue28. No new market collection.",
+  "execution_id": "first-eligible-quote-v1",
+  "measurement_id": "post-publication-quote-jpy-v1",
+  "market_files": [
+    {
+      "path": "data/jpy_9pairs_1d_2003.parquet",
+      "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375",
+      "rows": 5292,
+      "first_bar_label": "2005-07-19T00:00:00+01:00",
+      "last_bar_label": "2025-12-31T00:00:00+00:00",
+      "timezone": "Europe/London",
+      "model_pairs": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "fields": [
+        "Close",
+        "High",
+        "Low",
+        "Open",
+        "Volume"
+      ],
+      "metadata_keys": [
+        "forex_env_end_date",
+        "ARROW:schema",
+        "forex_env_start_date",
+        "forex_env_timeframe",
+        "pandas"
+      ],
+      "release_or_retrieval_columns": [],
+      "bid_ask_or_depth_columns": [],
+      "eligible_post_publication_decisions": 0
+    },
+    {
+      "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+      "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e",
+      "rows": 5292,
+      "first_bar_label": "2005-07-19T00:00:00+01:00",
+      "last_bar_label": "2025-12-31T00:00:00+00:00",
+      "timezone": "Europe/London",
+      "model_pairs": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "fields": [
+        "CarryAnnual",
+        "Close",
+        "High",
+        "Low",
+        "Open",
+        "Volume"
+      ],
+      "metadata_keys": [
+        "forex_env_end_date",
+        "ARROW:schema",
+        "forex_env_start_date",
+        "forex_env_timeframe",
+        "pandas"
+      ],
+      "release_or_retrieval_columns": [],
+      "bid_ask_or_depth_columns": [],
+      "eligible_post_publication_decisions": 0
+    },
+    {
+      "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+      "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e",
+      "rows": 5292,
+      "first_bar_label": "2005-07-19T00:00:00+01:00",
+      "last_bar_label": "2025-12-31T00:00:00+00:00",
+      "timezone": "Europe/London",
+      "model_pairs": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "fields": [
+        "Close",
+        "High",
+        "Low",
+        "Open",
+        "Volume"
+      ],
+      "metadata_keys": [
+        "forex_env_end_date",
+        "ARROW:schema",
+        "forex_env_start_date",
+        "forex_env_timeframe",
+        "pandas"
+      ],
+      "release_or_retrieval_columns": [],
+      "bid_ask_or_depth_columns": [],
+      "eligible_post_publication_decisions": 0
+    }
+  ],
+  "quote_or_tick_or_jsonl_candidates": [],
+  "policies": [
+    "canonical",
+    "ridge",
+    "ppo_ens3"
+  ],
+  "common_real_data_range": null,
+  "eligible_real_quote_baskets": 0,
+  "fold_coverage": {
+    "2009": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2010": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2011": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2012": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2013": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2014": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2015": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2016": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2017": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2018": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2019": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2020": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2021": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2022": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2023": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2024": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    },
+    "2025": {
+      "eligible_decisions": 0,
+      "status": "missing_publication_quote_and_quantity_evidence"
+    }
+  },
+  "unresolved": [
+    "target broker/account/product and dated official specifications",
+    "point-in-time OHLC/feature/carry input release and retrieval records with raw snapshots",
+    "ordered nine-product bid/ask quotes with receipt times, tradability and executable base-unit capacity",
+    "calendar/session/holiday evidence; daily labels alone insufficient",
+    "lot/minimum/margin and signed financing/markup assumptions matched to product specification"
+  ],
+  "economic_validation": "unverified",
+  "real_data_replay_started": false,
+  "same_close_comparison_started": false,
+  "reason": "No common causal quote inputs; no bar shift or zero-cost fallback.",
+  "limitations": [
+    "No claim that quotes cannot be obtained externally.",
+    "The existing daily files are historical research inputs, not observed post-publication executions.",
+    "A future provider/account choice requires a dated source and a pre-PnL comparison range registration."
+  ]
+}

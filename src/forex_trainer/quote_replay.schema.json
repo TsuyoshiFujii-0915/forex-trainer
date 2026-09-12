@@ -1,0 +1,502 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Issue 31 causal quote research replay",
+  "type": "object",
+  "properties": {
+    "execution_id": {
+      "const": "first-eligible-quote-v1"
+    },
+    "measurement_id": {
+      "const": "post-publication-quote-jpy-v1"
+    },
+    "evidence_kind": {
+      "enum": [
+        "fixture",
+        "shadow_quote"
+      ]
+    },
+    "broker": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "account": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "product_specification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/specification"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "instruments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/instrument"
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "calendar": {
+      "type": "object",
+      "properties": {
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "holidays": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          },
+          "uniqueItems": true
+        },
+        "sessions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "open": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "close": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "open",
+              "close"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "timezone",
+        "holidays",
+        "sessions",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "costs": {
+      "type": "object",
+      "properties": {
+        "fixed_spread_debit": {
+          "const": 0
+        },
+        "commission_rate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "markup_per_base_day": {
+          "$ref": "#/$defs/nonnegative_vector"
+        },
+        "swap_includes_markup": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "fixed_spread_debit",
+        "commission_rate",
+        "markup_per_base_day",
+        "swap_includes_markup",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "funding": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/funding"
+      },
+      "minItems": 1
+    },
+    "initial_mark": {
+      "$ref": "#/$defs/mark"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    }
+  },
+  "required": [
+    "execution_id",
+    "measurement_id",
+    "evidence_kind",
+    "broker",
+    "account",
+    "product_specification",
+    "instruments",
+    "calendar",
+    "costs",
+    "funding",
+    "initial_mark",
+    "steps"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "vector": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "positive_vector": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "nonnegative_vector": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "mark": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "mid": {
+          "$ref": "#/$defs/positive_vector"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quality": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "assumption"
+          ]
+        },
+        "available_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "timestamp",
+        "mid",
+        "source",
+        "quality",
+        "available_at",
+        "retrieved_at"
+      ],
+      "additionalProperties": false
+    },
+    "quote": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bid": {
+          "$ref": "#/$defs/positive_vector"
+        },
+        "ask": {
+          "$ref": "#/$defs/positive_vector"
+        },
+        "capacity_base": {
+          "$ref": "#/$defs/nonnegative_vector"
+        },
+        "tradable": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quality": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "assumption"
+          ]
+        },
+        "available_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "timestamp",
+        "bid",
+        "ask",
+        "capacity_base",
+        "tradable",
+        "source",
+        "quality",
+        "available_at",
+        "retrieved_at"
+      ],
+      "additionalProperties": false
+    },
+    "funding": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "long_jpy_per_base_day": {
+          "$ref": "#/$defs/vector"
+        },
+        "short_jpy_per_base_day": {
+          "$ref": "#/$defs/vector"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quality": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "assumption"
+          ]
+        },
+        "available_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "long_jpy_per_base_day",
+        "short_jpy_per_base_day",
+        "source",
+        "quality",
+        "available_at",
+        "retrieved_at"
+      ],
+      "additionalProperties": false
+    },
+    "instrument": {
+      "type": "object",
+      "properties": {
+        "model_pair": {
+          "type": "string",
+          "minLength": 1
+        },
+        "base": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quote": {
+          "const": "JPY"
+        },
+        "lot_size": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minimum_trade": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "margin_rate": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "model_pair",
+        "base",
+        "quote",
+        "lot_size",
+        "minimum_trade",
+        "margin_rate"
+      ],
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quality": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "assumption"
+          ]
+        },
+        "available_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "name",
+        "payload_sha256",
+        "source",
+        "quality",
+        "available_at",
+        "retrieved_at"
+      ],
+      "additionalProperties": false
+    },
+    "step": {
+      "type": "object",
+      "properties": {
+        "bar_label": {
+          "type": "string",
+          "format": "date"
+        },
+        "session_close": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/input"
+          },
+          "minItems": 1
+        },
+        "window": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 8,
+              "maxItems": 8
+            },
+            "minItems": 32,
+            "maxItems": 32
+          },
+          "minItems": 9,
+          "maxItems": 9
+        },
+        "decision_generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "decision_recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "quotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quote"
+          }
+        },
+        "mark": {
+          "$ref": "#/$defs/mark"
+        }
+      },
+      "required": [
+        "bar_label",
+        "session_close",
+        "inputs",
+        "window",
+        "decision_generated_at",
+        "decision_recorded_at",
+        "quotes",
+        "mark"
+      ],
+      "additionalProperties": false
+    },
+    "specification": {
+      "type": "object",
+      "properties": {
+        "official_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "effective_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "official_url",
+        "retrieved_at",
+        "effective_at",
+        "sha256"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
