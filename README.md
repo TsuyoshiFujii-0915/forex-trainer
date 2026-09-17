@@ -333,3 +333,26 @@ It replays independent canonical/ridge/PPO accounts through timestamped bid/ask
 quotes with quantity-based JPY accounting. See the
 [contract, schema, trace format, and coverage handoff](docs/research/21-causal-quote-replay.md).
 Fixture completion verifies implementation; economic execution effects remain unverified.
+
+### Development shadow recording (Issue #32)
+
+**実装検証済み／実収集未開始**。read-only file入力からraw → 3方策decision → quote/mark → outcomeを
+1サイクルずつ追記する。2025 foldの固定ridge・canonical・PPO ens3 seed42/43/44を使い、
+quote会計はIssue #31と共有する。再学習・発注・#20の2027年確認開始は行わない。
+
+```console
+uv run forex-shadow init --manifest configs/research/issue32_shadow_fixture.json
+uv run forex-shadow cycle --store runs/issue32-frozen-fixture --cycle day-0
+uv run forex-shadow resume --store runs/issue32-frozen-fixture --cycle day-1
+uv run forex-shadow verify --store runs/issue32-frozen-fixture
+uv run forex-shadow head --store runs/issue32-frozen-fixture --output runs/issue32-frozen-fixture-head.json
+```
+
+この例の市場入力は合成fixtureで、モデルはローカルの実凍結bundle。bundle不足時はpath/hashを示して停止する。
+モデル非同梱環境では`tests/fixtures/issue32/manifest.json`が明示的なsynthetic policy検証用。
+外部source未指定のため実観測smokeは未実行。開始にはread-only source、公開/取得時刻とcarry vintage、
+9pair/calendar、quote/数量/financing/費用、将来の開始終了/deadline、保存先を新trialへ事前登録する。
+
+[manifest形式、復旧・訂正・閲覧ledger、保存保証と制約](docs/research/22-development-shadow-adapter.md)を参照。
+3 decisionの永続化前に口座へ適用せず、欠損時はoutcomeを捏造しない。
+開発記録は独立holdoutへ昇格不可。local hash chainだけで管理者の全面改変を防ぐものではない。

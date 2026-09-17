@@ -1,0 +1,7 @@
+{
+  "head_sha256": "3cc272581b864b041a03729e05aae28063fe4d31c4c2fdf16fd0e4a8461dd1ca",
+  "event_count": 19,
+  "manifest_sha256": "e3b4b1c11e875ef1e11252d7b910d95909ec9f4772b9b106ee5f55720a3a8418",
+  "exported_at": "2026-09-17T07:51:36.361506Z",
+  "guarantee": "Local integrity only; independent retention and access separation are operator responsibilities"
+}
