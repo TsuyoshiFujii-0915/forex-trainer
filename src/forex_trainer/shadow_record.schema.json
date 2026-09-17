@@ -1,0 +1,583 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Development shadow event, version 2",
+  "description": "Immutable event batches; causality, artifacts and account continuity are additionally audited by development_shadow.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_event_sha256": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "protocol_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "recorded_at": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "event_type": {
+      "enum": [
+        "decision",
+        "outcome",
+        "incident",
+        "correction",
+        "registration",
+        "raw",
+        "decision_barrier",
+        "trial_entry"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "cycle_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "wall_recorded_at": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "clock_basis": {
+      "enum": [
+        "fixture_virtual",
+        "wall_clock"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "sequence",
+    "previous_event_sha256",
+    "protocol_sha256",
+    "recorded_at",
+    "event_type",
+    "payload",
+    "cycle_id",
+    "wall_recorded_at",
+    "clock_basis"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "vector": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "decision": {
+      "type": "object",
+      "properties": {
+        "policy_id": {
+          "enum": [
+            "direct_longf_ens3",
+            "canonical_reversal",
+            "supervised_fixed_map"
+          ]
+        },
+        "decision_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "target_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "inputs_available_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "policy": {
+          "$ref": "#/$defs/artifact"
+        },
+        "config": {
+          "$ref": "#/$defs/artifact"
+        },
+        "data": {
+          "$ref": "#/$defs/artifact"
+        },
+        "inputs": {
+          "$ref": "#/$defs/artifact"
+        },
+        "pairs": {
+          "const": [
+            "JPY/USD",
+            "JPY/EUR",
+            "JPY/GBP",
+            "JPY/AUD",
+            "JPY/CHF",
+            "JPY/CAD",
+            "JPY/NZD",
+            "JPY/NOK",
+            "JPY/SEK"
+          ]
+        },
+        "scores": {
+          "$ref": "#/$defs/vector"
+        },
+        "proposed_action": {
+          "$ref": "#/$defs/vector"
+        },
+        "effective_action": {
+          "$ref": "#/$defs/vector"
+        },
+        "expected_transaction_cost_jpy": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "expected_signed_carry_jpy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cost_model_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "state_before": {
+          "$ref": "#/$defs/state"
+        },
+        "cost_quality": {
+          "enum": [
+            "assumption",
+            "unavailable"
+          ]
+        }
+      },
+      "required": [
+        "policy_id",
+        "decision_at",
+        "target_at",
+        "inputs_available_at",
+        "policy",
+        "config",
+        "data",
+        "inputs",
+        "pairs",
+        "scores",
+        "proposed_action",
+        "effective_action",
+        "expected_transaction_cost_jpy",
+        "expected_signed_carry_jpy",
+        "cost_model_sha256",
+        "state_before",
+        "cost_quality"
+      ],
+      "additionalProperties": false
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "decision_event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "execution_basis": {
+          "const": "shadow_quote"
+        },
+        "observed_transaction_cost_jpy": {
+          "type": "number",
+          "minimum": 0
+        },
+        "observed_signed_carry_jpy": {
+          "type": "number"
+        },
+        "price_pnl_jpy": {
+          "type": "number"
+        },
+        "equity_before_jpy": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "equity_after_jpy": {
+          "type": "number"
+        },
+        "evidence": {
+          "$ref": "#/$defs/artifact"
+        },
+        "policy_id": {
+          "enum": [
+            "direct_longf_ens3",
+            "canonical_reversal",
+            "supervised_fixed_map"
+          ]
+        },
+        "state_after": {
+          "$ref": "#/$defs/state"
+        }
+      },
+      "required": [
+        "decision_event_id",
+        "observed_at",
+        "execution_basis",
+        "observed_transaction_cost_jpy",
+        "observed_signed_carry_jpy",
+        "price_pnl_jpy",
+        "equity_before_jpy",
+        "equity_after_jpy",
+        "evidence",
+        "policy_id",
+        "state_after"
+      ],
+      "additionalProperties": false
+    },
+    "incident": {
+      "type": "object",
+      "properties": {
+        "decision_event_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "scheduled_decision_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "origin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "decision_event_id",
+        "scheduled_decision_at",
+        "code",
+        "origin",
+        "details",
+        "response"
+      ],
+      "additionalProperties": false
+    },
+    "correction": {
+      "type": "object",
+      "properties": {
+        "corrects_event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "$ref": "#/$defs/artifact"
+        }
+      },
+      "required": [
+        "corrects_event_id",
+        "reason",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "phase": {
+          "enum": [
+            "initial",
+            "mark"
+          ]
+        },
+        "timestamp": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "equity_jpy": {
+          "type": "number"
+        },
+        "quantity_base": {
+          "$ref": "#/$defs/vector"
+        },
+        "mid": {
+          "$ref": "#/$defs/vector"
+        },
+        "assets": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [
+        "phase",
+        "timestamp",
+        "equity_jpy",
+        "quantity_base",
+        "mid",
+        "assets"
+      ],
+      "additionalProperties": false
+    },
+    "registration": {
+      "type": "object",
+      "properties": {
+        "manifest": {
+          "$ref": "#/$defs/artifact"
+        },
+        "runtime": {
+          "$ref": "#/$defs/artifact"
+        },
+        "policies": {
+          "$ref": "#/$defs/artifact"
+        },
+        "holdout_eligible": {
+          "const": false
+        }
+      },
+      "required": [
+        "manifest",
+        "runtime",
+        "policies",
+        "holdout_eligible"
+      ],
+      "additionalProperties": false
+    },
+    "raw": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "input",
+            "settlement"
+          ]
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "source_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "artifact",
+        "source_path"
+      ],
+      "additionalProperties": false
+    },
+    "decision_barrier": {
+      "type": "object",
+      "properties": {
+        "decision_event_ids": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "durable_at": {
+          "$ref": "#/$defs/timestamp"
+        }
+      },
+      "required": [
+        "decision_event_ids",
+        "durable_at"
+      ],
+      "additionalProperties": false
+    },
+    "trial_entry": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "performance_view",
+            "design_change"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "holdout_eligible": {
+          "const": false
+        }
+      },
+      "required": [
+        "kind",
+        "reason",
+        "holdout_eligible"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "event_type": {
+          "const": "decision"
+        },
+        "payload": {
+          "$ref": "#/$defs/decision"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "outcome"
+        },
+        "payload": {
+          "$ref": "#/$defs/outcome"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "incident"
+        },
+        "payload": {
+          "$ref": "#/$defs/incident"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "correction"
+        },
+        "payload": {
+          "$ref": "#/$defs/correction"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "registration"
+        },
+        "payload": {
+          "$ref": "#/$defs/registration"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "raw"
+        },
+        "payload": {
+          "$ref": "#/$defs/raw"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "decision_barrier"
+        },
+        "payload": {
+          "$ref": "#/$defs/decision_barrier"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event_type": {
+          "const": "trial_entry"
+        },
+        "payload": {
+          "$ref": "#/$defs/trial_entry"
+        }
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sequence": {
+            "const": 0
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "previous_event_sha256": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "previous_event_sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    }
+  ]
+}

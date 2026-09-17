@@ -1,0 +1,359 @@
+{
+  "manifest_version": 1,
+  "evidence_class": "development_shadow",
+  "mode": "fixture",
+  "trial_id": "issue32-frozen-2025-fixture-v1",
+  "registered_at": "2026-01-04T22:00:00Z",
+  "measurement_start": "2026-01-05T22:00:00Z",
+  "measurement_end": "2026-01-07T22:00:01Z",
+  "source": {
+    "id": "synthetic-issue32",
+    "access": "read_only_file",
+    "timestamp_meaning": "Synthetic fixture event/release/receipt clock; not prospective observation",
+    "carry_lineage": "Synthetic vintage, explicit per-row publication and receipt"
+  },
+  "initial_state": {
+    "equity_jpy": 1000000.0,
+    "quantity_base": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "assets": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "policy_mode": "frozen_2025",
+  "policy_sources": {
+    "path": "configs/research/issue32_sources.json",
+    "sha256": "7e70bc77313bee7e75811fa3187169a626d6fea89d41c30c5c1e6ec17f7478fa"
+  },
+  "feature_config": {
+    "path": "configs/wf_r16_long_full/wf2025_r16_longf.yaml",
+    "sha256": "dfa1f907f8c96b577b48511d516b45bc390249ba802925940d8493963e58bde4"
+  },
+  "execution": {
+    "execution_id": "first-eligible-quote-v1",
+    "measurement_id": "post-publication-quote-jpy-v1",
+    "broker": null,
+    "account": null,
+    "product_specification": null,
+    "instruments": [
+      {
+        "model_pair": "JPY/USD",
+        "base": "USD",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/EUR",
+        "base": "EUR",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/GBP",
+        "base": "GBP",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/AUD",
+        "base": "AUD",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/CHF",
+        "base": "CHF",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/CAD",
+        "base": "CAD",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/NZD",
+        "base": "NZD",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/NOK",
+        "base": "NOK",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      },
+      {
+        "model_pair": "JPY/SEK",
+        "base": "SEK",
+        "quote": "JPY",
+        "lot_size": 1.0,
+        "minimum_trade": 1.0,
+        "margin_rate": 0.02
+      }
+    ],
+    "calendar": {
+      "timezone": "UTC",
+      "holidays": [],
+      "source": "synthetic-issue32",
+      "sessions": [
+        {
+          "open": "2026-01-05T21:00:00Z",
+          "close": "2026-01-06T22:00:00Z"
+        },
+        {
+          "open": "2026-01-06T22:00:00Z",
+          "close": "2026-01-07T22:00:00Z"
+        }
+      ]
+    },
+    "costs": {
+      "fixed_spread_debit": 0.0,
+      "commission_rate": 0.0,
+      "markup_per_base_day": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "swap_includes_markup": false,
+      "source": "explicit synthetic zero fees; bid/ask charged"
+    }
+  },
+  "expected_costs": {
+    "transaction_cost_jpy": null,
+    "signed_carry_jpy": null,
+    "quality": "unavailable"
+  },
+  "schedule": [
+    {
+      "cycle_id": "day-0",
+      "session_close": "2026-01-05T22:00:00Z",
+      "decision_not_before": "2026-01-05T22:00:01Z",
+      "decision_deadline": "2026-01-05T22:00:10Z",
+      "target_at": "2026-01-06T22:00:00Z",
+      "raw_path": "tests/fixtures/issue32/raw-0.json",
+      "settlement_path": "tests/fixtures/issue32/settlement-0.json",
+      "history_event_times": [
+        "2025-11-03T22:00:00Z",
+        "2025-11-04T22:00:00Z",
+        "2025-11-05T22:00:00Z",
+        "2025-11-06T22:00:00Z",
+        "2025-11-07T22:00:00Z",
+        "2025-11-08T22:00:00Z",
+        "2025-11-09T22:00:00Z",
+        "2025-11-10T22:00:00Z",
+        "2025-11-11T22:00:00Z",
+        "2025-11-12T22:00:00Z",
+        "2025-11-13T22:00:00Z",
+        "2025-11-14T22:00:00Z",
+        "2025-11-15T22:00:00Z",
+        "2025-11-16T22:00:00Z",
+        "2025-11-17T22:00:00Z",
+        "2025-11-18T22:00:00Z",
+        "2025-11-19T22:00:00Z",
+        "2025-11-20T22:00:00Z",
+        "2025-11-21T22:00:00Z",
+        "2025-11-22T22:00:00Z",
+        "2025-11-23T22:00:00Z",
+        "2025-11-24T22:00:00Z",
+        "2025-11-25T22:00:00Z",
+        "2025-11-26T22:00:00Z",
+        "2025-11-27T22:00:00Z",
+        "2025-11-28T22:00:00Z",
+        "2025-11-29T22:00:00Z",
+        "2025-11-30T22:00:00Z",
+        "2025-12-01T22:00:00Z",
+        "2025-12-02T22:00:00Z",
+        "2025-12-03T22:00:00Z",
+        "2025-12-04T22:00:00Z",
+        "2025-12-05T22:00:00Z",
+        "2025-12-06T22:00:00Z",
+        "2025-12-07T22:00:00Z",
+        "2025-12-08T22:00:00Z",
+        "2025-12-09T22:00:00Z",
+        "2025-12-10T22:00:00Z",
+        "2025-12-11T22:00:00Z",
+        "2025-12-12T22:00:00Z",
+        "2025-12-13T22:00:00Z",
+        "2025-12-14T22:00:00Z",
+        "2025-12-15T22:00:00Z",
+        "2025-12-16T22:00:00Z",
+        "2025-12-17T22:00:00Z",
+        "2025-12-18T22:00:00Z",
+        "2025-12-19T22:00:00Z",
+        "2025-12-20T22:00:00Z",
+        "2025-12-21T22:00:00Z",
+        "2025-12-22T22:00:00Z",
+        "2025-12-23T22:00:00Z",
+        "2025-12-24T22:00:00Z",
+        "2025-12-25T22:00:00Z",
+        "2025-12-26T22:00:00Z",
+        "2025-12-27T22:00:00Z",
+        "2025-12-28T22:00:00Z",
+        "2025-12-29T22:00:00Z",
+        "2025-12-30T22:00:00Z",
+        "2025-12-31T22:00:00Z",
+        "2026-01-01T22:00:00Z",
+        "2026-01-02T22:00:00Z",
+        "2026-01-03T22:00:00Z",
+        "2026-01-04T22:00:00Z",
+        "2026-01-05T22:00:00Z"
+      ]
+    },
+    {
+      "cycle_id": "day-1",
+      "session_close": "2026-01-06T22:00:00Z",
+      "decision_not_before": "2026-01-06T22:00:01Z",
+      "decision_deadline": "2026-01-06T22:00:10Z",
+      "target_at": "2026-01-07T22:00:00Z",
+      "raw_path": "tests/fixtures/issue32/raw-1.json",
+      "settlement_path": "tests/fixtures/issue32/settlement-1.json",
+      "history_event_times": [
+        "2025-11-04T22:00:00Z",
+        "2025-11-05T22:00:00Z",
+        "2025-11-06T22:00:00Z",
+        "2025-11-07T22:00:00Z",
+        "2025-11-08T22:00:00Z",
+        "2025-11-09T22:00:00Z",
+        "2025-11-10T22:00:00Z",
+        "2025-11-11T22:00:00Z",
+        "2025-11-12T22:00:00Z",
+        "2025-11-13T22:00:00Z",
+        "2025-11-14T22:00:00Z",
+        "2025-11-15T22:00:00Z",
+        "2025-11-16T22:00:00Z",
+        "2025-11-17T22:00:00Z",
+        "2025-11-18T22:00:00Z",
+        "2025-11-19T22:00:00Z",
+        "2025-11-20T22:00:00Z",
+        "2025-11-21T22:00:00Z",
+        "2025-11-22T22:00:00Z",
+        "2025-11-23T22:00:00Z",
+        "2025-11-24T22:00:00Z",
+        "2025-11-25T22:00:00Z",
+        "2025-11-26T22:00:00Z",
+        "2025-11-27T22:00:00Z",
+        "2025-11-28T22:00:00Z",
+        "2025-11-29T22:00:00Z",
+        "2025-11-30T22:00:00Z",
+        "2025-12-01T22:00:00Z",
+        "2025-12-02T22:00:00Z",
+        "2025-12-03T22:00:00Z",
+        "2025-12-04T22:00:00Z",
+        "2025-12-05T22:00:00Z",
+        "2025-12-06T22:00:00Z",
+        "2025-12-07T22:00:00Z",
+        "2025-12-08T22:00:00Z",
+        "2025-12-09T22:00:00Z",
+        "2025-12-10T22:00:00Z",
+        "2025-12-11T22:00:00Z",
+        "2025-12-12T22:00:00Z",
+        "2025-12-13T22:00:00Z",
+        "2025-12-14T22:00:00Z",
+        "2025-12-15T22:00:00Z",
+        "2025-12-16T22:00:00Z",
+        "2025-12-17T22:00:00Z",
+        "2025-12-18T22:00:00Z",
+        "2025-12-19T22:00:00Z",
+        "2025-12-20T22:00:00Z",
+        "2025-12-21T22:00:00Z",
+        "2025-12-22T22:00:00Z",
+        "2025-12-23T22:00:00Z",
+        "2025-12-24T22:00:00Z",
+        "2025-12-25T22:00:00Z",
+        "2025-12-26T22:00:00Z",
+        "2025-12-27T22:00:00Z",
+        "2025-12-28T22:00:00Z",
+        "2025-12-29T22:00:00Z",
+        "2025-12-30T22:00:00Z",
+        "2025-12-31T22:00:00Z",
+        "2026-01-01T22:00:00Z",
+        "2026-01-02T22:00:00Z",
+        "2026-01-03T22:00:00Z",
+        "2026-01-04T22:00:00Z",
+        "2026-01-05T22:00:00Z",
+        "2026-01-06T22:00:00Z"
+      ]
+    }
+  ],
+  "storage": "runs/issue32-frozen-fixture",
+  "failure_storage": "runs/issue32-frozen-fixture-failures",
+  "stop_policy": "halt_all_preserve_records_no_backfill",
+  "holdout_eligible": false
+}
