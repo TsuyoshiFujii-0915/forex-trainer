@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import sys
+from collections.abc import Callable
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -221,6 +222,101 @@ def initial_state() -> dict[str, Any]:
 
 
 @np.errstate(over='raise', invalid='raise', divide='raise')
+def execute_quote(
+    raw: dict[str, Any], step: dict[str, Any], state: dict[str, Any],
+    weights: np.ndarray, save_fill: Callable[[dict[str, Any]], None],
+) -> dict[str, Any]:
+    """Apply the shared quote contract to one already recorded decision.
+
+    Args:
+        raw: Validated instrument, calendar and funding contract.
+        step: Timestamped decision, quotes and mark.
+        state: Account updated in place at each valid accounting phase.
+        weights: Recorded clipped and gross-capped model weights.
+        save_fill: Persist the fill before continuing to the mark.
+
+    Returns:
+        Accounting trace and complete or terminal status.
+    """
+    origin = f"scenario/steps/{raw['steps'].index(step)}"
+    close = instant(step['session_close'])
+    generated = instant(step['decision_generated_at'])
+    result: dict[str, Any] = {'status': 'complete', 'trace': None}
+    quote, rejected = choose_quote(step, raw['calendar'])
+    fill_time = instant(quote['retrieved_at'])
+    mid = (np.array(quote['bid']) + np.array(quote['ask'])) / 2
+    old_q = np.array(state['quantity_base'])
+    equity_before = float(state['equity_jpy'])
+    gap = old_q * (mid - state['mid'])
+    gap_financing, gap_markup = financing(raw, old_q, close, fill_time, generated)
+    fill_equity = equity_before + float(gap.sum()) + gap_financing - gap_markup
+    if not np.isfinite(fill_equity):
+        raise ValueError('non-finite fill equity')
+    state.update(phase='pre_fill', timestamp=quote['retrieved_at'], equity_jpy=fill_equity, mid=mid.tolist())
+    if fill_equity <= 200_000:
+        result['status'] = 'terminal_margin'
+        result['terminal'] = {'phase': 'pre_fill', 'gap_pnl_jpy': float(gap.sum()),
+                              'gap_financing_jpy': gap_financing, 'gap_markup_jpy': gap_markup}
+        return result
+    lots = np.array([item['lot_size'] for item in raw['instruments']])
+    quantity = np.trunc((-weights * fill_equity / mid) / lots) * lots
+    delta = quantity - old_q
+    minimum = np.array([item['minimum_trade'] for item in raw['instruments']])
+    if np.any((np.abs(delta) > 0) & (np.abs(delta) < minimum)):
+        raise ValueError('minimum trade size violated; no silent quantity substitution')
+    if np.any(np.abs(delta) > quote['capacity_base']):
+        raise ValueError('quote capacity insufficient; partial fill unsupported')
+    fill_prices = np.where(delta >= 0, quote['ask'], quote['bid'])
+    spread = float(np.sum(delta * (fill_prices - mid)))
+    traded_notional = np.abs(delta) * fill_prices
+    commission = float(np.sum(traded_notional)) * raw['costs']['commission_rate']
+    post_fill = fill_equity - spread - commission
+    margin = float(np.sum(np.abs(quantity * mid) * [item['margin_rate'] for item in raw['instruments']]))
+    if not np.isfinite([post_fill, margin, spread, commission]).all():
+        raise ValueError('non-finite fill costs or margin')
+    if post_fill < margin or post_fill <= 200_000:
+        raise ValueError('insufficient margin for full proposed basket')
+    effective = -quantity * mid / fill_equity
+    state.update(phase='fill', equity_jpy=post_fill, quantity_base=quantity.tolist())
+    save_fill({'state': dict(state), 'quote': quote,
+               'delta_base': delta.tolist(), 'fill_prices': fill_prices.tolist(),
+               'spread_jpy': spread, 'commission_jpy': commission})
+    mark = step['mark']
+    mark_time = instant(mark['timestamp'])
+    if mark_time <= fill_time:
+        raise ValueError('final mark must follow fill')
+    evidence(mark, mark_time, origin + '/mark')
+    if instant(mark['available_at']) < mark_time:
+        raise ValueError('mark price cannot be published before mark timestamp')
+    holding_financing, holding_markup = financing(raw, quantity, fill_time, mark_time, generated)
+    holding = quantity * (np.array(mark['mid']) - mid)
+    equity = post_fill + float(holding.sum()) + holding_financing - holding_markup
+    if not np.isfinite(equity):
+        raise ValueError('non-finite mark equity')
+    price_pnl = gap + holding
+    next_assets = np.stack([effective, np.ones(9), price_pnl / equity_before], axis=1).astype(np.float32)
+    state.update(phase='mark', timestamp=mark['timestamp'], equity_jpy=equity, mid=mark['mid'], assets=next_assets.tolist())
+    result['trace'] = {'bar_label': step['bar_label'], 'decision_timestamp': step['decision_generated_at'],
+                  'decision_recorded_at': step['decision_recorded_at'], 'fill_timestamp': quote['retrieved_at'], 'quote_timestamp': quote['timestamp'],
+                  'mark_timestamp': mark['timestamp'], 'quote_sha256': json_hash(quote),
+                  'mark_sha256': json_hash(mark), 'input_sha256': json_hash(step),
+                  'effective_weights': effective.tolist(), 'quantity_base': quantity.tolist(),
+                  'delta_base': delta.tolist(), 'fill_prices': fill_prices.tolist(), 'quote_to_jpy': [1.] * 9,
+                  'fill_notional_jpy': (quantity * mid).tolist(), 'traded_notional_jpy': traded_notional.tolist(),
+                  'equity_before': equity_before, 'fill_equity_jpy': fill_equity, 'equity_after_fill_jpy': post_fill,
+                  'gap_pnl_jpy': float(gap.sum()), 'holding_pnl_jpy': float(holding.sum()),
+                  'price_pnl_by_pair': price_pnl.tolist(), 'gap_financing_jpy': gap_financing,
+                  'holding_financing_jpy': holding_financing, 'gap_markup_jpy': gap_markup,
+                  'holding_markup_jpy': holding_markup, 'spread_jpy': spread, 'commission_jpy': commission,
+                  'equity_jpy': equity, 'gap_seconds': (fill_time - close).total_seconds(),
+                  'holding_seconds': (mark_time - fill_time).total_seconds(), 'rejected_quotes': rejected}
+    if equity <= 200_000 or equity < float(np.sum(np.abs(quantity * np.array(mark['mid'])) * [item['margin_rate'] for item in raw['instruments']])):
+        result['status'] = 'terminal_margin'
+        result['terminal'] = {'phase': 'mark'}
+    return result
+
+
+@np.errstate(over='raise', invalid='raise', divide='raise')
 def replay(raw: dict[str, Any], predict: Policy, output: Path) -> dict[str, Any]:
     """Replay one independent account and persist exceptions with its valid state.
 
@@ -280,80 +376,22 @@ def replay(raw: dict[str, Any], predict: Policy, output: Path) -> dict[str, Any]
                        'input_sha256': json_hash({'window': step['window'], 'inputs': step['inputs']}), 'assets': assets.tolist(),
                        'scores': scores.tolist(), 'action': action[:, 0].tolist(), 'weights': weights.tolist()})
             durable_wall_clock = datetime.now(timezone.utc).isoformat()
-            quote, rejected = choose_quote(step, raw['calendar'])
-            fill_time = instant(quote['retrieved_at'])
-            mid = (np.array(quote['bid']) + np.array(quote['ask'])) / 2
-            old_q = np.array(state['quantity_base'])
-            equity_before = float(state['equity_jpy'])
-            gap = old_q * (mid - state['mid'])
-            gap_financing, gap_markup = financing(raw, old_q, close, fill_time, generated)
-            fill_equity = equity_before + float(gap.sum()) + gap_financing - gap_markup
-            if not np.isfinite(fill_equity):
-                raise ValueError('non-finite fill equity')
-            state.update(phase='pre_fill', timestamp=quote['retrieved_at'], equity_jpy=fill_equity, mid=mid.tolist())
-            if fill_equity <= 200_000:
+            def save_fill(value: dict[str, Any]) -> None:
+                """Persist this replay's fill with its durable decision identity."""
+                write_json(output / f'fill-{index:04d}.json', {
+                    **value, 'decision_sha256': sha256_file(decision_path),
+                    'decision_fsync_completed_at_utc': durable_wall_clock,
+                })
+
+            transition = execute_quote(raw, step, state, weights, save_fill)
+            if transition['trace'] is not None:
+                trace.append({**transition['trace'],
+                              'decision_sha256': sha256_file(decision_path),
+                              'assets_before': assets.tolist(), 'scores': scores.tolist(),
+                              'action': action[:, 0].tolist()})
+            if transition['status'] == 'terminal_margin':
                 result['status'] = 'terminal_margin'
-                result['terminal'] = {'origin': origin, 'phase': 'pre_fill', 'gap_pnl_jpy': float(gap.sum()),
-                                      'gap_financing_jpy': gap_financing, 'gap_markup_jpy': gap_markup}
-                break
-            lots = np.array([item['lot_size'] for item in raw['instruments']])
-            quantity = np.trunc((-weights * fill_equity / mid) / lots) * lots
-            delta = quantity - old_q
-            minimum = np.array([item['minimum_trade'] for item in raw['instruments']])
-            if np.any((np.abs(delta) > 0) & (np.abs(delta) < minimum)):
-                raise ValueError('minimum trade size violated; no silent quantity substitution')
-            if np.any(np.abs(delta) > quote['capacity_base']):
-                raise ValueError('quote capacity insufficient; partial fill unsupported')
-            fill_prices = np.where(delta >= 0, quote['ask'], quote['bid'])
-            spread = float(np.sum(delta * (fill_prices - mid)))
-            traded_notional = np.abs(delta) * fill_prices
-            commission = float(np.sum(traded_notional)) * raw['costs']['commission_rate']
-            post_fill = fill_equity - spread - commission
-            margin = float(np.sum(np.abs(quantity * mid) * [item['margin_rate'] for item in raw['instruments']]))
-            if not np.isfinite([post_fill, margin, spread, commission]).all():
-                raise ValueError('non-finite fill costs or margin')
-            if post_fill < margin or post_fill <= 200_000:
-                raise ValueError('insufficient margin for full proposed basket')
-            effective = -quantity * mid / fill_equity
-            state.update(phase='fill', equity_jpy=post_fill, quantity_base=quantity.tolist())
-            write_json(output / f'fill-{index:04d}.json', {'state': state, 'quote': quote,
-                       'delta_base': delta.tolist(), 'fill_prices': fill_prices.tolist(), 'spread_jpy': spread,
-                       'commission_jpy': commission, 'decision_sha256': sha256_file(decision_path),
-                       'decision_fsync_completed_at_utc': durable_wall_clock})
-            mark = step['mark']
-            mark_time = instant(mark['timestamp'])
-            if mark_time <= fill_time:
-                raise ValueError('final mark must follow fill')
-            evidence(mark, mark_time, origin + '/mark')
-            if instant(mark['available_at']) < mark_time:
-                raise ValueError('mark price cannot be published before mark timestamp')
-            holding_financing, holding_markup = financing(raw, quantity, fill_time, mark_time, generated)
-            holding = quantity * (np.array(mark['mid']) - mid)
-            equity = post_fill + float(holding.sum()) + holding_financing - holding_markup
-            if not np.isfinite(equity):
-                raise ValueError('non-finite mark equity')
-            price_pnl = gap + holding
-            next_assets = np.stack([effective, np.ones(9), price_pnl / equity_before], axis=1).astype(np.float32)
-            state.update(phase='mark', timestamp=mark['timestamp'], equity_jpy=equity, mid=mark['mid'], assets=next_assets.tolist())
-            trace.append({'bar_label': step['bar_label'], 'decision_timestamp': step['decision_generated_at'],
-                          'decision_recorded_at': step['decision_recorded_at'], 'fill_timestamp': quote['retrieved_at'], 'quote_timestamp': quote['timestamp'],
-                          'mark_timestamp': mark['timestamp'], 'quote_sha256': json_hash(quote),
-                          'mark_sha256': json_hash(mark), 'input_sha256': json_hash(step),
-                          'decision_sha256': sha256_file(decision_path), 'assets_before': assets.tolist(),
-                          'scores': scores.tolist(), 'action': action[:, 0].tolist(),
-                          'effective_weights': effective.tolist(), 'quantity_base': quantity.tolist(),
-                          'delta_base': delta.tolist(), 'fill_prices': fill_prices.tolist(), 'quote_to_jpy': [1.] * 9,
-                          'fill_notional_jpy': (quantity * mid).tolist(), 'traded_notional_jpy': traded_notional.tolist(),
-                          'equity_before': equity_before, 'fill_equity_jpy': fill_equity, 'equity_after_fill_jpy': post_fill,
-                          'gap_pnl_jpy': float(gap.sum()), 'holding_pnl_jpy': float(holding.sum()),
-                          'price_pnl_by_pair': price_pnl.tolist(), 'gap_financing_jpy': gap_financing,
-                          'holding_financing_jpy': holding_financing, 'gap_markup_jpy': gap_markup,
-                          'holding_markup_jpy': holding_markup, 'spread_jpy': spread, 'commission_jpy': commission,
-                          'equity_jpy': equity, 'gap_seconds': (fill_time - close).total_seconds(),
-                          'holding_seconds': (mark_time - fill_time).total_seconds(), 'rejected_quotes': rejected})
-            if equity <= 200_000 or equity < float(np.sum(np.abs(quantity * np.array(mark['mid'])) * [item['margin_rate'] for item in raw['instruments']])):
-                result['status'] = 'terminal_margin'
-                result['terminal'] = {'origin': origin, 'phase': 'mark'}
+                result['terminal'] = {'origin': origin, **transition['terminal']}
                 break
         else:
             result['status'] = 'complete'
