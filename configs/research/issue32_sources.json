@@ -1,0 +1,22 @@
+{
+  "source": {
+    "path": "docs/research/results/issue15/provenance.json",
+    "sha256": "a398ee18a01de364e21deb1d5f0ac5a66c1c1e445e60dc21c7c713215cebfb61"
+  },
+  "fold": "2025",
+  "runtime": {
+    "forex_env_sha": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "pyarrow": "24.0.0",
+      "PyYAML": "6.0.3"
+    },
+    "device": "cpu"
+  }
+}
