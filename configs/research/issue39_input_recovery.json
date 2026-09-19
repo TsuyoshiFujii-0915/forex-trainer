@@ -1,0 +1,23 @@
+{
+  "contract_id": "issue39-contiguous-snapshot-v1",
+  "campaign": {
+    "path": "configs/research/issue29_full_period_cost.json",
+    "sha256": "bf17729ccb7803ab736703e225f31e5c73ca2dce6e7b02030f977336e468e4b8"
+  },
+  "attribution": {
+    "path": "configs/research/issue30_profit_attribution.json",
+    "sha256": "3006d304ee2f898aab2d038bf1f10e7134bcd35164069e3ba2d85bfd4d4d172a"
+  },
+  "budget": {
+    "path": "docs/research/protocols/issue39/recovery-budget.json",
+    "sha256": "e6787993598c37cb142fa98936caa8b197584fd39f1a280b6ae112823c2686ee"
+  },
+  "evidence": {
+    "path": "docs/research/protocols/issue39/recovery-evidence.json",
+    "sha256": "a288ec672124abbd5c4a58f195fb652e21fe736a4aad6eea79f1cf25c9634d21"
+  },
+  "decision": {
+    "path": "docs/decisions/0042-bound-input-recovery-and-register-contiguous-successor.md",
+    "sha256": "99a5258ddeccb21b7011c74a1f6de64c60a5b835250d4b04a7e5b3c02b635704"
+  }
+}
