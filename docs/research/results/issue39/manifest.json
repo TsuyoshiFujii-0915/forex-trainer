@@ -1,0 +1,36 @@
+{
+  "contract_id": "issue39-contiguous-snapshot-v1",
+  "snapshot": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  },
+  "generated_artifact_sha256": {
+    "preflight.json": "5325573074009fe60d5f4aa3b2e4144c301ed7e2ca335f4d93e98f0882551b3e",
+    "reproduction.json": "e4276b3ab7874582fe3005c4d014871f95522cbaa7206445c6d0152980a0a16e",
+    "smoke.json": "152f4794956e6d93f33dfdcdbbfb2048565739937f5cc5299dfdb5d70b26e6eb",
+    "snapshot/calendar-2009.json": "7223dcf7f9a164b3d9c1a7f29c5c311f71b14884434abce20ea910f82794420c",
+    "snapshot/calendar-2010.json": "18dcfbfac2760be62ac5424e105f4d378ea142ae2119e9972d89db23d24830d2",
+    "snapshot/calendar-2011.json": "77c7c7820440a6114216b5d281a92dc16f95f2b96803c1c79b80c742a81b9c22",
+    "snapshot/calendar-2012.json": "c62c42f7fb0bfe44502a43e87fb78f738396396a6cfffd6ebdd5a2fb727a5f37",
+    "snapshot/calendar-2013.json": "d81aef093d3a30a6efe7dfc7e9e37218a0108f6e6c93b0ee7c5f247a74265b9e",
+    "snapshot/calendar-2014.json": "48d4951eb5ecc7b0ed5ed829bda7026900a5b46dbcee87cde269a7315236e919",
+    "snapshot/calendar-2015.json": "a030c3f31112ed51093e237be49cc493e49adff1beabf28d6c4f392ec7cd8e85",
+    "snapshot/calendar-2016.json": "0e3e82067dbb0ad911fafbbd01d0778b0702234a89e6b4bb7eba4e513ba7245f",
+    "snapshot/calendar-2017.json": "89a0e1f611c7bf66dbea2f86eeb694ff75db7b7ef4aa3040adc8bc27fb9f22b5",
+    "snapshot/calendar-2018.json": "f542c5a822af2bb55a07a519c0d26a6013ad0ebafb59f3c3ac3f7088640eeb2d",
+    "snapshot/calendar-2019.json": "1668cd518d4e434f784a0ecde27013a3daa2ae451e6e7ba374180c97ee41b178",
+    "snapshot/calendar-2020.json": "5626f4bb92455d2e2909f616c3b1299c4c06e8cdc789dffd78c4d924ac1b4a43",
+    "snapshot/calendar-2021.json": "cdbd4fadd63694c3bc20ad5dca37bd52afc5af34bb6fbc9ea386933cc3992748",
+    "snapshot/calendar-2022.json": "95d5761949b7f74db9c8d2b8fa9641ee38286ddd1f78385780e96590ec9cb920",
+    "snapshot/calendar-2023.json": "048a4411c104e842868370779925c8fca2ed5cc442211a0f2a09ac5177d2138f",
+    "snapshot/calendar-2024.json": "e94ec28281705fed4e8d43c9b617ed9fac257c37e1584dfb16f669ed4719b552",
+    "snapshot/calendar-2025.json": "6943888f0d3c6caa0e19dc95d59ca6877fafc8b7338989a5b47f8b4faec837c7",
+    "snapshot/coverage.json": "d7d49951fa454e27877300227f960cb638b3f4a1babefeebeea1cd83df8ae334",
+    "snapshot/evaluation.json": "14ab9516de333c8643d40b4e74ca2838c970296e275a18fc80d7bc02aa71fb64",
+    "snapshot/lineage.json": "a74c6cd9f1bb676238705b19e8e1b6bcd00e43f9971e18dbb3c94e24d143bc70",
+    "snapshot/manifest.json": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e",
+    "snapshot/missing-pairs.json": "36c0af6a448b8cda86f2f2641fadc101fc7f7fbb538be50647dbbd66afd6efc9"
+  },
+  "private_artifacts": "Derived price caches and smoke traces remain under runs/issue39-contiguous-snapshot-v1; provider probes under runs/issue39-recovery-probes.",
+  "scope": "Input contract and handoff only. Original #29/#30 attempts remain incomplete."
+}

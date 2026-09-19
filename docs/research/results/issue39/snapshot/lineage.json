@@ -1,0 +1,229 @@
+{
+  "sources": {
+    "raw": [
+      {
+        "path": "data/jpy_9pairs_1d_2003.parquet",
+        "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+      }
+    ],
+    "clean": [
+      {
+        "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+        "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+      }
+    ],
+    "carry": [
+      {
+        "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+        "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+      }
+    ],
+    "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions.",
+    "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+    "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time."
+  },
+  "changed_ohlc_cells": [
+    {
+      "bar_label": "2006-08-31T00:00:00+01:00",
+      "pair": "JPY/SEK",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2006-08-31T00:00:00+01:00",
+      "pair": "JPY/SEK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-02-20T00:00:00+00:00",
+      "pair": "JPY/SEK",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-02-20T00:00:00+00:00",
+      "pair": "JPY/SEK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-02-20T00:00:00+00:00",
+      "pair": "JPY/SEK",
+      "field": "Low",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-02-20T00:00:00+00:00",
+      "pair": "JPY/SEK",
+      "field": "Close",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-10-08T00:00:00+01:00",
+      "pair": "JPY/USD",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-10-08T00:00:00+01:00",
+      "pair": "JPY/USD",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-10-08T00:00:00+01:00",
+      "pair": "JPY/USD",
+      "field": "Low",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-10-08T00:00:00+01:00",
+      "pair": "JPY/USD",
+      "field": "Close",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-12-08T00:00:00+00:00",
+      "pair": "JPY/USD",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-12-08T00:00:00+00:00",
+      "pair": "JPY/USD",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-12-08T00:00:00+00:00",
+      "pair": "JPY/USD",
+      "field": "Low",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2008-12-08T00:00:00+00:00",
+      "pair": "JPY/USD",
+      "field": "Close",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-01-01T00:00:00+00:00",
+      "pair": "JPY/NOK",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-01-01T00:00:00+00:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-01-01T00:00:00+00:00",
+      "pair": "JPY/NOK",
+      "field": "Low",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-05-19T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-05-19T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-05-19T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Low",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-05-19T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Close",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-06-09T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-06-09T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-06-09T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Low",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2014-06-09T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Close",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2015-11-02T00:00:00+00:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2015-11-16T00:00:00+00:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2016-03-28T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2016-03-29T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2016-07-18T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2016-07-25T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2016-08-01T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "Open",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    },
+    {
+      "bar_label": "2016-08-01T00:00:00+01:00",
+      "pair": "JPY/NOK",
+      "field": "High",
+      "information_limit": "Retrospective repair uses future neighbors; not causal."
+    }
+  ],
+  "retrieved_at": null,
+  "historical_available_at": null,
+  "pair_prejoin_presence": null,
+  "carry_values": "Exact existing CarryAnnual bytes/values; FRED response and vintage unavailable; documented lag 60 days does not prove vintage."
+}
