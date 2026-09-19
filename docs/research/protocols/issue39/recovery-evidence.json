@@ -1,0 +1,98 @@
+{
+  "inspected_at": "2026-09-19T05:32:09.428576+00:00",
+  "budget_sha256": "e6787993598c37cb142fa98936caa8b197584fd39f1a280b6ae112823c2686ee",
+  "local_inventory": [
+    {
+      "root": "data",
+      "exists": true,
+      "files_examined": 3,
+      "candidate_paths": [
+        "data/jpy_9pairs_1d_2003.parquet",
+        "data/jpy_9pairs_1d_2003_carry.parquet",
+        "data/jpy_9pairs_1d_2003_clean.parquet"
+      ]
+    },
+    {
+      "root": "runs",
+      "exists": true,
+      "files_examined": 7423,
+      "candidate_paths": [
+        "runs/issue39-recovery-probes/Dukascopy.response",
+        "runs/issue39-recovery-probes/Yahoo.response"
+      ]
+    },
+    {
+      "root": "docs/research",
+      "exists": true,
+      "files_examined": 438,
+      "candidate_paths": [
+        "docs/research/protocols/issue28/source-lineage.json",
+        "docs/research/results/issue22/data_lineage.json"
+      ]
+    },
+    {
+      "root": "../forex-env-v3/data",
+      "exists": false,
+      "files_examined": 0,
+      "candidate_paths": []
+    },
+    {
+      "root": "/home/tsuyoshi/.cache/py-yfinance",
+      "exists": true,
+      "files_examined": 2,
+      "candidate_paths": [
+        "/home/tsuyoshi/.cache/py-yfinance/cookies.db",
+        "/home/tsuyoshi/.cache/py-yfinance/tkr-tz.db"
+      ]
+    }
+  ],
+  "remote_probes": [
+    {
+      "provider": "Yahoo",
+      "purpose": "Current USDJPY daily response availability around missing 2009-02-05; cannot restore historical vintage",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/USDJPY%3DX?period1=1233446400&period2=1234224000&interval=1d",
+      "max_requests": 1,
+      "retrieved_at": "2026-09-19T05:32:08.413111+00:00",
+      "http_status": "429",
+      "exit_code": 0,
+      "error": "",
+      "response_path": "runs/issue39-recovery-probes/Yahoo.response",
+      "response_sha256": "0d24c98db98d3b4a87b9626a026e7d72c99754ab6bd88211a17bc372350b7d89",
+      "bytes": 23,
+      "historical_available_at": null
+    },
+    {
+      "provider": "Dukascopy",
+      "purpose": "One alternative: USDJPY February 2009 hourly BID availability; not interchangeable with Yahoo daily prices",
+      "url": "https://datafeed.dukascopy.com/datafeed/USDJPY/2009/01/BID_candles_hour_1.bi5",
+      "max_requests": 1,
+      "retrieved_at": "2026-09-19T05:32:08.463340+00:00",
+      "http_status": "429",
+      "exit_code": 0,
+      "error": "",
+      "response_path": "runs/issue39-recovery-probes/Dukascopy.response",
+      "response_sha256": "00263559f89985697555da4ae87977c2fb2fd72858dd9ca6d4415c168f2594d4",
+      "bytes": 113,
+      "historical_available_at": null
+    }
+  ],
+  "original_pair_responses": "not_found",
+  "prejoin_series": "not_found",
+  "original_fetch_logs": "not_found",
+  "registered_remote_archives": [],
+  "scope_limitation": "Only registered local roots and two availability probes inspected; no claim about unregistered backups. yfinance cookies and timezone databases are not price responses; their contents were not exported.",
+  "provider_documentation_access": [
+    {
+      "url": "https://uk.help.yahoo.com/kb/SLN2310.html",
+      "retrieved_date": "2026-09-19",
+      "evidence": "Official-page search excerpt: =X Currency Rates, ICE Data Services. Direct page retrieval returned 429. No historical session or holiday specification established.",
+      "historical_effective_period": null
+    },
+    {
+      "url": "https://www.dukascopy.com/swiss/english/forex/forex-trading-accounts/link/",
+      "retrieved_date": "2026-09-19",
+      "evidence": "Official current Trading Hours page retrieved. Weekly Sunday-Friday schedule varies by summer/winter. Does not identify Yahoo missing dates or establish historical applicability.",
+      "historical_effective_period": null
+    }
+  ]
+}

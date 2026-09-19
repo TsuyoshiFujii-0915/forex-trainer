@@ -1,0 +1,35 @@
+{
+  "original_manifest": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  },
+  "reproduced_manifest": {
+    "path": "runs/issue39-reproduction/snapshot/manifest.json",
+    "sha256": "7f43991a78b0fa7e2c8ddec8329fe91af83af438724c0c7afbd33c6f63638dd4"
+  },
+  "derived_cache_byte_matches": 17,
+  "metadata_byte_matches": [
+    "calendar-2009.json",
+    "calendar-2010.json",
+    "calendar-2011.json",
+    "calendar-2012.json",
+    "calendar-2013.json",
+    "calendar-2014.json",
+    "calendar-2015.json",
+    "calendar-2016.json",
+    "calendar-2017.json",
+    "calendar-2018.json",
+    "calendar-2019.json",
+    "calendar-2020.json",
+    "calendar-2021.json",
+    "calendar-2022.json",
+    "calendar-2023.json",
+    "calendar-2024.json",
+    "calendar-2025.json",
+    "coverage.json",
+    "lineage.json",
+    "missing-pairs.json"
+  ],
+  "different_identity_reason": "Output paths identify distinct immutable attempts; evaluation config paths and enclosing manifest identities differ intentionally.",
+  "source_bytes_unchanged": true
+}
