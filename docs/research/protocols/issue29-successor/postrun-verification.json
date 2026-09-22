@@ -1,0 +1,394 @@
+{
+  "new_manifest": {
+    "path": "docs/research/results/issue29-successor/manifest.json",
+    "sha256": "3214c689fece7c2ac1589672aa871c0f5c74e1a581071f0eaa0cb7ffb512661b"
+  },
+  "old_manifest": {
+    "path": "docs/research/results/issue29/manifest.json",
+    "sha256": "ac0db4e3b26c59b9917b3ad5fa7c68a214bf960740d132f806fc1a044aa3b0fb"
+  },
+  "new_artifacts_verified": 315,
+  "new_account_steps": 32121,
+  "old_complete_accounts_all_existing_fields_reproduced_exactly": [
+    {
+      "fold": "2010",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2010",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2015",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2016",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2020",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2021",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2022",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2023",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F0",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F0",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F0",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F1",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F1",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F1",
+      "policy": "ppo_ens3"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F2",
+      "policy": "canonical"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F2",
+      "policy": "ridge"
+    },
+    {
+      "fold": "2024",
+      "scenario": "F2",
+      "policy": "ppo_ens3"
+    }
+  ],
+  "comparison_fields": [
+    "all original trace fields",
+    "metrics",
+    "timestamps",
+    "coverage",
+    "market_sha256",
+    "symbols",
+    "costs",
+    "environment"
+  ],
+  "additional_trace_field": "market_transition_sha256; added by the previously merged attribution work and revalidated against market data in this run.",
+  "new_f0_accounts_for_issue30": 51,
+  "old_blocked_cells_retained": 81,
+  "new_execution_errors": 0,
+  "new_margin_calls": 0,
+  "training_calls": 0,
+  "market_campaign_attempts": 1,
+  "tests_passed": 478,
+  "same_runtime_all_accounts": true,
+  "verification_command": "uv run forex-successor-cost-campaign verify --output docs/research/results/issue29-successor"
+}

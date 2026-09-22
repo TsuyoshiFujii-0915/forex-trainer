@@ -30,6 +30,7 @@
 | [21-causal-quote-replay.md](21-causal-quote-replay.md) | 公開・保存後quoteの数量口座replay、fixture検証、実データcoverage不足の引渡し | Issue #31 |
 | [22-development-shadow-adapter.md](22-development-shadow-adapter.md) | 開発用raw/decision/quote/outcome追記、固定3方策、再開・訂正・head検証、実収集未開始 | Issue #32 |
 | [23-bounded-input-recovery.md](23-bounded-input-recovery.md) | 有限入力回復の出口B、全欠損pair監査、連続区間snapshotと旧17foldとの差、#29/#30への引渡し | Issue #39 |
+| [24-successor-cost-baselines.md](24-successor-cost-baselines.md) | #39の17固定区間で3方策×3費用条件153口座を完走、部分年を明示した基準線と#30へのF0引渡し | Issue #29後継 |
 
 現在の短期開発は[issue27-development-v1](17-bounded-development-protocol.md)と
 [実行manifest](protocols/issue27/execution-manifest.md)を参照する。
