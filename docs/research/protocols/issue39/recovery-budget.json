@@ -1,0 +1,21 @@
+{
+  "version": "issue39-recovery-budget-v1",
+  "selection_inputs": ["coverage", "availability", "timestamp_specification", "reproducibility"],
+  "performance_selection": false,
+  "local_roots": ["data", "runs", "docs/research", "../forex-env-v3/data", "/home/tsuyoshi/.cache/py-yfinance"],
+  "local_passes": 1,
+  "remote_candidates": [
+    {"provider": "Yahoo", "purpose": "Current USDJPY daily response availability around missing 2009-02-05; cannot restore historical vintage", "url": "https://query1.finance.yahoo.com/v8/finance/chart/USDJPY%3DX?period1=1233446400&period2=1234224000&interval=1d", "max_requests": 1},
+    {"provider": "Dukascopy", "purpose": "One alternative: USDJPY February 2009 hourly BID availability; not interchangeable with Yahoo daily prices", "url": "https://datafeed.dukascopy.com/datafeed/USDJPY/2009/01/BID_candles_hour_1.bi5", "max_requests": 1}
+  ],
+  "timeout_seconds": 20,
+  "max_response_bytes": 1048576,
+  "redirects": 0,
+  "retries": 0,
+  "backoff_seconds": 0,
+  "stop_rule": "Stop after the one local pass and two probes. No bulk acquisition, credentials, paid feeds, or historical-vintage claim. If original responses cannot be recovered, choose B and register finite successor coverage before any policy smoke.",
+  "provider_documentation": [
+    {"url": "https://uk.help.yahoo.com/kb/SLN2310.html", "retrieved_date": "2026-09-19", "observation": "Currency (=X) provider is ICE Data Services. Does not document historical daily cutoff, holidays, or vintage.", "historical_effective_period": null},
+    {"url": "https://www.dukascopy.com/swiss/english/forex/forex-trading-accounts/link/", "retrieved_date": "2026-09-19", "observation": "Current weekly hours Sunday-Friday, 21 GMT summer / 22 GMT winter. Does not establish Yahoo sessions or missing historical dates.", "historical_effective_period": null}
+  ]
+}

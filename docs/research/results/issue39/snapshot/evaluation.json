@@ -1,0 +1,183 @@
+{
+  "mode": "full_period",
+  "measurement_id": "full-period-history-v1",
+  "evidence_class": "development_historical",
+  "source": {
+    "path": "docs/research/results/issue15/provenance.json",
+    "sha256": "a398ee18a01de364e21deb1d5f0ac5a66c1c1e445e60dc21c7c713215cebfb61"
+  },
+  "lineage": {
+    "path": "docs/research/protocols/issue28/source-lineage.json",
+    "sha256": "f3d96b62ee98cc8fe6dbcb132e87a3c8ba37bf4116b3806b99a3332fab5b08dd"
+  },
+  "runtime": {
+    "forex_env_sha": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "versions": {
+      "forex-env-v3": "0.1.0",
+      "stable-baselines3": "2.8.0",
+      "sb3-contrib": "2.8.0",
+      "torch": "2.12.0",
+      "gymnasium": "1.2.3",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "pyarrow": "24.0.0",
+      "PyYAML": "6.0.3"
+    },
+    "device": "cpu"
+  },
+  "folds": [
+    {
+      "fold": "2009",
+      "measurement_start": "2009-05-05T23:00:00+00:00",
+      "measurement_end": "2010-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2009.json",
+        "sha256": "7223dcf7f9a164b3d9c1a7f29c5c311f71b14884434abce20ea910f82794420c"
+      }
+    },
+    {
+      "fold": "2010",
+      "measurement_start": "2010-01-01T00:00:00+00:00",
+      "measurement_end": "2011-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2010.json",
+        "sha256": "18dcfbfac2760be62ac5424e105f4d378ea142ae2119e9972d89db23d24830d2"
+      }
+    },
+    {
+      "fold": "2011",
+      "measurement_start": "2011-07-13T23:00:00+00:00",
+      "measurement_end": "2012-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2011.json",
+        "sha256": "77c7c7820440a6114216b5d281a92dc16f95f2b96803c1c79b80c742a81b9c22"
+      }
+    },
+    {
+      "fold": "2012",
+      "measurement_start": "2012-01-01T00:00:00+00:00",
+      "measurement_end": "2012-12-04T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2012.json",
+        "sha256": "c62c42f7fb0bfe44502a43e87fb78f738396396a6cfffd6ebdd5a2fb727a5f37"
+      }
+    },
+    {
+      "fold": "2013",
+      "measurement_start": "2013-04-15T23:00:00+00:00",
+      "measurement_end": "2013-10-07T23:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2013.json",
+        "sha256": "d81aef093d3a30a6efe7dfc7e9e37218a0108f6e6c93b0ee7c5f247a74265b9e"
+      }
+    },
+    {
+      "fold": "2014",
+      "measurement_start": "2014-01-06T00:00:00+00:00",
+      "measurement_end": "2015-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2014.json",
+        "sha256": "48d4951eb5ecc7b0ed5ed829bda7026900a5b46dbcee87cde269a7315236e919"
+      }
+    },
+    {
+      "fold": "2015",
+      "measurement_start": "2015-01-01T00:00:00+00:00",
+      "measurement_end": "2016-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2015.json",
+        "sha256": "a030c3f31112ed51093e237be49cc493e49adff1beabf28d6c4f392ec7cd8e85"
+      }
+    },
+    {
+      "fold": "2016",
+      "measurement_start": "2016-01-01T00:00:00+00:00",
+      "measurement_end": "2017-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2016.json",
+        "sha256": "0e3e82067dbb0ad911fafbbd01d0778b0702234a89e6b4bb7eba4e513ba7245f"
+      }
+    },
+    {
+      "fold": "2017",
+      "measurement_start": "2017-01-01T00:00:00+00:00",
+      "measurement_end": "2017-07-10T23:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2017.json",
+        "sha256": "89a0e1f611c7bf66dbea2f86eeb694ff75db7b7ef4aa3040adc8bc27fb9f22b5"
+      }
+    },
+    {
+      "fold": "2018",
+      "measurement_start": "2018-02-14T00:00:00+00:00",
+      "measurement_end": "2019-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2018.json",
+        "sha256": "f542c5a822af2bb55a07a519c0d26a6013ad0ebafb59f3c3ac3f7088640eeb2d"
+      }
+    },
+    {
+      "fold": "2019",
+      "measurement_start": "2019-01-01T00:00:00+00:00",
+      "measurement_end": "2019-05-21T23:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2019.json",
+        "sha256": "1668cd518d4e434f784a0ecde27013a3daa2ae451e6e7ba374180c97ee41b178"
+      }
+    },
+    {
+      "fold": "2020",
+      "measurement_start": "2020-01-01T00:00:00+00:00",
+      "measurement_end": "2021-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2020.json",
+        "sha256": "5626f4bb92455d2e2909f616c3b1299c4c06e8cdc789dffd78c4d924ac1b4a43"
+      }
+    },
+    {
+      "fold": "2021",
+      "measurement_start": "2021-01-01T00:00:00+00:00",
+      "measurement_end": "2022-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2021.json",
+        "sha256": "cdbd4fadd63694c3bc20ad5dca37bd52afc5af34bb6fbc9ea386933cc3992748"
+      }
+    },
+    {
+      "fold": "2022",
+      "measurement_start": "2022-01-01T00:00:00+00:00",
+      "measurement_end": "2023-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2022.json",
+        "sha256": "95d5761949b7f74db9c8d2b8fa9641ee38286ddd1f78385780e96590ec9cb920"
+      }
+    },
+    {
+      "fold": "2023",
+      "measurement_start": "2023-01-01T00:00:00+00:00",
+      "measurement_end": "2024-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2023.json",
+        "sha256": "048a4411c104e842868370779925c8fca2ed5cc442211a0f2a09ac5177d2138f"
+      }
+    },
+    {
+      "fold": "2024",
+      "measurement_start": "2024-01-01T00:00:00+00:00",
+      "measurement_end": "2025-01-01T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2024.json",
+        "sha256": "e94ec28281705fed4e8d43c9b617ed9fac257c37e1584dfb16f669ed4719b552"
+      }
+    },
+    {
+      "fold": "2025",
+      "measurement_start": "2025-07-17T23:00:00+00:00",
+      "measurement_end": "2025-12-25T00:00:00+00:00",
+      "calendar": {
+        "path": "docs/research/results/issue39/snapshot/calendar-2025.json",
+        "sha256": "6943888f0d3c6caa0e19dc95d59ca6877fafc8b7338989a5b47f8b4faec837c7"
+      }
+    }
+  ]
+}
