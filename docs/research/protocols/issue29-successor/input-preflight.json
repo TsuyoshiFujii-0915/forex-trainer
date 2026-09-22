@@ -1,0 +1,366 @@
+{
+  "scope": "Input-only preflight; no inference, fitting, or policy selection.",
+  "config": {
+    "path": "configs/research/issue29_successor_cost.json",
+    "sha256": "d986725d23edd70ee7477cd8511c49d382ba2a41b43184953c37e44977a600ad"
+  },
+  "folds": [
+    {
+      "fold": "2009",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2009-05-05T23:00:00+00:00",
+      "last_mark": "2009-12-31T00:00:00+00:00",
+      "steps": 171,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "0704107993b5d874203342259a3f2b852f24ded8e4113f2265b0a87b3a428ec3",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2010",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2010-01-01T00:00:00+00:00",
+      "last_mark": "2010-12-31T00:00:00+00:00",
+      "steps": 260,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "1155b56d4cbe7bb5d540ef7a89a2516179bfdffe9fecc079d36645f0bef41110",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2011",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2011-07-13T23:00:00+00:00",
+      "last_mark": "2011-12-30T00:00:00+00:00",
+      "steps": 121,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "ec65fc167f8b6f299cfd2f60a02fc053725b7e3ca4f0ea48c2714252c4c98bdf",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2012",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2012-01-02T00:00:00+00:00",
+      "last_mark": "2012-12-03T00:00:00+00:00",
+      "steps": 240,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "b687afaaa82c2e20f3b0bd1baecde004bcfb2f971a07b05f71a2b7751c96b9c5",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2013",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2013-04-15T23:00:00+00:00",
+      "last_mark": "2013-10-06T23:00:00+00:00",
+      "steps": 124,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "98860224f4a08a9a43509089a7639948663388d0a6f97678354d612cf517a9a0",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2014",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2014-01-06T00:00:00+00:00",
+      "last_mark": "2014-12-31T00:00:00+00:00",
+      "steps": 257,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "73da97119e14255860e6f940965d5f8735b1682e92d7a5021986c5a89f08a3d7",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2015",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2015-01-01T00:00:00+00:00",
+      "last_mark": "2015-12-31T00:00:00+00:00",
+      "steps": 260,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "630774754a7f295188448a7f4104e0b8d77cf2d1b8950435b91e839bd5e41f0e",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2016",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2016-01-01T00:00:00+00:00",
+      "last_mark": "2016-12-30T00:00:00+00:00",
+      "steps": 260,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "8ada1236bda66b49ca814872ba76bf27be1d03dd217ba2d8a06276e8d97bb509",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2017",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2017-01-02T00:00:00+00:00",
+      "last_mark": "2017-07-09T23:00:00+00:00",
+      "steps": 135,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "b613a55524c9a608d1eca58bdc657fd2f7028583d8646a9c77293051bcb01f5c",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2018",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2018-02-14T00:00:00+00:00",
+      "last_mark": "2018-12-31T00:00:00+00:00",
+      "steps": 228,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "0bf954713a77e8ff9f2c620b3729988b75864844eb029c92fd041b333ba20607",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2019",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2019-01-01T00:00:00+00:00",
+      "last_mark": "2019-05-20T23:00:00+00:00",
+      "steps": 100,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "68d5ece100c73485da9edf947b96b3077947fa7a786315932f0aa50e639b2fd3",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2020",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2020-01-01T00:00:00+00:00",
+      "last_mark": "2020-12-31T00:00:00+00:00",
+      "steps": 261,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "6a5f832366f9369a418099e3b6d5740055aee6b599f20155e96f847053bca8f5",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2021",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2021-01-01T00:00:00+00:00",
+      "last_mark": "2021-12-31T00:00:00+00:00",
+      "steps": 260,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "3b6ea4e8512570f4d48af5b2fc3ab3f52e43ed8f59c7695531066c697b5b67f4",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2022",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2022-01-03T00:00:00+00:00",
+      "last_mark": "2022-12-30T00:00:00+00:00",
+      "steps": 259,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "d83f2eb4504c0aa33d1aac79db7b03d4ac1c873e928c3f434ecd320ab1ffdc2a",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2023",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2023-01-02T00:00:00+00:00",
+      "last_mark": "2023-12-29T00:00:00+00:00",
+      "steps": 259,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "ef61a1947db0a45f8eed3d09cba5914ba9715fb2589b53b125ee173a4f2b454a",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2024",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2024-01-01T00:00:00+00:00",
+      "last_mark": "2024-12-31T00:00:00+00:00",
+      "steps": 261,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "be04bbed86a70db01f752d560843b3c10fbee2b3b63a3f5d6c4059765ec5ca09",
+      "ppo_models": 3
+    },
+    {
+      "fold": "2025",
+      "status": "input_ready",
+      "symbols": [
+        "JPY/USD",
+        "JPY/EUR",
+        "JPY/GBP",
+        "JPY/AUD",
+        "JPY/CHF",
+        "JPY/CAD",
+        "JPY/NZD",
+        "JPY/NOK",
+        "JPY/SEK"
+      ],
+      "first_decision": "2025-07-17T23:00:00+00:00",
+      "last_mark": "2025-12-24T00:00:00+00:00",
+      "steps": 113,
+      "history_bars": 63,
+      "ridge_parameter_sha256": "4ab1c43806780c0c3fff4b8e04bba107d08728e7932c31a6dd9ba036b5178462",
+      "ppo_models": 3
+    }
+  ]
+}

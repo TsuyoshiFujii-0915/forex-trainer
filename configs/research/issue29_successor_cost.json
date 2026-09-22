@@ -1,0 +1,45 @@
+{
+  "campaign_id": "issue29-contiguous-cost-v1",
+  "scenarios": {
+    "F0": {
+      "spread_multiplier": 1,
+      "overnight_multiplier": 1
+    },
+    "F1": {
+      "spread_multiplier": 2,
+      "overnight_multiplier": 1
+    },
+    "F2": {
+      "spread_multiplier": 1,
+      "overnight_multiplier": 2
+    }
+  },
+  "snapshot": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  },
+  "parent_manifest": {
+    "path": "docs/research/results/issue29/manifest.json",
+    "sha256": "ac0db4e3b26c59b9917b3ad5fa7c68a214bf960740d132f806fc1a044aa3b0fb"
+  },
+  "portfolio": {
+    "path": "docs/research/results/issue16/provenance.json",
+    "sha256": "d2db580d5f11ec7ca341af04549c3a09e7ddb6777c43562b1117a24ae8a57db3"
+  },
+  "registration": {
+    "path": "docs/research/protocols/issue29-successor/registration.md",
+    "sha256": "12ef2cb9bc12a8f766f10b9a1f77a2913f6d59150c36a04f6adecd2892f3872f"
+  },
+  "decision": {
+    "path": "docs/decisions/0043-evaluate-costs-on-the-frozen-successor-panel.md",
+    "sha256": "4fd3024451d789372fc65a4a7bd34fd1f415e2a8b35bea31c0f9dc2703ad5e9e"
+  },
+  "parent_contract": {
+    "path": "docs/research/17-bounded-development-protocol.md",
+    "sha256": "3ed67f093ab1364cbd4d70194b30687f07907ecb45e7ea6f1fbef2099bcafb2e"
+  },
+  "lock": {
+    "path": "uv.lock",
+    "sha256": "a1baf53c15f9681ccf5a9ed79a2dd834dccecce6aa82b3e78491fcc4ce49cd82"
+  }
+}
