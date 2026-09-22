@@ -1,0 +1,56 @@
+{
+  "campaign_id": "issue30-contiguous-attribution-v1",
+  "scenario": "F0",
+  "folds": [
+    "2009",
+    "2010",
+    "2011",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "controls": [
+    "train_constant",
+    "common_projected"
+  ],
+  "parent_manifest": {
+    "path": "docs/research/results/issue29-successor/manifest.json",
+    "sha256": "3214c689fece7c2ac1589672aa871c0f5c74e1a581071f0eaa0cb7ffb512661b"
+  },
+  "registration": {
+    "path": "docs/research/protocols/issue30-successor/registration.md",
+    "sha256": "90720baf224aa0f222f7cbdf9a01ceaea4cf5359cab3646310001c76eaeafb70"
+  },
+  "parent_contract": {
+    "path": "docs/research/17-bounded-development-protocol.md",
+    "sha256": "3ed67f093ab1364cbd4d70194b30687f07907ecb45e7ea6f1fbef2099bcafb2e"
+  },
+  "lock": {
+    "path": "uv.lock",
+    "sha256": "a1baf53c15f9681ccf5a9ed79a2dd834dccecce6aa82b3e78491fcc4ce49cd82"
+  },
+  "train_gap_policy": "original_train_replay_with_observed_gaps",
+  "handoff": {
+    "path": "docs/research/results/issue29-successor/attribution-handoff.json",
+    "sha256": "425bd1eaa466c3e4e87931787162d4f92f03bb06dd6bb8fc6b70e3259864b40c"
+  },
+  "snapshot": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  },
+  "decision": {
+    "path": "docs/decisions/0044-attribute-profit-on-the-frozen-successor-panel.md",
+    "sha256": "e56b414fd88aac90e33868f6696492c9bd754cddcbb0a39ae5dc9b7efa557b3f"
+  }
+}
