@@ -32,14 +32,21 @@
 | [23-bounded-input-recovery.md](23-bounded-input-recovery.md) | 有限入力回復の出口B、全欠損pair監査、連続区間snapshotと旧17foldとの差、#29/#30への引渡し | Issue #39 |
 | [24-successor-cost-baselines.md](24-successor-cost-baselines.md) | #39の17固定区間で3方策×3費用条件153口座を完走、部分年を明示した基準線と#30へのF0引渡し | Issue #29後継 |
 | [25-successor-profit-attribution.md](25-successor-profit-attribution.md) | 後継85口座を完走、PPOの共通方向・相対配分・carry・費用帰属、2対照と次期仮説 | Issue #30後継 |
+| [26-common-direction-learning-campaign.md](26-common-direction-learning-campaign.md) | 共通方向の一分岐、1/5日ridge×2配分、有限fit/逐次RL予算、数値採否、#41〜#50の実行manifest | Issue #40 |
 
-現在の短期開発は[issue27-development-v1](17-bounded-development-protocol.md)と
+次期学習の入口は[issue40-common-direction-development-v1](26-common-direction-learning-campaign.md)と
+[登録・試行台帳](protocols/issue40/registration.json)。#30後継の根拠から共通方向だけを選び、
+4構成と条件付き1PPOの予算・採否を固定した。契約登録のみで新規学習・市場評価は未実行。
+旧17通年の不足を保持し、独立収益性やcanonical置換を認定していない。
+
+先行する測定・帰属診断は[issue27-development-v1](17-bounded-development-protocol.md)と
 [実行manifest](protocols/issue27/execution-manifest.md)を参照する。
 #28 → #29 → #30最終解析を主経路とし、#30先行診断・#31約定replay・#32開発shadowを並行する。
 #39の固定後継範囲では#29の153口座、#30の85口座を完走した。PPOの正の平均寄与は共通方向が主要であり、
 次期の優先仮説は少数共通要因へのポジション制御。ただし9区間は部分年で、旧17通年の不足は未解消。
 共通投影のnet改善はリスク量も異なる記述的対照であり、学習alphaや独立収益性の認定ではない。
-今回の新規学習・HPO予算は0。開発shadowは成績閲覧可だが独立確認へ事後昇格しない。
+#27診断campaignの新規学習・HPO予算は0。#40の有限学習予算は別契約として扱う。
+開発shadowは成績閲覧可だが独立確認へ事後昇格しない。
 旧[issue20-forward-v1](14-research-and-forward-protocol.md)は凍結確認計画として保持し、未開始のまま。
 新契約は開発着手と認定判断を分けるもので、旧方策の収益性・canonical置換を新たに認定していない。
 2009〜2025はdevelopment folds、2007〜2008と2026H1は過去確認使用済みであり再封印しない。
