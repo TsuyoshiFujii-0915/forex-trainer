@@ -29,6 +29,10 @@ uv run forex-successor-attribution verify \
 The output directory must be new. All 85 successor accounts must complete before
 aggregate evidence is reported. Nine ranges are partial years; their statistics
 describe the frozen coverage, not 17 complete years or continuous operation.
+Runtime replay errors stop the attempt and preserve all 85 cell statuses, the
+original error evidence and a verifiable manifest. Both `run` and `verify`
+return exit code 2 for incomplete attempts; see the
+[runtime failure contract](docs/research/protocols/issue30-successor/runtime-failures.md).
 
 ## Layout requirement
 
