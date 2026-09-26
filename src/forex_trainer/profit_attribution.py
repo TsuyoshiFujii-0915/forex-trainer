@@ -325,7 +325,7 @@ def summarize_attribution(cells: list[dict[str, Any]]) -> dict[str, Any]:
     expected = {(f, p) for f in FOLDS for p in POLICIES}
     if len(cells) != 85 or {(c["fold"], c["policy"]) for c in cells} != expected:
         raise ValueError("Attribution panel requires 85 unique registered policy-fold cells")
-    allowed = {"complete", "blocked_input", "execution_error", "incomplete_margin_call", "blocked_train_terminal"}
+    allowed = {"complete", "blocked_input", "execution_error", "incomplete_margin_call", "blocked_train_terminal", "blocked_dependency", "not_run"}
     if any(c["status"] not in allowed for c in cells):
         raise ValueError("Unknown attribution cell status")
     count = sum(c["status"] == "complete" for c in cells)
