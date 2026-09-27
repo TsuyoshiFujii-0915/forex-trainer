@@ -1,11 +1,11 @@
 {
-  "campaign_id": "issue40-common-direction-development-v1",
-  "manifest_version": 1,
-  "branch": "common_direction",
+  "campaign_id": "issue40-common-direction-development-v2",
+  "manifest_version": 2,
+  "branch": "insufficient_input",
   "evidence_class": "development_historical",
-  "status": "registered_not_executed",
-  "registered_at": "2026-09-26T13:28:45.085747+00:00",
-  "registration_commit": "62b4de01c4ceb4af1274cde39107c607bf7bc2ca",
+  "status": "registered_blocked_input",
+  "registered_at": "2026-09-27T13:02:21.858625+00:00",
+  "registration_commit": "134c9cb865ea6f9e44bfab1dcbece8c3d33dbe66",
   "measurement_id": "issue40-common-quantity-same-close-v1",
   "measurement_status": "reserved_implementation_required_in_issue42",
   "execution_proxy_id": "issue40-next-close-proxy-v1",
@@ -20,7 +20,7 @@
   "sources": [
     {
       "path": "docs/research/26-common-direction-learning-campaign.md",
-      "sha256": "7d341cd97570bb804e135d44f610acbbbcca1a1bcbfcacefb96f9db7e776dbd1"
+      "sha256": "13e99bd26d78faf11dff71ba115bd6d22bc4dc8ed323e9a8d9532b39a32247bf"
     },
     {
       "path": "docs/decisions/0045-register-one-bounded-common-direction-learning-campaign.md",
@@ -217,6 +217,26 @@
     {
       "path": "docs/research/results/issue39/snapshot/calendar-2025.json",
       "sha256": "6943888f0d3c6caa0e19dc95d59ca6877fafc8b7338989a5b47f8b4faec837c7"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v1/manifest.md",
+      "sha256": "7d341cd97570bb804e135d44f610acbbbcca1a1bcbfcacefb96f9db7e776dbd1"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v1/registration.json",
+      "sha256": "2b1560ae7a68df3d98aa06fd6a54699bfc6cfc820e3954c85aec78550b3b4f4e"
+    },
+    {
+      "path": "docs/research/protocols/issue40/preflight.py",
+      "sha256": "5c39504d5424ef5258f143f724873ead050eaab190c12b6068a158e27a9085fb"
+    },
+    {
+      "path": "docs/research/protocols/issue40/preflight/counts.csv",
+      "sha256": "e2a07b0dd5815ea76947188ef8740930bad786e609d747e56a76b97ab198f23e"
+    },
+    {
+      "path": "docs/research/protocols/issue40/preflight/report.json",
+      "sha256": "83aa54cf05affa79348f3a32eabc181620236d9099abb7e8f19aab0ffc0b5c46"
     }
   ],
   "folds": [
@@ -768,7 +788,9 @@
     "collection_requests_including_retries": 1000,
     "confirmation_protocols": 1,
     "confirmation_executions": 0,
-    "orders": 0
+    "orders": 0,
+    "annual_reset_accounts": 153,
+    "continuation_and_reset_accounts": 162
   },
   "risk_and_decision": {
     "primary_unit": "paired_period_net_log_return_equal_interval_mean",
@@ -1130,27 +1152,58 @@
       ]
     }
   ],
-  "execution_events": [],
+  "execution_events": [
+    {
+      "event_id": "review-input-preflight-and-continuation-budget-v2",
+      "recorded_at": "2026-09-27T13:02:21.858625+00:00",
+      "event_type": "preregistration_revision_before_any_fit",
+      "affected_trials": [
+        "R1",
+        "R5",
+        "A1-fixed",
+        "A1-cost",
+        "A5-fixed",
+        "A5-cost",
+        "PPO-common"
+      ],
+      "status": "blocked_input",
+      "decision": "return_to_input_remediation",
+      "reason": "Known calendar shortages prevent the complete outer panel, required cross-fits, PPO validation, and the 2009 RL training range.",
+      "training_calls": 0,
+      "market_evaluation_accounts": 0,
+      "original_attempts_preserved": true,
+      "new_continuation_budget": {
+        "continuous_accounts": 9,
+        "annual_reset_accounts": 153
+      },
+      "prior_registration": "docs/research/protocols/issue40/revisions/v1/registration.json",
+      "registration_commit": "134c9cb865ea6f9e44bfab1dcbece8c3d33dbe66"
+    }
+  ],
   "ledger_policy": {
     "append_only_events": true,
     "old_ledgers_unchanged": true,
     "cross_fits_are_counted_compute_not_extra_model_families": true,
     "global_independent_trial_count": null,
     "global_independent_trial_count_reason": "Historical trials and dependence are not fully identified; seven registrations are not seven independent market samples.",
-    "counter_units": "Each fit invocation, training invocation, and independently initialized account consumes its matching budget, including failures. Validation and fixture accounts have separate counters. Child issues append actual counts before and after execution."
+    "counter_units": "Each fit invocation, training invocation, and independently initialized account consumes its matching budget, including failures. Validation and fixture accounts have separate counters. Child issues append actual counts before and after execution.",
+    "trial_rows": "Original v1 registrations retained; the v2 event blocks all seven without deleting their history. Their original frozen manifest is archived in revisions/v1/manifest.md."
   },
   "activation_requirements": {
     "issue41": [
+      "new_explicit_revision_and_all_34_outer_calendar_preflights_pass",
       "implemented_config_and_CLI",
       "clean_runtime_and_input_seals",
       "train_validation_coverage_and_purge_counts"
     ],
     "issue43": [
+      "all_17_folds_preserved_after_input_remediation",
       "issue41_models_and_forecasts",
       "issue42_quantity_accounting_tests",
       "all_controls_same_measurement_and_runtime"
     ],
     "issue46_48": [
+      "new_revision_with_all_selected_horizon_cross_fits_PPO_validation_and_actual_RL_forecast_ranges_eligible",
       "issue43_selected_one_horizon_and_sequential_hypothesis",
       "as_of_forecast_bundle",
       "issue47_fixture_smoke_and_runtime_seals"
@@ -1162,11 +1215,104 @@
     ],
     "issue49": [
       "selected_candidate",
-      "continuous_input_coverage_and_switch_contract"
+      "continuous_input_coverage_and_switch_contract",
+      "freeze_one_deduplicated_policy_set_including_same_forecast_allocator",
+      "separate_continuous_and_annual_reset_account_manifests_within_9_and_153_caps"
     ],
     "issue50": [
       "candidate_and_issue44_45_49_evidence",
       "new_unused_period_and_separate_confirmation_design"
     ]
-  }
+  },
+  "retained_learning_hypothesis": "common_direction",
+  "revised_at": "2026-09-27T13:02:21.858625+00:00",
+  "original_registration_commit": "62b4de01c4ceb4af1274cde39107c607bf7bc2ca",
+  "parent_registration": {
+    "path": "docs/research/protocols/issue40/revisions/v1/registration.json",
+    "sha256": "2b1560ae7a68df3d98aa06fd6a54699bfc6cfc820e3954c85aec78550b3b4f4e",
+    "seal_commit": "8ea6227c2295024b674da5bfb3a1ee5b60e455e4"
+  },
+  "active_market_training_budget": 0,
+  "active_market_evaluation_budget": 0,
+  "budget_status": "Conditional ceilings retained for explicit re-registration after input remediation; not current execution authorization.",
+  "continuation_policy_sets": {
+    "rl_selected": [
+      "selected_rl",
+      "same_forecast_cost_allocator",
+      "canonical"
+    ],
+    "simple_cost_selected": [
+      "selected_cost_allocator",
+      "canonical"
+    ],
+    "simple_fixed_selected": [
+      "selected_fixed",
+      "same_forecast_cost_allocator",
+      "canonical"
+    ]
+  },
+  "continuation_case_budgets": {
+    "rl_selected": {
+      "continuous_accounts": 9,
+      "annual_reset_accounts": 153
+    },
+    "simple_cost_selected": {
+      "continuous_accounts": 6,
+      "annual_reset_accounts": 102
+    },
+    "simple_fixed_selected": {
+      "continuous_accounts": 9,
+      "annual_reset_accounts": 153
+    }
+  },
+  "continuation_contract": {
+    "mutually_exclusive_cases": true,
+    "maximum_candidates": 1,
+    "maximum_years": 17,
+    "year_labels": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "scenarios": [
+      "F0",
+      "F1",
+      "F2"
+    ],
+    "same_forecast_bundle_required": true,
+    "old_metrics_reused": 0,
+    "reset_initial_equity_jpy": 1000000,
+    "reset_initial_holdings": "flat",
+    "continuous_and_reset_share_market_runtime_execution_model_switches": true,
+    "same_forecast_control_is_not_old_direct_ppo": true,
+    "repeating_after_switching_from_simple_to_rl_requires_new_campaign": true,
+    "continuous_coverage_still_required": true
+  },
+  "preflight": {
+    "report": "docs/research/protocols/issue40/preflight/report.json",
+    "counts": "docs/research/protocols/issue40/preflight/counts.csv",
+    "original_schedule_registration": "docs/research/protocols/issue40/revisions/v1/registration.json",
+    "cases": 442,
+    "blocked_cases": 97,
+    "method": "Coverage-only upper bound, 63 preceding history bars, labels inside contiguous blocks and range boundaries.",
+    "minimum_train_rows": 252,
+    "minimum_validation_rows": 60,
+    "minimum_ppo_validation_decisions": 60,
+    "thresholds_splits_history_and_update_schedule_changed": false
+  },
+  "original_registered_at": "2026-09-26T13:28:45.085747+00:00"
 }
