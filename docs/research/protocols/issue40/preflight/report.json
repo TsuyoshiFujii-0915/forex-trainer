@@ -1,0 +1,49 @@
+{
+  "campaign_id": "issue40-common-direction-development-v1",
+  "status": "blocked_input",
+  "scope": "Calendar-only upper bounds; feature finiteness and price validity are not certified.",
+  "training_calls": 0,
+  "price_values_read": 0,
+  "model_inference_calls": 0,
+  "history_bars": 63,
+  "minimum_train_rows": 252,
+  "minimum_validation_rows": 60,
+  "minimum_ppo_validation_decisions": 60,
+  "rl_train_check": "At least one transition after first forecast cutoff; not a sufficiency claim.",
+  "registration_sha256": "2b1560ae7a68df3d98aa06fd6a54699bfc6cfc820e3954c85aec78550b3b4f4e",
+  "coverage_sha256": "d7d49951fa454e27877300227f960cb638b3f4a1babefeebeea1cd83df8ae334",
+  "script_sha256": "5c39504d5424ef5258f143f724873ead050eaab190c12b6068a158e27a9085fb",
+  "counts_sha256": "e2a07b0dd5815ea76947188ef8740930bad786e609d747e56a76b97ab198f23e",
+  "cases_by_stage": {
+    "cross_fit": 374,
+    "outer": 34,
+    "ppo_validation": 17,
+    "rl_train": 17
+  },
+  "blocked_by_stage": {
+    "cross_fit": 90,
+    "outer": 4,
+    "ppo_validation": 2,
+    "rl_train": 1
+  },
+  "blocked_outer_folds": [
+    "2009",
+    "2018"
+  ],
+  "blocked_cross_fit_cutoffs": [
+    "2008-01-01",
+    "2008-07-01",
+    "2009-01-01",
+    "2009-07-01",
+    "2013-07-01",
+    "2018-01-01"
+  ],
+  "blocked_ppo_validation_folds": [
+    "2009",
+    "2018"
+  ],
+  "blocked_rl_train_folds": [
+    "2009"
+  ],
+  "decision": "Return to input remediation; no automatic threshold reduction, gap bridging, fold exclusion, or training activation."
+}
