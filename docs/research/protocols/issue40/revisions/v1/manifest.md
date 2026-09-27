@@ -1,10 +1,7 @@
 # 次期の共通方向予測・配分・逐次RL実行manifest（Issue #40）
 
-**`issue40-common-direction-development-v2`を登録し、実行分岐を「不足解消へ戻る」に固定する。**
-改訂日2026-09-27。共通方向だけを将来の検証仮説として保持するが、現在は`registered_blocked_input`。
-新規学習0・新規市場評価0。本学習の有効予算は0で、後述の上限を開始許可として使わない。
-2026-09-26の[v1 manifest](protocols/issue40/revisions/v1/manifest.md)と
-[v1登録台帳](protocols/issue40/revisions/v1/registration.json)は元bytesのまま保存する。
+**`issue40-common-direction-development-v1`を登録する。分岐は共通方向のみ。**
+登録日2026-09-26。状態は契約確定・新規学習0・新規市場評価0。
 正本は本manifest、入力hash・登録commit・全foldの範囲・cross-fit日程・試行台帳は
 [registration.json](protocols/issue40/registration.json)。実行CLI configではない。
 実装と本実験は#41〜#50の担当とし、本Issueは登録までで完了する。
@@ -28,42 +25,6 @@ projectedのworst MDDは43.33%。**主要な実現会計寄与と、持続的な
 この範囲は既存coverage規則で損益を見る前に選ばれたが、今回の仮説選択ではその結果を閲覧済み。
 旧17通年の完了、新しい独立標本、欠損期間込みの年間損益と称さない。
 新予測の不調・欠損を理由に範囲を縮めず、17区間の比較が成立しなければ不足解消へ戻る。
-
-### 学習前の件数preflightと今回の判断
-
-レビューで指摘された件数不足を、価格・特徴量値・損益・model推論を読まない
-[preflight](protocols/issue40/preflight.py)で全件再計算した。
-[report](protocols/issue40/preflight/report.json)と[全442ケースのCSV](protocols/issue40/preflight/counts.csv)を正本とする。
-入力はv1の全17fold/187更新日と、封印された#39 coverageの要求範囲・欠損日一覧だけ。
-重複する監査が日付の存在について不一致なら例外とし、未知日を観測済みへ補完しない。
-
-| 対象 | 全ケース | 開始不可 | 根拠 |
-|---|---:|---:|---|
-| #41外側fold×horizon | 34 | 4 | 2009のvalidationはh1=25/h5=21、2018は32/24。最低60未達 |
-| #46更新×両horizon | 374 | 90 | 不足cutoffは2008-01-01、2008-07-01、2009-01-01、2009-07-01、2013-07-01、2018-01-01 |
-| #48 PPO validation | 17 | 2 | 2009の最長連続区間25decision、2018は27。最低60未達 |
-| #48 RL trainの時刻上の存在 | 17 | 1 | 2009の最初のforecast cutoff以降、train終端までの有効遷移が0 |
-
-63本の**先行**historyが必要なので、ブロック長Bの範囲全体ならh日label付き行数は
-`max(0, B-63-h)`。境界外labelも除外する。2008H2の22本/89本のブロックからは25/21件しか得られない。
-2008-07-01 cross-fit cutoffのvalidationは両hとも0件であり、最低件数の小幅緩和だけでは解消しない。
-CSVは各train/validationの有効数、history除外、gapによるlabel除外、境界purge、
-最長区間のfirst decision/last markを記録する。欠損がない過去historyの持込みは許し、gap横断はしない。
-PPOの件数は翌markまで存在するdecision数。RL trainの非ゼロ検査は最低限の存在確認であり、
-十分な学習量や有効forecast bundleの完成を認定しない。374ケースは未選定の両hを監査した数で、
-fit予算は選定1hの561のまま。caseをfit・独立標本と数えない。
-
-**今回は閾値・6か月validation・63本history・187更新日・17評価区間を変更しない。**
-#41/#43と#46/#48の本実行を停止し、不足解消へ戻す。7 trialの未実行記録を削除せず、
-v2の判断eventを追記する。好都合なfold除外、古いmodelによる穴埋め、後続担当による暗黙緩和は禁止。
-#41/#42の合成fixture設計は継続可だが、本データfit・市場評価・中期smokeの自動開始は不可。
-
-再開には、入力回復または分割/開始日等の明示的な別revisionを損益閲覧前に登録し、
-全外側foldでtrain≥252/validation≥60、選定hの全cross-fitで同条件、
-全PPO validationで連続60decision以上、全RL trainで実際に使用可能なforecast遷移が存在することを
-preflightで確認する。価格/featureの有限性とforecast as-ofの検査はその後も別途必要。
-入力が変われば新identity、splitや日程が変わればfit/口座予算も再計算する。
-このv2で新たな取得・実験は始めない。旧#39/#29/#30のsealや実績には手を加えない。
 
 ## 2. 入力、時刻、fit境界
 
@@ -218,12 +179,10 @@ canonical default、#15 learnability、#16 portfolio分類を自動変更せず�
 | fixture/smoke | #41/#46各6 ridge fit=12、#47 PPO1学習4096step。#42合成口座16、#47合成口座12まで |
 | #45 historical proxy | 既存3方策×17×同close/proxyの2条件×F0/F1/F2=306口座、fit0 |
 | #44/#45実source | read-only1系統、最大30暦日か20decisionの早い方。quote比較は3方策×2条件=6口座、fit0 |
-| #49連続口座 | 選定候補・同一予測のcost allocator・canonicalを重複除去して最大3方策×3scenario=9口座 |
-| #49年度reset対照 | 同じ方策/予測/測定/切替条件で最大3方策×3scenario×17年=153独立初期化口座、旧metrics流用0 |
+| #49連続口座 | 最終候補1＋canonical＋旧PPOの3方策×3scenario=9口座、再学習0 |
 | #50確認設計 | protocol1、実観測/学習/発注0、自動開始なし |
 
 fixtureの市場評価0、smoke seed=42、予測器の再fitや設定選びには使用しない。
-この表は不足解消後の再登録で再確認する有限上限。v2では本学習・市場実行を有効化しない。
 solver・標準化・共分散の生成回数もmodelごとに記録し、追加の校正fitは0とする。
 新quantity契約を採るため#43/#48の対照は**全数再評価を予算化し、旧metrics再利用0**。
 同じ市場を再評価しても新しい市場標本ではない。未使用の予算は他作業へ移さない。
@@ -281,15 +240,15 @@ Issueリンクは[リポジトリのIssue一覧](https://github.com/TsuyoshiFuji
 |---|---|---|
 | #39 → #29 → #30 | 後継範囲は引渡し済み、旧通年は不足を保持 | data/calendar → 費用基準線 → 帰属・共通方向仮説 |
 | #40 | 本manifest登録まで | 上記seal/判断 → 一分岐・4構成・予算・採否・登録commit |
-| #41 | 現在blocked_input。全fold preflightを満たす別revision後。fixtureは#42と並行可 | 入力/5列/2h/3alpha → 全34 modelと予測、fit/purge/status/provenance |
+| #41 | #40確定後。fixtureは#42と並行可 | 入力/5列/2h/3alpha → 全34 modelと予測、fit/purge/status/provenance |
 | #42 | #40/#41 interface。#41本学習と並行可 | 同一予測・marked holdings → fixed/cost/quantity adapter、会計fixture、measurement seal |
-| #43 | 現在blocked_input。#41/#42、同runtimeの基準線 | 4構成と357セル → 全結果・対応差・最大1hまたは停止。実装と結果commitを分離 |
+| #43 | #41/#42、同runtimeの基準線 | 4構成と357セル → 全結果・対応差・最大1hまたは停止。実装と結果commitを分離 |
 | #44 | #31/#32利用、#29/#30/#43待ち不要 | source/時刻/費用仕様 → read-only raw/decision/quote記録・coverage。実収集とfixtureを区別 |
 | #45 | quoteは#44、proxyは#39/#40で先行可 | 同closeと単一遅延条件 → 独立経路感度、source不足・実執行未証明の一覧 |
-| #46 | 現在blocked_input。全cutoff件数の解消と#43でRL進行の場合のみ | 選定1h・187cutoff → 全as-of付きforecast bundle・561 fit台帳 |
+| #46 | #43でRL進行の場合のみ | 選定1h・187cutoff → 全as-of付きforecast bundle・561 fit台帳 |
 | #47 | #42/#46、#43進行判断 | causal forecast/quantity → PPO/4行動greedy、fixtureと4096step smokeまで |
-| #48 | 現在blocked_input。PPO validation/RL trainの不足解消、#46/#47と登録済runtime | 51学習＋408評価 → 2主比較・risk/費用・合議bundleまたは単純方策維持 |
-| #49 | 不足解消後の#43単純候補で先行可、RLなら#48後。1回の候補登録のみ | 同一予測allocatorを含む最大3方策 → 連続9口座＋年度reset153口座、切替cost、欠損/gap可否 |
+| #48 | #46/#47と登録済runtime | 51学習＋408評価 → 2主比較・risk/費用・合議bundleまたは単純方策維持 |
+| #49 | #43の単純候補で先行可、RLなら#48後 | 選定bundle・切替規則 → 年次resetなし口座、切替cost、欠損/gap可否 |
 | #50 | 候補と#44/#45/#49の成果 | 期間利用台帳・実執行制約 → 新候補の独立確認protocol。設計のみ、自動開始0 |
 
 #45の主執行方式は#31の「公開・durable decision後の最初の適格quote」。
@@ -303,26 +262,12 @@ latency/depth/partial fillの現実性は未検証。実quoteとproxyは別表�
 未指定の現在は実収集blocked、注文0。最大1,000 request、retryは各request1回までで総数に含む。
 429ではRetry-Afterを尊重し、その日の取得を停止する。大規模収集・常駐延長はこの予算に含めない。
 #49は既存部分区間を連結してCAGRを作らず、全対象期間のgap/切替会計を結果前に登録する。
-対象集合は候補を固定した時点で次のいずれか一つとし、旧direct PPOを同一予測の対照に代用しない。
-
-| #49のケース | 重複除去後の方策 | 連続口座 | 年度reset口座上限 |
-|---|---|---:|---:|
-| RL採用 | 選定RL、同じ#46 forecastのcost allocator、canonical | 9 | 153 |
-| 単純cost維持 | 選定cost allocator（同一予測の対照と同一）、canonical | 6 | 102 |
-| 単純fixed維持 | 選定fixed、同じ#41 forecastのcost allocator、canonical | 9 | 153 |
-
-F0/F1/F2ごとに同一市場・開始終了・calendar・model切替日・quantity会計・runtimeを揃え、
-連続経路と年度reset経路をそれぞれ独立に再推論する。resetは毎年100万円/flatへ初期化する。
-対象年の上限は2009〜2025の17年、最終範囲と不足全体は結果前に#49で固定する。
-最大予算は連続9＋reset153=162口座で、3ケースの合算枠ではない。単純候補で先行実行した後に
-別のRL候補で再実行する枠は含まず、必要なら別campaignで登録する。旧#43/#48のmetrics流用は0。
 必要な連続入力がなければcoverage不足として終了する。入力変更は別data identityと有限契約を要する。
-実quote/連続口座/独立確認の未完了とは別に、今回は既知の訓練/validation入力不足が#41〜#43を止める。
+実quote/連続口座/独立確認が未完でも、#41〜#43のhistorical開発を一律停止しない。
 
 ## 10. 登録、検証、保持する契約
 
-v1の登録commit `62b4de0` とseal commit `8ea6227` は保持する。v2のmanifestとpreflightを先にcommitし、
-その新SHAをregistrationへ記録する。v1のSHAを改訂済み本文のSHAとして流用しない。後続作業はこの登録commitと
+本manifestを最初にcommitし、そのSHAをregistrationに記録する。後続作業はこの登録commitと
 manifest SHA-256を親とし、実装済みCLI/config、両repoの実際のclean SHA、lock hash、
 Python/主要依存version、CPU、全model/data/forecast/calendar hashを初回fit/評価前に封印する。
 現在mainのSHAを将来runtimeとして流用しない。実行中のsource編集0、比較内のruntime一致必須。
@@ -338,18 +283,6 @@ registered_at/registration_commit/opened_at/status/attempts/artifacts_and_hashes
 
 受入確認は入力sealのhash、17範囲と9部分年の一致、187更新と全予算の算術、リンク、
 登録commitとmanifest bytesの一致を検査する。#40では学習・市場推論・外部収集を行わない。
-件数監査の再現（出力先は新規ディレクトリ。exit 2は既知の入力不足、例外とは区別）:
-
-```bash
-python3 docs/research/protocols/issue40/preflight.py \
-  --registration docs/research/protocols/issue40/revisions/v1/registration.json \
-  --coverage docs/research/results/issue39/snapshot/coverage.json \
-  --output /tmp/issue40-preflight-reproduction
-python3 -m unittest discover -s tests -p test_issue40_preflight.py
-```
-
-calendar件数は有効行の上限であり、価格/featureの欠損が追加で見つかれば減り得る。
-reportの入力hashとcounts.csv hashを照合する。変更したcoverageを旧pinへ補完しない。
 元入力の再生成は[#39の固定コマンド](23-bounded-input-recovery.md#再生成)、保存済み親結果の検証は
 `uv run forex-successor-cost-campaign verify --output docs/research/results/issue29-successor`と
 `uv run forex-successor-attribution verify --output docs/research/results/issue30-successor`を使う。

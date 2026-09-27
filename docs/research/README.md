@@ -34,9 +34,12 @@
 | [25-successor-profit-attribution.md](25-successor-profit-attribution.md) | 後継85口座を完走、PPOの共通方向・相対配分・carry・費用帰属、2対照と次期仮説 | Issue #30後継 |
 | [26-common-direction-learning-campaign.md](26-common-direction-learning-campaign.md) | 共通方向の一分岐、1/5日ridge×2配分、有限fit/逐次RL予算、数値採否、#41〜#50の実行manifest | Issue #40 |
 
-次期学習の入口は[issue40-common-direction-development-v1](26-common-direction-learning-campaign.md)と
+次期学習の入口は[issue40-common-direction-development-v2](26-common-direction-learning-campaign.md)と
 [登録・試行台帳](protocols/issue40/registration.json)。#30後継の根拠から共通方向だけを選び、
-4構成と条件付き1PPOの予算・採否を固定した。契約登録のみで新規学習・市場評価は未実行。
+4構成と条件付き1PPOの予算・採否を固定した。v2の全件calendar preflightで2009/2018のvalidation等の
+既知不足を確定し、現在の実行分岐は「不足解消へ戻る」。閾値・history・foldを緩めず本学習は開始不可。
+#49は同一予測allocatorを含む連続最大9口座と年度reset最大153口座を別枠に登録した。
+契約登録と件数監査のみで新規学習・市場評価は未実行。v1登録は元bytesを保存している。
 旧17通年の不足を保持し、独立収益性やcanonical置換を認定していない。
 
 先行する測定・帰属診断は[issue27-development-v1](17-bounded-development-protocol.md)と
