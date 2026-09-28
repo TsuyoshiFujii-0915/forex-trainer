@@ -1,0 +1,1156 @@
+{
+  "campaign_id": "issue40-common-direction-development-v3",
+  "manifest_version": 3,
+  "status": "registered_short_ready_pending_review_merge_and_execution_seals",
+  "branch": "common_direction_short",
+  "evidence_class": "development_historical",
+  "registered_at": "2026-09-28T12:53:22.084034+00:00",
+  "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+  "parent_registration": {
+    "path": "docs/research/protocols/issue40/registration.json",
+    "sha256": "ec90830f4abb811073106cdfb38e214e7609b24ad1e905542f2defb57f8603c4",
+    "registration_commit": "134c9cb865ea6f9e44bfab1dcbece8c3d33dbe66"
+  },
+  "revision_reason": "Choose one finite calendar-only outer split and separate short, RL, and execution gates; preserve data, evaluation, economic rules, and finite ceilings.",
+  "sources": [
+    {
+      "path": "docs/research/protocols/issue40/registration.json",
+      "sha256": "ec90830f4abb811073106cdfb38e214e7609b24ad1e905542f2defb57f8603c4"
+    },
+    {
+      "path": "docs/research/26-common-direction-learning-campaign.md",
+      "sha256": "13e99bd26d78faf11dff71ba115bd6d22bc4dc8ed323e9a8d9532b39a32247bf"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v1/registration.json",
+      "sha256": "2b1560ae7a68df3d98aa06fd6a54699bfc6cfc820e3954c85aec78550b3b4f4e"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v1/manifest.md",
+      "sha256": "7d341cd97570bb804e135d44f610acbbbcca1a1bcbfcacefb96f9db7e776dbd1"
+    },
+    {
+      "path": "docs/research/protocols/issue40/preflight.py",
+      "sha256": "5c39504d5424ef5258f143f724873ead050eaab190c12b6068a158e27a9085fb"
+    },
+    {
+      "path": "docs/research/protocols/issue40/preflight/report.json",
+      "sha256": "83aa54cf05affa79348f3a32eabc181620236d9099abb7e8f19aab0ffc0b5c46"
+    },
+    {
+      "path": "docs/research/protocols/issue40/preflight/counts.csv",
+      "sha256": "e2a07b0dd5815ea76947188ef8740930bad786e609d747e56a76b97ab198f23e"
+    },
+    {
+      "path": "docs/research/results/issue39/snapshot/coverage.json",
+      "sha256": "d7d49951fa454e27877300227f960cb638b3f4a1babefeebeea1cd83df8ae334"
+    },
+    {
+      "path": "docs/research/results/issue39/snapshot/evaluation.json",
+      "sha256": "14ab9516de333c8643d40b4e74ca2838c970296e275a18fc80d7bc02aa71fb64"
+    },
+    {
+      "path": "docs/research/27-short-common-direction-revision.md",
+      "sha256": "d51cb2094400367025a7065b77c6496db0a1ff0f25109f2e23d4f934c80a75ab"
+    },
+    {
+      "path": "docs/decisions/0046-separate-short-campaign-and-rl-data-gates.md",
+      "sha256": "c6de23f1c15651ca3dd81ec689962b5c04c9b9e727372aa65df0fb6eb06d3716"
+    },
+    {
+      "path": "docs/research/protocols/issue40/short_preflight.py",
+      "sha256": "b191dd2e3b49e816358530fb45265ac0eafd5f02a6dfbdf47ed4fce0d3abfe88"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v3/preflight/report.json",
+      "sha256": "8e78fd543fb39a268acc77476ed86c1389ed732d4c43f7ff1579208ace2882b5"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v3/preflight/counts.csv",
+      "sha256": "4dd82af0422177cb72d2bd4345f64d451d14012fc2d3736e56713febb1303414"
+    },
+    {
+      "path": "docs/research/protocols/issue40/revisions/v3/preflight/candidates.csv",
+      "sha256": "bb92aede49bbe502db912f6cba09ea1483cbdd6b66aab24d431d433b870f0abc"
+    }
+  ],
+  "inherited_source_seals": {
+    "registration": "docs/research/protocols/issue40/registration.json",
+    "scope": "All parent model/data/config/calendar and successor artifact identities remain unchanged; inspect parent sources recursively."
+  },
+  "new_training_calls": 0,
+  "new_market_evaluation_accounts": 0,
+  "new_data_acquisition_requests": 0,
+  "new_market_inference_calls": 0,
+  "active_market_training_budget": 0,
+  "active_market_evaluation_budget": 0,
+  "active_external_collection_budget": 0,
+  "implementation_status": {
+    "calendar_preflight": "implemented_and_tested",
+    "gate_evaluation": "implemented_and_tested",
+    "issue41_forecaster": "not_implemented_in_this_revision",
+    "issue42_accounting": "not_implemented_in_this_revision",
+    "issue43_evaluation": "not_implemented_in_this_revision"
+  },
+  "activation": {
+    "revision_review_and_merge": "required_not_attested",
+    "implementation_and_runtime_seals": "required_per_child_issue",
+    "price_feature_target_validation": "required_in_issue41",
+    "market_execution": "not_authorized_by_registration_alone"
+  },
+  "gate_requirements": {
+    "short_data_ready": {
+      "all_34_calendar_cases": true,
+      "input_validation_contract": true,
+      "fixed_17_evaluation_intervals": true,
+      "budget_comparison_decision_seal": true
+    },
+    "rl_data_ready": {
+      "issue43_one_horizon_and_sequential_hypothesis": false,
+      "past_only_ranges": false,
+      "continuous_ppo_validation": false,
+      "justified_rl_training_amount": false,
+      "budget_seal": false
+    },
+    "execution_ready": {
+      "issue44_source_permissions_timestamps_finite_collection": false,
+      "issue45_separate_execution_contract": false
+    }
+  },
+  "gates": {
+    "short_data_ready": {
+      "status": "ready",
+      "missing": []
+    },
+    "rl_data_ready": {
+      "status": "blocked",
+      "missing": [
+        "budget_seal",
+        "continuous_ppo_validation",
+        "issue43_one_horizon_and_sequential_hypothesis",
+        "justified_rl_training_amount",
+        "past_only_ranges"
+      ]
+    },
+    "execution_ready": {
+      "status": "blocked",
+      "missing": [
+        "issue44_source_permissions_timestamps_finite_collection",
+        "issue45_separate_execution_contract"
+      ]
+    }
+  },
+  "gate_evidence": {
+    "short_data_ready": {
+      "calendar": "docs/research/protocols/issue40/revisions/v3/preflight/report.json",
+      "input_contract": "docs/research/27-short-common-direction-revision.md",
+      "evaluation_identity": "docs/research/results/issue39/snapshot/evaluation.json",
+      "economic_rules": "docs/research/26-common-direction-learning-campaign.md sections 5 and 6"
+    },
+    "rl_data_ready": {
+      "owner": "issue46",
+      "status": "pending_issue43_candidate_and_sequential_hypothesis",
+      "generation_preconditions": [
+        "register_past_only_schedule_and_ranges",
+        "calendar_counts",
+        "continuous_60_decision_ppo_validation",
+        "justified_training_amount",
+        "U_times_3_budget_and_runtime_seal"
+      ],
+      "post_generation_preconditions_for_issue47_48": [
+        "all_required_forecast_rows",
+        "finite_parameters_and_predictions",
+        "parameter_as_of_validation",
+        "sealed_bundle"
+      ],
+      "no_candidate": "issue46_47_48_not_planned"
+    },
+    "execution_ready": {
+      "owners": [
+        "issue44",
+        "issue45"
+      ],
+      "status": "separate_contracts_pending",
+      "does_not_activate": [
+        "short_learning",
+        "independent_confirmation"
+      ]
+    }
+  },
+  "folds": [
+    {
+      "fold": "2009",
+      "scope": "partial_year",
+      "measurement_start": "2009-05-05T23:00:00+00:00",
+      "measurement_end": "2010-01-01T00:00:00+00:00",
+      "first_decision": "2009-05-05T23:00:00+00:00",
+      "last_mark": "2009-12-31T00:00:00+00:00",
+      "measured_bars": 172,
+      "lookback_months": 24,
+      "train_range_london": [
+        "2003-06-01",
+        "2007-01-01"
+      ],
+      "validation_range_london": [
+        "2007-01-01",
+        "2009-01-01"
+      ],
+      "information_cutoff_london": "2009-01-01"
+    },
+    {
+      "fold": "2010",
+      "scope": "full_year",
+      "measurement_start": "2010-01-01T00:00:00+00:00",
+      "measurement_end": "2011-01-01T00:00:00+00:00",
+      "first_decision": "2010-01-01T00:00:00+00:00",
+      "last_mark": "2010-12-31T00:00:00+00:00",
+      "measured_bars": 261,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2009-07-01"
+      ],
+      "validation_range_london": [
+        "2009-07-01",
+        "2010-01-01"
+      ],
+      "information_cutoff_london": "2010-01-01"
+    },
+    {
+      "fold": "2011",
+      "scope": "partial_year",
+      "measurement_start": "2011-07-13T23:00:00+00:00",
+      "measurement_end": "2012-01-01T00:00:00+00:00",
+      "first_decision": "2011-07-13T23:00:00+00:00",
+      "last_mark": "2011-12-30T00:00:00+00:00",
+      "measured_bars": 122,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2010-07-01"
+      ],
+      "validation_range_london": [
+        "2010-07-01",
+        "2011-01-01"
+      ],
+      "information_cutoff_london": "2011-01-01"
+    },
+    {
+      "fold": "2012",
+      "scope": "partial_year",
+      "measurement_start": "2012-01-01T00:00:00+00:00",
+      "measurement_end": "2012-12-04T00:00:00+00:00",
+      "first_decision": "2012-01-02T00:00:00+00:00",
+      "last_mark": "2012-12-03T00:00:00+00:00",
+      "measured_bars": 241,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2011-07-01"
+      ],
+      "validation_range_london": [
+        "2011-07-01",
+        "2012-01-01"
+      ],
+      "information_cutoff_london": "2012-01-01"
+    },
+    {
+      "fold": "2013",
+      "scope": "partial_year",
+      "measurement_start": "2013-04-15T23:00:00+00:00",
+      "measurement_end": "2013-10-07T23:00:00+00:00",
+      "first_decision": "2013-04-15T23:00:00+00:00",
+      "last_mark": "2013-10-06T23:00:00+00:00",
+      "measured_bars": 125,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2012-07-01"
+      ],
+      "validation_range_london": [
+        "2012-07-01",
+        "2013-01-01"
+      ],
+      "information_cutoff_london": "2013-01-01"
+    },
+    {
+      "fold": "2014",
+      "scope": "partial_year",
+      "measurement_start": "2014-01-06T00:00:00+00:00",
+      "measurement_end": "2015-01-01T00:00:00+00:00",
+      "first_decision": "2014-01-06T00:00:00+00:00",
+      "last_mark": "2014-12-31T00:00:00+00:00",
+      "measured_bars": 258,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2013-07-01"
+      ],
+      "validation_range_london": [
+        "2013-07-01",
+        "2014-01-01"
+      ],
+      "information_cutoff_london": "2014-01-01"
+    },
+    {
+      "fold": "2015",
+      "scope": "full_year",
+      "measurement_start": "2015-01-01T00:00:00+00:00",
+      "measurement_end": "2016-01-01T00:00:00+00:00",
+      "first_decision": "2015-01-01T00:00:00+00:00",
+      "last_mark": "2015-12-31T00:00:00+00:00",
+      "measured_bars": 261,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2014-07-01"
+      ],
+      "validation_range_london": [
+        "2014-07-01",
+        "2015-01-01"
+      ],
+      "information_cutoff_london": "2015-01-01"
+    },
+    {
+      "fold": "2016",
+      "scope": "full_year",
+      "measurement_start": "2016-01-01T00:00:00+00:00",
+      "measurement_end": "2017-01-01T00:00:00+00:00",
+      "first_decision": "2016-01-01T00:00:00+00:00",
+      "last_mark": "2016-12-30T00:00:00+00:00",
+      "measured_bars": 261,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2015-07-01"
+      ],
+      "validation_range_london": [
+        "2015-07-01",
+        "2016-01-01"
+      ],
+      "information_cutoff_london": "2016-01-01"
+    },
+    {
+      "fold": "2017",
+      "scope": "partial_year",
+      "measurement_start": "2017-01-01T00:00:00+00:00",
+      "measurement_end": "2017-07-10T23:00:00+00:00",
+      "first_decision": "2017-01-02T00:00:00+00:00",
+      "last_mark": "2017-07-09T23:00:00+00:00",
+      "measured_bars": 136,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2016-07-01"
+      ],
+      "validation_range_london": [
+        "2016-07-01",
+        "2017-01-01"
+      ],
+      "information_cutoff_london": "2017-01-01"
+    },
+    {
+      "fold": "2018",
+      "scope": "partial_year",
+      "measurement_start": "2018-02-14T00:00:00+00:00",
+      "measurement_end": "2019-01-01T00:00:00+00:00",
+      "first_decision": "2018-02-14T00:00:00+00:00",
+      "last_mark": "2018-12-31T00:00:00+00:00",
+      "measured_bars": 229,
+      "lookback_months": 12,
+      "train_range_london": [
+        "2003-06-01",
+        "2017-01-01"
+      ],
+      "validation_range_london": [
+        "2017-01-01",
+        "2018-01-01"
+      ],
+      "information_cutoff_london": "2018-01-01"
+    },
+    {
+      "fold": "2019",
+      "scope": "partial_year",
+      "measurement_start": "2019-01-01T00:00:00+00:00",
+      "measurement_end": "2019-05-21T23:00:00+00:00",
+      "first_decision": "2019-01-01T00:00:00+00:00",
+      "last_mark": "2019-05-20T23:00:00+00:00",
+      "measured_bars": 101,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2018-07-01"
+      ],
+      "validation_range_london": [
+        "2018-07-01",
+        "2019-01-01"
+      ],
+      "information_cutoff_london": "2019-01-01"
+    },
+    {
+      "fold": "2020",
+      "scope": "full_year",
+      "measurement_start": "2020-01-01T00:00:00+00:00",
+      "measurement_end": "2021-01-01T00:00:00+00:00",
+      "first_decision": "2020-01-01T00:00:00+00:00",
+      "last_mark": "2020-12-31T00:00:00+00:00",
+      "measured_bars": 262,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2019-07-01"
+      ],
+      "validation_range_london": [
+        "2019-07-01",
+        "2020-01-01"
+      ],
+      "information_cutoff_london": "2020-01-01"
+    },
+    {
+      "fold": "2021",
+      "scope": "full_year",
+      "measurement_start": "2021-01-01T00:00:00+00:00",
+      "measurement_end": "2022-01-01T00:00:00+00:00",
+      "first_decision": "2021-01-01T00:00:00+00:00",
+      "last_mark": "2021-12-31T00:00:00+00:00",
+      "measured_bars": 261,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2020-07-01"
+      ],
+      "validation_range_london": [
+        "2020-07-01",
+        "2021-01-01"
+      ],
+      "information_cutoff_london": "2021-01-01"
+    },
+    {
+      "fold": "2022",
+      "scope": "full_year",
+      "measurement_start": "2022-01-01T00:00:00+00:00",
+      "measurement_end": "2023-01-01T00:00:00+00:00",
+      "first_decision": "2022-01-03T00:00:00+00:00",
+      "last_mark": "2022-12-30T00:00:00+00:00",
+      "measured_bars": 260,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2021-07-01"
+      ],
+      "validation_range_london": [
+        "2021-07-01",
+        "2022-01-01"
+      ],
+      "information_cutoff_london": "2022-01-01"
+    },
+    {
+      "fold": "2023",
+      "scope": "full_year",
+      "measurement_start": "2023-01-01T00:00:00+00:00",
+      "measurement_end": "2024-01-01T00:00:00+00:00",
+      "first_decision": "2023-01-02T00:00:00+00:00",
+      "last_mark": "2023-12-29T00:00:00+00:00",
+      "measured_bars": 260,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2022-07-01"
+      ],
+      "validation_range_london": [
+        "2022-07-01",
+        "2023-01-01"
+      ],
+      "information_cutoff_london": "2023-01-01"
+    },
+    {
+      "fold": "2024",
+      "scope": "full_year",
+      "measurement_start": "2024-01-01T00:00:00+00:00",
+      "measurement_end": "2025-01-01T00:00:00+00:00",
+      "first_decision": "2024-01-01T00:00:00+00:00",
+      "last_mark": "2024-12-31T00:00:00+00:00",
+      "measured_bars": 262,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2023-07-01"
+      ],
+      "validation_range_london": [
+        "2023-07-01",
+        "2024-01-01"
+      ],
+      "information_cutoff_london": "2024-01-01"
+    },
+    {
+      "fold": "2025",
+      "scope": "partial_year",
+      "measurement_start": "2025-07-17T23:00:00+00:00",
+      "measurement_end": "2025-12-25T00:00:00+00:00",
+      "first_decision": "2025-07-17T23:00:00+00:00",
+      "last_mark": "2025-12-24T00:00:00+00:00",
+      "measured_bars": 114,
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2024-07-01"
+      ],
+      "validation_range_london": [
+        "2024-07-01",
+        "2025-01-01"
+      ],
+      "information_cutoff_london": "2025-01-01"
+    }
+  ],
+  "split_rule": {
+    "lookback_months": [
+      6,
+      12,
+      18,
+      24
+    ],
+    "selection": "shortest_satisfying_both_horizons",
+    "horizons_business_days": [
+      1,
+      5
+    ],
+    "information_cutoff": "London January 1 of outer fold year",
+    "train_start_london": "2003-06-01",
+    "train_end": "selected_validation_start",
+    "history_bars": 63,
+    "gap_crossing": false,
+    "label_end": "strictly_before_partition_end",
+    "minimum_train_rows": 252,
+    "minimum_validation_rows": 60,
+    "feature_history_before_partition_start": "allowed_within_same_contiguous_block",
+    "candidate_cases": 136,
+    "selected_cases": 34
+  },
+  "preflight": {
+    "report": "docs/research/protocols/issue40/revisions/v3/preflight/report.json",
+    "counts": "docs/research/protocols/issue40/revisions/v3/preflight/counts.csv",
+    "candidates": "docs/research/protocols/issue40/revisions/v3/preflight/candidates.csv",
+    "baseline_cases": 442,
+    "baseline_blocked_cases": 97,
+    "status": "calendar_eligible",
+    "is_feature_or_training_certification": false
+  },
+  "forecast_interface": {
+    "id": "issue40-short-forecast-v3",
+    "contract": "docs/research/27-short-common-direction-revision.md",
+    "key": [
+      "fold",
+      "horizon_business_days",
+      "decision_at_utc"
+    ],
+    "unit": "basket_h_business_day_price_simple_return",
+    "features": [
+      "log_return",
+      "volatility",
+      "sma20_ratio",
+      "mom24",
+      "carry_annual"
+    ],
+    "pair_order": [
+      "JPY/USD",
+      "JPY/EUR",
+      "JPY/GBP",
+      "JPY/AUD",
+      "JPY/CHF",
+      "JPY/CAD",
+      "JPY/NZD",
+      "JPY/NOK",
+      "JPY/SEK"
+    ],
+    "shared_by": [
+      "fixed",
+      "cost"
+    ],
+    "all_scheduled_decisions_required": true,
+    "terminal_diagnostic_label_absence_does_not_remove_forecast": true
+  },
+  "budgets": {
+    "ridge_candidate_fits": 102,
+    "ridge_selected_models": 34,
+    "ridge_refits": 0,
+    "cross_fit_refits": 0,
+    "allocation_evaluation_accounts": 357,
+    "allocation_control_reevaluations": 153,
+    "ppo_training_runs": 51,
+    "ppo_requested_steps_per_run": 262144,
+    "ppo_training_steps": 13369344,
+    "ppo_validation_accounts": 408,
+    "rl_evaluation_accounts": 408,
+    "rl_primary_accounts": 306,
+    "rl_reference_accounts": 102,
+    "fixture_ridge_fits": 12,
+    "smoke_ppo_runs": 1,
+    "smoke_ppo_steps": 4096,
+    "allocator_fixture_accounts": 16,
+    "rl_fixture_accounts": 12,
+    "retry_ridge_fits": 12,
+    "retry_ppo_runs": 3,
+    "retry_accounts_including_validation": 24,
+    "retry_per_identical_work_item": 1,
+    "all_ridge_fit_calls_including_fixture_and_retries": 687,
+    "all_ppo_run_calls_including_smoke_and_retries": 55,
+    "all_ppo_steps_including_smoke_and_retries": 14159872,
+    "proxy_evaluation_accounts": 306,
+    "real_quote_comparison_accounts": 6,
+    "continuous_accounts": 9,
+    "read_only_sources": 1,
+    "collection_calendar_days": 30,
+    "collection_decisions": 20,
+    "collection_requests_including_retries": 1000,
+    "confirmation_protocols": 1,
+    "confirmation_executions": 0,
+    "orders": 0,
+    "annual_reset_accounts": 153,
+    "continuation_and_reset_accounts": 162,
+    "cross_fit_candidate_fit_ceiling": 561
+  },
+  "budget_status": "Unchanged conditional ceilings. Cross-fit schedule and actual U*3 fits must be registered in issue46; none activated here.",
+  "legacy_rl_schedule": {
+    "status": "historical_not_required_for_short",
+    "registration": "docs/research/protocols/issue40/registration.json",
+    "first_forecast_cutoff_london": "2008-01-01",
+    "cross_fit_updates": 187,
+    "cross_fit_candidate_fits": 561,
+    "new_schedule_status": "pending_issue46_registration_for_selected_horizon",
+    "planned_actual_fit_count": null,
+    "planned_actual_fit_count_reason": "No horizon or sequential hypothesis selected in issue43 yet."
+  },
+  "risk_and_decision": {
+    "primary_unit": "paired_period_net_log_return_equal_interval_mean",
+    "candidate_F0_min_mean_net_log": 0.005,
+    "min_mean_improvement_log": 0.005,
+    "candidate_stress_min_mean_net_log": 0.0,
+    "min_stress_minus_F0_mean_log": -0.005,
+    "max_worst_drawdown": 0.25,
+    "max_mean_drawdown": 0.15,
+    "max_mean_annual_net_log_volatility": 0.2,
+    "max_absolute_fold_contribution_share": 0.5,
+    "bootstrap_samples": 10000,
+    "bootstrap_seed": 16,
+    "circular_block_length": 3,
+    "confidence_level": 0.95,
+    "tie_tolerance": 1e-12,
+    "candidate_tie_order": [
+      "F0_mean_net_log_desc",
+      "worst_drawdown_asc",
+      "mean_actual_notional_ratio_asc",
+      "horizon_1_first",
+      "fixed_first"
+    ]
+  },
+  "measurement_id": "issue40-common-quantity-same-close-v1",
+  "measurement_status": "reserved_implementation_required_in_issue42",
+  "execution_proxy_id": "issue40-next-close-proxy-v1",
+  "trials": [
+    {
+      "trial_id": "R1",
+      "parent_trial_id": "issue40-common-direction-development-v2:R1",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "predict_common_basket_price_return",
+      "changed_variable": "forecast_horizon",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 3,
+        "horizon_business_days": 1,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "candidate_fits": 51,
+        "refits": 0
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [],
+      "validation_rule": "MSE_then_stronger_alpha",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "registered_awaiting_implementation_and_runtime_seal",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "short_data_ready"
+    },
+    {
+      "trial_id": "R5",
+      "parent_trial_id": "issue40-common-direction-development-v2:R5",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "predict_common_basket_price_return",
+      "changed_variable": "forecast_horizon",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 3,
+        "horizon_business_days": 5,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "candidate_fits": 51,
+        "refits": 0
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [],
+      "validation_rule": "MSE_then_stronger_alpha",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "registered_awaiting_implementation_and_runtime_seal",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "short_data_ready"
+    },
+    {
+      "trial_id": "A1-fixed",
+      "parent_trial_id": "issue40-common-direction-development-v2:A1-fixed",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "economic_value_of_fixed_forecast_allocation",
+      "changed_variable": "allocation_method",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 4,
+        "horizon_business_days": 1,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "evaluation_accounts": 51,
+        "new_fits": 0
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [],
+      "validation_rule": "no_allocation_selection",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "registered_awaiting_implementation_and_runtime_seal",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "short_data_ready"
+    },
+    {
+      "trial_id": "A1-cost",
+      "parent_trial_id": "issue40-common-direction-development-v2:A1-cost",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "economic_value_of_fixed_forecast_allocation",
+      "changed_variable": "allocation_method",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 4,
+        "horizon_business_days": 1,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "evaluation_accounts": 51,
+        "new_fits": 0
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [],
+      "validation_rule": "no_allocation_selection",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "registered_awaiting_implementation_and_runtime_seal",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "short_data_ready"
+    },
+    {
+      "trial_id": "A5-fixed",
+      "parent_trial_id": "issue40-common-direction-development-v2:A5-fixed",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "economic_value_of_fixed_forecast_allocation",
+      "changed_variable": "allocation_method",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 4,
+        "horizon_business_days": 5,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "evaluation_accounts": 51,
+        "new_fits": 0
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [],
+      "validation_rule": "no_allocation_selection",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "registered_awaiting_implementation_and_runtime_seal",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "short_data_ready"
+    },
+    {
+      "trial_id": "A5-cost",
+      "parent_trial_id": "issue40-common-direction-development-v2:A5-cost",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "economic_value_of_fixed_forecast_allocation",
+      "changed_variable": "allocation_method",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 4,
+        "horizon_business_days": 5,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "evaluation_accounts": 51,
+        "new_fits": 0
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [],
+      "validation_rule": "no_allocation_selection",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "registered_awaiting_implementation_and_runtime_seal",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "short_data_ready"
+    },
+    {
+      "trial_id": "PPO-common",
+      "parent_trial_id": "issue40-common-direction-development-v2:PPO-common",
+      "scope": "development_historical_successor_17_intervals",
+      "hypothesis": "sequential_value_over_allocator_and_greedy",
+      "changed_variable": "sequential_controller",
+      "frozen_values": {
+        "manifest": "docs/research/26-common-direction-learning-campaign.md",
+        "section": 8,
+        "horizon_business_days": null,
+        "split_registration": "docs/research/protocols/issue40/revisions/v3/registration.json"
+      },
+      "budget": {
+        "training_runs": 51,
+        "validation_accounts": 408,
+        "individual_and_ensemble_evaluation_accounts": 204
+      },
+      "folds": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "validation_rule": "F0_net_log_then_earlier_checkpoint",
+      "registered_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "opened_at": null,
+      "status": "blocked_rl_registration",
+      "attempts": [],
+      "artifacts_and_hashes": [],
+      "decision": "no_execution_authorized_by_registration_alone",
+      "unknowns": [
+        "runtime_and_implementation_seals_required_before_execution",
+        "selected_horizon_requires_issue43_decision",
+        "revision_review_and_merge_required_before_market_execution"
+      ],
+      "required_gate": "rl_data_ready"
+    }
+  ],
+  "execution_events": [
+    {
+      "event_id": "issue55-short-split-and-stage-gates-v3",
+      "recorded_at": "2026-09-28T12:53:22.084034+00:00",
+      "registration_commit": "7b6900fb83a5e95116f82a4b59b61d3f60bf450d",
+      "event_type": "preregistration_revision_before_any_fit",
+      "affected_trials": [
+        "R1",
+        "R5",
+        "A1-fixed",
+        "A1-cost",
+        "A5-fixed",
+        "A5-cost",
+        "PPO-common"
+      ],
+      "decision": "register_short_ready_leave_rl_and_execution_blocked",
+      "calendar_candidate_cases": 136,
+      "calendar_selected_cases": 34,
+      "training_calls": 0,
+      "market_inference_calls": 0,
+      "market_evaluation_accounts": 0,
+      "external_requests": 0,
+      "prior_events": {
+        "registration": "docs/research/protocols/issue40/registration.json",
+        "unchanged": true
+      }
+    }
+  ],
+  "counters": {
+    "issue41_regular_ridge_fit_calls": {
+      "consumed": 0,
+      "limit": 102
+    },
+    "issue41_fixture_ridge_fit_calls": {
+      "consumed": 0,
+      "limit": 6
+    },
+    "issue42_fixture_accounts": {
+      "consumed": 0,
+      "limit": 16
+    },
+    "issue43_candidate_accounts": {
+      "consumed": 0,
+      "limit": 204
+    },
+    "issue43_control_reevaluations": {
+      "consumed": 0,
+      "limit": 153
+    },
+    "shared_ridge_retry_fit_calls": {
+      "consumed": 0,
+      "limit": 12
+    },
+    "shared_ppo_retry_run_calls": {
+      "consumed": 0,
+      "limit": 3
+    },
+    "shared_retry_accounts_including_validation": {
+      "consumed": 0,
+      "limit": 24
+    }
+  },
+  "ledger_policy": {
+    "append_only_events": true,
+    "prior_trials_and_events": "docs/research/protocols/issue40/registration.json",
+    "failed_attempts_consume_budget": true,
+    "retry_per_identical_work_item": 1,
+    "retry_for_bad_performance": 0,
+    "reserve_before_attempt": true,
+    "fixture_retry_controls_separate": true,
+    "budgets_shared_not_repeated_per_issue": true,
+    "unused_budget_transfer": false,
+    "global_independent_trial_count": null,
+    "global_independent_trial_count_reason": "Historical dependence and complete trial count are unknown."
+  },
+  "original_annual_attempts_complete": false,
+  "original_issue29_blocked_cells": 81,
+  "original_issue30_blocked_cells": 45,
+  "original_annual_task_status": "withdrawn_from_active_path_with_unmet_acceptance_preserved",
+  "parent_successor_issue29_complete_cells": 153,
+  "parent_successor_issue30_complete_cells": 85,
+  "continuation_contract": {
+    "mutually_exclusive_cases": true,
+    "maximum_candidates": 1,
+    "maximum_years": 17,
+    "year_labels": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "scenarios": [
+      "F0",
+      "F1",
+      "F2"
+    ],
+    "same_forecast_bundle_required": true,
+    "old_metrics_reused": 0,
+    "reset_initial_equity_jpy": 1000000,
+    "reset_initial_holdings": "flat",
+    "continuous_and_reset_share_market_runtime_execution_model_switches": true,
+    "same_forecast_control_is_not_old_direct_ppo": true,
+    "repeating_after_switching_from_simple_to_rl_requires_new_campaign": true,
+    "continuous_coverage_still_required": true
+  },
+  "continuation_policy_sets": {
+    "rl_selected": [
+      "selected_rl",
+      "same_forecast_cost_allocator",
+      "canonical"
+    ],
+    "simple_cost_selected": [
+      "selected_cost_allocator",
+      "canonical"
+    ],
+    "simple_fixed_selected": [
+      "selected_fixed",
+      "same_forecast_cost_allocator",
+      "canonical"
+    ]
+  },
+  "continuation_case_budgets": {
+    "rl_selected": {
+      "continuous_accounts": 9,
+      "annual_reset_accounts": 153
+    },
+    "simple_cost_selected": {
+      "continuous_accounts": 6,
+      "annual_reset_accounts": 102
+    },
+    "simple_fixed_selected": {
+      "continuous_accounts": 9,
+      "annual_reset_accounts": 153
+    }
+  },
+  "handoff_table": "docs/research/27-short-common-direction-revision.md"
+}
