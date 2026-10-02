@@ -1,0 +1,335 @@
+{
+  "issue": 41,
+  "recorded_date": "2026-10-02",
+  "campaign_id": "issue40-common-direction-development-v3",
+  "implementation_commit": "5cf5f54012b7eb19ec0c6e68de08f2ed7451c07b",
+  "implementation_status": "implemented_and_tested",
+  "input_status": "input_ready",
+  "market_execution_status": "blocked_dependency_merge",
+  "dependency_pr": "https://github.com/TsuyoshiFujii-0915/forex-trainer/pull/56",
+  "dependency_head": "6be27aa2376aaf615e8be83a549b201f054808dc",
+  "observed_origin_main": "5766d3e179c9a41bcc2724e441b51d2ee9475571",
+  "execution_runtime_seal": null,
+  "execution_runtime_seal_reason": "Dependency review/merge has not completed; no production activation issued.",
+  "counters": {
+    "issue41_regular_ridge_fit_calls": {
+      "consumed": 0,
+      "limit": 102
+    },
+    "issue41_fixture_ridge_fit_calls": {
+      "consumed": 6,
+      "limit": 6
+    },
+    "shared_ridge_retry_fit_calls": {
+      "consumed": 0,
+      "limit": 12
+    },
+    "market_inference_calls": 0,
+    "market_evaluation_accounts": 0,
+    "selected_market_models": 0,
+    "refits": 0
+  },
+  "planned_models": 34,
+  "planned_forecast_rows": 7138,
+  "case_statuses": [
+    {
+      "fold": "2009",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2009",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2010",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2010",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2011",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2011",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2012",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2012",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2013",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2013",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2014",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2014",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2015",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2015",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2016",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2016",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2017",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2017",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2018",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2018",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2019",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2019",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2020",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2020",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2021",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2021",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2022",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2022",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2023",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2023",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2024",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2024",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2025",
+      "horizon": 1,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    },
+    {
+      "fold": "2025",
+      "horizon": 5,
+      "input_status": "input_ready",
+      "model_status": "not_started_dependency_merge",
+      "forecast_status": "not_started_dependency_merge"
+    }
+  ],
+  "validation": {
+    "added_tests_passed": 22,
+    "existing_regression_tests_passed": 60,
+    "synthetic_fit_calls": 6,
+    "production_end_to_end": "not_executed_dependency_unmerged",
+    "dependency_seal_rejection": "ValueError: Dependency v3 merge is not verified on origin/main"
+  },
+  "sources": [
+    {
+      "path": "configs/research/issue41_common_basket.json",
+      "sha256": "a900198d758258bedb108e72efeb51fd18318467893c99190cff7b9e7781cbc9"
+    },
+    {
+      "path": "src/forex_trainer/common_basket.py",
+      "sha256": "62fdbcabcd1a37afcfe66197d9c4f786c4cd3a67ae914dc60316c165b4f356d9"
+    },
+    {
+      "path": "src/forex_trainer/common_basket_study.py",
+      "sha256": "cf057717d17a10bf1e332e8e4d5197fab026d387fe4680b0f10fee7da1d3bea3"
+    },
+    {
+      "path": "tests/test_common_basket.py",
+      "sha256": "c0a03af474992e1db63ef36501ccb240a92c819af263309c05ddca5dee064d8b"
+    },
+    {
+      "path": "tests/test_common_basket_handoff.py",
+      "sha256": "2796ce11b63af77315dcaac232b4a2921f444e1a3e5512fa14f45e1fa3813fc6"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "52b76a512c3e59a3b5f2c5e4f3f3e73b00940e5e7e74919724c25cbb466f4ddf"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/research/results/issue41/fixture-fit-events.json",
+      "sha256": "9ceef5f52e7615241913b3aed98fefead745d8b2a087a7e6cbde46efb453a13c"
+    },
+    {
+      "path": "docs/research/results/issue41/preflight/excluded-rows.json.gz",
+      "sha256": "e5f4d9b322db25f7725b0769927a308fe2148ba3cc2bc519227306b417824605"
+    },
+    {
+      "path": "docs/research/results/issue41/preflight/missing-calendar.json.gz",
+      "sha256": "0a119e804d577c301d39b685730595b3a5d2cad9231b41fed55c81bf6b653902"
+    },
+    {
+      "path": "docs/research/results/issue41/preflight/report.json",
+      "sha256": "26e0ea6912bcd34997627e84fa3cefd828f2c4d955368014e111c84ee07b38a6"
+    },
+    {
+      "path": "docs/research/results/issue41/preflight/row-identities.json.gz",
+      "sha256": "6760b8dca4606654ad40a96fc68cfa441bea522fd04bc52bc0d0674e5c710137"
+    }
+  ],
+  "handoff": {
+    "interface": "issue40-short-forecast-v3",
+    "fixed_and_cost_same_bundle_required": true,
+    "issue43_market_forecasts": "pending_production_fit",
+    "portfolio_selection": "not_performed"
+  }
+}

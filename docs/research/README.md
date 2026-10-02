@@ -34,12 +34,14 @@
 | [25-successor-profit-attribution.md](25-successor-profit-attribution.md) | 後継85口座を完走、PPOの共通方向・相対配分・carry・費用帰属、2対照と次期仮説 | Issue #30後継 |
 | [26-common-direction-learning-campaign.md](26-common-direction-learning-campaign.md) | 共通方向の一分岐、1/5日ridge×2配分、有限fit/逐次RL予算、数値採否、#41〜#50の実行manifest | Issue #40（v2履歴） |
 | [27-short-common-direction-revision.md](27-short-common-direction-revision.md) | 有限calendar分割で全34ケース適格、短期・中期RL・実執行gate分離、#41〜#50引渡し | Issue #55（v3） |
+| [28-common-basket-forecaster.md](28-common-basket-forecaster.md) | 共通basket ridge実装・全34入力検査、予測封印interface、本fitは#56マージ待ち | Issue #41 |
 
 次期学習の入口は[issue40-common-direction-development-v3](27-short-common-direction-revision.md)と
 [新登録・試行台帳](protocols/issue40/revisions/v3/registration.json)。#55の有限calendar検査で、
 2009は24か月、2018は12か月、他15foldは6か月の共通validationを採用し、全34ケースが252/60を満たした。
 短期契約は確定し`short_data_ready=ready`、中期RLと実執行はblockedとして分離する。
-calendar/gate検査は実装済みだが、#41/#42/#43の実装・実値検査・runtime sealは未完了。
+calendar/gate検査に加え、[#41の予測器実装・全34実値検査](28-common-basket-forecaster.md)は完了。
+#41の本fit/runtime sealと#42/#43の実装・実行は未完了。
 改訂PRのレビュー・マージと各実行前sealが必要で、現在の本学習・市場評価の有効予算は0。
 #43は中期cross-fit/PPO validation、#44/#45、#49連続入力復旧を待たず候補を判断できる。
 通常予算は102fit・357口座のまま。v2の187更新/561fitは中期の旧計画値として保持し、#46で実日程を確定する。
