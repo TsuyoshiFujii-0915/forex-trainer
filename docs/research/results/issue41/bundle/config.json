@@ -1,0 +1,40 @@
+{
+  "alpha_grid": [
+    0.01,
+    0.1,
+    1.0
+  ],
+  "campaign_id": "issue40-common-direction-development-v3",
+  "features": [
+    "log_return",
+    "volatility",
+    "sma20_ratio",
+    "mom24",
+    "carry_annual"
+  ],
+  "forecast_bundle_id": "issue40-short-forecast-v3",
+  "horizons": [
+    1,
+    5
+  ],
+  "pairs": [
+    "JPY/USD",
+    "JPY/EUR",
+    "JPY/GBP",
+    "JPY/AUD",
+    "JPY/CHF",
+    "JPY/CAD",
+    "JPY/NZD",
+    "JPY/NOK",
+    "JPY/SEK"
+  ],
+  "registration": {
+    "path": "docs/research/protocols/issue40/revisions/v3/registration.json",
+    "sha256": "5d096705e68536faa48eadf7a701e7d034f918e5203b45fb8191bbefeae6e8aa"
+  },
+  "run_directory": "runs/issue41-common-basket-v3",
+  "source_snapshot": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  }
+}

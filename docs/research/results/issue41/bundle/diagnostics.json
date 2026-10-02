@@ -1,0 +1,1241 @@
+{
+  "cells": [
+    {
+      "account_decisions": 171,
+      "alpha": 1.0,
+      "diagnostic_labels": 171,
+      "diagnostics": {
+        "correlation": 0.06678007664907866,
+        "correlation_status": "defined",
+        "direction_agreement": 0.43859649122807015,
+        "mse": 0.00012554049238236236,
+        "mse_minus_zero": 1.805858291695999e-05,
+        "prediction_variance": 7.167951563989706e-07,
+        "rows": 171,
+        "status": "available",
+        "zero_mse": 0.00010748190946540237
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2009.json",
+          "sha256": "7223dcf7f9a164b3d9c1a7f29c5c311f71b14884434abce20ea910f82794420c"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2009.parquet",
+          "sha256": "d5215ec21c60adb9e6acc691a06e029c99722cb683599f8d53eaeb0dd81a16f6"
+        },
+        "decision_sha256": "da3f2d517cd90cf54b25b42ae6300bf794668c1bffb62e199851ee441a425a58"
+      },
+      "fold": "2009",
+      "horizon": 1,
+      "model_path": "model-2009-h1.json",
+      "model_sha256": "5dbaf610c90fcd903c9bf3c2a4dad898a4fffdb49bd00995165b0021edd4e927",
+      "status": "complete",
+      "train_rows": 268,
+      "validation_rows": 189
+    },
+    {
+      "account_decisions": 171,
+      "alpha": 1.0,
+      "diagnostic_labels": 167,
+      "diagnostics": {
+        "correlation": 0.280749326205661,
+        "correlation_status": "defined",
+        "direction_agreement": 0.46706586826347307,
+        "mse": 0.0006464500163621158,
+        "mse_minus_zero": 0.0002191852695665802,
+        "prediction_variance": 1.563627084436973e-05,
+        "rows": 167,
+        "status": "available",
+        "zero_mse": 0.0004272647467955356
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2009.json",
+          "sha256": "7223dcf7f9a164b3d9c1a7f29c5c311f71b14884434abce20ea910f82794420c"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2009.parquet",
+          "sha256": "d5215ec21c60adb9e6acc691a06e029c99722cb683599f8d53eaeb0dd81a16f6"
+        },
+        "decision_sha256": "da3f2d517cd90cf54b25b42ae6300bf794668c1bffb62e199851ee441a425a58"
+      },
+      "fold": "2009",
+      "horizon": 5,
+      "model_path": "model-2009-h5.json",
+      "model_sha256": "06e2925120701710f29ce51957d4b6af5af97fb55735195e781a94bade1b0819",
+      "status": "complete",
+      "train_rows": 264,
+      "validation_rows": 181
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 1.0,
+      "diagnostic_labels": 260,
+      "diagnostics": {
+        "correlation": 0.09150117993065537,
+        "correlation_status": "defined",
+        "direction_agreement": 0.4846153846153846,
+        "mse": 8.305832391509434e-05,
+        "mse_minus_zero": 3.896719851824231e-07,
+        "prediction_variance": 1.5781524910639172e-07,
+        "rows": 260,
+        "status": "available",
+        "zero_mse": 8.266865192991191e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2010.json",
+          "sha256": "18dcfbfac2760be62ac5424e105f4d378ea142ae2119e9972d89db23d24830d2"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2010.parquet",
+          "sha256": "d59576bef01570aceeb80824b9336a153ae3792e2d1a63cd2b92206d3bd1c048"
+        },
+        "decision_sha256": "f43ab749207779b5abd468d5730b56c79128d2619eed4adeed79177d624c29da"
+      },
+      "fold": "2010",
+      "horizon": 1,
+      "model_path": "model-2010-h1.json",
+      "model_sha256": "2180f5ca3fa7b77c7a83aa5f8f288958e5f2ee16bd43d533b15e4f1f222a48ea",
+      "status": "complete",
+      "train_rows": 497,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 1.0,
+      "diagnostic_labels": 256,
+      "diagnostics": {
+        "correlation": 0.15139561141744523,
+        "correlation_status": "defined",
+        "direction_agreement": 0.484375,
+        "mse": 0.0003609815317958488,
+        "mse_minus_zero": 6.944968507414885e-06,
+        "prediction_variance": 2.468237087352546e-06,
+        "rows": 256,
+        "status": "available",
+        "zero_mse": 0.0003540365632884339
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2010.json",
+          "sha256": "18dcfbfac2760be62ac5424e105f4d378ea142ae2119e9972d89db23d24830d2"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2010.parquet",
+          "sha256": "d59576bef01570aceeb80824b9336a153ae3792e2d1a63cd2b92206d3bd1c048"
+        },
+        "decision_sha256": "f43ab749207779b5abd468d5730b56c79128d2619eed4adeed79177d624c29da"
+      },
+      "fold": "2010",
+      "horizon": 5,
+      "model_path": "model-2010-h5.json",
+      "model_sha256": "46f6eff548b29426cbd3aaf9b6b9270dd3d061f9067f2f7be37ca0969f3de382",
+      "status": "complete",
+      "train_rows": 485,
+      "validation_rows": 127
+    },
+    {
+      "account_decisions": 121,
+      "alpha": 0.01,
+      "diagnostic_labels": 121,
+      "diagnostics": {
+        "correlation": 0.14858712076672542,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5702479338842975,
+        "mse": 5.4219271866382126e-05,
+        "mse_minus_zero": -6.244659594783784e-07,
+        "prediction_variance": 4.613240598968306e-07,
+        "rows": 121,
+        "status": "available",
+        "zero_mse": 5.4843737825860504e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2011.json",
+          "sha256": "77c7c7820440a6114216b5d281a92dc16f95f2b96803c1c79b80c742a81b9c22"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2011.parquet",
+          "sha256": "525bb8fe564facac614d2bdacbbc811da448c282c50dd47bc0cb56a401d7fae4"
+        },
+        "decision_sha256": "461e36aa4cabe4bbe2d19a960ab42ae55fa88b0927991e5010cecb1247346b93"
+      },
+      "fold": "2011",
+      "horizon": 1,
+      "model_path": "model-2011-h1.json",
+      "model_sha256": "99386d80adb52a41367d91ca6c7daddc88800d14f0b2796a31a703d251a41a8b",
+      "status": "complete",
+      "train_rows": 758,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 121,
+      "alpha": 0.01,
+      "diagnostic_labels": 117,
+      "diagnostics": {
+        "correlation": 0.24761033137776992,
+        "correlation_status": "defined",
+        "direction_agreement": 0.452991452991453,
+        "mse": 0.0002677205597697589,
+        "mse_minus_zero": -3.533248175472965e-06,
+        "prediction_variance": 1.0087322097999235e-05,
+        "rows": 117,
+        "status": "available",
+        "zero_mse": 0.0002712538079452319
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2011.json",
+          "sha256": "77c7c7820440a6114216b5d281a92dc16f95f2b96803c1c79b80c742a81b9c22"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2011.parquet",
+          "sha256": "525bb8fe564facac614d2bdacbbc811da448c282c50dd47bc0cb56a401d7fae4"
+        },
+        "decision_sha256": "461e36aa4cabe4bbe2d19a960ab42ae55fa88b0927991e5010cecb1247346b93"
+      },
+      "fold": "2011",
+      "horizon": 5,
+      "model_path": "model-2011-h5.json",
+      "model_sha256": "fd5a68af80d435ccea408e4910f9c3928e98908603cf0d1d6e1c42acd8e24d38",
+      "status": "complete",
+      "train_rows": 746,
+      "validation_rows": 127
+    },
+    {
+      "account_decisions": 240,
+      "alpha": 1.0,
+      "diagnostic_labels": 240,
+      "diagnostics": {
+        "correlation": 0.009390838294266464,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5166666666666667,
+        "mse": 4.529095800167235e-05,
+        "mse_minus_zero": 1.591134421203449e-07,
+        "prediction_variance": 2.1166986719870253e-07,
+        "rows": 240,
+        "status": "available",
+        "zero_mse": 4.5131844559552005e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2012.json",
+          "sha256": "c62c42f7fb0bfe44502a43e87fb78f738396396a6cfffd6ebdd5a2fb727a5f37"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2012.parquet",
+          "sha256": "f07e3a40b7367158bf29c64fdc65acf100841672869368f71512de5a90281060"
+        },
+        "decision_sha256": "77048e4b5650e5ebc2afc4171e3744e4a731696ebecaac5ebd2a6dcb027dfe39"
+      },
+      "fold": "2012",
+      "horizon": 1,
+      "model_path": "model-2012-h1.json",
+      "model_sha256": "4d0e7618382a229a1fa4105ef5538c887c47886951ea2a3f9f77a2a756c2864c",
+      "status": "complete",
+      "train_rows": 964,
+      "validation_rows": 121
+    },
+    {
+      "account_decisions": 240,
+      "alpha": 1.0,
+      "diagnostic_labels": 236,
+      "diagnostics": {
+        "correlation": -0.07240735071429334,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5466101694915254,
+        "mse": 0.0002155285646525018,
+        "mse_minus_zero": 6.690496919522354e-06,
+        "prediction_variance": 3.6028403175975704e-06,
+        "rows": 236,
+        "status": "available",
+        "zero_mse": 0.00020883806773297944
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2012.json",
+          "sha256": "c62c42f7fb0bfe44502a43e87fb78f738396396a6cfffd6ebdd5a2fb727a5f37"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2012.parquet",
+          "sha256": "f07e3a40b7367158bf29c64fdc65acf100841672869368f71512de5a90281060"
+        },
+        "decision_sha256": "77048e4b5650e5ebc2afc4171e3744e4a731696ebecaac5ebd2a6dcb027dfe39"
+      },
+      "fold": "2012",
+      "horizon": 5,
+      "model_path": "model-2012-h5.json",
+      "model_sha256": "404d5d0965ee16683c13c1e2ac0b9986307d79eb450b60d05ff7c56a2495b79e",
+      "status": "complete",
+      "train_rows": 952,
+      "validation_rows": 117
+    },
+    {
+      "account_decisions": 124,
+      "alpha": 0.01,
+      "diagnostic_labels": 124,
+      "diagnostics": {
+        "correlation": 0.11852649799572093,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5645161290322581,
+        "mse": 4.396930153903796e-05,
+        "mse_minus_zero": -5.885356242262213e-07,
+        "prediction_variance": 4.493295906922766e-07,
+        "rows": 124,
+        "status": "available",
+        "zero_mse": 4.455783716326418e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2013.json",
+          "sha256": "d81aef093d3a30a6efe7dfc7e9e37218a0108f6e6c93b0ee7c5f247a74265b9e"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2013.parquet",
+          "sha256": "3e0709ee1a3fcd3bcaefd86cfbbc79dc629ea3e77c2fc2efce683e413f356e21"
+        },
+        "decision_sha256": "f8e77b7459502f9c2097a60564ea7e885dd7a0d1a9486480aca367dc70b20e75"
+      },
+      "fold": "2013",
+      "horizon": 1,
+      "model_path": "model-2013-h1.json",
+      "model_sha256": "be8e13666ff680424000b4088daf8536c109b0ec05c1de8148380791e0ffd9fd",
+      "status": "complete",
+      "train_rows": 1215,
+      "validation_rows": 110
+    },
+    {
+      "account_decisions": 124,
+      "alpha": 0.01,
+      "diagnostic_labels": 120,
+      "diagnostics": {
+        "correlation": 0.04143752673404862,
+        "correlation_status": "defined",
+        "direction_agreement": 0.6083333333333333,
+        "mse": 0.0001805342027437655,
+        "mse_minus_zero": 4.961441592828136e-06,
+        "prediction_variance": 8.245825564417245e-06,
+        "rows": 120,
+        "status": "available",
+        "zero_mse": 0.00017557276115093737
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2013.json",
+          "sha256": "d81aef093d3a30a6efe7dfc7e9e37218a0108f6e6c93b0ee7c5f247a74265b9e"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2013.parquet",
+          "sha256": "3e0709ee1a3fcd3bcaefd86cfbbc79dc629ea3e77c2fc2efce683e413f356e21"
+        },
+        "decision_sha256": "f8e77b7459502f9c2097a60564ea7e885dd7a0d1a9486480aca367dc70b20e75"
+      },
+      "fold": "2013",
+      "horizon": 5,
+      "model_path": "model-2013-h5.json",
+      "model_sha256": "a299964620748e2ea456d885ed401923842f0f1929f4e81005e5db32605fa80d",
+      "status": "complete",
+      "train_rows": 1199,
+      "validation_rows": 106
+    },
+    {
+      "account_decisions": 257,
+      "alpha": 0.01,
+      "diagnostic_labels": 257,
+      "diagnostics": {
+        "correlation": 0.029308988359990046,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5136186770428015,
+        "mse": 2.094379257304124e-05,
+        "mse_minus_zero": 8.98862576135841e-08,
+        "prediction_variance": 2.3439555672580888e-07,
+        "rows": 257,
+        "status": "available",
+        "zero_mse": 2.0853906315427656e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2014.json",
+          "sha256": "48d4951eb5ecc7b0ed5ed829bda7026900a5b46dbcee87cde269a7315236e919"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2014.parquet",
+          "sha256": "d86170c09dc19b2bd4463cc6ccfabb3942fbe77c0f1f950ff353afdcbf85e69a"
+        },
+        "decision_sha256": "5939668e4e71f1a016b519cca652360e6b3683f80e314d691781f652a479e63d"
+      },
+      "fold": "2014",
+      "horizon": 1,
+      "model_path": "model-2014-h1.json",
+      "model_sha256": "e026114b638f4ecdd43e56fc6fbeb991b0ad4881ac1e409d650f5b3ef67eb446",
+      "status": "complete",
+      "train_rows": 1379,
+      "validation_rows": 70
+    },
+    {
+      "account_decisions": 257,
+      "alpha": 0.01,
+      "diagnostic_labels": 253,
+      "diagnostics": {
+        "correlation": 0.11570650503287269,
+        "correlation_status": "defined",
+        "direction_agreement": 0.49407114624505927,
+        "mse": 0.00011306720415607256,
+        "mse_minus_zero": -8.528662993220027e-07,
+        "prediction_variance": 4.061648365371564e-06,
+        "rows": 253,
+        "status": "available",
+        "zero_mse": 0.00011392007045539456
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2014.json",
+          "sha256": "48d4951eb5ecc7b0ed5ed829bda7026900a5b46dbcee87cde269a7315236e919"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2014.parquet",
+          "sha256": "d86170c09dc19b2bd4463cc6ccfabb3942fbe77c0f1f950ff353afdcbf85e69a"
+        },
+        "decision_sha256": "5939668e4e71f1a016b519cca652360e6b3683f80e314d691781f652a479e63d"
+      },
+      "fold": "2014",
+      "horizon": 5,
+      "model_path": "model-2014-h5.json",
+      "model_sha256": "487b1cfd740744a3f67822fde5f79c30adb49fe3803dbac5b04724a4a6ed8cb7",
+      "status": "complete",
+      "train_rows": 1359,
+      "validation_rows": 66
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 0.01,
+      "diagnostic_labels": 260,
+      "diagnostics": {
+        "correlation": -0.01647838830598148,
+        "correlation_status": "defined",
+        "direction_agreement": 0.47307692307692306,
+        "mse": 2.803699579008654e-05,
+        "mse_minus_zero": 4.403561478259481e-07,
+        "prediction_variance": 2.2519360720087394e-07,
+        "rows": 260,
+        "status": "available",
+        "zero_mse": 2.759663964226059e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2015.json",
+          "sha256": "a030c3f31112ed51093e237be49cc493e49adff1beabf28d6c4f392ec7cd8e85"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2015.parquet",
+          "sha256": "c4fa2e852d06f1ad9b11e7d2d0b03fda61f940ee970dbccef4205a582073bdb4"
+        },
+        "decision_sha256": "9f1be582975819bcb260491f6bc4a5192f680dd047a0d846e7f929b93d478956"
+      },
+      "fold": "2015",
+      "horizon": 1,
+      "model_path": "model-2015-h1.json",
+      "model_sha256": "926c5fb6097eb2deec82dd228b80b2391d4926129f03a8a806a295f308f18639",
+      "status": "complete",
+      "train_rows": 1575,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 0.01,
+      "diagnostic_labels": 256,
+      "diagnostics": {
+        "correlation": 0.029614403116634904,
+        "correlation_status": "defined",
+        "direction_agreement": 0.44140625,
+        "mse": 0.00013832560615067025,
+        "mse_minus_zero": 5.75048908045916e-06,
+        "prediction_variance": 2.2717215388536993e-06,
+        "rows": 256,
+        "status": "available",
+        "zero_mse": 0.0001325751170702111
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2015.json",
+          "sha256": "a030c3f31112ed51093e237be49cc493e49adff1beabf28d6c4f392ec7cd8e85"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2015.parquet",
+          "sha256": "c4fa2e852d06f1ad9b11e7d2d0b03fda61f940ee970dbccef4205a582073bdb4"
+        },
+        "decision_sha256": "9f1be582975819bcb260491f6bc4a5192f680dd047a0d846e7f929b93d478956"
+      },
+      "fold": "2015",
+      "horizon": 5,
+      "model_path": "model-2015-h5.json",
+      "model_sha256": "dcf7b23629481183bc207e52486e812b73491f8139d4828081dd48b0081d73a4",
+      "status": "complete",
+      "train_rows": 1551,
+      "validation_rows": 127
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 1.0,
+      "diagnostic_labels": 260,
+      "diagnostics": {
+        "correlation": 0.02159304608537626,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5192307692307693,
+        "mse": 6.139659378106092e-05,
+        "mse_minus_zero": 3.607010355867078e-08,
+        "prediction_variance": 1.2328281161285548e-07,
+        "rows": 260,
+        "status": "available",
+        "zero_mse": 6.136052367750225e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2016.json",
+          "sha256": "0e3e82067dbb0ad911fafbbd01d0778b0702234a89e6b4bb7eba4e513ba7245f"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2016.parquet",
+          "sha256": "dce508d74ea630b2ba0702f0777c598e5ec8e7457792bf166410d7b49f8b6f04"
+        },
+        "decision_sha256": "faac1e328f67afc74213110d2915ab8d607f4880930969e4a27e0c7065a2ef77"
+      },
+      "fold": "2016",
+      "horizon": 1,
+      "model_path": "model-2016-h1.json",
+      "model_sha256": "53487054410e52c762265ea8a6474aad0ef72dc7804a56f6a54d1c194fc967ff",
+      "status": "complete",
+      "train_rows": 1836,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 1.0,
+      "diagnostic_labels": 256,
+      "diagnostics": {
+        "correlation": 0.0806581954048498,
+        "correlation_status": "defined",
+        "direction_agreement": 0.53515625,
+        "mse": 0.00029948337569902307,
+        "mse_minus_zero": -1.1980078898999398e-06,
+        "prediction_variance": 9.449102011651092e-07,
+        "rows": 256,
+        "status": "available",
+        "zero_mse": 0.000300681383588923
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2016.json",
+          "sha256": "0e3e82067dbb0ad911fafbbd01d0778b0702234a89e6b4bb7eba4e513ba7245f"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2016.parquet",
+          "sha256": "dce508d74ea630b2ba0702f0777c598e5ec8e7457792bf166410d7b49f8b6f04"
+        },
+        "decision_sha256": "faac1e328f67afc74213110d2915ab8d607f4880930969e4a27e0c7065a2ef77"
+      },
+      "fold": "2016",
+      "horizon": 5,
+      "model_path": "model-2016-h5.json",
+      "model_sha256": "04c6037ce5b1533ff7f81c223d051900dd8470ed19d4e80b22af32127b508cf1",
+      "status": "complete",
+      "train_rows": 1812,
+      "validation_rows": 127
+    },
+    {
+      "account_decisions": 135,
+      "alpha": 0.01,
+      "diagnostic_labels": 135,
+      "diagnostics": {
+        "correlation": 0.07742484036751632,
+        "correlation_status": "defined",
+        "direction_agreement": 0.48148148148148145,
+        "mse": 2.2634673084946046e-05,
+        "mse_minus_zero": -6.941296136529781e-08,
+        "prediction_variance": 1.1100016959120566e-07,
+        "rows": 135,
+        "status": "available",
+        "zero_mse": 2.2704086046311343e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2017.json",
+          "sha256": "89a0e1f611c7bf66dbea2f86eeb694ff75db7b7ef4aa3040adc8bc27fb9f22b5"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2017.parquet",
+          "sha256": "680885059f87b9439994d542d5761031f9bf7d7e3e46f7d1fde3bc3d8160c38d"
+        },
+        "decision_sha256": "ceee33f6b99fc3426761d9b2d009313f201d61538f94c547d0cc0a6a90804e97"
+      },
+      "fold": "2017",
+      "horizon": 1,
+      "model_path": "model-2017-h1.json",
+      "model_sha256": "8042f2fd45972131f1840f9ae218374bf199f28bde8197a75cd0e2c437229c04",
+      "status": "complete",
+      "train_rows": 2098,
+      "validation_rows": 130
+    },
+    {
+      "account_decisions": 135,
+      "alpha": 1.0,
+      "diagnostic_labels": 131,
+      "diagnostics": {
+        "correlation": 0.10304369546779744,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5114503816793893,
+        "mse": 0.00011249033956117268,
+        "mse_minus_zero": -4.7484406903331865e-07,
+        "prediction_variance": 4.153602435215621e-07,
+        "rows": 131,
+        "status": "available",
+        "zero_mse": 0.000112965183630206
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2017.json",
+          "sha256": "89a0e1f611c7bf66dbea2f86eeb694ff75db7b7ef4aa3040adc8bc27fb9f22b5"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2017.parquet",
+          "sha256": "680885059f87b9439994d542d5761031f9bf7d7e3e46f7d1fde3bc3d8160c38d"
+        },
+        "decision_sha256": "ceee33f6b99fc3426761d9b2d009313f201d61538f94c547d0cc0a6a90804e97"
+      },
+      "fold": "2017",
+      "horizon": 5,
+      "model_path": "model-2017-h5.json",
+      "model_sha256": "406ed82435f4423abf798769d576c7a9b36ae327241563ca51ce6a3b5af2fa8e",
+      "status": "complete",
+      "train_rows": 2074,
+      "validation_rows": 126
+    },
+    {
+      "account_decisions": 228,
+      "alpha": 0.01,
+      "diagnostic_labels": 228,
+      "diagnostics": {
+        "correlation": 0.06332460080929238,
+        "correlation_status": "defined",
+        "direction_agreement": 0.4956140350877193,
+        "mse": 2.139453542941325e-05,
+        "mse_minus_zero": -5.3411034191350876e-08,
+        "prediction_variance": 9.946927593934971e-08,
+        "rows": 228,
+        "status": "available",
+        "zero_mse": 2.1447946463604603e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2018.json",
+          "sha256": "f542c5a822af2bb55a07a519c0d26a6013ad0ebafb59f3c3ac3f7088640eeb2d"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2018.parquet",
+          "sha256": "6939f65c1ba9f774fab14f0be6c9bc844eaebeeec21e6f9256a3cf69a7557d32"
+        },
+        "decision_sha256": "d7f723dcdbcfe56dd855f18765054f0395e03c3dcf9101024b56c03fd75c49c4"
+      },
+      "fold": "2018",
+      "horizon": 1,
+      "model_path": "model-2018-h1.json",
+      "model_sha256": "219ad9fce6a0382c1fd308337172736b5de256c6fc047e78b8d6a73fb9f56e85",
+      "status": "complete",
+      "train_rows": 2229,
+      "validation_rows": 162
+    },
+    {
+      "account_decisions": 228,
+      "alpha": 0.01,
+      "diagnostic_labels": 224,
+      "diagnostics": {
+        "correlation": 0.07635680877808144,
+        "correlation_status": "defined",
+        "direction_agreement": 0.46875,
+        "mse": 0.00011654262051802222,
+        "mse_minus_zero": 1.5296227125713457e-06,
+        "prediction_variance": 1.1354055269981863e-06,
+        "rows": 224,
+        "status": "available",
+        "zero_mse": 0.00011501299780545087
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2018.json",
+          "sha256": "f542c5a822af2bb55a07a519c0d26a6013ad0ebafb59f3c3ac3f7088640eeb2d"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2018.parquet",
+          "sha256": "6939f65c1ba9f774fab14f0be6c9bc844eaebeeec21e6f9256a3cf69a7557d32"
+        },
+        "decision_sha256": "d7f723dcdbcfe56dd855f18765054f0395e03c3dcf9101024b56c03fd75c49c4"
+      },
+      "fold": "2018",
+      "horizon": 5,
+      "model_path": "model-2018-h5.json",
+      "model_sha256": "99d4070df3f3c06c798204e852d7cece79c1b48d239e94b727f50ff518ce2c72",
+      "status": "complete",
+      "train_rows": 2205,
+      "validation_rows": 154
+    },
+    {
+      "account_decisions": 100,
+      "alpha": 0.01,
+      "diagnostic_labels": 100,
+      "diagnostics": {
+        "correlation": 0.06605256977842683,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5,
+        "mse": 2.4743876454975958e-05,
+        "mse_minus_zero": -8.844269712893796e-08,
+        "prediction_variance": 1.0564853217859384e-07,
+        "rows": 100,
+        "status": "available",
+        "zero_mse": 2.4832319152104896e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2019.json",
+          "sha256": "1668cd518d4e434f784a0ecde27013a3daa2ae451e6e7ba374180c97ee41b178"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2019.parquet",
+          "sha256": "8a4692ed54c2b7af5c117412c1b6ef118cf302bff95e3de63ffe2888564d86f4"
+        },
+        "decision_sha256": "ef8d4b3441332283ba666eb07fb2970befb047e0cf3ddc1b842a8ace16ebb19e"
+      },
+      "fold": "2019",
+      "horizon": 1,
+      "model_path": "model-2019-h1.json",
+      "model_sha256": "711b073ff59aa8b41dfcc4c3d5a9726e8b8408f378a124c3093c4f450b9e044a",
+      "status": "complete",
+      "train_rows": 2489,
+      "validation_rows": 130
+    },
+    {
+      "account_decisions": 100,
+      "alpha": 1.0,
+      "diagnostic_labels": 96,
+      "diagnostics": {
+        "correlation": 0.16808060502256253,
+        "correlation_status": "defined",
+        "direction_agreement": 0.4791666666666667,
+        "mse": 7.231347158499523e-05,
+        "mse_minus_zero": -1.2382433199253017e-06,
+        "prediction_variance": 2.9964318542558357e-07,
+        "rows": 96,
+        "status": "available",
+        "zero_mse": 7.355171490492053e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2019.json",
+          "sha256": "1668cd518d4e434f784a0ecde27013a3daa2ae451e6e7ba374180c97ee41b178"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2019.parquet",
+          "sha256": "8a4692ed54c2b7af5c117412c1b6ef118cf302bff95e3de63ffe2888564d86f4"
+        },
+        "decision_sha256": "ef8d4b3441332283ba666eb07fb2970befb047e0cf3ddc1b842a8ace16ebb19e"
+      },
+      "fold": "2019",
+      "horizon": 5,
+      "model_path": "model-2019-h5.json",
+      "model_sha256": "ba97d1b3572669628f967a387799d51cb4ddbfa89716e6ba2ff06dc0430e44e9",
+      "status": "complete",
+      "train_rows": 2457,
+      "validation_rows": 126
+    },
+    {
+      "account_decisions": 261,
+      "alpha": 0.01,
+      "diagnostic_labels": 261,
+      "diagnostics": {
+        "correlation": 0.06432507566294998,
+        "correlation_status": "defined",
+        "direction_agreement": 0.48659003831417624,
+        "mse": 3.5278927515518244e-05,
+        "mse_minus_zero": -1.2507062532772587e-07,
+        "prediction_variance": 1.6992677916668351e-07,
+        "rows": 261,
+        "status": "available",
+        "zero_mse": 3.540399814084597e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2020.json",
+          "sha256": "5626f4bb92455d2e2909f616c3b1299c4c06e8cdc789dffd78c4d924ac1b4a43"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2020.parquet",
+          "sha256": "48d2d2a2355ff4eb4057d92d2b8d1066e76a73b2d274577d7f94cf1e1276f5b4"
+        },
+        "decision_sha256": "d574f229773a28768f8dd465acff21d5d1a86142fed966b36ddac6d8763acaa4"
+      },
+      "fold": "2020",
+      "horizon": 1,
+      "model_path": "model-2020-h1.json",
+      "model_sha256": "78360bd10e24315ce4e8b4bd5f413ae9f5f11f839c0b35ea7cda6c902354070d",
+      "status": "complete",
+      "train_rows": 2721,
+      "validation_rows": 95
+    },
+    {
+      "account_decisions": 261,
+      "alpha": 0.01,
+      "diagnostic_labels": 257,
+      "diagnostics": {
+        "correlation": -0.01990628695930498,
+        "correlation_status": "defined",
+        "direction_agreement": 0.4591439688715953,
+        "mse": 0.00018500342252973932,
+        "mse_minus_zero": 3.2197376289206964e-06,
+        "prediction_variance": 2.072960767957543e-06,
+        "rows": 257,
+        "status": "available",
+        "zero_mse": 0.00018178368490081863
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2020.json",
+          "sha256": "5626f4bb92455d2e2909f616c3b1299c4c06e8cdc789dffd78c4d924ac1b4a43"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2020.parquet",
+          "sha256": "48d2d2a2355ff4eb4057d92d2b8d1066e76a73b2d274577d7f94cf1e1276f5b4"
+        },
+        "decision_sha256": "d574f229773a28768f8dd465acff21d5d1a86142fed966b36ddac6d8763acaa4"
+      },
+      "fold": "2020",
+      "horizon": 5,
+      "model_path": "model-2020-h5.json",
+      "model_sha256": "832554b999b56189d9b4385b83485272cbe7bacf76a49dc5c37840da99554cc9",
+      "status": "complete",
+      "train_rows": 2689,
+      "validation_rows": 91
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 1.0,
+      "diagnostic_labels": 260,
+      "diagnostics": {
+        "correlation": -0.05054992282827845,
+        "correlation_status": "defined",
+        "direction_agreement": 0.4461538461538462,
+        "mse": 1.6515804194268348e-05,
+        "mse_minus_zero": 1.5516730103742497e-07,
+        "prediction_variance": 2.6099924933026688e-08,
+        "rows": 260,
+        "status": "available",
+        "zero_mse": 1.6360636893230923e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2021.json",
+          "sha256": "cdbd4fadd63694c3bc20ad5dca37bd52afc5af34bb6fbc9ea386933cc3992748"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2021.parquet",
+          "sha256": "8e68a722f3817ad63f5b275f0bcd0042bf263859687aa2ec803df1113c32ed92"
+        },
+        "decision_sha256": "3d7657c52a8e4459c0552ab9e3480f13c1c31ed8fa3c37cf071f7c745f8f3c3f"
+      },
+      "fold": "2021",
+      "horizon": 1,
+      "model_path": "model-2021-h1.json",
+      "model_sha256": "53405d9af74587e40b3999afab428fe3b64ef337a27b51ab3d3329c179b3fd33",
+      "status": "complete",
+      "train_rows": 2946,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 260,
+      "alpha": 1.0,
+      "diagnostic_labels": 256,
+      "diagnostics": {
+        "correlation": 0.006314068051400035,
+        "correlation_status": "defined",
+        "direction_agreement": 0.48046875,
+        "mse": 9.041062377064435e-05,
+        "mse_minus_zero": 9.778741095729326e-07,
+        "prediction_variance": 2.721075896791061e-07,
+        "rows": 256,
+        "status": "available",
+        "zero_mse": 8.943274966107141e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2021.json",
+          "sha256": "cdbd4fadd63694c3bc20ad5dca37bd52afc5af34bb6fbc9ea386933cc3992748"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2021.parquet",
+          "sha256": "8e68a722f3817ad63f5b275f0bcd0042bf263859687aa2ec803df1113c32ed92"
+        },
+        "decision_sha256": "3d7657c52a8e4459c0552ab9e3480f13c1c31ed8fa3c37cf071f7c745f8f3c3f"
+      },
+      "fold": "2021",
+      "horizon": 5,
+      "model_path": "model-2021-h5.json",
+      "model_sha256": "fe1cb53a061f9714ca5c2c3b008a37425437c95e2c8b30990dc356f0f9d42359",
+      "status": "complete",
+      "train_rows": 2910,
+      "validation_rows": 127
+    },
+    {
+      "account_decisions": 259,
+      "alpha": 1.0,
+      "diagnostic_labels": 259,
+      "diagnostics": {
+        "correlation": 0.040942637010078824,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5019305019305019,
+        "mse": 4.422812311704668e-05,
+        "mse_minus_zero": -2.8437239550074735e-08,
+        "prediction_variance": 5.722306845501069e-08,
+        "rows": 259,
+        "status": "available",
+        "zero_mse": 4.4256560356596754e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2022.json",
+          "sha256": "95d5761949b7f74db9c8d2b8fa9641ee38286ddd1f78385780e96590ec9cb920"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2022.parquet",
+          "sha256": "9c6fd78b04e22eac509c38c2d08437a993f9720778aa20a3da96964c2fb90a35"
+        },
+        "decision_sha256": "ee859175314b4306092d9f79bd622d3333fa488e64c48d2f9464fe501daa116d"
+      },
+      "fold": "2022",
+      "horizon": 1,
+      "model_path": "model-2022-h1.json",
+      "model_sha256": "7afcb2f71388d83194a79b3276daa857ae0264d5f9ddcad06a95a6896142886b",
+      "status": "complete",
+      "train_rows": 3207,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 259,
+      "alpha": 0.01,
+      "diagnostic_labels": 255,
+      "diagnostics": {
+        "correlation": 0.12626369743181806,
+        "correlation_status": "defined",
+        "direction_agreement": 0.592156862745098,
+        "mse": 0.0002440996305276483,
+        "mse_minus_zero": -1.7502142673882714e-06,
+        "prediction_variance": 2.50686846932301e-06,
+        "rows": 255,
+        "status": "available",
+        "zero_mse": 0.0002458498447950366
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2022.json",
+          "sha256": "95d5761949b7f74db9c8d2b8fa9641ee38286ddd1f78385780e96590ec9cb920"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2022.parquet",
+          "sha256": "9c6fd78b04e22eac509c38c2d08437a993f9720778aa20a3da96964c2fb90a35"
+        },
+        "decision_sha256": "ee859175314b4306092d9f79bd622d3333fa488e64c48d2f9464fe501daa116d"
+      },
+      "fold": "2022",
+      "horizon": 5,
+      "model_path": "model-2022-h5.json",
+      "model_sha256": "13c4078800f2f5665a38e22dcd161d895d4d6a0906535ab87532a84e886c4f79",
+      "status": "complete",
+      "train_rows": 3171,
+      "validation_rows": 127
+    },
+    {
+      "account_decisions": 259,
+      "alpha": 0.01,
+      "diagnostic_labels": 259,
+      "diagnostics": {
+        "correlation": 0.043976444467135216,
+        "correlation_status": "defined",
+        "direction_agreement": 0.525096525096525,
+        "mse": 3.0349874932999017e-05,
+        "mse_minus_zero": -2.3582095118498248e-08,
+        "prediction_variance": 1.0722498074875688e-07,
+        "rows": 259,
+        "status": "available",
+        "zero_mse": 3.0373457028117515e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2023.json",
+          "sha256": "048a4411c104e842868370779925c8fca2ed5cc442211a0f2a09ac5177d2138f"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2023.parquet",
+          "sha256": "7b8814a5a9d82a89e4fd0366b5f46c9c70d99f462f6a6f5ebf3ebc1d275ca194"
+        },
+        "decision_sha256": "c37a7e90d8a937109a17f2b07b19affa0fb3f185a4607f09440f389d79e3f8b3"
+      },
+      "fold": "2023",
+      "horizon": 1,
+      "model_path": "model-2023-h1.json",
+      "model_sha256": "3059c5c222b22dad16f985adf659c92761dbd7dc674bff161f200fea666564e1",
+      "status": "complete",
+      "train_rows": 3468,
+      "validation_rows": 130
+    },
+    {
+      "account_decisions": 259,
+      "alpha": 0.01,
+      "diagnostic_labels": 255,
+      "diagnostics": {
+        "correlation": 0.20842205799246147,
+        "correlation_status": "defined",
+        "direction_agreement": 0.615686274509804,
+        "mse": 0.00010929021622219258,
+        "mse_minus_zero": -3.317097958829466e-06,
+        "prediction_variance": 8.966729621751992e-07,
+        "rows": 255,
+        "status": "available",
+        "zero_mse": 0.00011260731418102205
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2023.json",
+          "sha256": "048a4411c104e842868370779925c8fca2ed5cc442211a0f2a09ac5177d2138f"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2023.parquet",
+          "sha256": "7b8814a5a9d82a89e4fd0366b5f46c9c70d99f462f6a6f5ebf3ebc1d275ca194"
+        },
+        "decision_sha256": "c37a7e90d8a937109a17f2b07b19affa0fb3f185a4607f09440f389d79e3f8b3"
+      },
+      "fold": "2023",
+      "horizon": 5,
+      "model_path": "model-2023-h5.json",
+      "model_sha256": "edef8180f35ca1e204d56c1323867fffde340be9bb9635ecdcf387f29e5b53c5",
+      "status": "complete",
+      "train_rows": 3432,
+      "validation_rows": 126
+    },
+    {
+      "account_decisions": 261,
+      "alpha": 0.1,
+      "diagnostic_labels": 261,
+      "diagnostics": {
+        "correlation": 0.05236056420677431,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5555555555555556,
+        "mse": 2.952326924190618e-05,
+        "mse_minus_zero": -9.593252987069053e-08,
+        "prediction_variance": 9.906898227376667e-08,
+        "rows": 261,
+        "status": "available",
+        "zero_mse": 2.961920177177687e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2024.json",
+          "sha256": "e94ec28281705fed4e8d43c9b617ed9fac257c37e1584dfb16f669ed4719b552"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2024.parquet",
+          "sha256": "88ac2eb9c00964a574773b84f22e047a4d1f2b6c06e9908f5ee10c8d99de5862"
+        },
+        "decision_sha256": "1b4187c81a5bd845bc01e09872a147ccaf6916b1c0dd865646e23d7fdd008ba7"
+      },
+      "fold": "2024",
+      "horizon": 1,
+      "model_path": "model-2024-h1.json",
+      "model_sha256": "b482b6d265f8c5e2fef9cd2e014d3b57ee95de96a13151ea65cc9fab7a241cbb",
+      "status": "complete",
+      "train_rows": 3729,
+      "validation_rows": 129
+    },
+    {
+      "account_decisions": 261,
+      "alpha": 0.01,
+      "diagnostic_labels": 257,
+      "diagnostics": {
+        "correlation": 0.022053461088288866,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5058365758754864,
+        "mse": 0.00017091126464404422,
+        "mse_minus_zero": 9.468195139016055e-07,
+        "prediction_variance": 1.7992133191926047e-06,
+        "rows": 257,
+        "status": "available",
+        "zero_mse": 0.0001699644451301426
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2024.json",
+          "sha256": "e94ec28281705fed4e8d43c9b617ed9fac257c37e1584dfb16f669ed4719b552"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2024.parquet",
+          "sha256": "88ac2eb9c00964a574773b84f22e047a4d1f2b6c06e9908f5ee10c8d99de5862"
+        },
+        "decision_sha256": "1b4187c81a5bd845bc01e09872a147ccaf6916b1c0dd865646e23d7fdd008ba7"
+      },
+      "fold": "2024",
+      "horizon": 5,
+      "model_path": "model-2024-h5.json",
+      "model_sha256": "2c02f1d3e2d57cb9f17bcf762b3ce6c110ba528fa3a448ac58c2c06acb3eb6ca",
+      "status": "complete",
+      "train_rows": 3693,
+      "validation_rows": 125
+    },
+    {
+      "account_decisions": 113,
+      "alpha": 0.01,
+      "diagnostic_labels": 113,
+      "diagnostics": {
+        "correlation": 0.04789931516663112,
+        "correlation_status": "defined",
+        "direction_agreement": 0.5132743362831859,
+        "mse": 1.7495405017208883e-05,
+        "mse_minus_zero": -1.009442333331838e-07,
+        "prediction_variance": 4.3584060838078586e-08,
+        "rows": 113,
+        "status": "available",
+        "zero_mse": 1.7596349250542066e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2025.json",
+          "sha256": "6943888f0d3c6caa0e19dc95d59ca6877fafc8b7338989a5b47f8b4faec837c7"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2025.parquet",
+          "sha256": "f028593bdc297224f7303645f55eb5926d866203beac2fec7cfb5b5cc8c34ec1"
+        },
+        "decision_sha256": "024023cf8cc4a2e0cd080cd79212eb70f8ec8a4de66d0bfc85d40632217ebe81"
+      },
+      "fold": "2025",
+      "horizon": 1,
+      "model_path": "model-2025-h1.json",
+      "model_sha256": "817e69fbc03cac777e4762b23d7eb7c14580f33b756afc9b5e55d7938f26c542",
+      "status": "complete",
+      "train_rows": 3989,
+      "validation_rows": 131
+    },
+    {
+      "account_decisions": 113,
+      "alpha": 1.0,
+      "diagnostic_labels": 109,
+      "diagnostics": {
+        "correlation": 0.3631188863432093,
+        "correlation_status": "defined",
+        "direction_agreement": 0.6513761467889908,
+        "mse": 7.750383093617866e-05,
+        "mse_minus_zero": -3.804645174638289e-06,
+        "prediction_variance": 9.218867344429455e-08,
+        "rows": 109,
+        "status": "available",
+        "zero_mse": 8.130847611081695e-05
+      },
+      "evaluation": {
+        "calendar": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2025.json",
+          "sha256": "6943888f0d3c6caa0e19dc95d59ca6877fafc8b7338989a5b47f8b4faec837c7"
+        },
+        "data": {
+          "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2025.parquet",
+          "sha256": "f028593bdc297224f7303645f55eb5926d866203beac2fec7cfb5b5cc8c34ec1"
+        },
+        "decision_sha256": "024023cf8cc4a2e0cd080cd79212eb70f8ec8a4de66d0bfc85d40632217ebe81"
+      },
+      "fold": "2025",
+      "horizon": 5,
+      "model_path": "model-2025-h5.json",
+      "model_sha256": "4d9e701408397eebb93edf0966f38a42d7610f0b55380189622a89e0c50426ed",
+      "status": "complete",
+      "train_rows": 3953,
+      "validation_rows": 127
+    }
+  ],
+  "era_summary": [
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.505074429098833,
+        "mse": 4.1448248166883555e-05,
+        "mse_minus_zero": 1.031212538512237e-06,
+        "prediction_variance": 1.9994421605630487e-07,
+        "zero_mse": 4.0417035628371316e-05
+      },
+      "era": "all",
+      "folds": 17,
+      "horizon": 1,
+      "status": "available"
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5057664491346372,
+        "mse": 5.0648493836309716e-05,
+        "mse_minus_zero": 1.7837855273999714e-06,
+        "prediction_variance": 2.790275344363266e-07,
+        "zero_mse": 4.886470830890974e-05
+      },
+      "era": "early",
+      "folds": 10,
+      "horizon": 1,
+      "status": "available"
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5040858290476844,
+        "mse": 2.8305040067703334e-05,
+        "mse_minus_zero": -4.389173132738374e-08,
+        "prediction_variance": 8.696804694198813e-08,
+        "zero_mse": 2.8348931799030716e-05
+      },
+      "era": "late",
+      "folds": 7,
+      "horizon": 1,
+      "status": "available"
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5172967704389337,
+        "mse": 0.00020003861656614085,
+        "mse_minus_zero": 1.3766914851603632e-05,
+        "prediction_variance": 3.3417174561672813e-06,
+        "zero_mse": 0.00018627170171453718
+      },
+      "era": "all",
+      "folds": 17,
+      "horizon": 5,
+      "status": "available"
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5010209852004233,
+        "mse": 0.00024511240214089515,
+        "mse_minus_zero": 2.3900332194564786e-05,
+        "prediction_variance": 4.886954178764644e-06,
+        "zero_mse": 0.0002212120699463304
+      },
+      "era": "early",
+      "folds": 10,
+      "horizon": 5,
+      "status": "available"
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5405478922082344,
+        "mse": 0.00013564749431649182,
+        "mse_minus_zero": -7.093956383408705e-07,
+        "prediction_variance": 1.1342364238853345e-06,
+        "zero_mse": 0.0001363568899548327
+      },
+      "era": "late",
+      "folds": 7,
+      "horizon": 5,
+      "status": "available"
+    }
+  ],
+  "sample_unit": "fold; overlapping labels and pairs are not independent observations"
+}

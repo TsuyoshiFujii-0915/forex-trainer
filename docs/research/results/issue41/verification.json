@@ -1,0 +1,25 @@
+{
+  "status": "verified",
+  "bundle_content_sha256": "3b92ed21ee6fc8a92108497f030db82e270b69c93a67820fe8f456e45f8d9509",
+  "archived_bytes_equal_run": true,
+  "fit_reservations": 102,
+  "unique_fit_items": 102,
+  "fit_completions": 102,
+  "models_sealed_before_evaluation": 34,
+  "complete_cells": 34,
+  "selected_candidate_no_refit_checks": 34,
+  "covariance_identity_and_positive_definite_checks": 34,
+  "forecast_rows": 7138,
+  "diagnostic_coverage": {
+    "1": {
+      "available": 3569
+    },
+    "5": {
+      "available": 3501,
+      "unavailable_gap_or_tail": 68
+    }
+  },
+  "corrupted_forecast_rejection": "Forecast bundle artifact mismatch: forecasts.json.gz",
+  "new_fit_calls": 0,
+  "new_market_predictions": 0
+}

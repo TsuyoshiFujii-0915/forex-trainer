@@ -1,0 +1,132 @@
+{
+  "campaign_id": "issue40-common-direction-development-v3",
+  "bundle_content_sha256": "3b92ed21ee6fc8a92108497f030db82e270b69c93a67820fe8f456e45f8d9509",
+  "metric_unit": "equal_fold_mean_of_basket_price_simple_return_squared_error",
+  "era_diagnostics": [
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.505074429098833,
+        "mse": 4.1448248166883555e-05,
+        "mse_minus_zero": 1.031212538512237e-06,
+        "prediction_variance": 1.9994421605630487e-07,
+        "zero_mse": 4.0417035628371316e-05,
+        "correlation": 0.0514685579068446
+      },
+      "era": "all",
+      "folds": 17,
+      "horizon": 1,
+      "status": "available",
+      "correlation_aggregation": "arithmetic_mean_of_fold_time_series_correlations",
+      "account_decisions": 3569,
+      "diagnostic_labels": 3569
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5057664491346372,
+        "mse": 5.0648493836309716e-05,
+        "mse_minus_zero": 1.7837855273999714e-06,
+        "prediction_variance": 2.790275344363266e-07,
+        "zero_mse": 4.886470830890974e-05,
+        "correlation": 0.060995880095264035
+      },
+      "era": "early",
+      "folds": 10,
+      "horizon": 1,
+      "status": "available",
+      "correlation_aggregation": "arithmetic_mean_of_fold_time_series_correlations",
+      "account_decisions": 2056,
+      "diagnostic_labels": 2056
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5040858290476844,
+        "mse": 2.8305040067703334e-05,
+        "mse_minus_zero": -4.389173132738374e-08,
+        "prediction_variance": 8.696804694198813e-08,
+        "zero_mse": 2.8348931799030716e-05,
+        "correlation": 0.03785809763767398
+      },
+      "era": "late",
+      "folds": 7,
+      "horizon": 1,
+      "status": "available",
+      "correlation_aggregation": "arithmetic_mean_of_fold_time_series_correlations",
+      "account_decisions": 1513,
+      "diagnostic_labels": 1513
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5172967704389337,
+        "mse": 0.00020003861656614085,
+        "mse_minus_zero": 1.3766914851603632e-05,
+        "prediction_variance": 3.3417174561672813e-06,
+        "zero_mse": 0.00018627170171453718,
+        "correlation": 0.1134418553994884
+      },
+      "era": "all",
+      "folds": 17,
+      "horizon": 5,
+      "status": "available",
+      "correlation_aggregation": "arithmetic_mean_of_fold_time_series_correlations",
+      "account_decisions": 3569,
+      "diagnostic_labels": 3501
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5010209852004233,
+        "mse": 0.00024511240214089515,
+        "mse_minus_zero": 2.3900332194564786e-05,
+        "prediction_variance": 4.886954178764644e-06,
+        "zero_mse": 0.0002212120699463304,
+        "correlation": 0.10541650528208676
+      },
+      "era": "early",
+      "folds": 10,
+      "horizon": 5,
+      "status": "available",
+      "correlation_aggregation": "arithmetic_mean_of_fold_time_series_correlations",
+      "account_decisions": 2056,
+      "diagnostic_labels": 2016
+    },
+    {
+      "equal_fold_mean": {
+        "direction_agreement": 0.5405478922082344,
+        "mse": 0.00013564749431649182,
+        "mse_minus_zero": -7.093956383408705e-07,
+        "prediction_variance": 1.1342364238853345e-06,
+        "zero_mse": 0.0001363568899548327,
+        "correlation": 0.12490664128149076
+      },
+      "era": "late",
+      "folds": 7,
+      "horizon": 5,
+      "status": "available",
+      "correlation_aggregation": "arithmetic_mean_of_fold_time_series_correlations",
+      "account_decisions": 1513,
+      "diagnostic_labels": 1485
+    }
+  ],
+  "predictive_gate": {
+    "1": {
+      "rule": "MSE below zero predictor in all-fold mean and both eras",
+      "met": false,
+      "era_pass": {
+        "all": false,
+        "early": false,
+        "late": true
+      }
+    },
+    "5": {
+      "rule": "MSE below zero predictor in all-fold mean and both eras",
+      "met": false,
+      "era_pass": {
+        "all": false,
+        "early": false,
+        "late": true
+      }
+    }
+  },
+  "portfolio_selection": "deferred_to_issue43",
+  "additional_training_for_performance": 0,
+  "independent_profitability_certified": false
+}

@@ -1,0 +1,345 @@
+{
+  "cells": [
+    {
+      "alpha": 1.0,
+      "fold": "2009",
+      "horizon": 1,
+      "model_path": "model-2009-h1.json",
+      "model_sha256": "5dbaf610c90fcd903c9bf3c2a4dad898a4fffdb49bd00995165b0021edd4e927",
+      "status": "model_sealed",
+      "train_rows": 268,
+      "validation_rows": 189
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2009",
+      "horizon": 5,
+      "model_path": "model-2009-h5.json",
+      "model_sha256": "06e2925120701710f29ce51957d4b6af5af97fb55735195e781a94bade1b0819",
+      "status": "model_sealed",
+      "train_rows": 264,
+      "validation_rows": 181
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2010",
+      "horizon": 1,
+      "model_path": "model-2010-h1.json",
+      "model_sha256": "2180f5ca3fa7b77c7a83aa5f8f288958e5f2ee16bd43d533b15e4f1f222a48ea",
+      "status": "model_sealed",
+      "train_rows": 497,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2010",
+      "horizon": 5,
+      "model_path": "model-2010-h5.json",
+      "model_sha256": "46f6eff548b29426cbd3aaf9b6b9270dd3d061f9067f2f7be37ca0969f3de382",
+      "status": "model_sealed",
+      "train_rows": 485,
+      "validation_rows": 127
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2011",
+      "horizon": 1,
+      "model_path": "model-2011-h1.json",
+      "model_sha256": "99386d80adb52a41367d91ca6c7daddc88800d14f0b2796a31a703d251a41a8b",
+      "status": "model_sealed",
+      "train_rows": 758,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2011",
+      "horizon": 5,
+      "model_path": "model-2011-h5.json",
+      "model_sha256": "fd5a68af80d435ccea408e4910f9c3928e98908603cf0d1d6e1c42acd8e24d38",
+      "status": "model_sealed",
+      "train_rows": 746,
+      "validation_rows": 127
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2012",
+      "horizon": 1,
+      "model_path": "model-2012-h1.json",
+      "model_sha256": "4d0e7618382a229a1fa4105ef5538c887c47886951ea2a3f9f77a2a756c2864c",
+      "status": "model_sealed",
+      "train_rows": 964,
+      "validation_rows": 121
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2012",
+      "horizon": 5,
+      "model_path": "model-2012-h5.json",
+      "model_sha256": "404d5d0965ee16683c13c1e2ac0b9986307d79eb450b60d05ff7c56a2495b79e",
+      "status": "model_sealed",
+      "train_rows": 952,
+      "validation_rows": 117
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2013",
+      "horizon": 1,
+      "model_path": "model-2013-h1.json",
+      "model_sha256": "be8e13666ff680424000b4088daf8536c109b0ec05c1de8148380791e0ffd9fd",
+      "status": "model_sealed",
+      "train_rows": 1215,
+      "validation_rows": 110
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2013",
+      "horizon": 5,
+      "model_path": "model-2013-h5.json",
+      "model_sha256": "a299964620748e2ea456d885ed401923842f0f1929f4e81005e5db32605fa80d",
+      "status": "model_sealed",
+      "train_rows": 1199,
+      "validation_rows": 106
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2014",
+      "horizon": 1,
+      "model_path": "model-2014-h1.json",
+      "model_sha256": "e026114b638f4ecdd43e56fc6fbeb991b0ad4881ac1e409d650f5b3ef67eb446",
+      "status": "model_sealed",
+      "train_rows": 1379,
+      "validation_rows": 70
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2014",
+      "horizon": 5,
+      "model_path": "model-2014-h5.json",
+      "model_sha256": "487b1cfd740744a3f67822fde5f79c30adb49fe3803dbac5b04724a4a6ed8cb7",
+      "status": "model_sealed",
+      "train_rows": 1359,
+      "validation_rows": 66
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2015",
+      "horizon": 1,
+      "model_path": "model-2015-h1.json",
+      "model_sha256": "926c5fb6097eb2deec82dd228b80b2391d4926129f03a8a806a295f308f18639",
+      "status": "model_sealed",
+      "train_rows": 1575,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2015",
+      "horizon": 5,
+      "model_path": "model-2015-h5.json",
+      "model_sha256": "dcf7b23629481183bc207e52486e812b73491f8139d4828081dd48b0081d73a4",
+      "status": "model_sealed",
+      "train_rows": 1551,
+      "validation_rows": 127
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2016",
+      "horizon": 1,
+      "model_path": "model-2016-h1.json",
+      "model_sha256": "53487054410e52c762265ea8a6474aad0ef72dc7804a56f6a54d1c194fc967ff",
+      "status": "model_sealed",
+      "train_rows": 1836,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2016",
+      "horizon": 5,
+      "model_path": "model-2016-h5.json",
+      "model_sha256": "04c6037ce5b1533ff7f81c223d051900dd8470ed19d4e80b22af32127b508cf1",
+      "status": "model_sealed",
+      "train_rows": 1812,
+      "validation_rows": 127
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2017",
+      "horizon": 1,
+      "model_path": "model-2017-h1.json",
+      "model_sha256": "8042f2fd45972131f1840f9ae218374bf199f28bde8197a75cd0e2c437229c04",
+      "status": "model_sealed",
+      "train_rows": 2098,
+      "validation_rows": 130
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2017",
+      "horizon": 5,
+      "model_path": "model-2017-h5.json",
+      "model_sha256": "406ed82435f4423abf798769d576c7a9b36ae327241563ca51ce6a3b5af2fa8e",
+      "status": "model_sealed",
+      "train_rows": 2074,
+      "validation_rows": 126
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2018",
+      "horizon": 1,
+      "model_path": "model-2018-h1.json",
+      "model_sha256": "219ad9fce6a0382c1fd308337172736b5de256c6fc047e78b8d6a73fb9f56e85",
+      "status": "model_sealed",
+      "train_rows": 2229,
+      "validation_rows": 162
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2018",
+      "horizon": 5,
+      "model_path": "model-2018-h5.json",
+      "model_sha256": "99d4070df3f3c06c798204e852d7cece79c1b48d239e94b727f50ff518ce2c72",
+      "status": "model_sealed",
+      "train_rows": 2205,
+      "validation_rows": 154
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2019",
+      "horizon": 1,
+      "model_path": "model-2019-h1.json",
+      "model_sha256": "711b073ff59aa8b41dfcc4c3d5a9726e8b8408f378a124c3093c4f450b9e044a",
+      "status": "model_sealed",
+      "train_rows": 2489,
+      "validation_rows": 130
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2019",
+      "horizon": 5,
+      "model_path": "model-2019-h5.json",
+      "model_sha256": "ba97d1b3572669628f967a387799d51cb4ddbfa89716e6ba2ff06dc0430e44e9",
+      "status": "model_sealed",
+      "train_rows": 2457,
+      "validation_rows": 126
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2020",
+      "horizon": 1,
+      "model_path": "model-2020-h1.json",
+      "model_sha256": "78360bd10e24315ce4e8b4bd5f413ae9f5f11f839c0b35ea7cda6c902354070d",
+      "status": "model_sealed",
+      "train_rows": 2721,
+      "validation_rows": 95
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2020",
+      "horizon": 5,
+      "model_path": "model-2020-h5.json",
+      "model_sha256": "832554b999b56189d9b4385b83485272cbe7bacf76a49dc5c37840da99554cc9",
+      "status": "model_sealed",
+      "train_rows": 2689,
+      "validation_rows": 91
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2021",
+      "horizon": 1,
+      "model_path": "model-2021-h1.json",
+      "model_sha256": "53405d9af74587e40b3999afab428fe3b64ef337a27b51ab3d3329c179b3fd33",
+      "status": "model_sealed",
+      "train_rows": 2946,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2021",
+      "horizon": 5,
+      "model_path": "model-2021-h5.json",
+      "model_sha256": "fe1cb53a061f9714ca5c2c3b008a37425437c95e2c8b30990dc356f0f9d42359",
+      "status": "model_sealed",
+      "train_rows": 2910,
+      "validation_rows": 127
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2022",
+      "horizon": 1,
+      "model_path": "model-2022-h1.json",
+      "model_sha256": "7afcb2f71388d83194a79b3276daa857ae0264d5f9ddcad06a95a6896142886b",
+      "status": "model_sealed",
+      "train_rows": 3207,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2022",
+      "horizon": 5,
+      "model_path": "model-2022-h5.json",
+      "model_sha256": "13c4078800f2f5665a38e22dcd161d895d4d6a0906535ab87532a84e886c4f79",
+      "status": "model_sealed",
+      "train_rows": 3171,
+      "validation_rows": 127
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2023",
+      "horizon": 1,
+      "model_path": "model-2023-h1.json",
+      "model_sha256": "3059c5c222b22dad16f985adf659c92761dbd7dc674bff161f200fea666564e1",
+      "status": "model_sealed",
+      "train_rows": 3468,
+      "validation_rows": 130
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2023",
+      "horizon": 5,
+      "model_path": "model-2023-h5.json",
+      "model_sha256": "edef8180f35ca1e204d56c1323867fffde340be9bb9635ecdcf387f29e5b53c5",
+      "status": "model_sealed",
+      "train_rows": 3432,
+      "validation_rows": 126
+    },
+    {
+      "alpha": 0.1,
+      "fold": "2024",
+      "horizon": 1,
+      "model_path": "model-2024-h1.json",
+      "model_sha256": "b482b6d265f8c5e2fef9cd2e014d3b57ee95de96a13151ea65cc9fab7a241cbb",
+      "status": "model_sealed",
+      "train_rows": 3729,
+      "validation_rows": 129
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2024",
+      "horizon": 5,
+      "model_path": "model-2024-h5.json",
+      "model_sha256": "2c02f1d3e2d57cb9f17bcf762b3ce6c110ba528fa3a448ac58c2c06acb3eb6ca",
+      "status": "model_sealed",
+      "train_rows": 3693,
+      "validation_rows": 125
+    },
+    {
+      "alpha": 0.01,
+      "fold": "2025",
+      "horizon": 1,
+      "model_path": "model-2025-h1.json",
+      "model_sha256": "817e69fbc03cac777e4762b23d7eb7c14580f33b756afc9b5e55d7938f26c542",
+      "status": "model_sealed",
+      "train_rows": 3989,
+      "validation_rows": 131
+    },
+    {
+      "alpha": 1.0,
+      "fold": "2025",
+      "horizon": 5,
+      "model_path": "model-2025-h5.json",
+      "model_sha256": "4d9e701408397eebb93edf0966f38a42d7610f0b55380189622a89e0c50426ed",
+      "status": "model_sealed",
+      "train_rows": 3953,
+      "validation_rows": 127
+    }
+  ],
+  "fit_calls": 102
+}

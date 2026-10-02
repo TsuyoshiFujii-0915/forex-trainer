@@ -382,7 +382,10 @@ uv run forex-shadow head --store runs/issue32-frozen-fixture --output runs/issue
 without changing the older pair-ranking models. The `preflight` command validates
 all 34 adopted v3 splits without fitting. Production fits require the dependency
 PR #56 to be merged and a separate clean-runtime `seal`; registration alone does
-not activate training. See the [research note](docs/research/28-common-basket-forecaster.md)
+not activate training. After that merge, Issue #41 completed 102 fits and sealed
+34 models with all 7,138 forecast rows. Both horizons failed the registered
+zero-predictor MSE gate; no performance-driven retraining was performed.
+See the [research note](docs/research/28-common-basket-forecaster.md)
 for reproduction commands, the immutable forecast interface, and current status.
 
 ```bash
