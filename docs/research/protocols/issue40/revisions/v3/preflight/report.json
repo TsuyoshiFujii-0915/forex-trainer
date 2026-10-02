@@ -1,0 +1,267 @@
+{
+  "campaign_id": "issue40-common-direction-development-v3",
+  "status": "calendar_eligible",
+  "scope": "Calendar eligibility only; prices, features, targets, and training success are not certified.",
+  "training_calls": 0,
+  "price_values_read": 0,
+  "model_inference_calls": 0,
+  "market_evaluation_accounts": 0,
+  "external_data_requests": 0,
+  "baseline": {
+    "cases": 442,
+    "blocked_cases": 97,
+    "report": "docs/research/protocols/issue40/preflight/report.json"
+  },
+  "history_bars": 63,
+  "minimum_train_rows": 252,
+  "minimum_validation_rows": 60,
+  "lookback_months": [
+    6,
+    12,
+    18,
+    24
+  ],
+  "candidate_cases": 136,
+  "selected_cases": 34,
+  "blocked_folds": [],
+  "selection": "Shortest lookback satisfying both horizons; expanding train ends at validation start.",
+  "fold_splits": [
+    {
+      "fold": "2009",
+      "lookback_months": 24,
+      "train_range_london": [
+        "2003-06-01",
+        "2007-01-01"
+      ],
+      "validation_range_london": [
+        "2007-01-01",
+        "2009-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2010",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2009-07-01"
+      ],
+      "validation_range_london": [
+        "2009-07-01",
+        "2010-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2011",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2010-07-01"
+      ],
+      "validation_range_london": [
+        "2010-07-01",
+        "2011-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2012",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2011-07-01"
+      ],
+      "validation_range_london": [
+        "2011-07-01",
+        "2012-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2013",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2012-07-01"
+      ],
+      "validation_range_london": [
+        "2012-07-01",
+        "2013-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2014",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2013-07-01"
+      ],
+      "validation_range_london": [
+        "2013-07-01",
+        "2014-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2015",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2014-07-01"
+      ],
+      "validation_range_london": [
+        "2014-07-01",
+        "2015-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2016",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2015-07-01"
+      ],
+      "validation_range_london": [
+        "2015-07-01",
+        "2016-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2017",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2016-07-01"
+      ],
+      "validation_range_london": [
+        "2016-07-01",
+        "2017-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2018",
+      "lookback_months": 12,
+      "train_range_london": [
+        "2003-06-01",
+        "2017-01-01"
+      ],
+      "validation_range_london": [
+        "2017-01-01",
+        "2018-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2019",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2018-07-01"
+      ],
+      "validation_range_london": [
+        "2018-07-01",
+        "2019-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2020",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2019-07-01"
+      ],
+      "validation_range_london": [
+        "2019-07-01",
+        "2020-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2021",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2020-07-01"
+      ],
+      "validation_range_london": [
+        "2020-07-01",
+        "2021-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2022",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2021-07-01"
+      ],
+      "validation_range_london": [
+        "2021-07-01",
+        "2022-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2023",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2022-07-01"
+      ],
+      "validation_range_london": [
+        "2022-07-01",
+        "2023-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2024",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2023-07-01"
+      ],
+      "validation_range_london": [
+        "2023-07-01",
+        "2024-01-01"
+      ],
+      "boundary_role": "selected"
+    },
+    {
+      "fold": "2025",
+      "lookback_months": 6,
+      "train_range_london": [
+        "2003-06-01",
+        "2024-07-01"
+      ],
+      "validation_range_london": [
+        "2024-07-01",
+        "2025-01-01"
+      ],
+      "boundary_role": "selected"
+    }
+  ],
+  "next_decision": {
+    "recommended_change": "new_data_identity_with_bounded_input_recovery",
+    "status": "not_needed",
+    "invariant_to_change": "Existing data bytes only; retain 17 intervals, 63 history bars, and 252/60 minima.",
+    "proposal": "Register one replacement input snapshot with a finite acquisition budget before any fetch or fit; do not add lookbacks or relax counts.",
+    "blocked_folds": []
+  },
+  "decision": "Register short split; RL and execution require separate gates.",
+  "parent_registration_sha256": "ec90830f4abb811073106cdfb38e214e7609b24ad1e905542f2defb57f8603c4",
+  "coverage_sha256": "d7d49951fa454e27877300227f960cb638b3f4a1babefeebeea1cd83df8ae334",
+  "script_sha256": "b191dd2e3b49e816358530fb45265ac0eafd5f02a6dfbdf47ed4fce0d3abfe88",
+  "legacy_script_sha256": "5c39504d5424ef5258f143f724873ead050eaab190c12b6068a158e27a9085fb",
+  "artifacts": {
+    "candidates.csv": "bb92aede49bbe502db912f6cba09ea1483cbdd6b66aab24d431d433b870f0abc",
+    "counts.csv": "4dd82af0422177cb72d2bd4345f64d451d14012fc2d3736e56713febb1303414"
+  }
+}

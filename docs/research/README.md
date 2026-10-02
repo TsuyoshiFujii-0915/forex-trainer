@@ -32,15 +32,20 @@
 | [23-bounded-input-recovery.md](23-bounded-input-recovery.md) | 有限入力回復の出口B、全欠損pair監査、連続区間snapshotと旧17foldとの差、#29/#30への引渡し | Issue #39 |
 | [24-successor-cost-baselines.md](24-successor-cost-baselines.md) | #39の17固定区間で3方策×3費用条件153口座を完走、部分年を明示した基準線と#30へのF0引渡し | Issue #29後継 |
 | [25-successor-profit-attribution.md](25-successor-profit-attribution.md) | 後継85口座を完走、PPOの共通方向・相対配分・carry・費用帰属、2対照と次期仮説 | Issue #30後継 |
-| [26-common-direction-learning-campaign.md](26-common-direction-learning-campaign.md) | 共通方向の一分岐、1/5日ridge×2配分、有限fit/逐次RL予算、数値採否、#41〜#50の実行manifest | Issue #40 |
+| [26-common-direction-learning-campaign.md](26-common-direction-learning-campaign.md) | 共通方向の一分岐、1/5日ridge×2配分、有限fit/逐次RL予算、数値採否、#41〜#50の実行manifest | Issue #40（v2履歴） |
+| [27-short-common-direction-revision.md](27-short-common-direction-revision.md) | 有限calendar分割で全34ケース適格、短期・中期RL・実執行gate分離、#41〜#50引渡し | Issue #55（v3） |
 
-次期学習の入口は[issue40-common-direction-development-v2](26-common-direction-learning-campaign.md)と
-[登録・試行台帳](protocols/issue40/registration.json)。#30後継の根拠から共通方向だけを選び、
-4構成と条件付き1PPOの予算・採否を固定した。v2の全件calendar preflightで2009/2018のvalidation等の
-既知不足を確定し、現在の実行分岐は「不足解消へ戻る」。閾値・history・foldを緩めず本学習は開始不可。
-#49は同一予測allocatorを含む連続最大9口座と年度reset最大153口座を別枠に登録した。
-契約登録と件数監査のみで新規学習・市場評価は未実行。v1登録は元bytesを保存している。
-旧17通年の不足を保持し、独立収益性やcanonical置換を認定していない。
+次期学習の入口は[issue40-common-direction-development-v3](27-short-common-direction-revision.md)と
+[新登録・試行台帳](protocols/issue40/revisions/v3/registration.json)。#55の有限calendar検査で、
+2009は24か月、2018は12か月、他15foldは6か月の共通validationを採用し、全34ケースが252/60を満たした。
+短期契約は確定し`short_data_ready=ready`、中期RLと実執行はblockedとして分離する。
+calendar/gate検査は実装済みだが、#41/#42/#43の実装・実値検査・runtime sealは未完了。
+改訂PRのレビュー・マージと各実行前sealが必要で、現在の本学習・市場評価の有効予算は0。
+#43は中期cross-fit/PPO validation、#44/#45、#49連続入力復旧を待たず候補を判断できる。
+通常予算は102fit・357口座のまま。v2の187更新/561fitは中期の旧計画値として保持し、#46で実日程を確定する。
+#40はv2の停止判断まで歴史上完了。[v1/v2](26-common-direction-learning-campaign.md)とsealed成果物は元bytesを保持。
+旧#29/#30の通年は81/45不足のまま現行経路から取り下げ、後継153/85口座の完了とは区別する。
+本Issueの学習・市場推論・口座評価・外部取得は0。独立収益性やcanonical置換を認定していない。
 
 先行する測定・帰属診断は[issue27-development-v1](17-bounded-development-protocol.md)と
 [実行manifest](protocols/issue27/execution-manifest.md)を参照する。
