@@ -1,0 +1,113 @@
+{
+  "kind": "synthetic_only",
+  "first_london_date": "2024-03-29",
+  "mark_count": 6,
+  "initial_prices": [
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09
+  ],
+  "daily_pair_growth": [
+    0.004,
+    0.005,
+    0.006,
+    0.007,
+    0.008,
+    0.009000000000000001,
+    0.01,
+    0.011,
+    0.012
+  ],
+  "carry": [
+    0.0365,
+    0.0365,
+    0.0365,
+    0.0365,
+    0.0365,
+    0.0365,
+    0.0365,
+    0.0365,
+    0.0365
+  ],
+  "spreads": [
+    0.001,
+    0.001,
+    0.001,
+    0.001,
+    0.001,
+    0.001,
+    0.001,
+    0.001,
+    0.001
+  ],
+  "commission": 0.0002,
+  "markup": 1e-05,
+  "forecasts": [
+    0.01,
+    0.01,
+    0.0,
+    -0.01,
+    0.02
+  ],
+  "covariance_diagonal": 0.009,
+  "accounts": [
+    "fixed-h1",
+    "cost-h1",
+    "fixed-h5",
+    "cost-h5",
+    "hold",
+    "F1",
+    "F2",
+    "risk",
+    "margin",
+    "bankruptcy",
+    "canonical",
+    "ridge",
+    "ppo_ens3"
+  ],
+  "hold_modes": [
+    "entry",
+    "hold",
+    "partial",
+    "close",
+    "short"
+  ],
+  "hold_gross": 0.6,
+  "risk_weights": [
+    0.8,
+    -0.8,
+    0.8,
+    -0.8,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "risk_first_relatives": [
+    0.8,
+    1.2,
+    0.8,
+    1.2,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "margin_first_relative": 1.85,
+  "bankruptcy_first_relative": 2.2,
+  "control_seeds": [
+    42,
+    43,
+    44
+  ],
+  "control_training": 0,
+  "daily_carry_increment": 0.001
+}
