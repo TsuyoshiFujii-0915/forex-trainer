@@ -1,0 +1,789 @@
+{
+  "artifacts": {
+    "excluded-rows.json.gz": "e5f4d9b322db25f7725b0769927a308fe2148ba3cc2bc519227306b417824605",
+    "missing-calendar.json.gz": "0a119e804d577c301d39b685730595b3a5d2cad9231b41fed55c81bf6b653902",
+    "row-identities.json.gz": "6760b8dca4606654ad40a96fc68cfa441bea522fd04bc52bc0d0674e5c710137"
+  },
+  "campaign_id": "issue40-common-direction-development-v3",
+  "cases": [
+    {
+      "expected_decisions": 171,
+      "fold": "2009",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 268,
+        "history_excluded": 109,
+        "label_gap_excluded": 0,
+        "present_rows": 378
+      },
+      "train_rows": 268,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 189,
+        "history_excluded": 302,
+        "label_gap_excluded": 2,
+        "present_rows": 493
+      },
+      "validation_rows": 189
+    },
+    {
+      "expected_decisions": 171,
+      "fold": "2009",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 264,
+        "history_excluded": 109,
+        "label_gap_excluded": 0,
+        "present_rows": 378
+      },
+      "train_rows": 264,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 181,
+        "history_excluded": 302,
+        "label_gap_excluded": 10,
+        "present_rows": 493
+      },
+      "validation_rows": 181
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2010",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 497,
+        "history_excluded": 497,
+        "label_gap_excluded": 2,
+        "present_rows": 997
+      },
+      "train_rows": 497,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2010",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 485,
+        "history_excluded": 497,
+        "label_gap_excluded": 10,
+        "present_rows": 997
+      },
+      "train_rows": 485,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    },
+    {
+      "expected_decisions": 121,
+      "fold": "2011",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 758,
+        "history_excluded": 497,
+        "label_gap_excluded": 2,
+        "present_rows": 1258
+      },
+      "train_rows": 758,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 121,
+      "fold": "2011",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 746,
+        "history_excluded": 497,
+        "label_gap_excluded": 10,
+        "present_rows": 1258
+      },
+      "train_rows": 746,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    },
+    {
+      "expected_decisions": 240,
+      "fold": "2012",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 964,
+        "history_excluded": 551,
+        "label_gap_excluded": 3,
+        "present_rows": 1518
+      },
+      "train_rows": 964,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 121,
+        "history_excluded": 9,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 121
+    },
+    {
+      "expected_decisions": 240,
+      "fold": "2012",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 952,
+        "history_excluded": 551,
+        "label_gap_excluded": 15,
+        "present_rows": 1518
+      },
+      "train_rows": 952,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 117,
+        "history_excluded": 9,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 117
+    },
+    {
+      "expected_decisions": 124,
+      "fold": "2013",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 1215,
+        "history_excluded": 560,
+        "label_gap_excluded": 3,
+        "present_rows": 1779
+      },
+      "train_rows": 1215,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 110,
+        "history_excluded": 19,
+        "label_gap_excluded": 1,
+        "present_rows": 130
+      },
+      "validation_rows": 110
+    },
+    {
+      "expected_decisions": 124,
+      "fold": "2013",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 1199,
+        "history_excluded": 560,
+        "label_gap_excluded": 15,
+        "present_rows": 1779
+      },
+      "train_rows": 1199,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 106,
+        "history_excluded": 19,
+        "label_gap_excluded": 5,
+        "present_rows": 130
+      },
+      "validation_rows": 106
+    },
+    {
+      "expected_decisions": 257,
+      "fold": "2014",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 1379,
+        "history_excluded": 653,
+        "label_gap_excluded": 4,
+        "present_rows": 2037
+      },
+      "train_rows": 1379,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 70,
+        "history_excluded": 60,
+        "label_gap_excluded": 1,
+        "present_rows": 131
+      },
+      "validation_rows": 70
+    },
+    {
+      "expected_decisions": 257,
+      "fold": "2014",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 1359,
+        "history_excluded": 653,
+        "label_gap_excluded": 20,
+        "present_rows": 2037
+      },
+      "train_rows": 1359,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 66,
+        "history_excluded": 60,
+        "label_gap_excluded": 5,
+        "present_rows": 131
+      },
+      "validation_rows": 66
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2015",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 1575,
+        "history_excluded": 716,
+        "label_gap_excluded": 5,
+        "present_rows": 2297
+      },
+      "train_rows": 1575,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2015",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 1551,
+        "history_excluded": 716,
+        "label_gap_excluded": 25,
+        "present_rows": 2297
+      },
+      "train_rows": 1551,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2016",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 1836,
+        "history_excluded": 716,
+        "label_gap_excluded": 5,
+        "present_rows": 2558
+      },
+      "train_rows": 1836,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2016",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 1812,
+        "history_excluded": 716,
+        "label_gap_excluded": 25,
+        "present_rows": 2558
+      },
+      "train_rows": 1812,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    },
+    {
+      "expected_decisions": 135,
+      "fold": "2017",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 2098,
+        "history_excluded": 716,
+        "label_gap_excluded": 5,
+        "present_rows": 2820
+      },
+      "train_rows": 2098,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 130,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 130
+    },
+    {
+      "expected_decisions": 135,
+      "fold": "2017",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 2074,
+        "history_excluded": 716,
+        "label_gap_excluded": 25,
+        "present_rows": 2820
+      },
+      "train_rows": 2074,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 126,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 126
+    },
+    {
+      "expected_decisions": 228,
+      "fold": "2018",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 2229,
+        "history_excluded": 716,
+        "label_gap_excluded": 5,
+        "present_rows": 2951
+      },
+      "train_rows": 2229,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 162,
+        "history_excluded": 94,
+        "label_gap_excluded": 2,
+        "present_rows": 258
+      },
+      "validation_rows": 162
+    },
+    {
+      "expected_decisions": 228,
+      "fold": "2018",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 2205,
+        "history_excluded": 716,
+        "label_gap_excluded": 25,
+        "present_rows": 2951
+      },
+      "train_rows": 2205,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 154,
+        "history_excluded": 94,
+        "label_gap_excluded": 10,
+        "present_rows": 258
+      },
+      "validation_rows": 154
+    },
+    {
+      "expected_decisions": 100,
+      "fold": "2019",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 2489,
+        "history_excluded": 842,
+        "label_gap_excluded": 7,
+        "present_rows": 3339
+      },
+      "train_rows": 2489,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 130,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 130
+    },
+    {
+      "expected_decisions": 100,
+      "fold": "2019",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 2457,
+        "history_excluded": 842,
+        "label_gap_excluded": 35,
+        "present_rows": 3339
+      },
+      "train_rows": 2457,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 126,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 126
+    },
+    {
+      "expected_decisions": 261,
+      "fold": "2020",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 2721,
+        "history_excluded": 869,
+        "label_gap_excluded": 8,
+        "present_rows": 3598
+      },
+      "train_rows": 2721,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 95,
+        "history_excluded": 36,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 95
+    },
+    {
+      "expected_decisions": 261,
+      "fold": "2020",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 2689,
+        "history_excluded": 869,
+        "label_gap_excluded": 40,
+        "present_rows": 3598
+      },
+      "train_rows": 2689,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 91,
+        "history_excluded": 36,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 91
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2021",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 2946,
+        "history_excluded": 905,
+        "label_gap_excluded": 8,
+        "present_rows": 3860
+      },
+      "train_rows": 2946,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 260,
+      "fold": "2021",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 2910,
+        "history_excluded": 905,
+        "label_gap_excluded": 40,
+        "present_rows": 3860
+      },
+      "train_rows": 2910,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    },
+    {
+      "expected_decisions": 259,
+      "fold": "2022",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 3207,
+        "history_excluded": 905,
+        "label_gap_excluded": 8,
+        "present_rows": 4121
+      },
+      "train_rows": 3207,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 259,
+      "fold": "2022",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 3171,
+        "history_excluded": 905,
+        "label_gap_excluded": 40,
+        "present_rows": 4121
+      },
+      "train_rows": 3171,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    },
+    {
+      "expected_decisions": 259,
+      "fold": "2023",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 3468,
+        "history_excluded": 905,
+        "label_gap_excluded": 8,
+        "present_rows": 4382
+      },
+      "train_rows": 3468,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 130,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 130
+    },
+    {
+      "expected_decisions": 259,
+      "fold": "2023",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 3432,
+        "history_excluded": 905,
+        "label_gap_excluded": 40,
+        "present_rows": 4382
+      },
+      "train_rows": 3432,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 126,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 131
+      },
+      "validation_rows": 126
+    },
+    {
+      "expected_decisions": 261,
+      "fold": "2024",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 3729,
+        "history_excluded": 905,
+        "label_gap_excluded": 8,
+        "present_rows": 4643
+      },
+      "train_rows": 3729,
+      "validation_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 129,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 130
+      },
+      "validation_rows": 129
+    },
+    {
+      "expected_decisions": 261,
+      "fold": "2024",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 3693,
+        "history_excluded": 905,
+        "label_gap_excluded": 40,
+        "present_rows": 4643
+      },
+      "train_rows": 3693,
+      "validation_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 125,
+        "history_excluded": 0,
+        "label_gap_excluded": 0,
+        "present_rows": 130
+      },
+      "validation_rows": 125
+    },
+    {
+      "expected_decisions": 113,
+      "fold": "2025",
+      "horizon_business_days": 1,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 1,
+        "eligible_rows": 3989,
+        "history_excluded": 905,
+        "label_gap_excluded": 8,
+        "present_rows": 4903
+      },
+      "train_rows": 3989,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 131,
+        "history_excluded": 0,
+        "label_gap_excluded": 1,
+        "present_rows": 132
+      },
+      "validation_rows": 131
+    },
+    {
+      "expected_decisions": 113,
+      "fold": "2025",
+      "horizon_business_days": 5,
+      "status": "input_ready",
+      "train_counts": {
+        "boundary_purged": 5,
+        "eligible_rows": 3953,
+        "history_excluded": 905,
+        "label_gap_excluded": 40,
+        "present_rows": 4903
+      },
+      "train_rows": 3953,
+      "validation_counts": {
+        "boundary_purged": 0,
+        "eligible_rows": 127,
+        "history_excluded": 0,
+        "label_gap_excluded": 5,
+        "present_rows": 132
+      },
+      "validation_rows": 127
+    }
+  ],
+  "config_sha256": "a900198d758258bedb108e72efeb51fd18318467893c99190cff7b9e7781cbc9",
+  "execution_status": "requires_merge_and_runtime_seal",
+  "features": [
+    "log_return",
+    "volatility",
+    "sma20_ratio",
+    "mom24",
+    "carry_annual"
+  ],
+  "fit_calls": 0,
+  "market_inference_calls": 0,
+  "pairs": [
+    "JPY/USD",
+    "JPY/EUR",
+    "JPY/GBP",
+    "JPY/AUD",
+    "JPY/CHF",
+    "JPY/CAD",
+    "JPY/NZD",
+    "JPY/NOK",
+    "JPY/SEK"
+  ],
+  "registration": {
+    "path": "docs/research/protocols/issue40/revisions/v3/registration.json",
+    "sha256": "5d096705e68536faa48eadf7a701e7d034f918e5203b45fb8191bbefeae6e8aa"
+  },
+  "source_data": {
+    "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+    "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+  },
+  "status": "input_ready"
+}

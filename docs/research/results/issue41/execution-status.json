@@ -1,0 +1,59 @@
+{
+  "issue": 41,
+  "recorded_date": "2026-10-02",
+  "status": "complete",
+  "campaign_id": "issue40-common-direction-development-v3",
+  "forecast_bundle_id": "issue40-short-forecast-v3",
+  "bundle_content_sha256": "3b92ed21ee6fc8a92108497f030db82e270b69c93a67820fe8f456e45f8d9509",
+  "prior_status": "docs/research/results/issue41/implementation-status.json",
+  "dependency_pr": "https://github.com/TsuyoshiFujii-0915/forex-trainer/pull/56",
+  "dependency_merge_commit": "1498af1b751ef0d7c4557246e21748f665d70cb2",
+  "execution_git": {
+    "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "forex_trainer": "5f3ea68b8f88c3f97395d82035c4cd91ec527f20"
+  },
+  "normal_fit_calls": 102,
+  "selected_models": 34,
+  "refits": 0,
+  "fixture_fit_calls_total": 6,
+  "new_fixture_fit_calls": 0,
+  "shared_retry_fit_calls_total": 0,
+  "market_forecast_rows": 7138,
+  "market_evaluation_accounts": 0,
+  "external_data_requests": 0,
+  "commands_executed": [
+    "MPLCONFIGDIR=/tmp/issue41-matplotlib .venv/bin/python -m forex_trainer.common_basket_study seal --config configs/research/issue41_common_basket.json --dependency-merge-commit 1498af1b751ef0d7c4557246e21748f665d70cb2 --output runs/issue41-execution-seal",
+    "MPLCONFIGDIR=/tmp/issue41-matplotlib .venv/bin/python -m forex_trainer.common_basket_study run --config configs/research/issue41_common_basket.json --activation runs/issue41-execution-seal/activation.json",
+    "MPLCONFIGDIR=/tmp/issue41-matplotlib .venv/bin/python -m forex_trainer.common_basket_study verify --bundle runs/issue41-common-basket-v3"
+  ],
+  "handoff": {
+    "issue42": "fixed and cost consume the same verified bundle and train covariance",
+    "issue43": "both horizons complete; predictive gate unmet for both; portfolio decision deferred"
+  },
+  "sources": [
+    {
+      "path": "docs/research/results/issue41/implementation-status.json",
+      "sha256": "c473c3d5f82f2d396e6b5b1237213b256311cf685cf2e06d68117c38872273c6"
+    },
+    {
+      "path": "docs/research/results/issue41/bundle/manifest.json",
+      "sha256": "5f513d6a02fdf5ee2b2a1cae67d3d32c9b8493ae092432e9daee679f250905ea"
+    },
+    {
+      "path": "docs/research/results/issue41/bundle/activation.json",
+      "sha256": "d703fc19cefd32d7cd1d0f0f4a41590884094c33776f3161f444272167c8309f"
+    },
+    {
+      "path": "docs/research/results/issue41/bundle/fit-ledger.jsonl",
+      "sha256": "2ef2d658db146bc8545786a01125395509e19d5c5da1c48295c213c65a39e2a5"
+    },
+    {
+      "path": "docs/research/results/issue41/verification.json",
+      "sha256": "66cbc16a60d702adc8c71f3fb6592af210437dc2367c42eed62ca4deab2a3dc9"
+    },
+    {
+      "path": "docs/research/results/issue41/postrun-assessment.json",
+      "sha256": "4cb95db0fc00133e8f52fde18b6e19682e2a5045dd278851272db17221b1c167"
+    }
+  ]
+}

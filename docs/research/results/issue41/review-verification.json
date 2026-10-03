@@ -1,0 +1,35 @@
+{
+  "recorded_date": "2026-10-04",
+  "reviewed_commit": "214f0aa3595a8c17ce9a0cb15254dd0ad429d49e",
+  "status": "verified",
+  "normal_fit_calls_added": 0,
+  "fixture_fit_calls_added": 0,
+  "market_predictions_added": 0,
+  "sealed_bundle_unchanged": true,
+  "v3_and_prior_registration_unchanged": true,
+  "bundle_content_sha256": "3b92ed21ee6fc8a92108497f030db82e270b69c93a67820fe8f456e45f8d9509",
+  "regression_tests": {
+    "new_semantic_and_budget_tests_passed": 20,
+    "existing_non_fit_tests_passed": 19,
+    "fit_fixture_tests_deselected": 3
+  },
+  "new_test_cases": {
+    "consistent_hash_semantic_mismatches": 13,
+    "existing_complete_bundle": 1,
+    "saved_consumption_without_runs": 6
+  },
+  "commands": [
+    "MPLCONFIGDIR=/tmp/issue41-matplotlib .venv/bin/python -m pytest tests/test_common_basket_review.py -q",
+    "MPLCONFIGDIR=/tmp/issue41-matplotlib .venv/bin/python -m pytest tests/test_common_basket.py tests/test_common_basket_handoff.py -q -k 'not mean_loss and not tie_tolerance and not forecasts_keep'"
+  ],
+  "sources": [
+    {
+      "path": "src/forex_trainer/common_basket_study.py",
+      "sha256": "6755942d9d0501ee16bc237c8798abdb13144e795117dad2712abd5e56e99d0b"
+    },
+    {
+      "path": "tests/test_common_basket_review.py",
+      "sha256": "ec90df8bce818b94505fe43ed13e52aaf5aa8e4986d7a181928f1e30ae924567"
+    }
+  ]
+}
