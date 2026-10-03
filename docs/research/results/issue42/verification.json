@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "new_behavior_tests": 37,
+  "existing_regression_tests": 76,
+  "total_tests": 113,
+  "new_test_command": "uv run pytest tests/test_common_allocation.py tests/test_common_quantity_artifacts.py tests/test_common_quantity_boundaries.py tests/test_common_quantity_validation.py -q",
+  "regression_test_command": "uv run pytest tests/test_common_basket.py tests/test_common_basket_handoff.py tests/test_common_basket_review.py tests/test_config.py tests/test_evaluate_metrics.py -q -k 'not mean_loss_penalty and not tie_tolerance_compares and not forecasts_keep_unlabelled'",
+  "excluded_tests": {
+    "count": 3,
+    "reason": "Existing Issue 41 tests would repeat the already-consumed six synthetic fits."
+  },
+  "source_snapshot_copy_byte_identical": true,
+  "verified_artifacts": 19,
+  "account_reconciliation": "All 57 transitions: quantity deltas, actual notional, spread, commission, current-rate signed financing, UTC elapsed time, markup, equity, caps, terminal log.",
+  "tamper_detection": [
+    "artifact hash mismatch",
+    "missing artifact inventory",
+    "cash inconsistency despite recomputed outer hashes"
+  ],
+  "additional_account_executions_for_verification": 0,
+  "types_compile": "passed",
+  "git_diff_check": "passed"
+}

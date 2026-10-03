@@ -1,0 +1,15 @@
+{
+  "ppo_kind": "untrained_fixture_only",
+  "ppo_parameter_sha256": [
+    "33f1b2c5427660dc63a6f3147818b7674c126ef1bb62b85fa0c349f79a2d1a6e",
+    "3fb830ef05aa9cc932f327c30fed6f5d6c552382ae80b60624d1e958c8bee2f2",
+    "21e62d33785c8e82b6e44c6a55d5b61ccf6d43545824cad0fa6e2cadc9131f32"
+  ],
+  "ridge_kind": "synthetic_fixed_coefficients",
+  "ridge_parameter_sha256": "c94533f0b1180eb568a385968633a341115958a20aeacfcf8ddecd0fb5f223f0",
+  "seeds": [
+    42,
+    43,
+    44
+  ]
+}
