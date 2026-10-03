@@ -22,7 +22,7 @@ from .artifact_provenance import sha256_file
 from .common_basket import (
     ALPHAS, FEATURES, PAIRS, InputError, Model, Panel, Rows, build_panel,
     choose_alpha, diagnostics, fit_candidates, forecast_rows, standardize,
-    training_rows, utc,
+    advance, training_rows, utc,
 )
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -421,6 +421,38 @@ def require_activation(config: dict[str, Any], registration: dict[str, Any], act
         raise ValueError('Execution activation runtime differs from current clean runtime')
 
 
+def require_unused_normal_budget() -> None:
+    """Reject normal execution already consumed or reserved in local or saved records.
+
+    Raises:
+        ValueError: A campaign record is invalid, consumed, or already reserved.
+    """
+    results = ROOT / 'docs/research/results/issue41'
+    for path, field in ((results / 'execution-status.json', 'normal_fit_calls'),
+                        (results / 'bundle/manifest.json', 'fit_calls')):
+        if not path.exists():
+            continue
+        record = read(path)
+        consumed = record[field]
+        if record['campaign_id'] != CAMPAIGN or type(consumed) is not int or consumed < 0:
+            raise ValueError(f'Invalid normal fit budget record: {path}')
+        if consumed > 0:
+            raise ValueError(f'Campaign normal fit budget already consumed ({consumed}): {path}')
+        if record['status'] == 'complete':
+            raise ValueError(f'Inconsistent completed normal fit budget record: {path}')
+    ledger = results / 'bundle/fit-ledger.jsonl'
+    if ledger.exists():
+        with ledger.open() as handle:
+            header = json.loads(handle.readline())
+        if (header['event'] != 'budget_reserved'
+                or header['counter'] != 'issue41_regular_ridge_fit_calls'
+                or header['limit'] != 102):
+            raise ValueError(f'Invalid normal fit budget ledger: {ledger}')
+        raise ValueError(f'Campaign normal fit budget already reserved: {ledger}')
+    if (ROOT / RUN_DIRECTORY).exists():
+        raise ValueError(f'Campaign normal fit budget already reserved by run: {ROOT / RUN_DIRECTORY}')
+
+
 def seal(config_path: Path, merge_commit: str, output: Path) -> dict[str, Any]:
     """Seal the verified inputs/runtime after the dependency has merged.
 
@@ -432,6 +464,7 @@ def seal(config_path: Path, merge_commit: str, output: Path) -> dict[str, Any]:
     Returns:
         Execution activation for the one fixed normal-fit attempt.
     """
+    require_unused_normal_budget()
     config, registration = load_contract(config_path)
     require_merge(registration, merge_commit)
     runtime = execution_runtime()
@@ -474,6 +507,7 @@ def run(config_path: Path, activation_path: Path) -> dict[str, Any]:
     Returns:
         Complete bundle manifest, or an incident retained in the fixed run directory.
     """
+    require_unused_normal_budget()
     config, registration = load_contract(config_path)
     activation = read(activation_path)
     require_activation(config, registration, activation)
@@ -585,6 +619,66 @@ def run(config_path: Path, activation_path: Path) -> dict[str, Any]:
         raise
 
 
+def verify_model_provenance(
+    model: dict[str, Any], fold: dict[str, Any], horizon: int,
+    config: dict[str, Any], activation: dict[str, Any],
+) -> dict[str, Any]:
+    """Bind a saved model's information set to its registered split.
+
+    Args:
+        model: Sealed model JSON, not merely its file hash.
+        fold: Verified v3 fold and shared horizon boundaries.
+        horizon: Registered horizon for the referenced model.
+        config: Verified campaign configuration.
+        activation: Original execution seal, independent of the current runtime.
+
+    Returns:
+        Validated provenance for comparison with each forecast row.
+
+    Raises:
+        ValueError: Model identity, ranges, label ends or training provenance differ.
+    """
+    origin = f'{fold["fold"]}/h{horizon}'
+    if model['fold'] != fold['fold'] or model['horizon_business_days'] != horizon:
+        raise ValueError(f'Forecast model fold/horizon mismatch: {origin}')
+    p = model['provenance']
+    if (p['registration'] != config['registration']
+            or p['config_sha256'] != activation['config_sha256']
+            or p['runtime_sha256'] != digest(activation['runtime'])
+            or p['pair_order'] != config['pairs'] or p['feature_order'] != config['features']):
+        raise ValueError(f'Forecast model provenance/config mismatch: {origin}')
+    last_labels: dict[str, str] = {}
+    for kind, minimum in (('train', 252), ('validation', 60)):
+        bounds = fold[f'{kind}_range_london']
+        if p[f'{kind}_range_london'] != bounds:
+            raise ValueError(f'Model {kind} range differs from registration: {origin}')
+        start, end = (pd.Timestamp(utc(date.fromisoformat(value))) for value in bounds)
+        rows = p[kind]
+        decisions = pd.DatetimeIndex(rows['decision_at_utc'])
+        labels = pd.DatetimeIndex(rows['target_end_utc'])
+        if (len(decisions) < minimum or len(decisions) != len(labels) or len(decisions) != rows['rows']
+                or decisions.tz is None or labels.tz is None
+                or decisions.hasnans or labels.hasnans
+                or not decisions.is_unique or not decisions.is_monotonic_increasing
+                or not labels.is_unique or not labels.is_monotonic_increasing):
+            raise ValueError(f'Invalid model {kind} label/decision axis: {origin}')
+        if not ((decisions >= start) & (decisions < end) & (labels > decisions) & (labels < end)).all():
+            raise ValueError(f'Model {kind} label crosses registered boundary: {origin}')
+        for decision, label in zip(decisions, labels, strict=True):
+            day = decision.tz_convert('Europe/London').date()
+            if (day.weekday() >= 5 or decision != pd.Timestamp(utc(day))
+                    or label != pd.Timestamp(utc(advance(day, horizon)))):
+                raise ValueError(f'Model {kind} label horizon/calendar mismatch: {origin}')
+        last_labels[kind] = labels[-1].tz_convert('UTC').isoformat()
+    if p['parameter_as_of'] != last_labels['validation']:
+        raise ValueError(f'Model parameter as-of differs from validation labels: {origin}')
+    if (p['covariance_as_of'] != last_labels['train']
+            or p['covariance_rows_sha256'] != p['train']['row_sha256']
+            or p['covariance_sha256'] != digest(model['selected']['covariance'])):
+        raise ValueError(f'Model covariance provenance differs from training labels/rows: {origin}')
+    return p
+
+
 def verify_bundle(directory: Path) -> list[dict[str, Any]]:
     """Validate the exact complete forecast interface consumed by fixed and cost.
 
@@ -607,14 +701,26 @@ def verify_bundle(directory: Path) -> list[dict[str, Any]]:
         if not path.is_relative_to(directory.resolve()) or sha256_file(path) != expected:
             raise ValueError(f'Forecast bundle artifact mismatch: {name}')
     config = read(directory / 'config.json')
-    _, registration = load_contract(ROOT / 'configs/research/issue41_common_basket.json')
+    config_path = ROOT / 'configs/research/issue41_common_basket.json'
+    registered_config, registration = load_contract(config_path)
+    activation = manifest['activation']
+    if (config != registered_config or activation['config_content_sha256'] != digest(config)
+            or activation['config_sha256'] != sha256_file(config_path)
+            or activation['registration'] != config['registration']):
+        raise ValueError('Forecast bundle config differs from verified contract/activation')
     rows = read(directory / 'forecasts.json.gz')
     expected_keys: set[tuple[str, int, str]] = set()
     model_hashes = {}
+    model_provenance: dict[tuple[str, int], tuple[str, str]] = {}
+    cutoffs = {fold['fold']: utc(date.fromisoformat(fold['information_cutoff_london']))
+               for fold in registration['folds']}
     for fold in registration['folds']:
         _, decisions, _ = evaluation_panel(config, fold)
         for horizon in (1, 5):
-            model_hashes[fold['fold'], horizon] = sha256_file(directory / f'model-{fold["fold"]}-h{horizon}.json')
+            model_path = directory / f'model-{fold["fold"]}-h{horizon}.json'
+            model_hashes[fold['fold'], horizon] = sha256_file(model_path)
+            provenance = verify_model_provenance(read(model_path), fold, horizon, config, activation)
+            model_provenance[fold['fold'], horizon] = digest(provenance), provenance['parameter_as_of']
             expected_keys.update((fold['fold'], horizon, utc(day)) for day in decisions)
     seen = set()
     for row in rows:
@@ -624,6 +730,10 @@ def verify_bundle(directory: Path) -> list[dict[str, Any]]:
         seen.add(key)
         if row['model_sha256'] != model_hashes[key[:2]] or not np.isfinite(row['predicted_basket_simple_return']):
             raise ValueError(f'Forecast model/value mismatch: {key}')
+        if (row['provenance_sha256'], row['parameter_as_of']) != model_provenance[key[:2]]:
+            raise ValueError(f'Forecast provenance/as-of differs from referenced model: {key}')
+        if row['information_cutoff_utc'] != cutoffs[row['fold']]:
+            raise ValueError(f'Forecast cutoff differs from v3 registration: {key}')
         if not pd.Timestamp(row['parameter_as_of']) < pd.Timestamp(row['information_cutoff_utc']) <= pd.Timestamp(row['decision_at_utc']):
             raise ValueError(f'Forecast as-of violation: {key}')
         if row['campaign_id'] != CAMPAIGN or row['forecast_bundle_id'] != BUNDLE:

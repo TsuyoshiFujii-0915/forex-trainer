@@ -149,3 +149,22 @@ train行集合hash・最大label終点を保存する。`forecasts.json.gz`に�
 旧#15との差は入力集約・target・選択方式を含み、純粋な容量削減効果とは呼ばない。
 逆数JPY/COUNTER価格、14行修復、FRED vintage/公開時刻不明、60日lag、同close、
 既知development期間・部分年という既存の限界を保持し、独立収益性を認定しない。
+
+## PR #57レビュー後の検証強化（2026-10-04）
+
+予測行の自己申告時刻だけでなく、参照モデルJSONのfold/horizon、provenance hash、
+as-of、v3のcutoff・train/validation境界を照合する。各使用decision/labelは一意・昇順、
+London平日・登録h営業日と一致し、label終点は当該rangeの終端より前でなければならない。
+モデルparameter as-ofはvalidation labelの最大終点、共分散as-ofと行hashはtrain側に限定する。
+bundle config・モデルのconfig/runtime/registration参照も検証済み契約と元の実行sealへ結び付ける。
+
+通常fit開始は、ローカル`runs/`に加え、コミット済みexecution-status・bundle manifest・
+予約台帳を検査する。消費済み／予約済みなら、新しいcloneで`runs/`がなくてもseal/runを拒否する。
+preflight/verifyは消費済みでも利用できる。v3登録のconsumed=0は事前登録時点の記録として保持し、
+現在の未使用枠とは扱わない。明示的に別登録するretryの枠へ自動で切り替えることもない。
+
+[追加検証記録](results/issue41/review-verification.json)：内部hashを整合させた不一致13種、
+保存済みbundle正常系、新規checkoutでの3種の消費記録×2入口の計20テストを追加した。
+mockや市場fitなしで実際の成果物コピーとCLIを検証した。既存の関連19テストも通過し、
+学習fixtureを共有する3テストは追加fitを避けるため今回の再実行対象から除いた。
+本修正は検証・開始拒否だけであり、既存102fit・34モデル・7,138予測と元登録のbytesは変更しない。
