@@ -103,4 +103,23 @@ uv run pytest tests/test_common_allocation.py tests/test_common_quantity_*.py -q
 数式で再照合し、再実行による追加予算を消費しない。hashを作り直した会計不整合も検出する。
 テストを実装前に追加し、最初に未実装による収集失敗を確認した。実装中にテストは変更していない。
 
-実行結果と最終検証数は、実装seal後の結果commitに追記する。
+## 実行結果（2026-10-04）
+
+実装SHA `feb089579cdc9c042dfb3f7a85b029710016e0c1`、forex-env SHA
+`6024b91c0f3592611849bc231922ab60e6090aed` のclean runtimeで、初回通常13口座を実行した。
+11口座は全5decision完走、margin/破産の2口座は意図したstrategy terminalを記録。
+全57遷移を照合し、共有retry0、fit0、市場口座0、PPO訓練0。通常枠を再実行しない。
+
+- [実行・予算状態](results/issue42/execution-status.json)
+- [fixture manifest](results/issue42/fixture/manifest.json)
+- [実行前seal](results/issue42/fixture/activation.json)
+- [append-only口座台帳](results/issue42/fixture/account-ledger.jsonl)
+- [検証記録](results/issue42/verification.json)
+
+保存コピーはrunの全artifactと元bytesが一致。追加37テストと既存76テスト、計113が通過した。
+旧#41の6合成fitを再消費する3テストは今回除外し、既存の保存済み学習証拠を保持した。
+検証CLI・テストは保存traceを読むだけで、13口座を再度動かさない。
+
+本番損益は閲覧・生成しておらず、4新構成と3凍結対照の357口座評価は#43の別sealへ渡す。
+#43はこのmeasurementと同一runtimeで全対照を評価する必要がある。中期RL・実quote・
+独立確認を有効化せず、旧成果物と分類はそのまま保持する。

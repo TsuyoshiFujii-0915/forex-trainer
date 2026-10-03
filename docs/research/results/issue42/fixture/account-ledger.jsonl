@@ -1,0 +1,27 @@
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "fixed-h1"}
+{"event": "complete", "status": "complete", "work_item": "fixed-h1"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "cost-h1"}
+{"event": "complete", "status": "complete", "work_item": "cost-h1"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "fixed-h5"}
+{"event": "complete", "status": "complete", "work_item": "fixed-h5"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "cost-h5"}
+{"event": "complete", "status": "complete", "work_item": "cost-h5"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "hold"}
+{"event": "complete", "status": "complete", "work_item": "hold"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "F1"}
+{"event": "complete", "status": "complete", "work_item": "F1"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "F2"}
+{"event": "complete", "status": "complete", "work_item": "F2"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "risk"}
+{"event": "complete", "status": "complete", "work_item": "risk"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "margin"}
+{"event": "complete", "status": "strategy_terminal", "work_item": "margin"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "bankruptcy"}
+{"event": "complete", "status": "strategy_terminal", "work_item": "bankruptcy"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "canonical"}
+{"event": "complete", "status": "complete", "work_item": "canonical"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "ridge"}
+{"event": "complete", "status": "complete", "work_item": "ridge"}
+{"attempt": 1, "counter": "issue42_fixture_accounts", "event": "reserved", "fixture_input_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e", "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1", "work_item": "ppo_ens3"}
+{"event": "complete", "status": "complete", "work_item": "ppo_ens3"}
+{"event": "results_opened", "fixture_accounts": 13, "portfolio_decision": "deferred_to_issue43"}
