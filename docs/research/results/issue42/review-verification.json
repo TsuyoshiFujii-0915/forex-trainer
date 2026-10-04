@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "reviewed_head": "d62d015aba0d01c58f8b1da05ab0fd473d6de82d",
+  "review_comments": [
+    4176147675,
+    4176147678
+  ],
+  "scope": "Covariance handoff and saved-account validation only; allocation solver and replay unchanged.",
+  "review_tests": 26,
+  "previous_issue42_tests": 37,
+  "existing_regression_tests": 76,
+  "total_passed": 139,
+  "commands": [
+    "uv run pytest tests/test_common_quantity_review.py tests/test_common_allocation.py tests/test_common_quantity_artifacts.py tests/test_common_quantity_boundaries.py tests/test_common_quantity_validation.py -q",
+    "uv run pytest tests/test_common_basket.py tests/test_common_basket_handoff.py tests/test_common_basket_review.py tests/test_config.py tests/test_evaluate_metrics.py -q -k 'not mean_loss_penalty and not tie_tolerance_compares and not forecasts_keep_unlabelled'",
+    "uv run forex-common-quantity verify --directory docs/research/results/issue42/fixture"
+  ],
+  "excluded_fit_tests": 3,
+  "additional_fit_calls": 0,
+  "additional_policy_inferences": 0,
+  "additional_account_replays": 0,
+  "tests_written_before_implementation": true,
+  "mocks": false,
+  "original_artifacts_unchanged_from_reviewed_head": true,
+  "preserved_paths": [
+    "docs/research/results/issue41",
+    "docs/research/results/issue42/fixture",
+    "docs/research/results/issue42/execution-status.json",
+    "docs/research/results/issue42/verification.json",
+    "docs/research/protocols/issue42",
+    "configs/research/issue42_common_quantity.json"
+  ],
+  "same_instant_cost_terminal": "Hand-calculated ledger with positive equity equal to initial equity * 0.2; accepted only at the decision instant and with no later transitions.",
+  "source_sha256": {
+    "src/forex_trainer/common_allocation.py": "0c2de74778c3d2b529157d70a98c0c19161bf6f83393b895bc6e545b19d74fce",
+    "src/forex_trainer/common_quantity_study.py": "53dac416fbc98d00212227b66e0459e74d5cf769ee9dcff3d7192c0f24a46b7d",
+    "tests/test_common_quantity_review.py": "7927883a95ac10acc39c1c4723c91a58d5421dc228724f54f83a091bd5022941"
+  }
+}

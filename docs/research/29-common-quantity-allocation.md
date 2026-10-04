@@ -123,3 +123,25 @@ uv run pytest tests/test_common_allocation.py tests/test_common_quantity_*.py -q
 本番損益は閲覧・生成しておらず、4新構成と3凍結対照の357口座評価は#43の別sealへ渡す。
 #43はこのmeasurementと同一runtimeで全対照を評価する必要がある。中期RL・実quote・
 独立確認を有効化せず、旧成果物と分類はそのまま保持する。
+
+
+## PR #58レビュー対応（2026-10-04）
+
+配分・実現会計の計算は変えず、入力と保存成果物の検証を強化した。
+`load_forecasts` は cells の一意性・全fold/horizonの存在・固定modelパス・実ファイルhash・
+モデル内のfold/horizonを照合し、そのモデルのprovenance hashを各forecastへ結び付ける。
+別horizonの共分散を元のmodel hashのまま渡すことや、重複cellによる上書きを拒否する。
+
+保存口座の検証は、登録済みfixtureから全予定mark・シナリオ別price/carry/costを再構成する。
+traceの各decision/next mark、input hash、cash、first/actual/planned mark、残decision数を照合し、
+completeは全予定経路を通った場合のみ受理する。terminalは最初の閾値到達時に停止し、
+margin/非正equity、行と口座のterminal理由、log status、台帳の完了statusを一致必須とする。
+費用だけで閾値に到達する場合は同じdecision時刻で終了し、翌markへ進めない。
+
+[追加検証記録](results/issue42/review-verification.json)：新規26ケースと既存113ケースの
+計139テストが通過した。外側hashを整合させた改変コピーで、共分散参照差替え・cells重複/欠落・
+短縮/空trace・terminal誤分類・時刻断絶・入力/費用差異を検証した。費用のみのterminalは
+手計算のledgerを照合し、account生成・policy推論・fit・口座replayは0。
+
+元の#41 bundle、13合成口座の全artifact、実行runtime・消費予算記録は元bytesで保持した。
+再実行や再sealによる置換はしていない。元の3件のfitテストは引き続き除外した。

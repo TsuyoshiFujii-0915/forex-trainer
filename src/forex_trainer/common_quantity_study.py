@@ -15,7 +15,7 @@ from .artifact_provenance import sha256_file
 from .common_allocation import Costs, Decision, Forecast, State, UNITS, allocate, label
 from .common_basket import PAIRS, advance, utc
 from .common_basket_study import CAMPAIGN, ROOT, checked, digest, execution_runtime, read, require_merge, write
-from .common_quantity import MEASUREMENT_ID, Mark, QuantityExecutionError, QuantityPolicy, instruction, legacy_policy, replay
+from .common_quantity import INITIAL_EQUITY, MARGIN_EQUITY, MEASUREMENT_ID, Mark, QuantityExecutionError, QuantityPolicy, instruction, legacy_policy, replay
 from .quote_replay_policies import fixture_policies
 
 RUN = ROOT / 'runs/issue42-common-quantity-v3'
@@ -328,30 +328,79 @@ def verify_fixture(directory: Path) -> dict[str, Any]:
     activation = read(directory / 'activation.json')
     if digest(activation['runtime']) != manifest['runtime_sha256']:
         raise ValueError('Issue 42 runtime seal mismatch')
+    config_path = ROOT / 'configs/research/issue42_common_quantity.json'
+    config, _ = load_config(config_path)
+    raw = read(checked({'path': config['fixture_input'], 'sha256': config['fixture_sha256']}))
+    if (read(directory / 'config.json') != config or read(directory / 'fixture.json') != raw
+            or activation['config_sha256'] != sha256_file(config_path)
+            or activation['fixture_sha256'] != config['fixture_sha256']):
+        raise ValueError('Issue 42 fixture input/config differs from registered execution seal')
     for name in ACCOUNT_NAMES:
         account = read(directory / 'accounts' / f'{name}.json')
         if account['measurement_id'] != MEASUREMENT_ID or account['runtime_sha256'] != manifest['runtime_sha256']:
             raise ValueError(f'Issue 42 account comparison identity mismatch: {name}')
-        audit_account(account, name)
+        marks, costs = fixture_scenario_inputs(raw, name)
+        audit_account(account, name, marks, costs)
+        completion = next(e for e in events if e['event'] == 'complete' and e['work_item'] == name)
+        if completion['status'] != account['status']:
+            raise ValueError(f'Issue 42 fixture completion/terminal status mismatch: {name}')
     return manifest
 
 
-def audit_account(account: dict[str, Any], origin: str) -> None:
+def fixture_scenario_inputs(raw: dict[str, Any], name: str) -> tuple[tuple[Mark, ...], Costs]:
+    """Reconstruct registered scenario inputs without executing a policy or account.
+
+    Args:
+        raw: Verified immutable fixture design.
+        name: Registered account scenario.
+
+    Returns:
+        Complete planned marks and the scenario's fixed cost rates.
+    """
+    if name not in ACCOUNT_NAMES:
+        raise ValueError(f'Issue 42 fixture input: unknown scenario {name}')
+    marks = fixture_marks(raw)
+    costs = Costs(np.array(raw['spreads']), raw['commission'], raw['markup'])
+    if name in ('risk', 'margin', 'bankruptcy'):
+        relatives = np.array(raw['risk_first_relatives']) if name == 'risk' else np.full(9, raw[f'{name}_first_relative'])
+        marks = (marks[0], *(replace(m, prices=marks[0].prices * relatives) for m in marks[1:]))
+    if name == 'F1':
+        costs = replace(costs, spreads=costs.spreads * 2)
+    if name == 'F2':
+        costs = replace(costs, markup=costs.markup * 2)
+    return marks, costs
+
+
+def audit_account(account: dict[str, Any], origin: str, marks: tuple[Mark, ...], costs: Costs) -> None:
     """Reconcile saved quantities and cash without executing an account.
 
     Args:
         account: Complete saved synthetic account.
         origin: Account identity included in any mismatch.
+        marks: Complete registered scenario axis, including the final mark.
+        costs: Registered scenario costs independent of the saved account.
     """
-    equity, quantity = 1_000_000., np.zeros(9)
-    costs = Costs(np.array(account['costs']['spreads']), account['costs']['commission'], account['costs']['markup'])
+    if len(marks) < 2 or not 0 < len(account['trace']) < len(marks):
+        raise ValueError(f'Issue 42 coverage: empty or excessive trace: {origin}')
+    input_hash = digest([{'at': m.at, 'prices': m.prices.tolist(), 'carry': m.carry.tolist(),
+                          'window': m.window.tolist()} for m in marks])
+    if account['input_sha256'] != input_hash or account['costs'] != costs.record():
+        raise ValueError(f'Issue 42 fixture input/cost identity mismatch: {origin}')
+    equity, quantity = INITIAL_EQUITY, np.zeros(9)
+    terminal_reason: str | None = None
+    actual_last_mark = marks[0].at
 
     def equal(actual: Any, expected: Any, field: str) -> None:
-        if not np.isfinite(actual).all() or not np.allclose(actual, expected, rtol=1e-12, atol=1e-8):
+        if np.shape(actual) != np.shape(expected) or not np.isfinite(actual).all() or not np.allclose(actual, expected, rtol=1e-12, atol=1e-8):
             raise ValueError(f'Issue 42 accounting reconciliation: {origin}/{field}')
 
     for index, row in enumerate(account['trace']):
         prefix = f'{index}/'
+        current = marks[index]
+        if row['at'] != current.at or equity <= MARGIN_EQUITY:
+            raise ValueError(f'Issue 42 coverage/terminal: unexpected decision: {origin}/{index}')
+        equal(row['prices'], current.prices, prefix + 'registered_prices')
+        equal(row['carry'], current.carry, prefix + 'registered_carry')
         prices, next_prices = np.array(row['prices']), np.array(row['next_prices'])
         equal(row['equity_start'], equity, prefix + 'equity_start')
         traded = 0.
@@ -367,16 +416,38 @@ def audit_account(account: dict[str, Any], origin: str) -> None:
             quantity = new
         equal(row['quantities'], quantity, prefix + 'quantities')
         equal(row['actual_traded_notional'], traded, prefix + 'turnover')
+        # Transaction-cost terminal stays at the decision; otherwise advance one mark.
+        expected_next = current if equity <= MARGIN_EQUITY else marks[index + 1]
+        if row['next_at'] != expected_next.at:
+            raise ValueError(f'Issue 42 coverage/terminal: unexpected next mark: {origin}/{index}')
+        equal(row['next_prices'], expected_next.prices, prefix + 'registered_next_prices')
+        actual_last_mark = expected_next.at
         elapsed = (label(row['next_at'], origin) - label(row['at'], origin)).total_seconds() / 86400
         equal(row['elapsed_days'], elapsed, prefix + 'elapsed_days')
         equal(row['price_pnl'], float(quantity @ (next_prices - prices)), prefix + 'price_pnl')
         equal(row['financing'], float((quantity * next_prices) @ -np.array(row['carry'])) * elapsed / 365, prefix + 'financing')
         equal(row['markup'], float(np.abs(quantity * prices).sum()) * costs.markup * elapsed, prefix + 'markup')
+        if equity <= 0:
+            raise ValueError(f'Issue 42 accounting: nonpositive post-trade equity: {origin}/{index}')
         weights = quantity * prices / equity
         if np.abs(weights).sum() > 5 + 1e-10 or np.abs(weights).max() > 1 + 1e-10:
             raise ValueError(f'Issue 42 accounting constraint violation: {origin}/{index}')
         equity += row['price_pnl'] + row['financing'] - row['markup']
         equal(row['equity_end'], equity, prefix + 'equity_end')
+        terminal_reason = ('nonpositive_equity' if equity <= 0 else 'margin_threshold') if equity <= MARGIN_EQUITY else None
+        if row['terminal_reason'] != terminal_reason or (terminal_reason is not None and index != len(account['trace']) - 1):
+            raise ValueError(f'Issue 42 terminal: wrong classification or continued after first breach: {origin}/{index}')
+    expected_status = 'strategy_terminal' if terminal_reason is not None else 'complete'
+    remaining = len(marks) - 1 - len(account['trace'])
+    if (account['status'] != expected_status or account['terminal_reason'] != terminal_reason
+            or account['first_decision'] != marks[0].at or account['planned_last_mark'] != marks[-1].at
+            or account['actual_last_mark'] != actual_last_mark or account['remaining_decisions'] != remaining
+            or (terminal_reason is None and remaining != 0)
+            or account['virtual_terminal_liquidation'] is not False):
+        raise ValueError(f'Issue 42 coverage/terminal summary mismatch: {origin}')
+    expected_log_status = 'defined' if equity > 0 else 'undefined_nonpositive_equity'
+    if account['net_log_status'] != expected_log_status:
+        raise ValueError(f'Issue 42 terminal/log status mismatch: {origin}')
     equal(account['final_equity'], equity, 'final_equity')
     equal(account['final_quantities'], quantity, 'final_quantities')
     if equity > 0:

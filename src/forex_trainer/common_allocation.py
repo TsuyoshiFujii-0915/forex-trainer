@@ -8,6 +8,7 @@ from typing import Any, Literal
 import numpy as np
 import pandas as pd
 
+from .artifact_provenance import sha256_file
 from .common_basket import PAIRS, advance, utc
 from .common_basket_study import digest, read, verify_bundle
 from .full_period import utc_instant
@@ -355,12 +356,30 @@ def load_forecasts(directory: Path) -> dict[tuple[str, int, str], Forecast]:
     """
     rows = verify_bundle(directory)
     manifest = read(directory / 'manifest.json')
-    models = {(row['fold'], row['horizon']): read(directory / row['model_path']) for row in manifest['cells']}
+    expected = {(row['fold'], row['horizon_business_days']) for row in rows}
+    models: dict[tuple[str, int], dict[str, Any]] = {}
+    model_hashes: dict[tuple[str, int], str] = {}
+    for cell in manifest['cells']:
+        key = cell['fold'], cell['horizon']
+        filename = f'model-{key[0]}-h{key[1]}.json'
+        if key not in expected or key in models or cell['model_path'] != filename:
+            raise ValueError(f'Forecast model cell identity/path mismatch or duplicate: {key}')
+        path = directory / filename
+        model = read(path)
+        model_hash = sha256_file(path)
+        if (cell['model_sha256'] != model_hash or model['fold'] != key[0]
+                or model['horizon_business_days'] != key[1]):
+            raise ValueError(f'Forecast model cell hash/fold/horizon mismatch: {key}')
+        models[key], model_hashes[key] = model, model_hash
+    if set(models) != expected:
+        raise ValueError('Forecast model cells do not cover the verified forecast keys')
     result = {}
     for row in rows:
         key = row['fold'], row['horizon_business_days'], row['decision_at_utc']
         model = models[key[:2]]
         p = model['provenance']
+        if row['model_sha256'] != model_hashes[key[:2]] or row['provenance_sha256'] != digest(p):
+            raise ValueError(f'Forecast model/provenance hash differs from covariance source: {key}')
         if p['prediction_unit'] != UNITS or p['covariance_formula'] != '0.9*S+0.1*diag(S)+1e-8*I; S=sample_cov(pair_h_simple_returns,ddof=1)':
             raise ValueError(f'forecast {key}: prediction units/covariance formula mismatch')
         result[key] = Forecast(row['fold'], row['horizon_business_days'], row['decision_at_utc'],
