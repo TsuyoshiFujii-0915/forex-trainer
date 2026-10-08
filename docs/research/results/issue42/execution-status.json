@@ -1,0 +1,47 @@
+{
+  "issue": 42,
+  "status": "implementation_and_synthetic_fixture_complete",
+  "campaign_id": "issue40-common-direction-development-v3",
+  "measurement_id": "issue40-common-quantity-same-close-v1",
+  "implementation_commit": "feb089579cdc9c042dfb3f7a85b029710016e0c1",
+  "forex_env_commit": "6024b91c0f3592611849bc231922ab60e6090aed",
+  "fixture_manifest_sha256": "a36c69538ed419efcc77d38df605a39e0c2084116a6637e3088b39d2bb0706f1",
+  "fixture_content_sha256": "3bc28570a7c385e89e0a4e4ff47c8b9dd7a32c9de56e8388ceaee94509713992",
+  "runtime_sha256": "b6a52b38324925a01ecb9b52c781d11df19bc5e9769a168a612bc1877194c2d1",
+  "counters": {
+    "issue42_fixture_accounts": {
+      "consumed": 13,
+      "limit": 16
+    },
+    "shared_retry_accounts_including_validation": {
+      "consumed_by_issue42": 0,
+      "campaign_limit": 24
+    },
+    "model_fit_calls": 0,
+    "market_accounts": 0,
+    "ppo_training": 0
+  },
+  "commands": [
+    "uv run forex-common-quantity seal --config configs/research/issue42_common_quantity.json --dependency-merge-commit 3e82733d79d2bfb5b898803662b9f8613f2e11a8 --output runs/issue42-execution-seal",
+    "uv run forex-common-quantity fixture --config configs/research/issue42_common_quantity.json --activation runs/issue42-execution-seal/activation.json",
+    "uv run forex-common-quantity verify --directory docs/research/results/issue42/fixture"
+  ],
+  "independent_accounts": 13,
+  "completed_accounts": 11,
+  "intentional_strategy_terminal_accounts": 2,
+  "measured_transitions": 57,
+  "market_profitability_assessment": "not_performed_deferred_to_issue43",
+  "normal_rerun": "prohibited_consumed_budget",
+  "retry": "requires_separate_shared_budget_registration",
+  "legacy_contracts_unchanged": true,
+  "env_changes": false,
+  "issue43_handoff": {
+    "forecast_bundle": "docs/research/results/issue41/bundle",
+    "forecast_rows": 7138,
+    "implementation": [
+      "src/forex_trainer/common_allocation.py",
+      "src/forex_trainer/common_quantity.py"
+    ],
+    "market_execution": "requires_separate_issue43_seal_and_357_account_budget"
+  }
+}

@@ -19,6 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
+forex-common-quantity = "forex_trainer.common_quantity_study:main"
 forex-common-basket = "forex_trainer.common_basket_study:main"
 forex-input-recovery = "forex_trainer.input_recovery:main"
 forex-train = "forex_trainer.train:main"

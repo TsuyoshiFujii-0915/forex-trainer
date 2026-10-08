@@ -1,0 +1,27 @@
+{
+  "campaign_id": "issue40-common-direction-development-v3",
+  "fit_calls": 0,
+  "fixture_account_limit": 16,
+  "fixture_input": "docs/research/protocols/issue42/fixture.json",
+  "fixture_sha256": "fb8c11c56147b66b534ee6f26b0bedd6ad4579dd222ad08ccc44180a16f1848e",
+  "market_accounts": 0,
+  "measurement_id": "issue40-common-quantity-same-close-v1",
+  "planned_fixture_accounts": 13,
+  "ppo_training": 0,
+  "registration": {
+    "path": "docs/research/protocols/issue40/revisions/v3/registration.json",
+    "sha256": "5d096705e68536faa48eadf7a701e7d034f918e5203b45fb8191bbefeae6e8aa"
+  },
+  "risk": {
+    "gross_cap": 5.0,
+    "initial_equity": 1000000.0,
+    "margin_threshold": 0.2,
+    "pair_cap": 1.0
+  },
+  "run_directory": "runs/issue42-common-quantity-v3",
+  "solver": {
+    "constraint_tolerance": 1e-10,
+    "risk_coefficient": 5.0,
+    "tie_tolerance": 1e-12
+  }
+}

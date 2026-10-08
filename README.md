@@ -393,3 +393,16 @@ uv run forex-common-basket preflight \
   --config configs/research/issue41_common_basket.json \
   --output runs/issue41-input-check
 ```
+
+## 共通方向配分と数量会計（Issue #42）
+
+`forex-common-quantity` は固定/費用対応配分と数量holdを表す専用measurementを追加する。
+旧target APIとrewardは変更しない。実行は事前登録した合成13口座だけで、市場fit・市場口座・
+PPO訓練は0。手順・#43への接続は[研究ノート](docs/research/29-common-quantity-allocation.md)を参照。
+
+保存済みfixtureの再検証は口座を再実行しない。
+
+```bash
+uv run forex-common-quantity verify --directory docs/research/results/issue42/fixture
+uv run pytest tests/test_common_allocation.py tests/test_common_quantity_*.py -q
+```
