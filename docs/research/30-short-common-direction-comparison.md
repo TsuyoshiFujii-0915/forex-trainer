@@ -70,3 +70,48 @@ report.json生成でTypeErrorが発生した。真偽値を出力境界でPython
 全357口座・714台帳イベント・元sealのhashを必須とし、保存traceだけからreportを再構成する。
 口座再実行・再推論・retry予算消費は0。初回評価runtimeと報告修正runtimeを別々に残し、
 元artifactのbyte不変をverifyで照合する。既存report/manifestの上書きや通常枠の再取得は拒否する。
+
+## 実行結果（2026-10-09 JST）
+
+実装SHA `47992880637484bb365a93cd5fcc0841a14eeddc` のclean runtimeで357口座を初回実行した。
+全口座が固定区間を完走し、strategy terminal・口座実行例外・口座retryは0。レポート保存障害1件は保存traceから復旧した。全口座の会計・source/hash・統計を保存成果物から再検証した。
+新規fit・PPO学習・追加fixture口座・旧metrics流用は0。実行前sealと結果を別commitに分離した。
+
+| 方策 | F0平均期間net log | F0平均期間gross log | 全scenario最悪MDD | 開発候補 |
+|---|---:|---:|---:|---|
+| A1-fixed | -0.008292 | 0.002000 | 0.152781 | rejected |
+| A1-cost | 0.003275 | 0.009036 | 0.134757 | rejected |
+| A5-fixed | 0.004490 | 0.012405 | 0.177002 | rejected |
+| A5-cost | 0.007505 | 0.011925 | 0.123143 | rejected |
+| canonical | 0.040105 | 0.068799 | 0.225234 | 凍結対照 |
+| ridge | -0.033347 | 0.024160 | 0.272067 | 凍結対照 |
+| ppo_ens3 | 0.007409 | 0.026953 | 0.438663 | 凍結対照 |
+
+主比較（F0、cost−fixed）の期間net log対応差：
+
+| h | 平均差 | IID 95% CI | block 95% CI | 追加価値 |
+|---|---:|---|---|---|
+| 1 | 0.011567 | [-0.008314, 0.030939] | [0.000394, 0.023965] | not_supported |
+| 5 | 0.003016 | [-0.022033, 0.031204] | [-0.014381, 0.021523] | not_supported |
+
+選定候補: `None`。停止理由: `no_predictive_room, net_economic_conditions_failed`。
+#46: `not_planned`、#49: `not_planned`。
+両horizonの予測MSEは全区間平均・前半eraでゼロ予測を下回らず、予測基準は未達。
+口座経路の完走は経済的採否の合格を意味しない。詳細な候補別不成立条件と全scenarioの数値はreport.jsonに保持する。
+
+- [全357セル・全比較・era/CI/LOO/risk](results/issue43/campaign/report.json)
+- [一覧レポート](results/issue43/campaign/report.md)
+- [実行前seal](results/issue43/campaign/activation.json)
+- [実行・予算状態](results/issue43/execution-status.json)
+- [検証記録](results/issue43/verification.json)
+- [報告障害](results/issue43/campaign/reporting-incident.json)と[報告復旧runtime](results/issue43/campaign/reporting-recovery.json)
+- [#46への引渡し](results/issue43/campaign/issue46-handoff.json)
+- [#49への引渡し](results/issue43/campaign/issue49-handoff.json)
+
+新規40件＋既存関連95件、計135テストが通過した。保存済み合成fixtureを再利用し、追加fit・口座replayを検証目的で消費していない。
+
+全4候補のrisk条件は成立した。A1-fixedはF0平均gross logが正でもnetでは負となり、
+A1-costとA5-fixedもnet水準0.005を満たさない。A5-costは水準・stress・risk・全LOOを満たすが、
+2009–2018 eraの平均net logが−0.014016のため非採用。予測基準未達と費用影響・net条件を
+risk不成立と混同しない。#46〜#48はnot_planned、#49へ渡す単純候補も0と確定した。
+中期gate未準備を理由にこの判断を保留していない。
