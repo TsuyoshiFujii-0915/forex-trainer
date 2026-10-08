@@ -59,3 +59,14 @@ statusはcomplete / strategy_terminal / blocked_input / execution_error / not_ru
 
 9部分年・8全期待bar範囲の既知development証拠であり、未補正CI。独立trial総数不明、価格修復、
 carry vintage不明、同close・逆数数量の限界を保持する。共通capはrisk一致の証明ではない。
+
+## レポート保存障害の明示的復旧
+
+初回の357口座評価と台帳保存後、集計risk判定のNumPy booleanをJSONへ渡したため、
+report.json生成でTypeErrorが発生した。真偽値を出力境界でPython boolに確定する修正であり、
+数値基準・solver・model・forecast・口座経路は変更しない。
+
+`recover-report --directory runs/issue43-common-direction-v3`は記録済みの報告専用incidentと
+全357口座・714台帳イベント・元sealのhashを必須とし、保存traceだけからreportを再構成する。
+口座再実行・再推論・retry予算消費は0。初回評価runtimeと報告修正runtimeを別々に残し、
+元artifactのbyte不変をverifyで照合する。既存report/manifestの上書きや通常枠の再取得は拒否する。

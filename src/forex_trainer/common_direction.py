@@ -164,8 +164,8 @@ def summarize(cells: list[dict[str, Any]], rules: dict[str, Any], predictive: di
                 vol = [c['metrics']['annual_net_log_volatility'] for c in selected]
                 risk[scenario][policy] = {'status': 'available', 'worst_drawdown': max(dd),
                     'mean_drawdown': float(np.mean(dd)), 'mean_annual_net_log_volatility': float(np.mean(vol)),
-                    'met': max(dd) <= rules['max_worst_drawdown'] and np.mean(dd) <= rules['max_mean_drawdown']
-                           and np.mean(vol) <= rules['max_mean_annual_net_log_volatility']}
+                    'met': bool(max(dd) <= rules['max_worst_drawdown'] and np.mean(dd) <= rules['max_mean_drawdown']
+                                and np.mean(vol) <= rules['max_mean_annual_net_log_volatility'])}
             else:
                 absolute[scenario][policy] = {'status': 'pending_measurement', 'evidence': None,
                     'unavailable_folds': [c['fold'] for c in selected if c['status'] != 'complete']}

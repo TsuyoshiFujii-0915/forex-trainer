@@ -450,7 +450,69 @@ def run(config_path: Path, activation_path: Path) -> dict[str, Any]:
                     'automatic_retry': False, 'resume_condition': 'Resolve the explicit incident; any consumed account retry requires a separate shared-budget registration.'}
         finish(RUN, cells, activation, incident)
         raise
-    return finish(RUN, cells, activation, None)
+    try:
+        return finish(RUN, cells, activation, None)
+    except Exception as exc:
+        write(RUN / 'reporting-incident.json', {
+            'stage': 'report_finalization', 'error': f'{type(exc).__name__}: {exc}',
+            'account_evaluations_completed': len(cells), 'new_account_replays': 0, 'automatic_retry': False,
+            'raw_artifacts': {str(p.relative_to(RUN)): sha256_file(p) for p in sorted(RUN.rglob('*')) if p.is_file()},
+        })
+        raise
+
+
+def recover_report(directory: Path) -> dict[str, Any]:
+    """Explicitly finalize saved accounts after a recorded report-only failure.
+
+    Args:
+        directory: Original account run with all 357 outcomes and no final report.
+
+    Returns:
+        Reconstructed report without account replay, policy inference, or retries.
+    """
+    if any((directory / name).exists() for name in ('manifest.json', 'report.json', 'reporting-recovery.json')):
+        raise ValueError('Issue 43 report already finalized or partially written; overwriting is prohibited')
+    incident_path = directory / 'reporting-incident.json'
+    if not incident_path.exists():
+        raise ValueError('Issue 43 report recovery requires an explicit reporting incident')
+    incident = read(incident_path)
+    activation = read(directory / 'activation.json')
+    cells = registered_cells()
+    names = [f"{c['fold']}-{c['scenario']}-{c['policy']}" for c in cells]
+    required = {'activation.json', 'registered-cells.json', 'account-ledger.jsonl',
+                *(f'accounts/{name}.json.gz' for name in names)}
+    actual = {str(p.relative_to(directory)) for p in directory.rglob('*') if p.is_file()}
+    if (set(incident['raw_artifacts']) != required or actual != required | {'reporting-incident.json'}
+            or incident['account_evaluations_completed'] != 357 or incident['new_account_replays'] != 0
+            or read(directory / 'registered-cells.json') != cells):
+        raise ValueError('Issue 43 report recovery requires exactly the original 357 saved accounts')
+    for name, expected in incident['raw_artifacts'].items():
+        if sha256_file(directory / name) != expected:
+            raise ValueError(f'Issue 43 report recovery raw artifact changed: {name}')
+    inputs = load_inputs(CONFIG)
+    if activation_record(inputs, activation['runtime']) != activation:
+        raise ValueError('Issue 43 report recovery source/rules differ from evaluation seal')
+    runtime_hash = digest(activation['runtime'])
+    events = [json.loads(line) for line in (directory / 'account-ledger.jsonl').read_text().splitlines()]
+    if len(events) != 714:
+        raise ValueError('Issue 43 report recovery ledger is incomplete')
+    for i, (cell, name) in enumerate(zip(cells, names, strict=True)):
+        reservation, completion = events[2 * i:2 * i + 2]
+        counter = 'issue43_candidate_accounts' if cell['policy'] in CANDIDATES else 'issue43_control_reevaluations'
+        if reservation != {'event': 'reserved', 'work_item': name, 'counter': counter, 'attempt': 1, 'runtime_sha256': runtime_hash}:
+            raise ValueError(f'Issue 43 report recovery reservation mismatch: {name}')
+        path = f'accounts/{name}.json.gz'
+        account = read(directory / path)
+        audit_result(account, inputs, cell, runtime_hash, scenario_costs(cell['scenario']))
+        if completion != {'event': 'finished', 'work_item': name, 'status': account['status']}:
+            raise ValueError(f'Issue 43 report recovery outcome mismatch: {name}')
+        cell.update(status=account['status'], metrics=account_metrics(account), result_path=path)
+    write(directory / 'reporting-recovery.json', {
+        'runtime': execution_runtime(), 'evaluation_runtime_sha256': runtime_hash,
+        'incident_sha256': sha256_file(incident_path), 'new_account_replays': 0, 'new_inference_calls': 0,
+        'economic_rules_changed': False, 'account_artifacts_changed': False,
+    })
+    return finish(directory, cells, activation, None)
 
 
 def verify(directory: Path) -> dict[str, Any]:
@@ -487,6 +549,22 @@ def verify(directory: Path) -> dict[str, Any]:
     required = {'activation.json', 'registered-cells.json', 'account-ledger.jsonl',
                 'report.json', 'report.md', 'issue46-handoff.json', 'issue49-handoff.json'}
     required.update(c['result_path'] for c in report['cells'] if c['result_path'] is not None)
+    if 'reporting-incident.json' in inventory:
+        required.update(('reporting-incident.json', 'reporting-recovery.json'))
+        incident = read(directory / 'reporting-incident.json')
+        recovery = read(directory / 'reporting-recovery.json')
+        if (recovery['incident_sha256'] != sha256_file(directory / 'reporting-incident.json')
+                or recovery['evaluation_runtime_sha256'] != manifest['runtime_sha256']
+                or recovery['new_account_replays'] != 0 or recovery['new_inference_calls'] != 0
+                or recovery['economic_rules_changed'] or recovery['account_artifacts_changed']):
+            raise ValueError('Issue 43 report recovery identity mismatch')
+        raw_inventory = required - {'report.json', 'report.md', 'issue46-handoff.json', 'issue49-handoff.json',
+                                    'reporting-incident.json', 'reporting-recovery.json'}
+        if set(incident['raw_artifacts']) != raw_inventory:
+            raise ValueError('Issue 43 report recovery raw inventory mismatch')
+        for name, expected in incident['raw_artifacts'].items():
+            if sha256_file(directory / name) != expected:
+                raise ValueError(f'Issue 43 report recovery changed raw evidence: {name}')
     if inventory != required:
         raise ValueError('Issue 43 unregistered or missing report artifact')
     events = [json.loads(line) for line in (directory / 'account-ledger.jsonl').read_text().splitlines()]
@@ -541,9 +619,13 @@ def main() -> int:
         entry.add_argument('--activation' if command == 'run' else '--output', type=Path, required=True)
     entry = sub.add_parser('verify')
     entry.add_argument('--directory', type=Path, required=True)
+    entry = sub.add_parser('recover-report')
+    entry.add_argument('--directory', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'verify':
         result = verify(args.directory)
+    elif args.command == 'recover-report':
+        result = recover_report(args.directory)
     elif args.command == 'run':
         result = run(args.config, args.activation)
     elif args.command == 'seal':
