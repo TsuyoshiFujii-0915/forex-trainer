@@ -1,0 +1,5001 @@
+{
+  "accounts_executed": 0,
+  "activation_status": "requires_registration_merge_and_clean_runtime_seal",
+  "candidate_validation": "not_performed",
+  "cells": [
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "same_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "execution": "next_close",
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    }
+  ],
+  "comparisons": [
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F0-canonical-same_close",
+        "2010-F0-canonical-same_close",
+        "2011-F0-canonical-same_close",
+        "2012-F0-canonical-same_close",
+        "2013-F0-canonical-same_close",
+        "2014-F0-canonical-same_close",
+        "2015-F0-canonical-same_close",
+        "2016-F0-canonical-same_close",
+        "2017-F0-canonical-same_close",
+        "2018-F0-canonical-same_close",
+        "2019-F0-canonical-same_close",
+        "2020-F0-canonical-same_close",
+        "2021-F0-canonical-same_close",
+        "2022-F0-canonical-same_close",
+        "2023-F0-canonical-same_close",
+        "2024-F0-canonical-same_close",
+        "2025-F0-canonical-same_close",
+        "2009-F0-canonical-next_close",
+        "2010-F0-canonical-next_close",
+        "2011-F0-canonical-next_close",
+        "2012-F0-canonical-next_close",
+        "2013-F0-canonical-next_close",
+        "2014-F0-canonical-next_close",
+        "2015-F0-canonical-next_close",
+        "2016-F0-canonical-next_close",
+        "2017-F0-canonical-next_close",
+        "2018-F0-canonical-next_close",
+        "2019-F0-canonical-next_close",
+        "2020-F0-canonical-next_close",
+        "2021-F0-canonical-next_close",
+        "2022-F0-canonical-next_close",
+        "2023-F0-canonical-next_close",
+        "2024-F0-canonical-next_close",
+        "2025-F0-canonical-next_close"
+      ],
+      "net": null,
+      "policy": "canonical",
+      "scenario": "F0",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F0-ridge-same_close",
+        "2010-F0-ridge-same_close",
+        "2011-F0-ridge-same_close",
+        "2012-F0-ridge-same_close",
+        "2013-F0-ridge-same_close",
+        "2014-F0-ridge-same_close",
+        "2015-F0-ridge-same_close",
+        "2016-F0-ridge-same_close",
+        "2017-F0-ridge-same_close",
+        "2018-F0-ridge-same_close",
+        "2019-F0-ridge-same_close",
+        "2020-F0-ridge-same_close",
+        "2021-F0-ridge-same_close",
+        "2022-F0-ridge-same_close",
+        "2023-F0-ridge-same_close",
+        "2024-F0-ridge-same_close",
+        "2025-F0-ridge-same_close",
+        "2009-F0-ridge-next_close",
+        "2010-F0-ridge-next_close",
+        "2011-F0-ridge-next_close",
+        "2012-F0-ridge-next_close",
+        "2013-F0-ridge-next_close",
+        "2014-F0-ridge-next_close",
+        "2015-F0-ridge-next_close",
+        "2016-F0-ridge-next_close",
+        "2017-F0-ridge-next_close",
+        "2018-F0-ridge-next_close",
+        "2019-F0-ridge-next_close",
+        "2020-F0-ridge-next_close",
+        "2021-F0-ridge-next_close",
+        "2022-F0-ridge-next_close",
+        "2023-F0-ridge-next_close",
+        "2024-F0-ridge-next_close",
+        "2025-F0-ridge-next_close"
+      ],
+      "net": null,
+      "policy": "ridge",
+      "scenario": "F0",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F0-ppo_ens3-same_close",
+        "2010-F0-ppo_ens3-same_close",
+        "2011-F0-ppo_ens3-same_close",
+        "2012-F0-ppo_ens3-same_close",
+        "2013-F0-ppo_ens3-same_close",
+        "2014-F0-ppo_ens3-same_close",
+        "2015-F0-ppo_ens3-same_close",
+        "2016-F0-ppo_ens3-same_close",
+        "2017-F0-ppo_ens3-same_close",
+        "2018-F0-ppo_ens3-same_close",
+        "2019-F0-ppo_ens3-same_close",
+        "2020-F0-ppo_ens3-same_close",
+        "2021-F0-ppo_ens3-same_close",
+        "2022-F0-ppo_ens3-same_close",
+        "2023-F0-ppo_ens3-same_close",
+        "2024-F0-ppo_ens3-same_close",
+        "2025-F0-ppo_ens3-same_close",
+        "2009-F0-ppo_ens3-next_close",
+        "2010-F0-ppo_ens3-next_close",
+        "2011-F0-ppo_ens3-next_close",
+        "2012-F0-ppo_ens3-next_close",
+        "2013-F0-ppo_ens3-next_close",
+        "2014-F0-ppo_ens3-next_close",
+        "2015-F0-ppo_ens3-next_close",
+        "2016-F0-ppo_ens3-next_close",
+        "2017-F0-ppo_ens3-next_close",
+        "2018-F0-ppo_ens3-next_close",
+        "2019-F0-ppo_ens3-next_close",
+        "2020-F0-ppo_ens3-next_close",
+        "2021-F0-ppo_ens3-next_close",
+        "2022-F0-ppo_ens3-next_close",
+        "2023-F0-ppo_ens3-next_close",
+        "2024-F0-ppo_ens3-next_close",
+        "2025-F0-ppo_ens3-next_close"
+      ],
+      "net": null,
+      "policy": "ppo_ens3",
+      "scenario": "F0",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F1-canonical-same_close",
+        "2010-F1-canonical-same_close",
+        "2011-F1-canonical-same_close",
+        "2012-F1-canonical-same_close",
+        "2013-F1-canonical-same_close",
+        "2014-F1-canonical-same_close",
+        "2015-F1-canonical-same_close",
+        "2016-F1-canonical-same_close",
+        "2017-F1-canonical-same_close",
+        "2018-F1-canonical-same_close",
+        "2019-F1-canonical-same_close",
+        "2020-F1-canonical-same_close",
+        "2021-F1-canonical-same_close",
+        "2022-F1-canonical-same_close",
+        "2023-F1-canonical-same_close",
+        "2024-F1-canonical-same_close",
+        "2025-F1-canonical-same_close",
+        "2009-F1-canonical-next_close",
+        "2010-F1-canonical-next_close",
+        "2011-F1-canonical-next_close",
+        "2012-F1-canonical-next_close",
+        "2013-F1-canonical-next_close",
+        "2014-F1-canonical-next_close",
+        "2015-F1-canonical-next_close",
+        "2016-F1-canonical-next_close",
+        "2017-F1-canonical-next_close",
+        "2018-F1-canonical-next_close",
+        "2019-F1-canonical-next_close",
+        "2020-F1-canonical-next_close",
+        "2021-F1-canonical-next_close",
+        "2022-F1-canonical-next_close",
+        "2023-F1-canonical-next_close",
+        "2024-F1-canonical-next_close",
+        "2025-F1-canonical-next_close"
+      ],
+      "net": null,
+      "policy": "canonical",
+      "scenario": "F1",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F1-ridge-same_close",
+        "2010-F1-ridge-same_close",
+        "2011-F1-ridge-same_close",
+        "2012-F1-ridge-same_close",
+        "2013-F1-ridge-same_close",
+        "2014-F1-ridge-same_close",
+        "2015-F1-ridge-same_close",
+        "2016-F1-ridge-same_close",
+        "2017-F1-ridge-same_close",
+        "2018-F1-ridge-same_close",
+        "2019-F1-ridge-same_close",
+        "2020-F1-ridge-same_close",
+        "2021-F1-ridge-same_close",
+        "2022-F1-ridge-same_close",
+        "2023-F1-ridge-same_close",
+        "2024-F1-ridge-same_close",
+        "2025-F1-ridge-same_close",
+        "2009-F1-ridge-next_close",
+        "2010-F1-ridge-next_close",
+        "2011-F1-ridge-next_close",
+        "2012-F1-ridge-next_close",
+        "2013-F1-ridge-next_close",
+        "2014-F1-ridge-next_close",
+        "2015-F1-ridge-next_close",
+        "2016-F1-ridge-next_close",
+        "2017-F1-ridge-next_close",
+        "2018-F1-ridge-next_close",
+        "2019-F1-ridge-next_close",
+        "2020-F1-ridge-next_close",
+        "2021-F1-ridge-next_close",
+        "2022-F1-ridge-next_close",
+        "2023-F1-ridge-next_close",
+        "2024-F1-ridge-next_close",
+        "2025-F1-ridge-next_close"
+      ],
+      "net": null,
+      "policy": "ridge",
+      "scenario": "F1",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F1-ppo_ens3-same_close",
+        "2010-F1-ppo_ens3-same_close",
+        "2011-F1-ppo_ens3-same_close",
+        "2012-F1-ppo_ens3-same_close",
+        "2013-F1-ppo_ens3-same_close",
+        "2014-F1-ppo_ens3-same_close",
+        "2015-F1-ppo_ens3-same_close",
+        "2016-F1-ppo_ens3-same_close",
+        "2017-F1-ppo_ens3-same_close",
+        "2018-F1-ppo_ens3-same_close",
+        "2019-F1-ppo_ens3-same_close",
+        "2020-F1-ppo_ens3-same_close",
+        "2021-F1-ppo_ens3-same_close",
+        "2022-F1-ppo_ens3-same_close",
+        "2023-F1-ppo_ens3-same_close",
+        "2024-F1-ppo_ens3-same_close",
+        "2025-F1-ppo_ens3-same_close",
+        "2009-F1-ppo_ens3-next_close",
+        "2010-F1-ppo_ens3-next_close",
+        "2011-F1-ppo_ens3-next_close",
+        "2012-F1-ppo_ens3-next_close",
+        "2013-F1-ppo_ens3-next_close",
+        "2014-F1-ppo_ens3-next_close",
+        "2015-F1-ppo_ens3-next_close",
+        "2016-F1-ppo_ens3-next_close",
+        "2017-F1-ppo_ens3-next_close",
+        "2018-F1-ppo_ens3-next_close",
+        "2019-F1-ppo_ens3-next_close",
+        "2020-F1-ppo_ens3-next_close",
+        "2021-F1-ppo_ens3-next_close",
+        "2022-F1-ppo_ens3-next_close",
+        "2023-F1-ppo_ens3-next_close",
+        "2024-F1-ppo_ens3-next_close",
+        "2025-F1-ppo_ens3-next_close"
+      ],
+      "net": null,
+      "policy": "ppo_ens3",
+      "scenario": "F1",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F2-canonical-same_close",
+        "2010-F2-canonical-same_close",
+        "2011-F2-canonical-same_close",
+        "2012-F2-canonical-same_close",
+        "2013-F2-canonical-same_close",
+        "2014-F2-canonical-same_close",
+        "2015-F2-canonical-same_close",
+        "2016-F2-canonical-same_close",
+        "2017-F2-canonical-same_close",
+        "2018-F2-canonical-same_close",
+        "2019-F2-canonical-same_close",
+        "2020-F2-canonical-same_close",
+        "2021-F2-canonical-same_close",
+        "2022-F2-canonical-same_close",
+        "2023-F2-canonical-same_close",
+        "2024-F2-canonical-same_close",
+        "2025-F2-canonical-same_close",
+        "2009-F2-canonical-next_close",
+        "2010-F2-canonical-next_close",
+        "2011-F2-canonical-next_close",
+        "2012-F2-canonical-next_close",
+        "2013-F2-canonical-next_close",
+        "2014-F2-canonical-next_close",
+        "2015-F2-canonical-next_close",
+        "2016-F2-canonical-next_close",
+        "2017-F2-canonical-next_close",
+        "2018-F2-canonical-next_close",
+        "2019-F2-canonical-next_close",
+        "2020-F2-canonical-next_close",
+        "2021-F2-canonical-next_close",
+        "2022-F2-canonical-next_close",
+        "2023-F2-canonical-next_close",
+        "2024-F2-canonical-next_close",
+        "2025-F2-canonical-next_close"
+      ],
+      "net": null,
+      "policy": "canonical",
+      "scenario": "F2",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F2-ridge-same_close",
+        "2010-F2-ridge-same_close",
+        "2011-F2-ridge-same_close",
+        "2012-F2-ridge-same_close",
+        "2013-F2-ridge-same_close",
+        "2014-F2-ridge-same_close",
+        "2015-F2-ridge-same_close",
+        "2016-F2-ridge-same_close",
+        "2017-F2-ridge-same_close",
+        "2018-F2-ridge-same_close",
+        "2019-F2-ridge-same_close",
+        "2020-F2-ridge-same_close",
+        "2021-F2-ridge-same_close",
+        "2022-F2-ridge-same_close",
+        "2023-F2-ridge-same_close",
+        "2024-F2-ridge-same_close",
+        "2025-F2-ridge-same_close",
+        "2009-F2-ridge-next_close",
+        "2010-F2-ridge-next_close",
+        "2011-F2-ridge-next_close",
+        "2012-F2-ridge-next_close",
+        "2013-F2-ridge-next_close",
+        "2014-F2-ridge-next_close",
+        "2015-F2-ridge-next_close",
+        "2016-F2-ridge-next_close",
+        "2017-F2-ridge-next_close",
+        "2018-F2-ridge-next_close",
+        "2019-F2-ridge-next_close",
+        "2020-F2-ridge-next_close",
+        "2021-F2-ridge-next_close",
+        "2022-F2-ridge-next_close",
+        "2023-F2-ridge-next_close",
+        "2024-F2-ridge-next_close",
+        "2025-F2-ridge-next_close"
+      ],
+      "net": null,
+      "policy": "ridge",
+      "scenario": "F2",
+      "status": "pending_measurement"
+    },
+    {
+      "cash_and_risk_mean_differences": null,
+      "contrast": "next_close_minus_same_close",
+      "gross": null,
+      "missing_cells": [
+        "2009-F2-ppo_ens3-same_close",
+        "2010-F2-ppo_ens3-same_close",
+        "2011-F2-ppo_ens3-same_close",
+        "2012-F2-ppo_ens3-same_close",
+        "2013-F2-ppo_ens3-same_close",
+        "2014-F2-ppo_ens3-same_close",
+        "2015-F2-ppo_ens3-same_close",
+        "2016-F2-ppo_ens3-same_close",
+        "2017-F2-ppo_ens3-same_close",
+        "2018-F2-ppo_ens3-same_close",
+        "2019-F2-ppo_ens3-same_close",
+        "2020-F2-ppo_ens3-same_close",
+        "2021-F2-ppo_ens3-same_close",
+        "2022-F2-ppo_ens3-same_close",
+        "2023-F2-ppo_ens3-same_close",
+        "2024-F2-ppo_ens3-same_close",
+        "2025-F2-ppo_ens3-same_close",
+        "2009-F2-ppo_ens3-next_close",
+        "2010-F2-ppo_ens3-next_close",
+        "2011-F2-ppo_ens3-next_close",
+        "2012-F2-ppo_ens3-next_close",
+        "2013-F2-ppo_ens3-next_close",
+        "2014-F2-ppo_ens3-next_close",
+        "2015-F2-ppo_ens3-next_close",
+        "2016-F2-ppo_ens3-next_close",
+        "2017-F2-ppo_ens3-next_close",
+        "2018-F2-ppo_ens3-next_close",
+        "2019-F2-ppo_ens3-next_close",
+        "2020-F2-ppo_ens3-next_close",
+        "2021-F2-ppo_ens3-next_close",
+        "2022-F2-ppo_ens3-next_close",
+        "2023-F2-ppo_ens3-next_close",
+        "2024-F2-ppo_ens3-next_close",
+        "2025-F2-ppo_ens3-next_close"
+      ],
+      "net": null,
+      "policy": "ppo_ens3",
+      "scenario": "F2",
+      "status": "pending_measurement"
+    }
+  ],
+  "config_sha256": "6678a37ac38695e16d7a2cd0af50ad8989ecf240b949970b0758a9a3f0f36819",
+  "experiment_id": "issue45-execution-sensitivity-v1",
+  "external_requests": 0,
+  "fit_calls": 0,
+  "handoff": {
+    "additional_trial_required": "At most one candidate with a separately registered finite budget.",
+    "issues": [
+      43,
+      48,
+      50
+    ],
+    "new_candidates_validated": 0,
+    "unresolved": [
+      "observed_quotes",
+      "provider_product_lot_financing_depth",
+      "asynchronous_baskets_and_partial_fills"
+    ]
+  },
+  "identities": {
+    "2009": {
+      "input_sha256": "839dfe96441d07340cd6ab1d736e9f99fe313deefce8ecdac735e5830be6fb94",
+      "range": {
+        "first_decision": "2009-05-05T23:00:00+00:00",
+        "fold": "2009",
+        "last_mark": "2009-12-31T00:00:00+00:00",
+        "measured_bars": 172,
+        "measurement_end": "2010-01-01T00:00:00+00:00",
+        "measurement_start": "2009-05-05T23:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "0704107993b5d874203342259a3f2b852f24ded8e4113f2265b0a87b3a428ec3",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2009.json",
+          "sha256": "7223dcf7f9a164b3d9c1a7f29c5c311f71b14884434abce20ea910f82794420c"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2009_r16_longf.yaml",
+        "config_sha256": "cc6b05a860395afac64d69cc63ecd237d4d6eeaf7e78cea7b430864f5670994d",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2009_r16_longf_ens3/20260831-123400-013031",
+          "ensemble_manifest_sha256": "9d2a93453b49c5466384403cffc3ec732f60c6d778cb61be74687aa0d6828225",
+          "eval_env_sha256": "9b60b855c501ddd4eac5d7ea10fb1b901a1e4bac3a4522e6480dd039e768f24e",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "00d9bac888edb1b304e1e8abd4ab9ab698ac0b3482fcc5ec0af9931ad2f7f70c",
+            "04c39ba9d079cc4a2c67202304d040fb9c8f986653099d520a9d6d82f9a8db52",
+            "ae294c7e734fb04b36747298dd6529b4ad693d605bd7c3cd5e86e421f65f4e42"
+          ],
+          "metrics_sha256": "2c312e84ffd9bcae2a0fb21b5515f719f13245ca71635213f8df29e6d9a999e9",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2009.parquet",
+            "sha256": "d5215ec21c60adb9e6acc691a06e029c99722cb683599f8d53eaeb0dd81a16f6"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2010": {
+      "input_sha256": "2dbb477202432ed579fbcf666d0c02d9463a4a7db2b1a3c3bfbab33944ed6132",
+      "range": {
+        "first_decision": "2010-01-01T00:00:00+00:00",
+        "fold": "2010",
+        "last_mark": "2010-12-31T00:00:00+00:00",
+        "measured_bars": 261,
+        "measurement_end": "2011-01-01T00:00:00+00:00",
+        "measurement_start": "2010-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "1155b56d4cbe7bb5d540ef7a89a2516179bfdffe9fecc079d36645f0bef41110",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2010.json",
+          "sha256": "18dcfbfac2760be62ac5424e105f4d378ea142ae2119e9972d89db23d24830d2"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2010_r16_longf.yaml",
+        "config_sha256": "fb0b0df6f096ea58014b386eb9bced0ba563a640235a731fa9ac93e9e49b38be",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2010_r16_longf_ens3/20260831-123402-091220",
+          "ensemble_manifest_sha256": "1ca017313e9be2b7c23d751c199236b6599dca7a4b9b7e2ad8f7663fdcaa2b77",
+          "eval_env_sha256": "3f934e518d3a44416cd08c0b09aae39bd4d160b1d46238c5bf727f38a4492b8a",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "febfb63ee00635aeda469c26092233a47e55621d4e99b10804cf74ed5c6f0774",
+            "32723f935bfcd3d6d67536800284c42c57081927414735cb9aa7e1bb54ddb9db",
+            "c20f70d70799c96a7d8f0fa9ad7dbddf4646c39b7cc62ccf1f54590621707149"
+          ],
+          "metrics_sha256": "16e5215e0dc643a5799e3da1c0fbc0b1d1e33914a62b8ffdf43ba9caed19c0e7",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2010.parquet",
+            "sha256": "d59576bef01570aceeb80824b9336a153ae3792e2d1a63cd2b92206d3bd1c048"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2011": {
+      "input_sha256": "d937d2734c277bc6cacee8e9f8fa891376b7cafc8ab4c2f2a17994c003d4ee80",
+      "range": {
+        "first_decision": "2011-07-13T23:00:00+00:00",
+        "fold": "2011",
+        "last_mark": "2011-12-30T00:00:00+00:00",
+        "measured_bars": 122,
+        "measurement_end": "2012-01-01T00:00:00+00:00",
+        "measurement_start": "2011-07-13T23:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "ec65fc167f8b6f299cfd2f60a02fc053725b7e3ca4f0ea48c2714252c4c98bdf",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2011.json",
+          "sha256": "77c7c7820440a6114216b5d281a92dc16f95f2b96803c1c79b80c742a81b9c22"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2011_r16_longf.yaml",
+        "config_sha256": "0115c0189926b58fbcf7df68131482d269eee571f926e743cbf2d19d4440c8c9",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2011_r16_longf_ens3/20260831-123404-197724",
+          "ensemble_manifest_sha256": "59653131ff5da766d5237f4912651eb56e84d13e4c752cdfb7b7c2f6d85a2c99",
+          "eval_env_sha256": "d5f6b342606467311ef54a051d2dd572188c0960c839e6537e5843610e38a6bd",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "f01d14bb99082601a27265f769d6d99e2f08c8dc1cade87ddd2406fee22da21e",
+            "c2f92eea8053c5ac4bcfe9044a842d028211cc06ec5cd1e96f58267828e5ffc2",
+            "ccdaac0d5cbac124f5ebf98733ef970030d0c233d0e14ae036040cec237dfd4d"
+          ],
+          "metrics_sha256": "d17f007efe1a0b653dbf4a204b47bf2d714479efacb0d0400014570bc47e70a8",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2011.parquet",
+            "sha256": "525bb8fe564facac614d2bdacbbc811da448c282c50dd47bc0cb56a401d7fae4"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2012": {
+      "input_sha256": "4dd6b7e80ca6a4846d9c60df552f43a6567add83be5695a09d6e69b2094b307a",
+      "range": {
+        "first_decision": "2012-01-02T00:00:00+00:00",
+        "fold": "2012",
+        "last_mark": "2012-12-03T00:00:00+00:00",
+        "measured_bars": 241,
+        "measurement_end": "2012-12-04T00:00:00+00:00",
+        "measurement_start": "2012-01-01T00:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "b687afaaa82c2e20f3b0bd1baecde004bcfb2f971a07b05f71a2b7751c96b9c5",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2012.json",
+          "sha256": "c62c42f7fb0bfe44502a43e87fb78f738396396a6cfffd6ebdd5a2fb727a5f37"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2012_r16_longf.yaml",
+        "config_sha256": "f262067c6b30963983c775bed31da59ef9d829c24bf8f6c8ade25266bdfa0f50",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2012_r16_longf_ens3/20260831-123406-287379",
+          "ensemble_manifest_sha256": "41362381903eda6906e259f3880393db533886ce7991b6c6cc34a8d0bbd9e6ca",
+          "eval_env_sha256": "6fbf42f4ed3ebc95dce5f68b2b437cc85a670e83393e7b61217a84197d21f7f5",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "b095ca5bd18a5b0c4036f764d6ba968c03d6f65a947c1019f935a9ff8c8dba4e",
+            "0772634eb1f97a589947e7f4489d1617eaaeb922a731ef881089af18fbdb1f24",
+            "636e2e81fcaa17dc8400cb35fc39e47792a5dce1e7f611f073af6fb8d57d525c"
+          ],
+          "metrics_sha256": "58840b14bb60b902893bdec835a72485d2ce0d5ee5db3a2ed094f55191679353",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2012.parquet",
+            "sha256": "f07e3a40b7367158bf29c64fdc65acf100841672869368f71512de5a90281060"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2013": {
+      "input_sha256": "c6457269a4ee183d32d060efd938c38acca1f1c87abea6904da9e9c5ce37c0d7",
+      "range": {
+        "first_decision": "2013-04-15T23:00:00+00:00",
+        "fold": "2013",
+        "last_mark": "2013-10-06T23:00:00+00:00",
+        "measured_bars": 125,
+        "measurement_end": "2013-10-07T23:00:00+00:00",
+        "measurement_start": "2013-04-15T23:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "98860224f4a08a9a43509089a7639948663388d0a6f97678354d612cf517a9a0",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2013.json",
+          "sha256": "d81aef093d3a30a6efe7dfc7e9e37218a0108f6e6c93b0ee7c5f247a74265b9e"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2013_r16_longf.yaml",
+        "config_sha256": "b272744fe0998194c716a64fb99e3a88daaec21f1f615133bbe0f88ff46f4d8c",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2013_r16_longf_ens3/20260831-123408-374032",
+          "ensemble_manifest_sha256": "9511ecabe293c03bdf96c49794688c77df2f8792a30742f27c91e9ccc8acac33",
+          "eval_env_sha256": "6e5476f1e8534e5a9c5a4ced3785a72b2ac665f819faaa931de5d9c54490ce2a",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "8e2a823de54883c4a044b04f7de6cb2b009de4ce2012f19a09ed330a63253d31",
+            "bde8db47d4cc0020035a75442c1aa18313367efa93ca194743b37a2c9c998c30",
+            "5d222664cdfe570dc1a2c8f97af0049d25fd5933746a59bf9882b01b3ab58d1e"
+          ],
+          "metrics_sha256": "20fdf4cb338194b901cdb2c1c45be3af3e6b57e71e782f4deb35cc9306b52e7a",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2013.parquet",
+            "sha256": "3e0709ee1a3fcd3bcaefd86cfbbc79dc629ea3e77c2fc2efce683e413f356e21"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2014": {
+      "input_sha256": "5e3fa15797e62c93c2480928edbeac1c8bb9cfcd81e072fbb82f3d12785f816c",
+      "range": {
+        "first_decision": "2014-01-06T00:00:00+00:00",
+        "fold": "2014",
+        "last_mark": "2014-12-31T00:00:00+00:00",
+        "measured_bars": 258,
+        "measurement_end": "2015-01-01T00:00:00+00:00",
+        "measurement_start": "2014-01-06T00:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "73da97119e14255860e6f940965d5f8735b1682e92d7a5021986c5a89f08a3d7",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2014.json",
+          "sha256": "48d4951eb5ecc7b0ed5ed829bda7026900a5b46dbcee87cde269a7315236e919"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2014_r16_longf.yaml",
+        "config_sha256": "d2fd76b414c022f14fb598b16b09830ee7cace3e5bc39c4183686fdbaa8f7422",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2014_r16_longf_ens3/20260831-123410-460502",
+          "ensemble_manifest_sha256": "ba13ccfbbea00a4a6577aa07493f2ee82d5c6e98afbe9782280af917ba2be618",
+          "eval_env_sha256": "bc04db5314a3725c777dccba4275fa666fd00960f8bf2b67bb4f14a14df29dd7",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "f0883e9d3b4cc86cb2655f882e9923fea901d978b321714892a1fb4a901f8774",
+            "44299e1b3cdeb528ec51520d763f57d8859b455c2dc5c4f4a8b158b98ca6c0d1",
+            "e89854ee23d388e2981bc185224d81f2546356135d6c2a5d08e709fd88da7eaa"
+          ],
+          "metrics_sha256": "940d14f4c2e6ff1da16a5d45e29f0076a81e48627992f075d91cfa89e311f5c1",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2014.parquet",
+            "sha256": "d86170c09dc19b2bd4463cc6ccfabb3942fbe77c0f1f950ff353afdcbf85e69a"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2015": {
+      "input_sha256": "0528ca27040b2e501dabc56822a0a7311eb08cef21897f70a6cc55289d931bdb",
+      "range": {
+        "first_decision": "2015-01-01T00:00:00+00:00",
+        "fold": "2015",
+        "last_mark": "2015-12-31T00:00:00+00:00",
+        "measured_bars": 261,
+        "measurement_end": "2016-01-01T00:00:00+00:00",
+        "measurement_start": "2015-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "630774754a7f295188448a7f4104e0b8d77cf2d1b8950435b91e839bd5e41f0e",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2015.json",
+          "sha256": "a030c3f31112ed51093e237be49cc493e49adff1beabf28d6c4f392ec7cd8e85"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2015_r16_longf.yaml",
+        "config_sha256": "d72335fea4982894b1004b49dcfd26c02073e95237f4efa52d8d87c80e89de4a",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2015_r16_longf_ens3/20260831-123412-559084",
+          "ensemble_manifest_sha256": "e355472cf882274b5d59472bea68216c6bd2cd11d9927b7e10a3e53f9be3b13f",
+          "eval_env_sha256": "a69c765ccdfb92b7dfba8063418c1d7119c39471fb5da1b1d8a384a65820d4b2",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "87a61642c3b67775d83f46ffa2b721e8f8daf12552409a2b25dbb08acdf43165",
+            "6096d4f5702146a28da2a1d3ae3f716b1b79e4660993a8b45c971852224e8f2b",
+            "6d3f7a318893cedda38d0180a04380387cdc9f1c2174fb19e0e0c59b00b99db8"
+          ],
+          "metrics_sha256": "5bfd2ccffd1c4f7485d16712abe0641692bf5e307281ddc37357643c09882360",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2015.parquet",
+            "sha256": "c4fa2e852d06f1ad9b11e7d2d0b03fda61f940ee970dbccef4205a582073bdb4"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2016": {
+      "input_sha256": "83c8045d078afefd04a0575e42c9bafd631df1c2d050072283af1aeac1f3fee4",
+      "range": {
+        "first_decision": "2016-01-01T00:00:00+00:00",
+        "fold": "2016",
+        "last_mark": "2016-12-30T00:00:00+00:00",
+        "measured_bars": 261,
+        "measurement_end": "2017-01-01T00:00:00+00:00",
+        "measurement_start": "2016-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "8ada1236bda66b49ca814872ba76bf27be1d03dd217ba2d8a06276e8d97bb509",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2016.json",
+          "sha256": "0e3e82067dbb0ad911fafbbd01d0778b0702234a89e6b4bb7eba4e513ba7245f"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2016_r16_longf.yaml",
+        "config_sha256": "6d395b096accd69740fc3ff40efbcba3512afba77ca82bfc51686141031c8652",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2016_r16_longf_ens3/20260831-123414-666659",
+          "ensemble_manifest_sha256": "f41bc20419168ee5d7747a1b4a22278765084a9e23c994e60237950cc8e9307f",
+          "eval_env_sha256": "409eff09fee861435ebe31428eb383cc7b24f08c768eb2de063d278a278845b0",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "cbd6ee7a7950c0aaf7838585685bc35a2242821260ffb7dad274cca90ce9184d",
+            "cebc3de5b2ed6604dc3c9bd27645213c97abbbb138422f03e309dfb1a7a196d3",
+            "4193ee580670b35988be63c3bbb2b3802b724cf87964b88ce081064f17d52624"
+          ],
+          "metrics_sha256": "4c83e4a45b5d58b676cc09e45405e23238cb33bfc9c102ceb3a7e5783d098f6c",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2016.parquet",
+            "sha256": "dce508d74ea630b2ba0702f0777c598e5ec8e7457792bf166410d7b49f8b6f04"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2017": {
+      "input_sha256": "f22a437ea8d14cca41c0e776c03a201fc257b81f705181ebc1a23038097099e7",
+      "range": {
+        "first_decision": "2017-01-02T00:00:00+00:00",
+        "fold": "2017",
+        "last_mark": "2017-07-09T23:00:00+00:00",
+        "measured_bars": 136,
+        "measurement_end": "2017-07-10T23:00:00+00:00",
+        "measurement_start": "2017-01-01T00:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "b613a55524c9a608d1eca58bdc657fd2f7028583d8646a9c77293051bcb01f5c",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2017.json",
+          "sha256": "89a0e1f611c7bf66dbea2f86eeb694ff75db7b7ef4aa3040adc8bc27fb9f22b5"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2017_r16_longf.yaml",
+        "config_sha256": "24d2de7b1f4e283b1d928ac0795cf7627913f8e016204cebb497751f539bb563",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2017_r16_longf_ens3/20260831-123416-745661",
+          "ensemble_manifest_sha256": "e1259238c1007d2804e0bca7dabb35eac81929f40fdc5d84edc9a667badcf6f3",
+          "eval_env_sha256": "7a9ee91332e28b8606e56358215f4fdf27ff4a0d376862f6c8f01ddd947a923e",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "9958ab75be707f705e85675cdc5e32711356d8143f89bf81efbeb382ce5b3d61",
+            "cebbe23eed7869e15bebf2349678d3282f18569ba0de0332c2a6fca03b82ac29",
+            "23d3db0f45e5ce3545fdb718e3ae13b85473c853af5720170d9fce15ca41ba16"
+          ],
+          "metrics_sha256": "8e7085a3d6595ba910546a0557b7d1df4034c3f85294c7ad96bc2408b1031afe",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2017.parquet",
+            "sha256": "680885059f87b9439994d542d5761031f9bf7d7e3e46f7d1fde3bc3d8160c38d"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2018": {
+      "input_sha256": "9b7a97e91c1230911069cef21eaa4b5ef78683417696a9f6d2575278cb765713",
+      "range": {
+        "first_decision": "2018-02-14T00:00:00+00:00",
+        "fold": "2018",
+        "last_mark": "2018-12-31T00:00:00+00:00",
+        "measured_bars": 229,
+        "measurement_end": "2019-01-01T00:00:00+00:00",
+        "measurement_start": "2018-02-14T00:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "0bf954713a77e8ff9f2c620b3729988b75864844eb029c92fd041b333ba20607",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2018.json",
+          "sha256": "f542c5a822af2bb55a07a519c0d26a6013ad0ebafb59f3c3ac3f7088640eeb2d"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2018_r16_longf.yaml",
+        "config_sha256": "feea868018243c8832d41fdb167d3d3ddbcf4bb9b8ffbd8b386bdb4bcd5dcbe4",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2018_r16_longf_ens3/20260831-123418-859230",
+          "ensemble_manifest_sha256": "e60acef86f8df9d77edcb7a8cba8faac84b8642d190b8910828c03440771138f",
+          "eval_env_sha256": "895c2f7c883a149ef17a269034a6d55ea2c09c73906dd36d75a0380b270d4379",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "4e713deae04dd04bd2fca7333e3617be6b59f5458ecb613bcef528f34316d18e",
+            "005a6c5db91622a98ff7a57435f07e216ea411e5058438e044bf9c179e9c7a05",
+            "3067c676bf9e8eec8442d56bc5fb373d141a027703cb8ae9c1a9ea3ed83d2e2d"
+          ],
+          "metrics_sha256": "c8fbb39b7505b8c2b4165bc2dbdda11a711f0e055dff977bd35be99351a7e907",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2018.parquet",
+            "sha256": "6939f65c1ba9f774fab14f0be6c9bc844eaebeeec21e6f9256a3cf69a7557d32"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2019": {
+      "input_sha256": "21c9514a6e68ca3719d4238a2821aa1e152d62a88d623600095f968fb5b19d30",
+      "range": {
+        "first_decision": "2019-01-01T00:00:00+00:00",
+        "fold": "2019",
+        "last_mark": "2019-05-20T23:00:00+00:00",
+        "measured_bars": 101,
+        "measurement_end": "2019-05-21T23:00:00+00:00",
+        "measurement_start": "2019-01-01T00:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "68d5ece100c73485da9edf947b96b3077947fa7a786315932f0aa50e639b2fd3",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2019.json",
+          "sha256": "1668cd518d4e434f784a0ecde27013a3daa2ae451e6e7ba374180c97ee41b178"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2019_r16_longf.yaml",
+        "config_sha256": "cf1930bc9c826da4692573dc6da4590c2e4182220483b9bc2577b9121ca4674a",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2019_r16_longf_ens3/20260831-123420-955867",
+          "ensemble_manifest_sha256": "2495ddd2bd5da49a973e1baf71eefc09578af3d1398a5ed8ace3bae1735d190c",
+          "eval_env_sha256": "077b026f7cedd3f60817a19e58cfa1db3f7afc47f3bfa4fbe98c9694be3c8907",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "b5fcc3d3b3544c3b14d90d01102bf7b7257ccb3e5f47fe9546b673c5f91cbd2f",
+            "858d1b0a2fa69ef8e0914d9658608450b66c84f1a0ec53b9438e4a3cf8657bbb",
+            "cdbf7df763cdb08e8df70c643791c06b4c801df680272a8bed8c38e53a8d47ca"
+          ],
+          "metrics_sha256": "ee42399463fb021ed5774f2eaf262e4c01c341b0cbf64a423e8a7dcf35478df3",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2019.parquet",
+            "sha256": "8a4692ed54c2b7af5c117412c1b6ef118cf302bff95e3de63ffe2888564d86f4"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2020": {
+      "input_sha256": "8f8a8b4f92b2a0120e05d658b0cb8335451472cff99a298bbc97d7cec04c29d7",
+      "range": {
+        "first_decision": "2020-01-01T00:00:00+00:00",
+        "fold": "2020",
+        "last_mark": "2020-12-31T00:00:00+00:00",
+        "measured_bars": 262,
+        "measurement_end": "2021-01-01T00:00:00+00:00",
+        "measurement_start": "2020-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "6a5f832366f9369a418099e3b6d5740055aee6b599f20155e96f847053bca8f5",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2020.json",
+          "sha256": "5626f4bb92455d2e2909f616c3b1299c4c06e8cdc789dffd78c4d924ac1b4a43"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2020_r16_longf.yaml",
+        "config_sha256": "4438dd10131e606353375dcbdcd287489b3384cc3b0822da2064e98c2739f8a2",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2020_r16_longf_ens3/20260831-123423-064642",
+          "ensemble_manifest_sha256": "32777b6d18c3bbc1789795a5d8ef40b6631fe071742ef85248bb94fc284e4201",
+          "eval_env_sha256": "37ff97cf255448797a132038b0d54bd58c4c4e32cdef4d9c17da2b00797bb0ac",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "af30b504a93ec67ed670640d37a3f5eea8b263513341a3d1793774284a168ac3",
+            "1964e560badfd5c95a3058a9e87b2447078c54554a196bcc573663844c6dbb81",
+            "9f52549389dc240e94b386a7c87f5e53d7b5c5c84e642d5fe64f60360a21c43d"
+          ],
+          "metrics_sha256": "7ad229d38149c8346c345164e6e85700cdaf4a397eaf657f55d79d3f25bafe9d",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2020.parquet",
+            "sha256": "48d2d2a2355ff4eb4057d92d2b8d1066e76a73b2d274577d7f94cf1e1276f5b4"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2021": {
+      "input_sha256": "5e5402cec5d09bdbd646692fec8cd5000e2443b9cdf5a993161d3e06ba0e46be",
+      "range": {
+        "first_decision": "2021-01-01T00:00:00+00:00",
+        "fold": "2021",
+        "last_mark": "2021-12-31T00:00:00+00:00",
+        "measured_bars": 261,
+        "measurement_end": "2022-01-01T00:00:00+00:00",
+        "measurement_start": "2021-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "3b6ea4e8512570f4d48af5b2fc3ab3f52e43ed8f59c7695531066c697b5b67f4",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2021.json",
+          "sha256": "cdbd4fadd63694c3bc20ad5dca37bd52afc5af34bb6fbc9ea386933cc3992748"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2021_r16_longf.yaml",
+        "config_sha256": "a4cc4d2e1297752a598c30f4857a371fd621a98add7e76b35faafe1a9172a555",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2021_r16_longf_ens3/20260831-123425-147586",
+          "ensemble_manifest_sha256": "b59a74b2d32ebf94ae201a466c33019dff3d808ac6692a8cc39171509732368a",
+          "eval_env_sha256": "5aa0c81393c2dbca247684f97d22ddc9957309858f04a3238d119a634cd7e7f5",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "1a4ca6c23932c6fb61ff0981c3debd1ea56d29d6ddf691a217372038d74b9ec0",
+            "4761cf3e9ccb08973f2a9121d8da0c227083536bc969ab504309992acdef80c1",
+            "3911498d0dfb6c1e55090d4faebd22cfc4d9b68f91459d82e08a9141c04adcf3"
+          ],
+          "metrics_sha256": "949f17df66d11e56d04ed5dcb08fd0623696c83cd417c214b74ead155fa6f4c5",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2021.parquet",
+            "sha256": "8e68a722f3817ad63f5b275f0bcd0042bf263859687aa2ec803df1113c32ed92"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2022": {
+      "input_sha256": "43b7c44ba6c8cc6771b861588e50945992a998627fda3fd6d1727d431674d9ab",
+      "range": {
+        "first_decision": "2022-01-03T00:00:00+00:00",
+        "fold": "2022",
+        "last_mark": "2022-12-30T00:00:00+00:00",
+        "measured_bars": 260,
+        "measurement_end": "2023-01-01T00:00:00+00:00",
+        "measurement_start": "2022-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "d83f2eb4504c0aa33d1aac79db7b03d4ac1c873e928c3f434ecd320ab1ffdc2a",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2022.json",
+          "sha256": "95d5761949b7f74db9c8d2b8fa9641ee38286ddd1f78385780e96590ec9cb920"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2022_r16_longf.yaml",
+        "config_sha256": "0693aac8a8717dab11321ce2e3b5aa20999e4ad6d0c930d13c25091e4078f259",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2022_r16_longf_ens3/20260831-123427-232827",
+          "ensemble_manifest_sha256": "5cc1064b606cb712f01c28316b1a3e1a95184c6492945d9583b75b83eaea5b26",
+          "eval_env_sha256": "771b315edd89340c6c6370125fafdfdc672398b82b9f1344e109ecccfcd8aa01",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "18e0fbad0372e9991112b97b7869befd0fad5a7699b3c360b79baeed07782f21",
+            "ebf711a898b41e30990c3e2f1a6dbc3807612eda372f0f0cdde98a7dcb180720",
+            "0d8dc8cfba962feddc1a9d81b552c556911a18827fd22be981e6da0fc8bd84ca"
+          ],
+          "metrics_sha256": "ae42dc700db7cc784ecccc16ee7deaae0c5e2ef906d68920127098aac76c0424",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2022.parquet",
+            "sha256": "9c6fd78b04e22eac509c38c2d08437a993f9720778aa20a3da96964c2fb90a35"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2023": {
+      "input_sha256": "8708167faf6d70bbc4aee27a55f72d5c1b49452f3f510a976a579121e4ffdffd",
+      "range": {
+        "first_decision": "2023-01-02T00:00:00+00:00",
+        "fold": "2023",
+        "last_mark": "2023-12-29T00:00:00+00:00",
+        "measured_bars": 260,
+        "measurement_end": "2024-01-01T00:00:00+00:00",
+        "measurement_start": "2023-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "ef61a1947db0a45f8eed3d09cba5914ba9715fb2589b53b125ee173a4f2b454a",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2023.json",
+          "sha256": "048a4411c104e842868370779925c8fca2ed5cc442211a0f2a09ac5177d2138f"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2023_r16_longf.yaml",
+        "config_sha256": "8013b2e6d8659fef96e4af7db6f0171c7a5cf4dfb229ad734b793379cb39d33f",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2023_r16_longf_ens3/20260831-123429-322185",
+          "ensemble_manifest_sha256": "f927f4d8f1e7659a996e4b5c244523ae1e8ab67a3136eb050c869c354be4d3b7",
+          "eval_env_sha256": "bcd2dbb47fef55511c3d51fba24e6be331ba53f24cb9226a67da4d9b06bd724f",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "a956f3c961a099af97c3c59846e0c8629b1f56fe3a7a5ceee1be398339079ba5",
+            "bf2c4d254b7a927653bf8cd644f08110189751857c58a69d577c5453c9b435c4",
+            "4e0d6348dd75e507d8e8c3c628567b5a22ff58388c237a499c67de2da827dd9a"
+          ],
+          "metrics_sha256": "f2dfc04544cd3ee1e03ed59fbc42934ba50a6a0fa81c488d7d1c84e353b05534",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2023.parquet",
+            "sha256": "7b8814a5a9d82a89e4fd0366b5f46c9c70d99f462f6a6f5ebf3ebc1d275ca194"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2024": {
+      "input_sha256": "16209c6207c5cbbc77489d11f38de5e811d6b3ae57a3d7b6f823361b2bf82384",
+      "range": {
+        "first_decision": "2024-01-01T00:00:00+00:00",
+        "fold": "2024",
+        "last_mark": "2024-12-31T00:00:00+00:00",
+        "measured_bars": 262,
+        "measurement_end": "2025-01-01T00:00:00+00:00",
+        "measurement_start": "2024-01-01T00:00:00+00:00",
+        "scope": "full_year"
+      },
+      "ridge_parameter_sha256": "be04bbed86a70db01f752d560843b3c10fbee2b3b63a3f5d6c4059765ec5ca09",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2024.json",
+          "sha256": "e94ec28281705fed4e8d43c9b617ed9fac257c37e1584dfb16f669ed4719b552"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2024_r16_longf.yaml",
+        "config_sha256": "e21ce95df45b90aceee51ef11e3922e50a2796b35f7cbae8c1b03a65c972d818",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2024_r16_longf_ens3/20260831-123431-413766",
+          "ensemble_manifest_sha256": "9fcfac670dfa851f16a78441eb56e3197b72b6b20d3a41aa7ca29bff1bff5a63",
+          "eval_env_sha256": "64cbfcbeb3d51372d9399bc50fe674ade9c5bac09127f7c416537bb198c1fd2d",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "6faafe4f8e457aa0bffa4fb4d8b4f2188d58dfe58cd1cad07861d08c637f5aa7",
+            "d3d378a240a2fb5400a497233d5f883bb2eeffa5d9ccad62c1edf63725487772",
+            "26166dc1a659e3ab26e038e61eb8a804b9223c0fe9c3eed4a38f9545cd6a1564"
+          ],
+          "metrics_sha256": "93d76899fe383a092cd3edd0222ac63b1e0e6d3c1f3a26a51de20ed194ec4180",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2024.parquet",
+            "sha256": "88ac2eb9c00964a574773b84f22e047a4d1f2b6c06e9908f5ee10c8d99de5862"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    },
+    "2025": {
+      "input_sha256": "69d0e039f8e37e091b6426c7646fe1958b3286dde41d921d769fac1ecaf2af7f",
+      "range": {
+        "first_decision": "2025-07-17T23:00:00+00:00",
+        "fold": "2025",
+        "last_mark": "2025-12-24T00:00:00+00:00",
+        "measured_bars": 114,
+        "measurement_end": "2025-12-25T00:00:00+00:00",
+        "measurement_start": "2025-07-17T23:00:00+00:00",
+        "scope": "partial_year"
+      },
+      "ridge_parameter_sha256": "4ab1c43806780c0c3fff4b8e04bba107d08728e7932c31a6dd9ba036b5178462",
+      "source": {
+        "calendar_source": {
+          "path": "docs/research/results/issue39/snapshot/calendar-2025.json",
+          "sha256": "6943888f0d3c6caa0e19dc95d59ca6877fafc8b7338989a5b47f8b4faec837c7"
+        },
+        "config_path": "/home/tsuyoshi/workspace/projects/forex-trainer/configs/wf_r16_long_full/wf2025_r16_longf.yaml",
+        "config_sha256": "dfa1f907f8c96b577b48511d516b45bc390249ba802925940d8493963e58bde4",
+        "data_identity": {
+          "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+          "provider": "file",
+          "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+        },
+        "lineage": {
+          "available_at_evidence": "Unknown for the historical cache; calendar available_at is null, never synthesized from session_close or current retrieval time.",
+          "carry": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_carry.parquet",
+              "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+            }
+          ],
+          "clean": [
+            {
+              "path": "data/jpy_9pairs_1d_2003_clean.parquet",
+              "sha256": "2d2c032d23de7caae77807455d1db4f6d334f3b591ceeb85b41295461454ad8e"
+            }
+          ],
+          "rate_vintage": "Historical FRED vintage and publication timestamps are unknown. The already-sealed CarryAnnual values are used as historical-research inputs; no current vintage is substituted or downloaded.",
+          "raw": [
+            {
+              "path": "data/jpy_9pairs_1d_2003.parquet",
+              "sha256": "8055ab6d0f40a9602544f17fb52683344245600396d364b2afa0211e2082b375"
+            }
+          ],
+          "transformations": "Existing yfinance nine-pair daily raw -> spike-cleaned -> FRED carry-augmented caches, used byte-for-byte without new repair or carry estimation. Issue #22 audited raw/clean/carry hashes and all value differences (docs/research/results/issue22/data_lineage.json). Repair recipe: residual_threshold=0.08, reversal_tolerance=0.04, expected_repairs=14 (33 OHLC cells). Documented carry lag=60 calendar days; original FRED response/vintage and creation arguments were not embedded. Current data_quality.py/carry.py/features.py hashes are captured in runtime.source_sha256; those hashes do not prove the original transformation code revision. Future-neighbor cleaning and revised rates remain historical-research assumptions."
+        },
+        "ppo": {
+          "data_identity": {
+            "path": "/home/tsuyoshi/workspace/projects/forex-trainer/data/jpy_9pairs_1d_2003_carry.parquet",
+            "provider": "file",
+            "sha256": "723db7c935dcc27c147007728358d098243eae96998eae146db4c7df02bd081e"
+          },
+          "ensemble_dir": "/home/tsuyoshi/workspace/projects/forex-trainer/runs/issue5_current_ensembles/wf2025_r16_longf_ens3/20260831-123433-481143",
+          "ensemble_manifest_sha256": "db2617aec6f68ab294c8d2aa30fecfcba87025bcb3ca514f0f999e7ffca66051",
+          "eval_env_sha256": "1c69a0007f043ee54c4745e2a8067eb1ec36badb2932adc6563982bd2e93f46a",
+          "evaluation_git": {
+            "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+            "forex_trainer": "49c04492aa4a0902ea97f81edc5d9217b0f2bf75"
+          },
+          "evaluation_versions": {
+            "forex-env-v3": "0.1.0",
+            "gymnasium": "1.2.3",
+            "sb3-contrib": "2.8.0",
+            "stable-baselines3": "2.8.0",
+            "torch": "2.12.0"
+          },
+          "member_model_sha256": [
+            "3d595ae8aaae38437622f925783c9163694aa4505ece11aaa9d08e0481436c60",
+            "adc5aea572bcdb70e3ea3ec440b7765ac0627fc8a855a562821512d185057401",
+            "28540450b68419af6801fb58e00fcebb587b3b178c92d43ce33c10117560d636"
+          ],
+          "metrics_sha256": "03f69a1005560ec176664e9fbd617a20bb3bef1d148c13e36a1c9be8567dee95",
+          "sealed_device": "cpu"
+        },
+        "successor_snapshot": {
+          "data": {
+            "path": "runs/issue39-contiguous-snapshot-v1/data/fold-2025.parquet",
+            "sha256": "f028593bdc297224f7303645f55eb5926d866203beac2fec7cfb5b5cc8c34ec1"
+          },
+          "identity_sha256": "dab5a969ee98c7c2e2b2d01fc0038b91d8ebeef0f784a21a6d1cbab2220eb1ca",
+          "training_lineage_changed": false
+        }
+      }
+    }
+  },
+  "input_status": "ready",
+  "interpretation": "Fixed historical execution-rule sensitivity; not observed fill or causal market latency.",
+  "issue45_complete": false,
+  "proxy_status": "incomplete",
+  "quote_cells": [
+    {
+      "execution": "same_close",
+      "fold": "2025",
+      "policy": "canonical",
+      "reason": "issue44_observed_inputs_and_source_contract_missing",
+      "scenario": "F0",
+      "status": "blocked_input"
+    },
+    {
+      "execution": "observed_quote",
+      "fold": "2025",
+      "policy": "canonical",
+      "reason": "issue44_observed_inputs_and_source_contract_missing",
+      "scenario": "F0",
+      "status": "blocked_input"
+    },
+    {
+      "execution": "same_close",
+      "fold": "2025",
+      "policy": "ridge",
+      "reason": "issue44_observed_inputs_and_source_contract_missing",
+      "scenario": "F0",
+      "status": "blocked_input"
+    },
+    {
+      "execution": "observed_quote",
+      "fold": "2025",
+      "policy": "ridge",
+      "reason": "issue44_observed_inputs_and_source_contract_missing",
+      "scenario": "F0",
+      "status": "blocked_input"
+    },
+    {
+      "execution": "same_close",
+      "fold": "2025",
+      "policy": "ppo_ens3",
+      "reason": "issue44_observed_inputs_and_source_contract_missing",
+      "scenario": "F0",
+      "status": "blocked_input"
+    },
+    {
+      "execution": "observed_quote",
+      "fold": "2025",
+      "policy": "ppo_ens3",
+      "reason": "issue44_observed_inputs_and_source_contract_missing",
+      "scenario": "F0",
+      "status": "blocked_input"
+    }
+  ],
+  "quote_status": "blocked_input",
+  "status_counts": {
+    "blocked_input": 0,
+    "complete": 0,
+    "execution_error": 0,
+    "not_run": 306,
+    "strategy_terminal": 0
+  }
+}

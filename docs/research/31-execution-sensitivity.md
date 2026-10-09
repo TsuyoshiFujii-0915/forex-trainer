@@ -16,6 +16,7 @@
 
 proxyの入力preflightは17区間・3,569判断時点で通過した。価格・modelファイルを検証・読込するが、
 model推論、fit、口座評価、外部取得は行っていない。[保存結果](results/issue45/preflight.json)を参照。
+[実行状態とruntime](results/issue45/execution-status.json)には、市場評価0・残る開始条件を保存した。
 9区間の部分年は#39のままで、17通年へ読み替えない。既存3方策以外の候補は対象外。
 
 ## 固定したproxy会計
@@ -69,6 +70,8 @@ uv run forex-execution-sensitivity preflight \
 
 # このPRの登録・実装がレビュー・マージされた後にだけ実行可能。
 git fetch origin
+git switch main
+git pull --ff-only origin main
 uv run forex-execution-sensitivity seal \
   --config configs/research/issue45_execution_sensitivity.json \
   --registration-merge-commit <このPRの40桁merge-SHA> \
@@ -89,6 +92,10 @@ registrationと実装のmerge、両repoのclean runtime、入力/model/lock/vers
 原因を含む例外を再送する。OS強制終了やdisk-full等で書込不能になった場合は正常完了とみなさない。
 verifyはモデル再推論・口座再実行なしで、保存hash、完了口座の会計、metrics、全セル集計と台帳を照合する。
 失敗セルの途中状態はincidentとして保存し、完了口座へ昇格しない。
+
+実装テストは`uv run python -m pytest tests/test_execution_sensitivity*.py -q`。
+数量・時刻・費用・terminal・例外・保存改変の25ケースを検証する。テストは各実装変更前に追加し、
+失敗を確認してから実装を修正した。テスト中に市場口座や旧方策modelの学習は行わない。
 
 報告は各口座のnet/gross period log、gap price PnL、price/carry、spread/commission/markup、実売買量、
 exposure/MDD、fill遅延・coverage、terminal・未実行判断数を保持する。
