@@ -36,6 +36,7 @@
 | [27-short-common-direction-revision.md](27-short-common-direction-revision.md) | 有限calendar分割で全34ケース適格、短期・中期RL・実執行gate分離、#41〜#50引渡し | Issue #55（v3） |
 | [29-common-quantity-allocation.md](29-common-quantity-allocation.md) | fixed/cost配分・数量hold会計、合成13口座・113テスト検証済み、#43引渡し | Issue #42 |
 | [28-common-basket-forecaster.md](28-common-basket-forecaster.md) | 共通basket ridge 102fit・全34モデル・7,138予測を封印、両hの予測gate未達を記録 | Issue #41 |
+| [31-execution-sensitivity.md](31-execution-sensitivity.md) | 凍結数量next-close、独立306口座登録・入力preflight、実quoteはblocked、市場評価はマージ待ち | Issue #45 |
 
 次期学習の入口は[issue40-common-direction-development-v3](27-short-common-direction-revision.md)と
 [新登録・試行台帳](protocols/issue40/revisions/v3/registration.json)。#55の有限calendar検査で、

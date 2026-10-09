@@ -1,0 +1,276 @@
+{
+  "experiment_id": "issue45-execution-sensitivity-v1",
+  "status": "registered_pending_review_merge_and_runtime_seal",
+  "run_directory": "runs/issue45-execution-sensitivity-v1",
+  "snapshot": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  },
+  "quantity_fixture": {
+    "path": "docs/research/results/issue42/fixture/manifest.json",
+    "sha256": "a36c69538ed419efcc77d38df605a39e0c2084116a6637e3088b39d2bb0706f1"
+  },
+  "parent_registration": {
+    "path": "docs/research/protocols/issue40/revisions/v3/registration.json",
+    "sha256": "5d096705e68536faa48eadf7a701e7d034f918e5203b45fb8191bbefeae6e8aa"
+  },
+  "proxy": {
+    "measurement_id": "issue40-next-close-proxy-v1",
+    "reference_measurement_id": "issue40-common-quantity-same-close-v1",
+    "account_limit_after_merge": 306,
+    "effective_accounts_before_merge": 0,
+    "policies": [
+      "canonical",
+      "ridge",
+      "ppo_ens3"
+    ],
+    "scenarios": [
+      "F0",
+      "F1",
+      "F2"
+    ],
+    "executions": [
+      "same_close",
+      "next_close"
+    ],
+    "folds": [
+      {
+        "fold": "2009",
+        "scope": "partial_year",
+        "measurement_start": "2009-05-05T23:00:00+00:00",
+        "measurement_end": "2010-01-01T00:00:00+00:00",
+        "first_decision": "2009-05-05T23:00:00+00:00",
+        "last_mark": "2009-12-31T00:00:00+00:00",
+        "measured_bars": 172
+      },
+      {
+        "fold": "2010",
+        "scope": "full_year",
+        "measurement_start": "2010-01-01T00:00:00+00:00",
+        "measurement_end": "2011-01-01T00:00:00+00:00",
+        "first_decision": "2010-01-01T00:00:00+00:00",
+        "last_mark": "2010-12-31T00:00:00+00:00",
+        "measured_bars": 261
+      },
+      {
+        "fold": "2011",
+        "scope": "partial_year",
+        "measurement_start": "2011-07-13T23:00:00+00:00",
+        "measurement_end": "2012-01-01T00:00:00+00:00",
+        "first_decision": "2011-07-13T23:00:00+00:00",
+        "last_mark": "2011-12-30T00:00:00+00:00",
+        "measured_bars": 122
+      },
+      {
+        "fold": "2012",
+        "scope": "partial_year",
+        "measurement_start": "2012-01-01T00:00:00+00:00",
+        "measurement_end": "2012-12-04T00:00:00+00:00",
+        "first_decision": "2012-01-02T00:00:00+00:00",
+        "last_mark": "2012-12-03T00:00:00+00:00",
+        "measured_bars": 241
+      },
+      {
+        "fold": "2013",
+        "scope": "partial_year",
+        "measurement_start": "2013-04-15T23:00:00+00:00",
+        "measurement_end": "2013-10-07T23:00:00+00:00",
+        "first_decision": "2013-04-15T23:00:00+00:00",
+        "last_mark": "2013-10-06T23:00:00+00:00",
+        "measured_bars": 125
+      },
+      {
+        "fold": "2014",
+        "scope": "partial_year",
+        "measurement_start": "2014-01-06T00:00:00+00:00",
+        "measurement_end": "2015-01-01T00:00:00+00:00",
+        "first_decision": "2014-01-06T00:00:00+00:00",
+        "last_mark": "2014-12-31T00:00:00+00:00",
+        "measured_bars": 258
+      },
+      {
+        "fold": "2015",
+        "scope": "full_year",
+        "measurement_start": "2015-01-01T00:00:00+00:00",
+        "measurement_end": "2016-01-01T00:00:00+00:00",
+        "first_decision": "2015-01-01T00:00:00+00:00",
+        "last_mark": "2015-12-31T00:00:00+00:00",
+        "measured_bars": 261
+      },
+      {
+        "fold": "2016",
+        "scope": "full_year",
+        "measurement_start": "2016-01-01T00:00:00+00:00",
+        "measurement_end": "2017-01-01T00:00:00+00:00",
+        "first_decision": "2016-01-01T00:00:00+00:00",
+        "last_mark": "2016-12-30T00:00:00+00:00",
+        "measured_bars": 261
+      },
+      {
+        "fold": "2017",
+        "scope": "partial_year",
+        "measurement_start": "2017-01-01T00:00:00+00:00",
+        "measurement_end": "2017-07-10T23:00:00+00:00",
+        "first_decision": "2017-01-02T00:00:00+00:00",
+        "last_mark": "2017-07-09T23:00:00+00:00",
+        "measured_bars": 136
+      },
+      {
+        "fold": "2018",
+        "scope": "partial_year",
+        "measurement_start": "2018-02-14T00:00:00+00:00",
+        "measurement_end": "2019-01-01T00:00:00+00:00",
+        "first_decision": "2018-02-14T00:00:00+00:00",
+        "last_mark": "2018-12-31T00:00:00+00:00",
+        "measured_bars": 229
+      },
+      {
+        "fold": "2019",
+        "scope": "partial_year",
+        "measurement_start": "2019-01-01T00:00:00+00:00",
+        "measurement_end": "2019-05-21T23:00:00+00:00",
+        "first_decision": "2019-01-01T00:00:00+00:00",
+        "last_mark": "2019-05-20T23:00:00+00:00",
+        "measured_bars": 101
+      },
+      {
+        "fold": "2020",
+        "scope": "full_year",
+        "measurement_start": "2020-01-01T00:00:00+00:00",
+        "measurement_end": "2021-01-01T00:00:00+00:00",
+        "first_decision": "2020-01-01T00:00:00+00:00",
+        "last_mark": "2020-12-31T00:00:00+00:00",
+        "measured_bars": 262
+      },
+      {
+        "fold": "2021",
+        "scope": "full_year",
+        "measurement_start": "2021-01-01T00:00:00+00:00",
+        "measurement_end": "2022-01-01T00:00:00+00:00",
+        "first_decision": "2021-01-01T00:00:00+00:00",
+        "last_mark": "2021-12-31T00:00:00+00:00",
+        "measured_bars": 261
+      },
+      {
+        "fold": "2022",
+        "scope": "full_year",
+        "measurement_start": "2022-01-01T00:00:00+00:00",
+        "measurement_end": "2023-01-01T00:00:00+00:00",
+        "first_decision": "2022-01-03T00:00:00+00:00",
+        "last_mark": "2022-12-30T00:00:00+00:00",
+        "measured_bars": 260
+      },
+      {
+        "fold": "2023",
+        "scope": "full_year",
+        "measurement_start": "2023-01-01T00:00:00+00:00",
+        "measurement_end": "2024-01-01T00:00:00+00:00",
+        "first_decision": "2023-01-02T00:00:00+00:00",
+        "last_mark": "2023-12-29T00:00:00+00:00",
+        "measured_bars": 260
+      },
+      {
+        "fold": "2024",
+        "scope": "full_year",
+        "measurement_start": "2024-01-01T00:00:00+00:00",
+        "measurement_end": "2025-01-01T00:00:00+00:00",
+        "first_decision": "2024-01-01T00:00:00+00:00",
+        "last_mark": "2024-12-31T00:00:00+00:00",
+        "measured_bars": 262
+      },
+      {
+        "fold": "2025",
+        "scope": "partial_year",
+        "measurement_start": "2025-07-17T23:00:00+00:00",
+        "measurement_end": "2025-12-25T00:00:00+00:00",
+        "first_decision": "2025-07-17T23:00:00+00:00",
+        "last_mark": "2025-12-24T00:00:00+00:00",
+        "measured_bars": 114
+      }
+    ],
+    "coordinates": "inverse_price_research_quantity_not_broker_base_units",
+    "order": "decision_quantity_after_cap_filled_in_full_at_next_expected_close",
+    "risk": "full_frozen_fill_then_explicit_proportional_risk_trade",
+    "terminal": "gap_margin_cancels_fill; fill_margin_stops; final_mark_fill_allowed_without_new_decision",
+    "costs": {
+      "spreads": [
+        1.5e-05,
+        2.5e-05,
+        3e-05,
+        3e-05,
+        3.5e-05,
+        3.5e-05,
+        4e-05,
+        6e-05,
+        6e-05
+      ],
+      "commission": 0.0,
+      "markup": 2e-05,
+      "F1": "spread_x2",
+      "F2": "markup_x2"
+    },
+    "statistics": {
+      "unit": "equal_weight_fold_period_log",
+      "bootstrap_samples": 10000,
+      "seed": 16,
+      "moving_block_length": 3,
+      "comparisons": "next_close_minus_same_close_per_policy_and_scenario",
+      "require_complete_folds": 17,
+      "multiplicity": "unadjusted_descriptive_no_selection"
+    }
+  },
+  "quote": {
+    "status": "blocked_input",
+    "effective_accounts": 0,
+    "account_ceiling": 6,
+    "measurement_id": "post-publication-quote-jpy-v1",
+    "execution_id": "first-eligible-quote-v1",
+    "source_bundle": {
+      "path": "configs/research/issue32_sources.json",
+      "sha256": "7e70bc77313bee7e75811fa3187169a626d6fea89d41c30c5c1e6ec17f7478fa"
+    },
+    "fold": "2025",
+    "scenarios": [
+      "F0"
+    ],
+    "policies": [
+      "canonical",
+      "ridge",
+      "ppo_ens3"
+    ],
+    "source": null,
+    "range": null,
+    "product_specification": null,
+    "observed_input": null,
+    "blockers": [
+      "issue44_observed_raw_decision_quote_mark_unavailable",
+      "source_product_cost_quantity_and_range_registration_required"
+    ],
+    "reference": "same_close_requires_separate_fixed_contract_for_observed_inputs",
+    "engine": "forex_trainer.quote_replay.replay"
+  },
+  "risk": {
+    "initial_equity": 1000000.0,
+    "initial_holdings": "flat",
+    "gross_cap": 5.0,
+    "pair_cap": 1.0,
+    "margin_threshold": 0.2
+  },
+  "fit_calls": 0,
+  "ppo_training": 0,
+  "external_requests": 0,
+  "retry_accounts": 0,
+  "fallback": false,
+  "new_candidates": 0,
+  "activation": "registration_and_implementation_on_origin_main_then_clean_runtime_seal",
+  "handoff": {
+    "issues": [
+      43,
+      48,
+      50
+    ],
+    "candidate_execution_validation": "requires_separate_trial_for_at_most_one_candidate",
+    "proxy_is_actual_fill_evidence": false,
+    "quote_difference_is_latency_causal_effect": false
+  }
+}
