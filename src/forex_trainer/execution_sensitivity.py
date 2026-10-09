@@ -104,13 +104,31 @@ def fill_order(account: QuantityAccount, order: dict[str, Any], final_at: str) -
         raise ValueError(f'proxy expected fill {expected}, got {account.mark.at}')
     if terminal(account.account.equity_jpy) is not None:
         return {**outcome, 'status': 'cancelled_terminal', 'reason': 'gap_margin'}
-    trades = [account.trade(q, 'frozen_next_close')]
-    if terminal(account.account.equity_jpy) is None:
-        capped = proportional_cap(account.state(), account.quantities)
-        if not np.array_equal(capped, account.quantities):
-            trades.append(account.trade(capped, 'risk_fill'))
-    for trade in trades:
-        trade.update(at=account.mark.at, prices=account.mark.prices.tolist())
+    trades: list[dict[str, Any]] = []
+
+    def execute(quantities: np.ndarray, reason: str) -> None:
+        """Retain each completed trade before any subsequent risk operation.
+
+        Args:
+            quantities: Full fill or explicit compulsory reduction target.
+            reason: Registered execution stage.
+        """
+        trade = account.trade(quantities, reason)
+        trades.append({**trade, 'at': account.mark.at, 'prices': account.mark.prices.tolist()})
+
+    try:
+        execute(q, 'frozen_next_close')
+        if terminal(account.account.equity_jpy) is None:
+            capped = proportional_cap(account.state(), account.quantities)
+            if not np.array_equal(capped, account.quantities):
+                execute(capped, 'risk_fill')
+    except Exception as exc:
+        raise QuantityExecutionError(
+            f'proxy fill at {account.mark.at}: {type(exc).__name__}: {exc}',
+            {**outcome, 'trades': trades, 'status': 'execution_error',
+             'equity_repr': repr(account.account.equity_jpy),
+             'quantities_repr': repr(account.quantities)},
+        ) from exc
     return {**outcome, 'status': 'filled', 'reason': None, 'fill_at': account.mark.at,
             'trades': trades, 'equity_after_fill': account.account.equity_jpy}
 
@@ -197,7 +215,8 @@ def replay_next_close(marks: tuple[Mark, ...], costs: Costs, policy: QuantityPol
             f'next-close proxy at {account.mark.at}: {type(exc).__name__}: {exc}',
             {'trace': trace, 'at': account.mark.at, 'equity_repr': repr(account.account.equity_jpy),
              'quantities_repr': repr(account.quantities), 'pending_order': order,
-             'pending_risk_trades': account.pending},
+             'pending_risk_trades': account.pending,
+             'failed_fill': exc.evidence if isinstance(exc, QuantityExecutionError) else None},
         ) from exc
     equity = account.account.equity_jpy
     return {'measurement_id': MEASUREMENT_ID, 'runtime_sha256': runtime_sha256,
