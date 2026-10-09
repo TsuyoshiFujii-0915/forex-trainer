@@ -1,0 +1,59 @@
+{
+  "issue": 43,
+  "recorded_date_jst": "2026-10-09",
+  "status": "complete",
+  "execution_git": {
+    "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "forex_trainer": "47992880637484bb365a93cd5fcc0841a14eeddc"
+  },
+  "campaign_id": "issue40-common-direction-development-v3",
+  "measurement_id": "issue40-common-quantity-same-close-v1",
+  "downstream_rl": {
+    "issue46": "not_planned",
+    "issue47": "not_planned",
+    "issue48": "not_planned"
+  },
+  "reporting_code_commit": "edc597a403e3cbf793909e0a2f13251d05ba1342",
+  "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19",
+  "candidate_accounts": 204,
+  "control_accounts": 153,
+  "status_counts": {
+    "blocked_input": 0,
+    "complete": 357,
+    "execution_error": 0,
+    "not_run": 0,
+    "strategy_terminal": 0
+  },
+  "new_fit_calls": 0,
+  "new_fixture_accounts": 0,
+  "ppo_training": 0,
+  "shared_retry_accounts": 0,
+  "old_metrics_reused": 0,
+  "reporting_incidents": 1,
+  "reporting_recovery": "saved_trace_only",
+  "account_reexecutions": 0,
+  "selected_candidate": null,
+  "selected_horizon": null,
+  "stop_reasons": [
+    "no_predictive_room",
+    "net_economic_conditions_failed"
+  ],
+  "independent_profitability": "not_established",
+  "handoff_issue46": {
+    "horizon": null,
+    "hypothesis": null,
+    "status": "not_planned",
+    "training_authorized": false
+  },
+  "handoff_issue49": {
+    "candidate": null,
+    "status": "not_planned"
+  },
+  "commands": [
+    "forex-common-direction preflight --config configs/research/issue43_common_direction.json --output runs/issue43-preflight",
+    "forex-common-direction seal --config configs/research/issue43_common_direction.json --output runs/issue43-execution-seal",
+    "forex-common-direction run --config configs/research/issue43_common_direction.json --activation runs/issue43-execution-seal/activation.json",
+    "forex-common-direction recover-report --directory runs/issue43-common-direction-v3",
+    "forex-common-direction verify --directory runs/issue43-common-direction-v3"
+  ]
+}

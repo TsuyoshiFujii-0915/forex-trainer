@@ -1,0 +1,40 @@
+{
+  "campaign_id": "issue40-common-direction-development-v3",
+  "measurement_id": "issue40-common-quantity-same-close-v1",
+  "run_directory": "runs/issue43-common-direction-v3",
+  "policies": [
+    "A1-fixed",
+    "A1-cost",
+    "A5-fixed",
+    "A5-cost",
+    "canonical",
+    "ridge",
+    "ppo_ens3"
+  ],
+  "scenarios": [
+    "F0",
+    "F1",
+    "F2"
+  ],
+  "candidate_accounts": 204,
+  "control_accounts": 153,
+  "fit_calls": 0,
+  "ppo_training": 0,
+  "shared_retry_accounts": 0,
+  "registration": {
+    "path": "docs/research/protocols/issue40/revisions/v3/registration.json",
+    "sha256": "5d096705e68536faa48eadf7a701e7d034f918e5203b45fb8191bbefeae6e8aa"
+  },
+  "snapshot": {
+    "path": "docs/research/results/issue39/snapshot/manifest.json",
+    "sha256": "edc8a3f6f3478f4a2917cae0706542a6d485cabd4295df3717cc912d5b872b4e"
+  },
+  "forecast_manifest": {
+    "path": "docs/research/results/issue41/bundle/manifest.json",
+    "sha256": "5f513d6a02fdf5ee2b2a1cae67d3d32c9b8493ae092432e9daee679f250905ea"
+  },
+  "quantity_manifest": {
+    "path": "docs/research/results/issue42/fixture/manifest.json",
+    "sha256": "a36c69538ed419efcc77d38df605a39e0c2084116a6637e3088b39d2bb0706f1"
+  }
+}

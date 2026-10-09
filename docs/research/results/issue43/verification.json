@@ -1,0 +1,21 @@
+{
+  "status": "verified",
+  "accounts_reconciled": 357,
+  "new_account_replays": 0,
+  "new_inference_calls": 0,
+  "copy_byte_identical": true,
+  "implementation_tests": 40,
+  "existing_related_tests": 95,
+  "manifest_sha256": "ff8ff839b24c5849cf98bd74c2e2dfcda653822478b6cce5ecf2c4bc62f5c0ba",
+  "checks": [
+    "complete artifact inventory and hashes",
+    "original market/calendars/model/forecast sources",
+    "common runtime and independent scenario costs",
+    "all account cash and quantity paths",
+    "decision state and shared forecast identity",
+    "357 reservations and outcomes",
+    "period log comparisons, eras, bootstrap CIs, all LOO and concentration",
+    "registered candidate and added-value rules",
+    "separate Issue 46 and Issue 49 handoffs"
+  ]
+}

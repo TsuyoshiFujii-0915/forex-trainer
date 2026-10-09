@@ -1,0 +1,714 @@
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2009-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2010-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2011-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2012-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2013-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2014-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2015-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2016-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2017-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2018-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2019-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2020-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2021-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2022-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2023-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2024-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F0-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F1-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-ppo_ens3"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-A1-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-A1-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-A1-cost"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-A1-cost"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-A5-fixed"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-A5-fixed"}
+{"attempt": 1, "counter": "issue43_candidate_accounts", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-A5-cost"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-A5-cost"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-canonical"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-canonical"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-ridge"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-ridge"}
+{"attempt": 1, "counter": "issue43_control_reevaluations", "event": "reserved", "runtime_sha256": "bc7d7e03121c639e43fbcb48d4c276f254385a5c872124909685ba1e6ccdff19", "work_item": "2025-F2-ppo_ens3"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-ppo_ens3"}

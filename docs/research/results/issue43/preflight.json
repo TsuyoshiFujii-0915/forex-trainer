@@ -1,0 +1,3253 @@
+{
+  "accounts_executed": 0,
+  "cells": [
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2009",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2010",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2011",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2012",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2013",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2014",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2015",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2016",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2017",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2018",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2019",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2020",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2021",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2022",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2023",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2024",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F0",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F1",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A1-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A1-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A5-fixed",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "A5-cost",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "canonical",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ridge",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    },
+    {
+      "error": null,
+      "fold": "2025",
+      "metrics": null,
+      "policy": "ppo_ens3",
+      "result_path": null,
+      "scenario": "F2",
+      "status": "not_run"
+    }
+  ],
+  "input_identity_sha256": "b01dcbae3f0528c61e6996ba8247495bfe2ca60e64818db450aac9cea13117a5",
+  "predictive_gate": {
+    "1": {
+      "mean_mse_minus_zero": {
+        "2009-2018": 1.7837855273999714e-06,
+        "2019-2025": -4.389173132738374e-08,
+        "all": 1.031212538512237e-06
+      },
+      "met": false
+    },
+    "5": {
+      "mean_mse_minus_zero": {
+        "2009-2018": 2.3900332194564786e-05,
+        "2019-2025": -7.093956383408705e-07,
+        "all": 1.3766914851603632e-05
+      },
+      "met": false
+    }
+  },
+  "rl_data_ready": {
+    "missing": [
+      "budget_seal",
+      "continuous_ppo_validation",
+      "issue43_one_horizon_and_sequential_hypothesis",
+      "justified_rl_training_amount",
+      "past_only_ranges"
+    ],
+    "status": "blocked"
+  },
+  "rl_is_a_dependency": false,
+  "short_data_ready": {
+    "missing": [],
+    "status": "ready"
+  },
+  "status": "ready"
+}

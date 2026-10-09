@@ -118,3 +118,14 @@
 source runは現行のtraining provenanceを持たず、再評価だけでは移行できない。旧metaを現在値で
 補完せず、現行契約で再学習してから`forex-eval`と`forex-ensemble-eval`を実行し、generic
 campaignの基準方策として使用する。
+
+## 短期357口座の比較（#43）
+
+[短期2×2比較](30-short-common-direction-comparison.md)は#41の封印予測と#42の数量会計を接続する。
+全7方策×17区間×3scenarioを登録し、期間net logの主比較・採否と#46/#49の別引渡しを提供する。
+中期RL・実quoteの未準備は短期の必須依存に含めない。
+
+2026-10-09 JSTに357口座の評価・保存traceの再検証を完了した。全口座完走、適格候補0、
+両hの配分追加価値は未支持。#46〜#48と#49はnot_planned。報告保存障害1件は元口座を
+再実行せず復旧し、初回評価と報告修正のruntimeを分けて記録した。
+[結果と実行状態](results/issue43/execution-status.json)を参照。
