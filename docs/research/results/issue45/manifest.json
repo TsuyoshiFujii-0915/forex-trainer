@@ -1,0 +1,7 @@
+{
+  "artifact_type": "input_preflight_not_evaluation",
+  "files": {
+    "execution-status.json": "c235ef1eaec0773b4b49a9c6fb735f921706671b275af5375fe9e9a9013888b9",
+    "preflight.json": "72b745504795e0c46834ea15c897411821d1765570bbc0b55831d0a0de31037a"
+  }
+}
