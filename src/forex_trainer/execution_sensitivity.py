@@ -282,7 +282,9 @@ def audit_proxy(result: dict[str, Any], marks: tuple[Mark, ...], costs: Costs, o
         saved = row['decision']
         decision = Decision(saved['mode'], np.array(saved['quantities']), saved['u'], saved['state_sha256'],
                             saved['forecast_identity'], saved['utility'], saved['solver'])
-        frozen = freeze_order(state, decision)
+        saved_state = State(a.at, PAIRS, row['equity_at_decision'],
+                            np.array(row['held_quantities']), a.prices, a.carry, costs)
+        frozen = freeze_order(saved_state, decision)
         if len(row['orders']) != 1:
             raise ValueError(f'proxy order count mismatch: {origin}/{i}')
         order = row['orders'][0]
