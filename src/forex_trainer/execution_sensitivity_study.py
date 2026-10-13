@@ -328,10 +328,24 @@ def run(config_path: Path, activation_path: Path) -> dict[str, Any]:
     inputs = load_inputs(config_path)
     if activation['identities'] != inputs.identities:
         raise ValueError('Issue 45 activated inputs changed')
-    RUN.mkdir(parents=True, exist_ok=False)
-    (RUN / 'accounts').mkdir()
-    write(RUN / 'activation.json', activation)
-    ledger = RUN / 'account-ledger.jsonl'
+    return execute_accounts(inputs, activation, RUN)
+
+
+def execute_accounts(inputs: Inputs, activation: dict[str, Any], directory: Path) -> dict[str, Any]:
+    """Run the fixed matrix after activation, retaining the final runtime check.
+
+    Args:
+        inputs: Inputs already validated by the market entry point, or synthetic fixtures.
+        activation: Matching runtime and source seal.
+        directory: New reserved account output directory.
+
+    Returns:
+        Persisted report, with recordable failures saved before being raised.
+    """
+    directory.mkdir(parents=True, exist_ok=False)
+    (directory / 'accounts').mkdir()
+    write(directory / 'activation.json', activation)
+    ledger = directory / 'account-ledger.jsonl'
     append_event(ledger, {'event': 'budget_reserved', 'proxy_limit': 306, 'quote_limit': 0})
     cells = registered_cells()
     active: dict[str, Any] | None = None
@@ -350,9 +364,9 @@ def run(config_path: Path, activation_path: Path) -> dict[str, Any]:
             engine = replay if cell['execution'] == 'same_close' else replay_next_close
             result = engine(inputs.marks[cell['fold']], costs, legacy_policy(predictors[cell['policy']]),
                             runtime_hash, policy_source)
-            path = RUN / 'accounts' / f'{name}.json.gz'
+            path = directory / 'accounts' / f'{name}.json.gz'
             write(path, result)
-            cell['result_path'] = str(path.relative_to(RUN))
+            cell['result_path'] = str(path.relative_to(directory))
             audit = audit_account if cell['execution'] == 'same_close' else audit_proxy
             if cell['execution'] == 'same_close':
                 audit(result, name, inputs.marks[cell['fold']], costs)
@@ -371,10 +385,10 @@ def run(config_path: Path, activation_path: Path) -> dict[str, Any]:
         incident = {'error': error, 'cell': cell_name(active) if active is not None else None,
                     'partial': exc.evidence if isinstance(exc, QuantityExecutionError) else None,
                     'automatic_retry': False}
-        write(RUN / 'incident.json', incident)
-        finish(RUN, cells, incident)
+        write(directory / 'incident.json', incident)
+        finish(directory, cells, incident)
         raise
-    return finish(RUN, cells, None)
+    return finish(directory, cells, None)
 
 
 def verify(directory: Path) -> dict[str, Any]:
@@ -385,6 +399,20 @@ def verify(directory: Path) -> dict[str, Any]:
 
     Returns:
         Explicit validation result and consumed account count.
+    """
+    records = verify_manifest(directory)
+    inputs = load_inputs(CONFIG)
+    return verify_accounts(directory, inputs, records)
+
+
+def verify_manifest(directory: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Verify inventory before reading the saved activation and report.
+
+    Args:
+        directory: Existing campaign directory.
+
+    Returns:
+        Verified manifest, saved activation and saved report, in that order.
     """
     manifest = read(directory / 'manifest.json')
     content = {k: v for k, v in manifest.items() if k != 'content_sha256'}
@@ -398,7 +426,23 @@ def verify(directory: Path) -> dict[str, Any]:
     if inventory != set(manifest['artifacts']):
         raise ValueError('Issue 45 artifact inventory mismatch')
     activation, report = read(directory / 'activation.json'), read(directory / 'report.json')
-    inputs = load_inputs(CONFIG)
+    return manifest, activation, report
+
+
+def verify_accounts(
+    directory: Path, inputs: Inputs, records: tuple[dict[str, Any], dict[str, Any], dict[str, Any]],
+) -> dict[str, Any]:
+    """Reconcile verified artifacts with their original input values and identity.
+
+    Args:
+        directory: Existing campaign directory.
+        inputs: Loaded market inputs or the original synthetic fixture inputs.
+        records: Manifest, activation and report returned by verify_manifest.
+
+    Returns:
+        Verification and campaign status without reexecuting any account.
+    """
+    manifest, activation, report = records
     if (activation['config'] != inputs.config or activation['config_sha256'] != CONFIG_SHA256
             or activation['identities'] != inputs.identities or activation['cells'] != registered_cells()
             or activation['effective_proxy_accounts'] != 306 or activation['effective_quote_accounts'] != 0):
