@@ -1,0 +1,22 @@
+{
+  "additional_trial_required": "At most one candidate with a separately registered finite budget.",
+  "incident": {
+    "automatic_retry": false,
+    "cell": "2009-F0-canonical-next_close",
+    "error": "ValueError: proxy order at 2009-05-10T23:00:00+00:00: stale or foreign decision",
+    "partial": null
+  },
+  "issues": [
+    43,
+    48,
+    50
+  ],
+  "new_candidates_validated": 0,
+  "proxy_evidence_status": "withheld_unresolved_incident",
+  "proxy_status": "incomplete",
+  "unresolved": [
+    "observed_quotes",
+    "provider_product_lot_financing_depth",
+    "asynchronous_baskets_and_partial_fills"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "automatic_retry": false,
+  "cell": "2009-F0-canonical-next_close",
+  "error": "ValueError: proxy order at 2009-05-10T23:00:00+00:00: stale or foreign decision",
+  "partial": null
+}

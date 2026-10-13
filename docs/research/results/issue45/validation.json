@@ -1,0 +1,14 @@
+{
+  "command": "uv run --locked python -m pytest tests/test_execution_sensitivity*.py -q",
+  "exit_code": 0,
+  "passed": 34,
+  "duration_seconds": 23.65,
+  "scope": "Existing synthetic regression tests; no market account replay.",
+  "market_incident_covered_by_existing_tests": false,
+  "market_incident": "Actual saved proxy audit rejects a one-ULP equity reconstruction difference; existing tests passing does not clear this incident.",
+  "copy_byte_identical": true,
+  "original_and_published_verify_output_byte_identical": true,
+  "sealed_implementation_changed": false,
+  "full_suite_rerun": false,
+  "full_suite_rerun_reason": "This results PR changes only saved research artifacts and documentation."
+}

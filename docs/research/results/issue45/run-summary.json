@@ -1,0 +1,60 @@
+{
+  "recorded_at_utc": "2026-10-13T08:21:21.614719+00:00",
+  "experiment_id": "issue45-execution-sensitivity-v1",
+  "registration_merge_commit": "fcec20ab3a90763661a31c691967bbd8f47979ed",
+  "execution_runtime_git": {
+    "forex_env": "6024b91c0f3592611849bc231922ab60e6090aed",
+    "forex_trainer": "fcec20ab3a90763661a31c691967bbd8f47979ed"
+  },
+  "registration_sha256": "6678a37ac38695e16d7a2cd0af50ad8989ecf240b949970b0758a9a3f0f36819",
+  "original_run_directory": "runs/issue45-execution-sensitivity-v1",
+  "published_campaign_directory": "docs/research/results/issue45/campaign",
+  "campaign_manifest_sha256": "03d8e5e59a2873c50299abc385be58a3f219c75a66af94e596c313f4afe1c9c9",
+  "campaign_copy_byte_identical": true,
+  "campaign_files_copied": 8,
+  "run_exit_code": 1,
+  "verify_exit_code": 0,
+  "proxy_status": "incomplete",
+  "status_counts": {
+    "blocked_input": 0,
+    "complete": 1,
+    "execution_error": 1,
+    "not_run": 304,
+    "strategy_terminal": 0
+  },
+  "planned_proxy_accounts": 306,
+  "proxy_accounts_consumed": 2,
+  "not_run_accounts": 304,
+  "quote_accounts_consumed": 0,
+  "fit_calls": 0,
+  "retry_accounts": 0,
+  "external_market_data_requests": 0,
+  "new_candidates_validated": 0,
+  "automatic_continuation_allowed": false,
+  "comparison_status": "pending_integrity",
+  "comparisons_available": 0,
+  "comparisons_withheld": 9,
+  "quote_status": "blocked_input",
+  "issue45_complete": false,
+  "incident": {
+    "automatic_retry": false,
+    "cell": "2009-F0-canonical-next_close",
+    "error": "ValueError: proxy order at 2009-05-10T23:00:00+00:00: stale or foreign decision",
+    "partial": null
+  },
+  "verification_scope": {
+    "all_saved_file_hashes_and_inventory": true,
+    "registered_306_cell_report_and_ledger": true,
+    "activation_inputs_and_identity": true,
+    "complete_accounts_cash_and_metrics_reconciled": 1,
+    "execution_error_accounts_cash_audit_passed": 0,
+    "account_reexecutions": 0,
+    "policy_inference_calls": 0,
+    "failed_account_preserved_without_promotion": true
+  },
+  "remaining_work": [
+    "review_and_fix_numerical_state_identity_audit_failure",
+    "separately_register_any_recovery_and_remaining_account_budget_before_execution",
+    "resolve_issue44_observed_quote_inputs_and_register_quote_reference_contract"
+  ]
+}

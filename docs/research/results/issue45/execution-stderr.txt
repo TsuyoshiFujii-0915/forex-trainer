@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/.venv/bin/forex-execution-sensitivity", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_study.py", line 541, in main
+    result = run(args.config, args.activation)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_study.py", line 352, in run
+    return execute_accounts(inputs, activation, RUN)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_study.py", line 395, in execute_accounts
+    audit(result, inputs.marks[cell['fold']], costs, name)
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity.py", line 285, in audit_proxy
+    frozen = freeze_order(state, decision)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity.py", line 71, in freeze_order
+    raise ValueError(f'proxy order at {state.at}: stale or foreign decision')
+ValueError: proxy order at 2009-05-10T23:00:00+00:00: stale or foreign decision

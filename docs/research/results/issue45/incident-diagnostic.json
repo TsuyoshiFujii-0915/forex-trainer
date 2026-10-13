@@ -1,0 +1,21 @@
+{
+  "at": "2009-05-10T23:00:00+00:00",
+  "audit_equity": 999390.5382721466,
+  "saved_equity": 999390.5382721465,
+  "equity_difference": 1.1641532182693481e-10,
+  "difference_in_ulps": 1.0,
+  "quantities_exactly_equal": true,
+  "audit_state_sha256": "e2cfdd9c3bab9702ff8d6078d06be996db04694a5a4a1e3b0e9df05ecc81e313",
+  "saved_state_sha256": "1d50485fb163d5518cbc30ce5ba0dd111c9014771e91ad2f85fe04aa01b267b0",
+  "decision_state_sha256": "1d50485fb163d5518cbc30ce5ba0dd111c9014771e91ad2f85fe04aa01b267b0",
+  "saved_state_matches_decision": true,
+  "reproduced_error": "proxy order at 2009-05-10T23:00:00+00:00: stale or foreign decision",
+  "diagnostic": "read_only_saved_trace_audit",
+  "account_reexecutions": 0,
+  "policy_inference_calls": 0,
+  "artifact_status": "complete",
+  "artifact_trace_rows": 171,
+  "artifact_remaining_decisions": 0,
+  "campaign_cell_status": "execution_error",
+  "promotion_to_complete": false
+}
