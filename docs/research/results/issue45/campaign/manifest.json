@@ -1,0 +1,17 @@
+{
+  "artifacts": {
+    "account-ledger.jsonl": "bd5c29bec7dded1e3405702591db58bc2ca4482054b30c3221545c30bbf7d3ab",
+    "accounts/2009-F0-canonical-next_close.json.gz": "d2cad7165d6ca15f2d231d70e7d8fbcc2b0c90996ec7d654a556a1eafb278567",
+    "accounts/2009-F0-canonical-same_close.json.gz": "d53d69396ce966c95367228394e907f4ad57d7172692904ab301b3b18d9bcd59",
+    "activation.json": "76ac714ceb3ca55d261b418b26a56a4abb9342fc2f124e17dff802bfd2cd6c14",
+    "handoff.json": "aba1391ada08232e23ee8525c8a99342c3c001b2a2dbdf1d76da951e2b82cb22",
+    "incident.json": "862265d96a3a81e7395caf82b692e53bac26ad3e90fbfeda1a7bd91d6782bb93",
+    "report.json": "21a23b6c6194e62a112ddbf20dc3fe1b19d7a34701d4a33acde16f0e022f4558"
+  },
+  "content_sha256": "9db635844fcd91a36a999fc51090dbec35ece5b57e38c3138fdbfed15651c295",
+  "experiment_id": "issue45-execution-sensitivity-v1",
+  "fit_calls": 0,
+  "proxy_accounts_consumed": 2,
+  "quote_accounts_consumed": 0,
+  "retry_accounts": 0
+}

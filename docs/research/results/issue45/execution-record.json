@@ -1,0 +1,31 @@
+{
+  "working_directory": "/home/tsuyoshi/workspace/projects/forex-trainer",
+  "execution_branch": "codex/issue-45-proxy-results",
+  "execution_head": "fcec20ab3a90763661a31c691967bbd8f47979ed",
+  "commands": [
+    {
+      "command": "uv sync --locked",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked forex-execution-sensitivity seal --config configs/research/issue45_execution_sensitivity.json --registration-merge-commit fcec20ab3a90763661a31c691967bbd8f47979ed --output runs/issue45-activation-v1",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked forex-execution-sensitivity run --config configs/research/issue45_execution_sensitivity.json --activation runs/issue45-activation-v1/activation.json",
+      "exit_code": 1,
+      "invocations": 1
+    },
+    {
+      "command": "uv run --locked forex-execution-sensitivity verify --directory runs/issue45-execution-sensitivity-v1",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked forex-execution-sensitivity verify --directory docs/research/results/issue45/campaign",
+      "exit_code": 0
+    }
+  ],
+  "seal_activation_equals_saved_activation": true,
+  "retry_accounts": 0,
+  "note": "Commands describe the original attempt, not authorization to rerun or continue. The campaign stopped after two consumed accounts."
+}

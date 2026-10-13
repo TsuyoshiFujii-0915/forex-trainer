@@ -1,0 +1,5 @@
+{"event": "budget_reserved", "proxy_limit": 306, "quote_limit": 0}
+{"event": "reserved", "work_item": "2009-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2009-F0-canonical-next_close"}
+{"event": "finished", "status": "execution_error", "work_item": "2009-F0-canonical-next_close"}
