@@ -468,11 +468,18 @@ def verify_accounts(
             or activation['identities'] != inputs.identities or activation['cells'] != registered_cells()
             or activation['effective_proxy_accounts'] != 306 or activation['effective_quote_accounts'] != 0):
         raise ValueError('Issue 45 saved activation/input mismatch')
-    expected_report = report_with_incident(report['cells'], report['incident'])
+    incident_path = directory / 'incident.json'
+    if incident_path.exists():
+        incident = read(incident_path)
+        if not isinstance(incident, dict):
+            raise ValueError(f'Issue 45 saved incident must be an object: {incident_path}')
+    else:
+        incident = None
+    if incident != report['incident']:
+        raise ValueError(f'Issue 45 saved incident/report mismatch: {incident_path}')
+    expected_report = report_with_incident(report['cells'], incident)
     if report != expected_report or read(directory / 'handoff.json') != report['handoff']:
         raise ValueError('Issue 45 saved report reconciliation mismatch')
-    if report['incident'] is not None and read(directory / 'incident.json') != report['incident']:
-        raise ValueError('Issue 45 incident mismatch')
     events = [json.loads(line) for line in (directory / 'account-ledger.jsonl').read_text().splitlines()]
     reserved = [e['work_item'] for e in events if e['event'] == 'reserved']
     consumed = [cell_name(c) for c in report['cells'] if c['status'] in ('complete', 'strategy_terminal', 'execution_error')]
@@ -502,7 +509,7 @@ def verify_accounts(
     if events != expected_events:
         raise ValueError('Issue 45 ledger event order mismatch')
     return {'status': 'verified', 'proxy_status': report['proxy_status'], 'quote_status': 'blocked_input',
-            'proxy_accounts_consumed': len(reserved), 'accounts_reexecuted': 0, 'incident': report['incident']}
+            'proxy_accounts_consumed': len(reserved), 'accounts_reexecuted': 0, 'incident': incident}
 
 
 def main() -> int:
