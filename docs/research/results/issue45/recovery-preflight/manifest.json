@@ -1,0 +1,8 @@
+{
+  "artifact_type": "read_only_reaudit_and_continuation_preflight_not_market_execution",
+  "files": {
+    "original-verification.json": "bee64ceda9a40a33886fe405e8efefda7cb1c15750c69521badfee093e6ef243",
+    "recovery.json": "95843cfd6883cd543da32c724ae6966dbf42f38938ff98e8b15b98c4062b3b6a",
+    "validation.json": "f878f89b91c36d27b39a8e995872f81faaf70bcbc28d0d247572aebcc629b588"
+  }
+}
