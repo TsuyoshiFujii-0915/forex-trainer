@@ -1,0 +1,30 @@
+{
+  "implementation_commit": "c0e0fd09023fea71c296d5492b9106eb5e8460c0",
+  "test_command": "uv run --locked python -m pytest -q",
+  "test_exit_code": 0,
+  "tests_passed": 715,
+  "duration_seconds": 321.94,
+  "new_audit_regression_cases": 11,
+  "new_continuation_regression_cases": 19,
+  "reaudit_command": "uv run --locked python -m forex_trainer.execution_sensitivity_recovery reaudit --config configs/research/issue45_audit_continuation.json --output runs/issue45-recovery-reaudit-v1",
+  "reaudit_exit_code": 0,
+  "original_accounts_reaudited": 2,
+  "transitions_audited_per_account": [
+    171,
+    171
+  ],
+  "market_account_reexecutions": 0,
+  "new_market_accounts_executed": 0,
+  "new_policy_inference_calls": 0,
+  "fit_calls": 0,
+  "original_evidence_files_unchanged": 20,
+  "original_verification_output_unchanged": true,
+  "original_runtime_retained": true,
+  "execution_conditions_unchanged": true,
+  "unmerged_seal_exit_code": 1,
+  "unmerged_seal_error": "Issue 45 continuation merge not verified on origin/main",
+  "unmerged_seal_created_activation": false,
+  "continuation_directory_exists": false,
+  "effective_new_accounts_before_merge": 0,
+  "next_action": "Review and merge PR 61 evidence and this continuation registration; then seal exact merge HEAD and execute only the 304 unexecuted accounts."
+}

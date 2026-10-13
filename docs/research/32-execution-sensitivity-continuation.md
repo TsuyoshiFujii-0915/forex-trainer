@@ -5,6 +5,9 @@
 [PR #61のコメント](https://github.com/TsuyoshiFujii-0915/forex-trainer/pull/61#issuecomment-6141837194)に沿い、
 独立数値照合と保存identity照合を分離した。元の保存2口座は、修正版で全171遷移ずつの監査に通過した。
 元campaignのincident、execution_error、消費2、口座bytesとruntimeは変更していない。
+cleanな検証commit `c0e0fd09023fea71c296d5492b9106eb5e8460c0`から取得した
+[正式な再監査記録](results/issue45/recovery-preflight/recovery.json)に、元manifest/account hash、旧・新runtime、
+各171遷移の監査成功、推論・口座再実行0を保存した。
 
 **本PRは修正と一度限りの継続登録であり、新規市場口座はまだ実行していない。**
 コメントで要求されたレビュー・マージ前の有効新規口座予算は0。マージ後に、その正確なmerge HEADで
@@ -103,7 +106,11 @@ uv run --locked python -m forex_trainer.execution_sensitivity_recovery verify \
 実データの11回帰ケースと、合成データの有限継続・改変検知19ケースを追加した。
 継続テストでは実際の会計・未学習fixtureモデル・保存・監査を使用し、非決定的なruntime取得だけを差し替える。
 元bytes保持、304新規消費、旧runtime保持、順序/予算変更拒否、未マージ拒否、runtime/台帳/復旧記録/incidentの
-再hash後改変拒否を確認する。全体のテスト結果と正式な再監査記録はPRに添付する。
+再hash後改変拒否を確認する。全体テストは715件が通過した。
+[検証記録](results/issue45/recovery-preflight/validation.json)には、元証拠20ファイルのbytes不変と、
+実際の未マージcommitによるsealが拒否されactivationを作成しなかったことも記録した。
+[元campaignのverify出力](results/issue45/recovery-preflight/original-verification.json)はPR #61時点とbyte同一で、
+引き続き`proxy_status=incomplete`・消費2・元incident非nullである。
 
 #43の短期判断は変更せず、#48の新PPO候補検証は0。#50には実観測quote・provider/商品/lot/financing/depth・
 非同期basket・部分約定を未解決として引き渡す。実quoteはblocked_inputのままで、継続の完走だけでは#45全体をcloseしない。
