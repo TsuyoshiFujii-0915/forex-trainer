@@ -282,6 +282,27 @@ def seal(config_path: Path, merge_commit: str, output: Path) -> dict[str, Any]:
     return activation
 
 
+def report_with_incident(cells: list[dict[str, Any]], incident: dict[str, Any] | None) -> dict[str, Any]:
+    """Separate completed account paths from unresolved campaign integrity.
+
+    Args:
+        cells: Original full matrix, preserving account outcomes and metrics.
+        incident: Unresolved execution or integrity failure, or None.
+
+    Returns:
+        Report withholding all aggregate evidence when an incident remains.
+    """
+    report = {**summarize(cells), 'incident': incident}
+    if incident is not None:
+        report['proxy_status'] = 'incomplete'
+        for comparison in report['comparisons']:
+            comparison.update(status='pending_integrity', reason='unresolved_campaign_incident',
+                              net=None, gross=None, cash_and_risk_mean_differences=None)
+        report['handoff'].update(proxy_status='incomplete',
+                                 proxy_evidence_status='withheld_unresolved_incident', incident=incident)
+    return report
+
+
 def finish(directory: Path, cells: list[dict[str, Any]], incident: dict[str, Any] | None) -> dict[str, Any]:
     """Persist complete or incomplete experiment status and every artifact hash.
 
@@ -293,7 +314,7 @@ def finish(directory: Path, cells: list[dict[str, Any]], incident: dict[str, Any
     Returns:
         Persisted report, with independent quote and candidate handoffs.
     """
-    report = {**summarize(cells), 'incident': incident}
+    report = report_with_incident(cells, incident)
     write(directory / 'report.json', report)
     write(directory / 'handoff.json', report['handoff'])
     events = [json.loads(line) for line in (directory / 'account-ledger.jsonl').read_text().splitlines()]
@@ -447,7 +468,7 @@ def verify_accounts(
             or activation['identities'] != inputs.identities or activation['cells'] != registered_cells()
             or activation['effective_proxy_accounts'] != 306 or activation['effective_quote_accounts'] != 0):
         raise ValueError('Issue 45 saved activation/input mismatch')
-    expected_report = {**summarize(report['cells']), 'incident': report['incident']}
+    expected_report = report_with_incident(report['cells'], report['incident'])
     if report != expected_report or read(directory / 'handoff.json') != report['handoff']:
         raise ValueError('Issue 45 saved report reconciliation mismatch')
     if report['incident'] is not None and read(directory / 'incident.json') != report['incident']:
@@ -481,7 +502,7 @@ def verify_accounts(
     if events != expected_events:
         raise ValueError('Issue 45 ledger event order mismatch')
     return {'status': 'verified', 'proxy_status': report['proxy_status'], 'quote_status': 'blocked_input',
-            'proxy_accounts_consumed': len(reserved), 'accounts_reexecuted': 0}
+            'proxy_accounts_consumed': len(reserved), 'accounts_reexecuted': 0, 'incident': report['incident']}
 
 
 def main() -> int:

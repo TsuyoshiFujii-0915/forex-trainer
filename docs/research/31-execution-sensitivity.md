@@ -93,9 +93,19 @@ registrationと実装のmerge、両repoのclean runtime、入力/model/lock/vers
 verifyはモデル再推論・口座再実行なしで、保存hash、完了口座の会計、metrics、全セル集計と台帳を照合する。
 失敗セルの途中状態はincidentとして保存し、完了口座へ昇格しない。
 
+全口座保存後の最終runtime不一致・例外を含め、未解決のincidentがあればcampaignは
+`proxy_status=incomplete`、全9比較は`pending_integrity`とし、net/gross・cash/risk集約をnullにする。
+口座個別の完走状態・metrics・元trace・台帳・消費口座数は保持する。handoffにもincidentと
+比較保留を伝播させる。verifyは同じ規則でreportを再構成し、hashを再作成して完了・比較可能へ
+戻したreportも拒否する。verifyの`status=verified`は保存成果物・会計の照合成功を表し、
+実験の完了認定ではない。別途返す`proxy_status`と`incident`で未完了を確認する。
+
 実装テストは`uv run python -m pytest tests/test_execution_sensitivity*.py -q`。
-数量・時刻・費用・terminal・例外・保存改変の25ケースを検証する。テストは各実装変更前に追加し、
+数量・時刻・費用・terminal・例外・保存改変の29ケースを検証する。テストは各実装変更前に追加し、
 失敗を確認してから実装を修正した。テスト中に市場口座や旧方策modelの学習は行わない。
+runner回帰は合成価格・既存の未学習fixtureモデルで全306セルを保存し、正常完了、strategy terminal、
+最終runtime不一致、最終runtime例外を通す。非決定的なruntime取得だけを差し替え、会計・推論・
+bootstrap・保存・照合は実実装を使う。異常時も元口座のhash・台帳bytes・消費306が変わらないことを検査する。
 
 報告は各口座のnet/gross period log、gap price PnL、price/carry、spread/commission/markup、実売買量、
 exposure/MDD、fill遅延・coverage、terminal・未実行判断数を保持する。
