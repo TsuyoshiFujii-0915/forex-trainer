@@ -4,7 +4,7 @@
 
 ## Status
 
-proposed
+accepted (PR #62 merged on 2026-10-13)
 
 ## Context
 

@@ -9,9 +9,11 @@ cleanな検証commit `c0e0fd09023fea71c296d5492b9106eb5e8460c0`から取得し�
 [正式な再監査記録](results/issue45/recovery-preflight/recovery.json)に、元manifest/account hash、旧・新runtime、
 各171遷移の監査成功、推論・口座再実行0を保存した。
 
-**本PRは修正と一度限りの継続登録であり、新規市場口座はまだ実行していない。**
-コメントで要求されたレビュー・マージ前の有効新規口座予算は0。マージ後に、その正確なmerge HEADで
-clean runtimeをsealして初めて未実行304口座を開始できる。旧2口座を再推論する計画ではない。
+**PR #62はマージ済み。2026-10-15に残304口座を実行し、旧2口座を含む全306口座のverifyが成功した。**
+実行HEADは`84ddbb0d4c20af77a9a66d3abc9e2e8d77f16c53`（#62 merge）、新規消費304・再推論retry 0。
+全9比較はavailable、今回のincidentはnull。[継続結果レポート](results/issue45/continuation-results/report.md)と
+[verify出力](results/issue45/continuation-results/verification.json)を参照。
+マージ前の予算0、マージ後のclean runtime sealという条件を満たして実行した。旧2口座は再推論していない。
 
 [登録JSON](../../configs/research/issue45_audit_continuation.json)と
 [ADR-0051](../decisions/0051-continue-only-unexecuted-proxy-accounts.md)を参照。
@@ -80,26 +82,28 @@ uv run --locked python -m forex_trainer.execution_sensitivity_recovery reaudit \
   --output runs/issue45-recovery-reaudit-v1
 ```
 
-以下はレビュー・マージ後にのみ使用する。既存CLIの再実行や旧directoryの削除は行わない。
+以下はレビュー・マージ後に実施した手順の記録であり、消費済み予算を再取得する手順ではない。
+seal/run/verifyのconfigは絶対パスで指定する。既存CLIの再実行や旧directoryの削除は行わない。
 
 ```bash
 git fetch origin
 git switch --detach <continuation-registration-merge-SHA>
 uv sync --locked
+continuation_config_path="$(pwd)/configs/research/issue45_audit_continuation.json"
 uv run --locked python -m forex_trainer.execution_sensitivity_recovery seal \
-  --config configs/research/issue45_audit_continuation.json \
+  --config "$continuation_config_path" \
   --registration-merge-commit <continuation-registration-merge-SHA> \
   --output runs/issue45-continuation-activation-v1
 uv run --locked python -m forex_trainer.execution_sensitivity_recovery run \
-  --config configs/research/issue45_audit_continuation.json \
+  --config "$continuation_config_path" \
   --activation runs/issue45-continuation-activation-v1/activation.json
 uv run --locked python -m forex_trainer.execution_sensitivity_recovery verify \
-  --config configs/research/issue45_audit_continuation.json \
+  --config "$continuation_config_path" \
   --directory runs/issue45-audit-continuation-v1
 ```
 
 未マージのcommit、source・環境変更、再監査失敗はseal/runで明示的に拒否する。
-追加障害時にこの登録を再利用して再試行しない。
+追加障害時にこの登録を再利用して再試行しない。今回の継続予算304は消費済みである。
 
 ## 検証と引渡し
 

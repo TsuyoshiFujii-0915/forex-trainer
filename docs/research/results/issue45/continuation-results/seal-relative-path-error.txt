@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_recovery.py", line 432, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_recovery.py", line 411, in main
+    result = seal(args.config, args.registration_merge_commit, args.output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_recovery.py", line 205, in seal
+    require_merge(config_path, merge_commit)
+  File "/home/tsuyoshi/workspace/projects/forex-trainer/src/forex_trainer/execution_sensitivity_recovery.py", line 109, in require_merge
+    merged = subprocess.check_output(['git', 'show', f'{merge_commit}:{config_path.relative_to(ROOT)}'], cwd=ROOT)
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tsuyoshi/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/pathlib.py", line 730, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: 'configs/research/issue45_audit_continuation.json' is not in the subpath of '/home/tsuyoshi/workspace/projects/forex-trainer' OR one path is relative and the other is absolute.

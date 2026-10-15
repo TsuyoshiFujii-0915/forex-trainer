@@ -1,0 +1,13 @@
+{
+  "status": "verified",
+  "proxy_status": "complete",
+  "quote_status": "blocked_input",
+  "original_accounts_consumed": 2,
+  "new_accounts_consumed": 304,
+  "total_accounts_consumed": 306,
+  "quote_accounts_consumed": 0,
+  "fit_calls": 0,
+  "retry_accounts": 0,
+  "accounts_reexecuted": 0,
+  "incident": null
+}
