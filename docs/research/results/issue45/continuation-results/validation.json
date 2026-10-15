@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-10-15T06:05:36.284807+00:00",
+  "verification_command": "uv run --locked python -m forex_trainer.execution_sensitivity_recovery verify --config /home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue45_audit_continuation.json --directory runs/issue45-audit-continuation-v1",
+  "verification_exit_code": 0,
+  "accounts_audited": 306,
+  "verification_output": "verification.json",
+  "market_accounts_reexecuted": 0,
+  "market_policy_inference_calls_during_verification": 0,
+  "copy_byte_identical": true,
+  "campaign_files_copied": 312,
+  "original_evidence_files_unchanged": 24,
+  "inherited_accounts_byte_identical": true,
+  "original_execution_runtime_retained": true,
+  "final_runtime_check_passed": true,
+  "test_command": "uv run --locked python -m pytest tests/test_execution_sensitivity*.py -q",
+  "test_exit_code": 0,
+  "tests_passed": 64,
+  "test_duration_seconds": 47.38,
+  "full_suite_rerun": false,
+  "full_suite_rerun_reason": "Results and documentation only; implementation and registration are unchanged from the reviewed merge.",
+  "checks": [
+    "Complete artifact inventory and hashes",
+    "Exact original and new execution runtimes",
+    "Original inputs and frozen policy identities",
+    "All 306 full account cash and quantity traces",
+    "Original two account bytes, statuses and incident preserved in original attempt",
+    "Two inherited plus 304 newly reserved accounts in registered order",
+    "All metrics, registered paired fold statistics and handoff",
+    "No unresolved continuation incident",
+    "Published copy identical to CLI-verified run"
+  ]
+}

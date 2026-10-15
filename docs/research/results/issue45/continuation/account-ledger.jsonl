@@ -1,0 +1,611 @@
+{"event": "budget_reserved", "new_limit": 304, "original_consumed": 2, "quote_limit": 0}
+{"event": "inherited", "sha256": "d53d69396ce966c95367228394e907f4ad57d7172692904ab301b3b18d9bcd59", "work_item": "2009-F0-canonical-same_close"}
+{"event": "inherited", "sha256": "d2cad7165d6ca15f2d231d70e7d8fbcc2b0c90996ec7d654a556a1eafb278567", "work_item": "2009-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2009-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2009-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2009-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2009-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2009-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2009-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2009-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2009-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2009-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2009-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2009-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2009-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2009-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2009-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2009-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2009-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2009-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2010-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2010-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2010-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2010-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2010-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2010-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2010-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2010-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2010-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2010-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2010-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2010-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2010-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2010-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2010-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2010-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2010-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2010-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2010-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2011-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2011-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2011-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2011-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2011-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2011-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2011-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2011-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2011-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2011-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2011-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2011-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2011-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2011-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2011-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2011-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2011-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2011-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2011-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2012-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2012-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2012-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2012-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2012-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2012-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2012-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2012-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2012-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2012-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2012-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2012-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2012-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2012-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2012-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2012-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2012-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2012-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2012-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2013-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2013-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2013-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2013-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2013-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2013-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2013-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2013-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2013-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2013-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2013-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2013-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2013-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2013-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2013-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2013-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2013-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2013-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2013-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2014-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2014-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2014-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2014-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2014-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2014-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2014-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2014-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2014-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2014-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2014-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2014-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2014-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2014-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2014-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2014-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2014-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2014-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2014-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2015-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2015-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2015-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2015-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2015-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2015-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2015-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2015-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2015-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2015-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2015-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2015-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2015-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2015-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2015-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2015-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2015-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2015-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2015-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2016-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2016-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2016-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2016-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2016-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2016-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2016-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2016-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2016-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2016-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2016-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2016-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2016-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2016-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2016-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2016-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2016-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2016-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2016-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2017-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2017-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2017-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2017-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2017-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2017-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2017-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2017-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2017-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2017-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2017-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2017-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2017-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2017-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2017-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2017-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2017-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2017-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2017-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2018-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2018-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2018-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2018-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2018-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2018-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2018-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2018-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2018-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2018-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2018-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2018-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2018-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2018-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2018-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2018-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2018-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2018-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2018-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2019-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2019-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2019-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2019-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2019-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2019-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2019-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2019-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2019-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2019-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2019-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2019-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2019-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2019-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2019-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2019-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2019-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2019-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2019-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2020-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2020-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2020-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2020-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2020-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2020-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2020-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2020-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2020-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2020-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2020-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2020-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2020-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2020-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2020-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2020-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2020-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2020-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2020-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2021-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2021-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2021-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2021-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2021-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2021-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2021-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2021-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2021-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2021-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2021-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2021-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2021-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2021-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2021-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2021-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2021-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2021-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2021-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2022-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2022-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2022-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2022-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2022-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2022-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2022-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2022-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2022-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2022-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2022-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2022-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2022-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2022-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2022-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2022-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2022-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2022-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2022-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2023-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2023-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2023-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2023-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2023-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2023-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2023-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2023-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2023-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2023-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2023-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2023-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2023-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2023-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2023-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2023-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2023-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2023-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2023-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2024-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2024-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2024-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2024-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2024-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2024-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2024-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2024-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2024-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2024-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2024-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2024-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2024-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2024-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2024-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2024-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2024-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2024-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2024-F2-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2025-F0-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-canonical-same_close"}
+{"event": "reserved", "work_item": "2025-F0-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-canonical-next_close"}
+{"event": "reserved", "work_item": "2025-F0-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-ridge-same_close"}
+{"event": "reserved", "work_item": "2025-F0-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-ridge-next_close"}
+{"event": "reserved", "work_item": "2025-F0-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2025-F0-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F0-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2025-F1-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-canonical-same_close"}
+{"event": "reserved", "work_item": "2025-F1-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-canonical-next_close"}
+{"event": "reserved", "work_item": "2025-F1-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-ridge-same_close"}
+{"event": "reserved", "work_item": "2025-F1-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-ridge-next_close"}
+{"event": "reserved", "work_item": "2025-F1-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2025-F1-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F1-ppo_ens3-next_close"}
+{"event": "reserved", "work_item": "2025-F2-canonical-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-canonical-same_close"}
+{"event": "reserved", "work_item": "2025-F2-canonical-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-canonical-next_close"}
+{"event": "reserved", "work_item": "2025-F2-ridge-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-ridge-same_close"}
+{"event": "reserved", "work_item": "2025-F2-ridge-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-ridge-next_close"}
+{"event": "reserved", "work_item": "2025-F2-ppo_ens3-same_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-ppo_ens3-same_close"}
+{"event": "reserved", "work_item": "2025-F2-ppo_ens3-next_close"}
+{"event": "finished", "status": "complete", "work_item": "2025-F2-ppo_ens3-next_close"}

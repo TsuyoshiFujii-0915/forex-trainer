@@ -2,11 +2,15 @@
 
 ## 現在の状態
 
-PR #60で独立事前登録と実装がマージされ、2026-10-13にそのマージコミットで実行環境をsealした。
-**306口座の実行は2口座目の保存後監査で停止。完了1、execution_error 1、未実行304で、全9比較は保留。**
-保存成果物のverifyは成功したが、proxy・Issue #45とも未完了である。
-[実行・比較レポート](results/issue45/report.md)、[全セルと比較状態](results/issue45/campaign/report.json)、
-[検証結果](results/issue45/verification.json)を参照。
+**2026-10-15、PR #62のマージコミットで残304口座を実行し、再利用2口座を含む全306口座の検証が完了した。**
+固定bar proxyの全9比較はavailable。今回のexecution_error・terminal・未実行・incidentは0。
+[継続実行・比較レポート](results/issue45/continuation-results/report.md)、
+[全セルと比較値](results/issue45/continuation/report.json)、
+[検証結果](results/issue45/continuation-results/verification.json)を参照。
+実観測quoteはblocked_inputのためIssue #45全体は未完了である。
+
+2026-10-13の初回attemptは2口座目の保存後監査で停止した。
+[初回の障害レポート](results/issue45/report.md)と元campaign・incident・消費2・runtimeは変更せず保存している。
 
 [登録JSON](../../configs/research/issue45_execution_sensitivity.json)を正本とする。
 #40 v1/v2/v3の元bytes・停止状態や、#43の結果・予算は変更しない。
@@ -14,13 +18,15 @@ PR #60で独立事前登録と実装がマージされ、2026-10-13にそのマ�
 
 | 経路 | 測定・範囲 | 口座上限 | 現在の有効予算・状態 |
 |---|---|---:|---|
-| 固定bar proxy | #39の固定17後継区間、旧3方策×F0/F1/F2×同close/next-close | 306 | マージ後sealで有効化し2消費、障害停止。304未実行、retry 0 |
+| 固定bar proxy | #39の固定17後継区間、旧3方策×F0/F1/F2×同close/next-close | 306 | 旧2再利用＋新304消費、全306検証済み、retry 0。予算消費済み |
 | 実観測quote | #32の固定2025 bundle、旧3方策×同close/quote、F0 | 6 | 0、blocked_input。#44のsource・商品・期間・費用・実観測入力が未確定 |
 
 proxyの入力preflightは17区間・3,569判断時点で通過した。価格・modelファイルを検証・読込するが、
 model推論、fit、口座評価、外部取得は行っていない。[保存結果](results/issue45/preflight.json)を参照。
 [実行前状態とruntime](results/issue45/execution-status.json)は、市場評価0だった時点の履歴として保存する。
-今回の[run-summary](results/issue45/run-summary.json)と[activation](results/issue45/campaign/activation.json)が実行状態の正本である。
+初回attemptの[run-summary](results/issue45/run-summary.json)と[activation](results/issue45/campaign/activation.json)も履歴として保持する。
+現在の継続結果は[continuation report](results/issue45/continuation/report.json)と
+[継続activation](results/issue45/continuation/activation.json)が正本である。
 9区間の部分年は#39のままで、17通年へ読み替えない。既存3方策以外の候補は対象外。
 
 ## 固定したproxy会計
@@ -66,8 +72,9 @@ quoteの実収集・6口座の比較はこのPRでは未完了。
 
 ## 実行と保存
 
-以下は実行手順の履歴であり、今回消費した通常予算を再取得する手順ではない。
-元run directoryと保存campaignを保持する。監査障害の修復・残304口座の実行には別途レビューと明示的登録が必要である。
+以下は初回実行手順の履歴であり、消費した通常予算を再取得する手順ではない。
+監査修正と有限継続はPR #62で登録・マージし、残304口座を実行済みである。
+元run directory・campaignと継続run directory・continuationを保持する。
 
 ```bash
 # 読み取り専用。outputは未使用のディレクトリを指定する。
@@ -135,10 +142,11 @@ CIは記述的・多重性未補正で、方策や執行条件の採用最適化
 | #50 | 実quote/商品適合と候補固有の執行確認は未解決。必要なら最大1候補の別trial・有限口座数を実行前登録。独立確認#20の自動開始は0 |
 
 proxyが良好でも実fillを証明せず、悪化しても全horizonを否定しない。
-proxy監査障害・未実行304口座・実quote入力・候補の追加登録を未完として引き継ぎ、Issue #45を自動closeしない。
+固定bar proxyは完了したが、実quote入力・候補の追加登録を未完として引き継ぎ、Issue #45を自動closeしない。
 
-## 監査障害後の継続案
+## 監査障害後の継続
 
-[監査修正・有限継続登録](32-execution-sensitivity-continuation.md)を別PRで準備した。
-保存済み2口座を全件再監査し、旧bytes・incidentを維持して、未実行304口座だけをマージ後に継続する。
-この登録がマージされるまでは、新規市場口座を開始しない。
+[監査修正・有限継続登録](32-execution-sensitivity-continuation.md)をPR #62でマージした。
+保存済み2口座を全件再監査し、旧bytes・incidentを維持して、未実行304口座だけを実行した。
+F0のnet period log差（next-close − same-close）はcanonical -0.045073、ridge +0.011243、PPO -0.014799。
+canonicalは全費用条件で両95%区間が負、ridge/PPOは0を跨いだ。全表・解釈の境界は継続レポートを参照。

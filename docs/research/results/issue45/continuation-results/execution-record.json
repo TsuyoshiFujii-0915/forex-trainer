@@ -1,0 +1,35 @@
+{
+  "execution_head": "84ddbb0d4c20af77a9a66d3abc9e2e8d77f16c53",
+  "registration_sha256": "681cc39630eee4ab222a3ab0a27ce636c9634f4a2ab98a0958896feadcbf47f3",
+  "runtime_lock_sha256": "a1baf53c15f9681ccf5a9ed79a2dd834dccecce6aa82b3e78491fcc4ce49cd82",
+  "activation_file_written_at_utc": "2026-10-15T05:54:35.706450+00:00",
+  "campaign_manifest_written_at_utc": "2026-10-15T05:59:20.553020+00:00",
+  "campaign_manifest_sha256": "e4d1615da6d7e8bc7b0a47d1a6f9fa795c706c4fb20eea9afb121dacdd1c093c",
+  "commands": [
+    {
+      "command": "uv sync --locked",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked python -m forex_trainer.execution_sensitivity_recovery seal --config configs/research/issue45_audit_continuation.json --registration-merge-commit 84ddbb0d4c20af77a9a66d3abc9e2e8d77f16c53 --output runs/issue45-continuation-activation-v1",
+      "exit_code": 1,
+      "accounts_consumed": 0,
+      "reason": "Relative config path rejected before activation creation; corrected to an absolute path."
+    },
+    {
+      "command": "uv run --locked python -m forex_trainer.execution_sensitivity_recovery seal --config /home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue45_audit_continuation.json --registration-merge-commit 84ddbb0d4c20af77a9a66d3abc9e2e8d77f16c53 --output runs/issue45-continuation-activation-v1",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --locked python -m forex_trainer.execution_sensitivity_recovery run --config /home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue45_audit_continuation.json --activation runs/issue45-continuation-activation-v1/activation.json",
+      "exit_code": 0,
+      "invocations": 1,
+      "new_accounts_consumed": 304
+    },
+    {
+      "command": "uv run --locked python -m forex_trainer.execution_sensitivity_recovery verify --config /home/tsuyoshi/workspace/projects/forex-trainer/configs/research/issue45_audit_continuation.json --directory runs/issue45-audit-continuation-v1",
+      "exit_code": 0
+    }
+  ],
+  "note": "Execution commands are historical records. Budget is exhausted; do not rerun. Verification is read-only."
+}

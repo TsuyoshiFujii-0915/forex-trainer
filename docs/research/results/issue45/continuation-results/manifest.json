@@ -1,0 +1,12 @@
+{
+  "artifact_type": "verified_complete_fixed_bar_proxy_results_observed_quote_blocked",
+  "campaign_manifest_sha256": "e4d1615da6d7e8bc7b0a47d1a6f9fa795c706c4fb20eea9afb121dacdd1c093c",
+  "files": {
+    "execution-record.json": "fcad5685a39861c1a5e2c8f69be1b022ca1022090f502aa4cfa764afe1707cae",
+    "report.md": "2b3f7d0d3ae9666462344904416a24ccaaf73d68badd96226734f5a4ceed6e4c",
+    "seal-relative-path-error.txt": "4415c96ad14a87b1dc455ee93ff5e5dd62c50cc6dedb9524fca0489e7fd50518",
+    "summary.json": "7edfdfc26417d147a82c84dec68dcbd4f9bae615c083c825bfb124057763b986",
+    "validation.json": "6525df18e0aed0b3f2f8675025ebd522ee7ea3fe13e4301be760d7dc27142fc7",
+    "verification.json": "e3477bca49a9feec086f6c4b93eb8cb08195efc736f8592a495a2667f3a73bb8"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "additional_trial_required": "At most one candidate with a separately registered finite budget.",
+  "issues": [
+    43,
+    48,
+    50
+  ],
+  "new_candidates_validated": 0,
+  "unresolved": [
+    "observed_quotes",
+    "provider_product_lot_financing_depth",
+    "asynchronous_baskets_and_partial_fills"
+  ]
+}
